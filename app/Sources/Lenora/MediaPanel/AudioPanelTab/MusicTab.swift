@@ -2,7 +2,6 @@ import SwiftUI
 
 struct MusicSection: View {
     @Environment(EditorViewModel.self) var editor
-    @Bindable private var account = AccountService.shared
     @Binding var isExpanded: Bool
 
     @State private var selectedModelId: String?
@@ -57,18 +56,8 @@ struct MusicSection: View {
         prompt.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    private var costDuration: Int {
+    private var requestedSeconds: Int {
         isTextMode ? Int(textDuration.rounded()) : Int(spanSeconds.rounded())
-    }
-
-    private var estimatedCost: Int? {
-        guard let model, costDuration > 0 else { return nil }
-        return CostEstimator.audioCost(
-            model: model,
-            prompt: trimmedPrompt,
-            durationSeconds: costDuration,
-            input: isTextMode ? .text : .video
-        )
     }
 
     private var validationNote: String? {
@@ -81,7 +70,7 @@ struct MusicSection: View {
                 lyrics: nil,
                 styleInstructions: nil,
                 instrumental: false,
-                durationSeconds: costDuration
+                durationSeconds: requestedSeconds
             )
             if let issue = model.validate(params: params) { return issue }
         } else {
@@ -90,23 +79,11 @@ struct MusicSection: View {
             }
             if let issue = model.validate(spanSeconds: spanSeconds) { return issue }
         }
-        if let cost = estimatedCost, cost > AccountService.shared.remainingCredits,
-           AccountService.shared.budgetCredits != nil {
-            return CostEstimator.localizedInsufficientCredits(
-                cost,
-                remaining: AccountService.shared.remainingCredits
-            )
-        }
         return nil
     }
 
     private var canGenerate: Bool {
         model != nil && validationNote == nil && !isGenerating
-    }
-
-    private var generateLabel: String {
-        if let cost = estimatedCost, cost > 0 { return CostEstimator.localizedGenerateLabel(cost) }
-        return L10n.string("Generate")
     }
 
     private var sourceSummary: String {
@@ -246,14 +223,13 @@ struct MusicSection: View {
             HStack(spacing: AppTheme.Spacing.sm) {
                 Spacer(minLength: AppTheme.Spacing.zero)
                 Button(action: generate) {
-                    Text(generateLabel)
+                    Text(L10n.string("Generate"))
                         .lineLimit(1)
                 }
                 .buttonStyle(.capsule(.prominent))
                 .fixedSize()
                 .focusable(false)
-                .disabled(!canGenerate || !account.aiAllowed)
-                .help(account.aiAllowed ? String() : L10n.string("Sign in to generate"))
+                .disabled(!canGenerate)
 
                 agentMenu
             }

@@ -2,7 +2,6 @@
 
 "$%lld/mo" = "$%lld/mo";
 "$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Credits expire at renewal.";
-"%@ (Paid)" = "%@ (Paid)";
 "%@ could not be exported." = "%@ could not be exported.";
 "%@ does not accept this media" = "%@ does not accept this media";
 "%@ does not support this media type." = "%@ does not support this media type.";
@@ -24,11 +23,7 @@
 "%lld couldn't align" = "%lld couldn't align";
 "%lld credits" = "%lld credits";
 "%lld credits / month" = "%lld credits / month";
-"%lld credits estimated. Actual billing may differ." = "%lld credits estimated. Actual billing may differ.";
-"%lld credits needed. Only %lld remaining." = "%lld credits needed. Only %lld remaining.";
 "%lld credits refunded" = "%lld credits refunded";
-"%lld credits used" = "%lld credits used";
-"%lld credits. %lld remaining after this generation." = "%lld credits. %lld remaining after this generation.";
 "%lld images are ready in Lenora Pro." = "%lld images are ready in Lenora Pro.";
 "%lld items" = "%lld items";
 "%lld media files are missing and will be skipped." = "%lld media files are missing and will be skipped.";
@@ -40,14 +35,7 @@
 "%lldk credits" = "%lldk credits";
 "(image payload)" = "(image payload)";
 "/ month" = "/ month";
-"0 credits" = "0 credits";
-"0 credits used" = "0 credits used";
 "1 clip" = "1 clip";
-"1 credit" = "1 credit";
-"1 credit estimated. Actual billing may differ." = "1 credit estimated. Actual billing may differ.";
-"1 credit needed. Only %lld remaining." = "1 credit needed. Only %lld remaining.";
-"1 credit used" = "1 credit used";
-"1 credit. %lld remaining after this generation." = "1 credit. %lld remaining after this generation.";
 "1 item" = "1 item";
 "1 media file is missing and will be skipped." = "1 media file is missing and will be skipped.";
 "= %lld credits" = "= %lld credits";
@@ -59,7 +47,6 @@
 "AI Enhance" = "AI Enhance";
 "AI Generated" = "AI Generated";
 "AI agent" = "AI agent";
-"AI is unavailable" = "AI is unavailable";
 "About Lenora Pro" = "About Lenora Pro";
 "Account" = "Account";
 "Account settings" = "Account settings";
@@ -336,7 +323,6 @@
 "Edit supports up to %llds (this is %llds)" = "Edit supports up to %llds (this is %llds)";
 "Editing" = "Editing";
 "Edit…" = "Edit…";
-"Edit… (Paid)" = "Edit… (Paid)";
 "Effects" = "Effects";
 "Empty" = "Empty";
 "Enable: %@" = "Enable: %@";
@@ -345,7 +331,6 @@
 "Enhance resolution or frame rate with AI" = "Enhance resolution or frame rate with AI";
 "Enhanced with FLUX.3 at 1080p." = "Enhanced with FLUX.3 at 1080p.";
 "Enter Full Screen" = "Enter Full Screen";
-"Estimated cost. Actual billing may differ slightly." = "Estimated cost. Actual billing may differ slightly.";
 "Exclusion" = "Exclusion";
 "Expand" = "Expand";
 "Export" = "Export";
@@ -412,8 +397,6 @@
 "Generate music for the timeline" = "Generate music for the timeline";
 "Generate music that fits the video" = "Generate music that fits the video";
 "Generate video, image, or audio with different models and settings. Drag assets from the media panel above into the reference frame." = "Generate video, image, or audio with different models and settings. Drag assets from the media panel above into the reference frame.";
-"Generate · %lld credits" = "Generate · %lld credits";
-"Generate · 1 credit" = "Generate · 1 credit";
 "Generating…" = "Generating…";
 "Generation Failed" = "Generation Failed";
 "Generation Input" = "Generation Input";
@@ -516,7 +499,6 @@
 "Lip Sync model not available" = "Lip Sync model not available";
 "Lip Sync only works on video" = "Lip Sync only works on video";
 "Lip Sync…" = "Lip Sync…";
-"Lip Sync… (Paid)" = "Lip Sync… (Paid)";
 "Loading community skills" = "Loading community skills";
 "Loading community skills…" = "Loading community skills…";
 "Loading media metadata…" = "Loading media metadata…";
@@ -625,6 +607,7 @@
 "Noise Reduction" = "Noise Reduction";
 "None" = "None";
 "Normal" = "Normal";
+"Not provided by the connected backend" = "Not provided by the connected backend";
 "Not selected" = "Not selected";
 "Not synced — unusable as an angle." = "Not synced — unusable as an angle.";
 "Notifications" = "Notifications";
@@ -644,7 +627,6 @@
 "Open Timeline" = "Open Timeline";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip.";
 "OpenAI API Key" = "OpenAI API Key";
-"Opening Google" = "Opening Google";
 "Opening Google…" = "Opening Google…";
 "Open…" = "Open…";
 "Organize with Agent" = "Organize with Agent";
@@ -707,7 +689,6 @@
 "Reframe model not available" = "Reframe model not available";
 "Reframe only works on video" = "Reframe only works on video";
 "Reframe…" = "Reframe…";
-"Reframe… (Paid)" = "Reframe… (Paid)";
 "Refresh" = "Refresh";
 "Refresh Community Skills" = "Refresh Community Skills";
 "Refresh to check for available skills." = "Refresh to check for available skills.";
@@ -737,7 +718,6 @@
 "Rendering…" = "Rendering…";
 "Replace clip source" = "Replace clip source";
 "Replacement Audio" = "Replacement Audio";
-"Requires a paid plan" = "Requires a paid plan";
 "Rerun" = "Rerun";
 "Reset All" = "Reset All";
 "Reset Clipping Indicators" = "Reset Clipping Indicators";
@@ -824,10 +804,8 @@
 "Side by Side" = "Side by Side";
 "Sign In" = "Sign In";
 "Sign in" = "Sign in";
-"Sign in to generate" = "Sign in to generate";
 "Sign in to receive 250 free credits for AI chat and generation." = "Sign in to receive 250 free credits for AI chat and generation.";
 "Sign in to subscribe and use AI generation." = "Sign in to subscribe and use AI generation.";
-"Sign in to use AI" = "Sign in to use AI";
 "Sign in with Google" = "Sign in with Google";
 "Sign out" = "Sign out";
 "Sign-in couldn’t be completed. Try again." = "Sign-in couldn’t be completed. Try again.";
@@ -879,7 +857,6 @@
 "Strikethrough" = "Strikethrough";
 "Style" = "Style";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Style instructions (optional). e.g., warm and slow, British accent.";
-"Subscribe" = "Subscribe";
 "Subscription" = "Subscription";
 "Subtitle" = "Subtitle";
 "Subtitle file is unavailable." = "Subtitle file is unavailable.";
@@ -955,7 +932,6 @@
 "Try Again" = "Try Again";
 "Try again." = "Try again.";
 "Try another search." = "Try another search.";
-"Turn off to save %lld%% on generation cost." = "Turn off to save %lld%% on generation cost.";
 "Turn off to skip audio generation." = "Turn off to skip audio generation.";
 "Tutorial" = "Tutorial";
 "Type" = "Type";
@@ -984,7 +960,6 @@
 "Upscale only works on video or images" = "Upscale only works on video or images";
 "Upscale source media" = "Upscale source media";
 "Upscale…" = "Upscale…";
-"Upscale… (Paid)" = "Upscale… (Paid)";
 "Use Freeform" = "Use Freeform";
 "Use Freeform to edit individual crop insets." = "Use Freeform to edit individual crop insets.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Use an aspect ratio with two positive numbers, such as 3:2.";

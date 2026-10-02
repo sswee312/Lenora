@@ -399,15 +399,12 @@ extension GenerationView {
                         .foregroundStyle(AppTheme.Text.tertiaryColor)
                         .help(L10n.string("Use for non-English or mixed-language audio."))
                 }
-                if selectedType == .video, videoModel.audioDiscountRate != nil {
-                    let discount = videoModel.audioDiscount(for: effectiveResolution)
-                    let savings = discount.map { Int(((1 - $0) * 100).rounded()) }
+                if supportsAudioToggle {
                     Toggle(L10n.string("Generate audio"), isOn: $generateAudio)
                         .controlSize(.small)
                         .font(.system(size: AppTheme.FontSize.xs, weight: .medium))
                         .foregroundStyle(AppTheme.Text.tertiaryColor)
-                        .help(savings.map { L10n.string("Turn off to save \($0)% on generation cost.") }
-                            ?? L10n.string("Turn off to skip audio generation."))
+                        .help(L10n.string("Turn off to skip audio generation."))
                 }
             }
             .padding(AppTheme.Spacing.lg)

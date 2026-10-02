@@ -13,12 +13,19 @@ enum EditAction {
 
     static let editMaxDurationSeconds: Double = 10.0
 
-    var requiresPaidPlan: Bool {
+    var kinds: [String] {
         switch self {
-        case .upscale, .edit, .lipSync, .reframe: true
-        case .generateMusic, .generateSFX, .rerun, .createVideo, .enhanceDraft: false
+        case .upscale: ["image.upscale", "video.upscale"]
+        case .edit, .rerun: ["image.edit", "video.edit"]
+        case .lipSync: ["video.lipSync"]
+        case .reframe: ["video.reframe"]
+        case .generateMusic: ["audio.music"]
+        case .generateSFX: ["audio.sfx"]
+        case .createVideo, .enhanceDraft: ["video.generate"]
         }
     }
+
+    @MainActor var isAvailable: Bool { ModelCatalog.shared.supportsAny(of: kinds) }
 
     func group(for mediaType: ClipType) -> AIEditActionGroup {
         switch self {
@@ -51,6 +58,9 @@ enum EditAction {
 
     @MainActor
     func availability(for asset: MediaAsset, effectiveDurationOverride: Double? = nil) -> EditActionAvailability {
+        guard isAvailable else {
+            return .disabled(reason: L10n.string("Not provided by the connected backend"))
+        }
         switch self {
         case .enhanceDraft:
             guard asset.canEnhanceDraft else {

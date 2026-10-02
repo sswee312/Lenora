@@ -6,7 +6,6 @@ struct AIEditTab: View {
     let clipId: String?
     let usesOwnScrollView: Bool
     @Environment(EditorViewModel.self) private var editor
-    @Bindable private var account = AccountService.shared
     @State private var replaceClipSource: Bool = false
     @State private var useTrimmedClip: Bool = true
     @State private var placeAudioOnTimeline: Bool = true
@@ -141,8 +140,7 @@ struct AIEditTab: View {
                     action: .enhanceDraft,
                     icon: "arrow.up.right.video",
                     title: L10n.string("FLUX Enhance"),
-                    description: L10n.string("Re-render the same motion at full quality in 1080p"),
-                    detail: asset.draftEnhancementCost.map { "\($0) credits" }
+                    description: L10n.string("Re-render the same motion at full quality in 1080p")
                 )
             }
         }
@@ -253,17 +251,14 @@ struct AIEditTab: View {
         action: EditAction,
         icon: String,
         title: String,
-        description: String,
-        detail: String? = nil
+        description: String
     ) -> some View {
         let availability = action.availability(
             for: asset,
             effectiveDurationOverride: effectiveDurationForAvailability
         )
-        let paidBlocked = action.requiresPaidPlan && !account.isPaid
-        let isEnabled = availability.isAvailable && !paidBlocked && aiDisabledReason == nil
-        let disabledReason = aiDisabledReason
-            ?? (paidBlocked ? L10n.string("Requires a paid plan") : availability.reason)
+        let isEnabled = availability.isAvailable
+        let disabledReason = availability.reason
 
         switch action {
         case .createVideo:
@@ -275,7 +270,6 @@ struct AIEditTab: View {
                 actionButton(
                     icon: icon,
                     title: title,
-                    detail: detail,
                     isEnabled: isEnabled,
                     showsMenuIndicator: true
                 ) {
@@ -295,7 +289,6 @@ struct AIEditTab: View {
                 actionButton(
                     icon: icon,
                     title: title,
-                    detail: detail,
                     isEnabled: isEnabled
                 ) {
                     present(action)
@@ -318,10 +311,8 @@ struct AIEditTab: View {
             for: asset,
             effectiveDurationOverride: effectiveDurationForAvailability
         )
-        let paidBlocked = kind.model?.paidOnly == true && !account.isPaid
-        let isEnabled = availability.isAvailable && !paidBlocked && aiDisabledReason == nil
-        let disabledReason = aiDisabledReason
-            ?? (paidBlocked ? L10n.string("Requires a paid plan") : availability.reason)
+        let isEnabled = availability.isAvailable
+        let disabledReason = availability.reason
 
         return actionTileSurface(
             description: L10n.string(key: kind.description),
@@ -359,7 +350,6 @@ struct AIEditTab: View {
     private func actionButton(
         icon: String,
         title: String,
-        detail: String? = nil,
         isEnabled: Bool,
         showsMenuIndicator: Bool = false,
         perform: @escaping () -> Void
@@ -379,12 +369,6 @@ struct AIEditTab: View {
                     .foregroundStyle(isEnabled ? AppTheme.Text.primaryColor : AppTheme.Text.mutedColor)
                     .lineLimit(1)
                 Spacer(minLength: AppTheme.Spacing.xs)
-                if isEnabled, let detail {
-                    Text(verbatim: detail)
-                        .font(.system(size: AppTheme.FontSize.xxs))
-                        .foregroundStyle(AppTheme.Text.tertiaryColor)
-                        .lineLimit(1)
-                }
                 if showsMenuIndicator {
                     Image(systemName: "chevron.down")
                         .font(.system(size: AppTheme.FontSize.xxs, weight: AppTheme.FontWeight.semibold))
@@ -513,11 +497,5 @@ struct AIEditTab: View {
     }
 
     private var shouldReplace: Bool { replaceClipSource && clipId != nil }
-
-    private var aiDisabledReason: String? {
-        if account.isMisconfigured { return L10n.string("AI is unavailable") }
-        if !account.isSignedIn { return L10n.string("Sign in to use AI") }
-        return nil
-    }
 
 }

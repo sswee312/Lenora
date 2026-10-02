@@ -295,7 +295,7 @@ struct MediaTab: View {
     }
 
     private var actionsRow: some View {
-        let showGenerate = !AccountService.shared.isMisconfigured
+        let showGenerate = ModelCatalog.shared.supportsAny(of: ModelCatalog.generationKinds)
         return HStack(spacing: AppTheme.Spacing.xs) {
             if editor.isMediaPanelSearchExpanded {
                 ExpandablePanelSearch(
@@ -595,7 +595,7 @@ struct MediaTab: View {
     }
 
     private var overflowMenu: some View {
-        let canOrganize = !AccountService.shared.isMisconfigured && !editor.mediaAssets.isEmpty
+        let canOrganize = !editor.mediaAssets.isEmpty
         return toolbarMenuIcon(systemName: "ellipsis") {
             Button(action: createNewFolderInCurrent) {
                 Label(L10n.string("New Folder"), systemImage: "folder.badge.plus")

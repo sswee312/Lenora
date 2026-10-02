@@ -1,6 +1,5 @@
 import Foundation
-import Combine
-@preconcurrency import ConvexMobile
+import MCP
 
 enum ModelKind: Sendable {
     case video(VideoModelConfig)
@@ -40,67 +39,42 @@ enum ModelRegistry {
 @MainActor
 final class ModelCatalog {
     static let shared = ModelCatalog()
-    private static let supportedCatalogVersion: Double = 4
+    static let didChange = Notification.Name("ModelCatalogDidChange")
 
     private(set) var video: [VideoModelConfig] = []
     private(set) var image: [ImageModelConfig] = []
     private(set) var audio: [AudioModelConfig] = []
     private(set) var upscale: [UpscaleModelConfig] = []
     private(set) var byId: [String: ModelKind] = [:]
+    private(set) var backendModels: [String: BackendModel] = [:]
     private(set) var isLoaded: Bool = false
-    private(set) var lastError: String?
 
-    @ObservationIgnored private var subscription: AnyCancellable?
-    @ObservationIgnored private var didConfigure = false
-    @ObservationIgnored private var retryTask: Task<Void, Never>?
-    @ObservationIgnored private var failureCount = 0
+    init() {}
 
-    private init() {}
-
-    func configure() {
-        guard !didConfigure else { return }
-        didConfigure = true
-        startSubscription()
+    func apply(_ capabilities: BackendCapabilities) {
+        backendModels = Dictionary(capabilities.models.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+        let entries = capabilities.models.compactMap { model -> CatalogEntry? in
+            do {
+                return try CatalogEntry(model: model)
+            } catch {
+                Log.generation.warning("ignoring model \(model.id): \(error.localizedDescription)")
+                return nil
+            }
+        }
+        apply(entries)
+        isLoaded = true
+        NotificationCenter.default.post(name: Self.didChange, object: self)
     }
 
-    private func startSubscription() {
-        guard let client = AccountService.shared.convex else { return }
-
-        subscription = client
-            .subscribe(
-                to: "models:list",
-                with: ["catalogVersion": Self.supportedCatalogVersion],
-                yielding: [CatalogEntry].self
-            )
-            .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { [weak self] completion in
-                    if case .failure(let err) = completion {
-                        self?.handleFailure(err)
-                    }
-                },
-                receiveValue: { [weak self] entries in
-                    self?.failureCount = 0
-                    self?.apply(entries)
-                }
-            )
+    func supports(kind: String) -> Bool { backendModels.values.contains { $0.kind == kind } }
+    func supportsAny(of kinds: [String]) -> Bool { kinds.contains(where: supports(kind:)) }
+    func backendModel(id: String) -> BackendModel? { backendModels[id] }
+    func models(ofKind kind: String) -> [BackendModel] {
+        backendModels.values.filter { $0.kind == kind }.sorted { $0.id < $1.id }
     }
 
-    private func handleFailure(_ err: ClientError) {
-        failureCount += 1
-        lastError = err.localizedDescription
-        if failureCount == 1 {
-            Log.generation.error("ModelCatalog subscription failed: \(err.localizedDescription)")
-        } else {
-            Log.generation.warning("ModelCatalog subscription failed (attempt \(self.failureCount)): \(err.localizedDescription)")
-        }
-        let delay = min(pow(2.0, Double(failureCount - 1)), 60)
-        retryTask?.cancel()
-        retryTask = Task { @MainActor [weak self] in
-            try? await Task.sleep(for: .seconds(delay))
-            guard !Task.isCancelled else { return }
-            self?.startSubscription()
-        }
+    func firstConfig(ofKind kind: String) -> ModelKind? {
+        models(ofKind: kind).lazy.compactMap { self.byId[$0.id] }.first
     }
 
     private func apply(_ entries: [CatalogEntry]) {
@@ -141,8 +115,6 @@ final class ModelCatalog {
         self.audio = newAudio
         self.upscale = newUpscale
         self.byId = newById
-        self.isLoaded = true
-        self.lastError = nil
     }
 }
 
@@ -153,22 +125,9 @@ struct CatalogEntry: Decodable, Sendable {
     let providerIconKey: String?
     let providerName: String?
     let description: String?
-    let allowedEndpoints: [String]
-    let responseShape: ResponseShape
     let uiCapabilities: UICapabilities
-    let creditsPerSecond: [String: Double]?
-    let audioDiscountRate: [String: Double]?
-    let creditsPerImage: [String: Double]?
-    let qualities: [String]?
-    let audioPricing: AudioPricing?
-    let creditsPerSecondUpscale: Double?
-    let upscalePricing: UpscalePricing?
-    let paidOnly: Bool
 
     enum Kind: String, Decodable, Sendable { case video, image, audio, upscale }
-    enum ResponseShape: String, Decodable, Sendable {
-        case video, images, audio, upscaledImage
-    }
 
     enum UICapabilities: Sendable {
         case video(VideoCaps)
@@ -177,38 +136,8 @@ struct CatalogEntry: Decodable, Sendable {
         case upscale(UpscaleCaps)
     }
 
-    enum AudioPricing: Decodable, Sendable {
-        case perThousandChars(rate: Double)
-        case perSecond(rate: Double, textRate: Double?)
-        case flat(price: Double)
-
-        private enum K: String, CodingKey { case mode, rate, textRate, price }
-
-        init(from decoder: Decoder) throws {
-            let c = try decoder.container(keyedBy: K.self)
-            switch try c.decode(String.self, forKey: .mode) {
-            case "perThousandChars":
-                self = .perThousandChars(rate: try c.decode(Double.self, forKey: .rate))
-            case "perSecond":
-                self = .perSecond(
-                    rate: try c.decode(Double.self, forKey: .rate),
-                    textRate: try c.decodeIfPresent(Double.self, forKey: .textRate)
-                )
-            case "flat":
-                self = .flat(price: try c.decode(Double.self, forKey: .price))
-            default:
-                throw DecodingError.dataCorruptedError(
-                    forKey: .mode, in: c,
-                    debugDescription: "Unknown audio pricing mode"
-                )
-            }
-        }
-    }
-
     private enum CodingKeys: String, CodingKey {
-        case id, kind, displayName, providerIconKey, providerName, description, allowedEndpoints, responseShape, uiCapabilities
-        case creditsPerSecond, audioDiscountRate, creditsPerImage, qualities
-        case audioPricing, creditsPerSecondUpscale, upscalePricing, paidOnly
+        case id, kind, displayName, providerIconKey, providerName, description, uiCapabilities
     }
 
     init(from decoder: Decoder) throws {
@@ -219,16 +148,6 @@ struct CatalogEntry: Decodable, Sendable {
         self.providerIconKey = try c.decodeIfPresent(String.self, forKey: .providerIconKey)
         self.providerName = try c.decodeIfPresent(String.self, forKey: .providerName)
         self.description = try c.decodeIfPresent(String.self, forKey: .description)
-        self.allowedEndpoints = try c.decode([String].self, forKey: .allowedEndpoints)
-        self.responseShape = try c.decode(ResponseShape.self, forKey: .responseShape)
-        self.creditsPerSecond = try c.decodeIfPresent([String: Double].self, forKey: .creditsPerSecond)
-        self.audioDiscountRate = try c.decodeIfPresent([String: Double].self, forKey: .audioDiscountRate)
-        self.creditsPerImage = try c.decodeIfPresent([String: Double].self, forKey: .creditsPerImage)
-        self.qualities = try c.decodeIfPresent([String].self, forKey: .qualities)
-        self.audioPricing = try c.decodeIfPresent(AudioPricing.self, forKey: .audioPricing)
-        self.creditsPerSecondUpscale = try c.decodeIfPresent(Double.self, forKey: .creditsPerSecondUpscale)
-        self.upscalePricing = try c.decodeIfPresent(UpscalePricing.self, forKey: .upscalePricing)
-        self.paidOnly = try c.decodeIfPresent(Bool.self, forKey: .paidOnly) ?? false
         switch self.kind {
         case .video:
             self.uiCapabilities = .video(try c.decode(VideoCaps.self, forKey: .uiCapabilities))
@@ -238,6 +157,47 @@ struct CatalogEntry: Decodable, Sendable {
             self.uiCapabilities = .audio(try c.decode(AudioCaps.self, forKey: .uiCapabilities))
         case .upscale:
             self.uiCapabilities = .upscale(try c.decode(UpscaleCaps.self, forKey: .uiCapabilities))
+        }
+    }
+}
+
+extension CatalogEntry.Kind {
+    init?(protocolKind: String) {
+        switch protocolKind {
+        case "video.generate", "video.reframe", "video.edit", "video.lipSync": self = .video
+        case "image.generate", "image.edit": self = .image
+        case "audio.speech", "audio.music", "audio.sfx": self = .audio
+        case "image.upscale", "video.upscale": self = .upscale
+        default: return nil
+        }
+    }
+}
+
+extension CatalogEntry {
+    /// Builds an editor config entry from a generation model's `ui` hints; nil for kinds without editor configs.
+    init?(model: BackendModel) throws {
+        guard let kind = Kind(protocolKind: model.kind), case .object(var fields)? = model.ui else { return nil }
+        fields["id"] = .string(model.id)
+        fields["kind"] = .string(kind.rawValue)
+        fields["displayName"] = .string(model.displayName)
+        self = try JSONDecoder().decode(CatalogEntry.self, from: JSONEncoder().encode(Value.object(fields)))
+    }
+}
+
+extension ModelCatalog {
+    static let generationKinds = [
+        "image.generate", "image.edit", "image.upscale", "video.generate", "video.reframe",
+        "video.edit", "video.lipSync", "video.upscale", "audio.speech", "audio.music", "audio.sfx",
+    ]
+}
+
+extension ClipType {
+    var generationKinds: [String] {
+        switch self {
+        case .video: ["video.generate", "video.reframe", "video.edit", "video.lipSync"]
+        case .image: ["image.generate", "image.edit"]
+        case .audio: ["audio.speech", "audio.music", "audio.sfx"]
+        default: []
         }
     }
 }
@@ -263,10 +223,9 @@ struct VideoCaps: Decodable, Sendable {
     let requiredSourceVideoEncoding: SourceVideoEncoding?
     let requiresReferenceImage: Bool
     let requiresReferenceAudio: Bool?
-    let draftCreditsPerSecond: Double?
-    let draftEnhanceCreditsPerSecond: Double?
-    let sourceVideoCreditsPerSecond: [String: Double]?
-    let sourceVideoDraftCreditsPerSecond: Double?
+    let supportsDraft: Bool?
+    let supportsAudioToggle: Bool?
+    let supportsSourceVideo: Bool?
 }
 
 enum SourceVideoResolution: String, Decodable, Sendable {

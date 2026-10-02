@@ -31,28 +31,14 @@ extension GenerationView {
         upscaleModels.isEmpty ? GenerationType.allCases.filter { $0 != .upscale } : GenerationType.allCases
     }
 
-    var aiAllowed: Bool { account.aiAllowed }
-
-    var currentModelLocked: Bool {
-        guard !account.isPaid else { return false }
-        switch selectedType {
-        case .video: return videoModel.paidOnly
-        case .image: return imageModel.paidOnly
-        case .audio: return audioModel.paidOnly
-        case .upscale: return upscaleModel.paidOnly
-        }
-    }
-
     private func selectedModel<T>(_ models: [T], at index: Int) -> T {
         let safeIndex = models.indices.contains(index) ? index : models.startIndex
         return models[safeIndex]
     }
 
-    private func isAvailable(_ paidOnly: Bool) -> Bool { account.isPaid || !paidOnly }
-
     var enabledVideoModels: [(index: Int, model: VideoModelConfig)] {
         videoModels.enumerated()
-            .filter { ModelPreferences.shared.isEnabled($0.element.id) && isAvailable($0.element.paidOnly) }
+            .filter { ModelPreferences.shared.isEnabled($0.element.id) }
             .map { (index: $0.offset, model: $0.element) }
     }
     var enabledVideoModelsByProvider: [VideoModelProviderGroup] {
@@ -67,12 +53,12 @@ extension GenerationView {
     }
     var enabledImageModels: [(index: Int, model: ImageModelConfig)] {
         imageModels.enumerated()
-            .filter { ModelPreferences.shared.isEnabled($0.element.id) && isAvailable($0.element.paidOnly) }
+            .filter { ModelPreferences.shared.isEnabled($0.element.id) }
             .map { (index: $0.offset, model: $0.element) }
     }
     var enabledAudioModels: [(index: Int, model: AudioModelConfig)] {
         audioModels.enumerated()
-            .filter { ModelPreferences.shared.isEnabled($0.element.id) && isAvailable($0.element.paidOnly) }
+            .filter { ModelPreferences.shared.isEnabled($0.element.id) }
             .map { (index: $0.offset, model: $0.element) }
     }
     var enabledUpscaleModels: [(index: Int, model: UpscaleModelConfig)] {
@@ -80,7 +66,6 @@ extension GenerationView {
             .filter { item in
                 let supportsSource = upscaleSource.map { item.element.supports(source: $0) } ?? true
                 return ModelPreferences.shared.isEnabled(item.element.id)
-                    && isAvailable(item.element.paidOnly)
                     && supportsSource
             }
             .map { (index: $0.offset, model: $0.element) }
@@ -154,7 +139,7 @@ extension GenerationView {
             return !videoModel.durations.isEmpty
                 || !videoModel.aspectRatios.isEmpty
                 || videoModel.resolutions != nil
-                || videoModel.audioDiscountRate != nil
+                || videoModel.supportsAudioToggle
                 || videoModel.supportsDraft
         case .image: return !imageModel.aspectRatios.isEmpty || imageModel.resolutions != nil || imageModel.qualities != nil || imageModel.maxImages > 1
         case .audio:
@@ -214,7 +199,7 @@ extension GenerationView {
     }
 
     var supportsAudioToggle: Bool {
-        selectedType == .video && videoModel.audioDiscountRate != nil
+        selectedType == .video && videoModel.supportsAudioToggle
     }
 
     var supportsDraftToggle: Bool {

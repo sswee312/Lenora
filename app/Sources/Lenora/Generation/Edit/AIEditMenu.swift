@@ -8,26 +8,24 @@ struct AIEditMenu: View {
     var body: some View {
         if availableActions.isEmpty && availableAudioTransforms.isEmpty {
             EmptyView()
-        } else if !aiAllowed {
-            Button(L10n.string("AI Edit")) {}.disabled(true)
         } else {
             Menu(L10n.string("AI Edit")) {
                 if !enhanceActions.isEmpty {
                     Section(L10n.string("AI Enhance")) {
                         if enhanceActions.contains(.upscale) {
-                            editActionButton(L10n.string("Upscale…"), action: .upscale) { runUpscale() }
+                            Button(L10n.string("Upscale…")) { runUpscale() }
                         }
                         if enhanceActions.contains(.edit) {
-                            editActionButton(L10n.string("Edit…"), action: .edit) { edit() }
+                            Button(L10n.string("Edit…")) { edit() }
                         }
                         if enhanceActions.contains(.rerun) {
                             Button(L10n.string("Rerun")) { rerun() }
                         }
                         if enhanceActions.contains(.lipSync) {
-                            editActionButton(L10n.string("Lip Sync…"), action: .lipSync) { lipSync() }
+                            Button(L10n.string("Lip Sync…")) { lipSync() }
                         }
                         if enhanceActions.contains(.reframe) {
-                            editActionButton(L10n.string("Reframe…"), action: .reframe) { reframe() }
+                            Button(L10n.string("Reframe…")) { reframe() }
                         }
                         if enhanceActions.contains(.createVideo) {
                             Menu(L10n.string("Create Video")) {
@@ -64,11 +62,6 @@ struct AIEditMenu: View {
         }
     }
 
-    private var aiAllowed: Bool {
-        let account = AccountService.shared
-        return account.isSignedIn && !account.isMisconfigured
-    }
-
     private var availableActions: [EditAction] {
         EditAction.available(for: asset)
     }
@@ -83,23 +76,6 @@ struct AIEditMenu: View {
 
     private var availableAudioTransforms: [AudioTransformEditKind] {
         AudioTransformEditKind.available(for: asset)
-    }
-
-    @ViewBuilder
-    private func editActionButton(
-        _ title: String,
-        action: EditAction,
-        perform: @escaping () -> Void
-    ) -> some View {
-        if action.requiresPaidPlan && !AccountService.shared.isPaid {
-            Button {
-                SettingsWindowController.shared.show(tab: .account)
-            } label: {
-                Label(L10n.string("\(title) (Paid)"), systemImage: "lock.fill")
-            }
-        } else {
-            Button(title, action: perform)
-        }
     }
 
     private func runUpscale() {

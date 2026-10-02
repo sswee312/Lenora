@@ -17,20 +17,13 @@ struct VideoModelConfig: Identifiable, Sendable {
 
     @MainActor
     static var reframe: VideoModelConfig? {
-        allModels.first(where: isReframeModel)
+        guard case .video(let config)? = ModelCatalog.shared.firstConfig(ofKind: "video.reframe") else { return nil }
+        return config
     }
 
     @MainActor
     static var firstAndLastFrame: VideoModelConfig? {
         allModels.first { !$0.requiresSourceVideo && $0.supportsFirstFrame && $0.supportsLastFrame }
-    }
-
-    static func isReframeModel(_ model: VideoModelConfig) -> Bool {
-        guard model.supportsPrompt,
-              !model.requiresSourceVideo,
-              model.maxReferenceVideos > 0 else { return false }
-        let id = model.id.lowercased()
-        return id.contains("minimax-h3") || id.contains("hailuo-03")
     }
 
     static func nearestSupportedDuration(seconds: Double, in durations: [Int]) -> Int {
@@ -95,9 +88,6 @@ struct VideoModelConfig: Identifiable, Sendable {
     var id: String { entry.id }
     var displayName: String { entry.displayName }
     var providerName: String? { entry.providerName }
-    var paidOnly: Bool { entry.paidOnly }
-    var creditsPerSecond: [String: Double] { entry.creditsPerSecond ?? [:] }
-    var audioDiscountRate: [String: Double]? { entry.audioDiscountRate }
     var supportsPrompt: Bool { caps.supportsPrompt ?? true }
 
     var durations: [Int] { caps.durations }
@@ -114,18 +104,13 @@ struct VideoModelConfig: Identifiable, Sendable {
     var framesAndReferencesExclusive: Bool { caps.framesAndReferencesExclusive }
     var referenceTagNoun: String { caps.referenceTagNoun }
     var requiresSourceVideo: Bool { caps.requiresSourceVideo }
-    var supportsSourceVideo: Bool { requiresSourceVideo || sourceVideoCreditsPerSecond != nil }
+    var supportsSourceVideo: Bool { requiresSourceVideo || caps.supportsSourceVideo == true }
     var maxSourceVideoSeconds: Double? { caps.maxSourceVideoSeconds }
     var requiresReferenceImage: Bool { caps.requiresReferenceImage }
     var requiresReferenceAudio: Bool { caps.requiresReferenceAudio ?? false }
-    var supportsDraft: Bool { draftCreditsPerSecond != nil }
-    var draftCreditsPerSecond: Double? { caps.draftCreditsPerSecond }
-    var draftEnhanceCreditsPerSecond: Double? { caps.draftEnhanceCreditsPerSecond }
-    /// Extension models with selectable output durations bill on the output,
-    /// not the source clip.
+    var supportsDraft: Bool { caps.supportsDraft == true }
+    var supportsAudioToggle: Bool { caps.supportsAudioToggle == true }
     var usesOutputDuration: Bool { supportsSourceVideo && !durations.isEmpty }
-    var sourceVideoCreditsPerSecond: [String: Double]? { caps.sourceVideoCreditsPerSecond }
-    var sourceVideoDraftCreditsPerSecond: Double? { caps.sourceVideoDraftCreditsPerSecond }
     var isEdit: Bool {
         supportsPrompt && requiresSourceVideo && !requiresReferenceImage && !requiresReferenceAudio
     }
@@ -160,12 +145,6 @@ struct VideoModelConfig: Identifiable, Sendable {
         guard let seconds, seconds.isFinite, seconds > 0,
               let rounded = Int(exactly: seconds.rounded()) else { return nil }
         return max(1, rounded)
-    }
-
-    func audioDiscount(for resolution: String?) -> Double? {
-        guard let dict = audioDiscountRate else { return nil }
-        if let key = resolution, let v = dict[key] { return v }
-        return dict[""]
     }
 
     func validate(duration: Int, aspectRatio: String, resolution: String?) -> String? {

@@ -2,18 +2,6 @@ import AVFoundation
 import Foundation
 
 extension ToolExecutor {
-    private var canUsePaidModels: Bool { AccountService.shared.isPaid }
-    private func modelAvailable(paidOnly: Bool) -> Bool { canUsePaidModels || !paidOnly }
-
-    private func requirePlan(for modelId: String, paidOnly: Bool) throws {
-        if paidOnly && !canUsePaidModels {
-            throw ToolError(
-                "Model '\(modelId)' requires a paid plan. Pick a free model from list_models, "
-                + "or tell the user to subscribe."
-            )
-        }
-    }
-
     private func draftMode(_ args: [String: Any], model: VideoModelConfig) throws -> Bool {
         let draft = args.bool("draft") ?? false
         if draft && !model.supportsDraft {
@@ -22,23 +10,17 @@ extension ToolExecutor {
         return draft
     }
 
-    private func defaultModelId(_ ids: [(id: String, paidOnly: Bool)], kind: String) throws -> String {
-        guard !ids.isEmpty else {
-            throw ToolError("Model catalog not loaded yet. Try again in a moment.")
+    private func defaultModelId(_ ids: [String], kind: String) throws -> String {
+        guard let first = ids.first else {
+            throw ToolError("No \(kind) model is available. Connect a backend in Settings → Backend.")
         }
-        guard let match = ids.first(where: { modelAvailable(paidOnly: $0.paidOnly) }) else {
-            throw ToolError("No \(kind) model is available on the current plan. Tell the user to subscribe.")
-        }
-        return match.id
+        return first
     }
 
     func generate(_ editor: EditorViewModel, _ args: [String: Any], type: ClipType) throws -> ToolResult {
         let prompt = args["prompt"] == nil ? "" : try args.requireString("prompt")
-        guard AccountService.shared.isSignedIn else {
-            throw ToolError("Generation requires signing in to Lenora. Tell the user to sign in.")
-        }
-        guard AccountService.shared.hasCredits else {
-            throw ToolError("Out of credits. Tell the user to add credits or subscribe to keep generating.")
+        guard type.generationKinds.isEmpty || ModelCatalog.shared.supportsAny(of: type.generationKinds) else {
+            throw ToolError("No backend adapter provides \(type.rawValue) generation. Connect a backend in Settings → Backend.")
         }
         switch type {
         case .sequence:
@@ -55,11 +37,10 @@ extension ToolExecutor {
                 return .ok("Draft enhancement started. Placeholder asset ID: \(placeholderId)")
             }
             let modelId = try args.string("model") ?? defaultModelId(
-                VideoModelConfig.allModels.map { (id: $0.id, paidOnly: $0.paidOnly) }, kind: "video")
+                VideoModelConfig.allModels.map(\.id), kind: "video")
             guard let model = VideoModelConfig.allModels.first(where: { $0.id == modelId }) else {
                 throw ToolError("Unknown model '\(modelId)'. Available: \(VideoModelConfig.allModels.map(\.id).joined(separator: ", "))")
             }
-            try requirePlan(for: model.id, paidOnly: model.paidOnly)
             let hasSourceVideo = args.string("sourceVideoMediaRef") != nil
             if hasSourceVideo && !model.supportsSourceVideo {
                 throw ToolError("Model '\(model.id)' does not accept a source video.")
@@ -257,11 +238,10 @@ extension ToolExecutor {
     ) throws -> ToolResult {
         guard !prompt.isEmpty else { throw ToolError("Empty prompt") }
         let modelId = try args.string("model") ?? defaultModelId(
-            ImageModelConfig.allModels.map { (id: $0.id, paidOnly: $0.paidOnly) }, kind: "image")
+            ImageModelConfig.allModels.map(\.id), kind: "image")
         guard let model = ImageModelConfig.allModels.first(where: { $0.id == modelId }) else {
             throw ToolError("Unknown model '\(modelId)'. Available: \(ImageModelConfig.allModels.map(\.id).joined(separator: ", "))")
         }
-        try requirePlan(for: model.id, paidOnly: model.paidOnly)
         let aspectRatio = args.string("aspectRatio") ?? model.aspectRatios.first ?? ""
         let resolution = args.string("resolution") ?? model.resolutions?.first
         let quality = args.string("quality") ?? model.qualities?.last
@@ -300,18 +280,14 @@ extension ToolExecutor {
     }
 
     func generateAudio(_ editor: EditorViewModel, _ args: [String: Any]) async throws -> ToolResult {
-        guard AccountService.shared.isSignedIn else {
-            throw ToolError("Generation requires signing in to Lenora. Tell the user to sign in.")
-        }
-        guard AccountService.shared.hasCredits else {
-            throw ToolError("Out of credits. Tell the user to add credits or subscribe to keep generating.")
+        guard ModelCatalog.shared.supportsAny(of: ClipType.audio.generationKinds) else {
+            throw ToolError("No backend adapter provides audio generation. Connect a backend in Settings → Backend.")
         }
         let modelId = try args.string("model") ?? defaultModelId(
-            AudioModelConfig.allModels.map { (id: $0.id, paidOnly: $0.paidOnly) }, kind: "audio")
+            AudioModelConfig.allModels.map(\.id), kind: "audio")
         guard let model = AudioModelConfig.allModels.first(where: { $0.id == modelId }) else {
             throw ToolError("Unknown model '\(modelId)'. Available: \(AudioModelConfig.allModels.map(\.id).joined(separator: ", "))")
         }
-        try requirePlan(for: model.id, paidOnly: model.paidOnly)
 
         let prompt = (args.string("prompt") ?? "").trimmingCharacters(in: .whitespaces)
         let inputAssets = AudioGenerationSubmission.InputAssets(
@@ -486,11 +462,8 @@ extension ToolExecutor {
         guard asset.type != .video || asset.sourceFPS != nil else {
             throw ToolError("Source FPS is not available yet. Poll get_media until the asset is ready.")
         }
-        guard AccountService.shared.isSignedIn else {
-            throw ToolError("Upscale requires signing in to Lenora. Tell the user to sign in.")
-        }
-        guard AccountService.shared.hasCredits else {
-            throw ToolError("Out of credits. Tell the user to add credits or subscribe to keep generating.")
+        guard ModelCatalog.shared.supportsAny(of: ["image.upscale", "video.upscale"]) else {
+            throw ToolError("No backend adapter provides upscaling. Connect a backend in Settings → Backend.")
         }
 
         let available = UpscaleModelConfig.models(for: asset.type)
@@ -500,16 +473,13 @@ extension ToolExecutor {
                 let ids = available.map(\.id).joined(separator: ", ")
                 throw ToolError("Model '\(requested)' does not support \(asset.type.rawValue). Available: \(ids)")
             }
-            try requirePlan(for: match.id, paidOnly: match.paidOnly)
             guard match.supports(source: asset) else {
                 throw ToolError("Model '\(requested)' is not compatible with this source's resolution or frame rate.")
             }
             model = match
         } else {
-            guard let first = available.first(where: {
-                modelAvailable(paidOnly: $0.paidOnly) && $0.supports(source: asset)
-            }) else {
-                throw ToolError("No compatible upscaler is available for this \(asset.type.rawValue) on the current plan.")
+            guard let first = available.first(where: { $0.supports(source: asset) }) else {
+                throw ToolError("No compatible upscaler is available for this \(asset.type.rawValue).")
             }
             model = first
         }
@@ -595,22 +565,18 @@ extension ToolExecutor {
         var out: [[String: Any]] = []
         if filter == nil || filter == "video" {
             out += VideoModelConfig.allModels
-                .filter { modelAvailable(paidOnly: $0.paidOnly) }
                 .map { Self.videoModelInfo($0, includeType: true) }
         }
         if filter == nil || filter == "image" {
             out += ImageModelConfig.allModels
-                .filter { modelAvailable(paidOnly: $0.paidOnly) }
                 .map { Self.imageModelInfo($0, includeType: true) }
         }
         if filter == nil || filter == "audio" {
             out += AudioModelConfig.allModels
-                .filter { modelAvailable(paidOnly: $0.paidOnly) }
                 .map { Self.audioModelInfo($0) }
         }
         if filter == nil || filter == "upscale" {
             out += UpscaleModelConfig.allModels
-                .filter { modelAvailable(paidOnly: $0.paidOnly) }
                 .map { Self.upscaleModelInfo($0) }
         }
         let body: [String: Any] = [
@@ -650,13 +616,9 @@ extension ToolExecutor {
         if m.requiresReferenceImage { info["requiresReferenceImage"] = true }
         if m.requiresReferenceAudio { info["requiresReferenceAudio"] = true }
         if m.usesOutputDuration { info["usesOutputDuration"] = true }
-        if let rate = m.draftCreditsPerSecond {
+        if m.supportsDraft {
             info["supportsDraft"] = true
             info["draftResolution"] = VideoModelConfig.draftResolution
-            info["draftCreditsPerSecond"] = rate
-            if let enhanceRate = m.draftEnhanceCreditsPerSecond {
-                info["draftEnhanceCreditsPerSecond"] = enhanceRate
-            }
         }
         return info
     }

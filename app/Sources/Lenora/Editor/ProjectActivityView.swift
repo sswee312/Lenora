@@ -11,10 +11,6 @@ struct ProjectActivityView: View {
     @State private var isLoading = true
     @State private var unavailableMessage: String?
 
-    private var total: Int {
-        entries.reduce(0) { $0 + $1.creditImpact }
-    }
-
     private static let relativeFormatter: RelativeDateTimeFormatter = {
         let formatter = RelativeDateTimeFormatter()
         formatter.locale = AppLocalization.shared.activeLocale
@@ -29,12 +25,6 @@ struct ProjectActivityView: View {
                     .font(.system(size: AppTheme.FontSize.sm, weight: .medium))
                     .foregroundStyle(AppTheme.Text.primaryColor)
                 Spacer()
-                if !entries.isEmpty {
-                    Text(CostEstimator.localizedUsedCredits(total))
-                        .font(.system(size: AppTheme.FontSize.xs, weight: .medium))
-                        .monospacedDigit()
-                        .foregroundStyle(AppTheme.Text.tertiaryColor)
-                }
             }
 
             Group {
@@ -120,7 +110,7 @@ struct ProjectActivityView: View {
     private func creditLabel(_ entry: BackendProjectActivityEntry) -> String {
         entry.kind == .refund
             ? L10n.string("\(entry.credits) credits refunded")
-            : CostEstimator.localizedDescription(entry.credits)
+            : L10n.string("\(entry.credits) credits")
     }
 
     @MainActor

@@ -151,7 +151,7 @@ struct AccountPopoverCard: View {
         if credits >= 1000, credits % 1000 == 0 {
             return L10n.string("\(credits / 1000)k credits")
         }
-        return CostEstimator.localizedDescription(credits)
+        return L10n.string("\(credits) credits")
     }
 
     @ViewBuilder

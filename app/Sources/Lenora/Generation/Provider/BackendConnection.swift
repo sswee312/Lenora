@@ -18,7 +18,6 @@ final class BackendConnection {
     private(set) var provider: (any GenerationProvider)?
     private(set) var state: BackendConnectionState = .unknown
     private(set) var health: BackendHealth?
-    private(set) var capabilities: BackendCapabilities?
     private(set) var urlFromEnvironment = false
     @ObservationIgnored private var generation = 0
 
@@ -57,12 +56,12 @@ final class BackendConnection {
             let capabilities = try await client.capabilities()
             guard current == generation else { return }
             self.health = health
-            self.capabilities = capabilities
+            ModelCatalog.shared.apply(capabilities)
             state = .connected
         } catch {
             guard current == generation else { return }
             health = nil
-            capabilities = nil
+            ModelCatalog.shared.apply(.empty)
             switch error as? BackendError {
             case .unauthorized: state = .unauthorized
             case .unreachable(let url): state = .unreachable(url)
@@ -91,7 +90,7 @@ final class BackendConnection {
         configuration = nil
         provider = nil
         health = nil
-        capabilities = nil
+        ModelCatalog.shared.apply(.empty)
     }
 
     @concurrent private static func loadToken() async -> String? {

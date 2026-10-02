@@ -1,10 +1,6 @@
 import Foundation
 
 extension EditorViewModel {
-    var aiEditAllowed: Bool {
-        AccountService.shared.isSignedIn && !AccountService.shared.isMisconfigured
-    }
-
     func aiEditActions(clipId: String) -> [EditAction] {
         guard let (clip, asset) = aiEditClipAsset(clipId),
               clip.mediaType.isVisual || clip.mediaType == .audio else { return [] }

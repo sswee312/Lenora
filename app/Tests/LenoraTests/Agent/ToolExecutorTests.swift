@@ -694,7 +694,7 @@ struct ToolExecutorReadOnlyTests {
 
     // MARK: - list_models
 
-    /// ModelCatalog populates from Convex over the network — empty in tests. These verify
+    /// ModelCatalog is filled from backend capabilities — empty in tests. These verify
     /// shape and filter contract regardless of whether the catalog has any entries.
 
     @Test func listModelsReturnsWrappedShape() async throws {

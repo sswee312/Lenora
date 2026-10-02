@@ -47,20 +47,6 @@ struct ReframeSeedTests {
         #expect(seed.aspectRatio == "16:9")
     }
 
-    @Test("Rejects models that cannot take video references")
-    func rejectsSourceOnlyModels() throws {
-        let model = try Self.sourceEditModel()
-        let asset = MediaAsset(
-            id: "clip-3",
-            url: URL(fileURLWithPath: "/tmp/clip.mp4"),
-            type: .video,
-            name: "Clip",
-            duration: 5
-        )
-        #expect(EditSubmitter.reframeSeed(for: asset, model: model) == nil)
-        #expect(!VideoModelConfig.isReframeModel(model))
-    }
-
     @Test("Duration covers the source span so the replaced clip never outlives the media")
     func durationCoversSourceSpan() throws {
         let model = try Self.minimaxH3()
@@ -176,38 +162,6 @@ struct ReframeSeedTests {
             "referenceTagNoun": "Video",
             "requiresSourceVideo": false,
             "maxSourceVideoSeconds": null,
-            "requiresReferenceImage": false,
-            "requiresReferenceAudio": false
-          }
-        }
-        """#)
-    }
-
-    private static func sourceEditModel() throws -> VideoModelConfig {
-        try decodeVideoModel(#"""
-        {
-          "id": "kling-reframe",
-          "kind": "video",
-          "displayName": "Legacy Reframe",
-          "allowedEndpoints": ["opaque"],
-          "responseShape": "video",
-          "uiCapabilities": {
-            "supportsPrompt": true,
-            "durations": [5, 10],
-            "resolutions": ["1080p"],
-            "aspectRatios": ["16:9", "9:16"],
-            "supportsFirstFrame": false,
-            "supportsLastFrame": false,
-            "maxReferenceImages": 0,
-            "maxReferenceVideos": 0,
-            "maxReferenceAudios": 0,
-            "maxTotalReferences": null,
-            "maxCombinedVideoRefSeconds": null,
-            "maxCombinedAudioRefSeconds": null,
-            "framesAndReferencesExclusive": false,
-            "referenceTagNoun": "Video",
-            "requiresSourceVideo": true,
-            "maxSourceVideoSeconds": 10,
             "requiresReferenceImage": false,
             "requiresReferenceAudio": false
           }

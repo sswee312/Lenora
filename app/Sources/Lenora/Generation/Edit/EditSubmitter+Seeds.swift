@@ -23,8 +23,7 @@ extension EditSubmitter {
         model: VideoModelConfig,
         trimmedSource: TrimmedSource? = nil
     ) -> GenerationInput? {
-        guard asset.type == .video,
-              VideoModelConfig.isReframeModel(model) else { return nil }
+        guard asset.type == .video else { return nil }
         let isPortrait: Bool
         if let width = asset.sourceWidth, let height = asset.sourceHeight {
             isPortrait = height > width
@@ -69,7 +68,7 @@ extension EditSubmitter {
             guard let model = VideoModelConfig.edit else { return nil }
             modelId = model.id
         case .image:
-            guard let model = ImageModelConfig.nanoBananaPro else { return nil }
+            guard let model = ImageModelConfig.edit else { return nil }
             modelId = model.id
         case .audio, .text, .lottie, .sequence, .subtitle:
             return nil

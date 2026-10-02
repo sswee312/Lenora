@@ -1058,19 +1058,6 @@ struct InspectorView: View {
                 .truncationMode(.tail)
                 .textSelection(.enabled)
                 .help(Text(verbatim: metadata))
-            Spacer(minLength: AppTheme.Spacing.xs)
-            if let cost = gen.costCredits {
-                HStack(spacing: AppTheme.Spacing.xxs) {
-                    Image(systemName: "dollarsign.circle.fill")
-                    Text(verbatim: cost.formatted())
-                }
-                .font(.system(size: AppTheme.FontSize.xs, weight: AppTheme.FontWeight.medium))
-                .monospacedDigit()
-                .foregroundStyle(AppTheme.Text.tertiaryColor)
-                .fixedSize()
-                .accessibilityElement(children: .combine)
-                .accessibilityLabel(CostEstimator.localizedUsedCredits(cost))
-            }
         }
     }
 

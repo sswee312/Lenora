@@ -4,7 +4,6 @@ struct GenerationView: View {
     let maxPanelHeight: Double
 
     @Environment(EditorViewModel.self) var editor
-    @Bindable var account = AccountService.shared
     @State var prompt = ""
     @State var selectedType: GenerationType = .video
     @State var selectedVideoModelIndex = 0
@@ -184,11 +183,10 @@ struct GenerationView: View {
 
     private var bodyContent: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.sm) {
-            // Type tabs (left) · credits · activity · close (right)
+            // Type tabs (left) · activity · close (right)
             HStack(spacing: AppTheme.Spacing.sm) {
                 typeTabs
                 Spacer()
-                CreditSummaryView(style: .compact)
                 ProjectActivityButton()
                 Button {
                     editFolderId = nil
@@ -269,10 +267,6 @@ struct GenerationView: View {
         }
         .onChange(of: editor.pendingPanelSeed?.asset.id) { _, _ in consumePendingPanelSeed() }
         .onChange(of: ModelPreferences.shared.disabledIds) { _, _ in
-            guard !isPopulatingPanel else { return }
-            normalizeModelSelection()
-        }
-        .onChange(of: account.isPaid) { _, _ in
             guard !isPopulatingPanel else { return }
             normalizeModelSelection()
         }
@@ -460,7 +454,6 @@ struct GenerationView: View {
 
             Spacer(minLength: AppTheme.Spacing.xs)
 
-            costEstimateLabel
             submitButton
         }
         .frame(maxWidth: .infinity)

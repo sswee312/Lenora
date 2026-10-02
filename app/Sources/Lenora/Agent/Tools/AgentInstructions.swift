@@ -44,8 +44,8 @@ enum AgentInstructions {
         - Call get_media before referencing any asset; filter with ids (poll a generation), \
           folder, or pending=true.
         - Call list_models before any generate_* or upscale call. If get_timeline says \
-          canGenerate=false, generation will fail — ask the user to sign in to Lenora and \
-          subscribe first.
+          canGenerate=false, generation will fail — ask the user to connect a backend in \
+          Settings → Backend first.
         - Never describe an asset from its filename — inspect_media first. On long media work \
           coarse to fine: overview=true storyboard, then transcript segments, then zoom with \
           startSeconds/endSeconds.

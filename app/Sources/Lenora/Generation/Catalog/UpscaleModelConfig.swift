@@ -59,21 +59,6 @@ struct UpscaleToggleSetting: Decodable, Sendable, Identifiable {
     let defaultValue: Bool
 }
 
-struct UpscalePricing: Decodable, Sendable {
-    enum Mode: String, Decodable, Sendable { case perSecond, flat }
-    struct MegapixelRate: Decodable, Sendable {
-        let upTo: Double
-        let credits: Double
-    }
-
-    let mode: Mode
-    let ratesByResolution: [String: Double]?
-    let sourceResolutionFloor: Bool?
-    let fpsMultipliers: [String: Double]?
-    let tierMultipliers: [String: Double]?
-    let megapixelRates: [MegapixelRate]?
-}
-
 struct UpscaleModelConfig: Identifiable, Sendable {
     @MainActor
     static var allModels: [UpscaleModelConfig] { ModelCatalog.shared.upscale }
@@ -89,9 +74,6 @@ struct UpscaleModelConfig: Identifiable, Sendable {
     var id: String { entry.id }
     var displayName: String { entry.displayName }
     var description: String? { entry.description }
-    var paidOnly: Bool { entry.paidOnly }
-    var creditsPerSecond: Double { entry.creditsPerSecondUpscale ?? 0 }
-    var pricing: UpscalePricing? { entry.upscalePricing }
     var speed: String { caps.speed }
     var selectSettings: [UpscaleSelectSetting] { caps.selectSettings ?? [] }
     var numericSettings: [UpscaleNumericSetting] { caps.numericSettings ?? [] }
