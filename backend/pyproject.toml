@@ -25,14 +25,14 @@ dev = [
   "respx>=0.21",
   "jsonschema>=4.23",
   "pyyaml>=6",
-  # "lenora-adapter-cloudinary",
+  "lenora-adapter-cloudinary",
 ]
 
 [tool.uv.workspace]
-# members = ["adapters/cloudinary"]
+members = ["adapters/cloudinary"]
 
 [tool.uv.sources]
-# lenora-adapter-cloudinary = { workspace = true }
+lenora-adapter-cloudinary = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]
