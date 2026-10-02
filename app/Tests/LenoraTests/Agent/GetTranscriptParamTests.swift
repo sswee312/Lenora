@@ -242,17 +242,17 @@ struct GetTranscriptParamTests {
         #expect(json?["words"] == nil)
     }
 
-    @Test func wordRowsSpeakerRunsAndSegments() async throws {
-        func w(_ i: Int, _ text: String, _ start: Int, _ end: Int, _ speaker: String?) -> TimelineWord {
+    @Test func wordRowsAndSegments() async throws {
+        func w(_ i: Int, _ text: String, _ start: Int, _ end: Int) -> TimelineWord {
             TimelineWord(index: i, clipId: "c1", trackIndex: 0, clipStartFrame: 0, clipEndFrame: 300,
-                         text: text, startFrame: start, endFrame: end, speaker: speaker)
+                         text: text, startFrame: start, endFrame: end)
         }
         let transcript = TimelineTranscript(
             context: .init(preferredLocale: nil),
             words: [
-                w(0, "Hello", 0, 10, "S1"), w(1, "there.", 10, 20, "S1"),
-                w(2, "Hi", 60, 70, "S2"), w(3, "back.", 70, 80, "S2"),
-                w(4, "Great", 90, 100, "S1"),
+                w(0, "Hello", 0, 10), w(1, "there.", 10, 20),
+                w(2, "Hi", 60, 70), w(3, "back.", 70, 80),
+                w(4, "Great", 90, 100),
             ],
             skipped: []
         )
@@ -261,16 +261,11 @@ struct GetTranscriptParamTests {
         #expect(words["wordFormat"] as? [String] == ["index", "text", "start"])
         let rows = ((words["clips"] as? [[String: Any]])?.first?["words"]) as? [[Any]]
         #expect(rows?.count == 5)
-        #expect(rows?.first?.count == 3) // no per-word end, no speaker column
-        // Speakers arrive as run-length turns keyed by word index.
-        let runs = words["speakers"] as? [[Any]]
-        #expect(runs?.count == 3)
-        #expect(runs?[1][0] as? Int == 2)
-        #expect(runs?[1][1] as? String == "S2")
+        #expect(rows?.first?.count == 3) // no per-word end
 
         let segs = transcript.responsePayload(fps: 30, clipId: nil, startFrame: nil, endFrame: nil, maxWords: 100, segments: true)
         let segRows = ((segs["clips"] as? [[String: Any]])?.first?["segments"]) as? [[Any]]
-        // Sentence end, speaker change, and trailing run each flush: 3 segments.
+        // Sentence ends and the trailing run each flush: 3 segments.
         #expect(segRows?.count == 3)
         #expect(segRows?.first?[1] as? String == "Hello there.")
         #expect(segRows?.first?[0] as? Int == 0)   // firstWordIndex handle

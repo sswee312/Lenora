@@ -200,16 +200,6 @@ struct AgentToolSchema: @unchecked Sendable {
     let inputSchema: [String: Any]
 }
 
-struct AgentRequestContext: Equatable, Sendable {
-    let conversationID: UUID
-    let traceID: UUID
-    let spanID: UUID
-    let inputMessageID: UUID
-    let outputMessageID: UUID
-    let projectID: String?
-
-}
-
 enum AgentStreamEvent: Equatable, Sendable {
     case thinkingDelta(String)
     case thinkingSignature(String)
@@ -242,8 +232,7 @@ protocol AgentClient: Sendable {
     func stream(
         system: String,
         tools: [AgentToolSchema],
-        messages: [AgentRequestMessage],
-        context: AgentRequestContext
+        messages: [AgentRequestMessage]
     ) -> AsyncThrowingStream<AgentStreamEvent, Error>
 }
 

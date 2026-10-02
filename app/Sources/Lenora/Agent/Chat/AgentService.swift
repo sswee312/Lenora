@@ -342,7 +342,6 @@ final class AgentService {
         streamError = nil
         kickOffStream(
             conversationID: conversationID,
-            traceID: UUID(),
             settings: runSettings
         )
     }
@@ -361,7 +360,6 @@ final class AgentService {
 
     private func kickOffStream(
         conversationID: UUID,
-        traceID: UUID,
         settings: AgentRunSettings
     ) {
         currentTask?.cancel()
@@ -374,7 +372,6 @@ final class AgentService {
             }
             await self?.runLoop(
                 conversationID: conversationID,
-                traceID: traceID,
                 settings: settings
             )
         }
@@ -382,7 +379,6 @@ final class AgentService {
 
     private func runLoop(
         conversationID: UUID,
-        traceID: UUID,
         settings: AgentRunSettings
     ) async {
         let chosenModel = settings.model
@@ -401,10 +397,6 @@ final class AgentService {
         loop: while !Task.isCancelled {
             resolveOrphanToolUses()
             let apiMsgs = await apiMessages()
-            guard let inputMessageID = messages.last(where: { $0.role == .user })?.id else {
-                streamError = .upstream("The agent request has no user message.")
-                break loop
-            }
             let assistant = AgentMessage(role: .assistant, blocks: [])
             messages.append(assistant)
             let assistantID = assistant.id
@@ -413,15 +405,7 @@ final class AgentService {
                 let stream = client.stream(
                     system: AgentInstructions.serverInstructions + AgentInstructions.skillsSection(SkillStore.shared.skillIndex),
                     tools: tools,
-                    messages: apiMsgs,
-                    context: AgentRequestContext(
-                        conversationID: conversationID,
-                        traceID: traceID,
-                        spanID: UUID(),
-                        inputMessageID: inputMessageID,
-                        outputMessageID: assistantID,
-                        projectID: editor?.projectId
-                    )
+                    messages: apiMsgs
                 )
 
                 let finalSnapshot = try await presentAgentStream(

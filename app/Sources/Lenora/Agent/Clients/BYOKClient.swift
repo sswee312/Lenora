@@ -7,8 +7,7 @@ struct BYOKClient: AgentClient {
     func stream(
         system: String,
         tools: [AgentToolSchema],
-        messages: [AgentRequestMessage],
-        context: AgentRequestContext
+        messages: [AgentRequestMessage]
     ) -> AsyncThrowingStream<AgentStreamEvent, Error> {
         makeAgentStream { continuation in
             try await run(

@@ -129,6 +129,6 @@ enum CaptionTranscriptMapper {
         let start = max(segment.start, visibleStart)
         let end = min(segment.end, visibleEnd)
         guard end > start else { return nil }
-        return TranscriptionSegment(text: segment.text, start: start, end: end, speaker: segment.speaker)
+        return TranscriptionSegment(text: segment.text, start: start, end: end)
     }
 }

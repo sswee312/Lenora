@@ -6,28 +6,12 @@ struct TranscriptionWord: Sendable, Codable {
     let text: String
     let start: Double?
     let end: Double?
-    let speaker: String?
-
-    init(text: String, start: Double?, end: Double?, speaker: String? = nil) {
-        self.text = text
-        self.start = start
-        self.end = end
-        self.speaker = speaker
-    }
 }
 
 struct TranscriptionSegment: Sendable, Codable {
     let text: String
     let start: Double
     let end: Double
-    let speaker: String?
-
-    init(text: String, start: Double, end: Double, speaker: String? = nil) {
-        self.text = text
-        self.start = start
-        self.end = end
-        self.speaker = speaker
-    }
 }
 
 struct TranscriptionResult: Sendable, Codable {
@@ -46,12 +30,11 @@ struct TranscriptionResult: Sendable, Codable {
                 TranscriptionWord(
                     text: $0.text,
                     start: $0.start.map { $0 + offset },
-                    end: $0.end.map { $0 + offset },
-                    speaker: $0.speaker
+                    end: $0.end.map { $0 + offset }
                 )
             },
             segments: segments.map {
-                TranscriptionSegment(text: $0.text, start: $0.start + offset, end: $0.end + offset, speaker: $0.speaker)
+                TranscriptionSegment(text: $0.text, start: $0.start + offset, end: $0.end + offset)
             }
         )
     }
@@ -271,8 +254,7 @@ enum Transcription {
                 segments.append(TranscriptionSegment(
                     text: segmentText,
                     start: result.range.start.seconds,
-                    end: result.range.end.seconds,
-                    speaker: nil
+                    end: result.range.end.seconds
                 ))
             }
 
@@ -283,7 +265,7 @@ enum Transcription {
                 let range = run.audioTimeRange
                 let start = range.map(\.start.seconds)
                 let end = range.map { ($0.start + $0.duration).seconds }
-                words.append(TranscriptionWord(text: trimmed, start: start, end: end, speaker: nil))
+                words.append(TranscriptionWord(text: trimmed, start: start, end: end))
             }
         }
 

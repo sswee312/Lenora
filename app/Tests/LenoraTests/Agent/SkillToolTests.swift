@@ -52,6 +52,11 @@ struct SkillToolTests {
         #expect(Set(properties.keys) == ["action", "id", "name", "description", "instructions"])
     }
 
+    @Test func unknownSkillReadIsRejected() {
+        let executor = ToolExecutor(editor: EditorViewModel())
+        #expect(executor.readSkill(["id": UUID().uuidString]).isError)
+    }
+
     @Test func createUpdateAndRemoveSkill() async throws {
         try await withHarness { harness in
             let initialInstructions = "## Workflow\nRemove pauses, then remove filler words."

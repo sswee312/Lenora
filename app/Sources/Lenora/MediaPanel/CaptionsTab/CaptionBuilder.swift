@@ -46,7 +46,7 @@ enum CaptionBuilder {
         let text = timed.map(\.text).joined(separator: " ").trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return [] }
         return phrases(
-            for: TranscriptionSegment(text: text, start: start, end: end, speaker: first.speaker),
+            for: TranscriptionSegment(text: text, start: start, end: end),
             words: timed,
             fits: fits,
             maxWords: maxWords,

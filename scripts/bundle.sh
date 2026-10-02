@@ -165,7 +165,7 @@ if $INCLUDE_BUNDLED_SPEECH; then
     BUILD_DIR="$PKG/.build" "$PKG/.build/checkouts/speech-swift/scripts/build_mlx_metallib.sh" "$CONFIG"
   fi
   if [ ! -f "$MLX_METALLIB" ]; then
-    echo "!! missing $MLX_METALLIB — on-device speech features (VAD, speaker ID) would die silently" >&2
+    echo "!! missing $MLX_METALLIB — on-device speech features (VAD) would die silently" >&2
     exit 1
   fi
   mkdir -p "$APP/Contents/Resources/mlx-swift_Cmlx.bundle"

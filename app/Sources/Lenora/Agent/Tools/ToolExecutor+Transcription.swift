@@ -83,17 +83,12 @@ struct TimelineWord {
     let text: String
     let startFrame: Int
     let endFrame: Int
-    let speaker: String?
 }
 
 struct TimelineTranscript {
     let context: TranscriptionToolContext
     let words: [TimelineWord]
     let skipped: [[String: Any]]
-
-    var includesSpeakers: Bool {
-        words.contains { $0.speaker != nil }
-    }
 
     func groups(clipId filter: String? = nil) -> [TimelineTranscriptGroup] {
         var groups: [TimelineTranscriptGroup] = []
@@ -123,8 +118,6 @@ struct TimelineTranscript {
         var totalWords = 0
         var remaining = maxWords
         var lastEnd: Int?
-        var speakerRuns: [[Any]] = []
-        var currentSpeaker: String??
 
         for group in groups(clipId: clipId) {
             var visible: [TimelineWord] = []
@@ -136,11 +129,6 @@ struct TimelineTranscript {
                 visible.append(word)
                 remaining -= 1
                 lastEnd = word.endFrame
-                // Speakers as run-length turns, not a column repeated on every word.
-                if includesSpeakers, currentSpeaker != word.speaker {
-                    currentSpeaker = word.speaker
-                    speakerRuns.append([word.index, word.speaker ?? NSNull()])
-                }
             }
             guard !visible.isEmpty else { continue }
             var clipOut: [String: Any] = [
@@ -167,10 +155,6 @@ struct TimelineTranscript {
         } else {
             out["wordFormat"] = ["index", "text", "start"]
         }
-        if includesSpeakers, !speakerRuns.isEmpty {
-            out["speakers"] = speakerRuns
-            out["speakersNote"] = "[firstWordIndex, speaker] — each run holds until the next entry."
-        }
         if totalWords > maxWords {
             out["totalWords"] = totalWords
             if let lastEnd {
@@ -192,8 +176,7 @@ struct TimelineTranscript {
             run.removeAll()
         }
         for word in words {
-            if let last = run.last,
-               last.speaker != word.speaker || word.startFrame - last.endFrame > fps || run.count >= 48 {
+            if let last = run.last, word.startFrame - last.endFrame > fps || run.count >= 48 {
                 flush()
             }
             run.append(word)
@@ -356,8 +339,7 @@ extension ToolExecutor {
                     clipEndFrame: frag.clip.endFrame,
                     text: row.text,
                     startFrame: row.start,
-                    endFrame: row.end,
-                    speaker: row.speaker
+                    endFrame: row.end
                 ))
             }
         }
@@ -401,15 +383,15 @@ extension ToolExecutor {
         return (results, skipped)
     }
 
-    private func timelineRows(from transcript: TranscriptionResult, clip: Clip, fps: Int) -> [(start: Int, end: Int, text: String, speaker: String?)] {
+    private func timelineRows(from transcript: TranscriptionResult, clip: Clip, fps: Int) -> [(start: Int, end: Int, text: String)] {
         let visible = CaptionTranscriptMapper.sourceSpan(for: clip)
         let rate = Double(fps)
-        let rows = transcript.words.compactMap { word -> (start: Int, end: Int, text: String, speaker: String?)? in
+        let rows = transcript.words.compactMap { word -> (start: Int, end: Int, text: String)? in
             guard let start = word.start, let end = word.end else { return nil }
             let midFrame = (start + end) / 2 * rate
             guard midFrame >= visible.start, midFrame < visible.end,
                   let frameSpan = Self.spanFrames(start: start, end: end, clip: clip, fps: fps) else { return nil }
-            return (frameSpan.start, frameSpan.end, word.text, word.speaker)
+            return (frameSpan.start, frameSpan.end, word.text)
         }
         return rows.sorted { ($0.start, $0.end) < ($1.start, $1.end) }
     }
