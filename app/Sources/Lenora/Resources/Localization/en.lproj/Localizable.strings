@@ -72,7 +72,6 @@
 "Add an OpenAI API key to use this model." = "Add an OpenAI API key to use this model.";
 "Add captions" = "Add captions";
 "Add credits" = "Add credits";
-"Add credits to use Cloud." = "Add credits to use Cloud.";
 "Add emoji" = "Add emoji";
 "Add generated audio to an audio track at this clip's start." = "Add generated audio to an audio track at this clip's start.";
 "Add keyframe" = "Add keyframe";
@@ -130,7 +129,6 @@
 "Buy $%lld" = "Buy $%lld";
 "Buy more" = "Buy more";
 "Cache" = "Cache";
-"Cached — no credits used." = "Cached — no credits used.";
 "Can't add captions from \"%@\" — %@" = "Can't add captions from \"%@\" — %@";
 "Can't add captions — \"%@\" is offline." = "Can't add captions — \"%@\" is offline.";
 "Can't delete every timeline — the project needs at least one." = "Can't delete every timeline — the project needs at least one.";
@@ -199,8 +197,6 @@
 "Close Other Tabs" = "Close Other Tabs";
 "Close Tab" = "Close Tab";
 "Close gaps" = "Close gaps";
-"Cloud" = "Cloud";
-"Cloud auto-detects languages, produces more accurate transcripts, can identify speakers, and uses 25 credits/hr when a transcript is not cached." = "Cloud auto-detects languages, produces more accurate transcripts, can identify speakers, and uses 25 credits/hr when a transcript is not cached.";
 "Codec" = "Codec";
 "Collapse" = "Collapse";
 "Color" = "Color";
@@ -417,6 +413,7 @@
 "Generation panel" = "Generation panel";
 "Get Anthropic API key" = "Get Anthropic API key";
 "Get OpenAI API key" = "Get OpenAI API key";
+"Get Started" = "Get Started";
 "Get a notification when a generation finishes." = "Get a notification when a generation finishes.";
 "Getting the search model ready." = "Getting the search model ready.";
 "Glow" = "Glow";
@@ -442,8 +439,6 @@
 "Hold" = "Hold";
 "Hue" = "Hue";
 "Hue Curves" = "Hue Curves";
-"Identify" = "Identify";
-"Identifying…" = "Identifying…";
 "Ignores speech-free pauses shorter than this." = "Ignores speech-free pauses shorter than this.";
 "Image" = "Image";
 "Image Adjustment" = "Image Adjustment";
@@ -483,7 +478,6 @@
 "Keyboard Shortcuts" = "Keyboard Shortcuts";
 "Keyframes" = "Keyframes";
 "LUTs" = "LUTs";
-"Labels" = "Labels";
 "Language" = "Language";
 "Language for the editor UI" = "Language for the editor UI";
 "Large" = "Large";
@@ -522,8 +516,6 @@
 "Loading video metadata…" = "Loading video metadata…";
 "Loading…" = "Loading…";
 "Local" = "Local";
-"Local runs with Apple's SpeechAnalyzer." = "Local runs with Apple's SpeechAnalyzer.";
-"Local runs with Apple's SpeechAnalyzer. Cloud uses credits and a more accurate model with more capabilities." = "Local runs with Apple's SpeechAnalyzer. Cloud uses credits and a more accurate model with more capabilities.";
 "Low" = "Low";
 "Luma" = "Luma";
 "Luminosity" = "Luminosity";
@@ -540,7 +532,6 @@
 "Mark Range End" = "Mark Range End";
 "Mark Range Start" = "Mark Range Start";
 "Mark Silence" = "Mark Silence";
-"Mark Speakers" = "Mark Speakers";
 "Marker %lld" = "Marker %lld";
 "Marker name" = "Marker name";
 "Markers" = "Markers";
@@ -548,7 +539,6 @@
 "Master — defines the group's clock and transcript." = "Master — defines the group's clock and transcript.";
 "Match Timeline" = "Match Timeline";
 "Match mouth movement to replacement audio" = "Match mouth movement to replacement audio";
-"Matches voices across clips, transcribing untranscribed timeline clips first (uses credits). Transcripts and voice fingerprints are cached, so re-runs are fast." = "Matches voices across clips, transcribing untranscribed timeline clips first (uses credits). Transcripts and voice fingerprints are cached, so re-runs are fast.";
 "Max" = "Max";
 "Max characters" = "Max characters";
 "Max plan" = "Max plan";
@@ -567,7 +557,6 @@
 "Minimal" = "Minimal";
 "Minimum Pause" = "Minimum Pause";
 "Mixed" = "Mixed";
-"Mode" = "Mode";
 "Model" = "Model";
 "Model no longer available" = "Model no longer available";
 "Models" = "Models";
@@ -729,7 +718,6 @@
 "Remove model" = "Remove model";
 "Remove vertical flip" = "Remove vertical flip";
 "Removes background noise from this audio using an on-device model." = "Removes background noise from this audio using an on-device model.";
-"Removes this label and tint. Identify recreates it if the voice is still present." = "Removes this label and tint. Identify recreates it if the voice is still present.";
 "Removing background noise…" = "Removing background noise…";
 "Rename" = "Rename";
 "Rename Skill" = "Rename Skill";
@@ -766,9 +754,7 @@
 "Running on" = "Running on";
 "Safe Zones" = "Safe Zones";
 "Sample Key Color" = "Sample Key Color";
-"Sample Project" = "Sample Project";
 "Sample key color" = "Sample key color";
-"Sample project couldn’t be opened. Try again." = "Sample project couldn’t be opened. Try again.";
 "Sat" = "Sat";
 "Saturation" = "Saturation";
 "Save" = "Save";
@@ -830,8 +816,6 @@
 "Sign in to receive 250 free credits for AI chat and generation." = "Sign in to receive 250 free credits for AI chat and generation.";
 "Sign in to subscribe and use AI generation." = "Sign in to subscribe and use AI generation.";
 "Sign in to use AI" = "Sign in to use AI";
-"Sign in to use Cloud transcription." = "Sign in to use Cloud transcription.";
-"Sign in to use Cloud." = "Sign in to use Cloud.";
 "Sign in with Google" = "Sign in with Google";
 "Sign out" = "Sign out";
 "Sign-in couldn’t be completed. Try again." = "Sign-in couldn’t be completed. Try again.";
@@ -857,7 +841,6 @@
 "Source Audio" = "Source Audio";
 "Source Media" = "Source Media";
 "Source Video" = "Source Video";
-"Speaker Detection" = "Speaker Detection";
 "Speech" = "Speech";
 "Speech Padding" = "Speech Padding";
 "Speech is detected on-device in the background. Dims quiet, speech-free spans on timeline waveforms." = "Speech is detected on-device in the background. Dims quiet, speech-free spans on timeline waveforms.";
@@ -934,7 +917,6 @@
 "Timeline colors" = "Timeline colors";
 "Timelines" = "Timelines";
 "Tint" = "Tint";
-"Tints waveforms by speaker. Voices are matched across clips using cloud transcripts." = "Tints waveforms by speaker. Voices are matched across clips using cloud transcripts.";
 "Title Safe" = "Title Safe";
 "Tone" = "Tone";
 "Tools" = "Tools";
@@ -943,8 +925,6 @@
 "Track Name" = "Track Name";
 "Tracking" = "Tracking";
 "Transcribe" = "Transcribe";
-"Transcribe · %lld credits" = "Transcribe · %lld credits";
-"Transcribe · 1 credit" = "Transcribe · 1 credit";
 "Transcribing…" = "Transcribing…";
 "Transcript" = "Transcript";
 "Transcription failed: %@" = "Transcription failed: %@";
@@ -1015,7 +995,6 @@
 "Voice Cleanup requires audio or video" = "Voice Cleanup requires audio or video";
 "Volume" = "Volume";
 "Warmth" = "Warmth";
-"Watch the tutorial or start creating." = "Watch the tutorial or start creating.";
 "Welcome" = "Welcome";
 "Welcome to Lenora Pro" = "Welcome to Lenora Pro";
 "Welcome to Lenora Pro, %@" = "Welcome to Lenora Pro, %@";
@@ -1033,6 +1012,7 @@
 "X High" = "X High";
 "You were not charged for this generation" = "You were not charged for this generation";
 "You're all set" = "You're all set";
+"You're ready to start creating." = "You're ready to start creating.";
 "Your Lottie animation is ready." = "Your Lottie animation is ready.";
 "Your audio clip is ready." = "Your audio clip is ready.";
 "Your image is ready." = "Your image is ready.";

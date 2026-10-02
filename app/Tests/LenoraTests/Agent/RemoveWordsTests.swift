@@ -67,7 +67,7 @@ struct RemoveWordsParamTests {
     @Test func rejectsRememberedScopeFromAnotherTimeline() async {
         let h = ToolHarness()
         h.executor.lastTranscriptSession = TranscriptSession(
-            context: .init(provider: .local, preferredLocale: nil),
+            context: .init(preferredLocale: nil),
             scope: .automatic,
             editor: h.editor
         )
@@ -89,7 +89,7 @@ struct RemoveWordsParamTests {
         ]))
         let scope = TranscriptionScope.track(id: "deleted-track")
         h.executor.lastTranscriptSession = TranscriptSession(
-            context: .init(provider: .local, preferredLocale: nil),
+            context: .init(preferredLocale: nil),
             scope: scope,
             editor: h.editor
         )
@@ -107,7 +107,7 @@ struct RemoveWordsParamTests {
         let h = ToolHarness(timeline: Fixtures.timeline(tracks: [Fixtures.audioTrack(clips: [clip])]))
         let scope = TranscriptionScope.automatic
         h.executor.lastTranscriptSession = TranscriptSession(
-            context: .init(provider: .local, preferredLocale: nil),
+            context: .init(preferredLocale: nil),
             scope: scope,
             editor: h.editor
         )
@@ -123,7 +123,7 @@ struct RemoveWordsParamTests {
     @Test func textMatchesFallBackToAutomaticOnAnotherTimeline() async {
         let h = ToolHarness()
         h.executor.lastTranscriptSession = TranscriptSession(
-            context: .init(provider: .local, preferredLocale: nil),
+            context: .init(preferredLocale: nil),
             scope: .automatic,
             editor: h.editor
         )
@@ -141,7 +141,7 @@ struct RemoveWordsParamTests {
         let clip = Fixtures.clip(id: "voice", mediaType: .audio, start: 0, duration: 30)
         let h = ToolHarness(timeline: Fixtures.timeline(tracks: [Fixtures.audioTrack(clips: [clip])]))
         let session = TranscriptSession(
-            context: .init(provider: .local, preferredLocale: nil),
+            context: .init(preferredLocale: nil),
             scope: .automatic,
             editor: h.editor
         )

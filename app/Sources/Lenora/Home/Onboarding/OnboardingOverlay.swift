@@ -68,7 +68,6 @@ struct OnboardingOverlay: View {
         case .account:
             OnboardingAccountStep(
                 account: account,
-                sampleState: onboarding.sampleState,
                 signInFailed: signInFailed
             )
         }
@@ -97,10 +96,7 @@ struct OnboardingOverlay: View {
     @ViewBuilder
     private var accountAction: some View {
         if account.isSignedIn || account.isMisconfigured {
-            primaryButton(
-                onboarding.sampleState == .loading ? L10n.string("Loading…") : L10n.string("Tutorial"),
-                action: onboarding.openSampleProject
-            )
+            primaryButton(L10n.string("Get Started"), action: onboarding.complete)
         } else {
             primaryButton(
                 account.isSigningIn ? L10n.string("Opening Google…") : L10n.string("Sign in with Google"),
@@ -131,7 +127,7 @@ struct OnboardingOverlay: View {
     }
 
     private var isBusy: Bool {
-        account.isSigningIn || onboarding.sampleState == .loading
+        account.isSigningIn
     }
 
     private func signIn() {

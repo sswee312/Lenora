@@ -94,16 +94,11 @@ final class EditorViewModel {
     var denoiseFailed: Set<String> = []
     var denoiseBaked: Set<String> = []
     var speechAnalyzingCount: Int = 0
-    var speakerRegistry: [SpeakerRegistryEntry] = []
     var multicamGroups: [MulticamSource] = [] {
         didSet {
             if multicamGroups != oldValue { deadAirMaskCache.reset() }
         }
     }
-    var speakerAssignments: [String: [String: Int]] = [:]
-    var speakerIdentifyPhase: String?
-    var speakerIdentifyInFlight: Bool { speakerIdentifyPhase != nil }
-    var speakerIdentifyError: String?
 
     // MARK: - Panel focus
 
@@ -279,15 +274,6 @@ final class EditorViewModel {
         didSet {
             UserDefaults.standard.set(markBeats, forKey: "markBeats")
             mediaVisualCache.timelineView?.needsDisplay = true
-        }
-    }
-
-    var markSpeakers: Bool = {
-        UserDefaults.standard.object(forKey: "markSpeakers") as? Bool ?? true
-    }() {
-        didSet {
-            UserDefaults.standard.set(markSpeakers, forKey: "markSpeakers")
-            syncSpeakerColors()
         }
     }
 

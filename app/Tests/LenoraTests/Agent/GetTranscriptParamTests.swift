@@ -36,7 +36,7 @@ struct GetTranscriptParamTests {
 
         #expect(scope == .track(id: "second-track"))
         #expect(scope.targets(in: h.editor).map(\.id) == ["second"])
-        #expect(scope.captionRequest(in: h.editor, provider: .cloud).sourceClipIds == ["second"])
+        #expect(scope.captionRequest(in: h.editor).sourceClipIds == ["second"])
     }
 
     @Test func explicitClipScopeCanChooseNonMasterMulticamMic() throws {
@@ -242,20 +242,13 @@ struct GetTranscriptParamTests {
         #expect(json?["words"] == nil)
     }
 
-    @Test func cloudTranscriptionRequiresCoveredUncachedCost() {
-        #expect(ToolExecutor.canUseCloudTranscription(isSignedIn: true, remainingCredits: 5, estimatedCost: 6) == false)
-        #expect(ToolExecutor.canUseCloudTranscription(isSignedIn: true, remainingCredits: 6, estimatedCost: 6) == true)
-        #expect(ToolExecutor.canUseCloudTranscription(isSignedIn: true, remainingCredits: 0, estimatedCost: 0) == true)
-        #expect(ToolExecutor.canUseCloudTranscription(isSignedIn: false, remainingCredits: 100, estimatedCost: 1) == false)
-    }
-
     @Test func wordRowsSpeakerRunsAndSegments() async throws {
         func w(_ i: Int, _ text: String, _ start: Int, _ end: Int, _ speaker: String?) -> TimelineWord {
             TimelineWord(index: i, clipId: "c1", trackIndex: 0, clipStartFrame: 0, clipEndFrame: 300,
                          text: text, startFrame: start, endFrame: end, speaker: speaker)
         }
         let transcript = TimelineTranscript(
-            context: .init(provider: .local, preferredLocale: nil),
+            context: .init(preferredLocale: nil),
             words: [
                 w(0, "Hello", 0, 10, "S1"), w(1, "there.", 10, 20, "S1"),
                 w(2, "Hi", 60, 70, "S2"), w(3, "back.", 70, 80, "S2"),

@@ -438,7 +438,6 @@ class VideoProject: NSDocument {
             restoreAssetsFromManifest()
         }
         editorViewModel.enhancePendingDenoises()
-        if editorViewModel.markSpeakers { editorViewModel.identifySpeakers() }
 
         let editorView = EditorView()
             .environment(editorViewModel)

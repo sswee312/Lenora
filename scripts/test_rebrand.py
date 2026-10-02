@@ -51,6 +51,13 @@ def test_rebrand_renames_paths_and_check_passes(tmp_path):
     assert rebrand.leftovers(tmp_path) == []
 
 
+@pytest.mark.parametrize("scratch", [".superpowers", ".pytest_cache"])
+def test_leftovers_skip_ignored_scratch(tmp_path, scratch):
+    (tmp_path / scratch / "sub").mkdir(parents=True)
+    (tmp_path / scratch / "sub" / "note.md").write_text("palmier\n")
+    assert rebrand.leftovers(tmp_path) == []
+
+
 def test_check_reports_leftovers(tmp_path):
     (tmp_path / "a.txt").write_text("palmier\n")
     result = subprocess.run(

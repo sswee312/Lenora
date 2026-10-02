@@ -105,11 +105,6 @@ enum CostEstimator {
         return ceilCredits(rate * (model.pricing?.mode == .flat ? 1 : Double(d)))
     }
 
-    static func estimatedTranscriptionCost(durationSeconds: Double) -> Int? {
-        guard durationSeconds > 0 else { return nil }
-        return ceilCredits(25.0 * durationSeconds / 3600.0)
-    }
-
     /// Recompute cost from a stored `GenerationInput`. Used on rerun.
     @MainActor
     static func cost(for genInput: GenerationInput) -> Int? {
@@ -151,13 +146,6 @@ enum CostEstimator {
         case .none:
             return nil
         }
-    }
-
-    static func stableDescription(_ credits: Int?) -> String {
-        guard let credits else { return "—" }
-        if credits <= 0 { return "0 credits" }
-        if credits == 1 { return "1 credit" }
-        return "\(credits) credits"
     }
 
     @MainActor

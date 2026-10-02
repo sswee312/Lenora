@@ -2,18 +2,6 @@ import AVFoundation
 import Foundation
 import Speech
 
-enum TranscriptionProvider: String, CaseIterable, Sendable, Codable {
-    case local
-    case cloud
-
-    var label: String {
-        switch self {
-        case .local: L10n.key("Local")
-        case .cloud: L10n.key("Cloud")
-        }
-    }
-}
-
 struct TranscriptionWord: Sendable, Codable {
     let text: String
     let start: Double?

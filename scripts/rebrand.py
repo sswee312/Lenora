@@ -21,7 +21,7 @@ MAPPING = [
 ]
 PATTERN = re.compile("|".join(f"({regex})" for regex, _ in MAPPING))
 ALLOW_MARKER = "rebrand:allow"
-SKIP_DIRS = {".git", ".build", ".swiftpm", ".venv", "node_modules", "__pycache__"}
+SKIP_DIRS = {".git", ".superpowers", ".pytest_cache", ".build", ".swiftpm", ".venv", "node_modules", "__pycache__"}
 ALLOW_FILES = {"NOTICE", "LICENSE", "scripts/rebrand.py", "scripts/test_rebrand.py"}
 ALLOW_PREFIXES = ("docs/",)
 VENDOR_IMPORT = re.compile(r"^\s*(@preconcurrency\s+)?import\s+(ConvexMobile|Clerk\w*|Sparkle|Sentry\w*|PostHog)\b")

@@ -56,18 +56,9 @@ extension ToolExecutor {
         }
 
         let scope = try resolveTranscriptionScope(editor, args, path: "add_captions")
-        let cloudRequest = scope.captionRequest(in: editor, provider: .cloud)
-        let context = try await transcriptionContext(args, path: "add_captions") {
-            await editor.captionCloudCreditCost(for: cloudRequest)
-        }
-        let provider = context.provider
-        if provider == .cloud {
-            if args.bool("censorProfanity") == true {
-                throw ToolError("add_captions: censorProfanity is only available with local transcription.")
-            }
-        }
+        let context = try await transcriptionContext(args, path: "add_captions")
 
-        var request = scope.captionRequest(in: editor, provider: provider)
+        var request = scope.captionRequest(in: editor)
         request.style = style
         request.center = center
         request.censorProfanity = args.bool("censorProfanity") ?? false
@@ -76,8 +67,6 @@ extension ToolExecutor {
         request.maxCharacters = maxCharacters
         request.gapSettings = gapSettings
         request.animation = animation
-
-        try await Self.validateCloudTranscriptionAccess(for: request, in: editor)
 
         let snapshot = timelineSnapshot(editor)
         let ids = try await editor.generateCaptions(for: request, applying: { mutation in

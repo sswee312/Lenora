@@ -17,13 +17,6 @@ final class MediaVisualCache {
     // MARK: - Speech masks
 
     let speech = SpeechMaskStore()
-    /// 32 ms cells, value = global speaker id, -1 = none. Session-scoped, set by identifySpeakers.
-    var speakerMasks: [String: [Int]] = [:]
-
-    nonisolated func speakerMask(for mediaRef: String) -> [Int]? {
-        MainActor.assumeIsolated { speakerMasks[mediaRef] }
-    }
-
     let beats = BeatStore()
 
     nonisolated func beatAnalysis(for mediaRef: String) -> BeatAnalysis? {
@@ -104,7 +97,6 @@ final class MediaVisualCache {
     /// Drops all in-memory state after a disk-cache clear so everything regenerates.
     func resetSessionState() {
         waveformSamples.removeAll()
-        speakerMasks.removeAll()
         speech.reset()
         beats.reset()
         videoThumbnails.removeAll()
@@ -116,7 +108,6 @@ final class MediaVisualCache {
     /// Clears every cached visual for `mediaRef` so relinked media regenerates.
     func invalidate(_ mediaRef: String) {
         waveformSamples.removeValue(forKey: mediaRef)
-        speakerMasks.removeValue(forKey: mediaRef)
         speech.invalidate(mediaRef)
         beats.invalidate(mediaRef)
         videoThumbnails.removeValue(forKey: mediaRef)

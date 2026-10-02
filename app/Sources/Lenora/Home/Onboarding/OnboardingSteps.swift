@@ -29,7 +29,6 @@ struct OnboardingWelcomeStep: View {
 
 struct OnboardingAccountStep: View {
     @Bindable var account: AccountService
-    let sampleState: OnboardingSampleState
     let signInFailed: Bool
 
     var body: some View {
@@ -58,14 +57,11 @@ struct OnboardingAccountStep: View {
 
     private var detail: String {
         account.isSignedIn
-            ? L10n.string("Watch the tutorial or start creating.")
+            ? L10n.string("You're ready to start creating.")
             : L10n.string("Sign in to receive 250 free credits for AI chat and generation.")
     }
 
     private var failure: String? {
-        if sampleState == .failed {
-            return L10n.string("Sample project couldn’t be opened. Try again.")
-        }
         if signInFailed, !account.isSignedIn {
             return L10n.string("Sign-in couldn’t be completed. Try again.")
         }

@@ -100,10 +100,9 @@ enum AgentInstructions {
           set_keyframes for temporal settings. \
           Color: apply_color (knobs merge; pass a clip's `color` object to \
           copy a whole grade); video/image FX: apply_effect; iterate grades against inspect_color.
-        - Transcription language: omit unless the user names the spoken language. Cloud \
-          auto-detects; local is language-specific — pass BCP-47 (language='es') for \
-          non-English local runs, and if local output looks wrong, ask for the language and \
-          retry.
+        - Transcription language: omit unless the user names the spoken language. \
+          Transcription is on-device and language-specific — pass BCP-47 (language='es') for \
+          non-English speech, and if output looks wrong, ask for the language and retry.
         - A transcript summary is lossy: it hides reworded retakes and zero-width seam \
           fragments (a word whose start equals the next word's start) — verify suspected \
           fragments against the words, not the summary.
