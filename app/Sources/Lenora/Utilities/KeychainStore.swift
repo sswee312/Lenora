@@ -4,7 +4,8 @@ import Security
 enum KeychainStore {
     private static let service: String = Bundle.main.bundleIdentifier ?? "xyz.agentage.lenora"
 
-    static func save(_ value: String, account: String) {
+    @discardableResult
+    static func save(_ value: String, account: String) -> Bool {
         let data = Data(value.utf8)
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -16,11 +17,10 @@ enum KeychainStore {
             kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock,
         ]
         let status = SecItemUpdate(query as CFDictionary, attrs as CFDictionary)
-        if status == errSecItemNotFound {
-            var insert = query
-            insert.merge(attrs) { _, new in new }
-            SecItemAdd(insert as CFDictionary, nil)
-        }
+        guard status == errSecItemNotFound else { return status == errSecSuccess }
+        var insert = query
+        insert.merge(attrs) { _, new in new }
+        return SecItemAdd(insert as CFDictionary, nil) == errSecSuccess
     }
 
     static func load(account: String) -> String? {

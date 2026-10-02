@@ -1,0 +1,154 @@
+import SwiftUI
+
+struct BackendPane: View {
+    private let connection = BackendConnection.shared
+    @State private var urlText = ""
+    @State private var tokenText = ""
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.xxl) {
+            SettingsSection(title: L10n.string("Backend")) {
+                connectionSection
+            }
+            if let health = connection.health {
+                SettingsSection(title: L10n.string("Adapters")) {
+                    adaptersSection(health)
+                }
+            }
+        }
+        .onAppear {
+            urlText = UserDefaults.standard.string(forKey: LenoraBackendConfiguration.urlDefaultsKey) ?? ""
+        }
+    }
+
+    private var connectionSection: some View {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.xl) {
+            Text(L10n.string("Generation runs on your Lenora backend. The token is stored in the macOS Keychain."))
+                .font(.system(size: AppTheme.FontSize.sm))
+                .foregroundStyle(AppTheme.Text.tertiaryColor)
+                .fixedSize(horizontal: false, vertical: true)
+            fieldGroup(title: L10n.string("URL")) {
+                if connection.urlFromEnvironment {
+                    textField(.constant(connection.configuration?.baseURL.absoluteString ?? ""), prompt: "")
+                        .disabled(true)
+                    Text(L10n.string("Set by LENORA_BACKEND_URL for this launch."))
+                        .font(.system(size: AppTheme.FontSize.sm))
+                        .foregroundStyle(AppTheme.Text.tertiaryColor)
+                } else {
+                    textField($urlText, prompt: LenoraBackendConfiguration.defaultURL)
+                }
+            }
+            fieldGroup(title: L10n.string("Token")) {
+                SecureField(tokenPrompt, text: $tokenText)
+                    .textFieldStyle(.plain)
+                    .fieldChrome()
+            }
+            HStack(spacing: AppTheme.Spacing.md) {
+                Button(L10n.string("Test Connection"), action: testConnection)
+                    .buttonStyle(.capsule(.prominent, size: .regular))
+                    .controlSize(.large)
+                    .disabled(connection.state == .connecting)
+                statusLabel
+            }
+        }
+    }
+
+    private func adaptersSection(_ health: BackendHealth) -> some View {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.smMd) {
+            Text(verbatim: "backend \(health.backendVersion ?? "?") · protocol \(health.protocolVersion)")
+                .font(.system(size: AppTheme.FontSize.sm, design: .monospaced))
+                .foregroundStyle(AppTheme.Text.secondaryColor)
+            ForEach(health.adapters ?? [], id: \.id) { adapter in
+                HStack(alignment: .firstTextBaseline, spacing: AppTheme.Spacing.sm) {
+                    Text(verbatim: adapter.id)
+                        .font(.system(size: AppTheme.FontSize.md, weight: AppTheme.FontWeight.medium))
+                        .foregroundStyle(AppTheme.Text.primaryColor)
+                    Spacer(minLength: AppTheme.Spacing.lg)
+                    if adapter.enabled {
+                        Text(L10n.string("Enabled"))
+                            .foregroundStyle(AppTheme.Status.successColor)
+                    } else {
+                        Text(verbatim: adapter.reason ?? "")
+                            .foregroundStyle(AppTheme.Text.tertiaryColor)
+                    }
+                }
+                .font(.system(size: AppTheme.FontSize.sm))
+            }
+        }
+    }
+
+    private var tokenPrompt: String {
+        connection.configuration?.token == nil ? L10n.string("Paste LENORA_TOKEN") : L10n.string("Unchanged")
+    }
+
+    private func fieldGroup<Content: View>(title: String, @ViewBuilder content: () -> Content) -> some View {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.smMd) {
+            Text(verbatim: title)
+                .font(.system(size: AppTheme.FontSize.md, weight: AppTheme.FontWeight.medium))
+                .foregroundStyle(AppTheme.Text.primaryColor)
+            content()
+        }
+    }
+
+    private func textField(_ text: Binding<String>, prompt: String) -> some View {
+        TextField(String(), text: text, prompt: Text(verbatim: prompt))
+            .textFieldStyle(.plain)
+            .fieldChrome()
+    }
+
+    private func testConnection() {
+        let url = urlText
+        let token = tokenText.trimmingCharacters(in: .whitespacesAndNewlines)
+        tokenText = ""
+        Task { await connection.save(url: url, token: token.isEmpty ? nil : token) }
+    }
+
+    @ViewBuilder private var statusLabel: some View {
+        HStack(spacing: AppTheme.Spacing.sm) {
+            switch connection.state {
+            case .unknown:
+                EmptyView()
+            case .connecting:
+                ProgressView().controlSize(.small)
+            case .connected:
+                status(L10n.string("Connected"), color: AppTheme.Status.successColor)
+            case .unreachable(let url):
+                status(L10n.string("Can't reach backend at \(url.absoluteString). Start it with ./scripts/dev, then test again."), color: AppTheme.Status.errorColor)
+            case .unauthorized:
+                status(L10n.string("Token rejected. Paste LENORA_TOKEN from .env."), color: AppTheme.Status.errorColor)
+            case .invalidConfiguration(.invalidURL(let url)):
+                status(L10n.string("\(url) is not a valid URL."), color: AppTheme.Status.errorColor)
+            case .invalidConfiguration(.insecureURL(let url)):
+                status(L10n.string("\(url) must use HTTPS, or HTTP on this Mac only."), color: AppTheme.Status.errorColor)
+            case .tokenNotSaved:
+                status(L10n.string("Couldn't save the token to the Keychain."), color: AppTheme.Status.errorColor)
+            case .failed(let message):
+                status(L10n.string("Connection failed: \(message)"), color: AppTheme.Status.errorColor)
+            }
+        }
+        .font(.system(size: AppTheme.FontSize.sm))
+    }
+
+    private func status(_ message: String, color: Color) -> some View {
+        Text(verbatim: message)
+            .foregroundStyle(color)
+            .fixedSize(horizontal: false, vertical: true)
+    }
+}
+
+private extension View {
+    func fieldChrome() -> some View {
+        font(.system(size: AppTheme.FontSize.sm, design: .monospaced))
+            .foregroundStyle(AppTheme.Text.primaryColor)
+            .padding(.horizontal, AppTheme.Spacing.md)
+            .padding(.vertical, AppTheme.Spacing.smMd)
+            .background(
+                RoundedRectangle(cornerRadius: AppTheme.Radius.sm)
+                    .fill(AppTheme.Background.baseColor.opacity(AppTheme.Opacity.medium))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: AppTheme.Radius.sm)
+                    .strokeBorder(AppTheme.Border.subtleColor, lineWidth: AppTheme.BorderWidth.thin)
+            )
+    }
+}

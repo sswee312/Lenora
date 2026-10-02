@@ -3,7 +3,7 @@ import AppKit
 Log.bootstrap()
 BundledFonts.register()
 AccountService.shared.configure()
-ModelCatalog.shared.configure()
+Task { @MainActor in await BackendConnection.shared.reload() }
 
 // Shorten the default tooltip delay from 2s to 0.01s.
 UserDefaults.standard.set(10, forKey: "NSInitialToolTipDelay")

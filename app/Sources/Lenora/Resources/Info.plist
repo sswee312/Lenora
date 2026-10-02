@@ -33,6 +33,8 @@
 	<string>Lenora Pro</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>LenoraBackendURL</key>
+	<string>http://127.0.0.1:8787</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.7.6</string>
 	<key>CFBundleURLTypes</key>
