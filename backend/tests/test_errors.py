@@ -17,3 +17,10 @@ def test_unknown_route_is_problem_json(make_client):
     assert response.headers["content-type"] == "application/problem+json"
     assert response.json()["code"] == "not_found"
 
+
+def test_validation_error_does_not_echo_input(make_client):
+    client = make_client(FakeAdapter())
+    response = client.post("/v1/uploads", headers=AUTH, json={"model": "fake/cutout", "secret-ish": "s3cr3t"})
+    assert response.status_code == 400
+    assert response.json()["code"] == "invalid_request"
+    assert "s3cr3t" not in response.text
