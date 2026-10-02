@@ -105,6 +105,7 @@
 "Available" = "Available";
 "Back" = "Back";
 "Backend" = "Backend";
+"Backend %@ · Protocol %@" = "Backend %@ · Protocol %@";
 "Background" = "Background";
 "Basic Correction" = "Basic Correction";
 "Beat detection failed. Check that the media file is reachable, then retry." = "Beat detection failed. Check that the media file is reachable, then retry.";
@@ -787,6 +788,7 @@
 "Set as first frame" = "Set as first frame";
 "Set as reference" = "Set as reference";
 "Set by LENORA_BACKEND_URL for this launch." = "Set by LENORA_BACKEND_URL for this launch.";
+"Set by LENORA_TOKEN for this launch." = "Set by LENORA_TOKEN for this launch.";
 "Settings" = "Settings";
 "Settings…" = "Settings…";
 "Setup instructions" = "Setup instructions";

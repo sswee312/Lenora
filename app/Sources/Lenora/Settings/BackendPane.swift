@@ -39,9 +39,19 @@ struct BackendPane: View {
                 }
             }
             fieldGroup(title: L10n.string("Token")) {
-                SecureField(tokenPrompt, text: $tokenText)
-                    .textFieldStyle(.plain)
-                    .fieldChrome()
+                if connection.tokenFromEnvironment {
+                    SecureField(String(), text: .constant(""), prompt: Text(L10n.string("Unchanged")))
+                        .textFieldStyle(.plain)
+                        .fieldChrome()
+                        .disabled(true)
+                    Text(L10n.string("Set by LENORA_TOKEN for this launch."))
+                        .font(.system(size: AppTheme.FontSize.sm))
+                        .foregroundStyle(AppTheme.Text.tertiaryColor)
+                } else {
+                    SecureField(tokenPrompt, text: $tokenText)
+                        .textFieldStyle(.plain)
+                        .fieldChrome()
+                }
             }
             HStack(spacing: AppTheme.Spacing.md) {
                 Button(L10n.string("Test Connection"), action: testConnection)
@@ -55,7 +65,7 @@ struct BackendPane: View {
 
     private func adaptersSection(_ health: BackendHealth) -> some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.smMd) {
-            Text(verbatim: "backend \(health.backendVersion ?? "?") · protocol \(health.protocolVersion)")
+            Text(L10n.string("Backend \(health.backendVersion ?? "?") · Protocol \(health.protocolVersion)"))
                 .font(.system(size: AppTheme.FontSize.sm, design: .monospaced))
                 .foregroundStyle(AppTheme.Text.secondaryColor)
             ForEach(health.adapters ?? [], id: \.id) { adapter in

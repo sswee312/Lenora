@@ -51,6 +51,11 @@ struct LenoraBackendConfigurationTests {
         #expect(resolved.tokenToPersist == nil)
     }
 
+    @Test(arguments: [(["LENORA_TOKEN": "abc"], "abc"), (["LENORA_TOKEN": ""], nil), ([:], nil)] as [([String: String], String?)])
+    func environmentToken(environment: [String: String], token: String?) {
+        #expect(LenoraBackendConfiguration.environmentToken(environment) == token)
+    }
+
     @Test(arguments: ["http://example.com", "ftp://127.0.0.1", "http://192.168.1.4:8787"])
     func rejectsInsecureURLs(url: String) {
         #expect(throws: BackendConfigurationError.insecureURL(url)) {

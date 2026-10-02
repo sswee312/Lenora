@@ -19,6 +19,7 @@ final class BackendConnection {
     private(set) var state: BackendConnectionState = .unknown
     private(set) var health: BackendHealth?
     private(set) var urlFromEnvironment = false
+    private(set) var tokenFromEnvironment = false
     @ObservationIgnored private var generation = 0
 
     private init() {}
@@ -36,6 +37,7 @@ final class BackendConnection {
         )
         guard current == generation else { return }
         urlFromEnvironment = LenoraBackendConfiguration.environmentURL(sources.environment) != nil
+        tokenFromEnvironment = LenoraBackendConfiguration.environmentToken(sources.environment) != nil
         let resolved: (configuration: LenoraBackendConfiguration, tokenToPersist: String?)
         do {
             resolved = try LenoraBackendConfiguration.resolve(sources)
@@ -72,17 +74,21 @@ final class BackendConnection {
     }
 
     func save(url: String, token: String?) async {
+        generation &+= 1
+        let current = generation
+        state = .connecting
         if LenoraBackendConfiguration.environmentURL(ProcessInfo.processInfo.environment) == nil {
             let trimmed = url.trimmingCharacters(in: .whitespacesAndNewlines)
             UserDefaults.standard.set(trimmed.isEmpty ? nil : trimmed, forKey: LenoraBackendConfiguration.urlDefaultsKey)
         }
         if let token, !(await Self.storeToken(token)) {
-            generation &+= 1
+            guard current == generation else { return }
             clear()
             state = .tokenNotSaved
             Log.generation.warning("backend token could not be saved to the Keychain")
             return
         }
+        guard current == generation else { return }
         await reload()
     }
 

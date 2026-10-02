@@ -27,6 +27,10 @@ extension LenoraBackendConfiguration {
         environment["LENORA_BACKEND_URL"].flatMap { $0.isEmpty ? nil : $0 }
     }
 
+    static func environmentToken(_ environment: [String: String]) -> String? {
+        environment["LENORA_TOKEN"].flatMap { $0.isEmpty ? nil : $0 }
+    }
+
     static func resolve(_ sources: Sources) throws(BackendConfigurationError) -> (configuration: Self, tokenToPersist: String?) {
         let raw = environmentURL(sources.environment) ?? sources.storedURL ?? sources.plistURL ?? defaultURL
         guard let url = URL(string: raw), let scheme = url.scheme, let host = url.host(percentEncoded: false), !host.isEmpty else {
@@ -34,7 +38,7 @@ extension LenoraBackendConfiguration {
         }
         let isLoopback = loopbackHosts.contains(host.trimmingCharacters(in: CharacterSet(charactersIn: "[]")))
         guard scheme == "https" || (scheme == "http" && isLoopback) else { throw .insecureURL(raw) }
-        let environmentToken = sources.environment["LENORA_TOKEN"].flatMap { $0.isEmpty ? nil : $0 }
+        let environmentToken = environmentToken(sources.environment)
         let token = environmentToken ?? sources.keychainToken
         let persist = environmentToken.flatMap { $0 == sources.keychainToken ? nil : $0 }
         return (Self(baseURL: url, token: token), persist)
