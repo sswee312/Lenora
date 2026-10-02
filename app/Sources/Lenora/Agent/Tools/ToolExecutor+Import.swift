@@ -213,23 +213,14 @@ extension ToolExecutor {
     private static func downloadImportedAsset(asset: MediaAsset, remoteURL: URL, editor: EditorViewModel) async {
         do {
             try await editor.downloadRemoteMedia(into: asset, from: remoteURL, fileExtension: asset.url.pathExtension)
-            finishImportedAsset(asset, editor: editor)
+            asset.importInput = nil
+            editor.updateManifestMetadata(for: [asset])
+            editor.onProjectCheckpointRequired?()
         } catch {
             let message = (error as? ToolError)?.message ?? error.localizedDescription
             Log.project.error("import_media download failed url=\(remoteURL.absoluteString) error=\(message)")
             failImportedAsset(asset, editor: editor, message: message)
         }
-    }
-
-    @MainActor
-    private static func finishImportedAsset(_ asset: MediaAsset, editor: EditorViewModel) {
-        if case .failed = asset.generationStatus {
-            editor.onProjectCheckpointRequired?()
-            return
-        }
-        asset.importInput = nil
-        editor.updateManifestMetadata(for: [asset])
-        editor.onProjectCheckpointRequired?()
     }
 
     @MainActor

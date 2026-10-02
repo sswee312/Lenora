@@ -21,8 +21,14 @@ extension EditorViewModel {
         return placeholder
     }
 
-    func downloadRemoteMedia(into asset: MediaAsset, from remoteURL: URL, fileExtension: String?) async throws {
-        let downloader = RemoteMediaDownloader(maxBytes: ToolExecutor.remoteImportMaxBytes, timeout: ToolExecutor.remoteImportRequestTimeout)
+    func downloadRemoteMedia(
+        into asset: MediaAsset,
+        from remoteURL: URL,
+        fileExtension: String?,
+        downloader: RemoteMediaDownloader = RemoteMediaDownloader(
+            maxBytes: ToolExecutor.remoteImportMaxBytes, timeout: ToolExecutor.remoteImportRequestTimeout
+        )
+    ) async throws {
         let file = try await downloader.download(remoteURL)
         let ext = (fileExtension ?? remoteURL.pathExtension).lowercased()
         if !ext.isEmpty, ext != asset.url.pathExtension.lowercased(), ClipType(fileExtension: ext) != nil {
@@ -31,6 +37,6 @@ extension EditorViewModel {
         asset.url = try await commitStagedProjectMedia(file, filename: asset.url.lastPathComponent, maxBytes: ToolExecutor.remoteImportMaxBytes)
         asset.pendingDownloadURL = nil
         importMediaAsset(asset, skipAppend: true)
-        await finalizeImportedAsset(asset)
+        guard await finalizeImportedAsset(asset) else { throw RemoteDownloadError.unreadableMedia }
     }
 }

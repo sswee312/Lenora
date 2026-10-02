@@ -5,6 +5,7 @@ enum RemoteDownloadError: Error, Equatable, LocalizedError {
     case badStatus(Int)
     case tooLarge(Int64)
     case unexpectedContentType(String)
+    case unreadableMedia
 
     var errorDescription: String? {
         switch self {
@@ -12,6 +13,7 @@ enum RemoteDownloadError: Error, Equatable, LocalizedError {
         case .badStatus(let status): "The download failed (HTTP \(status))."
         case .tooLarge: "The downloaded file is larger than the import limit."
         case .unexpectedContentType(let type): "The server returned \(type) instead of media."
+        case .unreadableMedia: "The downloaded file could not be read as media."
         }
     }
 }
@@ -30,6 +32,10 @@ struct RemoteMediaDownloader: Sendable {
         self.fetch = fetch ?? { request in
             let delegate = ImportDownloadDelegate(maxBytes: maxBytes)
             let (file, response) = try await URLSession.shared.download(for: request, delegate: delegate)
+            if let refused = delegate.refusedRedirect {
+                try? FileManager.default.removeItem(at: file)
+                throw RemoteDownloadError.disallowedURL(refused.absoluteString)
+            }
             guard let http = response as? HTTPURLResponse else { throw URLError(.badServerResponse) }
             return (file, http)
         }
@@ -43,12 +49,16 @@ struct RemoteMediaDownloader: Sendable {
         }
     }
 
+    static func isAllowedRedirect(_ url: URL) -> Bool {
+        url.scheme?.lowercased() == "https"
+    }
+
     @concurrent
     func download(_ url: URL) async throws -> URL {
         guard Self.isAllowed(url) else { throw RemoteDownloadError.disallowedURL(url.absoluteString) }
         let (file, response) = try await fetch(URLRequest(url: url, timeoutInterval: timeout))
         do {
-            if let final = response.url, !Self.isAllowed(final) {
+            if let final = response.url, !(final == url ? Self.isAllowed(final) : Self.isAllowedRedirect(final)) {
                 throw RemoteDownloadError.disallowedURL(final.absoluteString)
             }
             guard (200..<300).contains(response.statusCode) else { throw RemoteDownloadError.badStatus(response.statusCode) }
@@ -65,9 +75,29 @@ struct RemoteMediaDownloader: Sendable {
     }
 }
 
-fileprivate final class ImportDownloadDelegate: NSObject, URLSessionDownloadDelegate, @unchecked Sendable {
+final class ImportDownloadDelegate: NSObject, URLSessionDownloadDelegate, @unchecked Sendable {
     let maxBytes: Int64
+    private let lock = NSLock()
+    private var refused: URL?
+
     init(maxBytes: Int64) { self.maxBytes = maxBytes }
+
+    var refusedRedirect: URL? { lock.withLock { refused } }
+
+    func urlSession(
+        _ session: URLSession,
+        task: URLSessionTask,
+        willPerformHTTPRedirection response: HTTPURLResponse,
+        newRequest request: URLRequest,
+        completionHandler: @escaping (URLRequest?) -> Void
+    ) {
+        guard let target = request.url, RemoteMediaDownloader.isAllowedRedirect(target) else {
+            lock.withLock { refused = request.url }
+            completionHandler(nil)
+            return
+        }
+        completionHandler(request)
+    }
 
     func urlSession(
         _ session: URLSession,

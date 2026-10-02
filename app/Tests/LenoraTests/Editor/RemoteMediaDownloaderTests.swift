@@ -67,4 +67,51 @@ struct RemoteMediaDownloaderTests {
         _ = try? await RemoteMediaDownloader(maxBytes: 100, timeout: 5, fetch: tracking).download(source)
         #expect(!FileManager.default.fileExists(atPath: try #require(created.value).path))
     }
+
+    @Test func rejectsRedirectToLoopbackEvenThoughLoopbackIsAllowedInitially() async {
+        let redirected = fetch(status: 200, finalURL: URL(string: "http://127.0.0.1:8787/x.png")!)
+        await #expect(throws: RemoteDownloadError.disallowedURL("http://127.0.0.1:8787/x.png")) {
+            try await RemoteMediaDownloader(maxBytes: 100, timeout: 5, fetch: redirected).download(source)
+        }
+    }
+
+    @Test func loopbackInitialURLWithoutRedirectIsAccepted() async throws {
+        let local = URL(string: "http://127.0.0.1:8787/x.png")!
+        let file = try await RemoteMediaDownloader(maxBytes: 100, timeout: 5, fetch: fetch(status: 200)).download(local)
+        try? FileManager.default.removeItem(at: file)
+    }
+
+    @Test(arguments: [
+        ("https://cdn.example/x", true), ("http://127.0.0.1:8787/x", false), ("http://localhost/x", false),
+        ("http://a.example/x", false), ("file:///etc/passwd", false),
+    ])
+    func redirectsMustStayHTTPS(url: String, allowed: Bool) {
+        #expect(RemoteMediaDownloader.isAllowedRedirect(URL(string: url)!) == allowed)
+    }
+
+    private func redirect(to target: String, using delegate: ImportDownloadDelegate) -> URLRequest?? {
+        let session = URLSession(configuration: .ephemeral)
+        defer { session.invalidateAndCancel() }
+        let task = session.downloadTask(with: source)
+        let response = HTTPURLResponse(url: source, statusCode: 302, httpVersion: nil, headerFields: nil)!
+        let outcome = Box<URLRequest??>(nil)
+        delegate.urlSession(session, task: task, willPerformHTTPRedirection: response, newRequest: URLRequest(url: URL(string: target)!)) {
+            outcome.value = .some($0)
+        }
+        return outcome.value ?? nil
+    }
+
+    @Test func delegateRefusesRedirectToLoopbackAndRecordsIt() {
+        let delegate = ImportDownloadDelegate(maxBytes: 100)
+        let decision = redirect(to: "http://127.0.0.1:8787/x", using: delegate)
+        #expect(decision == .some(nil))
+        #expect(delegate.refusedRedirect?.absoluteString == "http://127.0.0.1:8787/x")
+    }
+
+    @Test func delegateFollowsHTTPSRedirect() {
+        let delegate = ImportDownloadDelegate(maxBytes: 100)
+        let decision = redirect(to: "https://cdn.example/x.png", using: delegate)
+        #expect(decision??.url?.absoluteString == "https://cdn.example/x.png")
+        #expect(delegate.refusedRedirect == nil)
+    }
 }
