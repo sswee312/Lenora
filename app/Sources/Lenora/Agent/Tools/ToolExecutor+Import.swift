@@ -187,8 +187,7 @@ extension ToolExecutor {
             displayName = stem.isEmpty ? "Imported asset" : stem
         }
 
-        let placeholder = createImportPlaceholder(
-            editor: editor,
+        let placeholder = editor.createRemotePlaceholder(
             projectURL: projectURL,
             type: type,
             fileExtension: fileExt,
@@ -210,44 +209,11 @@ extension ToolExecutor {
         ]) ?? "{}")
     }
 
-    private func createImportPlaceholder(
-        editor: EditorViewModel,
-        projectURL: URL,
-        type: ClipType,
-        fileExtension: String,
-        displayName: String,
-        folderId: String?,
-        importInput: MediaImportInput
-    ) -> MediaAsset {
-        let id = UUID().uuidString
-        let mediaDir = projectURL.appendingPathComponent(Project.mediaDirectoryName, isDirectory: true)
-        let destURL = mediaDir.appendingPathComponent("imported-\(id.prefix(8)).\(fileExtension)")
-        let placeholder = MediaAsset(id: id, url: destURL, type: type, name: displayName)
-        placeholder.folderId = folderId
-        placeholder.importInput = importInput
-        placeholder.generationStatus = .downloading
-        editor.importMediaAsset(placeholder)
-        editor.onProjectCheckpointRequired?()
-        return placeholder
-    }
-
     @MainActor
     private static func downloadImportedAsset(asset: MediaAsset, remoteURL: URL, editor: EditorViewModel) async {
         do {
-            var request = URLRequest(url: remoteURL)
-            request.timeoutInterval = remoteImportRequestTimeout
-            let delegate = ImportDownloadDelegate(maxBytes: remoteImportMaxBytes)
-            let (tempURL, response) = try await URLSession.shared.download(for: request, delegate: delegate)
-
-            if let httpResp = response as? HTTPURLResponse, !(200..<300).contains(httpResp.statusCode) {
-                await Task.detached(priority: .utility) {
-                    try? FileManager.default.removeItem(at: tempURL)
-                }.value
-                throw ToolError("server returned HTTP \(httpResp.statusCode)")
-            }
-
-            asset.url = try await editor.commitStagedProjectMedia(tempURL, filename: asset.url.lastPathComponent, maxBytes: remoteImportMaxBytes)
-            await finishImportedAsset(asset, editor: editor)
+            try await editor.downloadRemoteMedia(into: asset, from: remoteURL, fileExtension: asset.url.pathExtension)
+            finishImportedAsset(asset, editor: editor)
         } catch {
             let message = (error as? ToolError)?.message ?? error.localizedDescription
             Log.project.error("import_media download failed url=\(remoteURL.absoluteString) error=\(message)")
@@ -256,9 +222,8 @@ extension ToolExecutor {
     }
 
     @MainActor
-    private static func finishImportedAsset(_ asset: MediaAsset, editor: EditorViewModel) async {
-        let finalized = await editor.finalizeImportedAsset(asset)
-        guard finalized else {
+    private static func finishImportedAsset(_ asset: MediaAsset, editor: EditorViewModel) {
+        if case .failed = asset.generationStatus {
             editor.onProjectCheckpointRequired?()
             return
         }
@@ -353,30 +318,5 @@ extension ToolExecutor {
             "type": asset.type.rawValue,
             "status": "ready",
         ]) ?? "{}")
-    }
-}
-
-fileprivate final class ImportDownloadDelegate: NSObject, URLSessionDownloadDelegate, @unchecked Sendable {
-    let maxBytes: Int64
-    init(maxBytes: Int64) { self.maxBytes = maxBytes }
-
-    func urlSession(
-        _ session: URLSession,
-        downloadTask: URLSessionDownloadTask,
-        didWriteData bytesWritten: Int64,
-        totalBytesWritten: Int64,
-        totalBytesExpectedToWrite: Int64
-    ) {
-        if totalBytesExpectedToWrite > 0 && totalBytesExpectedToWrite > maxBytes {
-            downloadTask.cancel()
-            return
-        }
-        if totalBytesWritten > maxBytes {
-            downloadTask.cancel()
-        }
-    }
-
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        // No-op: the async download(for:delegate:) API copies the temp file for us.
     }
 }

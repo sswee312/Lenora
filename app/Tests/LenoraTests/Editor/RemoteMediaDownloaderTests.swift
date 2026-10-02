@@ -1,0 +1,70 @@
+import Foundation
+import Testing
+@testable import Lenora
+
+struct RemoteMediaDownloaderTests {
+    private func fetch(status: Int, body: Data = Data("PNG".utf8), headers: [String: String] = ["Content-Type": "image/png"],
+                       finalURL: URL? = nil) -> RemoteMediaDownloader.Fetch {
+        { request in
+            let file = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+            try body.write(to: file)
+            let response = HTTPURLResponse(url: finalURL ?? request.url!, statusCode: status, httpVersion: nil, headerFields: headers)!
+            return (file, response)
+        }
+    }
+
+    private let source = URL(string: "https://res.cloudinary.com/demo/image/upload/x.png")!
+
+    @Test func returnsValidatedFile() async throws {
+        let file = try await RemoteMediaDownloader(maxBytes: 100, timeout: 5, fetch: fetch(status: 200)).download(source)
+        defer { try? FileManager.default.removeItem(at: file) }
+        #expect(try Data(contentsOf: file) == Data("PNG".utf8))
+    }
+
+    @Test(arguments: [404, 500, 302])
+    func rejectsNonSuccessStatus(status: Int) async {
+        await #expect(throws: RemoteDownloadError.badStatus(status)) {
+            try await RemoteMediaDownloader(maxBytes: 100, timeout: 5, fetch: fetch(status: status)).download(source)
+        }
+    }
+
+    @Test func rejectsOversizedBody() async {
+        await #expect(throws: RemoteDownloadError.tooLarge(3)) {
+            try await RemoteMediaDownloader(maxBytes: 2, timeout: 5, fetch: fetch(status: 200)).download(source)
+        }
+    }
+
+    @Test func rejectsHTMLErrorPages() async {
+        let html = fetch(status: 200, body: Data("<html>".utf8), headers: ["Content-Type": "text/html; charset=utf-8"])
+        await #expect(throws: RemoteDownloadError.unexpectedContentType("text/html; charset=utf-8")) {
+            try await RemoteMediaDownloader(maxBytes: 100, timeout: 5, fetch: html).download(source)
+        }
+    }
+
+    @Test func rejectsRedirectToInsecureURL() async {
+        let redirected = fetch(status: 200, finalURL: URL(string: "http://evil.example/x.png")!)
+        await #expect(throws: RemoteDownloadError.disallowedURL("http://evil.example/x.png")) {
+            try await RemoteMediaDownloader(maxBytes: 100, timeout: 5, fetch: redirected).download(source)
+        }
+    }
+
+    @Test(arguments: [
+        ("https://a.example/x", true), ("http://127.0.0.1:8787/x", true), ("http://localhost/x", true),
+        ("http://a.example/x", false), ("file:///etc/passwd", false), ("ftp://a.example/x", false),
+    ])
+    func allowsOnlyHTTPSOrLoopback(url: String, allowed: Bool) {
+        #expect(RemoteMediaDownloader.isAllowed(URL(string: url)!) == allowed)
+    }
+
+    @Test func rejectedDownloadsLeaveNoTempFile() async throws {
+        let created = Box<URL?>(nil)
+        let tracking: RemoteMediaDownloader.Fetch = { request in
+            let file = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+            try Data("x".utf8).write(to: file)
+            created.value = file
+            return (file, HTTPURLResponse(url: request.url!, statusCode: 404, httpVersion: nil, headerFields: nil)!)
+        }
+        _ = try? await RemoteMediaDownloader(maxBytes: 100, timeout: 5, fetch: tracking).download(source)
+        #expect(!FileManager.default.fileExists(atPath: try #require(created.value).path))
+    }
+}
