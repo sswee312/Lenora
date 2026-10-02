@@ -157,28 +157,49 @@ struct GenerationView: View {
 
     var body: some View {
         Group {
-            if catalogReady {
+            if availableGenerationTypes.contains(selectedType) {
                 bodyContent
             } else {
-                catalogLoadingView
+                catalogStatusView
             }
         }
         .frame(maxHeight: max(0, CGFloat(maxPanelHeight)), alignment: .top)
-        .onChange(of: upscaleModels.isEmpty) { _, isEmpty in
-            if isEmpty && selectedType == .upscale { selectedType = .video }
-        }
+        .onChange(of: availableGenerationTypes, initial: true) { _, _ in coerceSelectedType() }
+        .onChange(of: selectedType) { _, _ in coerceSelectedType() }
     }
 
-    private var catalogLoadingView: some View {
+    private var catalogStatusView: some View {
         VStack(spacing: AppTheme.Spacing.md) {
-            ProgressView()
-            Text(L10n.string("Loading models…"))
-                .font(.system(size: AppTheme.FontSize.sm))
-                .foregroundStyle(AppTheme.Text.secondaryColor)
+            if Self.panelState(in: ModelCatalog.shared) == .empty {
+                Text(L10n.string("No models provided by the connected backend"))
+            } else {
+                ProgressView()
+                Text(L10n.string("Loading models…"))
+            }
         }
+        .font(.system(size: AppTheme.FontSize.sm))
+        .foregroundStyle(AppTheme.Text.secondaryColor)
         .frame(maxWidth: .infinity)
         .frame(height: AppTheme.GenerationPanel.loadingHeight)
         .background { panelChrome }
+        .overlay(alignment: .topTrailing) {
+            closeButton.padding(AppTheme.Spacing.md)
+        }
+    }
+
+    private var closeButton: some View {
+        Button {
+            editFolderId = nil
+            editor.showGenerationPanel = false
+        } label: {
+            Image(systemName: "xmark")
+                .font(.system(size: AppTheme.FontSize.xxs, weight: .semibold))
+                .foregroundStyle(AppTheme.Text.tertiaryColor)
+                .frame(width: AppTheme.IconSize.md, height: AppTheme.IconSize.md)
+                .hoverHighlight()
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(L10n.string("Close"))
     }
 
     private var bodyContent: some View {
@@ -188,17 +209,7 @@ struct GenerationView: View {
                 typeTabs
                 Spacer()
                 ProjectActivityButton()
-                Button {
-                    editFolderId = nil
-                    editor.showGenerationPanel = false
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.system(size: AppTheme.FontSize.xxs, weight: .semibold))
-                        .foregroundStyle(AppTheme.Text.tertiaryColor)
-                        .frame(width: AppTheme.IconSize.md, height: AppTheme.IconSize.md)
-                        .hoverHighlight()
-                }
-                .buttonStyle(.plain)
+                closeButton
             }
             .padding(.horizontal, AppTheme.Spacing.md)
 

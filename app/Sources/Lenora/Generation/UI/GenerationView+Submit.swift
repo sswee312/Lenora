@@ -420,11 +420,13 @@ extension GenerationView {
         }
         if let n = stored.numImages { selectedNumImages = max(1, n) }
         if let v = stored.voice, !v.isEmpty { selectedVoice = v }
-        if let language = stored.targetLanguage,
-           audioModel.targetLanguages?.contains(language) == true {
-            selectedTargetLanguage = language
-        } else if selectedType == .audio {
-            selectedTargetLanguage = initialAudioTargetLanguage
+        if selectedType == .audio {
+            if let language = stored.targetLanguage,
+               audioModel.targetLanguages?.contains(language) == true {
+                selectedTargetLanguage = language
+            } else {
+                selectedTargetLanguage = initialAudioTargetLanguage
+            }
         }
         multilingual = stored.multilingual ?? false
         lyrics = stored.lyrics ?? ""

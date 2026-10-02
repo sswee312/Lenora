@@ -13,19 +13,27 @@ enum EditAction {
 
     static let editMaxDurationSeconds: Double = 10.0
 
-    var kinds: [String] {
-        switch self {
-        case .upscale: ["image.upscale", "video.upscale"]
-        case .edit, .rerun: ["image.edit", "video.edit"]
-        case .lipSync: ["video.lipSync"]
-        case .reframe: ["video.reframe"]
-        case .generateMusic: ["audio.music"]
-        case .generateSFX: ["audio.sfx"]
-        case .createVideo, .enhanceDraft: ["video.generate"]
+    func kinds(for mediaType: ClipType) -> [String] {
+        switch (self, mediaType) {
+        case (.upscale, .image): ["image.upscale"]
+        case (.upscale, .video): ["video.upscale"]
+        case (.edit, .image): ["image.edit"]
+        case (.edit, .video): ["video.edit"]
+        case (.rerun, .image): ["image.generate", "image.edit", "image.upscale"]
+        case (.rerun, .video): ClipType.video.generationKinds + ["video.upscale"]
+        case (.rerun, .audio): ClipType.audio.generationKinds
+        case (.lipSync, .video): ["video.lipSync"]
+        case (.reframe, .video): ["video.reframe"]
+        case (.generateMusic, .video): ["audio.music"]
+        case (.generateSFX, .video): ["audio.sfx"]
+        case (.createVideo, .image), (.enhanceDraft, .video): ["video.generate"]
+        default: []
         }
     }
 
-    @MainActor var isAvailable: Bool { ModelCatalog.shared.supportsAny(of: kinds) }
+    @MainActor func isAvailable(for mediaType: ClipType, in catalog: ModelCatalog = .shared) -> Bool {
+        catalog.supportsAny(of: kinds(for: mediaType))
+    }
 
     func group(for mediaType: ClipType) -> AIEditActionGroup {
         switch self {
@@ -58,19 +66,22 @@ enum EditAction {
 
     @MainActor
     func availability(for asset: MediaAsset, effectiveDurationOverride: Double? = nil) -> EditActionAvailability {
-        guard isAvailable else {
-            return .disabled(reason: L10n.string("Not provided by the connected backend"))
-        }
         switch self {
         case .enhanceDraft:
             guard asset.canEnhanceDraft else {
                 return .disabled(reason: L10n.string("Draft already enhanced or cache unavailable"))
+            }
+            guard isAvailable(for: asset.type) else {
+                return .disabled(reason: L10n.string("Video model not available"))
             }
             return .available
 
         case .upscale:
             guard asset.type == .video || asset.type == .image else {
                 return .disabled(reason: L10n.string("Upscale only works on video or images"))
+            }
+            guard isAvailable(for: asset.type), !UpscaleModelConfig.models(for: asset.type).isEmpty else {
+                return .disabled(reason: L10n.string("Upscale model not available"))
             }
             if asset.isGenerating {
                 return .disabled(reason: L10n.string("Generation in progress"))
@@ -80,6 +91,9 @@ enum EditAction {
         case .reframe:
             guard asset.type == .video else {
                 return .disabled(reason: L10n.string("Reframe only works on video"))
+            }
+            guard isAvailable(for: asset.type) else {
+                return .disabled(reason: L10n.string("Reframe model not available"))
             }
             if asset.isGenerating {
                 return .disabled(reason: L10n.string("Generation in progress"))
@@ -97,6 +111,9 @@ enum EditAction {
             guard asset.type == .video else {
                 return .disabled(reason: L10n.string("Lip Sync only works on video"))
             }
+            guard isAvailable(for: asset.type) else {
+                return .disabled(reason: L10n.string("Lip Sync model not available"))
+            }
             if asset.isGenerating {
                 return .disabled(reason: L10n.string("Generation in progress"))
             }
@@ -112,7 +129,7 @@ enum EditAction {
         case .edit:
             switch asset.type {
             case .video:
-                guard VideoModelConfig.edit != nil else {
+                guard isAvailable(for: asset.type), VideoModelConfig.edit != nil else {
                     return .disabled(reason: L10n.string("Edit model not available"))
                 }
                 let duration = effectiveDurationOverride ?? asset.resolvedDuration
@@ -125,7 +142,9 @@ enum EditAction {
                     ))
                 }
             case .image:
-                break // images have no duration constraint
+                guard isAvailable(for: asset.type), ImageModelConfig.edit != nil else {
+                    return .disabled(reason: L10n.string("Edit model not available"))
+                }
             case .audio:
                 return .disabled(reason: L10n.string("Edit doesn't support audio"))
             case .text:
@@ -160,6 +179,9 @@ enum EditAction {
             guard asset.type == .image else {
                 return .disabled(reason: L10n.string("Create Video only works on images"))
             }
+            guard isAvailable(for: asset.type) else {
+                return .disabled(reason: L10n.string("Video model not available"))
+            }
             if asset.isGenerating {
                 return .disabled(reason: L10n.string("Generation in progress"))
             }
@@ -172,7 +194,8 @@ enum EditAction {
             if asset.isGenerating {
                 return .disabled(reason: L10n.string("Generation in progress"))
             }
-            guard let modelId = asset.generationInput?.model, ModelRegistry.exists(id: modelId) else {
+            guard isAvailable(for: asset.type),
+                  let modelId = asset.generationInput?.model, ModelRegistry.exists(id: modelId) else {
                 return .disabled(reason: L10n.string("Model no longer available"))
             }
             return .available
@@ -199,7 +222,7 @@ enum EditAction {
         guard duration > 0 else {
             return .disabled(reason: L10n.string("Loading video metadata…"))
         }
-        guard let model = kind.model else {
+        guard kind.action.isAvailable(for: asset.type), let model = kind.model else {
             return .disabled(reason: L10n.string("\(kind.providerName) model not available"))
         }
         if let err = model.validate(spanSeconds: duration) {

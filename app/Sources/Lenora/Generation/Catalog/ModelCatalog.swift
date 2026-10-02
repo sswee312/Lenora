@@ -55,11 +55,17 @@ final class ModelCatalog {
         backendModels = Dictionary(capabilities.models.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
         let entries = capabilities.models.compactMap { model -> CatalogEntry? in
             do {
-                return try CatalogEntry(model: model)
+                if let entry = try CatalogEntry(model: model) { return entry }
             } catch {
-                Log.generation.warning("ignoring model \(model.id): \(error.localizedDescription)")
+                Log.generation.warning("skipping model \(model.id) (\(model.kind)): invalid ui hints: \(error)")
                 return nil
             }
+            if CatalogEntry.Kind(protocolKind: model.kind) == nil {
+                Log.generation.notice("skipping model \(model.id) (\(model.kind)): kind has no editor config")
+            } else {
+                Log.generation.warning("skipping model \(model.id) (\(model.kind)): no ui hints")
+            }
+            return nil
         }
         apply(entries)
         isLoaded = true

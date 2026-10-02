@@ -597,6 +597,7 @@
 "No media" = "No media";
 "No media yet" = "No media yet";
 "No models match \"%@\"." = "No models match \"%@\".";
+"No models provided by the connected backend" = "No models provided by the connected backend";
 "No music models available." = "No music models available.";
 "No projects found" = "No projects found";
 "No prompt needed" = "No prompt needed";
@@ -607,7 +608,6 @@
 "Noise Reduction" = "Noise Reduction";
 "None" = "None";
 "Normal" = "Normal";
-"Not provided by the connected backend" = "Not provided by the connected backend";
 "Not selected" = "Not selected";
 "Not synced — unusable as an angle." = "Not synced — unusable as an angle.";
 "Notifications" = "Notifications";
@@ -957,6 +957,7 @@
 "Upgrade to add credits" = "Upgrade to add credits";
 "Uploading…" = "Uploading…";
 "Upscale" = "Upscale";
+"Upscale model not available" = "Upscale model not available";
 "Upscale only works on video or images" = "Upscale only works on video or images";
 "Upscale source media" = "Upscale source media";
 "Upscale…" = "Upscale…";
@@ -976,6 +977,7 @@
 "Video" = "Video";
 "Video Ref" = "Video Ref";
 "Video has no audio track" = "Video has no audio track";
+"Video model not available" = "Video model not available";
 "Video to Music" = "Video to Music";
 "View" = "View";
 "View Skills" = "View Skills";

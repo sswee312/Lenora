@@ -12,7 +12,7 @@ extension ToolExecutor {
 
     private func defaultModelId(_ ids: [String], kind: String) throws -> String {
         guard let first = ids.first else {
-            throw ToolError("No \(kind) model is available. Connect a backend in Settings → Backend.")
+            throw ToolError("The connected backend advertises no usable \(kind) model. Check Settings → Backend.")
         }
         return first
     }

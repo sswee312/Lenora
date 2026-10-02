@@ -187,6 +187,7 @@ extension GenerationView {
             case .video, .text, .lottie, .sequence, .subtitle: return 0
             }
         }
+        guard selectedType == .video else { return 0 }
         return switch type {
         case .image: videoModel.maxReferenceImages
         case .video: videoModel.maxReferenceVideos

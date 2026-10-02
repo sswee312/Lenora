@@ -20,15 +20,30 @@ extension GenerationView {
     var audioModel: AudioModelConfig { selectedModel(audioModels, at: selectedAudioModelIndex) }
     var upscaleModel: UpscaleModelConfig { selectedModel(upscaleModels, at: selectedUpscaleModelIndex) }
 
-    var catalogReady: Bool {
-        !videoModels.isEmpty
-            && !imageModels.isEmpty
-            && !audioModels.isEmpty
-            && (selectedType != .upscale || !upscaleModels.isEmpty)
+    enum PanelState: Equatable { case loading, empty, ready }
+
+    static func availableTypes(in catalog: ModelCatalog) -> [GenerationType] {
+        GenerationType.allCases.filter { type in
+            switch type {
+            case .image: !catalog.image.isEmpty
+            case .video: !catalog.video.isEmpty
+            case .audio: !catalog.audio.isEmpty
+            case .upscale: !catalog.upscale.isEmpty
+            }
+        }
     }
 
-    var availableGenerationTypes: [GenerationType] {
-        upscaleModels.isEmpty ? GenerationType.allCases.filter { $0 != .upscale } : GenerationType.allCases
+    static func panelState(in catalog: ModelCatalog) -> PanelState {
+        if !availableTypes(in: catalog).isEmpty { return .ready }
+        return catalog.isLoaded ? .empty : .loading
+    }
+
+    var availableGenerationTypes: [GenerationType] { Self.availableTypes(in: ModelCatalog.shared) }
+
+    func coerceSelectedType() {
+        guard let first = availableGenerationTypes.first,
+              !availableGenerationTypes.contains(selectedType) else { return }
+        selectedType = first
     }
 
     private func selectedModel<T>(_ models: [T], at index: Int) -> T {
@@ -108,7 +123,8 @@ extension GenerationView {
     var trimmedPrompt: String { prompt.trimmingCharacters(in: .whitespaces) }
     var isPromptEmpty: Bool { trimmedPrompt.isEmpty }
     var audioUsesSource: Bool {
-        audioModel.acceptsSourceMedia
+        selectedType == .audio
+            && audioModel.acceptsSourceMedia
             && (!audioModel.inputs.contains(.text) || audioSource != nil)
     }
     var activeAudioInput: AudioModelConfig.Input {

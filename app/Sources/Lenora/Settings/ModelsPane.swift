@@ -41,14 +41,19 @@ struct ModelsPane: View {
         )
     }
 
+    private var emptyMessage: String {
+        if !catalog.isLoaded { return L10n.string("Loading models…") }
+        return query.isEmpty
+            ? L10n.string("No models provided by the connected backend")
+            : L10n.string("No models match \"\(query)\".")
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.lg) {
             searchBar
 
             if sections.isEmpty {
-                Text(catalog.isLoaded
-                    ? L10n.string("No models match \"\(query)\".")
-                    : L10n.string("Loading models…"))
+                Text(emptyMessage)
                     .font(.system(size: AppTheme.FontSize.sm))
                     .foregroundStyle(AppTheme.Text.tertiaryColor)
                     .padding(.top, AppTheme.Spacing.lg)
