@@ -32,7 +32,7 @@ enum GenerationBackend {
         contentType: String,
     ) async throws -> String {
         guard let convex = AccountService.shared.convex else {
-            throw BackendError.notConfigured
+            throw ConvexBackendError.notConfigured
         }
         let storageId = try await BackendStorage.uploadStaged(fileURL: fileURL, contentType: contentType)
         let result: UrlResponse = try await convex.action(
@@ -48,7 +48,7 @@ enum GenerationBackend {
         projectId: String? = nil,
     ) async throws -> String {
         guard let convex = AccountService.shared.convex else {
-            throw BackendError.notConfigured
+            throw ConvexBackendError.notConfigured
         }
         let args: [String: ConvexEncodable?] = [
             "model": model,
@@ -64,7 +64,7 @@ enum GenerationBackend {
 
     static func enhanceDraft(sourceJobId: String) async throws -> String {
         guard let convex = AccountService.shared.convex else {
-            throw BackendError.notConfigured
+            throw ConvexBackendError.notConfigured
         }
         let result: SubmitGenerationResult = try await convex.mutation(
             "generations:enhanceDraft",

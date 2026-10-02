@@ -1,6 +1,6 @@
 import Foundation
 
-enum BackendError: LocalizedError {
+enum ConvexBackendError: LocalizedError {
     case notConfigured
     case transport(String)
     case api(status: Int, code: String, message: String)
