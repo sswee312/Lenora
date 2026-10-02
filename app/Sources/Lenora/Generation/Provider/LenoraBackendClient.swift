@@ -30,30 +30,30 @@ struct LenoraBackendClient: GenerationProvider {
 
     @concurrent
     func health() async throws -> BackendHealth {
-        try await decode(BackendHealth.self, request("GET", "v1/health")).0
+        try await decode(BackendHealth.self, request("GET", "v1", "health")).0
     }
 
     @concurrent
     func capabilities() async throws -> BackendCapabilities {
-        try await decode(BackendCapabilities.self, request("GET", "v1/capabilities")).0
+        try await decode(BackendCapabilities.self, request("GET", "v1", "capabilities")).0
     }
 
     @concurrent
     func createUpload(model: String, contentType: String, byteCount: Int64, filename: String) async throws -> UploadTicket {
         struct Body: Encodable { let model, contentType: String; let byteCount: Int64; let filename: String }
         let body = Body(model: model, contentType: contentType, byteCount: byteCount, filename: filename)
-        return try await decode(UploadTicket.self, request("POST", "v1/uploads", body: body)).0
+        return try await decode(UploadTicket.self, request("POST", "v1", "uploads", body: body)).0
     }
 
     @concurrent
     func submit(_ job: JobRequest, idempotencyKey: String) async throws -> SubmittedJob {
-        let submission = try request("POST", "v1/jobs", body: job, headers: ["Idempotency-Key": idempotencyKey])
+        let submission = try request("POST", "v1", "jobs", body: job, headers: ["Idempotency-Key": idempotencyKey])
         return try await decode(SubmittedJob.self, submission).0
     }
 
     @concurrent
     func cancel(jobId: String) async throws -> JobState {
-        try await decode(JobState.self, request("DELETE", "v1/jobs/\(jobId)")).0
+        try await decode(JobState.self, request("DELETE", "v1", "jobs", jobId)).0
     }
 
     @concurrent
@@ -76,8 +76,8 @@ struct LenoraBackendClient: GenerationProvider {
         let response: HTTPURLResponse
         do {
             response = try await transport.upload(for: request, fromFile: bodyURL).1
-        } catch is URLError {
-            throw BackendError.uploadFailed(status: 0)
+        } catch let error as URLError {
+            throw transportFailure(error, otherwise: .uploadUnreachable)
         }
         guard (200..<300).contains(response.statusCode) else { throw BackendError.uploadFailed(status: response.statusCode) }
     }
@@ -90,7 +90,7 @@ struct LenoraBackendClient: GenerationProvider {
                     while true {
                         try Task.checkCancellation()
                         do {
-                            let (state, response) = try await decode(JobState.self, request("GET", "v1/jobs/\(jobId)"))
+                            let (state, response) = try await decode(JobState.self, request("GET", "v1", "jobs", jobId))
                             failures = 0
                             continuation.yield(state)
                             if state.status.isTerminal { break }
@@ -112,9 +112,10 @@ struct LenoraBackendClient: GenerationProvider {
     // MARK: - Plumbing
 
     private func request(
-        _ method: String, _ path: String, body: (any Encodable)? = nil, headers: [String: String] = [:]
+        _ method: String, _ path: String..., body: (any Encodable)? = nil, headers: [String: String] = [:]
     ) throws -> URLRequest {
-        var request = URLRequest(url: configuration.baseURL.appending(path: path), timeoutInterval: Self.requestTimeout)
+        let url = path.reduce(configuration.baseURL) { $0.appending(component: $1) }
+        var request = URLRequest(url: url, timeoutInterval: Self.requestTimeout)
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         if let token = configuration.token { request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization") }
@@ -126,13 +127,17 @@ struct LenoraBackendClient: GenerationProvider {
         return request
     }
 
+    private func transportFailure(_ error: URLError, otherwise failure: BackendError) -> any Error {
+        error.code == .cancelled || Task.isCancelled ? CancellationError() : failure
+    }
+
     private func decode<T: Decodable>(_ type: T.Type, _ request: URLRequest) async throws -> (T, HTTPURLResponse) {
         let data: Data
         let response: HTTPURLResponse
         do {
             (data, response) = try await transport.data(for: request)
-        } catch is URLError {
-            throw BackendError.unreachable(configuration.baseURL)
+        } catch let error as URLError {
+            throw transportFailure(error, otherwise: .unreachable(configuration.baseURL))
         }
         switch response.statusCode {
         case 200..<300:

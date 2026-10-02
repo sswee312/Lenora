@@ -14,7 +14,9 @@ extension GenerationProvider {
     /// Requests a ticket, uploads the file directly to the provider, and returns the asset ref.
     @concurrent
     func uploadFile(_ fileURL: URL, contentType: String, model: String) async throws -> String {
-        let size = try fileURL.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
+        guard let size = try fileURL.resourceValues(forKeys: [.fileSizeKey]).fileSize else {
+            throw CocoaError(.fileReadUnknown, userInfo: [NSURLErrorKey: fileURL])
+        }
         let ticket = try await createUpload(
             model: model, contentType: contentType, byteCount: Int64(size), filename: fileURL.lastPathComponent
         )
@@ -29,13 +31,14 @@ enum BackendError: Error, Sendable, Equatable, LocalizedError {
     case problem(BackendProblem)
     case invalidResponse(status: Int)
     case uploadFailed(status: Int)
+    case uploadUnreachable
 
     var isTransient: Bool {
         switch self {
         case .unreachable: true
         case .problem(let problem): problem.retryable
         case .invalidResponse(let status): status >= 500
-        case .unauthorized, .uploadFailed: false
+        case .unauthorized, .uploadFailed, .uploadUnreachable: false
         }
     }
 
@@ -49,7 +52,7 @@ enum BackendError: Error, Sendable, Equatable, LocalizedError {
             problem.detail ?? problem.code
         case .invalidResponse(let status):
             "The backend returned an unexpected response (HTTP \(status))."
-        case .uploadFailed(0):
+        case .uploadUnreachable:
             "Couldn't reach the provider to upload the file."
         case .uploadFailed(let status):
             "The upload to the provider failed (HTTP \(status))."

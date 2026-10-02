@@ -136,7 +136,13 @@ struct BackendProblem: Decodable, Sendable, Equatable, Error {
 enum BackendCoding {
     static func decoder() -> JSONDecoder {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .custom { decoder in
+            let text = try decoder.singleValueContainer().decode(String.self)
+            guard let date = try? Date(text, strategy: .iso8601) else {
+                throw DecodingError.dataCorrupted(.init(codingPath: decoder.codingPath, debugDescription: "Invalid ISO 8601 date."))
+            }
+            return date
+        }
         return decoder
     }
 

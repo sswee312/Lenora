@@ -67,17 +67,47 @@ struct LenoraBackendClientTests {
         #expect(await transport.requests.count == LenoraBackendClient.maxTransientFailures + 1)
     }
 
-    @Test func cancellingTheConsumerStopsPolling() async throws {
+    @Test(.timeLimit(.minutes(1))) func cancellingTheConsumerStopsPolling() async throws {
         let transport = StubTransport(Array(repeating: .success(state("running")), count: 50))
-        let blocking = LenoraBackendClient(configuration: config, transport: transport,
-                                           sleep: { _ in try await Task.sleep(for: .seconds(3600)) })
-        let task = Task {
-            for try await _ in blocking.jobUpdates(jobId: "cloudinary:x") {
-                withUnsafeCurrentTask { $0?.cancel() }
-            }
-        }
-        _ = await task.result
+        let (sleeping, sleepStarted) = AsyncStream<Void>.makeStream()
+        let blocking = LenoraBackendClient(configuration: config, transport: transport, sleep: { _ in
+            sleepStarted.yield()
+            try await Task.sleep(for: .seconds(3600))
+        })
+        let consumer = Task { for try await _ in blocking.jobUpdates(jobId: "cloudinary:x") {} }
+        for await _ in sleeping { break }
+        consumer.cancel()
+        _ = await consumer.result
         #expect(await transport.requests.count == 1)
+    }
+
+    @Test func cancelledTransportIsCancellationNotUnreachable() async {
+        let transport = StubTransport([.failure(URLError(.cancelled))])
+        await #expect(throws: CancellationError.self) { try await client(transport).capabilities() }
+    }
+
+    @Test func jobIdIsASinglePathComponent() async throws {
+        let transport = StubTransport([.success(state("cancelled"))])
+        _ = try await client(transport).cancel(jobId: "cloudinary:a/b?c")
+        #expect(await transport.requests.first?.url?.absoluteString == "http://127.0.0.1:8787/v1/jobs/cloudinary:a%2Fb%3Fc")
+    }
+
+    @Test(arguments: ["2030-01-01T00:00:00Z", "2030-01-01T00:00:00.123456Z", "2030-01-01T05:30:00.5+05:30"])
+    func decodesBackendDates(_ text: String) throws {
+        struct Stamp: Decodable { let at: Date }
+        let stamp = try BackendCoding.decoder().decode(Stamp.self, from: Data(#"{"at":"\#(text)"}"#.utf8))
+        #expect(abs(stamp.at.timeIntervalSince1970 - 1_893_456_000) < 1)
+    }
+
+    @Test func uploadFileRefusesAFileWithoutASize() async throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let transport = StubTransport([])
+        await #expect(throws: CocoaError.self) {
+            try await client(transport).uploadFile(directory, contentType: "image/png", model: "cloudinary/background-removal")
+        }
+        #expect(await transport.requests.isEmpty)
     }
 
     @Test func multipartUploadSendsFieldsThenFile() async throws {
