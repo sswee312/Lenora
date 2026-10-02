@@ -2,14 +2,15 @@
 
 "$%lld/mo" = "$%lld/měs.";
 "$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Kredity vyprší při obnovení.";
-"%@ (Paid)" = "%@ (placené)";
 "%@ could not be exported." = "%@ se nepodařilo exportovat.";
 "%@ does not accept this media" = "%@ toto médium nepřijímá";
 "%@ does not support this media type." = "%@ tento typ média nepodporuje.";
 "%@ exported with %lld warnings." = "%@ exportováno s %lld upozorněními.";
 "%@ exported with 1 warning." = "%@ exportováno s 1 upozorněním.";
+"%@ is not a valid URL." = "%@ není platná adresa URL.";
 "%@ is ready." = "%@ je připraveno.";
 "%@ model not available" = "Model %@ není k dispozici";
+"%@ must use HTTPS, or HTTP on this Mac only." = "%@ musí používat HTTPS, nebo HTTP pouze na tomto Macu.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld dovedností";
@@ -22,11 +23,7 @@
 "%lld couldn't align" = "%lld se nepodařilo zarovnat";
 "%lld credits" = "%lld kreditů";
 "%lld credits / month" = "%lld kreditů / měsíc";
-"%lld credits estimated. Actual billing may differ." = "Odhad: %lld kreditů. Skutečná fakturace se může lišit.";
-"%lld credits needed. Only %lld remaining." = "Potřeba %lld kreditů. Zbývá jen %lld.";
 "%lld credits refunded" = "Vráceno %lld kreditů";
-"%lld credits used" = "Použito %lld kreditů";
-"%lld credits. %lld remaining after this generation." = "%lld kreditů. Po tomto generování zbude %lld.";
 "%lld images are ready in Lenora Pro." = "V Lenora Pro je připraveno %lld obrázků.";
 "%lld items" = "%lld položek";
 "%lld media files are missing and will be skipped." = "Chybí %lld mediálních souborů, budou přeskočeny.";
@@ -38,14 +35,7 @@
 "%lldk credits" = "%lldk kreditů";
 "(image payload)" = "(data obrázku)";
 "/ month" = "/ měsíc";
-"0 credits" = "0 kreditů";
-"0 credits used" = "Použito 0 kreditů";
 "1 clip" = "1 klip";
-"1 credit" = "1 kredit";
-"1 credit estimated. Actual billing may differ." = "Odhad: 1 kredit. Skutečná fakturace se může lišit.";
-"1 credit needed. Only %lld remaining." = "Potřeba 1 kredit. Zbývá jen %lld.";
-"1 credit used" = "Použit 1 kredit";
-"1 credit. %lld remaining after this generation." = "1 kredit. Po tomto generování zbude %lld.";
 "1 item" = "1 položka";
 "1 media file is missing and will be skipped." = "Chybí 1 mediální soubor, bude přeskočen.";
 "= %lld credits" = "= %lld kreditů";
@@ -57,16 +47,19 @@
 "AI Enhance" = "AI vylepšení";
 "AI Generated" = "Vygenerováno AI";
 "AI agent" = "AI Agent";
-"AI is unavailable" = "AI není k dispozici";
 "About Lenora Pro" = "O aplikaci Lenora Pro";
 "Account" = "Účet";
 "Account settings" = "Nastavení účtu";
 "Action Safe" = "Bezpečná zóna akce";
 "Activity unavailable" = "Aktivita není k dispozici";
+"Adapters" = "Adaptéry";
 "Add Marker (M)" = "Přidat značku (M)";
 "Add Range to Chat" = "Přidat rozsah do chatu";
 "Add Text" = "Přidat text";
 "Add a comment" = "Přidat komentář";
+"Add an API key in Settings to chat." = "Pro chat přidejte API klíč v Nastavení.";
+"Add an Anthropic API key to use this model." = "Pro použití tohoto modelu přidejte API klíč Anthropic.";
+"Add an OpenAI API key to use this model." = "Pro použití tohoto modelu přidejte API klíč OpenAI.";
 "Add captions" = "Přidat titulky";
 "Add credits" = "Přidat kredity";
 "Add emoji" = "Přidat emoji";
@@ -111,6 +104,8 @@
 "Auto" = "Automaticky";
 "Available" = "Dostupné";
 "Back" = "Zpět";
+"Backend" = "Backend";
+"Backend %@ · Protocol %@" = "Backend %@ · Protokol %@";
 "Background" = "Pozadí";
 "Basic Correction" = "Základní korekce";
 "Beat detection failed. Check that the media file is reachable, then retry." = "Detekce dob selhala. Zkontrolujte, že je mediální soubor dostupný, a zkuste to znovu.";
@@ -132,6 +127,7 @@
 "Can't import \"%@\" — not a Lottie animation." = "Nelze importovat \"%@\" — není to animace Lottie.";
 "Can't import \"%@\" — unsupported file type." = "Nelze importovat \"%@\" — nepodporovaný typ souboru.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "Sem nelze vložit \"%@\" — vnořilo by to tuto časovou osu do sebe samé.";
+"Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Backend na adrese %@ není dostupný. Spusťte ho pomocí ./scripts/dev a test zopakujte.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "Nelze znovu propojit \"%@\". Požadovaný typ média: %@. Vybraný typ média: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Nelze odemknout synchronizaci na stopě multicam — \"%@\" zůstává zarovnaný přes ni.";
 "Cancel" = "Zrušit";
@@ -208,6 +204,8 @@
 "Completed" = "Dokončeno";
 "Connect an agent" = "Připojit Agent";
 "Connect an external agent to inspect and edit the open Lenora Pro project." = "Připojte externího Agenta pro prohlížení a úpravy otevřeného projektu Lenora Pro.";
+"Connected" = "Připojeno";
+"Connection failed: %@" = "Připojení se nezdařilo: %@";
 "Content" = "Obsah";
 "Continue" = "Pokračovat";
 "Contrast" = "Kontrast";
@@ -225,6 +223,7 @@
 "Couldn't align %lld clips." = "Nepodařilo se zarovnat %lld klipů.";
 "Couldn't change marker." = "Značku se nepodařilo změnit.";
 "Couldn't delete marker." = "Značku se nepodařilo smazat.";
+"Couldn't save the token to the Keychain." = "Token se nepodařilo uložit do Klíčenky.";
 "Couldn't switch angle." = "Úhel se nepodařilo přepnout.";
 "Couldn’t move %@ to the Trash." = "Nepodařilo se přesunout %@ do Koše.";
 "Count" = "Počet";
@@ -325,15 +324,14 @@
 "Edit supports up to %llds (this is %llds)" = "Úprava podporuje až %llds (toto je %llds)";
 "Editing" = "Úpravy";
 "Edit…" = "Upravit…";
-"Edit… (Paid)" = "Upravit… (placené)";
 "Effects" = "Efekty";
 "Empty" = "Prázdné";
 "Enable: %@" = "Zapnout: %@";
+"Enabled" = "Zapnuto";
 "Enhance" = "Vylepšit";
 "Enhance resolution or frame rate with AI" = "Vylepšit rozlišení nebo snímkovou frekvenci pomocí AI";
 "Enhanced with FLUX.3 at 1080p." = "Vylepšeno pomocí FLUX.3 na 1080p.";
 "Enter Full Screen" = "Přejít do režimu na celou obrazovku";
-"Estimated cost. Actual billing may differ slightly." = "Odhadovaná cena. Skutečná fakturace se může mírně lišit.";
 "Exclusion" = "Vyloučení";
 "Expand" = "Rozbalit";
 "Export" = "Exportovat";
@@ -348,6 +346,7 @@
 "Extend" = "Prodloužit";
 "Extends captions across short gaps and holds the final caption." = "Prodlouží titulky přes krátké mezery a podrží poslední titulek.";
 "Extra Large" = "Extra velké";
+"Extract Audio" = "Extrahovat zvuk";
 "FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Zesílení";
 "Fade Out" = "Zeslabení";
@@ -399,16 +398,16 @@
 "Generate music for the timeline" = "Generovat hudbu pro časovou osu";
 "Generate music that fits the video" = "Generovat hudbu, která sedí k videu";
 "Generate video, image, or audio with different models and settings. Drag assets from the media panel above into the reference frame." = "Generujte video, obraz nebo audio s různými modely a nastaveními. Přetáhněte materiály z panelu médií výše do referenčního rámečku.";
-"Generate · %lld credits" = "Generovat · %lld kreditů";
-"Generate · 1 credit" = "Generovat · 1 kredit";
 "Generating…" = "Generování…";
 "Generation Failed" = "Generování selhalo";
 "Generation Input" = "Vstup generování";
 "Generation complete" = "Generování dokončeno";
 "Generation in progress" = "Generování probíhá";
 "Generation panel" = "Panel generování";
+"Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generování běží na vašem backendu Lenora. Token se ukládá do Klíčenky macOS.";
 "Get Anthropic API key" = "Získat API klíč Anthropic";
 "Get OpenAI API key" = "Získat API klíč OpenAI";
+"Get Started" = "Začínáme";
 "Get a notification when a generation finishes." = "Dostávejte oznámení po dokončení generování.";
 "Getting the search model ready." = "Připravuje se vyhledávací model.";
 "Glow" = "Záře";
@@ -497,7 +496,6 @@
 "Lip Sync model not available" = "Model Lip Sync není k dispozici";
 "Lip Sync only works on video" = "Lip Sync funguje jen u videa";
 "Lip Sync…" = "Lip Sync…";
-"Lip Sync… (Paid)" = "Lip Sync… (placené)";
 "Loading community skills" = "Načítání komunitních dovedností";
 "Loading community skills…" = "Načítání komunitních dovedností…";
 "Loading media metadata…" = "Načítání metadat médií…";
@@ -596,6 +594,7 @@
 "No media" = "Žádná média";
 "No media yet" = "Zatím žádná média";
 "No models match \"%@\"." = "Žádné modely neodpovídají \"%@\".";
+"No models provided by the connected backend" = "Připojený backend neposkytuje žádné modely";
 "No music models available." = "Nejsou k dispozici žádné hudební modely.";
 "No projects found" = "Nenalezeny žádné projekty";
 "No prompt needed" = "Prompt není potřeba";
@@ -625,7 +624,6 @@
 "Open Timeline" = "Otevřít časovou osu";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Otevřete kartu AI úprava pro zvětšení rozlišení, úpravu promptem, vytvoření videa ze snímku nebo generování hudby, SFX, čištění a dabingu z klipu.";
 "OpenAI API Key" = "API klíč OpenAI";
-"Opening Google" = "Otevírá se Google";
 "Opening Google…" = "Otevírá se Google…";
 "Open…" = "Otevřít…";
 "Organize with Agent" = "Organizovat pomocí Agent";
@@ -643,6 +641,7 @@
 "Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora načetl zdrojový soubor tohoto klipu, ale nepřipravil ho k přehrání. Soubor může být poškozený nebo v nepodporovaném formátu.";
 "Paste" = "Vložit";
 "Paste Clip Settings" = "Vložit nastavení klipu";
+"Paste LENORA_TOKEN" = "Vložit LENORA_TOKEN";
 "Paste Settings" = "Vložit nastavení";
 "Path" = "Cesta";
 "Per line" = "Po řádcích";
@@ -691,7 +690,6 @@
 "Reframe model not available" = "Model přeformátování není k dispozici";
 "Reframe only works on video" = "Přeformátování funguje jen u videa";
 "Reframe…" = "Přeformátovat…";
-"Reframe… (Paid)" = "Přeformátovat… (placené)";
 "Refresh" = "Obnovit";
 "Refresh Community Skills" = "Obnovit komunitní dovednosti";
 "Refresh to check for available skills." = "Obnovte pro kontrolu dostupných dovedností.";
@@ -721,7 +719,6 @@
 "Rendering…" = "Vykreslování…";
 "Replace clip source" = "Nahradit zdroj klipu";
 "Replacement Audio" = "Náhradní audio";
-"Requires a paid plan" = "Vyžaduje placený plán";
 "Rerun" = "Spustit znovu";
 "Reset All" = "Resetovat vše";
 "Reset Clipping Indicators" = "Resetovat indikátory ořezu";
@@ -740,6 +737,7 @@
 "Ripple Delete" = "Smazat s posunem";
 "Ripple Delete Gap" = "Smazat mezeru s posunem";
 "Ripple Insert" = "Vložit s posunem";
+"Ripple Timeline Markers" = "Posouvat značky časové osy";
 "Ripple Trim" = "Oříznout s posunem";
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Smaže s posunem každý tichý úsek; následující klipy mezery uzavřou.";
 "Rotation" = "Otočení";
@@ -756,6 +754,7 @@
 "Save As…" = "Uložit jako…";
 "Save Changes" = "Uložit změny";
 "Save Range as Media" = "Uložit rozsah jako média";
+"Save as Audio" = "Uložit jako audio";
 "Save as Media" = "Uložit jako média";
 "Save this project to view activity" = "Uložte tento projekt pro zobrazení aktivity";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Uloží kopii projektu se všemi médii uvnitř, aby šel otevřít na jakémkoli počítači.";
@@ -788,6 +787,8 @@
 "Server URL" = "URL serveru";
 "Set as first frame" = "Nastavit jako první snímek";
 "Set as reference" = "Nastavit jako referenci";
+"Set by LENORA_BACKEND_URL for this launch." = "Nastaveno proměnnou LENORA_BACKEND_URL pro toto spuštění.";
+"Set by LENORA_TOKEN for this launch." = "Nastaveno proměnnou LENORA_TOKEN pro toto spuštění.";
 "Settings" = "Nastavení";
 "Settings…" = "Nastavení…";
 "Setup instructions" = "Pokyny k nastavení";
@@ -805,10 +806,8 @@
 "Side by Side" = "Vedle sebe";
 "Sign In" = "Přihlásit se";
 "Sign in" = "Přihlásit se";
-"Sign in to generate" = "Přihlaste se pro generování";
 "Sign in to receive 250 free credits for AI chat and generation." = "Přihlaste se a získejte 250 kreditů zdarma na AI chat a generování.";
 "Sign in to subscribe and use AI generation." = "Přihlaste se k předplatnému a používání AI generování.";
-"Sign in to use AI" = "Přihlaste se pro použití AI";
 "Sign in with Google" = "Přihlásit se přes Google";
 "Sign out" = "Odhlásit se";
 "Sign-in couldn’t be completed. Try again." = "Přihlášení se nepodařilo dokončit. Zkuste to znovu.";
@@ -860,7 +859,6 @@
 "Strikethrough" = "Přeškrtnutí";
 "Style" = "Styl";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Pokyny ke stylu (volitelné). např. teplý a pomalý, britský přízvuk.";
-"Subscribe" = "Předplatit";
 "Subscription" = "Předplatné";
 "Subtitle" = "Titulek";
 "Subtitle file is unavailable." = "Soubor titulků není k dispozici.";
@@ -881,6 +879,7 @@
 "Target Language" = "Cílový jazyk";
 "Temperature" = "Teplota";
 "Temporary files" = "Dočasné soubory";
+"Test Connection" = "Otestovat připojení";
 "Text" = "Text";
 "Text to Music" = "Text na hudbu";
 "Text to speak" = "Text k mluvení";
@@ -911,6 +910,8 @@
 "Timelines" = "Časové osy";
 "Tint" = "Nádech";
 "Title Safe" = "Bezpečná zóna titulků";
+"Token" = "Token";
+"Token rejected. Paste LENORA_TOKEN from .env." = "Token byl odmítnut. Vložte LENORA_TOKEN ze souboru .env.";
 "Tone" = "Tón";
 "Tools" = "Nástroje";
 "Top" = "Nahoře";
@@ -933,14 +934,15 @@
 "Try Again" = "Zkusit znovu";
 "Try again." = "Zkuste to znovu.";
 "Try another search." = "Zkuste jiné hledání.";
-"Turn off to save %lld%% on generation cost." = "Vypnutím ušetříte %lld%% na nákladech na generování.";
 "Turn off to skip audio generation." = "Vypněte, chcete-li přeskočit generování audia.";
 "Tutorial" = "Tutoriál";
 "Type" = "Typ";
 "Typewriter" = "Psací stroj";
 "UPPERCASE" = "VELKÁ PÍSMENA";
+"URL" = "URL";
 "Unable to open Claude Desktop" = "Claude Desktop se nepodařilo otevřít";
 "Unable to save skill" = "Dovednost se nepodařilo uložit";
+"Unchanged" = "Beze změny";
 "Underline" = "Podtržení";
 "Undo" = "Zpět";
 "Undo (⌘Z)" = "Zpět (⌘Z)";
@@ -957,10 +959,10 @@
 "Upgrade to add credits" = "Přejděte na vyšší tarif a přidejte kredity";
 "Uploading…" = "Odesílání…";
 "Upscale" = "Zvětšit rozlišení";
+"Upscale model not available" = "Model zvětšení rozlišení není k dispozici";
 "Upscale only works on video or images" = "Zvětšení rozlišení funguje jen u videa nebo obrázků";
 "Upscale source media" = "Zvětšit rozlišení zdrojových médií";
 "Upscale…" = "Zvětšit rozlišení…";
-"Upscale… (Paid)" = "Zvětšit rozlišení… (placené)";
 "Use Freeform" = "Použít Volný tvar";
 "Use Freeform to edit individual crop insets." = "Pro úpravu jednotlivých odsazení oříznutí použijte Volný tvar.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Zadejte poměr stran se dvěma kladnými čísly, například 3:2.";
@@ -977,6 +979,7 @@
 "Video" = "Video";
 "Video Ref" = "Video ref.";
 "Video has no audio track" = "Video nemá audio stopu";
+"Video model not available" = "Video model není k dispozici";
 "Video to Music" = "Video na hudbu";
 "View" = "Zobrazení";
 "View Skills" = "Zobrazit dovednosti";
@@ -1005,6 +1008,7 @@
 "X High" = "Velmi vysoká";
 "You were not charged for this generation" = "Toto generování nebylo účtováno";
 "You're all set" = "Vše je připraveno";
+"You're ready to start creating." = "Vše je připraveno, můžete začít tvořit.";
 "Your Lottie animation is ready." = "Animace Lottie je připravena.";
 "Your audio clip is ready." = "Audio klip je připraven.";
 "Your image is ready." = "Obraz je připraven.";

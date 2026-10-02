@@ -2,14 +2,15 @@
 
 "$%lld/mo" = "$%lld/mois";
 "$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Les crédits expirent au renouvellement.";
-"%@ (Paid)" = "%@ (Payant)";
 "%@ could not be exported." = "Impossible d’exporter %@.";
 "%@ does not accept this media" = "%@ n’accepte pas ce média";
 "%@ does not support this media type." = "%@ ne prend pas en charge ce type de média.";
 "%@ exported with %lld warnings." = "Exportation de %@ terminée avec %lld avertissements.";
 "%@ exported with 1 warning." = "Exportation de %@ terminée avec 1 avertissement.";
+"%@ is not a valid URL." = "%@ n’est pas une URL valide.";
 "%@ is ready." = "%@ est disponible.";
 "%@ model not available" = "Modèle %@ indisponible";
+"%@ must use HTTPS, or HTTP on this Mac only." = "%@ doit utiliser HTTPS, ou HTTP uniquement sur ce Mac.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld compétences";
@@ -22,11 +23,7 @@
 "%lld couldn't align" = "Échec d’alignement pour %lld";
 "%lld credits" = "%lld crédits";
 "%lld credits / month" = "%lld crédits / mois";
-"%lld credits estimated. Actual billing may differ." = "Estimation : %lld crédits. La facturation réelle peut varier.";
-"%lld credits needed. Only %lld remaining." = "%lld crédits nécessaires. Il n’en reste que %lld.";
 "%lld credits refunded" = "%lld crédits remboursés";
-"%lld credits used" = "%lld crédits utilisés";
-"%lld credits. %lld remaining after this generation." = "%lld crédits. Il en restera %lld après cette génération.";
 "%lld images are ready in Lenora Pro." = "%lld images sont disponibles dans Lenora Pro.";
 "%lld items" = "%lld éléments";
 "%lld media files are missing and will be skipped." = "%lld fichiers média sont manquants et seront ignorés.";
@@ -38,14 +35,7 @@
 "%lldk credits" = "%lldk crédits";
 "(image payload)" = "(données de l’image)";
 "/ month" = "/ mois";
-"0 credits" = "0 crédit";
-"0 credits used" = "0 crédit utilisé";
 "1 clip" = "1 clip";
-"1 credit" = "1 crédit";
-"1 credit estimated. Actual billing may differ." = "Estimation : 1 crédit. La facturation réelle peut varier.";
-"1 credit needed. Only %lld remaining." = "1 crédit nécessaire. Il n’en reste que %lld.";
-"1 credit used" = "1 crédit utilisé";
-"1 credit. %lld remaining after this generation." = "1 crédit. Il en restera %lld après cette génération.";
 "1 item" = "1 élément";
 "1 media file is missing and will be skipped." = "1 fichier média est manquant et sera ignoré.";
 "= %lld credits" = "= %lld crédits";
@@ -57,16 +47,19 @@
 "AI Enhance" = "Amélioration IA";
 "AI Generated" = "Généré par l’IA";
 "AI agent" = "Agent IA";
-"AI is unavailable" = "L’IA est indisponible";
 "About Lenora Pro" = "À propos de Lenora Pro";
 "Account" = "Compte";
 "Account settings" = "Réglages du compte";
 "Action Safe" = "Zone action";
 "Activity unavailable" = "Activité indisponible";
+"Adapters" = "Adaptateurs";
 "Add Marker (M)" = "Ajouter un marqueur (M)";
 "Add Range to Chat" = "Ajouter la plage au chat";
 "Add Text" = "Ajouter du texte";
 "Add a comment" = "Ajouter un commentaire";
+"Add an API key in Settings to chat." = "Ajoutez une clé API dans les réglages pour discuter.";
+"Add an Anthropic API key to use this model." = "Ajoutez une clé API Anthropic pour utiliser ce modèle.";
+"Add an OpenAI API key to use this model." = "Ajoutez une clé API OpenAI pour utiliser ce modèle.";
 "Add captions" = "Ajouter des sous-titres";
 "Add credits" = "Ajouter des crédits";
 "Add emoji" = "Ajouter un emoji";
@@ -111,6 +104,8 @@
 "Auto" = "Automatique";
 "Available" = "Disponible";
 "Back" = "Retour";
+"Backend" = "Backend";
+"Backend %@ · Protocol %@" = "Backend %@ · Protocole %@";
 "Background" = "Arrière-plan";
 "Basic Correction" = "Correction de base";
 "Beat detection failed. Check that the media file is reachable, then retry." = "La détection des temps a échoué. Vérifiez que le fichier média est accessible, puis réessayez.";
@@ -132,6 +127,7 @@
 "Can't import \"%@\" — not a Lottie animation." = "Impossible d’importer \"%@\" : ce n’est pas une animation Lottie.";
 "Can't import \"%@\" — unsupported file type." = "Impossible d’importer \"%@\" : ce type de fichier n’est pas pris en charge.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "Impossible de coller \"%@\" ici : cette timeline serait imbriquée dans elle-même.";
+"Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Impossible de joindre le backend à l’adresse %@. Démarrez-le avec ./scripts/dev, puis réessayez le test.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "Impossible de relier \"%@\". Type de média requis : %@. Type sélectionné : %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Impossible de déverrouiller la synchronisation sur une piste multicam. Cette piste doit maintenir l’alignement de \"%@\".";
 "Cancel" = "Annuler";
@@ -208,6 +204,8 @@
 "Completed" = "Terminé";
 "Connect an agent" = "Connecter un agent";
 "Connect an external agent to inspect and edit the open Lenora Pro project." = "Connectez un agent externe pour examiner et modifier le projet Lenora Pro ouvert.";
+"Connected" = "Connecté";
+"Connection failed: %@" = "Échec de la connexion : %@";
 "Content" = "Contenu";
 "Continue" = "Continuer";
 "Contrast" = "Contraste";
@@ -225,6 +223,7 @@
 "Couldn't align %lld clips." = "Impossible d’aligner %lld clips.";
 "Couldn't change marker." = "Impossible de modifier le marqueur.";
 "Couldn't delete marker." = "Impossible de supprimer le marqueur.";
+"Couldn't save the token to the Keychain." = "Impossible d’enregistrer le jeton dans le Trousseau.";
 "Couldn't switch angle." = "Impossible de changer d’angle.";
 "Couldn’t move %@ to the Trash." = "Impossible de placer %@ dans la Corbeille.";
 "Count" = "Nombre";
@@ -325,15 +324,14 @@
 "Edit supports up to %llds (this is %llds)" = "Le montage prend en charge jusqu’à %lld s (durée actuelle : %lld s)";
 "Editing" = "Modification";
 "Edit…" = "Modifier…";
-"Edit… (Paid)" = "Modifier… (Payant)";
 "Effects" = "Effets";
 "Empty" = "Vide";
 "Enable: %@" = "Activer : %@";
+"Enabled" = "Activé";
 "Enhance" = "Améliorer";
 "Enhance resolution or frame rate with AI" = "Améliorer la résolution ou la fréquence d’images avec l’IA";
 "Enhanced with FLUX.3 at 1080p." = "Amélioré avec FLUX.3 en 1080p.";
 "Enter Full Screen" = "Activer le mode plein écran";
-"Estimated cost. Actual billing may differ slightly." = "Coût estimé. La facturation réelle peut varier légèrement.";
 "Exclusion" = "Exclusion";
 "Expand" = "Développer";
 "Export" = "Exporter";
@@ -348,6 +346,7 @@
 "Extend" = "Prolonger";
 "Extends captions across short gaps and holds the final caption." = "Prolonge les sous-titres sur les écarts courts et conserve le dernier sous-titre.";
 "Extra Large" = "Très grande";
+"Extract Audio" = "Extraire l’audio";
 "FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Fondu d’entrée";
 "Fade Out" = "Fondu de sortie";
@@ -399,16 +398,16 @@
 "Generate music for the timeline" = "Générer de la musique pour la timeline";
 "Generate music that fits the video" = "Générer une musique adaptée à la vidéo";
 "Generate video, image, or audio with different models and settings. Drag assets from the media panel above into the reference frame." = "Générez de la vidéo, des images ou de l’audio avec différents modèles et réglages. Faites glisser les ressources du panneau Médias ci-dessus vers l’image de référence.";
-"Generate · %lld credits" = "Générer · %lld crédits";
-"Generate · 1 credit" = "Générer · 1 crédit";
 "Generating…" = "Génération…";
 "Generation Failed" = "Échec de la génération";
 "Generation Input" = "Entrée de génération";
 "Generation complete" = "Génération terminée";
 "Generation in progress" = "Génération en cours";
 "Generation panel" = "Panneau de génération";
+"Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "La génération s’exécute sur votre backend Lenora. Le jeton est stocké dans le Trousseau macOS.";
 "Get Anthropic API key" = "Obtenir une clé API Anthropic";
 "Get OpenAI API key" = "Obtenir une clé API OpenAI";
+"Get Started" = "Commencer";
 "Get a notification when a generation finishes." = "Recevez une notification à la fin d’une génération.";
 "Getting the search model ready." = "Préparation du modèle de recherche.";
 "Glow" = "Lueur";
@@ -497,7 +496,6 @@
 "Lip Sync model not available" = "Modèle de synchronisation labiale indisponible";
 "Lip Sync only works on video" = "La synchronisation labiale fonctionne uniquement avec la vidéo";
 "Lip Sync…" = "Synchronisation labiale…";
-"Lip Sync… (Paid)" = "Synchronisation labiale… (Payant)";
 "Loading community skills" = "Chargement des compétences de la communauté";
 "Loading community skills…" = "Chargement des compétences de la communauté…";
 "Loading media metadata…" = "Chargement des métadonnées des médias…";
@@ -596,6 +594,7 @@
 "No media" = "Aucun média";
 "No media yet" = "Aucun média pour le moment";
 "No models match \"%@\"." = "Aucun modèle ne correspond à \"%@\".";
+"No models provided by the connected backend" = "Le backend connecté ne fournit aucun modèle";
 "No music models available." = "Aucun modèle musical disponible.";
 "No projects found" = "Aucun projet trouvé";
 "No prompt needed" = "Aucun prompt requis";
@@ -625,7 +624,6 @@
 "Open Timeline" = "Ouvrir la timeline";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Ouvrez l’onglet Montage IA pour augmenter la résolution, modifier via une invite, créer une vidéo à partir d’une image, ou générer musique, effets sonores, nettoyage de la voix et doublage à partir du clip.";
 "OpenAI API Key" = "Clé API OpenAI";
-"Opening Google" = "Ouverture de Google";
 "Opening Google…" = "Ouverture de Google…";
 "Open…" = "Ouvrir…";
 "Organize with Agent" = "Organiser avec l’agent";
@@ -643,6 +641,7 @@
 "Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora a chargé le fichier source du clip, mais n’a pas pu le préparer pour la lecture. Le fichier est peut-être endommagé ou dans un format non pris en charge.";
 "Paste" = "Coller";
 "Paste Clip Settings" = "Coller les réglages du clip";
+"Paste LENORA_TOKEN" = "Collez LENORA_TOKEN";
 "Paste Settings" = "Coller les réglages";
 "Path" = "Chemin";
 "Per line" = "Par ligne";
@@ -691,7 +690,6 @@
 "Reframe model not available" = "Modèle de recadrage indisponible";
 "Reframe only works on video" = "Le recadrage fonctionne uniquement avec la vidéo";
 "Reframe…" = "Recadrer…";
-"Reframe… (Paid)" = "Recadrer… (Payant)";
 "Refresh" = "Actualiser";
 "Refresh Community Skills" = "Actualiser les compétences de la communauté";
 "Refresh to check for available skills." = "Actualisez pour rechercher les compétences disponibles.";
@@ -721,7 +719,6 @@
 "Rendering…" = "Rendu…";
 "Replace clip source" = "Remplacer la source du clip";
 "Replacement Audio" = "Audio de remplacement";
-"Requires a paid plan" = "Nécessite une formule payante";
 "Rerun" = "Relancer";
 "Reset All" = "Tout réinitialiser";
 "Reset Clipping Indicators" = "Réinitialiser les témoins d’écrêtage";
@@ -740,6 +737,7 @@
 "Ripple Delete" = "Supprimer et raccorder";
 "Ripple Delete Gap" = "Supprimer le vide et raccorder";
 "Ripple Insert" = "Insérer et décaler";
+"Ripple Timeline Markers" = "Décaler les marqueurs de la timeline";
 "Ripple Trim" = "Élaguer et raccorder";
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Supprime et raccorde chaque section silencieuse ; les clips suivants comblent les vides.";
 "Rotation" = "Rotation";
@@ -756,6 +754,7 @@
 "Save As…" = "Enregistrer sous…";
 "Save Changes" = "Enregistrer les modifications";
 "Save Range as Media" = "Enregistrer la plage comme média";
+"Save as Audio" = "Enregistrer comme audio";
 "Save as Media" = "Enregistrer comme média";
 "Save this project to view activity" = "Enregistrez ce projet pour consulter son activité";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Enregistre une copie de ce projet avec tous ses médias pour pouvoir l’ouvrir sur n’importe quelle machine.";
@@ -788,6 +787,8 @@
 "Server URL" = "URL du serveur";
 "Set as first frame" = "Définir comme première image";
 "Set as reference" = "Définir comme référence";
+"Set by LENORA_BACKEND_URL for this launch." = "Défini par LENORA_BACKEND_URL pour ce lancement.";
+"Set by LENORA_TOKEN for this launch." = "Défini par LENORA_TOKEN pour ce lancement.";
 "Settings" = "Réglages";
 "Settings…" = "Réglages…";
 "Setup instructions" = "Instructions de configuration";
@@ -805,10 +806,8 @@
 "Side by Side" = "Côte à côte";
 "Sign In" = "Se connecter";
 "Sign in" = "Se connecter";
-"Sign in to generate" = "Connectez-vous pour générer";
 "Sign in to receive 250 free credits for AI chat and generation." = "Connectez-vous pour recevoir 250 crédits gratuits pour le chat et la génération IA.";
 "Sign in to subscribe and use AI generation." = "Connectez-vous pour vous abonner et utiliser la génération par IA.";
-"Sign in to use AI" = "Connectez-vous pour utiliser l’IA";
 "Sign in with Google" = "Se connecter avec Google";
 "Sign out" = "Se déconnecter";
 "Sign-in couldn’t be completed. Try again." = "Impossible de finaliser la connexion. Réessayez.";
@@ -860,7 +859,6 @@
 "Strikethrough" = "Barré";
 "Style" = "Style";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Instructions de style (facultatives). Par ex. : chaleureux et lent, accent britannique.";
-"Subscribe" = "S’abonner";
 "Subscription" = "Abonnement";
 "Subtitle" = "Sous-titre";
 "Subtitle file is unavailable." = "Le fichier de sous-titres est indisponible.";
@@ -881,6 +879,7 @@
 "Target Language" = "Langue cible";
 "Temperature" = "Température";
 "Temporary files" = "Fichiers temporaires";
+"Test Connection" = "Tester la connexion";
 "Text" = "Texte";
 "Text to Music" = "Texte en musique";
 "Text to speak" = "Texte à prononcer";
@@ -911,6 +910,8 @@
 "Timelines" = "Timelines";
 "Tint" = "Teinte";
 "Title Safe" = "Zone titre";
+"Token" = "Jeton";
+"Token rejected. Paste LENORA_TOKEN from .env." = "Jeton refusé. Collez LENORA_TOKEN depuis .env.";
 "Tone" = "Tonalité";
 "Tools" = "Outils";
 "Top" = "Haut";
@@ -933,14 +934,15 @@
 "Try Again" = "Réessayer";
 "Try again." = "Réessayez.";
 "Try another search." = "Essayez une autre recherche.";
-"Turn off to save %lld%% on generation cost." = "Désactivez cette option pour économiser %lld%% sur le coût de génération.";
 "Turn off to skip audio generation." = "Désactivez cette option pour ignorer la génération audio.";
 "Tutorial" = "Tutoriel";
 "Type" = "Type";
 "Typewriter" = "Machine à écrire";
 "UPPERCASE" = "MAJUSCULES";
+"URL" = "URL";
 "Unable to open Claude Desktop" = "Impossible d’ouvrir Claude Desktop";
 "Unable to save skill" = "Impossible d’enregistrer la compétence";
+"Unchanged" = "Inchangé";
 "Underline" = "Souligné";
 "Undo" = "Annuler";
 "Undo (⌘Z)" = "Annuler (⌘Z)";
@@ -957,10 +959,10 @@
 "Upgrade to add credits" = "Changez de formule pour ajouter des crédits";
 "Uploading…" = "Envoi…";
 "Upscale" = "Augmenter la résolution";
+"Upscale model not available" = "Modèle d’augmentation de résolution indisponible";
 "Upscale only works on video or images" = "L’augmentation de résolution fonctionne uniquement avec la vidéo ou les images";
 "Upscale source media" = "Augmenter la résolution du média source";
 "Upscale…" = "Augmenter la résolution…";
-"Upscale… (Paid)" = "Augmenter la résolution… (Payant)";
 "Use Freeform" = "Utiliser Libre";
 "Use Freeform to edit individual crop insets." = "Utilisez le mode Libre pour modifier les marges de recadrage une à une.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Utilisez un format d’image composé de deux nombres positifs, par exemple 3:2.";
@@ -977,6 +979,7 @@
 "Video" = "Vidéo";
 "Video Ref" = "Réf. vidéo";
 "Video has no audio track" = "La vidéo ne contient aucune piste audio";
+"Video model not available" = "Modèle vidéo indisponible";
 "Video to Music" = "Vidéo en musique";
 "View" = "Présentation";
 "View Skills" = "Afficher les compétences";
@@ -1005,6 +1008,7 @@
 "X High" = "X élevé";
 "You were not charged for this generation" = "Cette génération n’a pas été facturée";
 "You're all set" = "Tout est prêt";
+"You're ready to start creating." = "Vous êtes prêt à commencer à créer.";
 "Your Lottie animation is ready." = "Votre animation Lottie est disponible.";
 "Your audio clip is ready." = "Votre clip audio est disponible.";
 "Your image is ready." = "Votre image est disponible.";

@@ -2,14 +2,15 @@
 
 "$%lld/mo" = "⁨$%lld⁩/شهر";
 "$%lld–$%lld · Credits expire at renewal." = "⁨$%lld–$%lld⁩ · تنتهي صلاحية الرصيد عند التجديد.";
-"%@ (Paid)" = "⁨%@⁩ (مدفوع)";
 "%@ could not be exported." = "تعذّر تصدير ⁨%@⁩.";
 "%@ does not accept this media" = "⁨%@⁩ لا يقبل هذه الوسائط";
 "%@ does not support this media type." = "⁨%@⁩ لا يدعم نوع الوسائط هذا.";
 "%@ exported with %lld warnings." = "تم تصدير ⁨%@⁩ مع ⁨%lld⁩ تحذيرًا.";
 "%@ exported with 1 warning." = "تم تصدير ⁨%@⁩ مع تحذير واحد.";
+"%@ is not a valid URL." = "⁨%@⁩ ليس عنوان URL صالحًا.";
 "%@ is ready." = "اكتمل إعداد ⁨%@⁩.";
 "%@ model not available" = "نموذج ⁨%@⁩ غير متوفر";
+"%@ must use HTTPS, or HTTP on this Mac only." = "يجب أن يستخدم ⁨%@⁩ بروتوكول HTTPS، أو HTTP على هذا الـ Mac فقط.";
 "%@ · %@" = "⁨%@⁩ · ⁨%@⁩";
 "%@ · %lld" = "⁨%@⁩ · ⁨%lld⁩";
 "%@, %lld skills" = "⁨%@⁩، ⁨%lld⁩ مهارات";
@@ -22,11 +23,7 @@
 "%lld couldn't align" = "تعذّرت محاذاة ⁨%lld⁩";
 "%lld credits" = "⁨%lld⁩ رصيد";
 "%lld credits / month" = "⁨%lld⁩ رصيد / شهر";
-"%lld credits estimated. Actual billing may differ." = "التكلفة التقديرية ⁨%lld⁩ رصيد. قد تختلف الفاتورة الفعلية.";
-"%lld credits needed. Only %lld remaining." = "يلزم ⁨%lld⁩ رصيد. المتبقي ⁨%lld⁩ فقط.";
 "%lld credits refunded" = "تم رد ⁨%lld⁩ رصيد";
-"%lld credits used" = "تم استخدام ⁨%lld⁩ رصيد";
-"%lld credits. %lld remaining after this generation." = "⁨%lld⁩ رصيد. سيتبقى ⁨%lld⁩ بعد هذا الإنشاء.";
 "%lld images are ready in Lenora Pro." = "⁨%lld⁩ من الصور جاهزة في Lenora Pro.";
 "%lld items" = "⁨%lld⁩ عنصر";
 "%lld media files are missing and will be skipped." = "هناك ⁨%lld⁩ من ملفات الوسائط مفقودة وسيتم تخطيها.";
@@ -38,14 +35,7 @@
 "%lldk credits" = "⁨%lldk⁩ رصيد";
 "(image payload)" = "(حمولة الصورة)";
 "/ month" = "/ شهر";
-"0 credits" = "⁨0⁩ رصيد";
-"0 credits used" = "تم استخدام ⁨0⁩ رصيد";
 "1 clip" = "مقطع واحد";
-"1 credit" = "رصيد واحد";
-"1 credit estimated. Actual billing may differ." = "التكلفة التقديرية رصيد واحد. قد تختلف الفاتورة الفعلية.";
-"1 credit needed. Only %lld remaining." = "يلزم رصيد واحد. المتبقي ⁨%lld⁩ فقط.";
-"1 credit used" = "تم استخدام رصيد واحد";
-"1 credit. %lld remaining after this generation." = "رصيد واحد. سيتبقى ⁨%lld⁩ بعد هذا الإنشاء.";
 "1 item" = "عنصر واحد";
 "1 media file is missing and will be skipped." = "هناك ملف وسائط واحد مفقود وسيتم تخطيه.";
 "= %lld credits" = "= ⁨%lld⁩ رصيد";
@@ -57,16 +47,19 @@
 "AI Enhance" = "تحسين بالذكاء الاصطناعي";
 "AI Generated" = "مُنشأ بالذكاء الاصطناعي";
 "AI agent" = "وكيل الذكاء الاصطناعي";
-"AI is unavailable" = "الذكاء الاصطناعي غير متاح";
 "About Lenora Pro" = "حول Lenora Pro";
 "Account" = "الحساب";
 "Account settings" = "إعدادات الحساب";
 "Action Safe" = "المنطقة الآمنة للحركة";
 "Activity unavailable" = "النشاط غير متاح";
+"Adapters" = "المحوّلات";
 "Add Marker (M)" = "إضافة علامة ⁨(M)⁩";
 "Add Range to Chat" = "إضافة النطاق إلى الدردشة";
 "Add Text" = "إضافة نص";
 "Add a comment" = "إضافة تعليق";
+"Add an API key in Settings to chat." = "أضف مفتاح واجهة API في الإعدادات للدردشة.";
+"Add an Anthropic API key to use this model." = "أضف مفتاح واجهة API من Anthropic لاستخدام هذا النموذج.";
+"Add an OpenAI API key to use this model." = "أضف مفتاح واجهة API من OpenAI لاستخدام هذا النموذج.";
 "Add captions" = "إضافة ترجمات";
 "Add credits" = "إضافة رصيد";
 "Add emoji" = "إضافة رمز تعبيري";
@@ -111,6 +104,8 @@
 "Auto" = "تلقائي";
 "Available" = "متوفر";
 "Back" = "رجوع";
+"Backend" = "الخادم الخلفي";
+"Backend %@ · Protocol %@" = "الخادم الخلفي ⁨%@⁩ · البروتوكول ⁨%@⁩";
 "Background" = "الخلفية";
 "Basic Correction" = "تصحيح أساسي";
 "Beat detection failed. Check that the media file is reachable, then retry." = "فشل اكتشاف الإيقاعات. تحقق من إمكانية الوصول إلى ملف الوسائط، ثم أعد المحاولة.";
@@ -132,6 +127,7 @@
 "Can't import \"%@\" — not a Lottie animation." = "لا يمكن استيراد \"⁨%@⁩\" لأنه ليس رسم Lottie متحركًا.";
 "Can't import \"%@\" — unsupported file type." = "لا يمكن استيراد \"⁨%@⁩\" لأن نوع الملف غير مدعوم.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "لا يمكن لصق \"⁨%@⁩\" هنا لأن ذلك سيدمج المخطط الزمني داخل نفسه.";
+"Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "تعذّر الوصول إلى الخادم الخلفي على ⁨%@⁩. شغّله باستخدام ./scripts/dev ثم اختبر الاتصال مرة أخرى.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "لا يمكن إعادة ربط \"⁨%@⁩\". نوع الوسائط المطلوب: ⁨%@⁩. نوع الوسائط المحدد: ⁨%@⁩.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "لا يمكن إلغاء قفل المزامنة على مسار متعدد الكاميرات. يظل \"⁨%@⁩\" محاذيًا من خلاله.";
 "Cancel" = "إلغاء";
@@ -208,6 +204,8 @@
 "Completed" = "مكتمل";
 "Connect an agent" = "ربط وكيل";
 "Connect an external agent to inspect and edit the open Lenora Pro project." = "اربط وكيلاً خارجيًا لفحص مشروع Lenora Pro المفتوح وتحريره.";
+"Connected" = "متصل";
+"Connection failed: %@" = "فشل الاتصال: ⁨%@⁩";
 "Content" = "المحتوى";
 "Continue" = "متابعة";
 "Contrast" = "التباين";
@@ -225,6 +223,7 @@
 "Couldn't align %lld clips." = "تعذّرت محاذاة ⁨%lld⁩ من المقاطع.";
 "Couldn't change marker." = "تعذّر تغيير العلامة.";
 "Couldn't delete marker." = "تعذّر حذف العلامة.";
+"Couldn't save the token to the Keychain." = "تعذّر حفظ الرمز المميز في سلسلة المفاتيح.";
 "Couldn't switch angle." = "تعذّر تبديل الزاوية.";
 "Couldn’t move %@ to the Trash." = "تعذّر نقل ⁨%@⁩ إلى سلة المهملات.";
 "Count" = "العدد";
@@ -325,15 +324,14 @@
 "Edit supports up to %llds (this is %llds)" = "يدعم التحرير مدة تصل إلى ⁨%lld⁩ ثانية (مدة هذا المحتوى ⁨%lld⁩ ثانية)";
 "Editing" = "التحرير";
 "Edit…" = "تحرير…";
-"Edit… (Paid)" = "تحرير… (مدفوع)";
 "Effects" = "التأثيرات";
 "Empty" = "فارغ";
 "Enable: %@" = "تمكين: ⁨%@⁩";
+"Enabled" = "مفعّل";
 "Enhance" = "تحسين";
 "Enhance resolution or frame rate with AI" = "تحسين الدقة أو معدل الإطارات بالذكاء الاصطناعي";
 "Enhanced with FLUX.3 at 1080p." = "تم التحسين باستخدام FLUX.3 بدقة 1080p.";
 "Enter Full Screen" = "الدخول إلى ملء الشاشة";
-"Estimated cost. Actual billing may differ slightly." = "تكلفة تقديرية. قد تختلف الفاتورة الفعلية قليلاً.";
 "Exclusion" = "استبعاد";
 "Expand" = "توسيع";
 "Export" = "تصدير";
@@ -348,6 +346,7 @@
 "Extend" = "تمديد";
 "Extends captions across short gaps and holds the final caption." = "يمد التسميات التوضيحية عبر الفجوات القصيرة ويثبت التسمية الأخيرة.";
 "Extra Large" = "كبير جدًا";
+"Extract Audio" = "استخراج الصوت";
 "FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "تلاشي للداخل";
 "Fade Out" = "تلاشي للخارج";
@@ -399,16 +398,16 @@
 "Generate music for the timeline" = "إنشاء موسيقى للمخطط الزمني";
 "Generate music that fits the video" = "إنشاء موسيقى تلائم الفيديو";
 "Generate video, image, or audio with different models and settings. Drag assets from the media panel above into the reference frame." = "أنشئ فيديو أو صورة أو صوتًا باستخدام نماذج وإعدادات مختلفة. اسحب الأصول من لوحة الوسائط أعلاه إلى إطار المرجع.";
-"Generate · %lld credits" = "إنشاء · ⁨%lld⁩ رصيد";
-"Generate · 1 credit" = "إنشاء · رصيد واحد";
 "Generating…" = "جارٍ الإنشاء…";
 "Generation Failed" = "فشل الإنشاء";
 "Generation Input" = "إدخال الإنشاء";
 "Generation complete" = "اكتمل الإنشاء";
 "Generation in progress" = "الإنشاء قيد التنفيذ";
 "Generation panel" = "لوحة الإنشاء";
+"Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "يتم التوليد على خادم Lenora الخلفي الخاص بك. يُخزَّن الرمز المميز في سلسلة مفاتيح macOS.";
 "Get Anthropic API key" = "الحصول على مفتاح واجهة API من Anthropic";
 "Get OpenAI API key" = "الحصول على مفتاح واجهة API من OpenAI";
+"Get Started" = "ابدأ الآن";
 "Get a notification when a generation finishes." = "تلقي إشعار عند اكتمال الإنشاء.";
 "Getting the search model ready." = "جارٍ إعداد نموذج البحث.";
 "Glow" = "توهج";
@@ -497,7 +496,6 @@
 "Lip Sync model not available" = "نموذج مزامنة الشفاه غير متاح";
 "Lip Sync only works on video" = "تعمل مزامنة الشفاه مع الفيديو فقط";
 "Lip Sync…" = "مزامنة الشفاه…";
-"Lip Sync… (Paid)" = "مزامنة الشفاه… (مدفوع)";
 "Loading community skills" = "جارٍ تحميل مهارات المجتمع";
 "Loading community skills…" = "جارٍ تحميل مهارات المجتمع…";
 "Loading media metadata…" = "جارٍ تحميل بيانات الوسائط الوصفية…";
@@ -596,6 +594,7 @@
 "No media" = "لا توجد وسائط";
 "No media yet" = "لا توجد وسائط بعد";
 "No models match \"%@\"." = "لا توجد نماذج تطابق \"⁨%@⁩\".";
+"No models provided by the connected backend" = "لا يوفّر الخادم الخلفي المتصل أي نماذج";
 "No music models available." = "لا تتوفر نماذج موسيقى.";
 "No projects found" = "لم يتم العثور على مشاريع";
 "No prompt needed" = "لا حاجة إلى مطالبة";
@@ -625,7 +624,6 @@
 "Open Timeline" = "فتح المخطط الزمني";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "افتح علامة التبويب «تحرير بالذكاء الاصطناعي» لرفع الدقة، أو التحرير عبر مطالبة، أو إنشاء فيديو من إطار، أو توليد موسيقى ومؤثرات صوتية وتنظيف الصوت والدبلجة من المقطع.";
 "OpenAI API Key" = "مفتاح واجهة API من OpenAI";
-"Opening Google" = "جارٍ فتح Google";
 "Opening Google…" = "جارٍ فتح Google…";
 "Open…" = "فتح…";
 "Organize with Agent" = "تنظيم باستخدام الوكيل";
@@ -643,6 +641,7 @@
 "Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "حمّل Lenora ملف مصدر هذا المقطع، لكنه تعذّر عليه إعداده للتشغيل. قد يكون الملف تالفًا أو بتنسيق غير مدعوم.";
 "Paste" = "لصق";
 "Paste Clip Settings" = "لصق إعدادات المقطع";
+"Paste LENORA_TOKEN" = "الصق LENORA_TOKEN";
 "Paste Settings" = "لصق الإعدادات";
 "Path" = "المسار";
 "Per line" = "لكل سطر";
@@ -691,7 +690,6 @@
 "Reframe model not available" = "نموذج إعادة التأطير غير متاح";
 "Reframe only works on video" = "تعمل إعادة التأطير مع الفيديو فقط";
 "Reframe…" = "إعادة تأطير…";
-"Reframe… (Paid)" = "إعادة تأطير… (مدفوع)";
 "Refresh" = "تحديث";
 "Refresh Community Skills" = "تحديث مهارات المجتمع";
 "Refresh to check for available skills." = "حدّث للتحقق من المهارات المتاحة.";
@@ -721,7 +719,6 @@
 "Rendering…" = "جارٍ التصيير…";
 "Replace clip source" = "استبدال مصدر المقطع";
 "Replacement Audio" = "الصوت البديل";
-"Requires a paid plan" = "يتطلب خطة مدفوعة";
 "Rerun" = "إعادة التشغيل";
 "Reset All" = "إعادة ضبط الكل";
 "Reset Clipping Indicators" = "إعادة ضبط مؤشرات تجاوز المستوى";
@@ -740,6 +737,7 @@
 "Ripple Delete" = "حذف مع إغلاق الفجوة";
 "Ripple Delete Gap" = "حذف الفجوة وإغلاقها";
 "Ripple Insert" = "إدراج مع إزاحة المقاطع";
+"Ripple Timeline Markers" = "إزاحة علامات المخطط الزمني";
 "Ripple Trim" = "تشذيب مع إزاحة المقاطع";
 "Ripple-deletes every silent section; downstream clips close the gaps." = "يحذف كل مقطع صامت ويغلق الفجوات بتحريك المقاطع اللاحقة.";
 "Rotation" = "التدوير";
@@ -756,6 +754,7 @@
 "Save As…" = "حفظ باسم…";
 "Save Changes" = "حفظ التغييرات";
 "Save Range as Media" = "حفظ النطاق كوسائط";
+"Save as Audio" = "حفظ كصوت";
 "Save as Media" = "حفظ كوسائط";
 "Save this project to view activity" = "احفظ هذا المشروع لعرض النشاط";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "يحفظ نسخة من هذا المشروع مع تضمين كل الوسائط، بحيث يمكن فتحه على أي جهاز.";
@@ -788,6 +787,8 @@
 "Server URL" = "عنوان URL للخادم";
 "Set as first frame" = "تعيين كإطار أول";
 "Set as reference" = "تعيين كمرجع";
+"Set by LENORA_BACKEND_URL for this launch." = "تم التعيين بواسطة LENORA_BACKEND_URL لهذا التشغيل.";
+"Set by LENORA_TOKEN for this launch." = "تم التعيين بواسطة LENORA_TOKEN لهذا التشغيل.";
 "Settings" = "الإعدادات";
 "Settings…" = "الإعدادات…";
 "Setup instructions" = "تعليمات الإعداد";
@@ -805,10 +806,8 @@
 "Side by Side" = "جنبًا إلى جنب";
 "Sign In" = "تسجيل الدخول";
 "Sign in" = "تسجيل الدخول";
-"Sign in to generate" = "سجّل الدخول للإنشاء";
 "Sign in to receive 250 free credits for AI chat and generation." = "سجّل الدخول للحصول على 250 رصيدًا مجانيًا لدردشة الذكاء الاصطناعي والإنشاء.";
 "Sign in to subscribe and use AI generation." = "سجّل الدخول للاشتراك واستخدام الإنشاء بالذكاء الاصطناعي.";
-"Sign in to use AI" = "سجّل الدخول لاستخدام الذكاء الاصطناعي";
 "Sign in with Google" = "تسجيل الدخول باستخدام Google";
 "Sign out" = "تسجيل الخروج";
 "Sign-in couldn’t be completed. Try again." = "تعذّر إكمال تسجيل الدخول. أعد المحاولة.";
@@ -860,7 +859,6 @@
 "Strikethrough" = "يتوسطه خط";
 "Style" = "النمط";
 "Style instructions (optional). e.g., warm and slow, British accent." = "تعليمات النمط (اختيارية)، مثل: دافئ وبطيء، بلهجة بريطانية.";
-"Subscribe" = "اشتراك";
 "Subscription" = "الاشتراك";
 "Subtitle" = "الترجمة";
 "Subtitle file is unavailable." = "ملف الترجمة غير متاح.";
@@ -881,6 +879,7 @@
 "Target Language" = "اللغة الهدف";
 "Temperature" = "حرارة اللون";
 "Temporary files" = "الملفات المؤقتة";
+"Test Connection" = "اختبار الاتصال";
 "Text" = "النص";
 "Text to Music" = "تحويل النص إلى موسيقى";
 "Text to speak" = "النص المطلوب نطقه";
@@ -911,6 +910,8 @@
 "Timelines" = "المخططات الزمنية";
 "Tint" = "الصبغة";
 "Title Safe" = "المنطقة الآمنة للعناوين";
+"Token" = "الرمز المميز";
+"Token rejected. Paste LENORA_TOKEN from .env." = "تم رفض الرمز المميز. الصق LENORA_TOKEN من ملف .env.";
 "Tone" = "الدرجة اللونية";
 "Tools" = "الأدوات";
 "Top" = "أعلى";
@@ -933,14 +934,15 @@
 "Try Again" = "إعادة المحاولة";
 "Try again." = "أعد المحاولة.";
 "Try another search." = "جرّب بحثًا آخر.";
-"Turn off to save %lld%% on generation cost." = "أوقفه لتوفير ⁨%lld%%⁩ من تكلفة الإنشاء.";
 "Turn off to skip audio generation." = "أوقفه لتخطي إنشاء الصوت.";
 "Tutorial" = "البرنامج التعليمي";
 "Type" = "النوع";
 "Typewriter" = "آلة كاتبة";
 "UPPERCASE" = "أحرف كبيرة";
+"URL" = "URL";
 "Unable to open Claude Desktop" = "تعذّر فتح Claude Desktop";
 "Unable to save skill" = "تعذّر حفظ المهارة";
+"Unchanged" = "دون تغيير";
 "Underline" = "تحته خط";
 "Undo" = "تراجع";
 "Undo (⌘Z)" = "تراجع ⁨(⌘Z)⁩";
@@ -957,10 +959,10 @@
 "Upgrade to add credits" = "قم بالترقية لإضافة رصيد";
 "Uploading…" = "جارٍ الرفع…";
 "Upscale" = "رفع الدقة";
+"Upscale model not available" = "نموذج رفع الدقة غير متاح";
 "Upscale only works on video or images" = "يعمل رفع الدقة مع الفيديو أو الصور فقط";
 "Upscale source media" = "رفع دقة وسائط المصدر";
 "Upscale…" = "رفع الدقة…";
-"Upscale… (Paid)" = "رفع الدقة… (مدفوع)";
 "Use Freeform" = "استخدام الوضع الحر";
 "Use Freeform to edit individual crop insets." = "استخدم الوضع الحر لتحرير هوامش الاقتصاص كلًّا على حدة.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "استخدم نسبة عرض إلى ارتفاع من رقمين موجبين، مثل ⁨3:2⁩.";
@@ -977,6 +979,7 @@
 "Video" = "الفيديو";
 "Video Ref" = "مرجع فيديو";
 "Video has no audio track" = "لا يحتوي الفيديو على مسار صوتي";
+"Video model not available" = "نموذج الفيديو غير متاح";
 "Video to Music" = "تحويل الفيديو إلى موسيقى";
 "View" = "عرض";
 "View Skills" = "عرض المهارات";
@@ -1005,6 +1008,7 @@
 "X High" = "مرتفع جدًا";
 "You were not charged for this generation" = "لم تُحصَّل رسوم مقابل عملية الإنشاء هذه";
 "You're all set" = "أصبح كل شيء جاهزًا";
+"You're ready to start creating." = "أنت جاهز لبدء الإنشاء.";
 "Your Lottie animation is ready." = "رسم Lottie المتحرك جاهز.";
 "Your audio clip is ready." = "مقطع الصوت جاهز.";
 "Your image is ready." = "صورتك جاهزة.";

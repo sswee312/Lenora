@@ -2,14 +2,15 @@
 
 "$%lld/mo" = "$%lld/md.";
 "$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Kreditter udløber ved fornyelse.";
-"%@ (Paid)" = "%@ (Betalt)";
 "%@ could not be exported." = "%@ kunne ikke eksporteres.";
 "%@ does not accept this media" = "%@ accepterer ikke dette medie";
 "%@ does not support this media type." = "%@ understøtter ikke denne medietype.";
 "%@ exported with %lld warnings." = "%@ eksporteret med %lld advarsler.";
 "%@ exported with 1 warning." = "%@ eksporteret med 1 advarsel.";
+"%@ is not a valid URL." = "%@ er ikke en gyldig URL.";
 "%@ is ready." = "%@ er klar.";
 "%@ model not available" = "%@-model ikke tilgængelig";
+"%@ must use HTTPS, or HTTP on this Mac only." = "%@ skal bruge HTTPS, eller HTTP kun på denne Mac.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld færdigheder";
@@ -22,11 +23,7 @@
 "%lld couldn't align" = "%lld kunne ikke justeres";
 "%lld credits" = "%lld kreditter";
 "%lld credits / month" = "%lld kreditter / måned";
-"%lld credits estimated. Actual billing may differ." = "%lld kreditter anslået. Den faktiske fakturering kan afvige.";
-"%lld credits needed. Only %lld remaining." = "%lld kreditter påkrævet. Kun %lld tilbage.";
 "%lld credits refunded" = "%lld kreditter refunderet";
-"%lld credits used" = "%lld kreditter brugt";
-"%lld credits. %lld remaining after this generation." = "%lld kreditter. %lld tilbage efter denne generering.";
 "%lld images are ready in Lenora Pro." = "%lld billeder er klar i Lenora Pro.";
 "%lld items" = "%lld elementer";
 "%lld media files are missing and will be skipped." = "%lld mediefiler mangler og springes over.";
@@ -38,14 +35,7 @@
 "%lldk credits" = "%lldk kreditter";
 "(image payload)" = "(billeddata)";
 "/ month" = "/ måned";
-"0 credits" = "0 kreditter";
-"0 credits used" = "0 kreditter brugt";
 "1 clip" = "1 klip";
-"1 credit" = "1 kredit";
-"1 credit estimated. Actual billing may differ." = "1 kredit anslået. Den faktiske fakturering kan afvige.";
-"1 credit needed. Only %lld remaining." = "1 kredit påkrævet. Kun %lld tilbage.";
-"1 credit used" = "1 kredit brugt";
-"1 credit. %lld remaining after this generation." = "1 kredit. %lld tilbage efter denne generering.";
 "1 item" = "1 element";
 "1 media file is missing and will be skipped." = "1 mediefil mangler og springes over.";
 "= %lld credits" = "= %lld kreditter";
@@ -57,16 +47,19 @@
 "AI Enhance" = "AI-forbedring";
 "AI Generated" = "AI-genereret";
 "AI agent" = "AI-agent";
-"AI is unavailable" = "AI er ikke tilgængelig";
 "About Lenora Pro" = "Om Lenora Pro";
 "Account" = "Konto";
 "Account settings" = "Kontoindstillinger";
 "Action Safe" = "Handlingssikker";
 "Activity unavailable" = "Aktivitet ikke tilgængelig";
+"Adapters" = "Adaptere";
 "Add Marker (M)" = "Tilføj markør (M)";
 "Add Range to Chat" = "Tilføj område til chat";
 "Add Text" = "Tilføj tekst";
 "Add a comment" = "Tilføj en kommentar";
+"Add an API key in Settings to chat." = "Tilføj en API-nøgle i Indstillinger for at chatte.";
+"Add an Anthropic API key to use this model." = "Tilføj en Anthropic API-nøgle for at bruge denne model.";
+"Add an OpenAI API key to use this model." = "Tilføj en OpenAI API-nøgle for at bruge denne model.";
 "Add captions" = "Tilføj undertekster";
 "Add credits" = "Tilføj kreditter";
 "Add emoji" = "Tilføj emoji";
@@ -111,6 +104,8 @@
 "Auto" = "Automatisk";
 "Available" = "Tilgængelig";
 "Back" = "Tilbage";
+"Backend" = "Backend";
+"Backend %@ · Protocol %@" = "Backend %@ · Protokol %@";
 "Background" = "Baggrund";
 "Basic Correction" = "Grundlæggende korrektion";
 "Beat detection failed. Check that the media file is reachable, then retry." = "Taktgenkendelse mislykkedes. Kontrollér, at mediefilen er tilgængelig, og prøv igen.";
@@ -132,6 +127,7 @@
 "Can't import \"%@\" — not a Lottie animation." = "Kan ikke importere \"%@\" — ikke en Lottie-animation.";
 "Can't import \"%@\" — unsupported file type." = "Kan ikke importere \"%@\" — filtypen understøttes ikke.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "Kan ikke sætte \"%@\" ind her — det ville indlejre denne tidslinje i sig selv.";
+"Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Kan ikke nå backend på %@. Start den med ./scripts/dev, og test igen.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "Kan ikke genforbinde \"%@\". Påkrævet medietype: %@. Valgt medietype: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Kan ikke låse synkronisering op på et multicam-spor — \"%@\" forbliver justeret gennem det.";
 "Cancel" = "Annuller";
@@ -208,6 +204,8 @@
 "Completed" = "Fuldført";
 "Connect an agent" = "Tilslut en agent";
 "Connect an external agent to inspect and edit the open Lenora Pro project." = "Tilslut en ekstern agent for at inspicere og redigere det åbne Lenora Pro-projekt.";
+"Connected" = "Forbundet";
+"Connection failed: %@" = "Forbindelsen mislykkedes: %@";
 "Content" = "Indhold";
 "Continue" = "Fortsæt";
 "Contrast" = "Kontrast";
@@ -225,6 +223,7 @@
 "Couldn't align %lld clips." = "Kunne ikke justere %lld klip.";
 "Couldn't change marker." = "Kunne ikke ændre markør.";
 "Couldn't delete marker." = "Kunne ikke slette markør.";
+"Couldn't save the token to the Keychain." = "Tokenet kunne ikke gemmes i nøgleringen.";
 "Couldn't switch angle." = "Kunne ikke skifte vinkel.";
 "Couldn’t move %@ to the Trash." = "Kunne ikke flytte %@ til papirkurven.";
 "Count" = "Antal";
@@ -325,15 +324,14 @@
 "Edit supports up to %llds (this is %llds)" = "Redigering understøtter op til %llds (dette er %llds)";
 "Editing" = "Redigering";
 "Edit…" = "Rediger…";
-"Edit… (Paid)" = "Rediger… (Betalt)";
 "Effects" = "Effekter";
 "Empty" = "Tom";
 "Enable: %@" = "Aktivér: %@";
+"Enabled" = "Aktiveret";
 "Enhance" = "Forbedr";
 "Enhance resolution or frame rate with AI" = "Forbedr opløsning eller billedhastighed med AI";
 "Enhanced with FLUX.3 at 1080p." = "Forbedret med FLUX.3 ved 1080p.";
 "Enter Full Screen" = "Aktivér fuld skærm";
-"Estimated cost. Actual billing may differ slightly." = "Anslået pris. Den faktiske fakturering kan afvige en smule.";
 "Exclusion" = "Udelukkelse";
 "Expand" = "Udvid";
 "Export" = "Eksportér";
@@ -348,6 +346,7 @@
 "Extend" = "Forlæng";
 "Extends captions across short gaps and holds the final caption." = "Forlænger undertekster over korte mellemrum og holder den sidste undertekst.";
 "Extra Large" = "Ekstra stor";
+"Extract Audio" = "Udtræk lyd";
 "FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Indtoning";
 "Fade Out" = "Udtoning";
@@ -399,16 +398,16 @@
 "Generate music for the timeline" = "Generer musik til tidslinjen";
 "Generate music that fits the video" = "Generer musik, der passer til videoen";
 "Generate video, image, or audio with different models and settings. Drag assets from the media panel above into the reference frame." = "Generer video, billede eller lyd med forskellige modeller og indstillinger. Træk medier fra mediepanelet ovenfor ind i referencerammen.";
-"Generate · %lld credits" = "Generer · %lld kreditter";
-"Generate · 1 credit" = "Generer · 1 kredit";
 "Generating…" = "Genererer…";
 "Generation Failed" = "Generering mislykkedes";
 "Generation Input" = "Genereringsinput";
 "Generation complete" = "Generering fuldført";
 "Generation in progress" = "Generering i gang";
 "Generation panel" = "Genereringspanel";
+"Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generering kører på din Lenora-backend. Tokenet gemmes i macOS-nøgleringen.";
 "Get Anthropic API key" = "Hent Anthropic API-nøgle";
 "Get OpenAI API key" = "Hent OpenAI API-nøgle";
+"Get Started" = "Kom i gang";
 "Get a notification when a generation finishes." = "Få en notifikation, når en generering er færdig.";
 "Getting the search model ready." = "Søgemodellen gøres klar.";
 "Glow" = "Glød";
@@ -497,7 +496,6 @@
 "Lip Sync model not available" = "Læbesynk-model ikke tilgængelig";
 "Lip Sync only works on video" = "Læbesynk virker kun på video";
 "Lip Sync…" = "Læbesynk…";
-"Lip Sync… (Paid)" = "Læbesynk… (Betalt)";
 "Loading community skills" = "Indlæser fællesskabsfærdigheder";
 "Loading community skills…" = "Indlæser fællesskabsfærdigheder…";
 "Loading media metadata…" = "Indlæser mediemetadata…";
@@ -596,6 +594,7 @@
 "No media" = "Ingen medier";
 "No media yet" = "Ingen medier endnu";
 "No models match \"%@\"." = "Ingen modeller matcher \"%@\".";
+"No models provided by the connected backend" = "Den forbundne backend leverer ingen modeller";
 "No music models available." = "Ingen musikmodeller tilgængelige.";
 "No projects found" = "Ingen projekter fundet";
 "No prompt needed" = "Ingen prompt nødvendig";
@@ -625,7 +624,6 @@
 "Open Timeline" = "Åbn tidslinje";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Åbn fanen AI-redigering for at opskalere, redigere med prompt, oprette video fra en frame eller generere musik, SFX, rensning og eftersynkronisering fra klippet.";
 "OpenAI API Key" = "OpenAI API-nøgle";
-"Opening Google" = "Åbner Google";
 "Opening Google…" = "Åbner Google…";
 "Open…" = "Åbn…";
 "Organize with Agent" = "Organiser med Agent";
@@ -643,6 +641,7 @@
 "Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora indlæste dette klips kildefil, men kunne ikke klargøre den til afspilning. Filen kan være beskadiget eller i et format, der ikke understøttes.";
 "Paste" = "Sæt ind";
 "Paste Clip Settings" = "Sæt klipindstillinger ind";
+"Paste LENORA_TOKEN" = "Indsæt LENORA_TOKEN";
 "Paste Settings" = "Sæt indstillinger ind";
 "Path" = "Sti";
 "Per line" = "Pr. linje";
@@ -691,7 +690,6 @@
 "Reframe model not available" = "Omram-model ikke tilgængelig";
 "Reframe only works on video" = "Omram virker kun på video";
 "Reframe…" = "Omram…";
-"Reframe… (Paid)" = "Omram… (Betalt)";
 "Refresh" = "Opdater";
 "Refresh Community Skills" = "Opdater fællesskabsfærdigheder";
 "Refresh to check for available skills." = "Opdater for at se tilgængelige færdigheder.";
@@ -721,7 +719,6 @@
 "Rendering…" = "Renderer…";
 "Replace clip source" = "Erstat klippets kilde";
 "Replacement Audio" = "Erstatningslyd";
-"Requires a paid plan" = "Kræver et betalt abonnement";
 "Rerun" = "Kør igen";
 "Reset All" = "Nulstil alle";
 "Reset Clipping Indicators" = "Nulstil klipningsindikatorer";
@@ -740,6 +737,7 @@
 "Ripple Delete" = "Bølgeslet";
 "Ripple Delete Gap" = "Bølgeslet mellemrum";
 "Ripple Insert" = "Bølgeindsæt";
+"Ripple Timeline Markers" = "Bølgeflyt tidslinjemarkører";
 "Ripple Trim" = "Bølgetrim";
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Bølgesletter alle stille afsnit; efterfølgende klip lukker mellemrummene.";
 "Rotation" = "Rotation";
@@ -756,6 +754,7 @@
 "Save As…" = "Arkiver som…";
 "Save Changes" = "Arkiver ændringer";
 "Save Range as Media" = "Arkiver område som medie";
+"Save as Audio" = "Arkiver som lyd";
 "Save as Media" = "Arkiver som medie";
 "Save this project to view activity" = "Arkiver dette projekt for at se aktivitet";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Arkiverer en kopi af dette projekt med alle medier samlet, så det kan åbnes på enhver Mac.";
@@ -788,6 +787,8 @@
 "Server URL" = "Server-URL";
 "Set as first frame" = "Indstil som første frame";
 "Set as reference" = "Indstil som reference";
+"Set by LENORA_BACKEND_URL for this launch." = "Angivet af LENORA_BACKEND_URL for denne start.";
+"Set by LENORA_TOKEN for this launch." = "Angivet af LENORA_TOKEN for denne start.";
 "Settings" = "Indstillinger";
 "Settings…" = "Indstillinger…";
 "Setup instructions" = "Opsætningsvejledning";
@@ -805,10 +806,8 @@
 "Side by Side" = "Side om side";
 "Sign In" = "Log ind";
 "Sign in" = "Log ind";
-"Sign in to generate" = "Log ind for at generere";
 "Sign in to receive 250 free credits for AI chat and generation." = "Log ind, og få 250 gratis kreditter til AI-chat og generering.";
 "Sign in to subscribe and use AI generation." = "Log ind for at abonnere og bruge AI-generering.";
-"Sign in to use AI" = "Log ind for at bruge AI";
 "Sign in with Google" = "Log ind med Google";
 "Sign out" = "Log ud";
 "Sign-in couldn’t be completed. Try again." = "Login kunne ikke fuldføres. Prøv igen.";
@@ -860,7 +859,6 @@
 "Strikethrough" = "Gennemstregning";
 "Style" = "Stil";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Stilanvisninger (valgfrit). f.eks. varm og langsom, britisk accent.";
-"Subscribe" = "Abonner";
 "Subscription" = "Abonnement";
 "Subtitle" = "Undertekst";
 "Subtitle file is unavailable." = "Undertekstfilen er ikke tilgængelig.";
@@ -881,6 +879,7 @@
 "Target Language" = "Målsprog";
 "Temperature" = "Temperatur";
 "Temporary files" = "Midlertidige filer";
+"Test Connection" = "Test forbindelse";
 "Text" = "Tekst";
 "Text to Music" = "Tekst til musik";
 "Text to speak" = "Tekst der skal tales";
@@ -911,6 +910,8 @@
 "Timelines" = "Tidslinjer";
 "Tint" = "Farvestik";
 "Title Safe" = "Titelsikker";
+"Token" = "Token";
+"Token rejected. Paste LENORA_TOKEN from .env." = "Token afvist. Indsæt LENORA_TOKEN fra .env.";
 "Tone" = "Tone";
 "Tools" = "Værktøjer";
 "Top" = "Øverst";
@@ -933,14 +934,15 @@
 "Try Again" = "Prøv igen";
 "Try again." = "Prøv igen.";
 "Try another search." = "Prøv en anden søgning.";
-"Turn off to save %lld%% on generation cost." = "Slå fra for at spare %lld%% på genereringsprisen.";
 "Turn off to skip audio generation." = "Slå fra for at springe lydgenerering over.";
 "Tutorial" = "Vejledning";
 "Type" = "Type";
 "Typewriter" = "Skrivemaskine";
 "UPPERCASE" = "STORE BOGSTAVER";
+"URL" = "URL";
 "Unable to open Claude Desktop" = "Kan ikke åbne Claude Desktop";
 "Unable to save skill" = "Kunne ikke arkivere færdighed";
+"Unchanged" = "Uændret";
 "Underline" = "Understregning";
 "Undo" = "Fortryd";
 "Undo (⌘Z)" = "Fortryd (⌘Z)";
@@ -957,10 +959,10 @@
 "Upgrade to add credits" = "Opgrader for at tilføje kreditter";
 "Uploading…" = "Overfører…";
 "Upscale" = "Opskalér";
+"Upscale model not available" = "Opskaleringsmodel ikke tilgængelig";
 "Upscale only works on video or images" = "Opskalering virker kun på video eller billeder";
 "Upscale source media" = "Opskalér kildemedie";
 "Upscale…" = "Opskalér…";
-"Upscale… (Paid)" = "Opskalér… (Betalt)";
 "Use Freeform" = "Brug fri form";
 "Use Freeform to edit individual crop insets." = "Brug fri form til at redigere de enkelte beskæringsindryk.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Brug et billedformat med to positive tal, f.eks. 3:2.";
@@ -977,6 +979,7 @@
 "Video" = "Video";
 "Video Ref" = "Videoref.";
 "Video has no audio track" = "Videoen har intet lydspor";
+"Video model not available" = "Videomodel ikke tilgængelig";
 "Video to Music" = "Video til musik";
 "View" = "Vis";
 "View Skills" = "Vis færdigheder";
@@ -1005,6 +1008,7 @@
 "X High" = "X høj";
 "You were not charged for this generation" = "Du blev ikke debiteret for denne generering";
 "You're all set" = "Alt er klar";
+"You're ready to start creating." = "Du er klar til at begynde at skabe.";
 "Your Lottie animation is ready." = "Din Lottie-animation er klar.";
 "Your audio clip is ready." = "Dit lydklip er klar.";
 "Your image is ready." = "Dit billede er klar.";

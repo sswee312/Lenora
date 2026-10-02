@@ -2,14 +2,15 @@
 
 "$%lld/mo" = "$%lld/kk";
 "$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Kreditit vanhenevat uusittaessa.";
-"%@ (Paid)" = "%@ (maksullinen)";
 "%@ could not be exported." = "%@ ei voitu viedä.";
 "%@ does not accept this media" = "%@ ei hyväksy tätä mediaa";
 "%@ does not support this media type." = "%@ ei tue tätä mediatyyppiä.";
 "%@ exported with %lld warnings." = "%@ vietiin %lld varoituksella.";
 "%@ exported with 1 warning." = "%@ vietiin yhdellä varoituksella.";
+"%@ is not a valid URL." = "%@ ei ole kelvollinen URL-osoite.";
 "%@ is ready." = "%@ on valmis.";
 "%@ model not available" = "Malli %@ ei ole käytettävissä";
+"%@ must use HTTPS, or HTTP on this Mac only." = "%@:n on käytettävä HTTPS:ää tai HTTP:tä vain tällä Macilla.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld taitoa";
@@ -22,11 +23,7 @@
 "%lld couldn't align" = "%lld ei voitu kohdistaa";
 "%lld credits" = "%lld kredittiä";
 "%lld credits / month" = "%lld kredittiä / kk";
-"%lld credits estimated. Actual billing may differ." = "%lld kredittiä arvioitu. Todellinen veloitus voi poiketa.";
-"%lld credits needed. Only %lld remaining." = "%lld kredittiä tarvitaan. Jäljellä vain %lld.";
 "%lld credits refunded" = "%lld kredittiä hyvitetty";
-"%lld credits used" = "%lld kredittiä käytetty";
-"%lld credits. %lld remaining after this generation." = "%lld kredittiä. %lld jäljellä tämän generoinnin jälkeen.";
 "%lld images are ready in Lenora Pro." = "%lld kuvaa on valmiina Lenora Prossa.";
 "%lld items" = "%lld kohdetta";
 "%lld media files are missing and will be skipped." = "%lld mediatiedostoa puuttuu, ja ne ohitetaan.";
@@ -38,14 +35,7 @@
 "%lldk credits" = "%lldk kredittiä";
 "(image payload)" = "(kuvadata)";
 "/ month" = "/ kk";
-"0 credits" = "0 kredittiä";
-"0 credits used" = "0 kredittiä käytetty";
 "1 clip" = "1 leike";
-"1 credit" = "1 kredit";
-"1 credit estimated. Actual billing may differ." = "1 kredit arvioitu. Todellinen veloitus voi poiketa.";
-"1 credit needed. Only %lld remaining." = "1 kredit tarvitaan. Jäljellä vain %lld.";
-"1 credit used" = "1 kredit käytetty";
-"1 credit. %lld remaining after this generation." = "1 kredit. %lld jäljellä tämän generoinnin jälkeen.";
 "1 item" = "1 kohde";
 "1 media file is missing and will be skipped." = "1 mediatiedosto puuttuu, ja se ohitetaan.";
 "= %lld credits" = "= %lld kredittiä";
@@ -57,16 +47,19 @@
 "AI Enhance" = "AI-parannus";
 "AI Generated" = "AI-generoitu";
 "AI agent" = "AI Agent";
-"AI is unavailable" = "AI ei ole käytettävissä";
 "About Lenora Pro" = "Tietoja Lenora Prosta";
 "Account" = "Tili";
 "Account settings" = "Tilin asetukset";
 "Action Safe" = "Toiminta-alue";
 "Activity unavailable" = "Toiminta ei ole käytettävissä";
+"Adapters" = "Sovittimet";
 "Add Marker (M)" = "Lisää merkki (M)";
 "Add Range to Chat" = "Lisää alue keskusteluun";
 "Add Text" = "Lisää teksti";
 "Add a comment" = "Lisää kommentti";
+"Add an API key in Settings to chat." = "Lisää API-avain asetuksissa, jotta voit keskustella.";
+"Add an Anthropic API key to use this model." = "Lisää Anthropic API -avain käyttääksesi tätä mallia.";
+"Add an OpenAI API key to use this model." = "Lisää OpenAI API -avain käyttääksesi tätä mallia.";
 "Add captions" = "Lisää tekstitykset";
 "Add credits" = "Lisää kredittejä";
 "Add emoji" = "Lisää emoji";
@@ -111,6 +104,8 @@
 "Auto" = "Automaattinen";
 "Available" = "Käytettävissä";
 "Back" = "Takaisin";
+"Backend" = "Taustapalvelin";
+"Backend %@ · Protocol %@" = "Taustapalvelin %@ · Protokolla %@";
 "Background" = "Tausta";
 "Basic Correction" = "Peruskorjaus";
 "Beat detection failed. Check that the media file is reachable, then retry." = "Iskujen tunnistus epäonnistui. Varmista, että mediatiedosto on käytettävissä, ja yritä uudelleen.";
@@ -132,6 +127,7 @@
 "Can't import \"%@\" — not a Lottie animation." = "\"%@\" ei voi tuoda — ei ole Lottie-animaatio.";
 "Can't import \"%@\" — unsupported file type." = "\"%@\" ei voi tuoda — tiedostotyyppiä ei tueta.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "\"%@\" ei voi sijoittaa tähän — aikajana sisäistyisi itseensä.";
+"Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Taustapalvelinta osoitteessa %@ ei tavoiteta. Käynnistä se komennolla ./scripts/dev ja testaa uudelleen.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "\"%@\" ei voi linkittää uudelleen. Vaadittu mediatyyppi: %@. Valittu mediatyyppi: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Monikameraraidan synkronointia ei voi avata — \"%@\" pysyy kohdistettuna sen kautta.";
 "Cancel" = "Peruuta";
@@ -208,6 +204,8 @@
 "Completed" = "Valmis";
 "Connect an agent" = "Yhdistä Agent";
 "Connect an external agent to inspect and edit the open Lenora Pro project." = "Yhdistä ulkoinen Agent avoimen Lenora Pro -projektin tarkasteluun ja muokkaukseen.";
+"Connected" = "Yhdistetty";
+"Connection failed: %@" = "Yhteys epäonnistui: %@";
 "Content" = "Sisältö";
 "Continue" = "Jatka";
 "Contrast" = "Kontrasti";
@@ -225,6 +223,7 @@
 "Couldn't align %lld clips." = "%lld leikettä ei voitu kohdistaa.";
 "Couldn't change marker." = "Merkkiä ei voitu muuttaa.";
 "Couldn't delete marker." = "Merkkiä ei voitu poistaa.";
+"Couldn't save the token to the Keychain." = "Tunnuksen tallennus avainnippuun epäonnistui.";
 "Couldn't switch angle." = "Kulmaa ei voitu vaihtaa.";
 "Couldn’t move %@ to the Trash." = "%@ ei voitu siirtää roskakoriin.";
 "Count" = "Määrä";
@@ -325,15 +324,14 @@
 "Edit supports up to %llds (this is %llds)" = "Muokkaus tukee enintään %lld s (tämä on %lld s)";
 "Editing" = "Muokkaus";
 "Edit…" = "Muokkaa…";
-"Edit… (Paid)" = "Muokkaa… (maksullinen)";
 "Effects" = "Tehosteet";
 "Empty" = "Tyhjä";
 "Enable: %@" = "Ota käyttöön: %@";
+"Enabled" = "Käytössä";
 "Enhance" = "Paranna";
 "Enhance resolution or frame rate with AI" = "Paranna resoluutiota tai kuvataajuutta tekoälyllä";
 "Enhanced with FLUX.3 at 1080p." = "Parannettu FLUX.3:lla 1080p-resoluutiossa.";
 "Enter Full Screen" = "Siirry koko näytön tilaan";
-"Estimated cost. Actual billing may differ slightly." = "Arvioitu hinta. Todellinen veloitus voi poiketa hieman.";
 "Exclusion" = "Poissulkeminen";
 "Expand" = "Laajenna";
 "Export" = "Vie";
@@ -348,6 +346,7 @@
 "Extend" = "Pidennä";
 "Extends captions across short gaps and holds the final caption." = "Jatkaa tekstityksiä lyhyiden aukkojen yli ja pitää viimeisen tekstityksen.";
 "Extra Large" = "Erittäin suuri";
+"Extract Audio" = "Pura ääni";
 "FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Häivytä sisään";
 "Fade Out" = "Häivytä ulos";
@@ -399,16 +398,16 @@
 "Generate music for the timeline" = "Generoi musiikkia aikajanalle";
 "Generate music that fits the video" = "Generoi videoon sopivaa musiikkia";
 "Generate video, image, or audio with different models and settings. Drag assets from the media panel above into the reference frame." = "Generoi videota, kuvaa tai ääntä eri malleilla ja asetuksilla. Vedä aineistoja yllä olevasta mediapaneelista viitekehykseen.";
-"Generate · %lld credits" = "Generoi · %lld kredittiä";
-"Generate · 1 credit" = "Generoi · 1 kredit";
 "Generating…" = "Generoidaan…";
 "Generation Failed" = "Generointi epäonnistui";
 "Generation Input" = "Generoinnin syöte";
 "Generation complete" = "Generointi valmis";
 "Generation in progress" = "Generointi käynnissä";
 "Generation panel" = "Generointipaneeli";
+"Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Luonti suoritetaan Lenora-taustapalvelimellasi. Tunnus tallennetaan macOS:n avainnippuun.";
 "Get Anthropic API key" = "Hanki Anthropic API -avain";
 "Get OpenAI API key" = "Hanki OpenAI API -avain";
+"Get Started" = "Aloita";
 "Get a notification when a generation finishes." = "Saa ilmoitus, kun generointi valmistuu.";
 "Getting the search model ready." = "Valmistellaan hakumallia.";
 "Glow" = "Hehku";
@@ -497,7 +496,6 @@
 "Lip Sync model not available" = "Huulisynkronointimalli ei ole käytettävissä";
 "Lip Sync only works on video" = "Huulisynkronointi toimii vain videolle";
 "Lip Sync…" = "Huulisynkronointi…";
-"Lip Sync… (Paid)" = "Huulisynkronointi… (maksullinen)";
 "Loading community skills" = "Ladataan yhteisön taitoja";
 "Loading community skills…" = "Ladataan yhteisön taitoja…";
 "Loading media metadata…" = "Ladataan median metatietoja…";
@@ -596,6 +594,7 @@
 "No media" = "Ei mediaa";
 "No media yet" = "Ei mediaa vielä";
 "No models match \"%@\"." = "Yksikään malli ei vastaa hakua \"%@\".";
+"No models provided by the connected backend" = "Yhdistetty taustapalvelin ei tarjoa malleja";
 "No music models available." = "Musiikkimalleja ei ole käytettävissä.";
 "No projects found" = "Projekteja ei löytynyt";
 "No prompt needed" = "Kehotetta ei tarvita";
@@ -625,7 +624,6 @@
 "Open Timeline" = "Avaa aikajana";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Avaa AI-muokkaus-välilehti skaalataksesi ylös, muokataksesi kehotteella, luodaksesi videon ruudusta tai generoidaksesi musiikkia, SFX:ää, puhdistusta ja dubbausta leikkeestä.";
 "OpenAI API Key" = "OpenAI API -avain";
-"Opening Google" = "Avataan Google";
 "Opening Google…" = "Avataan Google…";
 "Open…" = "Avaa…";
 "Organize with Agent" = "Järjestä Agentilla";
@@ -643,6 +641,7 @@
 "Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora latasi tämän leikkeen lähdetiedoston, mutta ei voinut valmistella sitä toistoon. Tiedosto voi olla vioittunut tai muodoltaan tukematon.";
 "Paste" = "Sijoita";
 "Paste Clip Settings" = "Sijoita leikkeen asetukset";
+"Paste LENORA_TOKEN" = "Liitä LENORA_TOKEN";
 "Paste Settings" = "Sijoita asetukset";
 "Path" = "Polku";
 "Per line" = "Riveittäin";
@@ -691,7 +690,6 @@
 "Reframe model not available" = "Uudelleenkehysmalli ei ole käytettävissä";
 "Reframe only works on video" = "Uudelleenkehys toimii vain videolle";
 "Reframe…" = "Uudelleenkehystä…";
-"Reframe… (Paid)" = "Uudelleenkehystä… (maksullinen)";
 "Refresh" = "Päivitä";
 "Refresh Community Skills" = "Päivitä yhteisön taidot";
 "Refresh to check for available skills." = "Päivitä tarkistaaksesi käytettävissä olevat taidot.";
@@ -721,7 +719,6 @@
 "Rendering…" = "Renderöidään…";
 "Replace clip source" = "Korvaa leikkeen lähde";
 "Replacement Audio" = "Korvaava ääni";
-"Requires a paid plan" = "Edellyttää maksullista tilausta";
 "Rerun" = "Suorita uudelleen";
 "Reset All" = "Palauta kaikki";
 "Reset Clipping Indicators" = "Palauta leikkausilmaisimet";
@@ -740,6 +737,7 @@
 "Ripple Delete" = "Aaltopoisto";
 "Ripple Delete Gap" = "Aaltopoista aukko";
 "Ripple Insert" = "Aalto-lisäys";
+"Ripple Timeline Markers" = "Aaltosiirrä aikajanan merkit";
 "Ripple Trim" = "Aaltorajaus";
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Aaltopoistaa jokaisen hiljaisen jakson; seuraavat leikkeet sulkevat aukot.";
 "Rotation" = "Kierto";
@@ -756,6 +754,7 @@
 "Save As…" = "Tallenna nimellä…";
 "Save Changes" = "Tallenna muutokset";
 "Save Range as Media" = "Tallenna alue mediaksi";
+"Save as Audio" = "Tallenna äänenä";
 "Save as Media" = "Tallenna mediaksi";
 "Save this project to view activity" = "Tallenna tämä projekti nähdäksesi toiminnan";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Tallentaa kopion projektista kaikkine medioineen, jotta se avautuu millä tahansa koneella.";
@@ -788,6 +787,8 @@
 "Server URL" = "Palvelimen URL";
 "Set as first frame" = "Aseta ensimmäiseksi ruuduksi";
 "Set as reference" = "Aseta viitteeksi";
+"Set by LENORA_BACKEND_URL for this launch." = "Asetettu muuttujalla LENORA_BACKEND_URL tätä käynnistystä varten.";
+"Set by LENORA_TOKEN for this launch." = "Asetettu muuttujalla LENORA_TOKEN tätä käynnistystä varten.";
 "Settings" = "Asetukset";
 "Settings…" = "Asetukset…";
 "Setup instructions" = "Määritysohjeet";
@@ -805,10 +806,8 @@
 "Side by Side" = "Vierekkäin";
 "Sign In" = "Kirjaudu sisään";
 "Sign in" = "Kirjaudu sisään";
-"Sign in to generate" = "Kirjaudu sisään generoidaksesi";
 "Sign in to receive 250 free credits for AI chat and generation." = "Kirjaudu sisään saadaksesi 250 ilmaista kredittiä AI-keskusteluun ja generointiin.";
 "Sign in to subscribe and use AI generation." = "Kirjaudu sisään tilataksesi ja käyttääksesi AI-generointia.";
-"Sign in to use AI" = "Kirjaudu sisään käyttääksesi tekoälyä";
 "Sign in with Google" = "Kirjaudu sisään Googlella";
 "Sign out" = "Kirjaudu ulos";
 "Sign-in couldn’t be completed. Try again." = "Kirjautumista ei voitu suorittaa. Yritä uudelleen.";
@@ -860,7 +859,6 @@
 "Strikethrough" = "Yliviivaus";
 "Style" = "Tyyli";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Tyyliohjeet (valinnainen), esim. lämmin ja hidas, brittiläinen aksentti.";
-"Subscribe" = "Tilaa";
 "Subscription" = "Tilaus";
 "Subtitle" = "Tekstitys";
 "Subtitle file is unavailable." = "Tekstitystiedosto ei ole käytettävissä.";
@@ -881,6 +879,7 @@
 "Target Language" = "Kohdekieli";
 "Temperature" = "Lämpötila";
 "Temporary files" = "Tilapäistiedostot";
+"Test Connection" = "Testaa yhteys";
 "Text" = "Teksti";
 "Text to Music" = "Tekstistä musiikiksi";
 "Text to speak" = "Luettava teksti";
@@ -911,6 +910,8 @@
 "Timelines" = "Aikajanat";
 "Tint" = "Sävy";
 "Title Safe" = "Otsikkoalue";
+"Token" = "Tunnus";
+"Token rejected. Paste LENORA_TOKEN from .env." = "Tunnus hylättiin. Liitä LENORA_TOKEN .env-tiedostosta.";
 "Tone" = "Tonaalisuus";
 "Tools" = "Työkalut";
 "Top" = "Yläreuna";
@@ -933,14 +934,15 @@
 "Try Again" = "Yritä uudelleen";
 "Try again." = "Yritä uudelleen.";
 "Try another search." = "Kokeile toista hakua.";
-"Turn off to save %lld%% on generation cost." = "Poista käytöstä säästääksesi %lld%% generoinnin hinnasta.";
 "Turn off to skip audio generation." = "Poista käytöstä ohittaaksesi äänen generoinnin.";
 "Tutorial" = "Opastus";
 "Type" = "Tyyppi";
 "Typewriter" = "Kirjoituskone";
 "UPPERCASE" = "VERSAALI";
+"URL" = "URL";
 "Unable to open Claude Desktop" = "Claude Desktopia ei voi avata";
 "Unable to save skill" = "Taitoa ei voi tallentaa";
+"Unchanged" = "Ei muutosta";
 "Underline" = "Alleviivaus";
 "Undo" = "Kumoa";
 "Undo (⌘Z)" = "Kumoa (⌘Z)";
@@ -957,10 +959,10 @@
 "Upgrade to add credits" = "Päivitä lisätäksesi kredittejä";
 "Uploading…" = "Lähetetään…";
 "Upscale" = "Skaalaa ylös";
+"Upscale model not available" = "Ylöskaalausmalli ei ole käytettävissä";
 "Upscale only works on video or images" = "Skaalaa ylös toimii vain videolle tai kuville";
 "Upscale source media" = "Skaalaa lähdemedia ylös";
 "Upscale…" = "Skaalaa ylös…";
-"Upscale… (Paid)" = "Skaalaa ylös… (maksullinen)";
 "Use Freeform" = "Käytä vapaata muotoa";
 "Use Freeform to edit individual crop insets." = "Käytä vapaata muotoa yksittäisten rajausreunusten muokkaamiseen.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Käytä kuvasuhdetta, jossa on kaksi positiivista lukua, esimerkiksi 3:2.";
@@ -977,6 +979,7 @@
 "Video" = "Video";
 "Video Ref" = "Videoviite";
 "Video has no audio track" = "Videolla ei ole ääniraitaa";
+"Video model not available" = "Videomalli ei ole käytettävissä";
 "Video to Music" = "Videosta musiikiksi";
 "View" = "Näytä";
 "View Skills" = "Näytä taidot";
@@ -1005,6 +1008,7 @@
 "X High" = "X High";
 "You were not charged for this generation" = "Tästä generoinnista ei veloitettu";
 "You're all set" = "Kaikki valmista";
+"You're ready to start creating." = "Olet valmis aloittamaan luomisen.";
 "Your Lottie animation is ready." = "Lottie-animaatio on valmis.";
 "Your audio clip is ready." = "Äänileike on valmis.";
 "Your image is ready." = "Kuva on valmis.";

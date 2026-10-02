@@ -2,14 +2,15 @@
 
 "$%lld/mo" = "⁨$%lld⁩/חודש";
 "$%lld–$%lld · Credits expire at renewal." = "⁨$%lld–$%lld⁩ · קרדיטים פגים בחידוש.";
-"%@ (Paid)" = "⁨%@⁩ (בתשלום)";
 "%@ could not be exported." = "לא ניתן היה לייצא את ⁨%@⁩.";
 "%@ does not accept this media" = "⁨%@⁩ אינו מקבל מדיה זו";
 "%@ does not support this media type." = "⁨%@⁩ אינו תומך בסוג מדיה זה.";
 "%@ exported with %lld warnings." = "⁨%@⁩ יוצא עם ⁨%lld⁩ אזהרות.";
 "%@ exported with 1 warning." = "⁨%@⁩ יוצא עם אזהרה אחת.";
+"%@ is not a valid URL." = "⁨%@⁩ אינו URL תקין.";
 "%@ is ready." = "⁨%@⁩ מוכן.";
 "%@ model not available" = "המודל ⁨%@⁩ אינו זמין";
+"%@ must use HTTPS, or HTTP on this Mac only." = "⁨%@⁩ חייב להשתמש ב-HTTPS, או ב-HTTP במחשב Mac זה בלבד.";
 "%@ · %@" = "⁨%@⁩ · ⁨%@⁩";
 "%@ · %lld" = "⁨%@⁩ · ⁨%lld⁩";
 "%@, %lld skills" = "⁨%@⁩, ⁨%lld⁩ מיומנויות";
@@ -22,11 +23,7 @@
 "%lld couldn't align" = "לא ניתן היה ליישר ⁨%lld⁩";
 "%lld credits" = "⁨%lld⁩ קרדיטים";
 "%lld credits / month" = "⁨%lld⁩ קרדיטים / חודש";
-"%lld credits estimated. Actual billing may differ." = "הערכה: ⁨%lld⁩ קרדיטים. החיוב בפועל עשוי להיות שונה.";
-"%lld credits needed. Only %lld remaining." = "נדרשים ⁨%lld⁩ קרדיטים. נותרו רק ⁨%lld⁩.";
 "%lld credits refunded" = "הוחזרו ⁨%lld⁩ קרדיטים";
-"%lld credits used" = "נוצלו ⁨%lld⁩ קרדיטים";
-"%lld credits. %lld remaining after this generation." = "⁨%lld⁩ קרדיטים. יישארו ⁨%lld⁩ לאחר הפקה זו.";
 "%lld images are ready in Lenora Pro." = "⁨%lld⁩ תמונות מוכנות ב-Lenora Pro.";
 "%lld items" = "⁨%lld⁩ פריטים";
 "%lld media files are missing and will be skipped." = "חסרים ⁨%lld⁩ קובצי מדיה והם ידולגו.";
@@ -38,14 +35,7 @@
 "%lldk credits" = "⁨%lldk⁩ קרדיטים";
 "(image payload)" = "(תוכן תמונה)";
 "/ month" = "/ חודש";
-"0 credits" = "⁨0⁩ קרדיטים";
-"0 credits used" = "נוצלו ⁨0⁩ קרדיטים";
 "1 clip" = "קליפ אחד";
-"1 credit" = "קרדיט אחד";
-"1 credit estimated. Actual billing may differ." = "הערכה: קרדיט אחד. החיוב בפועל עשוי להיות שונה.";
-"1 credit needed. Only %lld remaining." = "נדרש קרדיט אחד. נותרו רק ⁨%lld⁩.";
-"1 credit used" = "נוצל קרדיט אחד";
-"1 credit. %lld remaining after this generation." = "קרדיט אחד. יישארו ⁨%lld⁩ לאחר הפקה זו.";
 "1 item" = "פריט אחד";
 "1 media file is missing and will be skipped." = "חסר קובץ מדיה אחד והוא ידולג.";
 "= %lld credits" = "= ⁨%lld⁩ קרדיטים";
@@ -57,16 +47,19 @@
 "AI Enhance" = "שיפור AI";
 "AI Generated" = "נוצר ב-AI";
 "AI agent" = "Agent של AI";
-"AI is unavailable" = "AI אינו זמין";
 "About Lenora Pro" = "אודות Lenora Pro";
 "Account" = "חשבון";
 "Account settings" = "הגדרות חשבון";
 "Action Safe" = "אזור פעולה בטוח";
 "Activity unavailable" = "הפעילות אינה זמינה";
+"Adapters" = "מתאמים";
 "Add Marker (M)" = "הוסף סמן ⁨(M)⁩";
 "Add Range to Chat" = "הוסף טווח לצ'אט";
 "Add Text" = "הוסף טקסט";
 "Add a comment" = "הוסף הערה";
+"Add an API key in Settings to chat." = "הוסף מפתח API בהגדרות כדי לשוחח בצ'אט.";
+"Add an Anthropic API key to use this model." = "הוסף מפתח API של Anthropic כדי להשתמש במודל זה.";
+"Add an OpenAI API key to use this model." = "הוסף מפתח API של OpenAI כדי להשתמש במודל זה.";
 "Add captions" = "הוסף כתוביות";
 "Add credits" = "הוסף קרדיטים";
 "Add emoji" = "הוסף אימוג׳י";
@@ -111,6 +104,8 @@
 "Auto" = "אוטומטי";
 "Available" = "זמין";
 "Back" = "חזרה";
+"Backend" = "Backend";
+"Backend %@ · Protocol %@" = "Backend ⁨%@⁩ · פרוטוקול ⁨%@⁩";
 "Background" = "רקע";
 "Basic Correction" = "תיקון בסיסי";
 "Beat detection failed. Check that the media file is reachable, then retry." = "זיהוי הפעימות נכשל. ודא שקובץ המדיה נגיש, ואז נסה שוב.";
@@ -132,6 +127,7 @@
 "Can't import \"%@\" — not a Lottie animation." = "לא ניתן לייבא את \"⁨%@⁩\" — זו אינה אנימציית Lottie.";
 "Can't import \"%@\" — unsupported file type." = "לא ניתן לייבא את \"⁨%@⁩\" — סוג קובץ לא נתמך.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "לא ניתן להדביק את \"⁨%@⁩\" כאן — זה יקנן את ציר הזמן בתוך עצמו.";
+"Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "לא ניתן להגיע ל-Backend בכתובת ⁨%@⁩. הפעל אותו באמצעות ./scripts/dev ובדוק שוב.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "לא ניתן לקשר מחדש את \"⁨%@⁩\". סוג מדיה נדרש: ⁨%@⁩. סוג מדיה שנבחר: ⁨%@⁩.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "לא ניתן לבטל נעילת סנכרון ברצועת מולטיקאם — \"⁨%@⁩\" נשאר מיושר דרכה.";
 "Cancel" = "ביטול";
@@ -208,6 +204,8 @@
 "Completed" = "הושלם";
 "Connect an agent" = "חבר Agent";
 "Connect an external agent to inspect and edit the open Lenora Pro project." = "חבר Agent חיצוני כדי לבדוק ולערוך את פרויקט Lenora Pro הפתוח.";
+"Connected" = "מחובר";
+"Connection failed: %@" = "החיבור נכשל: ⁨%@⁩";
 "Content" = "תוכן";
 "Continue" = "המשך";
 "Contrast" = "ניגודיות";
@@ -225,6 +223,7 @@
 "Couldn't align %lld clips." = "לא ניתן היה ליישר ⁨%lld⁩ קליפים.";
 "Couldn't change marker." = "לא ניתן היה לשנות סמן.";
 "Couldn't delete marker." = "לא ניתן היה למחוק סמן.";
+"Couldn't save the token to the Keychain." = "לא ניתן היה לשמור את הטוקן בצרור המפתחות.";
 "Couldn't switch angle." = "לא ניתן היה להחליף זווית.";
 "Couldn’t move %@ to the Trash." = "לא ניתן היה להעביר את ⁨%@⁩ לפח.";
 "Count" = "ספירה";
@@ -325,15 +324,14 @@
 "Edit supports up to %llds (this is %llds)" = "עריכה תומכת עד ⁨%llds⁩ (זה ⁨%llds⁩)";
 "Editing" = "עריכה";
 "Edit…" = "ערוך…";
-"Edit… (Paid)" = "ערוך… (בתשלום)";
 "Effects" = "אפקטים";
 "Empty" = "ריק";
 "Enable: %@" = "הפעל: ⁨%@⁩";
+"Enabled" = "מופעל";
 "Enhance" = "שפר";
 "Enhance resolution or frame rate with AI" = "שפר רזולוציה או קצב פריימים באמצעות AI";
 "Enhanced with FLUX.3 at 1080p." = "שופר ב-FLUX.3 ב-1080p.";
 "Enter Full Screen" = "עבור למסך מלא";
-"Estimated cost. Actual billing may differ slightly." = "עלות משוערת. החיוב בפועל עשוי להיות שונה מעט.";
 "Exclusion" = "החרגה";
 "Expand" = "הרחב";
 "Export" = "ייצוא";
@@ -348,6 +346,7 @@
 "Extend" = "הרחב";
 "Extends captions across short gaps and holds the final caption." = "מרחיב כתוביות על פני רווחים קצרים ומחזיק את הכתובית האחרונה.";
 "Extra Large" = "גדול במיוחד";
+"Extract Audio" = "חלץ שמע";
 "FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "עמעום כניסה";
 "Fade Out" = "עמעום יציאה";
@@ -399,16 +398,16 @@
 "Generate music for the timeline" = "הפק מוזיקה לציר הזמן";
 "Generate music that fits the video" = "הפק מוזיקה שמתאימה לווידאו";
 "Generate video, image, or audio with different models and settings. Drag assets from the media panel above into the reference frame." = "הפק וידאו, תמונה או שמע במודלים והגדרות שונים. גרור נכסים מלוח המדיה למעלה אל מסגרת הייחוס.";
-"Generate · %lld credits" = "הפק · ⁨%lld⁩ קרדיטים";
-"Generate · 1 credit" = "הפק · קרדיט אחד";
 "Generating…" = "מפיק…";
 "Generation Failed" = "ההפקה נכשלה";
 "Generation Input" = "קלט הפקה";
 "Generation complete" = "ההפקה הושלמה";
 "Generation in progress" = "הפקה בתהליך";
 "Generation panel" = "לוח הפקה";
+"Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "היצירה מתבצעת ב-Backend של Lenora שלך. הטוקן נשמר בצרור המפתחות של macOS.";
 "Get Anthropic API key" = "קבל מפתח API של Anthropic";
 "Get OpenAI API key" = "קבל מפתח API של OpenAI";
+"Get Started" = "התחל";
 "Get a notification when a generation finishes." = "קבל התראה כשהפקה מסתיימת.";
 "Getting the search model ready." = "מכין את מודל החיפוש.";
 "Glow" = "זוהר";
@@ -497,7 +496,6 @@
 "Lip Sync model not available" = "מודל סנכרון שפתיים אינו זמין";
 "Lip Sync only works on video" = "סנכרון שפתיים פועל על וידאו בלבד";
 "Lip Sync…" = "סנכרון שפתיים…";
-"Lip Sync… (Paid)" = "סנכרון שפתיים… (בתשלום)";
 "Loading community skills" = "טוען מיומנויות קהילה";
 "Loading community skills…" = "טוען מיומנויות קהילה…";
 "Loading media metadata…" = "טוען מטא-נתוני מדיה…";
@@ -596,6 +594,7 @@
 "No media" = "אין מדיה";
 "No media yet" = "אין מדיה עדיין";
 "No models match \"%@\"." = "אין מודלים התואמים ל-\"⁨%@⁩\".";
+"No models provided by the connected backend" = "ה-Backend המחובר לא מספק מודלים";
 "No music models available." = "אין מודלי מוזיקה זמינים.";
 "No projects found" = "לא נמצאו פרויקטים";
 "No prompt needed" = "אין צורך בהנחיה";
@@ -625,7 +624,6 @@
 "Open Timeline" = "פתח ציר זמן";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "פתח את לשונית עריכת AI כדי להגדיל רזולוציה, לערוך לפי הנחיה, ליצור וידאו מפריים, או להפיק מוזיקה, SFX, ניקוי ודיבוב מהקליפ.";
 "OpenAI API Key" = "מפתח API של OpenAI";
-"Opening Google" = "פותח את Google";
 "Opening Google…" = "פותח את Google…";
 "Open…" = "פתח…";
 "Organize with Agent" = "ארגן עם Agent";
@@ -643,6 +641,7 @@
 "Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora טען את קובץ המקור של הקליפ אך לא הצליח להכין אותו לניגון. ייתכן שהקובץ פגום או בפורמט לא נתמך.";
 "Paste" = "הדבק";
 "Paste Clip Settings" = "הדבק הגדרות קליפ";
+"Paste LENORA_TOKEN" = "הדבק את LENORA_TOKEN";
 "Paste Settings" = "הדבק הגדרות";
 "Path" = "נתיב";
 "Per line" = "לשורה";
@@ -691,7 +690,6 @@
 "Reframe model not available" = "מודל מסגור מחדש אינו זמין";
 "Reframe only works on video" = "מסגור מחדש פועל על וידאו בלבד";
 "Reframe…" = "מסגר מחדש…";
-"Reframe… (Paid)" = "מסגר מחדש… (בתשלום)";
 "Refresh" = "רענן";
 "Refresh Community Skills" = "רענן מיומנויות קהילה";
 "Refresh to check for available skills." = "רענן כדי לבדוק מיומנויות זמינות.";
@@ -721,7 +719,6 @@
 "Rendering…" = "מרנדר…";
 "Replace clip source" = "החלף מקור קליפ";
 "Replacement Audio" = "שמע חלופי";
-"Requires a paid plan" = "דורש תוכנית בתשלום";
 "Rerun" = "הפעל שוב";
 "Reset All" = "אפס הכול";
 "Reset Clipping Indicators" = "אפס מחווני חיתוך";
@@ -740,6 +737,7 @@
 "Ripple Delete" = "מחיקה גלית";
 "Ripple Delete Gap" = "מחק רווח באופן גלי";
 "Ripple Insert" = "הדבקה גלית";
+"Ripple Timeline Markers" = "הזז סמני ציר זמן באופן גלי";
 "Ripple Trim" = "חיתוך גלי";
 "Ripple-deletes every silent section; downstream clips close the gaps." = "מוחק באופן גלי כל קטע שקט; הקליפים שאחריו סוגרים את הרווחים.";
 "Rotation" = "סיבוב";
@@ -756,6 +754,7 @@
 "Save As…" = "שמור בשם…";
 "Save Changes" = "שמור שינויים";
 "Save Range as Media" = "שמור טווח כמדיה";
+"Save as Audio" = "שמור כשמע";
 "Save as Media" = "שמור כמדיה";
 "Save this project to view activity" = "שמור פרויקט זה כדי לראות פעילות";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "שומר עותק של הפרויקט עם כל המדיה כלולה, כך שהוא נפתח בכל מחשב.";
@@ -788,6 +787,8 @@
 "Server URL" = "כתובת URL של השרת";
 "Set as first frame" = "הגדר כפריים ראשון";
 "Set as reference" = "הגדר כייחוס";
+"Set by LENORA_BACKEND_URL for this launch." = "הוגדר על ידי LENORA_BACKEND_URL להפעלה זו.";
+"Set by LENORA_TOKEN for this launch." = "הוגדר על ידי LENORA_TOKEN להפעלה זו.";
 "Settings" = "הגדרות";
 "Settings…" = "הגדרות…";
 "Setup instructions" = "הוראות הגדרה";
@@ -805,10 +806,8 @@
 "Side by Side" = "זה לצד זה";
 "Sign In" = "התחבר";
 "Sign in" = "התחבר";
-"Sign in to generate" = "התחבר כדי להפיק";
 "Sign in to receive 250 free credits for AI chat and generation." = "התחבר כדי לקבל ⁨250⁩ קרדיטים חינם לצ'אט AI ולהפקה.";
 "Sign in to subscribe and use AI generation." = "התחבר כדי להירשם ולהשתמש בהפקת AI.";
-"Sign in to use AI" = "התחבר כדי להשתמש ב-AI";
 "Sign in with Google" = "התחבר באמצעות Google";
 "Sign out" = "התנתק";
 "Sign-in couldn’t be completed. Try again." = "לא ניתן היה להשלים את ההתחברות. נסה שוב.";
@@ -860,7 +859,6 @@
 "Strikethrough" = "קו חוצה";
 "Style" = "סגנון";
 "Style instructions (optional). e.g., warm and slow, British accent." = "הוראות סגנון (אופציונלי). למשל, חם ואיטי, מבטא בריטי.";
-"Subscribe" = "הירשם";
 "Subscription" = "מינוי";
 "Subtitle" = "כתובית";
 "Subtitle file is unavailable." = "קובץ הכתוביות אינו זמין.";
@@ -881,6 +879,7 @@
 "Target Language" = "שפת יעד";
 "Temperature" = "טמפרטורה";
 "Temporary files" = "קבצים זמניים";
+"Test Connection" = "בדוק חיבור";
 "Text" = "טקסט";
 "Text to Music" = "טקסט למוזיקה";
 "Text to speak" = "טקסט להקראה";
@@ -911,6 +910,8 @@
 "Timelines" = "צירי זמן";
 "Tint" = "גוון";
 "Title Safe" = "אזור כותרת בטוח";
+"Token" = "טוקן";
+"Token rejected. Paste LENORA_TOKEN from .env." = "הטוקן נדחה. הדבק את LENORA_TOKEN מקובץ .env.";
 "Tone" = "טון";
 "Tools" = "כלים";
 "Top" = "למעלה";
@@ -933,14 +934,15 @@
 "Try Again" = "נסה שוב";
 "Try again." = "נסה שוב.";
 "Try another search." = "נסה חיפוש אחר.";
-"Turn off to save %lld%% on generation cost." = "כבה כדי לחסוך ⁨%lld%%⁩ בעלות ההפקה.";
 "Turn off to skip audio generation." = "כבה כדי לדלג על הפקת שמע.";
 "Tutorial" = "הדרכה";
 "Type" = "סוג";
 "Typewriter" = "מכונת כתיבה";
 "UPPERCASE" = "אותיות גדולות";
+"URL" = "URL";
 "Unable to open Claude Desktop" = "לא ניתן לפתוח את Claude Desktop";
 "Unable to save skill" = "לא ניתן לשמור מיומנות";
+"Unchanged" = "ללא שינוי";
 "Underline" = "קו תחתון";
 "Undo" = "בטל";
 "Undo (⌘Z)" = "בטל ⁨(⌘Z)⁩";
@@ -957,10 +959,10 @@
 "Upgrade to add credits" = "שדרג כדי להוסיף קרדיטים";
 "Uploading…" = "מעלה…";
 "Upscale" = "הגדל רזולוציה";
+"Upscale model not available" = "מודל הגדלת רזולוציה אינו זמין";
 "Upscale only works on video or images" = "הגדלת רזולוציה פועלת על וידאו או תמונות בלבד";
 "Upscale source media" = "הגדל רזולוציית מדיית מקור";
 "Upscale…" = "הגדל רזולוציה…";
-"Upscale… (Paid)" = "הגדל רזולוציה… (בתשלום)";
 "Use Freeform" = "השתמש בחופשי";
 "Use Freeform to edit individual crop insets." = "השתמש בחופשי כדי לערוך שולי חיתוך בנפרד.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "השתמש ביחס גובה-רוחב עם שני מספרים חיוביים, למשל ⁨3:2⁩.";
@@ -977,6 +979,7 @@
 "Video" = "וידאו";
 "Video Ref" = "ייחוס וידאו";
 "Video has no audio track" = "לווידאו אין רצועת שמע";
+"Video model not available" = "מודל וידאו אינו זמין";
 "Video to Music" = "וידאו למוזיקה";
 "View" = "תצוגה";
 "View Skills" = "הצג מיומנויות";
@@ -1005,6 +1008,7 @@
 "X High" = "X גבוה";
 "You were not charged for this generation" = "לא חויבת על הפקה זו";
 "You're all set" = "הכול מוכן";
+"You're ready to start creating." = "הכול מוכן, אפשר להתחיל ליצור.";
 "Your Lottie animation is ready." = "אנימציית ה-Lottie מוכנה.";
 "Your audio clip is ready." = "קליפ השמע מוכן.";
 "Your image is ready." = "התמונה מוכנה.";
