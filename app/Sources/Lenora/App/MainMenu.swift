@@ -22,10 +22,6 @@ enum MainMenuBuilder {
         let menu = NSMenu(title: AppIdentity.name)
         menu.addItem(withTitle: L10n.string("About Lenora Pro"), action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: "")
         menu.addItem(.separator())
-        let updatesItem = NSMenuItem(title: L10n.string("Check for Updates…"), action: #selector(Updater.checkForUpdates(_:)), keyEquivalent: "")
-        updatesItem.target = Updater.shared
-        menu.addItem(updatesItem)
-        menu.addItem(.separator())
         menu.addItem(withTitle: L10n.string("Settings…"), action: #selector(AppDelegate.showSettings(_:)), keyEquivalent: ",")
         menu.addItem(.separator())
         menu.addItem(withTitle: L10n.string("Quit Lenora Pro"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")

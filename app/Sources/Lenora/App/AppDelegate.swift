@@ -17,9 +17,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.setActivationPolicy(.regular)
         NSApp.activate(ignoringOtherApps: true)
 
-        // Start Sparkle updater
-        _ = Updater.shared
-
         HomeWindowController.shared.showWindow(nil)
         SkillStore.shared.startSkillSync()
         Task.detached(priority: .utility) {

@@ -114,10 +114,6 @@ enum AppTheme {
         )
     }
 
-    enum Update {
-        static let accent = Accent.timecodeColor
-    }
-
     // MARK: - Adjust sliders
 
     enum Slider {
