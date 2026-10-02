@@ -63,7 +63,6 @@ final class ToolExecutor {
         lastTranscriptSession = nil
     }
 
-    var feedbackState = FeedbackState()
     var lastTranscriptSession: TranscriptSession?
 
     struct Origin: Sendable {
@@ -149,7 +148,6 @@ final class ToolExecutor {
                 editor: editor
             )
         }
-        feedbackState.record(result, for: tool)
         let elapsed = started.duration(to: .now).seconds
         if result.isError {
             Log.agent.warning("tool failed name=\(tool.rawValue) duration=\(elapsed)")
@@ -173,7 +171,7 @@ final class ToolExecutor {
     private static func canReadInactiveProject(_ tool: ToolName) -> Bool {
         switch tool {
         case .getTimeline, .inspectTimeline, .getMedia, .inspectMedia, .searchMedia,
-             .getMulticam, .getTranscript, .detectBeats, .inspectColor, .listModels, .sendFeedback:
+             .getMulticam, .getTranscript, .detectBeats, .inspectColor, .listModels:
             true
         default:
             false
@@ -226,7 +224,6 @@ final class ToolExecutor {
         case .importMedia:   return try await importMedia(editor, args)
         case .listModels:    return listModels(args)
         case .organizeMedia: return try organizeMedia(editor, args)
-        case .sendFeedback:  return try await sendFeedback(editor, args)
         case .setProjectSettings: return try setProjectSettings(editor, args)
         case .createTimeline:     return try createTimeline(editor, args)
         case .setActiveTimeline:  return try setActiveTimeline(editor, args)

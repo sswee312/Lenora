@@ -44,12 +44,7 @@ final class AgentService {
     }
 
     var route: AgentRoute {
-        AgentRouting.route(
-            model: model,
-            credentials: credentials,
-            hasHostedCredits: AccountService.shared.isSignedIn && AccountService.shared.hasCredits,
-            hasPaidPlan: AccountService.shared.isPaid
-        )
+        AgentRouting.route(model: model, credentials: credentials)
     }
 
     var canStream: Bool {
@@ -57,12 +52,6 @@ final class AgentService {
     }
 
     var availableModels: [AgentModel] { AgentModel.allCases }
-
-    func canSelectModel(_ candidate: AgentModel) -> Bool {
-        !candidate.requiresPaidHostedPlan
-            || AccountService.shared.isPaid
-            || !credentials[candidate.provider].isEmpty
-    }
 
     var activeBYOKProvider: AgentProvider? {
         route == .direct ? model.provider : nil
@@ -86,19 +75,12 @@ final class AgentService {
         let credentials = await AgentCredentialSnapshot.loadFromKeychain()
         self.credentials = credentials
 
-        switch AgentRouting.route(
-            model: settings.model,
-            credentials: credentials,
-            hasHostedCredits: AccountService.shared.isSignedIn && AccountService.shared.hasCredits,
-            hasPaidPlan: AccountService.shared.isPaid
-        ) {
+        switch AgentRouting.route(model: settings.model, credentials: credentials) {
         case .direct:
             return BYOKClient(
                 apiKey: credentials[settings.model.provider],
                 settings: settings
             )
-        case .hosted:
-            return LenoraClient(settings: settings)
         case .unavailable:
             return nil
         }
@@ -275,7 +257,6 @@ final class AgentService {
         draft = ""
         mentions.removeAll()
         streamError = nil
-        toolExecutor?.resetFeedbackState()
     }
 
     func newChat() {
@@ -291,7 +272,6 @@ final class AgentService {
         currentSessionId = session.id
         messages = []
         streamError = nil
-        toolExecutor?.resetFeedbackState()
         onSessionsChanged?()
     }
 

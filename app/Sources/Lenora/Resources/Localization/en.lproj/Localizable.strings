@@ -67,9 +67,9 @@
 "Add Range to Chat" = "Add Range to Chat";
 "Add Text" = "Add Text";
 "Add a comment" = "Add a comment";
-"Add an Anthropic API key or credits to use this model." = "Add an Anthropic API key or credits to use this model.";
-"Add an OpenAI API key or credits to use this model." = "Add an OpenAI API key or credits to use this model.";
-"Add an email above to enable a reply" = "Add an email above to enable a reply";
+"Add an API key in Settings to chat." = "Add an API key in Settings to chat.";
+"Add an Anthropic API key to use this model." = "Add an Anthropic API key to use this model.";
+"Add an OpenAI API key to use this model." = "Add an OpenAI API key to use this model.";
 "Add captions" = "Add captions";
 "Add credits" = "Add credits";
 "Add credits to use Cloud." = "Add credits to use Cloud.";
@@ -102,7 +102,6 @@
 "Animate" = "Animate";
 "Animation" = "Animation";
 "Anthropic API Key" = "Anthropic API Key";
-"App version %@ and macOS %@ are included." = "App version %@ and macOS %@ are included.";
 "Appearance" = "Appearance";
 "Apply" = "Apply";
 "Ask anything, or start with:" = "Ask anything, or start with:";
@@ -166,7 +165,6 @@
 "Changing the ratio preserves the shorter edge." = "Changing the ratio preserves the shorter edge.";
 "Chat history" = "Chat history";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key." = "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key.";
-"Check for Updates…" = "Check for Updates…";
 "Check the marker name, position, and duration." = "Check the marker name, position, and duration.";
 "Choose a .cube LUT file" = "Choose a .cube LUT file";
 "Choose a crop aspect" = "Choose a crop aspect";
@@ -193,7 +191,6 @@
 "Clear search" = "Clear search";
 "Clearing…" = "Clearing…";
 "Click Generate to open the generation panel." = "Click Generate to open the generation panel.";
-"Click to install update" = "Click to install update";
 "Clip" = "Clip";
 "Clip Settings Mismatch" = "Clip Settings Mismatch";
 "Close" = "Close";
@@ -282,7 +279,6 @@
 "Describe the audio scene" = "Describe the audio scene";
 "Describe the audio scene (minimum %lld characters)" = "Describe the audio scene (minimum %lld characters)";
 "Describe the image" = "Describe the image";
-"Describe the issue or feedback" = "Describe the issue or feedback";
 "Describe the music style or mood" = "Describe the music style or mood";
 "Describe the music style or mood (minimum %lld characters)" = "Describe the music style or mood (minimum %lld characters)";
 "Describe the music to generate." = "Describe the music to generate.";
@@ -338,7 +334,6 @@
 "Edit…" = "Edit…";
 "Edit… (Paid)" = "Edit… (Paid)";
 "Effects" = "Effects";
-"Email (optional)" = "Email (optional)";
 "Empty" = "Empty";
 "Enable: %@" = "Enable: %@";
 "Enhance" = "Enhance";
@@ -367,7 +362,6 @@
 "Failed" = "Failed";
 "Feather" = "Feather";
 "Featured" = "Featured";
-"Feedback" = "Feedback";
 "File" = "File";
 "File Type" = "File Type";
 "File missing" = "File missing";
@@ -377,7 +371,6 @@
 "Film Grain" = "Film Grain";
 "Filter markers by status" = "Filter markers by status";
 "First Frame" = "First Frame";
-"First-time sign-ups only" = "First-time sign-ups only";
 "First/Last" = "First/Last";
 "Fit" = "Fit";
 "Fix names & jargon" = "Fix names & jargon";
@@ -460,7 +453,6 @@
 "Import Media…" = "Import Media…";
 "Import footage" = "Import footage";
 "Import your footage here, or drag and drop, or copy-paste, into the media panel." = "Import your footage here, or drag and drop, or copy-paste, into the media panel.";
-"Include screenshot" = "Include screenshot";
 "Index" = "Index";
 "Indexes imported media for on-device search." = "Indexes imported media for on-device search.";
 "Indexing %lld/%lld" = "Indexing %lld/%lld";
@@ -474,8 +466,6 @@
 "Install skills to give the in-app agent specialized workflows." = "Install skills to give the in-app agent specialized workflows.";
 "Install the Lenora Pro MCP server in Cursor." = "Install the Lenora Pro MCP server in Cursor.";
 "Install the bundled Lenora Pro connector." = "Install the bundled Lenora Pro connector.";
-"Install update" = "Install update";
-"Install update v%@" = "Install update v%@";
 "Installed" = "Installed";
 "Instructions" = "Instructions";
 "Instrumental" = "Instrumental";
@@ -534,7 +524,6 @@
 "Local" = "Local";
 "Local runs with Apple's SpeechAnalyzer." = "Local runs with Apple's SpeechAnalyzer.";
 "Local runs with Apple's SpeechAnalyzer. Cloud uses credits and a more accurate model with more capabilities." = "Local runs with Apple's SpeechAnalyzer. Cloud uses credits and a more accurate model with more capabilities.";
-"Log in for 250 free credits" = "Log in for 250 free credits";
 "Low" = "Low";
 "Luma" = "Luma";
 "Luminosity" = "Luminosity";
@@ -605,7 +594,6 @@
 "New chat" = "New chat";
 "New skill" = "New skill";
 "New timeline" = "New timeline";
-"New version available" = "New version available";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding.";
 "Next" = "Next";
 "No Community Skills" = "No Community Skills";
@@ -750,7 +738,6 @@
 "Rendering…" = "Rendering…";
 "Replace clip source" = "Replace clip source";
 "Replacement Audio" = "Replacement Audio";
-"Report a Problem" = "Report a Problem";
 "Requires a paid plan" = "Requires a paid plan";
 "Rerun" = "Rerun";
 "Reset All" = "Reset All";
@@ -817,11 +804,7 @@
 "Selected" = "Selected";
 "Selected Clips · %lld" = "Selected Clips · %lld";
 "Selection Tool" = "Selection Tool";
-"Send" = "Send";
-"Send Feedback…" = "Send Feedback…";
-"Send feedback" = "Send feedback";
 "Send only the visible clip range to the model, not the full source." = "Send only the visible clip range to the model, not the full source.";
-"Sending…" = "Sending…";
 "Sequence" = "Sequence";
 "Server URL" = "Server URL";
 "Set as first frame" = "Set as first frame";
@@ -847,7 +830,6 @@
 "Sign in to receive 250 free credits for AI chat and generation." = "Sign in to receive 250 free credits for AI chat and generation.";
 "Sign in to subscribe and use AI generation." = "Sign in to subscribe and use AI generation.";
 "Sign in to use AI" = "Sign in to use AI";
-"Sign in to use AI chat." = "Sign in to use AI chat.";
 "Sign in to use Cloud transcription." = "Sign in to use Cloud transcription.";
 "Sign in to use Cloud." = "Sign in to use Cloud.";
 "Sign in with Google" = "Sign in with Google";
@@ -903,7 +885,6 @@
 "Style" = "Style";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Style instructions (optional). e.g., warm and slow, British accent.";
 "Subscribe" = "Subscribe";
-"Subscribe or add your own API key to use this model." = "Subscribe or add your own API key to use this model.";
 "Subscription" = "Subscription";
 "Subtitle" = "Subtitle";
 "Subtitle file is unavailable." = "Subtitle file is unavailable.";
@@ -928,7 +909,6 @@
 "Text to Music" = "Text to Music";
 "Text to speak" = "Text to speak";
 "Text to speak (minimum %lld characters)" = "Text to speak (minimum %lld characters)";
-"Thanks for the feedback." = "Thanks for the feedback.";
 "The clip you're adding has different settings than the current project." = "The clip you're adding has different settings than the current project.";
 "The export" = "The export";
 "The marker comment changed while you were editing. Review it and try again." = "The marker comment changed while you were editing. Review it and try again.";
@@ -1018,7 +998,6 @@
 "Uses selected clips when available, otherwise all captionable audio. Choose a track to limit captions." = "Uses selected clips when available, otherwise all captionable audio. Choose a track to limit captions.";
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Uses the whole timeline by default. Mark a range on the timeline to score only that span.";
 "Version" = "Version";
-"Version %@" = "Version %@";
 "Vertical" = "Vertical";
 "Vertical workspace layout" = "Vertical workspace layout";
 "Vibrance" = "Vibrance";
@@ -1028,7 +1007,6 @@
 "Video to Music" = "Video to Music";
 "View" = "View";
 "View Skills" = "View Skills";
-"View plans" = "View plans";
 "Vignette" = "Vignette";
 "Visual search model download failed. Check your connection and try again." = "Visual search model download failed. Check your connection and try again.";
 "Voice" = "Voice";
@@ -1038,10 +1016,6 @@
 "Volume" = "Volume";
 "Warmth" = "Warmth";
 "Watch the tutorial or start creating." = "Watch the tutorial or start creating.";
-"We may email you for follow-up questions" = "We may email you for follow-up questions";
-"We read every message and may reach out at %@." = "We read every message and may reach out at %@.";
-"We read every message. Add an email next time if you'd like a reply." = "We read every message. Add an email next time if you'd like a reply.";
-"We read every message. We won't email you, as requested." = "We read every message. We won't email you, as requested.";
 "Welcome" = "Welcome";
 "Welcome to Lenora Pro" = "Welcome to Lenora Pro";
 "Welcome to Lenora Pro, %@" = "Welcome to Lenora Pro, %@";
@@ -1080,9 +1054,6 @@
 "error" = "error";
 "group moved right to fit" = "group moved right to fit";
 "lowercase" = "lowercase";
-"or add your own Anthropic key" = "or add your own Anthropic key";
-"or add your own OpenAI key" = "or add your own OpenAI key";
 "result" = "result";
 "using Anthropic API key" = "using Anthropic API key";
 "using OpenAI API key" = "using OpenAI API key";
-"you@example.com — so we can reply" = "you@example.com — so we can reply";

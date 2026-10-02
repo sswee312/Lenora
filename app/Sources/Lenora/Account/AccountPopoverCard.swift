@@ -195,10 +195,6 @@ struct AccountPopoverCard: View {
                 SettingsWindowController.shared.show()
                 dismiss()
             }
-            footerButton(label: L10n.string("Feedback"), systemImage: "bubble.left.and.bubble.right") {
-                FeedbackWindowController.shared.show()
-                dismiss()
-            }
             if account.isSignedIn {
                 footerButton(label: L10n.string("Sign out"), systemImage: "rectangle.portrait.and.arrow.right") {
                     Task { await account.signOut() }

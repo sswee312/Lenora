@@ -588,17 +588,6 @@ struct PreviewContainerView: View {
         return nil
     }
 
-    private static func unprocessablePrefill(path: String?) -> String {
-        let file = path.map { ($0 as NSString).lastPathComponent } ?? "(unknown)"
-        return """
-        A clip's media couldn't be prepared for playback.
-
-        File: \(file)
-
-        What were you doing when this happened?
-        """
-    }
-
     private func offlinePreview(assetId: String?, path: String?, isUnprocessable: Bool) -> some View {
         ZStack {
             AppTheme.MediaOverlay.backgroundColor.opacity(AppTheme.Opacity.strong)
@@ -627,13 +616,7 @@ struct PreviewContainerView: View {
                         .truncationMode(.middle)
                         .padding(.horizontal, AppTheme.Spacing.lg)
                 }
-                if isUnprocessable {
-                    Button(L10n.string("Report a Problem")) {
-                        FeedbackWindowController.shared.show(prefill: Self.unprocessablePrefill(path: path))
-                    }
-                    .buttonStyle(.capsule(.prominent, size: .regular))
-                    .padding(.top, AppTheme.Spacing.xs)
-                } else {
+                if !isUnprocessable {
                     HStack(spacing: AppTheme.Spacing.sm) {
                         if let assetId {
                             Button(L10n.string("Relink…")) { relinkFile(assetId: assetId) }

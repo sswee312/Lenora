@@ -19,7 +19,6 @@ struct AgentProviderTests {
         #expect(AgentModel.allCases.map(\.provider) == [
             .anthropic, .anthropic, .anthropic, .openAI, .openAI, .openAI,
         ])
-        #expect(AgentModel.allCases.filter(\.requiresPaidHostedPlan) == [.fable5, .sol])
         let anthropicEfforts: [AgentReasoningEffort] = [.low, .medium, .high, .xHigh, .max]
         let openAIEfforts = AgentReasoningEffort.allCases
         #expect(AgentModel.allCases.filter { $0.provider == .anthropic }
@@ -29,13 +28,20 @@ struct AgentProviderTests {
         #expect(openAIEfforts == [.none, .minimal, .low, .medium, .high, .xHigh, .max])
     }
 
+    @Test(arguments: AgentModel.allCases)
+    func routesDirectWhenProviderKeyExists(model: AgentModel) {
+        let credentials = AgentCredentialSnapshot([.anthropic: "a", .openAI: "o"])
+        #expect(AgentRouting.route(model: model, credentials: credentials) == .direct)
+    }
+
+    @Test(arguments: AgentModel.allCases)
+    func isUnavailableWithoutProviderKey(model: AgentModel) {
+        #expect(AgentRouting.route(model: model, credentials: AgentCredentialSnapshot([:])) == .unavailable)
+    }
+
     @Test func routingUsesOnlyTheSelectedProvidersKey() {
-        #expect(route(.sonnet5, key: .openAI) == .unavailable)
-        #expect(route(.luna, key: .anthropic) == .unavailable)
-        #expect(route(.fable5, key: .anthropic, hasCredits: true) == .direct)
-        #expect(route(.terra, hasCredits: true) == .hosted)
-        #expect(route(.fable5, hasCredits: true) == .unavailable)
-        #expect(route(.sol, hasCredits: true, isPaid: true) == .hosted)
+        #expect(AgentRouting.route(model: .sonnet5, credentials: AgentCredentialSnapshot([.openAI: "o"])) == .unavailable)
+        #expect(AgentRouting.route(model: .luna, credentials: AgentCredentialSnapshot([.anthropic: "a"])) == .unavailable)
     }
 
     @Test func anthropicReasoningUsesMediumDefaultAndExplicitEffort() throws {
@@ -159,17 +165,6 @@ struct AgentProviderTests {
         #expect(throws: AgentClientTransportError.self) {
             try OpenAIStreamParser().finish()
         }
-    }
-
-    private func route(
-        _ model: AgentModel,
-        key: AgentProvider? = nil, hasCredits: Bool = false, isPaid: Bool = false
-    ) -> AgentRoute {
-        AgentRouting.route(
-            model: model,
-            credentials: AgentCredentialSnapshot(key.map { [$0: "key"] } ?? [:]),
-            hasHostedCredits: hasCredits, hasPaidPlan: isPaid
-        )
     }
 
     private func openAIBody(

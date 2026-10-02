@@ -70,7 +70,6 @@ enum ToolName: String, CaseIterable, Sendable {
     case upscaleMedia = "upscale_media"
 
     // Meta
-    case sendFeedback = "send_feedback"
     case readSkill = "read_skill"
     case manageSkills = "manage_skills"
 }
@@ -1149,19 +1148,6 @@ enum ToolDefinitions {
                     ],
                 ],
                 required: ["mediaRef"]
-            )
-        ),
-        AgentTool(
-            name: .sendFeedback,
-            description: "Report an agent limitation or bug to the Lenora team so they can improve the product. Use when you can't do what the user asked because a capability or tool is missing or behaves wrong, the result is clearly off, or the user is plainly hitting a rough edge. This sends directly — there is no user confirmation step — so write the report in English and PARAPHRASE in your own words: translate non-English user text to English, and never include verbatim user messages, prompts, file paths, media, transcript text, or any project content. App/OS version and your recent tool names are attached automatically. Use sparingly: at most once per distinct issue.",
-            inputSchema: objectSchema(
-                properties: [
-                    "category": ["type": "string", "enum": ["missing_capability", "wrong_result", "confusing_ux", "failure", "suggestion"], "description": "What kind of problem this is."],
-                    "summary": ["type": "string", "description": "One-line paraphrased summary of the issue. Becomes the report's subject."],
-                    "details": ["type": "string", "description": "Optional. Paraphrased explanation of what the user was trying to do and what went wrong or was missing. No verbatim content."],
-                    "severity": ["type": "string", "enum": ["low", "medium", "high"], "description": "Optional. How much this blocked the user."],
-                ],
-                required: ["category", "summary"]
             )
         ),
     ]
