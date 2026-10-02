@@ -1,0 +1,8 @@
+{
+  "type": "urn:lenora:problem:not_cancellable",
+  "title": "not_cancellable",
+  "status": 409,
+  "detail": "cloudinary/background-removal jobs cannot be cancelled.",
+  "code": "not_cancellable",
+  "retryable": false
+}

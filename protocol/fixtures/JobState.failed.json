@@ -1,0 +1,6 @@
+{
+  "jobId": "cloudinary:url:aHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZGVtbw",
+  "status": "failed",
+  "results": null,
+  "error": { "code": "provider_error", "message": "Resource not found", "retryable": false }
+}

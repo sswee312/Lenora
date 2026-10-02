@@ -1,0 +1,210 @@
+openapi: 3.1.0
+info:
+  title: Lenora Backend Protocol
+  version: "1"
+  license: { name: Apache-2.0, identifier: Apache-2.0 }
+  description: >
+    Contract between the Lenora editor and any Lenora backend. Clients ignore
+    unknown fields and unknown kinds. Breaking changes move to /v2.
+servers:
+  - url: http://127.0.0.1:8787
+security:
+  - bearer: []
+paths:
+  /v1/health:
+    get:
+      operationId: getHealth
+      security: [{}, { bearer: [] }]
+      description: Without a valid token only status and protocolVersion are returned.
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/Health" } } } }
+  /v1/capabilities:
+    get:
+      operationId: getCapabilities
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/Capabilities" } } } }
+        default: { $ref: "#/components/responses/Problem" }
+  /v1/uploads:
+    post:
+      operationId: createUpload
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: "#/components/schemas/UploadRequest" } } }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/UploadTicket" } } } }
+        default: { $ref: "#/components/responses/Problem" }
+  /v1/jobs:
+    post:
+      operationId: submitJob
+      parameters:
+        - name: Idempotency-Key
+          in: header
+          required: true
+          schema: { type: string, minLength: 1, maxLength: 255 }
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: "#/components/schemas/JobRequest" } } }
+      responses:
+        "202": { description: Accepted, content: { application/json: { schema: { $ref: "#/components/schemas/SubmittedJob" } } } }
+        default: { $ref: "#/components/responses/Problem" }
+  /v1/jobs/{jobId}:
+    parameters:
+      - { name: jobId, in: path, required: true, schema: { type: string } }
+    get:
+      operationId: getJob
+      responses:
+        "200":
+          description: OK
+          headers:
+            Retry-After: { description: Seconds until the next poll; present while not terminal., schema: { type: integer } }
+          content: { application/json: { schema: { $ref: "#/components/schemas/JobState" } } }
+        default: { $ref: "#/components/responses/Problem" }
+    delete:
+      operationId: cancelJob
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/JobState" } } } }
+        default: { $ref: "#/components/responses/Problem" }
+components:
+  securitySchemes:
+    bearer: { type: http, scheme: bearer }
+  responses:
+    Problem:
+      description: RFC 9457 problem
+      content: { application/problem+json: { schema: { $ref: "#/components/schemas/Problem" } } }
+  schemas:
+    Kind:
+      type: string
+      description: Operation kind. Clients ignore kinds they do not recognise.
+      examples: [image.removeBackground, image.generate, image.edit, image.upscale, video.generate, video.reframe, video.edit, video.lipSync, video.upscale, audio.speech, audio.music, audio.sfx, text.rewritePrompt]
+    JobStatus:
+      type: string
+      enum: [queued, running, succeeded, failed, cancelled]
+    ErrorCode:
+      type: string
+      enum: [unauthorized, invalid_request, unsupported_kind, unknown_model, input_too_large, rate_limited, quota_exceeded, provider_unavailable, provider_error, not_found, not_cancellable]
+    Estimate:
+      type: object
+      required: [amount, unit]
+      properties:
+        amount: { type: number, minimum: 0 }
+        unit: { type: string, examples: [cloudinary_credits, usd] }
+    AdapterHealth:
+      type: object
+      required: [id, enabled]
+      properties:
+        id: { type: string }
+        enabled: { type: boolean }
+        reason: { type: [string, "null"] }
+    Health:
+      type: object
+      required: [status, protocolVersion]
+      properties:
+        status: { const: ok }
+        protocolVersion: { const: "1" }
+        backendVersion: { type: [string, "null"] }
+        adapters: { type: [array, "null"], items: { $ref: "#/components/schemas/AdapterHealth" } }
+    InputLimits:
+      type: object
+      required: [types, maxBytes]
+      properties:
+        types: { type: array, items: { type: string }, description: Accepted MIME types }
+        maxBytes: { type: integer, minimum: 1 }
+    ModelInfo:
+      type: object
+      required: [id, kind, displayName, inputs, cancellable]
+      properties:
+        id: { type: string, pattern: "^[a-z0-9_-]+/.+$", description: "<adapterId>/<model>" }
+        kind: { $ref: "#/components/schemas/Kind" }
+        displayName: { type: string }
+        inputs: { $ref: "#/components/schemas/InputLimits" }
+        cancellable: { type: boolean }
+        estimate: { oneOf: [{ $ref: "#/components/schemas/Estimate" }, { type: "null" }] }
+        ui: { type: [object, "null"], description: Optional editor hints (durations, aspects, settings) for generation kinds. }
+    AdapterVersion:
+      type: object
+      required: [id, version]
+      properties:
+        id: { type: string }
+        version: { type: string }
+    Capabilities:
+      type: object
+      required: [protocolVersion, adapters, models]
+      properties:
+        protocolVersion: { const: "1" }
+        adapters: { type: array, items: { $ref: "#/components/schemas/AdapterVersion" } }
+        models: { type: array, items: { $ref: "#/components/schemas/ModelInfo" } }
+    UploadRequest:
+      type: object
+      required: [model, contentType, byteCount, filename]
+      properties:
+        model: { type: string }
+        contentType: { type: string }
+        byteCount: { type: integer, minimum: 1 }
+        filename: { type: string, minLength: 1, maxLength: 255 }
+    Ticket:
+      type: object
+      required: [method, url, headers, fields, expiresAt]
+      properties:
+        method: { enum: [POST, PUT] }
+        url: { type: string, format: uri }
+        headers: { type: object, additionalProperties: { type: string } }
+        fields: { type: object, additionalProperties: { type: string }, description: Multipart form fields for POST; empty for PUT. }
+        fileField: { type: [string, "null"], description: Multipart field name for the file; null for PUT. }
+        expiresAt: { type: string, format: date-time }
+    UploadTicket:
+      type: object
+      required: [assetRef, ticket]
+      properties:
+        assetRef: { type: string }
+        ticket: { $ref: "#/components/schemas/Ticket" }
+    JobInput:
+      oneOf:
+        - { type: object, required: [assetRef], properties: { assetRef: { type: string } }, additionalProperties: false }
+        - { type: object, required: [url], properties: { url: { type: string, format: uri } }, additionalProperties: false }
+    JobRequest:
+      type: object
+      required: [kind, model, inputs]
+      properties:
+        kind: { $ref: "#/components/schemas/Kind" }
+        model: { type: string }
+        inputs: { type: array, minItems: 1, items: { $ref: "#/components/schemas/JobInput" } }
+        params: { type: object, default: {} }
+    SubmittedJob:
+      type: object
+      required: [jobId, status]
+      properties:
+        jobId: { type: string }
+        status: { $ref: "#/components/schemas/JobStatus" }
+        estimate: { oneOf: [{ $ref: "#/components/schemas/Estimate" }, { type: "null" }] }
+    JobResult:
+      type: object
+      required: [url, contentType, fileExtension]
+      properties:
+        url: { type: string, format: uri }
+        contentType: { type: string }
+        fileExtension: { type: string, pattern: "^[a-z0-9]+$" }
+    JobError:
+      type: object
+      required: [code, message, retryable]
+      properties:
+        code: { $ref: "#/components/schemas/ErrorCode" }
+        message: { type: string }
+        retryable: { type: boolean }
+    JobState:
+      type: object
+      required: [jobId, status]
+      properties:
+        jobId: { type: string }
+        status: { $ref: "#/components/schemas/JobStatus" }
+        results: { type: [array, "null"], items: { $ref: "#/components/schemas/JobResult" } }
+        error: { oneOf: [{ $ref: "#/components/schemas/JobError" }, { type: "null" }] }
+    Problem:
+      type: object
+      required: [type, title, status, code, retryable]
+      properties:
+        type: { type: string }
+        title: { type: string }
+        status: { type: integer }
+        detail: { type: [string, "null"] }
+        code: { $ref: "#/components/schemas/ErrorCode" }
+        retryable: { type: boolean }

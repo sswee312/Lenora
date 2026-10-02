@@ -1,0 +1,9 @@
+{
+  "status": "ok",
+  "protocolVersion": "1",
+  "backendVersion": "0.1.0",
+  "adapters": [
+    { "id": "cloudinary", "enabled": true, "reason": null },
+    { "id": "openai", "enabled": false, "reason": "missing or invalid: LENORA_OPENAI_API_KEY" }
+  ]
+}

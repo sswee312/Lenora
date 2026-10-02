@@ -1,0 +1,12 @@
+{
+  "jobId": "cloudinary:url:aHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZGVtbw",
+  "status": "succeeded",
+  "results": [
+    {
+      "url": "https://res.cloudinary.com/demo/image/upload/e_background_removal/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d.png",
+      "contentType": "image/png",
+      "fileExtension": "png"
+    }
+  ],
+  "error": null
+}

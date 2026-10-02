@@ -1,0 +1,16 @@
+{
+  "assetRef": "image/upload/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d",
+  "ticket": {
+    "method": "POST",
+    "url": "https://api.cloudinary.com/v1_1/demo/image/upload",
+    "headers": {},
+    "fields": {
+      "api_key": "123456789012345",
+      "timestamp": "1790000000",
+      "public_id": "lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d",
+      "signature": "0f8e2c7b4a1d9e3f5a6b7c8d9e0f1a2b3c4d5e6f"
+    },
+    "fileField": "file",
+    "expiresAt": "2026-10-03T13:00:00Z"
+  }
+}
