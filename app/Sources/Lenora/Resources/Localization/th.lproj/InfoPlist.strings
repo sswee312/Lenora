@@ -1,0 +1,4 @@
+/* Text displayed by macOS for Lenora Pro project packages. */
+
+"CFBundleTypeName" = "โปรเจ็กต์ Lenora";
+"UTTypeDescription" = "โปรเจ็กต์ Lenora";

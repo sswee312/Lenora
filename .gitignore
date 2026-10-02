@@ -1,0 +1,11 @@
+docs/
+.env
+.build/
+.swiftpm/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+mcpb/server/node_modules/
+mcpb/server/package-lock.json
