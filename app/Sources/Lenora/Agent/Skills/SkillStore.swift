@@ -504,7 +504,6 @@ final class SkillStore {
         }) else {
             return nil
         }
-        Analytics.captureSkillCreated(skillName: parsed.name)
         return id
     }
 

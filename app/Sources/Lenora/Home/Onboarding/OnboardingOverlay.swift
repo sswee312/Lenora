@@ -50,8 +50,8 @@ struct OnboardingOverlay: View {
             .frame(maxWidth: .infinity, alignment: .topLeading)
             .padding(.horizontal, AppTheme.Spacing.xxl)
             .padding(.top, AppTheme.Spacing.xxl)
-            .padding(.bottom, contentBottomPadding)
-        if onboarding.step == .discovery || onboarding.step == .account {
+            .padding(.bottom, AppTheme.Spacing.xxl)
+        if onboarding.step == .account {
             ScrollView { content }
                 .scrollEdgeEffectStyle(.soft, for: .bottom)
         } else {
@@ -65,18 +65,6 @@ struct OnboardingOverlay: View {
         switch onboarding.step {
         case .welcome:
             OnboardingWelcomeStep()
-        case .discovery:
-            OnboardingQuestionnaireStep(
-                onboarding: onboarding,
-                title: L10n.string("Quick questions"),
-                questions: OnboardingQuestion.discoveryQuestions
-            )
-        case .profile:
-            OnboardingQuestionnaireStep(
-                onboarding: onboarding,
-                title: L10n.string("Tell us about your work"),
-                questions: OnboardingQuestion.profileQuestions
-            )
         case .account:
             OnboardingAccountStep(
                 account: account,
@@ -95,10 +83,6 @@ struct OnboardingOverlay: View {
             switch onboarding.step {
             case .welcome:
                 primaryButton(L10n.string("Continue"), action: onboarding.advance)
-            case .discovery:
-                primaryButton(L10n.string("Continue"), action: onboarding.advance)
-            case .profile:
-                primaryButton(L10n.string("Continue"), action: onboarding.submitSurvey)
             case .account:
                 secondaryButton(
                     L10n.string("Skip"),
@@ -107,15 +91,6 @@ struct OnboardingOverlay: View {
                 )
                 accountAction
             }
-        }
-    }
-
-    private var contentBottomPadding: CGFloat {
-        switch onboarding.step {
-        case .profile, .discovery:
-            AppTheme.Spacing.md
-        case .welcome, .account:
-            AppTheme.Spacing.xxl
         }
     }
 

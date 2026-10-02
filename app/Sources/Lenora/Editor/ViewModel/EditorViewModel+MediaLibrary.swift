@@ -191,17 +191,7 @@ extension EditorViewModel {
             mediaAssets.append(asset)
         }
         updateManifestMetadata(for: [asset])
-        Log.project.notice(
-            "media imported asset=\(asset.id.prefix(8)) type=\(asset.type.rawValue)",
-            telemetry: "Media asset imported",
-            data: [
-                "assetId": Telemetry.shortId(asset.id),
-                "type": asset.type.rawValue,
-                "skipAppend": skipAppend,
-                "media": mediaAssets.count,
-                "manifestEntries": mediaManifest.entries.count
-            ]
-        )
+        Log.project.notice("media imported asset=\(asset.id.prefix(8)) type=\(asset.type.rawValue)")
     }
 
     /// Resolve a drag pasteboard payload (one `lenora-asset://<id>` per line).
@@ -329,16 +319,7 @@ extension EditorViewModel {
             if !importedAssets.isEmpty {
                 mediaAssets.append(contentsOf: importedAssets)
                 mediaManifest.entries.append(contentsOf: importedAssets.map { $0.toManifestEntry(projectURL: projectURL) })
-                Log.project.notice(
-                    "media import applied assets=\(importedAssets.count) folders=\(plan.folders.count)",
-                    telemetry: "Media import applied",
-                    data: [
-                        "assets": importedAssets.count,
-                        "folders": plan.folders.count,
-                        "media": mediaAssets.count,
-                        "manifestEntries": mediaManifest.entries.count
-                    ]
-                )
+                Log.project.notice("media import applied assets=\(importedAssets.count) folders=\(plan.folders.count)")
             }
             return importedAssets
         }
@@ -634,11 +615,7 @@ extension EditorViewModel {
                 asset.generationStatus = .failed("Could not read media file.")
             }
             recordManifestMetadata(for: asset, batching: batchManifestUpdate)
-            Log.project.warning(
-                "media finalize unreadable asset=\(asset.id.prefix(8)) type=\(asset.type.rawValue)",
-                telemetry: "Media asset finalize unreadable",
-                data: ["assetId": Telemetry.shortId(asset.id), "type": asset.type.rawValue]
-            )
+            Log.project.warning("media finalize unreadable asset=\(asset.id.prefix(8)) type=\(asset.type.rawValue)")
             refreshMissingMediaCache()
             refreshPreviewForFinalizedAsset(asset)
             return false

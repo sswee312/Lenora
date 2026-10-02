@@ -17,7 +17,7 @@ struct MCPToolListAnnouncementTests {
                 capabilities: .init(tools: .init(listChanged: true))
             )
             await server.withMethodHandler(ListTools.self) { _ in .init(tools: []) }
-            return MCPServerInstance(server: server) { _ in }
+            return server
         }
         try await server.start()
         defer { Task { await server.stop() } }

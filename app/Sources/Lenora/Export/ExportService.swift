@@ -22,89 +22,6 @@ struct ExportRunReport {
     let unprocessableMediaRefs: Set<String>
 }
 
-struct ExportAnalyticsContext: Sendable {
-    var source: String = "manual"
-    var projectId: String?
-    var timelineInput: ExportTimelineAnalyticsInput?
-}
-
-private struct ExportAnalyticsRun: Sendable {
-    private let source, projectId, mode, format, resolution: String
-    private let timelineInput: ExportTimelineAnalyticsInput?
-    private let started: ContinuousClock.Instant
-
-    init(
-        mode: String,
-        format: ExportFormat,
-        resolution: ExportResolution?,
-        context: ExportAnalyticsContext
-    ) {
-        self.source = context.source
-        self.projectId = context.projectId ?? "unknown"
-        self.mode = mode
-        self.format = format.displayName
-        self.resolution = resolution?.rawValue ?? "n/a"
-        self.timelineInput = context.timelineInput
-        self.started = ContinuousClock.now
-    }
-
-    init(lenoraContext context: ExportAnalyticsContext) {
-        self.source = context.source
-        self.projectId = context.projectId ?? "unknown"
-        self.mode = "lenora"
-        self.format = "Lenora"
-        self.resolution = "n/a"
-        self.timelineInput = context.timelineInput
-        self.started = ContinuousClock.now
-    }
-
-    func begin() {
-        Analytics.capture(.exportStarted, properties: basePayload())
-    }
-
-    func finish() {
-        let duration = Self.durationSeconds(since: started)
-        Task.detached(priority: .utility) { [self] in
-            guard Analytics.canCapture else { return }
-            var payload = basePayload()
-            payload["export_duration_seconds"] = duration
-            if let timelineInput {
-                payload.merge(ExportTimelineAnalyticsSnapshot.analyticsProperties(from: timelineInput)) {
-                    current, _ in current
-                }
-            }
-            Analytics.capture(.exportFinished, properties: payload)
-        }
-    }
-
-    func fail(reason: String = "other") {
-        var payload = timedPayload()
-        payload["failure_reason"] = reason
-        Analytics.capture(.exportFailed, properties: payload)
-    }
-
-    private func timedPayload() -> [String: Any] {
-        var payload = basePayload()
-        payload["export_duration_seconds"] = Self.durationSeconds(since: started)
-        return payload
-    }
-
-    private func basePayload() -> [String: Any] {
-        [
-            "source": source,
-            "project_id": projectId,
-            "mode": mode,
-            "format": format,
-            "resolution": resolution,
-        ]
-    }
-
-    private static func durationSeconds(since started: ContinuousClock.Instant) -> Double {
-        let duration = started.duration(to: .now)
-        return Double(duration.components.seconds) + Double(duration.components.attoseconds) / 1e18
-    }
-}
-
 @MainActor
 final class ExportService {
     enum Phase {
@@ -145,27 +62,15 @@ final class ExportService {
         fcpxmlVersion: FCPXMLVersion = .default,
         fcpxmlTarget: FCPXMLTarget = .default,
         missingMediaRefs: Set<String> = [],
-        outputURL: URL,
-        analyticsContext: ExportAnalyticsContext = .init()
+        outputURL: URL
     ) async {
         reset()
         defer { activeCancellation = nil }
 
         if format == .xml || format == .fcpxml {
             let name = format.fileExtension
-            let analytics = ExportAnalyticsRun(
-                mode: name,
-                format: format,
-                resolution: nil,
-                context: analyticsContext
-            )
-            analytics.begin()
             setPhase(.exporting)
-            Log.export.notice(
-                "export requested format=\(name)",
-                telemetry: "Export started",
-                data: ["format": name, "tracks": timeline.tracks.count, "clips": timeline.tracks.reduce(0) { $0 + $1.clips.count }]
-            )
+            Log.export.notice("export requested format=\(name)")
             do {
                 try await withStagedOutput(to: outputURL) { stagingURL in
                     if format == .xml {
@@ -176,57 +81,30 @@ final class ExportService {
                     }
                 }
                 setProgress(1)
-                Log.export.notice("export ok format=\(name)", telemetry: "Export finished", data: ["format": name])
-                analytics.finish()
+                Log.export.notice("export ok format=\(name)")
             } catch {
                 if Self.isCancellation(error) {
                     wasCancelled = true
-                    Log.export.notice("export cancelled format=\(name)", telemetry: "Export cancelled", data: ["format": name])
+                    Log.export.notice("export cancelled format=\(name)")
                 } else {
                     self.error = Log.detail(error)
-                    Log.export.error(
-                        "export failed format=\(name): \(Log.detail(error))",
-                        telemetry: "Export failed",
-                        data: ["format": name, "error": Log.detail(error)]
-                    )
-                    analytics.fail()
+                    Log.export.error("export failed format=\(name): \(Log.detail(error))")
                 }
             }
             return
         }
-        let videoAnalytics = ExportAnalyticsRun(
-            mode: "video",
-            format: format,
-            resolution: resolution,
-            context: analyticsContext
-        )
         if format.isHDR {
-            videoAnalytics.begin()
             await exportHDR(
                 timeline: timeline,
                 resolver: resolver,
                 resolution: resolution,
                 missingMediaRefs: missingMediaRefs,
-                outputURL: outputURL,
-                analytics: videoAnalytics
+                outputURL: outputURL
             )
             return
         }
 
-        Log.export.notice(
-            "export requested format=\(String(describing: format)) resolution=\(resolution.rawValue)",
-            telemetry: "Export started",
-            data: [
-                "format": String(describing: format),
-                "resolution": resolution.rawValue,
-                "tracks": timeline.tracks.count,
-                "clips": timeline.tracks.reduce(0) { $0 + $1.clips.count },
-                "totalFrames": timeline.totalFrames,
-                "fps": timeline.fps
-            ]
-        )
-        videoAnalytics.begin()
-        var failureStage = "preparing"
+        Log.export.notice("export requested format=\(String(describing: format)) resolution=\(resolution.rawValue)")
 
         do {
             try checkCancellation()
@@ -238,8 +116,7 @@ final class ExportService {
             let session = prepared.session
             guard let fileType = format.utType else { throw ExportError.invalidFormat }
             nonisolated(unsafe) let unsafeSession = session
-            failureStage = "exporting"
-            try await withStagedOutput(to: outputURL, onCommit: { failureStage = "committing" }) { stagingURL in
+            try await withStagedOutput(to: outputURL) { stagingURL in
                 var observationPhase = SessionObservationPhase.pending
                 let stateTask = Task { @MainActor in
                     defer { observationPhase = .ended }
@@ -285,76 +162,16 @@ final class ExportService {
                 unprocessableMediaRefs: prepared.result.unprocessableMediaRefs
             )
             setProgress(1)
-            Log.export.notice(
-                "export ok",
-                telemetry: "Export finished",
-                data: ["format": String(describing: format), "resolution": resolution.rawValue]
-            )
-            videoAnalytics.finish()
+            Log.export.notice("export ok")
         } catch {
             if Self.isCancellation(error) {
                 wasCancelled = true
-                Log.export.notice(
-                    "export cancelled",
-                    telemetry: "Export cancelled",
-                    data: ["format": String(describing: format), "resolution": resolution.rawValue]
-                )
+                Log.export.notice("export cancelled")
             } else {
                 self.error = Log.detail(error)
-                let diagnostics = Self.failureDiagnostics(
-                    error: error,
-                    stage: failureStage,
-                    progress: progress,
-                    format: format,
-                    resolution: resolution
-                )
-                Log.export.error(
-                    "export failed: \(Log.detail(error))",
-                    telemetry: "Export failed",
-                    data: diagnostics.data
-                )
-                videoAnalytics.fail(reason: diagnostics.reason)
+                Log.export.error("export failed: \(Log.detail(error))")
             }
         }
-    }
-
-    static func failureDiagnostics(
-        error: Error,
-        stage: String,
-        progress: Double,
-        format: ExportFormat,
-        resolution: ExportResolution
-    ) -> (reason: String, data: Telemetry.Payload) {
-        var chain: [NSError] = []
-        var current: NSError? = error as NSError
-        while let value = current, chain.count < 8 {
-            chain.append(value)
-            current = value.userInfo[NSUnderlyingErrorKey] as? NSError
-        }
-        func has(_ domain: String, _ code: Int) -> Bool {
-            chain.contains { $0.domain == domain && $0.code == code }
-        }
-        let reason = if has(AVFoundationErrorDomain, -11801) {
-            "out_of_memory"
-        } else if has(AVFoundationErrorDomain, -11821) {
-            "media_decode"
-        } else if has(AVFoundationErrorDomain, -11833) {
-            "decoder_missing"
-        } else if has(AVFoundationErrorDomain, -11841) {
-            "video_composition"
-        } else if has(AVFoundationErrorDomain, -11807) || has(NSPOSIXErrorDomain, 28) {
-            "disk_full"
-        } else {
-            "other"
-        }
-        return (reason, [
-            "stage": stage,
-            "progress": progress,
-            "format": String(describing: format),
-            "resolution": resolution.rawValue,
-            "failure_reason": reason,
-            "error_chain": chain.map { ["domain": $0.domain, "code": $0.code] },
-        ])
     }
 
     /// Writes a self-contained `.lenora` bundle (all media collected internally).
@@ -363,26 +180,15 @@ final class ExportService {
         projectFile: ProjectFile,
         manifest: MediaManifest,
         sourceProjectURL: URL?,
-        outputURL: URL,
-        analyticsContext: ExportAnalyticsContext = .init()
+        outputURL: URL
     ) async -> LenoraProjectExporter.Report? {
         reset()
         defer { activeCancellation = nil }
-        let analytics = ExportAnalyticsRun(lenoraContext: analyticsContext)
 
         do {
             try checkCancellation()
-            analytics.begin()
             setPhase(.exporting)
-            Log.export.notice(
-                "lenora export start url=\(outputURL.lastPathComponent)",
-                telemetry: "Lenora project export started",
-                data: [
-                    "timelines": projectFile.timelines.count,
-                    "clips": projectFile.timelines.reduce(0) { $0 + $1.tracks.reduce(0) { $0 + $1.clips.count } },
-                    "media": manifest.entries.count
-                ]
-            )
+            Log.export.notice("lenora export start url=\(outputURL.lastPathComponent)")
             let worker = Task.detached(priority: .userInitiated) {
                 try LenoraProjectExporter.export(
                     projectFile: projectFile, manifest: manifest,
@@ -399,25 +205,15 @@ final class ExportService {
             lastLenoraReport = report
             didCommitOutput = true
             setProgress(1)
-            Log.export.notice(
-                "lenora export ok collected=\(report.collected.count) missing=\(report.missing.count)",
-                telemetry: "Lenora project export finished",
-                data: ["collected": report.collected.count, "missing": report.missing.count]
-            )
-            analytics.finish()
+            Log.export.notice("lenora export ok collected=\(report.collected.count) missing=\(report.missing.count)")
             return report
         } catch {
             if Self.isCancellation(error) {
                 wasCancelled = true
-                Log.export.notice("lenora export cancelled", telemetry: "Export cancelled")
+                Log.export.notice("lenora export cancelled")
             } else {
                 self.error = Log.detail(error)
-                Log.export.error(
-                    "lenora export failed: \(Log.detail(error))",
-                    telemetry: "Lenora project export failed",
-                    data: ["error": Log.detail(error)]
-                )
-                analytics.fail()
+                Log.export.error("lenora export failed: \(Log.detail(error))")
             }
             return nil
         }
@@ -429,8 +225,7 @@ final class ExportService {
         resolver: MediaResolver,
         resolution: ExportResolution,
         missingMediaRefs: Set<String>,
-        outputURL: URL,
-        analytics: ExportAnalyticsRun
+        outputURL: URL
     ) async {
         do {
             try checkCancellation()
@@ -463,15 +258,13 @@ final class ExportService {
             )
             setProgress(1)
             Log.export.notice("hdr export ok")
-            analytics.finish()
         } catch {
             if Self.isCancellation(error) {
                 wasCancelled = true
-                Log.export.notice("hdr export cancelled", telemetry: "Export cancelled")
+                Log.export.notice("hdr export cancelled")
             } else {
                 self.error = Log.detail(error)
                 Log.export.error("hdr export failed: \(Log.detail(error))")
-                analytics.fail()
             }
         }
     }
@@ -507,7 +300,6 @@ final class ExportService {
 
     private func withStagedOutput<T>(
         to outputURL: URL,
-        onCommit: () -> Void = {},
         operation: (URL) async throws -> T
     ) async throws -> T {
         try checkCancellation()
@@ -515,7 +307,6 @@ final class ExportService {
         defer { try? FileManager.default.removeItem(at: stagingURL) }
         let result = try await operation(stagingURL)
         try checkCancellation()
-        onCommit()
         try Self.commit(stagingURL: stagingURL, to: outputURL)
         didCommitOutput = true
         return result

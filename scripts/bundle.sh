@@ -5,7 +5,6 @@ set -euo pipefail
 #   scripts/bundle.sh [release|debug]           # ad-hoc signed dev build
 #   scripts/bundle.sh debug --fast              # fastest: skip dSYM + deep sign, just env+build
 #   scripts/bundle.sh debug --speech             # include bundled speech and MLX
-#   scripts/bundle.sh debug --telemetry          # include production telemetry
 #   scripts/bundle.sh debug --all                # include all optional traits
 #   scripts/bundle.sh release --sign            # build + Developer ID codesign
 #   scripts/bundle.sh release --dist            # build + sign + notarize + staple + DMG
@@ -14,7 +13,6 @@ CONFIG="release"
 MODE="dev"
 ENABLE_ALL_TRAITS=false
 INCLUDE_BUNDLED_SPEECH=false
-INCLUDE_PRODUCTION_TELEMETRY=false
 for arg in "$@"; do
   case "$arg" in
     release|debug) CONFIG="$arg" ;;
@@ -22,11 +20,9 @@ for arg in "$@"; do
     --sign)        MODE="sign" ;;
     --dist)        MODE="dist" ;;
     --speech)      INCLUDE_BUNDLED_SPEECH=true ;;
-    --telemetry)   INCLUDE_PRODUCTION_TELEMETRY=true ;;
     --all)
       ENABLE_ALL_TRAITS=true
       INCLUDE_BUNDLED_SPEECH=true
-      INCLUDE_PRODUCTION_TELEMETRY=true
       ;;
     *) echo "unknown arg: $arg" >&2; exit 1 ;;
   esac
@@ -35,7 +31,6 @@ done
 if [ "$CONFIG" = "release" ]; then
   ENABLE_ALL_TRAITS=true
   INCLUDE_BUNDLED_SPEECH=true
-  INCLUDE_PRODUCTION_TELEMETRY=true
 fi
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -55,9 +50,6 @@ fi
 
 SIGNING_IDENTITY="${SIGNING_IDENTITY:-Developer ID Application: Lenora, Inc. (MMFLRC7562)}"
 NOTARY_PROFILE="${NOTARY_PROFILE:-lenora-notary}"
-SENTRY_DSN="${SENTRY_DSN:-}"
-POSTHOG_PROJECT_TOKEN="${POSTHOG_PROJECT_TOKEN:-}"
-POSTHOG_HOST="${POSTHOG_HOST:-https://us.i.posthog.com}"
 PROVISION_PROFILE="${PROVISION_PROFILE:-$ROOT/scripts/Lenora_Pro_Developer_ID.provisionprofile}"
 ENTITLEMENTS="$ROOT/scripts/Lenora.entitlements"
 KEYCHAIN_ACCESS_GROUP="${KEYCHAIN_ACCESS_GROUP:-MMFLRC7562.xyz.agentage.lenora}"
@@ -75,13 +67,6 @@ else
   if $INCLUDE_BUNDLED_SPEECH; then
     TRAITS="BundledSpeech"
   fi
-  if $INCLUDE_PRODUCTION_TELEMETRY; then
-    if [ -n "$TRAITS" ]; then
-      TRAITS="$TRAITS,ProductionTelemetry"
-    else
-      TRAITS="ProductionTelemetry"
-    fi
-  fi
   if [ -n "$TRAITS" ]; then
     BUILD_ARGS+=(--traits "$TRAITS")
   fi
@@ -97,24 +82,6 @@ rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$APP/Contents/Frameworks"
 cp "$BIN" "$APP/Contents/MacOS/Lenora"
 cp "$RESOURCES/Info.plist" "$APP/Contents/Info.plist"
-
-if [ -n "$SENTRY_DSN" ]; then
-  echo "==> Injecting SentryDSN into Info.plist"
-  /usr/libexec/PlistBuddy -c "Delete :SentryDSN" "$APP/Contents/Info.plist" 2>/dev/null || true
-  /usr/libexec/PlistBuddy -c "Add :SentryDSN string $SENTRY_DSN" "$APP/Contents/Info.plist"
-else
-  echo "==> SENTRY_DSN not set — telemetry will be a no-op in this build"
-fi
-
-if [ -n "$POSTHOG_PROJECT_TOKEN" ]; then
-  echo "==> Injecting PostHog analytics config into Info.plist"
-  /usr/libexec/PlistBuddy -c "Delete :PostHogProjectToken" "$APP/Contents/Info.plist" 2>/dev/null || true
-  /usr/libexec/PlistBuddy -c "Add :PostHogProjectToken string $POSTHOG_PROJECT_TOKEN" "$APP/Contents/Info.plist"
-  /usr/libexec/PlistBuddy -c "Delete :PostHogHost" "$APP/Contents/Info.plist" 2>/dev/null || true
-  /usr/libexec/PlistBuddy -c "Add :PostHogHost string $POSTHOG_HOST" "$APP/Contents/Info.plist"
-else
-  echo "==> POSTHOG_PROJECT_TOKEN not set — product analytics will be a no-op in this build"
-fi
 
 inject_plist() {
   local key="$1" value="$2"
@@ -223,24 +190,10 @@ echo "==> Generating dSYM"
 rm -rf "$DSYM"
 dsymutil "$APP/Contents/MacOS/Lenora" -o "$DSYM"
 
-upload_dsyms() {
-  if [ -z "${SENTRY_AUTH_TOKEN:-}" ] || [ -z "${SENTRY_ORG:-}" ] || [ -z "${SENTRY_PROJECT:-}" ]; then
-    echo "==> Sentry creds not set — skipping dSYM upload"
-    return
-  fi
-  if ! command -v sentry-cli >/dev/null 2>&1; then
-    echo "!! sentry-cli not found in PATH — skipping dSYM upload"
-    return
-  fi
-  echo "==> Uploading dSYM to Sentry"
-  sentry-cli debug-files upload --include-sources "$DSYM" || echo "!! sentry-cli upload failed (continuing)"
-}
-
 if [ "$MODE" = "dev" ]; then
   echo "==> Ad-hoc signing dev app"
   codesign --force --deep --sign - "$APP"
   codesign --verify --strict --verbose=2 "$APP"
-  upload_dsyms
   echo "==> Done: $APP (ad-hoc signed)"
   exit 0
 fi
@@ -320,7 +273,6 @@ xcrun notarytool submit "$DMG" \
 echo "==> Stapling DMG"
 xcrun stapler staple "$DMG"
 
-upload_dsyms
 
 echo "==> Signing DMG with Sparkle EdDSA key"
 SPARKLE_SIG="$("$PKG/.build/artifacts/sparkle/Sparkle/bin/sign_update" "$DMG")"

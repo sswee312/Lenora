@@ -353,16 +353,6 @@ final class AgentService {
             ? nil
             : AgentMentionContext.hint(referencedMentions, editor: editor)
         let runSettings = snapshotRunSettings()
-        var sessionActivation = Analytics.SessionActivation(
-            isActivated: messages.contains { $0.role == .user }
-        )
-        let analyticsPayload: [String: Any] = [
-            "project_id": editor?.projectId ?? "unknown",
-            "model": runSettings.model.rawValue,
-        ]
-        if sessionActivation.activate() {
-            Analytics.capture(.agentSessionStarted, properties: analyticsPayload)
-        }
 
         resolveOrphanToolUses()
         messages.append(AgentMessage(
@@ -575,8 +565,7 @@ final class AgentService {
             }
             let result = await executor.execute(
                 name: use.name,
-                args: Self.parseJSONObject(use.input),
-                sessionID: conversationID.uuidString
+                args: Self.parseJSONObject(use.input)
             )
             resultBlocks.append(.toolResult(toolUseId: use.id, content: result.content, isError: result.isError))
         }

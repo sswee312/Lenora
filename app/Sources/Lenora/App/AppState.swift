@@ -106,7 +106,6 @@ final class AppState {
         if activeProject !== project {
             activeProject = project
             project.editorViewModel.refreshProjectId()
-            recordProjectActive(project)
         }
     }
 
@@ -221,28 +220,22 @@ final class AppState {
         }
         ProjectRegistry.shared.register(url)
         doc.editorViewModel.refreshProjectId()
-        recordProjectCreated(doc)
-        recordProjectOpened(doc)
         return doc
     }
 
     func createProjectInteractively() {
-        Telemetry.beginOperation("save_panel", data: ["flow": "project_create"])
         let panel = NSSavePanel()
         panel.allowedContentTypes = [Self.projectContentType]
         panel.nameFieldStringValue = Project.defaultProjectName
         panel.directoryURL = Project.storageDirectory
         panel.title = L10n.string("New Project")
         panel.begin { [self] response in
-            Telemetry.endOperation("save_panel")
             guard response == .OK, let url = panel.url else { return }
             let doc = instantiateProject(at: url)
             doc.save(to: url, ofType: VideoProject.typeIdentifier, for: .saveOperation) { error in
                 guard error == nil else { return }
                 ProjectRegistry.shared.register(url)
                 doc.editorViewModel.refreshProjectId()
-                self.recordProjectCreated(doc)
-                self.recordProjectOpened(doc)
             }
         }
     }
@@ -289,7 +282,6 @@ final class AppState {
         showEditor(for: doc)
         if register { ProjectRegistry.shared.register(resolved) }
         doc.editorViewModel.refreshProjectId()
-        recordProjectOpened(doc)
         apply(options, to: doc.editorViewModel)
         return doc
     }
@@ -325,24 +317,6 @@ final class AppState {
         return nil
     }
 
-    private func recordProjectCreated(_ project: VideoProject) {
-        Analytics.capture(.projectCreated, properties: project.editorViewModel.analyticsSnapshot())
-    }
-
-    private func recordProjectOpened(_ project: VideoProject) {
-        let properties = project.editorViewModel.analyticsSnapshot()
-        Analytics.capture(.projectOpened, properties: properties)
-        if let projectId = project.editorViewModel.projectId {
-            Analytics.captureProjectActive(projectId: projectId, properties: properties)
-        }
-    }
-
-    private func recordProjectActive(_ project: VideoProject) {
-        guard let projectId = project.editorViewModel.projectId else { return }
-        let properties = project.editorViewModel.analyticsSnapshot()
-        Analytics.captureProjectActive(projectId: projectId, properties: properties)
-    }
-
     private func apply(_ options: ProjectOpenOptions, to editor: EditorViewModel) {
         if options.startTutorial {
             DispatchQueue.main.async { editor.tour.start(in: editor) }
@@ -360,7 +334,6 @@ final class AppState {
     }
 
     func openProjectFromPanel() {
-        Telemetry.beginOperation("open_panel", data: ["flow": "project_open"])
         let panel = NSOpenPanel()
         panel.allowedContentTypes = [Self.projectContentType]
         panel.canChooseDirectories = false
@@ -368,7 +341,6 @@ final class AppState {
         panel.allowsMultipleSelection = false
         panel.title = L10n.string("Open Project")
         panel.begin { response in
-            Telemetry.endOperation("open_panel")
             guard response == .OK, let url = panel.url else { return }
             AppState.shared.openProject(at: url)
         }

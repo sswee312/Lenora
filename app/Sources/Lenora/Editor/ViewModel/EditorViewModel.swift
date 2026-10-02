@@ -34,7 +34,7 @@ final class EditorViewModel {
     var timelines: [Timeline] {
         didSet {
             timelineRenderRevision &+= 1
-            let source = Analytics.origin?.source
+            let source = ToolExecutor.Origin.current?.source
             if source != "agent", source != "mcp" {
                 nonAgentTimelineMutationRevision &+= 1
             }
@@ -350,9 +350,6 @@ final class EditorViewModel {
         mediaVisualCache.onDeadAirCacheInvalidated = { [weak self] in
             self?.deadAirMaskCache.reset()
         }
-        undo.onActionCommitted = { [weak self] in
-            self?.captureCommittedEdit()
-        }
 
         // Re-check media presence when the app regains focus: a user may have
         // deleted/moved backing files in Finder (or ejected a volume) while we
@@ -362,12 +359,6 @@ final class EditorViewModel {
         ) { [weak self] _ in
             MainActor.assumeIsolated { self?.refreshMissingMediaCache() }
         }
-    }
-
-    private func captureCommittedEdit() {
-        var payload = Analytics.originProperties()
-        payload["project_id"] = projectId ?? "unknown"
-        Analytics.capture(.editorEditCommitted, properties: payload)
     }
 
     @ObservationIgnored private nonisolated(unsafe) var didBecomeActiveObserver: NSObjectProtocol?
@@ -387,38 +378,8 @@ final class EditorViewModel {
     @ObservationIgnored var onPresentTimelineMarkerEditor: ((String) -> Void)?
     var isDocumentEdited: Bool = false
 
-    func telemetrySnapshot() -> [String: Any] {
-        var mediaCounts: [String: Int] = [:]
-        for asset in mediaAssets {
-            mediaCounts[asset.type.rawValue, default: 0] += 1
-        }
-        let clipCount = timeline.tracks.reduce(0) { $0 + $1.clips.count }
-        return [
-            "projectId": projectId ?? "unknown",
-            "tracks": timeline.tracks.count,
-            "clips": clipCount,
-            "totalFrames": timeline.totalFrames,
-            "fps": timeline.fps,
-            "media": mediaAssets.count,
-            "mediaByType": mediaCounts,
-            "offlineMedia": offlineMediaRefs.count,
-            "unprocessableMedia": unprocessableMediaRefs.count,
-            "agentSessions": agentService.sessions.count
-        ]
-    }
-
     func refreshProjectId() {
         projectId = projectURL.flatMap { ProjectRegistry.shared.id(for: $0)?.uuidString }
-    }
-
-    func analyticsSnapshot() -> [String: Any] {
-        return [
-            "project_id": projectId ?? "unknown",
-        ]
-    }
-
-    func updateTelemetryContext() {
-        Telemetry.setExtra(value: telemetrySnapshot(), key: "project")
     }
 
     /// Preview playback bridge.

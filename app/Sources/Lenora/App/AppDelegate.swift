@@ -107,17 +107,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             Task { @MainActor in
                 do {
                     let handled = try await Clerk.shared.handle(url)
-                    Log.account.notice(
-                        "auth callback \(handled ? "handled" : "ignored") url=\(Self.safeURLDescription(url))",
-                        telemetry: "Auth callback received",
-                        data: ["handled": handled, "url": Self.safeURLDescription(url)]
-                    )
+                    Log.account.notice("auth callback \(handled ? "handled" : "ignored") url=\(Self.safeURLDescription(url))")
                 } catch {
-                    Log.account.warning(
-                        "auth callback failed url=\(Self.safeURLDescription(url)) error=\(Log.detail(error))",
-                        telemetry: "Auth callback failed",
-                        data: ["error": error.localizedDescription, "url": Self.safeURLDescription(url)]
-                    )
+                    Log.account.warning("auth callback failed url=\(Self.safeURLDescription(url)) error=\(Log.detail(error))")
                 }
             }
         }

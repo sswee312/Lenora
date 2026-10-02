@@ -207,7 +207,7 @@ struct AgentActivityHighlightTests {
         #expect(editor.nonAgentTimelineMutationRevision == initialRevision + 1)
 
         let revision = editor.nonAgentTimelineMutationRevision
-        Analytics.$origin.withValue(.init(source: "agent", sessionID: "test")) {
+        ToolExecutor.Origin.$current.withValue(.init(source: "agent")) {
             editor.timeline.tracks.append(Fixtures.audioTrack())
         }
         #expect(editor.nonAgentTimelineMutationRevision == revision)

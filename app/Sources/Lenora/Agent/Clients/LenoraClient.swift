@@ -45,7 +45,7 @@ struct LenoraClient: AgentClient {
         request.setValue("Bearer \(jwt)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "content-type")
         request.setValue("text/event-stream", forHTTPHeaderField: "accept")
-        context.apply(to: &request, telemetryEnabled: Analytics.isEnabled)
+        context.apply(to: &request)
         request.httpBody = try JSONSerialization.data(
             withJSONObject: settings.requestBody(system: system, tools: tools, messages: messages),
             options: [.sortedKeys]

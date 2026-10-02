@@ -89,7 +89,6 @@ final class ModelCatalog {
     private func handleFailure(_ err: ClientError) {
         failureCount += 1
         lastError = err.localizedDescription
-        // First failure goes to Sentry; retries only log locally.
         if failureCount == 1 {
             Log.generation.error("ModelCatalog subscription failed: \(err.localizedDescription)")
         } else {

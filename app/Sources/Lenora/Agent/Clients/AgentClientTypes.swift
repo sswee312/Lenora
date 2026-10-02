@@ -214,7 +214,7 @@ struct AgentRequestContext: Equatable, Sendable {
     let outputMessageID: UUID
     let projectID: String?
 
-    func apply(to request: inout URLRequest, telemetryEnabled: Bool) {
+    func apply(to request: inout URLRequest) {
         request.setValue(conversationID.uuidString.lowercased(), forHTTPHeaderField: "X-Lenora-Conversation-Id")
         request.setValue(traceID.uuidString.lowercased(), forHTTPHeaderField: "X-Lenora-Trace-Id")
         request.setValue(spanID.uuidString.lowercased(), forHTTPHeaderField: "X-Lenora-Span-Id")
@@ -223,7 +223,6 @@ struct AgentRequestContext: Equatable, Sendable {
         if let projectID, !projectID.isEmpty {
             request.setValue(projectID, forHTTPHeaderField: "X-Lenora-Project-Id")
         }
-        request.setValue(telemetryEnabled ? "1" : "0", forHTTPHeaderField: "X-Lenora-Agent-Telemetry")
     }
 }
 
