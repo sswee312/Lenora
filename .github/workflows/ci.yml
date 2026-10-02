@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  push: { branches: [main] }
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: backend } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - run: uv run pytest -q
+
+  rebrand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uvx --with pytest pytest scripts/test_rebrand.py scripts/test_bootstrap_env.py -q
+      - run: python3 scripts/rebrand.py --check --check-vendors
+
+  app:
+    runs-on: macos-26
+    continue-on-error: true   # non-blocking until hosted runners ship Xcode 26 + Metal toolchain
+    defaults: { run: { working-directory: app } }
+    steps:
+      - uses: actions/checkout@v4
+      - run: xcrun -f metal || xcodebuild -downloadComponent MetalToolchain
+      - run: swift build
+      - run: swift test
