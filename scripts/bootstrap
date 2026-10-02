@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# Take a fresh clone to a runnable editor. Idempotent; never prints secrets; never runs sudo.
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+say() { printf '\033[1m==> %s\033[0m\n' "$*"; }
+fail() { printf '\033[31m✗ %s\033[0m\n' "$1" >&2; exit "$2"; }
+
+say "Checking platform"
+[[ "$(uname -s)" == "Darwin" ]] || fail "Lenora needs macOS 26 on Apple Silicon." 1
+[[ "$(uname -m)" == "arm64" ]] || fail "Lenora needs Apple Silicon (arm64)." 1
+major="$(sw_vers -productVersion | cut -d. -f1)"
+(( major >= 26 )) || fail "Lenora needs macOS 26 or later (found $(sw_vers -productVersion))." 1
+
+say "Checking Xcode and the Metal toolchain"
+dev_dir="$(xcode-select -p 2>/dev/null || true)"
+if [[ "$dev_dir" != *"Xcode"*".app"* ]]; then
+  fail "Xcode is not the active developer directory ($dev_dir). Run:
+    sudo xcode-select -s /Applications/Xcode.app" 2
+fi
+if ! xcrun -f metal >/dev/null 2>&1; then
+  fail "The Metal toolchain is missing. Run:
+    xcodebuild -downloadComponent MetalToolchain" 2
+fi
+
+say "Setting up the backend (Python)"
+if ! command -v uv >/dev/null 2>&1; then
+  answer=""
+  read -r -p "uv is not installed. Install it now from astral.sh? [y/N] " answer || true
+  [[ "$answer" =~ ^[Yy]$ ]] || fail "uv is required: https://docs.astral.sh/uv/getting-started/installation/" 3
+  curl -LsSf https://astral.sh/uv/install.sh | sh || fail "Installing uv failed." 3
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+(cd "$ROOT/backend" && uv sync) || fail "uv sync failed in backend/." 3
+
+say "Writing .env"
+filled="$(python3 - "$ROOT" <<'PY'
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(sys.argv[1]) / "scripts"))
+from bootstrap_env import ensure_env
+print(" ".join(ensure_env(Path(sys.argv[1]))))
+PY
+)" || fail "Could not write .env." 3
+if [[ -n "$filled" ]]; then echo "   generated: $filled"; fi
+
+say "Building the app"
+(cd "$ROOT/app" && swift build) || fail "swift build failed. Re-run with 'cd app && swift build' to see the error." 4
+
+say "Adapter status"
+(cd "$ROOT/backend" && set -a && source "$ROOT/.env" && set +a && uv run python - <<'PY'
+import asyncio, httpx
+from lenora_backend.registry import Registry
+async def main():
+    async with httpx.AsyncClient() as http:
+        for s in Registry.load(http).statuses:
+            print(f"   {s.id}: {'enabled' if s.enabled else 'disabled — ' + s.reason}")
+asyncio.run(main())
+PY
+) || fail "Could not read adapter status from the backend." 3
+
+say "Ready. Run ./scripts/dev"
