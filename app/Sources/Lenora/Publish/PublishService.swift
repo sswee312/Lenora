@@ -12,6 +12,7 @@ final class PublishService {
     private let provider: @MainActor () -> (any GenerationProvider)?
     private let catalog: ModelCatalog
     private let probe: @Sendable (URL) async throws -> PublishProbe
+    private let sleep: @Sendable (Duration) async throws -> Void
     @ObservationIgnored private var runs: [UUID: Run] = [:]
     @ObservationIgnored private var deletesInFlight: [UUID: Int] = [:]
     @ObservationIgnored private var isOpen = true
@@ -24,11 +25,13 @@ final class PublishService {
     init(
         provider: @escaping @MainActor () -> (any GenerationProvider)?,
         catalog: ModelCatalog = .shared,
-        probe: @escaping @Sendable (URL) async throws -> PublishProbe = { try await PublishProbe.read($0) }
+        probe: @escaping @Sendable (URL) async throws -> PublishProbe = { try await PublishProbe.read($0) },
+        sleep: @escaping @Sendable (Duration) async throws -> Void = { try await Task.sleep(for: $0) }
     ) {
         self.provider = provider
         self.catalog = catalog
         self.probe = probe
+        self.sleep = sleep
     }
 
     var model: BackendModel? { catalog.models(ofKind: Self.kind).first }
@@ -219,15 +222,26 @@ final class PublishService {
         }
     }
 
+    nonisolated static func pollRetryDelay(after retries: Int) -> Duration {
+        .seconds(min(1 << min(retries, 6), 60))
+    }
+
     private func monitor(_ id: UUID, jobId: String, provider: any GenerationProvider, token: UUID) async {
-        do {
-            for try await state in provider.jobUpdates(jobId: jobId) {
-                guard commit(id, token: token, { $0.apply(state) }) else { return }
+        var retries = 0
+        while true {
+            do {
+                for try await state in provider.jobUpdates(jobId: jobId) {
+                    retries = 0
+                    guard commit(id, token: token, { $0.apply(state) }) else { return }
+                }
+                return
+            } catch let error as BackendError where error.isTransient {
+                retries += 1
+                do { try await sleep(Self.pollRetryDelay(after: retries)) } catch { return }
+                guard runs[id]?.token == token else { return }
+            } catch {
+                return fail(id, token: token, PublishFailure(error))
             }
-        } catch let error as BackendError where error.isTransient {
-            // Stays processing; resumeMonitoring picks it up after the backend reconnects.
-        } catch {
-            fail(id, token: token, PublishFailure(error))
         }
     }
 

@@ -6,7 +6,7 @@ actor FakeProvider: GenerationProvider {
     var submitted: [(JobRequest, String)] = []
     var cancelResult: Result<JobState, BackendError> = .failure(.problem(BackendProblem(code: "not_cancellable", detail: nil, status: 409, retryable: false)))
     private var states: [JobState]
-    private let failure: BackendError?
+    private var failure: BackendError?
     private var stream: AsyncThrowingStream<JobState, Error>.Continuation?
     private(set) var deletedAssets: [String] = []
     private var deleteResult: Result<Void, BackendError> = .success(())
@@ -83,6 +83,12 @@ actor FakeProvider: GenerationProvider {
 
     func emit(_ state: JobState) { stream?.yield(state) }
 
+    /// Later `jobUpdates` streams replay `states` and finish without failing.
+    func recover(states: [JobState]) {
+        self.states = states
+        failure = nil
+    }
+
     private var pollerWaiters: [CheckedContinuation<Void, Never>] = []
 
     enum Call: Hashable, Sendable { case createUpload, upload, deleteAsset, capabilities }
@@ -91,6 +97,8 @@ actor FakeProvider: GenerationProvider {
     private var parkedCalls: [Call: [CheckedContinuation<Void, Never>]] = [:]
     private var arrivals: [Call: Int] = [:]
     private var arrivalWaiters: [(call: Call, count: Int, continuation: CheckedContinuation<Void, Never>)] = []
+    private var cancelledCalls: Set<Call> = []
+    private var cancellationWaiters: [(call: Call, continuation: CheckedContinuation<Void, Never>)] = []
 
     /// Parks every later `call` until `release(_:)`; parked calls ignore cancellation.
     func hold(_ call: Call) { heldCalls.insert(call) }
@@ -121,7 +129,23 @@ actor FakeProvider: GenerationProvider {
         arrivalWaiters.filter { $0.call == call && $0.count <= total }.forEach { $0.continuation.resume() }
         arrivalWaiters.removeAll { $0.call == call && $0.count <= total }
         guard heldCalls.contains(call) else { return }
-        await withCheckedContinuation { parkedCalls[call, default: []].append($0) }
+        await withTaskCancellationHandler {
+            await withCheckedContinuation { parkedCalls[call, default: []].append($0) }
+        } onCancel: {
+            Task { await self.noteCancelled(call) }
+        }
+    }
+
+    /// Returns once a parked `call` has been cancelled by its caller.
+    func waitForCancellation(_ call: Call) async {
+        if cancelledCalls.contains(call) { return }
+        await withCheckedContinuation { cancellationWaiters.append((call, $0)) }
+    }
+
+    private func noteCancelled(_ call: Call) {
+        cancelledCalls.insert(call)
+        cancellationWaiters.filter { $0.call == call }.forEach { $0.continuation.resume() }
+        cancellationWaiters.removeAll { $0.call == call }
     }
 
     /// Returns once a consumer has attached to `jobUpdates`.
