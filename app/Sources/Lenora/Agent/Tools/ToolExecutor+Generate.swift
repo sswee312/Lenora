@@ -288,10 +288,19 @@ extension ToolExecutor {
     }
 
     func generateAudio(_ editor: EditorViewModel, _ args: [String: Any]) async throws -> ToolResult {
+        do {
+            return try await startAudioGeneration(editor, args)
+        } catch let error as ToolError {
+            return Self.transformError(code: "invalid_request", message: error.message, field: nil)
+        }
+    }
+
+    private func startAudioGeneration(_ editor: EditorViewModel, _ args: [String: Any]) async throws -> ToolResult {
+        let models = editor.generationService.catalog.audio
         let modelId = try args.string("model") ?? defaultModelId(
-            AudioModelConfig.allModels.map(\.id), kind: "audio")
-        guard let model = AudioModelConfig.allModels.first(where: { $0.id == modelId }) else {
-            throw ToolError("Unknown model '\(modelId)'. Available: \(AudioModelConfig.allModels.map(\.id).joined(separator: ", "))")
+            models.map(\.id), kind: "audio")
+        guard let model = models.first(where: { $0.id == modelId }) else {
+            throw ToolError("Unknown model '\(modelId)'. Available: \(models.map(\.id).joined(separator: ", "))")
         }
 
         let prompt = (args.string("prompt") ?? "").trimmingCharacters(in: .whitespaces)
