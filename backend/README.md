@@ -28,7 +28,7 @@ uv run lenora-backend          # reads ../.env in development
 | `LENORA_OPENAI_API_KEY` (or `OPENAI_API_KEY`) | to enable OpenAI | — |
 | `LENORA_OPENAI_DAILY_BUDGET_USD` | no | 5.0 (`0` = no cap) |
 | `LENORA_OPENAI_SPEECH_MODEL`, `_REWRITE_MODEL` | no | `gpt-4o-mini-tts`, `gpt-5.4-mini` |
-| `LENORA_FORWARDED_ALLOW_IPS` | behind a proxy | — |
+| `LENORA_FORWARDED_ALLOW_IPS` | behind a proxy | `*` in the Docker image |
 
 An adapter with missing settings is disabled. `GET /v1/health` (with the token) shows why.
 
@@ -38,7 +38,7 @@ Stored results (OpenAI voiceovers and rewrites) are served from `/v1/results/{id
 
 `docker build -t lenora-backend backend` and run it with `LENORA_TOKEN` and the adapter keys in the platform's environment. Idempotency keys live in memory, so run a single instance. Mount a volume at `/data` to keep chain jobs, learned add-on state, stored results and `openai.key` across restarts.
 
-Result URLs (`/v1/results/{id}`) are built from the request's scheme and `Host` header. Behind a TLS-terminating proxy, set `LENORA_FORWARDED_ALLOW_IPS` to the proxy's address so uvicorn trusts `X-Forwarded-Proto` and `X-Forwarded-For`. uvicorn ignores `X-Forwarded-Host`, so the proxy must pass the client's original `Host` header through unchanged.
+Result URLs (`/v1/results/{id}`) are built from the request's scheme and `Host` header. Behind a TLS-terminating proxy, `LENORA_FORWARDED_ALLOW_IPS` must cover the proxy's address so uvicorn trusts `X-Forwarded-Proto` and `X-Forwarded-For`; the Docker image defaults it to `*`, so narrow it if the container is reachable without the proxy. uvicorn ignores `X-Forwarded-Host`, so the proxy must pass the client's original `Host` header through unchanged.
 
 ## Write an adapter
 

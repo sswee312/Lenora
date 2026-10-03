@@ -7,10 +7,12 @@ COPY src ./src
 COPY adapters/cloudinary ./adapters/cloudinary
 COPY adapters/openai ./adapters/openai
 RUN uv sync --frozen --no-dev --all-packages
-RUN useradd --system --uid 10001 lenora
+RUN useradd --system --uid 10001 lenora && mkdir -p /data && chown lenora /data
 USER lenora
 EXPOSE 8080
 ENV PORT=8080
 ENV LENORA_DATA_DIR=/data
+# Hosting platforms terminate TLS at their proxy; trust it so result URLs keep https.
+ENV LENORA_FORWARDED_ALLOW_IPS=*
 VOLUME ["/data"]
 CMD ["/srv/.venv/bin/lenora-backend"]
