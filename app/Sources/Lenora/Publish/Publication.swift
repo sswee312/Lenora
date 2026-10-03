@@ -87,12 +87,16 @@ struct Publication: Codable, Sendable, Equatable, Identifiable {
             failPending(code: "provider_error", message: "The backend returned no result for this output.")
             status = outputs.allSatisfy { $0.status == .ready } ? .ready : .partial
         case .failed, .cancelled:
-            let code = state.error?.code ?? "provider_error"
-            let message = state.error?.message ?? "Publishing failed."
-            failPending(code: code, message: message)
-            status = .failed
-            self.message = message
+            failPendingOutputs(code: state.error?.code ?? "provider_error", message: state.error?.message ?? "Publishing failed.")
         }
+    }
+
+    /// Fails the outputs still pending; outputs already ready stay published.
+    mutating func failPendingOutputs(code: String = "provider_error", message: String) {
+        failPending(code: code, message: message)
+        if !outputs.contains(where: { $0.status == .ready }) { status = .failed }
+        else { status = outputs.allSatisfy { $0.status == .ready } ? .ready : .partial }
+        self.message = message
     }
 
     mutating func markFailed(message: String) {

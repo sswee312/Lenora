@@ -42,6 +42,7 @@ final class PublishService {
     // MARK: - Intents
 
     func publish(exportJobId: UUID, options: PublishOptions, confirmPublic: Bool) async throws -> Publication {
+        guard isOpen else { throw CancellationError() }
         guard confirmPublic else { throw PublishRefusal.notConfirmed }
         guard let model, let limits else { throw PublishRefusal.unavailable }
         guard let job = exportJobs().first(where: { $0.id == exportJobId }), canPublish(job),
@@ -65,6 +66,7 @@ final class PublishService {
     }
 
     func addOutputs(to id: UUID, options: PublishOptions, confirmPublic: Bool) throws -> (publication: Publication, noop: Bool) {
+        guard isOpen else { throw CancellationError() }
         guard confirmPublic else { throw PublishRefusal.notConfirmed }
         guard let limits else { throw PublishRefusal.unavailable }
         guard let index = publications.firstIndex(where: { $0.id == id }) else { throw PublishRefusal.notFound }
@@ -81,6 +83,7 @@ final class PublishService {
 
         publications[index].request(roles, options: merged)
         publications[index].status = .processing
+        publications[index].jobId = nil
         onChange()
         start(id) { service, token in await service.submit(id, provider: provider, token: token) }
         return (publications[index], false)
@@ -88,6 +91,7 @@ final class PublishService {
 
     /// Returns true when the publication was already unpublished.
     func unpublish(_ id: UUID) async throws -> Bool {
+        guard isOpen else { throw CancellationError() }
         guard let record = publication(id) else { throw PublishRefusal.notFound }
         guard record.status != .unpublished else { return true }
         if let assetRef = record.assetRef {
@@ -97,8 +101,9 @@ final class PublishService {
             } catch BackendError.problem(let problem) where problem.code == "not_found" {}
             guard isOpen else { throw CancellationError() }
         }
-        runs.removeValue(forKey: id)?.task.cancel()
         guard let index = publications.firstIndex(where: { $0.id == id }) else { throw PublishRefusal.notFound }
+        guard publications[index].status != .unpublished else { return true }
+        runs.removeValue(forKey: id)?.task.cancel()
         publications[index].markUnpublished()
         onChange()
         return false
@@ -110,10 +115,13 @@ final class PublishService {
         stopMonitoring()
         isOpen = true
         publications = records.map { record in
-            guard record.status == .uploading else { return record }
-            var interrupted = record
-            interrupted.markFailed(message: "Upload interrupted.")
-            return interrupted
+            var restored = record
+            if record.status == .uploading {
+                restored.markFailed(message: "Upload interrupted.")
+            } else if record.status == .processing, record.jobId == nil {
+                restored.failPendingOutputs(message: "Submit interrupted.")
+            }
+            return restored
         }
         resumeMonitoring()
     }
@@ -144,7 +152,9 @@ final class PublishService {
                 model: model, contentType: contentType, byteCount: byteCount, filename: file.lastPathComponent
             )
             // Recorded before the transfer so an interrupted upload can still be unpublished.
-            guard commit(id, token: token, { $0.assetRef = ticket.assetRef }) else { return }
+            guard commit(id, token: token, { $0.assetRef = ticket.assetRef }) else {
+                return discardAsset(ticket.assetRef, model: model, provider: provider)
+            }
             try await provider.upload(file, ticket: ticket)
             await submit(id, provider: provider, token: token)
         } catch {
@@ -206,7 +216,15 @@ final class PublishService {
     }
 
     private func fail(_ id: UUID, token: UUID, message: String) {
-        commit(id, token: token) { $0.markFailed(message: message) }
+        commit(id, token: token) { $0.failPendingOutputs(message: message) }
+    }
+
+    /// Best effort: deletes an asset whose run went stale, outside the cancelled run.
+    private func discardAsset(_ assetRef: String, model: String, provider: any GenerationProvider) {
+        Task {
+            do { try await provider.deleteAsset(model: model, assetRef: assetRef) }
+            catch { Log.generation.warning("publish orphan delete failed asset=\(assetRef) error=\(Log.detail(error))") }
+        }
     }
 
     private func publication(_ id: UUID) -> Publication? {

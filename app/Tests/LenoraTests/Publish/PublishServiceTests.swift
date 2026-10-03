@@ -247,6 +247,98 @@ struct PublishServiceTests {
         #expect(service.publications == [record])
     }
 
+    @Test func unpublishDuringCreateUploadDeletesTheTicketAsset() async throws {
+        let provider = FakeProvider(states: [])
+        await provider.hold(.createUpload)
+        let service = try makeService(provider)
+        let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await provider.waitForCalls(.createUpload)
+        #expect(try await service.unpublish(record.id) == false)
+        await provider.release(.createUpload)
+        await provider.waitForCalls(.deleteAsset)
+        let unpublished = try #require(service.publications.first)
+        #expect(unpublished.status == .unpublished && unpublished.assetRef == nil)
+        #expect(await provider.deletedAssets == ["ref-cut.mp4"])
+        #expect(await provider.uploads.isEmpty)
+        #expect(await provider.submitted.isEmpty)
+    }
+
+    @Test func addOutputsClearsTheFinishedJobId() throws {
+        let service = try makeService(FakeProvider(states: []))
+        let record = PublishFixtures.readyRecord()
+        service.restore([record])
+        let (pending, _) = try service.addOutputs(to: record.id, options: PublishOptions(vertical: "9:16"), confirmPublic: true)
+        #expect(pending.jobId == nil)
+    }
+
+    @Test func processingWithoutJobFailsPendingOutputsOnRestore() async throws {
+        let provider = FakeProvider(states: [])
+        let service = try makeService(provider)
+        var record = PublishFixtures.readyRecord()
+        record.request([.vertical], options: PublishOptions(vertical: "9:16"))
+        record.status = .processing
+        record.jobId = nil
+        service.restore([record])
+        let restored = try #require(service.publications.first)
+        #expect(restored.status == .partial && restored.message == "Submit interrupted.")
+        #expect(restored.outputs.first { $0.role == .vertical }?.status == .failed)
+        #expect(restored.outputs.filter { $0.status == .ready }.count == 3)
+        #expect(await provider.pollers == 0)
+    }
+
+    @Test func intentsAfterCloseChangeNothing() async throws {
+        let provider = FakeProvider(states: [])
+        let service = try makeService(provider)
+        let ready = PublishFixtures.readyRecord()
+        var notUploaded = PublishFixtures.readyRecord()
+        notUploaded.assetRef = nil
+        notUploaded.status = .failed
+        service.restore([ready, notUploaded])
+        service.stopMonitoring()
+        var changes = 0
+        service.onChange = { changes += 1 }
+        #expect(throws: CancellationError.self) {
+            try service.addOutputs(to: ready.id, options: PublishOptions(vertical: "9:16"), confirmPublic: true)
+        }
+        await #expect(throws: CancellationError.self) { try await service.unpublish(ready.id) }
+        await #expect(throws: CancellationError.self) { try await service.unpublish(notUploaded.id) }
+        #expect(service.publications == [ready, notUploaded])
+        #expect(changes == 0)
+        #expect(await provider.submitted.isEmpty)
+        #expect(await provider.deletedAssets.isEmpty)
+    }
+
+    @Test func failedAddOutputsSubmitKeepsReadyOutputs() async throws {
+        let provider = FakeProvider(states: [], submitError: .problem(BackendProblem(code: "provider_error", detail: nil, status: 502, retryable: false)))
+        let service = try makeService(provider)
+        let record = PublishFixtures.readyRecord()
+        service.restore([record])
+        _ = try service.addOutputs(to: record.id, options: PublishOptions(vertical: "9:16"), confirmPublic: true)
+        await waitFor(service) { service.publications.first?.status != .processing }
+        let settled = try #require(service.publications.first)
+        #expect(settled.status == .partial)
+        #expect(settled.outputs.first { $0.role == .vertical }?.status == .failed)
+        #expect(settled.outputs.filter { $0.status == .ready && $0.url != nil }.count == 3)
+    }
+
+    @Test func concurrentUnpublishCommitsOnce() async throws {
+        let provider = FakeProvider(states: [])
+        await provider.hold(.deleteAsset)
+        let service = try makeService(provider)
+        let record = PublishFixtures.readyRecord()
+        service.restore([record])
+        var changes = 0
+        service.onChange = { changes += 1 }
+        let first = Task { try await service.unpublish(record.id) }
+        let second = Task { try await service.unpublish(record.id) }
+        await provider.waitForCalls(.deleteAsset, count: 2)
+        await provider.release(.deleteAsset)
+        let results = [try await first.value, try await second.value]
+        #expect(results.sorted { !$0 && $1 } == [false, true])
+        #expect(changes == 1)
+        #expect(service.publications.first?.status == .unpublished)
+    }
+
     @Test func editorSavesAndRestoresPublications() throws {
         let editor = EditorViewModel(generationProvider: { nil })
         let record = PublishFixtures.readyRecord()
