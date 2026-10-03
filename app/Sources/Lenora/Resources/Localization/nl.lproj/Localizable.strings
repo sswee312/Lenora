@@ -53,7 +53,6 @@
 "Add models…" = "Voeg modellen toe…";
 "Add nonempty name and description fields to the skill frontmatter." = "Voeg niet-lege name- en description-velden toe aan de skill-frontmatter.";
 "Add source media." = "Voeg bronmedia toe.";
-"Add this configuration to ~/.cursor/mcp.json." = "Voeg deze configuratie toe aan ~/.cursor/mcp.json.";
 "Add this skill to an external agent" = "Voeg deze skill toe aan een externe Agent";
 "Add to %@" = "Voeg toe aan %@";
 "Add to Chat" = "Voeg toe aan chat";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Pas bereik aan";
 "Agent Mode" = "Agent-modus";
 "Agent Panel" = "Agent-paneel";
+"Agents sign in with this token and port. Treat the token like a password." = "Agents melden zich aan met dit token en deze poort. Behandel het token als een wachtwoord.";
 "Alignment" = "Uitlijning";
 "All" = "Alles";
 "All Statuses" = "Alle statussen";
@@ -310,6 +310,7 @@
 "Enhance" = "Verbeter";
 "Enhance resolution or frame rate with AI" = "Verbeter resolutie of beeldsnelheid met AI";
 "Enter Full Screen" = "Schakel schermvullend in";
+"Every connected agent will need the new token." = "Elke verbonden agent heeft het nieuwe token nodig.";
 "Exclusion" = "Uitsluiting";
 "Expand" = "Klap uit";
 "Export" = "Exporteer";
@@ -427,11 +428,8 @@
 "Inspector" = "Inspector";
 "Inspector Panel" = "Inspector-paneel";
 "Install" = "Installeer";
-"Install in Claude Desktop" = "Installeer in Claude Desktop";
-"Install in Cursor" = "Installeer in Cursor";
+"Install Extension" = "Installeer extensie";
 "Install skills to give the in-app agent specialized workflows." = "Installeer skills om de Agent in de app gespecialiseerde workflows te geven.";
-"Install the Lenora Pro MCP server in Cursor." = "Installeer de Lenora Pro MCP-server in Cursor.";
-"Install the bundled Lenora Pro connector." = "Installeer de meegeleverde Lenora Pro-connector.";
 "Installed" = "Geïnstalleerd";
 "Instructions" = "Instructies";
 "Instrumental" = "Instrumentaal";
@@ -494,7 +492,6 @@
 "MCP Setup" = "MCP-instelling";
 "Main + Sidebar" = "Hoofd + zijbalk";
 "Make vertical shorts" = "Maak verticale shorts";
-"Manual setup" = "Handmatige instelling";
 "Mark Beats" = "Markeer beats";
 "Mark Range End" = "Markeer einde bereik";
 "Mark Range Start" = "Markeer begin bereik";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Plak clipinstellingen";
 "Paste LENORA_TOKEN" = "Plak LENORA_TOKEN";
 "Paste Settings" = "Plak instellingen";
+"Paste the token when Claude Desktop asks." = "Plak het token wanneer Claude Desktop erom vraagt.";
 "Path" = "Pad";
 "Per line" = "Per regel";
 "Per word" = "Per woord";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Voorvertoningen, waveforms, filmstripminiaturen en transcripts. Veilig te wissen; bestanden worden opnieuw opgebouwd indien nodig.";
 "Pointer (V)" = "Aanwijzer (V)";
 "Pop In" = "Pop-in";
+"Port" = "Poort";
 "Portrait (9:16)" = "Staand (9:16)";
 "Position" = "Positie";
 "Preparing" = "Voorbereiden";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Kader herbepalen-model niet beschikbaar";
 "Reframe only works on video" = "Kader herbepalen werkt alleen met video";
 "Reframe…" = "Herbepaal kader…";
+"Regenerate token" = "Token opnieuw genereren";
+"Regenerate token?" = "Token opnieuw genereren?";
 "Regenerate with the same parameters" = "Genereer opnieuw met dezelfde parameters";
 "Relink Folder…" = "Koppel map opnieuw…";
 "Relinked %lld of %lld offline clips." = "%lld van %lld offline clips opnieuw gekoppeld.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Verwijdert elke stille sectie met ripple; volgende clips sluiten de gaten.";
 "Rotation" = "Rotatie";
 "Roundness" = "Ronding";
-"Run this command once in Terminal." = "Voer dit commando eenmaal uit in Terminal.";
 "Running on" = "Draait op";
 "Safe Zones" = "Veilige zones";
 "Sample Key Color" = "Neem sleutelkleur";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Selectiegereedschap";
 "Send only the visible clip range to the model, not the full source." = "Stuur alleen het zichtbare clipbereik naar het model, niet de volledige bron.";
 "Sequence" = "Sequence";
-"Server URL" = "Server-URL";
 "Set as first frame" = "Stel in als eerste frame";
 "Set as reference" = "Stel in als referentie";
 "Set by LENORA_BACKEND_URL for this launch." = "Ingesteld door LENORA_BACKEND_URL voor deze start.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Tekst naar muziek";
 "Text to speak" = "Voor te lezen tekst";
 "Text to speak (minimum %lld characters)" = "Voor te lezen tekst (minimaal %lld tekens)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "Het MCP-token is niet beschikbaar. Controleer de toegang tot de sleutelhanger en probeer het opnieuw.";
 "The clip you're adding has different settings than the current project." = "De clip die u toevoegt heeft andere instellingen dan het huidige project.";
 "The export" = "De export";
 "The job already finished." = "De taak is al voltooid.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Trim einde tot afspeelkop (W)";
 "Trim Start to Playhead" = "Trim begin tot afspeelkop";
 "Trim Start to Playhead (Q)" = "Trim begin tot afspeelkop (Q)";
-"Try again." = "Probeer het opnieuw.";
 "Try another search." = "Probeer een andere zoekopdracht.";
 "Turn off to skip audio generation." = "Schakel uit om audiogeneratie over te slaan.";
 "Tutorial" = "Tutorial";
@@ -894,7 +893,6 @@
 "Typewriter" = "Typemachine";
 "UPPERCASE" = "HOOFDLETTERS";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Claude Desktop openen mislukt";
 "Unable to save skill" = "Skill bewaren mislukt";
 "Unchanged" = "Ongewijzigd";
 "Underline" = "Onderstrepen";
@@ -914,6 +912,7 @@
 "Upscale…" = "Schaal op…";
 "Use Freeform" = "Gebruik vrije vorm";
 "Use Freeform to edit individual crop insets." = "Gebruik vrije vorm om afzonderlijke uitsnede-inzetten te bewerken.";
+"Use a port between 1024 and 65535." = "Gebruik een poort tussen 1024 en 65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Gebruik een beeldverhouding met twee positieve getallen, zoals 3:2.";
 "Use as first frame or reference" = "Gebruik als eerste frame of referentie";
 "Use for non-English or mixed-language audio." = "Gebruik voor audio die niet Engels of meertalig is.";

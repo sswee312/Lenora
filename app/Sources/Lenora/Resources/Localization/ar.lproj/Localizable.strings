@@ -53,7 +53,6 @@
 "Add models…" = "إضافة نماذج…";
 "Add nonempty name and description fields to the skill frontmatter." = "أضف حقلي اسم ووصف غير فارغين إلى البيانات الأولية للمهارة.";
 "Add source media." = "أضف وسائط المصدر.";
-"Add this configuration to ~/.cursor/mcp.json." = "أضف هذا التكوين إلى ⁨~/.cursor/mcp.json⁩.";
 "Add this skill to an external agent" = "إضافة هذه المهارة إلى وكيل خارجي";
 "Add to %@" = "إضافة إلى ⁨%@⁩";
 "Add to Chat" = "إضافة إلى الدردشة";
@@ -66,6 +65,7 @@
 "Adjust Range" = "ضبط النطاق";
 "Agent Mode" = "وضع الوكيل";
 "Agent Panel" = "لوحة الوكيل";
+"Agents sign in with this token and port. Treat the token like a password." = "تسجّل الوكلاء الدخول بهذا الرمز المميز والمنفذ. تعامل مع الرمز المميز كما تتعامل مع كلمة مرور.";
 "Alignment" = "المحاذاة";
 "All" = "الكل";
 "All Statuses" = "كل الحالات";
@@ -310,6 +310,7 @@
 "Enhance" = "تحسين";
 "Enhance resolution or frame rate with AI" = "تحسين الدقة أو معدل الإطارات بالذكاء الاصطناعي";
 "Enter Full Screen" = "الدخول إلى ملء الشاشة";
+"Every connected agent will need the new token." = "سيحتاج كل وكيل متصل إلى الرمز المميز الجديد.";
 "Exclusion" = "استبعاد";
 "Expand" = "توسيع";
 "Export" = "تصدير";
@@ -427,11 +428,8 @@
 "Inspector" = "لوحة الخصائص";
 "Inspector Panel" = "لوحة الخصائص";
 "Install" = "تثبيت";
-"Install in Claude Desktop" = "التثبيت في Claude Desktop";
-"Install in Cursor" = "التثبيت في Cursor";
+"Install Extension" = "تثبيت الإضافة";
 "Install skills to give the in-app agent specialized workflows." = "ثبّت المهارات لمنح وكيل التطبيق مسارات عمل متخصصة.";
-"Install the Lenora Pro MCP server in Cursor." = "ثبّت خادم MCP الخاص بـ Lenora Pro في Cursor.";
-"Install the bundled Lenora Pro connector." = "ثبّت موصل Lenora Pro المضمّن.";
 "Installed" = "مثبّت";
 "Instructions" = "التعليمات";
 "Instrumental" = "موسيقى بلا غناء";
@@ -494,7 +492,6 @@
 "MCP Setup" = "إعداد MCP";
 "Main + Sidebar" = "الرئيسية + الشريط الجانبي";
 "Make vertical shorts" = "إنشاء مقاطع عمودية قصيرة";
-"Manual setup" = "إعداد يدوي";
 "Mark Beats" = "تحديد الإيقاعات";
 "Mark Range End" = "تحديد نهاية النطاق";
 "Mark Range Start" = "تحديد بداية النطاق";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "لصق إعدادات المقطع";
 "Paste LENORA_TOKEN" = "الصق LENORA_TOKEN";
 "Paste Settings" = "لصق الإعدادات";
+"Paste the token when Claude Desktop asks." = "الصق الرمز المميز عندما يطلبه Claude Desktop.";
 "Path" = "المسار";
 "Per line" = "لكل سطر";
 "Per word" = "لكل كلمة";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "معاينات التشغيل وأشكال الموجات والصور المصغرة لشريط الفيلم والنصوص المفرّغة. يمكن مسحها بأمان، وتُعاد تهيئة الملفات عند الحاجة.";
 "Pointer (V)" = "المؤشر ⁨(V)⁩";
 "Pop In" = "ظهور منبثق";
+"Port" = "المنفذ";
 "Portrait (9:16)" = "عمودي (9:16)";
 "Position" = "الموضع";
 "Preparing" = "جارٍ الإعداد";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "نموذج إعادة التأطير غير متاح";
 "Reframe only works on video" = "تعمل إعادة التأطير مع الفيديو فقط";
 "Reframe…" = "إعادة تأطير…";
+"Regenerate token" = "إعادة إنشاء الرمز المميز";
+"Regenerate token?" = "هل تريد إعادة إنشاء الرمز المميز؟";
 "Regenerate with the same parameters" = "إعادة الإنشاء بالمعلمات نفسها";
 "Relink Folder…" = "إعادة ربط المجلد…";
 "Relinked %lld of %lld offline clips." = "تمت إعادة ربط ⁨%lld⁩ من أصل ⁨%lld⁩ من المقاطع غير المتصلة.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "يحذف كل مقطع صامت ويغلق الفجوات بتحريك المقاطع اللاحقة.";
 "Rotation" = "التدوير";
 "Roundness" = "الاستدارة";
-"Run this command once in Terminal." = "شغّل هذا الأمر مرة واحدة في Terminal.";
 "Running on" = "يعمل على";
 "Safe Zones" = "المناطق الآمنة";
 "Sample Key Color" = "أخذ عينة لون المفتاح";
@@ -746,7 +746,6 @@
 "Selection Tool" = "أداة التحديد";
 "Send only the visible clip range to the model, not the full source." = "أرسل نطاق المقطع المرئي فقط إلى النموذج، وليس المصدر كاملاً.";
 "Sequence" = "التسلسل";
-"Server URL" = "عنوان URL للخادم";
 "Set as first frame" = "تعيين كإطار أول";
 "Set as reference" = "تعيين كمرجع";
 "Set by LENORA_BACKEND_URL for this launch." = "تم التعيين بواسطة LENORA_BACKEND_URL لهذا التشغيل.";
@@ -835,6 +834,7 @@
 "Text to Music" = "تحويل النص إلى موسيقى";
 "Text to speak" = "النص المطلوب نطقه";
 "Text to speak (minimum %lld characters)" = "النص المطلوب نطقه (⁨%lld⁩ حرفًا على الأقل)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "رمز MCP المميز غير متاح. تحقق من الوصول إلى سلسلة المفاتيح ثم حاول مرة أخرى.";
 "The clip you're adding has different settings than the current project." = "للمقطع الذي تضيفه إعدادات مختلفة عن المشروع الحالي.";
 "The export" = "الملف";
 "The job already finished." = "انتهت المهمة بالفعل.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "تشذيب النهاية حتى رأس التشغيل ⁨(W)⁩";
 "Trim Start to Playhead" = "تشذيب البداية حتى رأس التشغيل";
 "Trim Start to Playhead (Q)" = "تشذيب البداية حتى رأس التشغيل ⁨(Q)⁩";
-"Try again." = "أعد المحاولة.";
 "Try another search." = "جرّب بحثًا آخر.";
 "Turn off to skip audio generation." = "أوقفه لتخطي إنشاء الصوت.";
 "Tutorial" = "البرنامج التعليمي";
@@ -894,7 +893,6 @@
 "Typewriter" = "آلة كاتبة";
 "UPPERCASE" = "أحرف كبيرة";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "تعذّر فتح Claude Desktop";
 "Unable to save skill" = "تعذّر حفظ المهارة";
 "Unchanged" = "دون تغيير";
 "Underline" = "تحته خط";
@@ -914,6 +912,7 @@
 "Upscale…" = "رفع الدقة…";
 "Use Freeform" = "استخدام الوضع الحر";
 "Use Freeform to edit individual crop insets." = "استخدم الوضع الحر لتحرير هوامش الاقتصاص كلًّا على حدة.";
+"Use a port between 1024 and 65535." = "استخدم منفذًا بين 1024 و65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "استخدم نسبة عرض إلى ارتفاع من رقمين موجبين، مثل ⁨3:2⁩.";
 "Use as first frame or reference" = "استخدام كإطار أول أو مرجع";
 "Use for non-English or mixed-language audio." = "استخدمه للصوت غير الإنجليزي أو متعدد اللغات.";

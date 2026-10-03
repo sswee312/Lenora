@@ -6,6 +6,7 @@ import Network
 actor MCPHTTPServer {
 
     private let port: UInt16
+    private let token: String
     private let makeServer: @Sendable () async -> Server
     private nonisolated(unsafe) var listener: NWListener?
 
@@ -23,9 +24,11 @@ actor MCPHTTPServer {
 
     init(
         port: UInt16,
+        token: String,
         makeServer: @escaping @Sendable () async -> Server
     ) {
         self.port = port
+        self.token = token
         self.makeServer = makeServer
     }
 
@@ -124,6 +127,13 @@ actor MCPHTTPServer {
 
         guard request.path == "/mcp" || request.path == "/" else {
             sendRaw("HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\n\r\n", on: connection, keepAlive: false)
+            return
+        }
+
+        guard MCPAccessToken.isAuthorized(header: request.header("Authorization"), token: token) else {
+            Log.mcp.warning("rejected request without a valid bearer token")
+            sendRaw("HTTP/1.1 401 Unauthorized\r\nWWW-Authenticate: Bearer\r\nContent-Length: 0\r\nConnection: close\r\n\r\n",
+                    on: connection, keepAlive: false)
             return
         }
 
@@ -293,7 +303,7 @@ actor MCPHTTPServer {
 
     private nonisolated func statusText(_ code: Int) -> String {
         switch code {
-        case 200: "OK"; case 202: "Accepted"; case 400: "Bad Request"
+        case 200: "OK"; case 202: "Accepted"; case 400: "Bad Request"; case 401: "Unauthorized"
         case 404: "Not Found"; case 405: "Method Not Allowed"; case 409: "Conflict"
         case 500: "Internal Server Error"
         default: "Unknown"

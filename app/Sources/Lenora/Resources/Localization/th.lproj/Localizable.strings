@@ -53,7 +53,6 @@
 "Add models…" = "เพิ่มโมเดล…";
 "Add nonempty name and description fields to the skill frontmatter." = "เพิ่มฟิลด์ name และ description ที่ไม่ว่างใน frontmatter ของสกิล";
 "Add source media." = "เพิ่มมีเดียต้นทาง";
-"Add this configuration to ~/.cursor/mcp.json." = "เพิ่มการกำหนดค่านี้ไปที่ ~/.cursor/mcp.json";
 "Add this skill to an external agent" = "เพิ่มสกิลนี้ไปยัง Agent ภายนอก";
 "Add to %@" = "เพิ่มไปยัง %@";
 "Add to Chat" = "เพิ่มไปยังแชท";
@@ -66,6 +65,7 @@
 "Adjust Range" = "ปรับช่วง";
 "Agent Mode" = "โหมด Agent";
 "Agent Panel" = "แผง Agent";
+"Agents sign in with this token and port. Treat the token like a password." = "Agent ลงชื่อเข้าใช้ด้วยโทเค็นและพอร์ตนี้ โปรดเก็บโทเค็นเป็นความลับเหมือนรหัสผ่าน";
 "Alignment" = "การจัดแนว";
 "All" = "ทั้งหมด";
 "All Statuses" = "สถานะทั้งหมด";
@@ -310,6 +310,7 @@
 "Enhance" = "ปรับปรุง";
 "Enhance resolution or frame rate with AI" = "ปรับปรุงความละเอียดหรืออัตราเฟรมด้วย AI";
 "Enter Full Screen" = "เข้าสู่เต็มหน้าจอ";
+"Every connected agent will need the new token." = "Agent ที่เชื่อมต่ออยู่ทุกตัวจะต้องใช้โทเค็นใหม่";
 "Exclusion" = "ยกเว้น";
 "Expand" = "ขยาย";
 "Export" = "ส่งออก";
@@ -427,11 +428,8 @@
 "Inspector" = "ตัวตรวจสอบ";
 "Inspector Panel" = "แผงตัวตรวจสอบ";
 "Install" = "ติดตั้ง";
-"Install in Claude Desktop" = "ติดตั้งใน Claude Desktop";
-"Install in Cursor" = "ติดตั้งใน Cursor";
+"Install Extension" = "ติดตั้งส่วนขยาย";
 "Install skills to give the in-app agent specialized workflows." = "ติดตั้งสกิลเพื่อให้ Agent ในแอปมีเวิร์กโฟลว์เฉพาะทาง";
-"Install the Lenora Pro MCP server in Cursor." = "ติดตั้งเซิร์ฟเวอร์ MCP ของ Lenora Pro ใน Cursor";
-"Install the bundled Lenora Pro connector." = "ติดตั้งตัวเชื่อมต่อ Lenora Pro ที่มาพร้อมเครื่อง";
 "Installed" = "ติดตั้งแล้ว";
 "Instructions" = "คำแนะนำ";
 "Instrumental" = "บรรเลง";
@@ -494,7 +492,6 @@
 "MCP Setup" = "การตั้งค่า MCP";
 "Main + Sidebar" = "หลัก + แถบข้าง";
 "Make vertical shorts" = "สร้างคลิปสั้นแนวตั้ง";
-"Manual setup" = "ตั้งค่าด้วยตนเอง";
 "Mark Beats" = "ทำเครื่องหมายจังหวะ";
 "Mark Range End" = "ทำเครื่องหมายจุดสิ้นสุดช่วง";
 "Mark Range Start" = "ทำเครื่องหมายจุดเริ่มช่วง";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "วางการตั้งค่าคลิป";
 "Paste LENORA_TOKEN" = "วาง LENORA_TOKEN";
 "Paste Settings" = "วางการตั้งค่า";
+"Paste the token when Claude Desktop asks." = "วางโทเค็นเมื่อ Claude Desktop ขอ";
 "Path" = "เส้นทาง";
 "Per line" = "ต่อบรรทัด";
 "Per word" = "ต่อคำ";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "ตัวอย่างการเล่น คลื่นเสียง ภาพย่อฟิล์มสตริป และบทถอดเสียง ล้างได้อย่างปลอดภัย ไฟล์จะถูกสร้างใหม่เมื่อจำเป็น";
 "Pointer (V)" = "ตัวชี้ (V)";
 "Pop In" = "โผล่เข้า";
+"Port" = "พอร์ต";
 "Portrait (9:16)" = "แนวตั้ง (9:16)";
 "Position" = "ตำแหน่ง";
 "Preparing" = "กำลังเตรียม";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "โมเดลปรับเฟรมไม่พร้อมใช้งาน";
 "Reframe only works on video" = "ปรับเฟรมใช้ได้กับวิดีโอเท่านั้น";
 "Reframe…" = "ปรับเฟรม…";
+"Regenerate token" = "สร้างโทเค็นใหม่";
+"Regenerate token?" = "สร้างโทเค็นใหม่ไหม";
 "Regenerate with the same parameters" = "สร้างอีกครั้งด้วยพารามิเตอร์เดิม";
 "Relink Folder…" = "เชื่อมโยงโฟลเดอร์ใหม่…";
 "Relinked %lld of %lld offline clips." = "เชื่อมโยงใหม่แล้ว %lld จาก %lld คลิปออฟไลน์";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "ลบแบบริปเปิลทุกช่วงเงียบ คลิปด้านหลังจะปิดช่องว่าง";
 "Rotation" = "การหมุน";
 "Roundness" = "ความโค้งมน";
-"Run this command once in Terminal." = "เรียกใช้คำสั่งนี้ครั้งเดียวในเทอร์มินัล";
 "Running on" = "ทำงานบน";
 "Safe Zones" = "โซนปลอดภัย";
 "Sample Key Color" = "สุ่มตัวอย่างสีคีย์";
@@ -746,7 +746,6 @@
 "Selection Tool" = "เครื่องมือเลือก";
 "Send only the visible clip range to the model, not the full source." = "ส่งเฉพาะช่วงคลิปที่มองเห็นไปยังโมเดล ไม่ใช่ต้นทางทั้งหมด";
 "Sequence" = "ซีเควนซ์";
-"Server URL" = "URL เซิร์ฟเวอร์";
 "Set as first frame" = "ตั้งเป็นเฟรมแรก";
 "Set as reference" = "ตั้งเป็นข้อมูลอ้างอิง";
 "Set by LENORA_BACKEND_URL for this launch." = "ตั้งค่าโดย LENORA_BACKEND_URL สำหรับการเปิดครั้งนี้";
@@ -835,6 +834,7 @@
 "Text to Music" = "ข้อความเป็นเพลง";
 "Text to speak" = "ข้อความที่จะพูด";
 "Text to speak (minimum %lld characters)" = "ข้อความที่จะพูด (อย่างน้อย %lld อักขระ)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "ไม่สามารถใช้โทเค็น MCP ได้ ตรวจสอบสิทธิ์เข้าถึงพวงกุญแจ แล้วลองอีกครั้ง";
 "The clip you're adding has different settings than the current project." = "คลิปที่คุณกำลังเพิ่มมีการตั้งค่าต่างจากโปรเจ็กต์ปัจจุบัน";
 "The export" = "รายการส่งออก";
 "The job already finished." = "งานเสร็จสิ้นแล้ว";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "ตัดแต่งปลายถึงหัวเล่น (W)";
 "Trim Start to Playhead" = "ตัดแต่งต้นถึงหัวเล่น";
 "Trim Start to Playhead (Q)" = "ตัดแต่งต้นถึงหัวเล่น (Q)";
-"Try again." = "ลองอีกครั้ง";
 "Try another search." = "ลองค้นหาอื่น";
 "Turn off to skip audio generation." = "ปิดเพื่อข้ามการสร้างเสียง";
 "Tutorial" = "บทช่วยสอน";
@@ -894,7 +893,6 @@
 "Typewriter" = "เครื่องพิมพ์ดีด";
 "UPPERCASE" = "ตัวพิมพ์ใหญ่";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "ไม่สามารถเปิด Claude Desktop ได้";
 "Unable to save skill" = "ไม่สามารถบันทึกสกิลได้";
 "Unchanged" = "ไม่เปลี่ยนแปลง";
 "Underline" = "ขีดเส้นใต้";
@@ -914,6 +912,7 @@
 "Upscale…" = "เพิ่มความละเอียด…";
 "Use Freeform" = "ใช้อิสระ";
 "Use Freeform to edit individual crop insets." = "ใช้อิสระเพื่อแก้ไขส่วนเยื้องครอปทีละรายการ";
+"Use a port between 1024 and 65535." = "ใช้พอร์ตระหว่าง 1024 ถึง 65535";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "ใช้อัตราส่วนภาพที่เป็นจำนวนบวกสองค่า เช่น 3:2";
 "Use as first frame or reference" = "ใช้เป็นเฟรมแรกหรือข้อมูลอ้างอิง";
 "Use for non-English or mixed-language audio." = "ใช้กับเสียงที่ไม่ใช่ภาษาอังกฤษหรือหลายภาษาผสม";

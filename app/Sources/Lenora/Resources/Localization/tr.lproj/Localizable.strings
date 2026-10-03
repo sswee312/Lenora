@@ -53,7 +53,6 @@
 "Add models…" = "Model Ekle…";
 "Add nonempty name and description fields to the skill frontmatter." = "Beceri ön bilgisine boş olmayan ad ve açıklama alanları ekleyin.";
 "Add source media." = "Kaynak medya ekleyin.";
-"Add this configuration to ~/.cursor/mcp.json." = "Bu yapılandırmayı ~/.cursor/mcp.json dosyasına ekleyin.";
 "Add this skill to an external agent" = "Bu beceriyi harici bir aracıya ekle";
 "Add to %@" = "%@ Öğesine Ekle";
 "Add to Chat" = "Sohbete Ekle";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Aralığı Ayarla";
 "Agent Mode" = "Aracı Modu";
 "Agent Panel" = "Aracı Paneli";
+"Agents sign in with this token and port. Treat the token like a password." = "Aracılar bu belirteç ve bağlantı noktasıyla oturum açar. Belirtece parola gibi davranın.";
 "Alignment" = "Hizalama";
 "All" = "Tümü";
 "All Statuses" = "Tüm Durumlar";
@@ -310,6 +310,7 @@
 "Enhance" = "İyileştir";
 "Enhance resolution or frame rate with AI" = "Çözünürlüğü veya kare hızını yapay zekâyla iyileştirin";
 "Enter Full Screen" = "Tam Ekrana Geç";
+"Every connected agent will need the new token." = "Bağlı her aracı yeni belirteci gerektirecek.";
 "Exclusion" = "Dışlama";
 "Expand" = "Genişlet";
 "Export" = "Dışa Aktar";
@@ -427,11 +428,8 @@
 "Inspector" = "Denetçi";
 "Inspector Panel" = "Denetçi Paneli";
 "Install" = "Yükle";
-"Install in Claude Desktop" = "Claude Desktop'a Yükle";
-"Install in Cursor" = "Cursor'a Yükle";
+"Install Extension" = "Uzantıyı yükle";
 "Install skills to give the in-app agent specialized workflows." = "Uygulama içi aracıya özel iş akışları kazandırmak için beceriler yükleyin.";
-"Install the Lenora Pro MCP server in Cursor." = "Lenora Pro MCP sunucusunu Cursor'a yükleyin.";
-"Install the bundled Lenora Pro connector." = "Birlikte sunulan Lenora Pro bağlayıcısını yükleyin.";
 "Installed" = "Yüklendi";
 "Instructions" = "Yönergeler";
 "Instrumental" = "Enstrümantal";
@@ -494,7 +492,6 @@
 "MCP Setup" = "MCP Ayarları";
 "Main + Sidebar" = "Ana + Kenar Çubuğu";
 "Make vertical shorts" = "Dikey short’lar oluştur";
-"Manual setup" = "Elle ayarla";
 "Mark Beats" = "Vuruşları İşaretle";
 "Mark Range End" = "Aralık Sonunu İşaretle";
 "Mark Range Start" = "Aralık Başlangıcını İşaretle";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Klip Ayarlarını Yapıştır";
 "Paste LENORA_TOKEN" = "LENORA_TOKEN yapıştırın";
 "Paste Settings" = "Ayarları Yapıştır";
+"Paste the token when Claude Desktop asks." = "Claude Desktop istediğinde belirteci yapıştırın.";
 "Path" = "Yol";
 "Per line" = "Satır başına";
 "Per word" = "Sözcük başına";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Oynatma önizlemeleri, dalga biçimleri, film şeridi küçük resimleri ve dökümler. Güvenle temizlenebilir; dosyalar gerektiğinde yeniden oluşturulur.";
 "Pointer (V)" = "İşaretçi (V)";
 "Pop In" = "Belirme";
+"Port" = "Bağlantı noktası";
 "Portrait (9:16)" = "Dikey (9:16)";
 "Position" = "Konum";
 "Preparing" = "Hazırlanıyor";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Yeniden Kadrajlama modeli kullanılamıyor";
 "Reframe only works on video" = "Yeniden Kadrajlama yalnızca videoda çalışır";
 "Reframe…" = "Yeniden Kadrajla…";
+"Regenerate token" = "Belirteci yeniden oluştur";
+"Regenerate token?" = "Belirteç yeniden oluşturulsun mu?";
 "Regenerate with the same parameters" = "Aynı parametrelerle yeniden oluştur";
 "Relink Folder…" = "Klasörü Yeniden Bağla…";
 "Relinked %lld of %lld offline clips." = "%lld / %lld çevrimdışı klip yeniden bağlandı.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Her sessiz bölümü ripple siler; sonraki klipler boşlukları kapatır.";
 "Rotation" = "Döndürme";
 "Roundness" = "Yuvarlaklık";
-"Run this command once in Terminal." = "Bu komutu Terminal'de bir kez çalıştırın.";
 "Running on" = "Çalıştığı yer";
 "Safe Zones" = "Güvenli Bölgeler";
 "Sample Key Color" = "Anahtar Rengi Örnekle";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Seçim Aracı";
 "Send only the visible clip range to the model, not the full source." = "Tam kaynağı değil, yalnızca klibin görünür aralığını modele gönderin.";
 "Sequence" = "Sekans";
-"Server URL" = "Sunucu URL'si";
 "Set as first frame" = "İlk kare olarak ayarla";
 "Set as reference" = "Referans olarak ayarla";
 "Set by LENORA_BACKEND_URL for this launch." = "Bu açılış için LENORA_BACKEND_URL ile ayarlandı.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Metinden Müziğe";
 "Text to speak" = "Seslendirilecek metin";
 "Text to speak (minimum %lld characters)" = "Seslendirilecek metin (en az %lld karakter)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "MCP belirteci kullanılamıyor. Anahtar Zinciri erişimini kontrol edip tekrar deneyin.";
 "The clip you're adding has different settings than the current project." = "Eklediğiniz klibin ayarları geçerli projeden farklı.";
 "The export" = "Dışa aktarma";
 "The job already finished." = "İş zaten tamamlandı.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Sonu Oynatma Kafasına Kırp (W)";
 "Trim Start to Playhead" = "Başlangıcı Oynatma Kafasına Kırp";
 "Trim Start to Playhead (Q)" = "Başlangıcı Oynatma Kafasına Kırp (Q)";
-"Try again." = "Yeniden deneyin.";
 "Try another search." = "Başka bir arama deneyin.";
 "Turn off to skip audio generation." = "Ses oluşturmayı atlamak için kapatın.";
 "Tutorial" = "Eğitim";
@@ -894,7 +893,6 @@
 "Typewriter" = "Daktilo";
 "UPPERCASE" = "BÜYÜK HARF";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Claude Desktop açılamıyor";
 "Unable to save skill" = "Beceri kaydedilemiyor";
 "Unchanged" = "Değiştirilmedi";
 "Underline" = "Altı Çizili";
@@ -914,6 +912,7 @@
 "Upscale…" = "Çözünürlüğü Yükselt…";
 "Use Freeform" = "Serbest Kullan";
 "Use Freeform to edit individual crop insets." = "Tek tek kırpma iç boşluklarını düzenlemek için Serbest’i kullanın.";
+"Use a port between 1024 and 65535." = "1024 ile 65535 arasında bir bağlantı noktası kullanın.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "3:2 gibi iki pozitif sayıdan oluşan bir en-boy oranı kullanın.";
 "Use as first frame or reference" = "İlk kare veya referans olarak kullan";
 "Use for non-English or mixed-language audio." = "İngilizce olmayan veya birden fazla dil içeren ses için kullanın.";

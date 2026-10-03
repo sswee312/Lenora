@@ -60,13 +60,14 @@ final class AppState {
         let service = MCPService(projectProvider: { [weak self] in
             self?.activeProject
         })
-        service.start()
         mcpService = service
+        Task { await service.start() }
     }
 
     func stopMCPService() {
-        mcpService?.stop()
+        guard let service = mcpService else { return }
         mcpService = nil
+        Task { await service.stop() }
     }
 
     func setMCPEnabled(_ enabled: Bool) {

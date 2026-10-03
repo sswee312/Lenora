@@ -53,7 +53,6 @@
 "Add models…" = "मॉडल जोड़ें…";
 "Add nonempty name and description fields to the skill frontmatter." = "स्किल frontmatter में खाली न होने वाले name और description फ़ील्ड जोड़ें।";
 "Add source media." = "सोर्स मीडिया जोड़ें।";
-"Add this configuration to ~/.cursor/mcp.json." = "यह कॉन्फ़िगरेशन ~/.cursor/mcp.json में जोड़ें।";
 "Add this skill to an external agent" = "यह स्किल किसी बाहरी एजेंट में जोड़ें";
 "Add to %@" = "%@ में जोड़ें";
 "Add to Chat" = "चैट में जोड़ें";
@@ -66,6 +65,7 @@
 "Adjust Range" = "रेंज एडजस्ट करें";
 "Agent Mode" = "एजेंट मोड";
 "Agent Panel" = "एजेंट पैनल";
+"Agents sign in with this token and port. Treat the token like a password." = "एजेंट इस टोकन और पोर्ट से साइन इन करते हैं। टोकन को पासवर्ड की तरह सुरक्षित रखें।";
 "Alignment" = "अलाइनमेंट";
 "All" = "सभी";
 "All Statuses" = "सभी स्टेटस";
@@ -310,6 +310,7 @@
 "Enhance" = "एन्हांस";
 "Enhance resolution or frame rate with AI" = "AI से रेज़ोल्यूशन या फ़्रेम रेट बेहतर करें";
 "Enter Full Screen" = "फ़ुल स्क्रीन में जाएँ";
+"Every connected agent will need the new token." = "जुड़े हर एजेंट को नया टोकन चाहिए होगा।";
 "Exclusion" = "एक्सक्लूज़न";
 "Expand" = "फैलाएँ";
 "Export" = "एक्सपोर्ट";
@@ -427,11 +428,8 @@
 "Inspector" = "इंस्पेक्टर";
 "Inspector Panel" = "इंस्पेक्टर पैनल";
 "Install" = "इंस्टॉल करें";
-"Install in Claude Desktop" = "Claude Desktop में इंस्टॉल करें";
-"Install in Cursor" = "Cursor में इंस्टॉल करें";
+"Install Extension" = "एक्सटेंशन इंस्टॉल करें";
 "Install skills to give the in-app agent specialized workflows." = "इन-ऐप एजेंट को विशेष वर्कफ़्लो देने के लिए स्किल्स इंस्टॉल करें।";
-"Install the Lenora Pro MCP server in Cursor." = "Lenora Pro MCP सर्वर Cursor में इंस्टॉल करें।";
-"Install the bundled Lenora Pro connector." = "बंडल किया हुआ Lenora Pro कनेक्टर इंस्टॉल करें।";
 "Installed" = "इंस्टॉल किया गया";
 "Instructions" = "निर्देश";
 "Instrumental" = "इंस्ट्रुमेंटल";
@@ -494,7 +492,6 @@
 "MCP Setup" = "MCP सेटअप";
 "Main + Sidebar" = "मुख्य + साइडबार";
 "Make vertical shorts" = "वर्टिकल शॉर्ट्स बनाएँ";
-"Manual setup" = "मैन्युअल सेटअप";
 "Mark Beats" = "बीट्स मार्क करें";
 "Mark Range End" = "रेंज का अंत मार्क करें";
 "Mark Range Start" = "रेंज का आरंभ मार्क करें";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "क्लिप सेटिंग्स पेस्ट करें";
 "Paste LENORA_TOKEN" = "LENORA_TOKEN पेस्ट करें";
 "Paste Settings" = "सेटिंग्स पेस्ट करें";
+"Paste the token when Claude Desktop asks." = "Claude Desktop के माँगने पर टोकन पेस्ट करें।";
 "Path" = "पाथ";
 "Per line" = "प्रति लाइन";
 "Per word" = "प्रति शब्द";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "प्लेबैक प्रीव्यू, वेवफ़ॉर्म, फ़िल्मस्ट्रिप थंबनेल और ट्रांसक्रिप्ट। इन्हें साफ़ करना सुरक्षित है; फ़ाइलें ज़रूरत पर दोबारा बनती हैं।";
 "Pointer (V)" = "पॉइंटर (V)";
 "Pop In" = "पॉप इन";
+"Port" = "पोर्ट";
 "Portrait (9:16)" = "पोर्ट्रेट (9:16)";
 "Position" = "पोज़िशन";
 "Preparing" = "तैयार हो रहा है";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "रीफ़्रेम मॉडल उपलब्ध नहीं है";
 "Reframe only works on video" = "रीफ़्रेम केवल वीडियो पर काम करता है";
 "Reframe…" = "रीफ़्रेम…";
+"Regenerate token" = "टोकन फिर से बनाएँ";
+"Regenerate token?" = "टोकन फिर से बनाएँ?";
 "Regenerate with the same parameters" = "उन्हीं पैरामीटर से दोबारा जेनरेट करें";
 "Relink Folder…" = "फ़ोल्डर रीलिंक करें…";
 "Relinked %lld of %lld offline clips." = "%lld क्लिप्स रीलिंक की गईं, कुल %lld ऑफ़लाइन क्लिप्स में से।";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "हर साइलेंट सेक्शन को रिपल-डिलीट करता है; आगे की क्लिप्स गैप बंद करती हैं।";
 "Rotation" = "रोटेशन";
 "Roundness" = "राउंडनेस";
-"Run this command once in Terminal." = "यह कमांड Terminal में एक बार चलाएँ।";
 "Running on" = "इस पर चल रहा है";
 "Safe Zones" = "सेफ़ ज़ोन";
 "Sample Key Color" = "की कलर सैंपल करें";
@@ -746,7 +746,6 @@
 "Selection Tool" = "सेलेक्शन टूल";
 "Send only the visible clip range to the model, not the full source." = "पूरे सोर्स के बजाय केवल दिखने वाली क्लिप रेंज मॉडल को भेजें।";
 "Sequence" = "सीक्वेंस";
-"Server URL" = "सर्वर URL";
 "Set as first frame" = "पहले फ़्रेम के रूप में सेट करें";
 "Set as reference" = "रेफ़रेंस के रूप में सेट करें";
 "Set by LENORA_BACKEND_URL for this launch." = "इस लॉन्च के लिए LENORA_BACKEND_URL द्वारा सेट किया गया।";
@@ -835,6 +834,7 @@
 "Text to Music" = "टेक्स्ट से संगीत";
 "Text to speak" = "बोला जाने वाला टेक्स्ट";
 "Text to speak (minimum %lld characters)" = "बोला जाने वाला टेक्स्ट (कम से कम %lld अक्षर)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "MCP टोकन उपलब्ध नहीं है। Keychain एक्सेस जाँचें, फिर दोबारा कोशिश करें।";
 "The clip you're adding has different settings than the current project." = "आप जो क्लिप जोड़ रहे हैं उसकी सेटिंग्स मौजूदा प्रोजेक्ट से अलग हैं।";
 "The export" = "एक्सपोर्ट";
 "The job already finished." = "जॉब पहले ही पूरा हो चुका है।";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "अंत को प्लेहेड तक ट्रिम करें (W)";
 "Trim Start to Playhead" = "आरंभ को प्लेहेड तक ट्रिम करें";
 "Trim Start to Playhead (Q)" = "आरंभ को प्लेहेड तक ट्रिम करें (Q)";
-"Try again." = "फिर कोशिश करें।";
 "Try another search." = "दूसरी खोज आज़माएँ।";
 "Turn off to skip audio generation." = "ऑडियो जेनरेशन छोड़ने के लिए बंद करें।";
 "Tutorial" = "ट्यूटोरियल";
@@ -894,7 +893,6 @@
 "Typewriter" = "टाइपराइटर";
 "UPPERCASE" = "अपरकेस";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Claude Desktop खोला नहीं जा सका";
 "Unable to save skill" = "स्किल सेव नहीं की जा सकी";
 "Unchanged" = "अपरिवर्तित";
 "Underline" = "अंडरलाइन";
@@ -914,6 +912,7 @@
 "Upscale…" = "अपस्केल…";
 "Use Freeform" = "फ़्रीफ़ॉर्म उपयोग करें";
 "Use Freeform to edit individual crop insets." = "अलग-अलग क्रॉप इन्सेट एडिट करने के लिए फ़्रीफ़ॉर्म उपयोग करें।";
+"Use a port between 1024 and 65535." = "1024 से 65535 के बीच का पोर्ट उपयोग करें।";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "3:2 जैसे दो धनात्मक अंकों वाला आस्पेक्ट रेशियो उपयोग करें।";
 "Use as first frame or reference" = "पहले फ़्रेम या रेफ़रेंस के रूप में उपयोग करें";
 "Use for non-English or mixed-language audio." = "गैर-अंग्रेज़ी या मिश्रित भाषा वाले ऑडियो के लिए उपयोग करें।";

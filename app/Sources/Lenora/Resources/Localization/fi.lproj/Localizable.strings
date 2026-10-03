@@ -53,7 +53,6 @@
 "Add models…" = "Lisää malleja…";
 "Add nonempty name and description fields to the skill frontmatter." = "Lisää taidon frontmatteriin täytetyt name- ja description-kentät.";
 "Add source media." = "Lisää lähdemedia.";
-"Add this configuration to ~/.cursor/mcp.json." = "Lisää tämä määritys tiedostoon ~/.cursor/mcp.json.";
 "Add this skill to an external agent" = "Lisää tämä taito ulkoiseen Agentiin";
 "Add to %@" = "Lisää kohteeseen %@";
 "Add to Chat" = "Lisää keskusteluun";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Säädä aluetta";
 "Agent Mode" = "Agent-tila";
 "Agent Panel" = "Agent-paneeli";
+"Agents sign in with this token and port. Treat the token like a password." = "Agentit kirjautuvat sisään tällä tunnuksella ja portilla. Käsittele tunnusta kuin salasanaa.";
 "Alignment" = "Tasaus";
 "All" = "Kaikki";
 "All Statuses" = "Kaikki tilat";
@@ -310,6 +310,7 @@
 "Enhance" = "Paranna";
 "Enhance resolution or frame rate with AI" = "Paranna resoluutiota tai kuvataajuutta tekoälyllä";
 "Enter Full Screen" = "Siirry koko näytön tilaan";
+"Every connected agent will need the new token." = "Jokainen yhdistetty agentti tarvitsee uuden tunnuksen.";
 "Exclusion" = "Poissulkeminen";
 "Expand" = "Laajenna";
 "Export" = "Vie";
@@ -427,11 +428,8 @@
 "Inspector" = "Tarkastaja";
 "Inspector Panel" = "Tarkastajapaneeli";
 "Install" = "Asenna";
-"Install in Claude Desktop" = "Asenna Claude Desktopiin";
-"Install in Cursor" = "Asenna Cursoriin";
+"Install Extension" = "Asenna laajennus";
 "Install skills to give the in-app agent specialized workflows." = "Asenna taitoja, jotka antavat sovelluksen Agentille erikoistuneita työnkulkuja.";
-"Install the Lenora Pro MCP server in Cursor." = "Asenna Lenora Pron MCP-palvelin Cursoriin.";
-"Install the bundled Lenora Pro connector." = "Asenna mukana tuleva Lenora Pro -liitin.";
 "Installed" = "Asennettu";
 "Instructions" = "Ohjeet";
 "Instrumental" = "Instrumentaali";
@@ -494,7 +492,6 @@
 "MCP Setup" = "MCP-määritys";
 "Main + Sidebar" = "Pää + sivupalkki";
 "Make vertical shorts" = "Tee pystysuuntaisia lyhytvideoita";
-"Manual setup" = "Manuaalinen määritys";
 "Mark Beats" = "Merkitse iskut";
 "Mark Range End" = "Merkitse alueen loppu";
 "Mark Range Start" = "Merkitse alueen alku";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Sijoita leikkeen asetukset";
 "Paste LENORA_TOKEN" = "Liitä LENORA_TOKEN";
 "Paste Settings" = "Sijoita asetukset";
+"Paste the token when Claude Desktop asks." = "Liitä tunnus, kun Claude Desktop sitä pyytää.";
 "Path" = "Polku";
 "Per line" = "Riveittäin";
 "Per word" = "Sanoittain";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Toiston esikatselut, aaltomuodot, filmstrip-miniatyyrit ja litteraatit. Turvallista tyhjentää; tiedostot rakennetaan uudelleen tarvittaessa.";
 "Pointer (V)" = "Osoitin (V)";
 "Pop In" = "Ponnahtaa sisään";
+"Port" = "Portti";
 "Portrait (9:16)" = "Pysty (9:16)";
 "Position" = "Sijainti";
 "Preparing" = "Valmistellaan";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Uudelleenkehysmalli ei ole käytettävissä";
 "Reframe only works on video" = "Uudelleenkehys toimii vain videolle";
 "Reframe…" = "Uudelleenkehystä…";
+"Regenerate token" = "Luo tunnus uudelleen";
+"Regenerate token?" = "Luodaanko tunnus uudelleen?";
 "Regenerate with the same parameters" = "Generoi uudelleen samoilla parametreilla";
 "Relink Folder…" = "Linkitä kansio uudelleen…";
 "Relinked %lld of %lld offline clips." = "Linkitettiin uudelleen %lld / %lld offline-leikettä.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Aaltopoistaa jokaisen hiljaisen jakson; seuraavat leikkeet sulkevat aukot.";
 "Rotation" = "Kierto";
 "Roundness" = "Pyöreys";
-"Run this command once in Terminal." = "Suorita tämä komento kerran Terminalissa.";
 "Running on" = "Suoritetaan";
 "Safe Zones" = "Turva-alueet";
 "Sample Key Color" = "Ota avainvärin näyte";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Valintatyökalu";
 "Send only the visible clip range to the model, not the full source." = "Lähetä mallille vain näkyvä leikealue, ei koko lähdettä.";
 "Sequence" = "Jakso";
-"Server URL" = "Palvelimen URL";
 "Set as first frame" = "Aseta ensimmäiseksi ruuduksi";
 "Set as reference" = "Aseta viitteeksi";
 "Set by LENORA_BACKEND_URL for this launch." = "Asetettu muuttujalla LENORA_BACKEND_URL tätä käynnistystä varten.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Tekstistä musiikiksi";
 "Text to speak" = "Luettava teksti";
 "Text to speak (minimum %lld characters)" = "Luettava teksti (vähintään %lld merkkiä)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "MCP-tunnus ei ole käytettävissä. Tarkista avainnipun käyttöoikeus ja yritä uudelleen.";
 "The clip you're adding has different settings than the current project." = "Lisättävän leikkeen asetukset poikkeavat nykyisestä projektista.";
 "The export" = "Vienti";
 "The job already finished." = "Työ on jo valmis.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Rajaa loppu toistopäähän (W)";
 "Trim Start to Playhead" = "Rajaa alku toistopäähän";
 "Trim Start to Playhead (Q)" = "Rajaa alku toistopäähän (Q)";
-"Try again." = "Yritä uudelleen.";
 "Try another search." = "Kokeile toista hakua.";
 "Turn off to skip audio generation." = "Poista käytöstä ohittaaksesi äänen generoinnin.";
 "Tutorial" = "Opastus";
@@ -894,7 +893,6 @@
 "Typewriter" = "Kirjoituskone";
 "UPPERCASE" = "VERSAALI";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Claude Desktopia ei voi avata";
 "Unable to save skill" = "Taitoa ei voi tallentaa";
 "Unchanged" = "Ei muutosta";
 "Underline" = "Alleviivaus";
@@ -914,6 +912,7 @@
 "Upscale…" = "Skaalaa ylös…";
 "Use Freeform" = "Käytä vapaata muotoa";
 "Use Freeform to edit individual crop insets." = "Käytä vapaata muotoa yksittäisten rajausreunusten muokkaamiseen.";
+"Use a port between 1024 and 65535." = "Käytä porttia väliltä 1024–65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Käytä kuvasuhdetta, jossa on kaksi positiivista lukua, esimerkiksi 3:2.";
 "Use as first frame or reference" = "Käytä ensimmäisenä ruutuna tai viitteenä";
 "Use for non-English or mixed-language audio." = "Käytä muulle kuin englannille tai sekoitetulle äänelle.";

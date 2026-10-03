@@ -1,7 +1,9 @@
 // Stdio→HTTP shim for Claude Desktop
 const http = require('node:http');
 
-const URL_BASE = 'http://127.0.0.1:19789/mcp';
+const PORT = Number(process.env.LENORA_MCP_PORT) || 19789;
+const TOKEN = process.env.LENORA_MCP_TOKEN || '';
+const URL_BASE = `http://127.0.0.1:${PORT}/mcp`;
 const RETRY_MS_MIN = 500;
 const RETRY_MS_MAX = 5000;
 const REQUEST_REPLAY_MS = 25000; // fail held requests before Claude Desktop's own 60s timeout
@@ -15,6 +17,7 @@ let getStreamAbort = null;
 
 const log = (...a) => console.error('[lenora-shim]', ...a);
 const writeOut = (msg) => process.stdout.write(JSON.stringify(msg) + '\n');
+const tokenRejected = () => Object.assign(new Error('token rejected — update the Lenora extension token'), { fatal: true });
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 function headers(extra = {}) {
@@ -22,6 +25,7 @@ function headers(extra = {}) {
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/event-stream',
     'MCP-Protocol-Version': protocolVersion,
+    'Authorization': `Bearer ${TOKEN}`,
     ...extra,
   };
   if (sessionId) h['Mcp-Session-Id'] = sessionId;
@@ -60,6 +64,7 @@ async function post(message, onMessage) {
       headers: headers(),
       body: JSON.stringify(message),
     });
+    if (res.status === 401) throw tokenRejected();
     if (res.status === 404) throw new Error('session expired');
     if (!res.ok && res.status !== 202) throw new Error(`HTTP ${res.status}`);
     const assigned = res.headers.get('mcp-session-id');
@@ -85,9 +90,14 @@ function openGetStream() {
     if (aborted) return;
     aborted = true;
     log('notification stream lost:', err.message);
-    reconnect();
+    reconnect().catch(() => {});
   };
   request = http.get(URL_BASE, { headers: headers({ 'Accept': 'text/event-stream' }), timeout: 0 }, (res) => {
+    if (res.statusCode === 401) {
+      res.resume();
+      aborted = true;
+      return log(tokenRejected().message);
+    }
     if (res.statusCode !== 200) { res.resume(); return fail(new Error(`GET HTTP ${res.statusCode}`)); }
     let buf = '';
     res.setEncoding('utf8');
@@ -130,6 +140,7 @@ async function establishSession() {
       log('session established', sessionId);
       return result;
     } catch (err) {
+      if (err.fatal) throw err;
       log(`connect failed (${err.message}); retrying in ${delay}ms`);
       await sleep(delay);
       delay = Math.min(delay * 2, RETRY_MS_MAX);
@@ -168,7 +179,7 @@ async function handleClientMessage(msg) {
       return;
     } catch (err) {
       if (msg.id === undefined) return;
-      if (err.delivered || Date.now() > deadline) throw err;
+      if (err.fatal || err.delivered || Date.now() > deadline) throw err;
       log(`request ${msg.method} failed (${err.message}); reconnecting`);
       await reconnect();
     }
@@ -187,7 +198,7 @@ process.stdin.on('data', (chunk) => {
     handleClientMessage(msg).catch((err) => {
       log('unhandled error:', err.message);
       if (msg.id !== undefined) {
-        writeOut({ jsonrpc: '2.0', id: msg.id, error: { code: -32603, message: `Lenora Pro unreachable: ${err.message}` } });
+        writeOut({ jsonrpc: '2.0', id: msg.id, error: { code: -32603, message: `Lenora unreachable: ${err.message}` } });
       }
     });
   }

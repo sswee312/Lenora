@@ -53,7 +53,6 @@
 "Add models…" = "Tilføj modeller…";
 "Add nonempty name and description fields to the skill frontmatter." = "Tilføj udfyldte felter til navn og beskrivelse i færdighedens frontmatter.";
 "Add source media." = "Tilføj kildemedie.";
-"Add this configuration to ~/.cursor/mcp.json." = "Tilføj denne konfiguration til ~/.cursor/mcp.json.";
 "Add this skill to an external agent" = "Tilføj denne færdighed til en ekstern agent";
 "Add to %@" = "Tilføj til %@";
 "Add to Chat" = "Tilføj til chat";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Juster område";
 "Agent Mode" = "Agent-tilstand";
 "Agent Panel" = "Agentpanel";
+"Agents sign in with this token and port. Treat the token like a password." = "Agenter logger ind med dette token og denne port. Behandl tokenet som en adgangskode.";
 "Alignment" = "Justering";
 "All" = "Alle";
 "All Statuses" = "Alle statusser";
@@ -310,6 +310,7 @@
 "Enhance" = "Forbedr";
 "Enhance resolution or frame rate with AI" = "Forbedr opløsning eller billedhastighed med AI";
 "Enter Full Screen" = "Aktivér fuld skærm";
+"Every connected agent will need the new token." = "Hver tilsluttet agent skal bruge det nye token.";
 "Exclusion" = "Udelukkelse";
 "Expand" = "Udvid";
 "Export" = "Eksportér";
@@ -427,11 +428,8 @@
 "Inspector" = "Inspektør";
 "Inspector Panel" = "Inspektørpanel";
 "Install" = "Installer";
-"Install in Claude Desktop" = "Installer i Claude Desktop";
-"Install in Cursor" = "Installer i Cursor";
+"Install Extension" = "Installer udvidelse";
 "Install skills to give the in-app agent specialized workflows." = "Installer færdigheder, så Agent i appen får specialiserede arbejdsgange.";
-"Install the Lenora Pro MCP server in Cursor." = "Installer Lenora Pro MCP-serveren i Cursor.";
-"Install the bundled Lenora Pro connector." = "Installer den medfølgende Lenora Pro-forbindelse.";
 "Installed" = "Installeret";
 "Instructions" = "Vejledning";
 "Instrumental" = "Instrumental";
@@ -494,7 +492,6 @@
 "MCP Setup" = "MCP-opsætning";
 "Main + Sidebar" = "Hoved + sidepanel";
 "Make vertical shorts" = "Lav lodrette shorts";
-"Manual setup" = "Manuel opsætning";
 "Mark Beats" = "Markér takter";
 "Mark Range End" = "Markér områdeslut";
 "Mark Range Start" = "Markér områdestart";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Sæt klipindstillinger ind";
 "Paste LENORA_TOKEN" = "Indsæt LENORA_TOKEN";
 "Paste Settings" = "Sæt indstillinger ind";
+"Paste the token when Claude Desktop asks." = "Indsæt tokenet, når Claude Desktop beder om det.";
 "Path" = "Sti";
 "Per line" = "Pr. linje";
 "Per word" = "Pr. ord";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Forhåndsvisninger, bølgeformer, filmstrip-miniaturer og udskrifter. Kan ryddes uden risiko; filer gendannes efter behov.";
 "Pointer (V)" = "Pegeværktøj (V)";
 "Pop In" = "Pop ind";
+"Port" = "Port";
 "Portrait (9:16)" = "Portræt (9:16)";
 "Position" = "Placering";
 "Preparing" = "Forbereder";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Omram-model ikke tilgængelig";
 "Reframe only works on video" = "Omram virker kun på video";
 "Reframe…" = "Omram…";
+"Regenerate token" = "Generer token igen";
+"Regenerate token?" = "Generer token igen?";
 "Regenerate with the same parameters" = "Generer igen med de samme parametre";
 "Relink Folder…" = "Genforbind mappe…";
 "Relinked %lld of %lld offline clips." = "Genforbandt %lld af %lld offline klip.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Bølgesletter alle stille afsnit; efterfølgende klip lukker mellemrummene.";
 "Rotation" = "Rotation";
 "Roundness" = "Runding";
-"Run this command once in Terminal." = "Kør denne kommando én gang i Terminal.";
 "Running on" = "Kører på";
 "Safe Zones" = "Sikre zoner";
 "Sample Key Color" = "Udtag nøglefarve";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Markeringsværktøj";
 "Send only the visible clip range to the model, not the full source." = "Send kun det synlige klipområde til modellen, ikke hele kilden.";
 "Sequence" = "Sekvens";
-"Server URL" = "Server-URL";
 "Set as first frame" = "Indstil som første frame";
 "Set as reference" = "Indstil som reference";
 "Set by LENORA_BACKEND_URL for this launch." = "Angivet af LENORA_BACKEND_URL for denne start.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Tekst til musik";
 "Text to speak" = "Tekst der skal tales";
 "Text to speak (minimum %lld characters)" = "Tekst der skal tales (mindst %lld tegn)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "MCP-tokenet er ikke tilgængeligt. Tjek adgangen til nøgleringen, og prøv igen.";
 "The clip you're adding has different settings than the current project." = "Klippet, du tilføjer, har andre indstillinger end det aktuelle projekt.";
 "The export" = "Eksporten";
 "The job already finished." = "Jobbet er allerede afsluttet.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Trim slutning til afspilningshoved (W)";
 "Trim Start to Playhead" = "Trim start til afspilningshoved";
 "Trim Start to Playhead (Q)" = "Trim start til afspilningshoved (Q)";
-"Try again." = "Prøv igen.";
 "Try another search." = "Prøv en anden søgning.";
 "Turn off to skip audio generation." = "Slå fra for at springe lydgenerering over.";
 "Tutorial" = "Vejledning";
@@ -894,7 +893,6 @@
 "Typewriter" = "Skrivemaskine";
 "UPPERCASE" = "STORE BOGSTAVER";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Kan ikke åbne Claude Desktop";
 "Unable to save skill" = "Kunne ikke arkivere færdighed";
 "Unchanged" = "Uændret";
 "Underline" = "Understregning";
@@ -914,6 +912,7 @@
 "Upscale…" = "Opskalér…";
 "Use Freeform" = "Brug fri form";
 "Use Freeform to edit individual crop insets." = "Brug fri form til at redigere de enkelte beskæringsindryk.";
+"Use a port between 1024 and 65535." = "Brug en port mellem 1024 og 65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Brug et billedformat med to positive tal, f.eks. 3:2.";
 "Use as first frame or reference" = "Brug som første frame eller reference";
 "Use for non-English or mixed-language audio." = "Brug til lyd, der ikke er på engelsk, eller som blander sprog.";

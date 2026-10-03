@@ -53,7 +53,6 @@
 "Add models…" = "Lägg till modeller…";
 "Add nonempty name and description fields to the skill frontmatter." = "Lägg till ifyllda fält för namn och beskrivning i färdighetens frontmatter.";
 "Add source media." = "Lägg till källmedia.";
-"Add this configuration to ~/.cursor/mcp.json." = "Lägg till den här konfigurationen i ~/.cursor/mcp.json.";
 "Add this skill to an external agent" = "Lägg till den här färdigheten i en extern Agent";
 "Add to %@" = "Lägg till i %@";
 "Add to Chat" = "Lägg till i chatten";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Justera område";
 "Agent Mode" = "Agent-läge";
 "Agent Panel" = "Agent-panel";
+"Agents sign in with this token and port. Treat the token like a password." = "Agenter loggar in med den här token och porten. Behandla token som ett lösenord.";
 "Alignment" = "Justering";
 "All" = "Alla";
 "All Statuses" = "Alla statusar";
@@ -310,6 +310,7 @@
 "Enhance" = "Förbättra";
 "Enhance resolution or frame rate with AI" = "Förbättra upplösning eller bildfrekvens med AI";
 "Enter Full Screen" = "Gå till helskärm";
+"Every connected agent will need the new token." = "Varje ansluten agent behöver den nya token.";
 "Exclusion" = "Uteslutning";
 "Expand" = "Expandera";
 "Export" = "Exportera";
@@ -427,11 +428,8 @@
 "Inspector" = "Inspektör";
 "Inspector Panel" = "Inspektörspanel";
 "Install" = "Installera";
-"Install in Claude Desktop" = "Installera i Claude Desktop";
-"Install in Cursor" = "Installera i Cursor";
+"Install Extension" = "Installera tillägg";
 "Install skills to give the in-app agent specialized workflows." = "Installera färdigheter så att Agent i appen får specialiserade arbetsflöden.";
-"Install the Lenora Pro MCP server in Cursor." = "Installera Lenora Pro MCP-servern i Cursor.";
-"Install the bundled Lenora Pro connector." = "Installera den medföljande Lenora Pro-anslutningen.";
 "Installed" = "Installerad";
 "Instructions" = "Instruktioner";
 "Instrumental" = "Instrumental";
@@ -494,7 +492,6 @@
 "MCP Setup" = "MCP-konfiguration";
 "Main + Sidebar" = "Huvud + sidofält";
 "Make vertical shorts" = "Gör vertikala shorts";
-"Manual setup" = "Manuell konfiguration";
 "Mark Beats" = "Markera takter";
 "Mark Range End" = "Markera områdesslut";
 "Mark Range Start" = "Markera områdesstart";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Klistra in klippinställningar";
 "Paste LENORA_TOKEN" = "Klistra in LENORA_TOKEN";
 "Paste Settings" = "Klistra in inställningar";
+"Paste the token when Claude Desktop asks." = "Klistra in token när Claude Desktop frågar efter den.";
 "Path" = "Sökväg";
 "Per line" = "Per rad";
 "Per word" = "Per ord";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Förhandsvisningar, vågformer, filmremseminiatyrer och transkriptioner. Säkert att rensa; filerna byggs om vid behov.";
 "Pointer (V)" = "Pekare (V)";
 "Pop In" = "Poppa in";
+"Port" = "Port";
 "Portrait (9:16)" = "Stående (9:16)";
 "Position" = "Position";
 "Preparing" = "Förbereder";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Omramningsmodellen är inte tillgänglig";
 "Reframe only works on video" = "Omrama fungerar bara på video";
 "Reframe…" = "Omrama…";
+"Regenerate token" = "Skapa ny token";
+"Regenerate token?" = "Skapa ny token?";
 "Regenerate with the same parameters" = "Generera om med samma parametrar";
 "Relink Folder…" = "Länka om mapp…";
 "Relinked %lld of %lld offline clips." = "Länkade om %lld av %lld offlineklipp.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Raderar varje tyst avsnitt och sluter luckorna; efterföljande klipp flyttas ihop.";
 "Rotation" = "Rotation";
 "Roundness" = "Rundning";
-"Run this command once in Terminal." = "Kör det här kommandot en gång i Terminal.";
 "Running on" = "Körs på";
 "Safe Zones" = "Säkra zoner";
 "Sample Key Color" = "Prova nyckelfärg";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Markeringsverktyg";
 "Send only the visible clip range to the model, not the full source." = "Skicka bara det synliga klippområdet till modellen, inte hela källan.";
 "Sequence" = "Sekvens";
-"Server URL" = "Server-URL";
 "Set as first frame" = "Ange som första bildruta";
 "Set as reference" = "Ange som referens";
 "Set by LENORA_BACKEND_URL for this launch." = "Angiven av LENORA_BACKEND_URL för den här starten.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Text till musik";
 "Text to speak" = "Text att tala";
 "Text to speak (minimum %lld characters)" = "Text att tala (minst %lld tecken)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "MCP-token är inte tillgänglig. Kontrollera åtkomsten till nyckelringen och försök igen.";
 "The clip you're adding has different settings than the current project." = "Klippet du lägger till har andra inställningar än det aktuella projektet.";
 "The export" = "Exporten";
 "The job already finished." = "Jobbet är redan klart.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Trimma slutet till uppspelningshuvudet (W)";
 "Trim Start to Playhead" = "Trimma början till uppspelningshuvudet";
 "Trim Start to Playhead (Q)" = "Trimma början till uppspelningshuvudet (Q)";
-"Try again." = "Försök igen.";
 "Try another search." = "Försök med en annan sökning.";
 "Turn off to skip audio generation." = "Stäng av för att hoppa över ljudgenerering.";
 "Tutorial" = "Handledning";
@@ -894,7 +893,6 @@
 "Typewriter" = "Skrivmaskin";
 "UPPERCASE" = "VERSALER";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Det går inte att öppna Claude Desktop";
 "Unable to save skill" = "Det går inte att spara färdigheten";
 "Unchanged" = "Oförändrad";
 "Underline" = "Understrykning";
@@ -914,6 +912,7 @@
 "Upscale…" = "Uppskala…";
 "Use Freeform" = "Använd fritt format";
 "Use Freeform to edit individual crop insets." = "Använd fritt format för att redigera enskilda beskärningsmarginaler.";
+"Use a port between 1024 and 65535." = "Använd en port mellan 1024 och 65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Använd ett bildförhållande med två positiva tal, till exempel 3:2.";
 "Use as first frame or reference" = "Använd som första bildruta eller referens";
 "Use for non-English or mixed-language audio." = "Använd för ljud som inte är på engelska eller som blandar språk.";

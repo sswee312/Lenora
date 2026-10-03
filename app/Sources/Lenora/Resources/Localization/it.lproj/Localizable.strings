@@ -53,7 +53,6 @@
 "Add models…" = "Aggiungi modelli…";
 "Add nonempty name and description fields to the skill frontmatter." = "Aggiungi campi name e description non vuoti al frontmatter della competenza.";
 "Add source media." = "Aggiungi contenuti multimediali sorgente.";
-"Add this configuration to ~/.cursor/mcp.json." = "Aggiungi questa configurazione a ~/.cursor/mcp.json.";
 "Add this skill to an external agent" = "Aggiungi questa competenza a un agente esterno";
 "Add to %@" = "Aggiungi a %@";
 "Add to Chat" = "Aggiungi alla chat";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Regola intervallo";
 "Agent Mode" = "Modalità agente";
 "Agent Panel" = "Pannello agente";
+"Agents sign in with this token and port. Treat the token like a password." = "Gli agenti accedono con questo token e questa porta. Tratta il token come una password.";
 "Alignment" = "Allineamento";
 "All" = "Tutto";
 "All Statuses" = "Tutti gli stati";
@@ -310,6 +310,7 @@
 "Enhance" = "Migliora";
 "Enhance resolution or frame rate with AI" = "Migliora la risoluzione o la frequenza fotogrammi con l'AI";
 "Enter Full Screen" = "Attiva modalità a tutto schermo";
+"Every connected agent will need the new token." = "Ogni agente connesso avrà bisogno del nuovo token.";
 "Exclusion" = "Esclusione";
 "Expand" = "Espandi";
 "Export" = "Esporta";
@@ -427,11 +428,8 @@
 "Inspector" = "Inspector";
 "Inspector Panel" = "Pannello Inspector";
 "Install" = "Installa";
-"Install in Claude Desktop" = "Installa in Claude Desktop";
-"Install in Cursor" = "Installa in Cursor";
+"Install Extension" = "Installa estensione";
 "Install skills to give the in-app agent specialized workflows." = "Installa competenze per fornire all'agente nell'app flussi di lavoro specializzati.";
-"Install the Lenora Pro MCP server in Cursor." = "Installa il server MCP Lenora Pro in Cursor.";
-"Install the bundled Lenora Pro connector." = "Installa il connettore Lenora Pro incluso.";
 "Installed" = "Installato";
 "Instructions" = "Istruzioni";
 "Instrumental" = "Strumentale";
@@ -494,7 +492,6 @@
 "MCP Setup" = "Configurazione MCP";
 "Main + Sidebar" = "Principale + barra laterale";
 "Make vertical shorts" = "Crea short verticali";
-"Manual setup" = "Configurazione manuale";
 "Mark Beats" = "Contrassegna battiti";
 "Mark Range End" = "Contrassegna fine intervallo";
 "Mark Range Start" = "Contrassegna inizio intervallo";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Incolla impostazioni clip";
 "Paste LENORA_TOKEN" = "Incolla LENORA_TOKEN";
 "Paste Settings" = "Incolla impostazioni";
+"Paste the token when Claude Desktop asks." = "Incolla il token quando Claude Desktop lo richiede.";
 "Path" = "Percorso";
 "Per line" = "Per riga";
 "Per word" = "Per parola";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Anteprime di riproduzione, forme d'onda, miniature delle pellicole e trascrizioni. Puoi eliminarle in sicurezza: i file vengono ricreati quando necessario.";
 "Pointer (V)" = "Puntatore (V)";
 "Pop In" = "Comparsa";
+"Port" = "Porta";
 "Portrait (9:16)" = "Verticale (9:16)";
 "Position" = "Posizione";
 "Preparing" = "Preparazione";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Modello di reinquadratura non disponibile";
 "Reframe only works on video" = "La reinquadratura funziona solo con i video";
 "Reframe…" = "Reinquadra…";
+"Regenerate token" = "Rigenera token";
+"Regenerate token?" = "Rigenerare il token?";
 "Regenerate with the same parameters" = "Rigenera con gli stessi parametri";
 "Relink Folder…" = "Ricollega cartella…";
 "Relinked %lld of %lld offline clips." = "Ricollegate %lld di %lld clip offline.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Elimina con scarto ogni sezione silenziosa; le clip successive chiudono gli spazi.";
 "Rotation" = "Rotazione";
 "Roundness" = "Rotondità";
-"Run this command once in Terminal." = "Esegui questo comando una volta nel Terminale.";
 "Running on" = "In esecuzione su";
 "Safe Zones" = "Zone di sicurezza";
 "Sample Key Color" = "Campiona colore chiave";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Strumento selezione";
 "Send only the visible clip range to the model, not the full source." = "Invia al modello solo l'intervallo visibile della clip, non l'intero sorgente.";
 "Sequence" = "Sequenza";
-"Server URL" = "URL server";
 "Set as first frame" = "Imposta come primo fotogramma";
 "Set as reference" = "Imposta come riferimento";
 "Set by LENORA_BACKEND_URL for this launch." = "Impostato da LENORA_BACKEND_URL per questo avvio.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Da testo a musica";
 "Text to speak" = "Testo da pronunciare";
 "Text to speak (minimum %lld characters)" = "Testo da pronunciare (almeno %lld caratteri)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "Il token MCP non è disponibile. Controlla l'accesso al Portachiavi e riprova.";
 "The clip you're adding has different settings than the current project." = "La clip che stai aggiungendo ha impostazioni diverse dal progetto attuale.";
 "The export" = "L'esportazione";
 "The job already finished." = "Il processo è già terminato.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Ritaglia fine fino alla testina (W)";
 "Trim Start to Playhead" = "Ritaglia inizio fino alla testina";
 "Trim Start to Playhead (Q)" = "Ritaglia inizio fino alla testina (Q)";
-"Try again." = "Riprova.";
 "Try another search." = "Prova un'altra ricerca.";
 "Turn off to skip audio generation." = "Disattiva per ignorare la generazione audio.";
 "Tutorial" = "Tutorial";
@@ -894,7 +893,6 @@
 "Typewriter" = "Macchina da scrivere";
 "UPPERCASE" = "MAIUSCOLO";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Impossibile aprire Claude Desktop";
 "Unable to save skill" = "Impossibile salvare la competenza";
 "Unchanged" = "Invariato";
 "Underline" = "Sottolineato";
@@ -914,6 +912,7 @@
 "Upscale…" = "Aumenta risoluzione…";
 "Use Freeform" = "Usa Libero";
 "Use Freeform to edit individual crop insets." = "Usa Libero per modificare i singoli margini di ritaglio.";
+"Use a port between 1024 and 65535." = "Usa una porta compresa tra 1024 e 65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Usa proporzioni con due numeri positivi, ad esempio 3:2.";
 "Use as first frame or reference" = "Usa come primo fotogramma o riferimento";
 "Use for non-English or mixed-language audio." = "Usa per audio non in inglese o multilingue.";

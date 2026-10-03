@@ -53,7 +53,6 @@
 "Add models…" = "Thêm mô hình…";
 "Add nonempty name and description fields to the skill frontmatter." = "Thêm trường tên và mô tả không trống vào phần frontmatter của kỹ năng.";
 "Add source media." = "Thêm phương tiện nguồn.";
-"Add this configuration to ~/.cursor/mcp.json." = "Thêm cấu hình này vào ~/.cursor/mcp.json.";
 "Add this skill to an external agent" = "Thêm kỹ năng này vào agent bên ngoài";
 "Add to %@" = "Thêm vào %@";
 "Add to Chat" = "Thêm vào chat";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Điều chỉnh vùng";
 "Agent Mode" = "Chế độ Agent";
 "Agent Panel" = "Bảng Agent";
+"Agents sign in with this token and port. Treat the token like a password." = "Agent đăng nhập bằng token và cổng này. Hãy xem token như mật khẩu.";
 "Alignment" = "Căn chỉnh";
 "All" = "Tất cả";
 "All Statuses" = "Tất cả trạng thái";
@@ -310,6 +310,7 @@
 "Enhance" = "Nâng cao";
 "Enhance resolution or frame rate with AI" = "Nâng cao độ phân giải hoặc tốc độ khung hình bằng AI";
 "Enter Full Screen" = "Vào toàn màn hình";
+"Every connected agent will need the new token." = "Mọi agent đã kết nối sẽ cần token mới.";
 "Exclusion" = "Loại trừ";
 "Expand" = "Mở rộng";
 "Export" = "Xuất";
@@ -427,11 +428,8 @@
 "Inspector" = "Trình kiểm tra";
 "Inspector Panel" = "Bảng trình kiểm tra";
 "Install" = "Cài đặt";
-"Install in Claude Desktop" = "Cài đặt trong Claude Desktop";
-"Install in Cursor" = "Cài đặt trong Cursor";
+"Install Extension" = "Cài đặt tiện ích mở rộng";
 "Install skills to give the in-app agent specialized workflows." = "Cài đặt kỹ năng để cung cấp quy trình làm việc chuyên biệt cho agent trong app.";
-"Install the Lenora Pro MCP server in Cursor." = "Cài đặt MCP server của Lenora Pro trong Cursor.";
-"Install the bundled Lenora Pro connector." = "Cài đặt trình kết nối Lenora Pro đi kèm.";
 "Installed" = "Đã cài đặt";
 "Instructions" = "Hướng dẫn";
 "Instrumental" = "Không lời";
@@ -494,7 +492,6 @@
 "MCP Setup" = "Thiết lập MCP";
 "Main + Sidebar" = "Chính + thanh bên";
 "Make vertical shorts" = "Tạo short dọc";
-"Manual setup" = "Thiết lập thủ công";
 "Mark Beats" = "Đánh dấu nhịp";
 "Mark Range End" = "Đánh dấu cuối vùng";
 "Mark Range Start" = "Đánh dấu đầu vùng";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Dán cài đặt clip";
 "Paste LENORA_TOKEN" = "Dán LENORA_TOKEN";
 "Paste Settings" = "Dán cài đặt";
+"Paste the token when Claude Desktop asks." = "Dán token khi Claude Desktop yêu cầu.";
 "Path" = "Đường dẫn";
 "Per line" = "Theo dòng";
 "Per word" = "Theo từ";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Bản xem trước phát lại, dạng sóng, hình thu nhỏ dải phim và bản chép lời. Có thể xóa an toàn; các tệp sẽ được tạo lại khi cần.";
 "Pointer (V)" = "Con trỏ (V)";
 "Pop In" = "Hiện bật";
+"Port" = "Cổng";
 "Portrait (9:16)" = "Dọc (9:16)";
 "Position" = "Vị trí";
 "Preparing" = "Đang chuẩn bị";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Mô hình định khung lại không khả dụng";
 "Reframe only works on video" = "Định khung lại chỉ hoạt động với video";
 "Reframe…" = "Định khung lại…";
+"Regenerate token" = "Tạo lại token";
+"Regenerate token?" = "Tạo lại token?";
 "Regenerate with the same parameters" = "Tạo lại với cùng tham số";
 "Relink Folder…" = "Liên kết lại thư mục…";
 "Relinked %lld of %lld offline clips." = "Đã liên kết lại %lld trên %lld clip ngoại tuyến.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Xóa mọi đoạn im lặng và dồn các clip phía sau để đóng khoảng trống.";
 "Rotation" = "Xoay";
 "Roundness" = "Độ tròn";
-"Run this command once in Terminal." = "Chạy lệnh này một lần trong Terminal.";
 "Running on" = "Đang chạy trên";
 "Safe Zones" = "Vùng an toàn";
 "Sample Key Color" = "Lấy mẫu màu khóa";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Công cụ Chọn";
 "Send only the visible clip range to the model, not the full source." = "Chỉ gửi vùng clip đang hiển thị cho mô hình, không gửi toàn bộ nguồn.";
 "Sequence" = "Chuỗi";
-"Server URL" = "URL server";
 "Set as first frame" = "Đặt làm khung hình đầu";
 "Set as reference" = "Đặt làm tham chiếu";
 "Set by LENORA_BACKEND_URL for this launch." = "Được đặt bởi LENORA_BACKEND_URL cho lần khởi chạy này.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Văn bản thành nhạc";
 "Text to speak" = "Văn bản cần đọc";
 "Text to speak (minimum %lld characters)" = "Văn bản cần đọc (tối thiểu %lld ký tự)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "Không thể dùng token MCP. Hãy kiểm tra quyền truy cập Chuỗi khóa rồi thử lại.";
 "The clip you're adding has different settings than the current project." = "Clip bạn đang thêm có cài đặt khác với dự án hiện tại.";
 "The export" = "Bản xuất";
 "The job already finished." = "Tác vụ đã hoàn tất.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Cắt phần cuối đến đầu phát (W)";
 "Trim Start to Playhead" = "Cắt phần đầu đến đầu phát";
 "Trim Start to Playhead (Q)" = "Cắt phần đầu đến đầu phát (Q)";
-"Try again." = "Thử lại.";
 "Try another search." = "Thử tìm kiếm khác.";
 "Turn off to skip audio generation." = "Tắt để bỏ qua việc tạo âm thanh.";
 "Tutorial" = "Hướng dẫn";
@@ -894,7 +893,6 @@
 "Typewriter" = "Máy đánh chữ";
 "UPPERCASE" = "CHỮ HOA";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Không thể mở Claude Desktop";
 "Unable to save skill" = "Không thể lưu kỹ năng";
 "Unchanged" = "Không đổi";
 "Underline" = "Gạch chân";
@@ -914,6 +912,7 @@
 "Upscale…" = "Nâng độ phân giải…";
 "Use Freeform" = "Dùng Tự do";
 "Use Freeform to edit individual crop insets." = "Dùng Tự do để chỉnh từng lề cắt xén.";
+"Use a port between 1024 and 65535." = "Dùng cổng trong khoảng 1024 đến 65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Dùng tỷ lệ khung hình gồm hai số dương, chẳng hạn 3:2.";
 "Use as first frame or reference" = "Dùng làm khung hình đầu hoặc tham chiếu";
 "Use for non-English or mixed-language audio." = "Dùng cho âm thanh không phải tiếng Anh hoặc có nhiều ngôn ngữ.";

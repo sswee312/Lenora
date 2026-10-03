@@ -12,6 +12,9 @@ struct AgentPane: View {
             SettingsSection(title: L10n.string("Integrations")) {
                 mcpSection
             }
+            SettingsSection(title: L10n.string("Connect an agent")) {
+                ConnectAgentPane()
+            }
         }
     }
 
@@ -74,7 +77,7 @@ struct AgentPane: View {
                     HStack(alignment: .firstTextBaseline, spacing: AppTheme.Spacing.xxs) {
                         Text(L10n.string("Running on"))
                             .foregroundStyle(AppTheme.Text.secondaryColor)
-                        Text(verbatim: "127.0.0.1:\(String(MCPService.port))")
+                        Text(verbatim: "127.0.0.1:\(String(appState.mcpService?.port ?? MCPPort.current))")
                             .font(.system(size: AppTheme.FontSize.sm, design: .monospaced))
                             .foregroundStyle(AppTheme.Text.primaryColor)
                     }

@@ -53,7 +53,6 @@
 "Add models…" = "モデルを追加…";
 "Add nonempty name and description fields to the skill frontmatter." = "スキルのfrontmatterに、空でないnameフィールドとdescriptionフィールドを追加してください。";
 "Add source media." = "ソースメディアを追加してください。";
-"Add this configuration to ~/.cursor/mcp.json." = "この設定を~/.cursor/mcp.jsonに追加してください。";
 "Add this skill to an external agent" = "このスキルを外部エージェントに追加";
 "Add to %@" = "%@に追加";
 "Add to Chat" = "チャットに追加";
@@ -66,6 +65,7 @@
 "Adjust Range" = "範囲を調整";
 "Agent Mode" = "エージェントモード";
 "Agent Panel" = "エージェントパネル";
+"Agents sign in with this token and port. Treat the token like a password." = "エージェントはこのトークンとポートでサインインします。トークンはパスワードと同様に扱ってください。";
 "Alignment" = "配置";
 "All" = "すべて";
 "All Statuses" = "すべてのステータス";
@@ -310,6 +310,7 @@
 "Enhance" = "補正";
 "Enhance resolution or frame rate with AI" = "AIで解像度やフレームレートを向上";
 "Enter Full Screen" = "フルスクリーンにする";
+"Every connected agent will need the new token." = "接続中のすべてのエージェントで新しいトークンが必要になります。";
 "Exclusion" = "除外";
 "Expand" = "展開";
 "Export" = "書き出す";
@@ -427,11 +428,8 @@
 "Inspector" = "インスペクタ";
 "Inspector Panel" = "インスペクタパネル";
 "Install" = "インストール";
-"Install in Claude Desktop" = "Claude Desktopにインストール";
-"Install in Cursor" = "Cursorにインストール";
+"Install Extension" = "拡張機能をインストール";
 "Install skills to give the in-app agent specialized workflows." = "スキルをインストールして、アプリ内エージェントに特化したワークフローを追加します。";
-"Install the Lenora Pro MCP server in Cursor." = "Lenora Pro MCPサーバをCursorにインストールします。";
-"Install the bundled Lenora Pro connector." = "付属のLenora Proコネクタをインストールします。";
 "Installed" = "インストール済み";
 "Instructions" = "手順";
 "Instrumental" = "インストゥルメンタル";
@@ -494,7 +492,6 @@
 "MCP Setup" = "MCPの設定";
 "Main + Sidebar" = "メイン + サイドバー";
 "Make vertical shorts" = "縦型ショートを作成";
-"Manual setup" = "手動設定";
 "Mark Beats" = "ビートをマーク";
 "Mark Range End" = "範囲の終了位置をマーク";
 "Mark Range Start" = "範囲の開始位置をマーク";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "クリップ設定をペースト";
 "Paste LENORA_TOKEN" = "LENORA_TOKENをペースト";
 "Paste Settings" = "設定をペースト";
+"Paste the token when Claude Desktop asks." = "Claude Desktopから求められたら、トークンをペーストしてください。";
 "Path" = "パス";
 "Per line" = "行ごと";
 "Per word" = "単語ごと";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "再生プレビュー、波形、フィルムストリップのサムネイル、文字起こしです。安全に消去でき、必要に応じて再作成されます。";
 "Pointer (V)" = "ポインタ（V）";
 "Pop In" = "ポップイン";
+"Port" = "ポート";
 "Portrait (9:16)" = "縦向き（9:16）";
 "Position" = "位置";
 "Preparing" = "準備中";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "リフレームモデルを利用できません";
 "Reframe only works on video" = "リフレームはビデオでのみ使用できます";
 "Reframe…" = "リフレーム…";
+"Regenerate token" = "トークンを再生成";
+"Regenerate token?" = "トークンを再生成しますか？";
 "Regenerate with the same parameters" = "同じパラメータで再生成";
 "Relink Folder…" = "フォルダを再リンク…";
 "Relinked %lld of %lld offline clips." = "オフラインクリップ%lld個のうち%lld個を再リンクしました。";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "すべての無音セクションをリップル削除し、後続のクリップを詰めます。";
 "Rotation" = "回転";
 "Roundness" = "丸み";
-"Run this command once in Terminal." = "このコマンドをターミナルで一度実行してください。";
 "Running on" = "実行先";
 "Safe Zones" = "セーフゾーン";
 "Sample Key Color" = "キーカラーをサンプリング";
@@ -746,7 +746,6 @@
 "Selection Tool" = "選択ツール";
 "Send only the visible clip range to the model, not the full source." = "ソース全体ではなく、クリップの表示範囲だけをモデルに送信します。";
 "Sequence" = "シーケンス";
-"Server URL" = "サーバURL";
 "Set as first frame" = "最初のフレームに設定";
 "Set as reference" = "参照に設定";
 "Set by LENORA_BACKEND_URL for this launch." = "今回の起動ではLENORA_BACKEND_URLで設定されています。";
@@ -835,6 +834,7 @@
 "Text to Music" = "テキストから音楽";
 "Text to speak" = "読み上げるテキスト";
 "Text to speak (minimum %lld characters)" = "読み上げるテキスト（%lld文字以上）";
+"The MCP token is unavailable. Check Keychain access, then try again." = "MCPトークンを利用できません。キーチェーンへのアクセスを確認して、もう一度お試しください。";
 "The clip you're adding has different settings than the current project." = "追加しようとしているクリップの設定が現在のプロジェクトと異なります。";
 "The export" = "書き出し";
 "The job already finished." = "ジョブはすでに完了しています。";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "終了位置を再生ヘッドまでトリム（W）";
 "Trim Start to Playhead" = "開始位置を再生ヘッドまでトリム";
 "Trim Start to Playhead (Q)" = "開始位置を再生ヘッドまでトリム（Q）";
-"Try again." = "もう一度お試しください。";
 "Try another search." = "別の条件で検索してください。";
 "Turn off to skip audio generation." = "オフにするとオーディオ生成を省略します。";
 "Tutorial" = "チュートリアル";
@@ -894,7 +893,6 @@
 "Typewriter" = "タイプライター";
 "UPPERCASE" = "大文字";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Claude Desktopを開けません";
 "Unable to save skill" = "スキルを保存できません";
 "Unchanged" = "変更なし";
 "Underline" = "下線";
@@ -914,6 +912,7 @@
 "Upscale…" = "アップスケール…";
 "Use Freeform" = "フリーフォームを使用";
 "Use Freeform to edit individual crop insets." = "個々のクロップインセットを編集するにはフリーフォームを使用します。";
+"Use a port between 1024 and 65535." = "1024〜65535のポートを使用してください。";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "3:2のように、2つの正の数でアスペクト比を指定してください。";
 "Use as first frame or reference" = "最初のフレームまたは参照として使用";
 "Use for non-English or mixed-language audio." = "英語以外、または複数言語のオーディオに使用します。";

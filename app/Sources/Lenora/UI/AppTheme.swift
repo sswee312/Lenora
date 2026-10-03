@@ -442,6 +442,7 @@ enum AppTheme {
     enum Settings {
         static let sidebarWidth: CGFloat = 220
         static let contentMaxWidth: CGFloat = 640
+        static let portInputWidth: CGFloat = 64
         static let skillsSearchWidth: CGFloat = 260
         static let skillRowIconFrame: CGFloat = 42
         static let skillStatusWidth: CGFloat = 124

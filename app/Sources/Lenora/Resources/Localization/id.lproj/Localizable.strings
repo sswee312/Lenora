@@ -53,7 +53,6 @@
 "Add models…" = "Tambahkan model…";
 "Add nonempty name and description fields to the skill frontmatter." = "Tambahkan bidang name dan description yang tidak kosong ke frontmatter skill.";
 "Add source media." = "Tambahkan media sumber.";
-"Add this configuration to ~/.cursor/mcp.json." = "Tambahkan konfigurasi ini ke ~/.cursor/mcp.json.";
 "Add this skill to an external agent" = "Tambahkan skill ini ke Agent eksternal";
 "Add to %@" = "Tambahkan ke %@";
 "Add to Chat" = "Tambahkan ke Chat";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Sesuaikan Rentang";
 "Agent Mode" = "Mode Agent";
 "Agent Panel" = "Panel Agent";
+"Agents sign in with this token and port. Treat the token like a password." = "Agent masuk dengan token dan port ini. Perlakukan token seperti kata sandi.";
 "Alignment" = "Perataan";
 "All" = "Semua";
 "All Statuses" = "Semua Status";
@@ -310,6 +310,7 @@
 "Enhance" = "Tingkatkan";
 "Enhance resolution or frame rate with AI" = "Tingkatkan resolusi atau kecepatan frame dengan AI";
 "Enter Full Screen" = "Masuk ke Layar Penuh";
+"Every connected agent will need the new token." = "Setiap agent yang terhubung memerlukan token baru.";
 "Exclusion" = "Exclusion";
 "Expand" = "Perluas";
 "Export" = "Ekspor";
@@ -427,11 +428,8 @@
 "Inspector" = "Inspektur";
 "Inspector Panel" = "Panel Inspektur";
 "Install" = "Instal";
-"Install in Claude Desktop" = "Instal di Claude Desktop";
-"Install in Cursor" = "Instal di Cursor";
+"Install Extension" = "Instal Ekstensi";
 "Install skills to give the in-app agent specialized workflows." = "Instal skill untuk memberi Agent di app alur kerja khusus.";
-"Install the Lenora Pro MCP server in Cursor." = "Instal server MCP Lenora Pro di Cursor.";
-"Install the bundled Lenora Pro connector." = "Instal konektor Lenora Pro yang disertakan.";
 "Installed" = "Terinstal";
 "Instructions" = "Instruksi";
 "Instrumental" = "Instrumental";
@@ -494,7 +492,6 @@
 "MCP Setup" = "Penyiapan MCP";
 "Main + Sidebar" = "Utama + Bilah Samping";
 "Make vertical shorts" = "Buat short vertikal";
-"Manual setup" = "Penyiapan manual";
 "Mark Beats" = "Tandai Ketukan";
 "Mark Range End" = "Tandai Akhir Rentang";
 "Mark Range Start" = "Tandai Awal Rentang";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Tempel Pengaturan Klip";
 "Paste LENORA_TOKEN" = "Tempel LENORA_TOKEN";
 "Paste Settings" = "Tempel Pengaturan";
+"Paste the token when Claude Desktop asks." = "Tempel token saat Claude Desktop memintanya.";
 "Path" = "Jalur";
 "Per line" = "Per baris";
 "Per word" = "Per kata";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Pratinjau pemutaran, bentuk gelombang, thumbnail filmstrip, dan transkrip. Aman dihapus; file dibuat ulang sesuai kebutuhan.";
 "Pointer (V)" = "Penunjuk (V)";
 "Pop In" = "Muncul";
+"Port" = "Port";
 "Portrait (9:16)" = "Potret (9:16)";
 "Position" = "Posisi";
 "Preparing" = "Menyiapkan";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Model Bingkai ulang tidak tersedia";
 "Reframe only works on video" = "Bingkai ulang hanya berfungsi pada video";
 "Reframe…" = "Bingkai ulang…";
+"Regenerate token" = "Buat ulang token";
+"Regenerate token?" = "Buat ulang token?";
 "Regenerate with the same parameters" = "Hasilkan ulang dengan parameter yang sama";
 "Relink Folder…" = "Tautkan Ulang Folder…";
 "Relinked %lld of %lld offline clips." = "Menautkan ulang %lld dari %lld klip offline.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Menghapus Ripple setiap bagian hening; klip di hilir menutup celah.";
 "Rotation" = "Rotasi";
 "Roundness" = "Kebulatan";
-"Run this command once in Terminal." = "Jalankan perintah ini sekali di Terminal.";
 "Running on" = "Berjalan di";
 "Safe Zones" = "Zona Aman";
 "Sample Key Color" = "Ambil Warna Kunci";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Alat Seleksi";
 "Send only the visible clip range to the model, not the full source." = "Kirim hanya rentang klip yang terlihat ke model, bukan seluruh sumber.";
 "Sequence" = "Sekuens";
-"Server URL" = "URL Server";
 "Set as first frame" = "Jadikan frame pertama";
 "Set as reference" = "Jadikan referensi";
 "Set by LENORA_BACKEND_URL for this launch." = "Diatur oleh LENORA_BACKEND_URL untuk peluncuran ini.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Teks ke Musik";
 "Text to speak" = "Teks untuk diucapkan";
 "Text to speak (minimum %lld characters)" = "Teks untuk diucapkan (minimum %lld karakter)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP tidak tersedia. Periksa akses Rantai Kunci, lalu coba lagi.";
 "The clip you're adding has different settings than the current project." = "Klip yang Anda tambahkan memiliki pengaturan berbeda dari proyek saat ini.";
 "The export" = "Ekspor";
 "The job already finished." = "Tugas sudah selesai.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Pangkas Akhir ke Kepala Putar (W)";
 "Trim Start to Playhead" = "Pangkas Awal ke Kepala Putar";
 "Trim Start to Playhead (Q)" = "Pangkas Awal ke Kepala Putar (Q)";
-"Try again." = "Coba lagi.";
 "Try another search." = "Coba pencarian lain.";
 "Turn off to skip audio generation." = "Nonaktifkan untuk melewati generasi audio.";
 "Tutorial" = "Tutorial";
@@ -894,7 +893,6 @@
 "Typewriter" = "Mesin ketik";
 "UPPERCASE" = "HURUF BESAR";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Tidak dapat membuka Claude Desktop";
 "Unable to save skill" = "Tidak dapat menyimpan skill";
 "Unchanged" = "Tidak berubah";
 "Underline" = "Garis bawah";
@@ -914,6 +912,7 @@
 "Upscale…" = "Upscale…";
 "Use Freeform" = "Gunakan Bebas";
 "Use Freeform to edit individual crop insets." = "Gunakan Bebas untuk mengedit sisipan potongan satu per satu.";
+"Use a port between 1024 and 65535." = "Gunakan port antara 1024 dan 65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Gunakan rasio aspek dengan dua angka positif, misalnya 3:2.";
 "Use as first frame or reference" = "Gunakan sebagai frame pertama atau referensi";
 "Use for non-English or mixed-language audio." = "Gunakan untuk audio selain bahasa Inggris atau campuran bahasa.";

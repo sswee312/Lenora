@@ -53,7 +53,6 @@
 "Add models…" = "모델 추가…";
 "Add nonempty name and description fields to the skill frontmatter." = "스킬 프런트매터에 비어 있지 않은 이름 및 설명 필드를 추가하세요.";
 "Add source media." = "소스 미디어를 추가하세요.";
-"Add this configuration to ~/.cursor/mcp.json." = "이 구성을 ~/.cursor/mcp.json에 추가하세요.";
 "Add this skill to an external agent" = "외부 에이전트에 이 스킬 추가";
 "Add to %@" = "%@에 추가";
 "Add to Chat" = "채팅에 추가";
@@ -66,6 +65,7 @@
 "Adjust Range" = "범위 조정";
 "Agent Mode" = "에이전트 모드";
 "Agent Panel" = "에이전트 패널";
+"Agents sign in with this token and port. Treat the token like a password." = "에이전트는 이 토큰과 포트로 로그인합니다. 토큰은 암호처럼 취급하세요.";
 "Alignment" = "정렬";
 "All" = "모두";
 "All Statuses" = "모든 상태";
@@ -310,6 +310,7 @@
 "Enhance" = "향상";
 "Enhance resolution or frame rate with AI" = "AI로 해상도 또는 프레임률 향상";
 "Enter Full Screen" = "전체 화면 시작";
+"Every connected agent will need the new token." = "연결된 모든 에이전트에 새 토큰이 필요합니다.";
 "Exclusion" = "제외";
 "Expand" = "확장";
 "Export" = "내보내기";
@@ -427,11 +428,8 @@
 "Inspector" = "인스펙터";
 "Inspector Panel" = "인스펙터 패널";
 "Install" = "설치";
-"Install in Claude Desktop" = "Claude Desktop에 설치";
-"Install in Cursor" = "Cursor에 설치";
+"Install Extension" = "확장 프로그램 설치";
 "Install skills to give the in-app agent specialized workflows." = "스킬을 설치하여 앱 내 에이전트에 전문 워크플로를 제공하세요.";
-"Install the Lenora Pro MCP server in Cursor." = "Cursor에 Lenora Pro MCP 서버를 설치합니다.";
-"Install the bundled Lenora Pro connector." = "번들로 제공되는 Lenora Pro 커넥터를 설치합니다.";
 "Installed" = "설치됨";
 "Instructions" = "지침";
 "Instrumental" = "연주곡";
@@ -494,7 +492,6 @@
 "MCP Setup" = "MCP 설정";
 "Main + Sidebar" = "메인 + 사이드바";
 "Make vertical shorts" = "세로형 쇼츠 만들기";
-"Manual setup" = "수동 설정";
 "Mark Beats" = "비트 표시";
 "Mark Range End" = "범위 끝 표시";
 "Mark Range Start" = "범위 시작 표시";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "클립 설정 붙여넣기";
 "Paste LENORA_TOKEN" = "LENORA_TOKEN 붙여넣기";
 "Paste Settings" = "설정 붙여넣기";
+"Paste the token when Claude Desktop asks." = "Claude Desktop에서 요청하면 토큰을 붙여넣으세요.";
 "Path" = "경로";
 "Per line" = "줄별";
 "Per word" = "단어별";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "재생 미리보기, 파형, 필름스트립 축소판 및 트랜스크립트입니다. 안전하게 지울 수 있으며 필요할 때 파일이 다시 생성됩니다.";
 "Pointer (V)" = "포인터(V)";
 "Pop In" = "팝 인";
+"Port" = "포트";
 "Portrait (9:16)" = "세로 (9:16)";
 "Position" = "위치";
 "Preparing" = "준비 중";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "리프레임 모델을 사용할 수 없습니다";
 "Reframe only works on video" = "리프레임은 비디오에서만 사용할 수 있습니다";
 "Reframe…" = "리프레임…";
+"Regenerate token" = "토큰 다시 생성";
+"Regenerate token?" = "토큰을 다시 생성할까요?";
 "Regenerate with the same parameters" = "동일한 매개변수로 다시 생성";
 "Relink Folder…" = "폴더 다시 연결…";
 "Relinked %lld of %lld offline clips." = "오프라인 클립 %lld개를 다시 연결했습니다(전체 %lld개).";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "모든 무음 구간을 리플 삭제하며 이후 클립이 간격을 메웁니다.";
 "Rotation" = "회전";
 "Roundness" = "둥글기";
-"Run this command once in Terminal." = "Terminal에서 이 명령을 한 번 실행하세요.";
 "Running on" = "실행 위치";
 "Safe Zones" = "세이프 존";
 "Sample Key Color" = "키 색상 샘플링";
@@ -746,7 +746,6 @@
 "Selection Tool" = "선택 도구";
 "Send only the visible clip range to the model, not the full source." = "전체 소스가 아닌 표시되는 클립 범위만 모델에 보냅니다.";
 "Sequence" = "시퀀스";
-"Server URL" = "서버 URL";
 "Set as first frame" = "첫 프레임으로 설정";
 "Set as reference" = "참조로 설정";
 "Set by LENORA_BACKEND_URL for this launch." = "이번 실행에서는 LENORA_BACKEND_URL로 설정되었습니다.";
@@ -835,6 +834,7 @@
 "Text to Music" = "텍스트로 음악 생성";
 "Text to speak" = "말할 텍스트";
 "Text to speak (minimum %lld characters)" = "말할 텍스트(최소 %lld자)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "MCP 토큰을 사용할 수 없습니다. 키체인 접근 권한을 확인한 다음 다시 시도하세요.";
 "The clip you're adding has different settings than the current project." = "추가하려는 클립의 설정이 현재 프로젝트와 다릅니다.";
 "The export" = "내보내기";
 "The job already finished." = "작업이 이미 완료되었습니다.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "끝을 재생 헤드까지 트리밍(W)";
 "Trim Start to Playhead" = "시작을 재생 헤드까지 트리밍";
 "Trim Start to Playhead (Q)" = "시작을 재생 헤드까지 트리밍(Q)";
-"Try again." = "다시 시도하세요.";
 "Try another search." = "다른 검색어를 사용해 보세요.";
 "Turn off to skip audio generation." = "오디오 생성을 건너뛰려면 끄세요.";
 "Tutorial" = "튜토리얼";
@@ -894,7 +893,6 @@
 "Typewriter" = "타자기";
 "UPPERCASE" = "대문자";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Claude Desktop을 열 수 없음";
 "Unable to save skill" = "스킬을 저장할 수 없음";
 "Unchanged" = "변경 없음";
 "Underline" = "밑줄";
@@ -914,6 +912,7 @@
 "Upscale…" = "업스케일…";
 "Use Freeform" = "자유 형식 사용";
 "Use Freeform to edit individual crop insets." = "개별 자르기 인셋을 편집하려면 자유 형식을 사용하세요.";
+"Use a port between 1024 and 65535." = "1024에서 65535 사이의 포트를 사용하세요.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "3:2와 같이 두 양수로 구성된 화면비를 사용하세요.";
 "Use as first frame or reference" = "첫 프레임 또는 참조로 사용";
 "Use for non-English or mixed-language audio." = "영어가 아닌 오디오 또는 여러 언어가 섞인 오디오에 사용합니다.";

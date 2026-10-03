@@ -6,7 +6,7 @@ import MCP
 @MainActor
 final class MCPService {
 
-    static let port: UInt16 = 19789
+    var port: UInt16 { MCPPort.current }
 
     private static let enabledKey = "xyz.agentage.lenora.mcp.enabled"
 
@@ -22,6 +22,10 @@ final class MCPService {
     }
 
     private(set) var isRunning: Bool = false
+    private(set) var startError: String?
+
+    @ObservationIgnored
+    private var generation = 0
 
     @ObservationIgnored
     private let projectProvider: () -> VideoProject?
@@ -32,8 +36,23 @@ final class MCPService {
         self.projectProvider = projectProvider
     }
 
-    func start() {
-        let httpServer = MCPHTTPServer(port: Self.port) { [self] in
+    func start() async {
+        generation += 1
+        let attempt = generation
+        startError = nil
+        let port = port
+        let token: String
+        do {
+            token = try await MCPAccessToken.loadOrCreate()
+        } catch {
+            guard attempt == generation else { return }
+            Log.mcp.error("http server not started: \(error.localizedDescription)")
+            startError = error.localizedDescription
+            isRunning = false
+            return
+        }
+        guard attempt == generation else { return }
+        let httpServer = MCPHTTPServer(port: port, token: token) { [self] in
             let toolExecutor = await makeSessionToolExecutor()
             let server = Server(
                 name: "lenora",
@@ -49,28 +68,34 @@ final class MCPService {
             return server
         }
         self.httpServer = httpServer
-        Task { @MainActor [weak self] in
-            do {
-                try await httpServer.start()
-                Log.mcp.notice("http server started port=\(Self.port)")
-                self?.isRunning = true
-            } catch {
-                Log.mcp.error("http server failed to start: \(error.localizedDescription)")
-                self?.isRunning = false
-            }
+        do {
+            try await httpServer.start()
+            guard attempt == generation else { return }
+            Log.mcp.notice("http server started port=\(port)")
+            isRunning = true
+        } catch {
+            guard attempt == generation else { return }
+            Log.mcp.error("http server failed to start: \(error.localizedDescription)")
+            startError = error.localizedDescription
+            isRunning = false
         }
+    }
+
+    func restart() async {
+        await stop()
+        await start()
     }
 
     func makeSessionToolExecutor() -> ToolExecutor {
         ToolExecutor(projectProvider: projectProvider)
     }
 
-    func stop() {
-        if let server = httpServer {
-            Task { await server.stop() }
-        }
+    func stop() async {
+        generation += 1
+        let server = httpServer
         httpServer = nil
         isRunning = false
+        await server?.stop()
         Log.mcp.notice("http server stopped")
     }
 

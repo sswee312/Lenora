@@ -53,7 +53,6 @@
 "Add models…" = "Додати моделі…";
 "Add nonempty name and description fields to the skill frontmatter." = "Додайте непорожні поля name і description у frontmatter навички.";
 "Add source media." = "Додайте вихідні медіа.";
-"Add this configuration to ~/.cursor/mcp.json." = "Додайте цю конфігурацію до ~/.cursor/mcp.json.";
 "Add this skill to an external agent" = "Додати цю навичку до зовнішнього Agent";
 "Add to %@" = "Додати до %@";
 "Add to Chat" = "Додати в чат";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Змінити діапазон";
 "Agent Mode" = "Режим Agent";
 "Agent Panel" = "Панель Agent";
+"Agents sign in with this token and port. Treat the token like a password." = "Агенти входять за допомогою цього токена й порту. Ставтеся до токена як до пароля.";
 "Alignment" = "Вирівнювання";
 "All" = "Усі";
 "All Statuses" = "Усі статуси";
@@ -310,6 +310,7 @@
 "Enhance" = "Покращити";
 "Enhance resolution or frame rate with AI" = "Покращити роздільність або частоту кадрів за допомогою AI";
 "Enter Full Screen" = "Перейти в повноекранний режим";
+"Every connected agent will need the new token." = "Кожному підключеному агенту знадобиться новий токен.";
 "Exclusion" = "Виключення";
 "Expand" = "Розгорнути";
 "Export" = "Експортувати";
@@ -427,11 +428,8 @@
 "Inspector" = "Інспектор";
 "Inspector Panel" = "Панель інспектора";
 "Install" = "Установити";
-"Install in Claude Desktop" = "Установити в Claude Desktop";
-"Install in Cursor" = "Установити в Cursor";
+"Install Extension" = "Установити розширення";
 "Install skills to give the in-app agent specialized workflows." = "Установіть навички, щоб дати вбудованому Agent спеціалізовані робочі процеси.";
-"Install the Lenora Pro MCP server in Cursor." = "Установіть MCP-сервер Lenora Pro у Cursor.";
-"Install the bundled Lenora Pro connector." = "Установіть вбудований конектор Lenora Pro.";
 "Installed" = "Установлено";
 "Instructions" = "Інструкції";
 "Instrumental" = "Інструментальна";
@@ -494,7 +492,6 @@
 "MCP Setup" = "Налаштування MCP";
 "Main + Sidebar" = "Основна + бічна панель";
 "Make vertical shorts" = "Створювати вертикальні короткі відео";
-"Manual setup" = "Налаштування вручну";
 "Mark Beats" = "Позначити біти";
 "Mark Range End" = "Позначити кінець діапазону";
 "Mark Range Start" = "Позначити початок діапазону";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Вставити параметри кліпу";
 "Paste LENORA_TOKEN" = "Вставте LENORA_TOKEN";
 "Paste Settings" = "Вставити параметри";
+"Paste the token when Claude Desktop asks." = "Вставте токен, коли Claude Desktop його запитає.";
 "Path" = "Шлях";
 "Per line" = "По рядках";
 "Per word" = "По словах";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Попередні перегляди відтворення, форми хвиль, мініатюри кінострічки й транскрипти. Безпечно очищати; файли створюються знову за потреби.";
 "Pointer (V)" = "Вказівник (V)";
 "Pop In" = "Поява";
+"Port" = "Порт";
 "Portrait (9:16)" = "Портрет (9:16)";
 "Position" = "Позиція";
 "Preparing" = "Підготовка";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Модель перекадрування недоступна";
 "Reframe only works on video" = "Перекадрування працює лише з відео";
 "Reframe…" = "Перекадрувати…";
+"Regenerate token" = "Створити токен знову";
+"Regenerate token?" = "Створити токен знову?";
 "Regenerate with the same parameters" = "Згенерувати знову з тими самими параметрами";
 "Relink Folder…" = "Перезв'язати папку…";
 "Relinked %lld of %lld offline clips." = "Перезв'язано %lld з %lld офлайн-кліпів.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Видаляє зі зсувом усі тихі фрагменти; наступні кліпи закривають проміжки.";
 "Rotation" = "Обертання";
 "Roundness" = "Округлість";
-"Run this command once in Terminal." = "Виконайте цю команду один раз у Terminal.";
 "Running on" = "Виконується на";
 "Safe Zones" = "Безпечні зони";
 "Sample Key Color" = "Вибрати ключовий колір";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Інструмент виділення";
 "Send only the visible clip range to the model, not the full source." = "Надсилати моделі лише видимий діапазон кліпу, а не все джерело.";
 "Sequence" = "Секвенція";
-"Server URL" = "URL сервера";
 "Set as first frame" = "Задати як перший кадр";
 "Set as reference" = "Задати як референс";
 "Set by LENORA_BACKEND_URL for this launch." = "Задано через LENORA_BACKEND_URL для цього запуску.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Текст у музику";
 "Text to speak" = "Текст для озвучення";
 "Text to speak (minimum %lld characters)" = "Текст для озвучення (мінімум %lld символів)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "Токен MCP недоступний. Перевірте доступ до В'язки ключів і повторіть спробу.";
 "The clip you're adding has different settings than the current project." = "Кліп, який ви додаєте, має інші параметри, ніж поточний проєкт.";
 "The export" = "Експорт";
 "The job already finished." = "Завдання вже завершено.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Підрізати кінець до курсора відтворення (W)";
 "Trim Start to Playhead" = "Підрізати початок до курсора відтворення";
 "Trim Start to Playhead (Q)" = "Підрізати початок до курсора відтворення (Q)";
-"Try again." = "Повторіть спробу.";
 "Try another search." = "Спробуйте інший пошук.";
 "Turn off to skip audio generation." = "Вимкніть, щоб пропустити генерацію аудіо.";
 "Tutorial" = "Посібник";
@@ -894,7 +893,6 @@
 "Typewriter" = "Друкарська машинка";
 "UPPERCASE" = "ПРОПИСНІ";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Не вдалося відкрити Claude Desktop";
 "Unable to save skill" = "Не вдалося зберегти навичку";
 "Unchanged" = "Без змін";
 "Underline" = "Підкреслення";
@@ -914,6 +912,7 @@
 "Upscale…" = "Збільшити роздільність…";
 "Use Freeform" = "Використати довільний режим";
 "Use Freeform to edit individual crop insets." = "Використайте довільний режим, щоб редагувати окремі відступи кадрування.";
+"Use a port between 1024 and 65535." = "Використайте порт від 1024 до 65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Укажіть співвідношення сторін із двох додатних чисел, наприклад 3:2.";
 "Use as first frame or reference" = "Використати як перший кадр або референс";
 "Use for non-English or mixed-language audio." = "Для аудіо не англійською або змішаними мовами.";

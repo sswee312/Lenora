@@ -53,7 +53,6 @@
 "Add models…" = "הוסף מודלים…";
 "Add nonempty name and description fields to the skill frontmatter." = "הוסף שדות name ו-description שאינם ריקים ל-frontmatter של המיומנות.";
 "Add source media." = "הוסף מדיית מקור.";
-"Add this configuration to ~/.cursor/mcp.json." = "הוסף תצורה זו אל ⁨~/.cursor/mcp.json⁩.";
 "Add this skill to an external agent" = "הוסף מיומנות זו ל-Agent חיצוני";
 "Add to %@" = "הוסף אל ⁨%@⁩";
 "Add to Chat" = "הוסף לצ'אט";
@@ -66,6 +65,7 @@
 "Adjust Range" = "כוונן טווח";
 "Agent Mode" = "מצב Agent";
 "Agent Panel" = "לוח Agent";
+"Agents sign in with this token and port. Treat the token like a password." = "ה-Agents מתחברים באמצעות הטוקן והפורט האלה. התייחס לטוקן כמו לסיסמה.";
 "Alignment" = "יישור";
 "All" = "הכול";
 "All Statuses" = "כל הסטטוסים";
@@ -310,6 +310,7 @@
 "Enhance" = "שפר";
 "Enhance resolution or frame rate with AI" = "שפר רזולוציה או קצב פריימים באמצעות AI";
 "Enter Full Screen" = "עבור למסך מלא";
+"Every connected agent will need the new token." = "כל Agent מחובר יצטרך את הטוקן החדש.";
 "Exclusion" = "החרגה";
 "Expand" = "הרחב";
 "Export" = "ייצוא";
@@ -427,11 +428,8 @@
 "Inspector" = "מפקח";
 "Inspector Panel" = "לוח מפקח";
 "Install" = "התקן";
-"Install in Claude Desktop" = "התקן ב-Claude Desktop";
-"Install in Cursor" = "התקן ב-Cursor";
+"Install Extension" = "התקן תוסף";
 "Install skills to give the in-app agent specialized workflows." = "התקן מיומנויות כדי לתת ל-Agent באפליקציה תהליכי עבודה ייעודיים.";
-"Install the Lenora Pro MCP server in Cursor." = "התקן את שרת ה-MCP של Lenora Pro ב-Cursor.";
-"Install the bundled Lenora Pro connector." = "התקן את מחבר Lenora Pro המצורף.";
 "Installed" = "מותקן";
 "Instructions" = "הוראות";
 "Instrumental" = "אינסטרומנטלי";
@@ -494,7 +492,6 @@
 "MCP Setup" = "הגדרת MCP";
 "Main + Sidebar" = "ראשי + סרגל צד";
 "Make vertical shorts" = "צור שורטים אנכיים";
-"Manual setup" = "הגדרה ידנית";
 "Mark Beats" = "סמן פעימות";
 "Mark Range End" = "סמן סוף טווח";
 "Mark Range Start" = "סמן תחילת טווח";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "הדבק הגדרות קליפ";
 "Paste LENORA_TOKEN" = "הדבק את LENORA_TOKEN";
 "Paste Settings" = "הדבק הגדרות";
+"Paste the token when Claude Desktop asks." = "הדבק את הטוקן כש-Claude Desktop יבקש.";
 "Path" = "נתיב";
 "Per line" = "לשורה";
 "Per word" = "למילה";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "תצוגות מקדימות לניגון, צורות גל, תמונות ממוזערות של פילמסטריפ ותמלילים. בטוח לנקות; הקבצים נבנים מחדש לפי הצורך.";
 "Pointer (V)" = "מצביע ⁨(V)⁩";
 "Pop In" = "הופעה";
+"Port" = "פורט";
 "Portrait (9:16)" = "אנכי (9:16)";
 "Position" = "מיקום";
 "Preparing" = "מכין";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "מודל מסגור מחדש אינו זמין";
 "Reframe only works on video" = "מסגור מחדש פועל על וידאו בלבד";
 "Reframe…" = "מסגר מחדש…";
+"Regenerate token" = "צור טוקן מחדש";
+"Regenerate token?" = "ליצור טוקן מחדש?";
 "Regenerate with the same parameters" = "הפק מחדש באותם פרמטרים";
 "Relink Folder…" = "קשר תיקייה מחדש…";
 "Relinked %lld of %lld offline clips." = "קושרו מחדש ⁨%lld⁩ מתוך ⁨%lld⁩ קליפים לא מקוונים.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "מוחק באופן גלי כל קטע שקט; הקליפים שאחריו סוגרים את הרווחים.";
 "Rotation" = "סיבוב";
 "Roundness" = "עיגול";
-"Run this command once in Terminal." = "הרץ פקודה זו פעם אחת ב-Terminal.";
 "Running on" = "פועל על";
 "Safe Zones" = "אזורים בטוחים";
 "Sample Key Color" = "דגום צבע מפתח";
@@ -746,7 +746,6 @@
 "Selection Tool" = "כלי בחירה";
 "Send only the visible clip range to the model, not the full source." = "שלח למודל רק את טווח הקליפ הגלוי, לא את המקור המלא.";
 "Sequence" = "רצף";
-"Server URL" = "כתובת URL של השרת";
 "Set as first frame" = "הגדר כפריים ראשון";
 "Set as reference" = "הגדר כייחוס";
 "Set by LENORA_BACKEND_URL for this launch." = "הוגדר על ידי LENORA_BACKEND_URL להפעלה זו.";
@@ -835,6 +834,7 @@
 "Text to Music" = "טקסט למוזיקה";
 "Text to speak" = "טקסט להקראה";
 "Text to speak (minimum %lld characters)" = "טקסט להקראה (לפחות ⁨%lld⁩ תווים)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "טוקן ה-MCP אינו זמין. בדוק את הגישה לצרור המפתחות ונסה שוב.";
 "The clip you're adding has different settings than the current project." = "לקליפ שאתה מוסיף יש הגדרות שונות מאלה של הפרויקט הנוכחי.";
 "The export" = "הייצוא";
 "The job already finished." = "המשימה כבר הסתיימה.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "חתוך סוף לראש הניגון ⁨(W)⁩";
 "Trim Start to Playhead" = "חתוך התחלה לראש הניגון";
 "Trim Start to Playhead (Q)" = "חתוך התחלה לראש הניגון ⁨(Q)⁩";
-"Try again." = "נסה שוב.";
 "Try another search." = "נסה חיפוש אחר.";
 "Turn off to skip audio generation." = "כבה כדי לדלג על הפקת שמע.";
 "Tutorial" = "הדרכה";
@@ -894,7 +893,6 @@
 "Typewriter" = "מכונת כתיבה";
 "UPPERCASE" = "אותיות גדולות";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "לא ניתן לפתוח את Claude Desktop";
 "Unable to save skill" = "לא ניתן לשמור מיומנות";
 "Unchanged" = "ללא שינוי";
 "Underline" = "קו תחתון";
@@ -914,6 +912,7 @@
 "Upscale…" = "הגדל רזולוציה…";
 "Use Freeform" = "השתמש בחופשי";
 "Use Freeform to edit individual crop insets." = "השתמש בחופשי כדי לערוך שולי חיתוך בנפרד.";
+"Use a port between 1024 and 65535." = "השתמש בפורט בין 1024 ל-65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "השתמש ביחס גובה-רוחב עם שני מספרים חיוביים, למשל ⁨3:2⁩.";
 "Use as first frame or reference" = "השתמש כפריים ראשון או כייחוס";
 "Use for non-English or mixed-language audio." = "השתמש לשמע שאינו באנגלית או מעורב שפות.";

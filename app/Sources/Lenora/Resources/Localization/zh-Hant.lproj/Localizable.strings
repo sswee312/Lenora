@@ -53,7 +53,6 @@
 "Add models…" = "加入模型…";
 "Add nonempty name and description fields to the skill frontmatter." = "在技能前置中繼資料中加入非空的名稱和描述欄位。";
 "Add source media." = "加入來源媒體。";
-"Add this configuration to ~/.cursor/mcp.json." = "將此設定加入 ~/.cursor/mcp.json。";
 "Add this skill to an external agent" = "將此技能加入外部 Agent";
 "Add to %@" = "加入 %@";
 "Add to Chat" = "加入對話";
@@ -66,6 +65,7 @@
 "Adjust Range" = "調整範圍";
 "Agent Mode" = "Agent 模式";
 "Agent Panel" = "Agent 面板";
+"Agents sign in with this token and port. Treat the token like a password." = "Agent 使用此權杖和連接埠登入。請像對待密碼一樣對待權杖。";
 "Alignment" = "對齊";
 "All" = "全部";
 "All Statuses" = "全部狀態";
@@ -310,6 +310,7 @@
 "Enhance" = "增強";
 "Enhance resolution or frame rate with AI" = "使用 AI 提升解析度或影格率";
 "Enter Full Screen" = "進入全螢幕";
+"Every connected agent will need the new token." = "每個已連線的 Agent 都需要新權杖。";
 "Exclusion" = "排除";
 "Expand" = "展開";
 "Export" = "匯出";
@@ -427,11 +428,8 @@
 "Inspector" = "檢查器";
 "Inspector Panel" = "檢查器面板";
 "Install" = "安裝";
-"Install in Claude Desktop" = "安裝到 Claude Desktop";
-"Install in Cursor" = "安裝到 Cursor";
+"Install Extension" = "安裝擴充功能";
 "Install skills to give the in-app agent specialized workflows." = "安裝技能，為 App 內 Agent 提供專用工作流程。";
-"Install the Lenora Pro MCP server in Cursor." = "在 Cursor 中安裝 Lenora Pro MCP 服務器。";
-"Install the bundled Lenora Pro connector." = "安裝隨附的 Lenora Pro 連接器。";
 "Installed" = "已安裝";
 "Instructions" = "說明";
 "Instrumental" = "純音樂";
@@ -494,7 +492,6 @@
 "MCP Setup" = "MCP 設定";
 "Main + Sidebar" = "主面板 + 邊欄";
 "Make vertical shorts" = "製作直式短片";
-"Manual setup" = "手動設定";
 "Mark Beats" = "標記節拍";
 "Mark Range End" = "標記範圍終點";
 "Mark Range Start" = "標記範圍起點";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "貼上片段設定";
 "Paste LENORA_TOKEN" = "貼上 LENORA_TOKEN";
 "Paste Settings" = "貼上設定";
+"Paste the token when Claude Desktop asks." = "Claude Desktop 詢問時，請貼上權杖。";
 "Path" = "路徑";
 "Per line" = "每行";
 "Per word" = "每個字詞";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "播放預覽、波形、膠片縮圖和轉錄。可以安全清除，檔案會在需要時重新產生。";
 "Pointer (V)" = "指針 (V)";
 "Pop In" = "彈入";
+"Port" = "連接埠";
 "Portrait (9:16)" = "直向 (9:16)";
 "Position" = "位置";
 "Preparing" = "正在準備";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "重構畫面模型不可用";
 "Reframe only works on video" = "重構畫面僅適用於影片";
 "Reframe…" = "重構畫面…";
+"Regenerate token" = "重新產生權杖";
+"Regenerate token?" = "要重新產生權杖嗎？";
 "Regenerate with the same parameters" = "使用相同參數重新產生";
 "Relink Folder…" = "重新連結資料夾…";
 "Relinked %lld of %lld offline clips." = "已重新連結 %lld/%lld 個離線片段。";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "波紋刪除每個靜音部分，後續片段會自動填補間隙。";
 "Rotation" = "旋轉";
 "Roundness" = "圓度";
-"Run this command once in Terminal." = "在“終端”中運行一次此命令。";
 "Running on" = "運行於";
 "Safe Zones" = "安全區域";
 "Sample Key Color" = "取樣鍵控顏色";
@@ -746,7 +746,6 @@
 "Selection Tool" = "選擇工具";
 "Send only the visible clip range to the model, not the full source." = "僅將片段的可見範圍傳送給模型，而不是完整來源媒體。";
 "Sequence" = "序列";
-"Server URL" = "服務器 URL";
 "Set as first frame" = "設為首影格";
 "Set as reference" = "設為參考";
 "Set by LENORA_BACKEND_URL for this launch." = "本次啟動由 LENORA_BACKEND_URL 設定。";
@@ -835,6 +834,7 @@
 "Text to Music" = "文字產生音樂";
 "Text to speak" = "要朗讀的文字";
 "Text to speak (minimum %lld characters)" = "要朗讀的文字（至少 %lld 個字元）";
+"The MCP token is unavailable. Check Keychain access, then try again." = "無法使用 MCP 權杖。請檢查鑰匙圈存取權限，然後重試。";
 "The clip you're adding has different settings than the current project." = "要加入的片段與目前專案的設定不同。";
 "The export" = "匯出任務";
 "The job already finished." = "工作已完成。";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "將結尾修剪到播放磁頭 (W)";
 "Trim Start to Playhead" = "將開頭修剪到播放磁頭";
 "Trim Start to Playhead (Q)" = "將開頭修剪到播放磁頭 (Q)";
-"Try again." = "請重試。";
 "Try another search." = "請嘗試其他搜尋。";
 "Turn off to skip audio generation." = "關閉以跳過音訊產生。";
 "Tutorial" = "教學";
@@ -894,7 +893,6 @@
 "Typewriter" = "打字機";
 "UPPERCASE" = "大寫";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "無法打開 Claude Desktop";
 "Unable to save skill" = "無法儲存技能";
 "Unchanged" = "未變更";
 "Underline" = "下劃線";
@@ -914,6 +912,7 @@
 "Upscale…" = "放大…";
 "Use Freeform" = "使用自由形式";
 "Use Freeform to edit individual crop insets." = "使用自由形式可分別編輯各裁切內邊距。";
+"Use a port between 1024 and 65535." = "請使用 1024 到 65535 之間的連接埠。";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "長寬比必須包含兩個正數，例如 3:2。";
 "Use as first frame or reference" = "用作首影格或參考";
 "Use for non-English or mixed-language audio." = "用於非英語或混合語言音訊。";

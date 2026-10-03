@@ -53,7 +53,6 @@
 "Add models…" = "Přidat modely…";
 "Add nonempty name and description fields to the skill frontmatter." = "Do frontmatter dovednosti přidejte nevyprázdněná pole name a description.";
 "Add source media." = "Přidejte zdrojová média.";
-"Add this configuration to ~/.cursor/mcp.json." = "Přidejte tuto konfiguraci do ~/.cursor/mcp.json.";
 "Add this skill to an external agent" = "Přidat tuto dovednost externímu Agentovi";
 "Add to %@" = "Přidat do %@";
 "Add to Chat" = "Přidat do chatu";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Upravit rozsah";
 "Agent Mode" = "Režim Agent";
 "Agent Panel" = "Panel Agent";
+"Agents sign in with this token and port. Treat the token like a password." = "Agenti se přihlašují pomocí tohoto tokenu a portu. Se tokenem zacházejte jako s heslem.";
 "Alignment" = "Zarovnání";
 "All" = "Vše";
 "All Statuses" = "Všechny stavy";
@@ -310,6 +310,7 @@
 "Enhance" = "Vylepšit";
 "Enhance resolution or frame rate with AI" = "Vylepšit rozlišení nebo snímkovou frekvenci pomocí AI";
 "Enter Full Screen" = "Přejít do režimu na celou obrazovku";
+"Every connected agent will need the new token." = "Každý připojený agent bude potřebovat nový token.";
 "Exclusion" = "Vyloučení";
 "Expand" = "Rozbalit";
 "Export" = "Exportovat";
@@ -427,11 +428,8 @@
 "Inspector" = "Inspektor";
 "Inspector Panel" = "Panel Inspektor";
 "Install" = "Instalovat";
-"Install in Claude Desktop" = "Nainstalovat do Claude Desktop";
-"Install in Cursor" = "Nainstalovat do Cursor";
+"Install Extension" = "Nainstalovat rozšíření";
 "Install skills to give the in-app agent specialized workflows." = "Nainstalujte dovednosti a dejte Agentovi v aplikaci specializované postupy.";
-"Install the Lenora Pro MCP server in Cursor." = "Nainstalujte MCP server Lenora Pro do Cursor.";
-"Install the bundled Lenora Pro connector." = "Nainstalujte přiložený konektor Lenora Pro.";
 "Installed" = "Nainstalováno";
 "Instructions" = "Pokyny";
 "Instrumental" = "Instrumentální";
@@ -494,7 +492,6 @@
 "MCP Setup" = "Nastavení MCP";
 "Main + Sidebar" = "Hlavní + postranní panel";
 "Make vertical shorts" = "Vytvořit svislá short videa";
-"Manual setup" = "Ruční nastavení";
 "Mark Beats" = "Označit doby";
 "Mark Range End" = "Označit konec rozsahu";
 "Mark Range Start" = "Označit začátek rozsahu";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Vložit nastavení klipu";
 "Paste LENORA_TOKEN" = "Vložit LENORA_TOKEN";
 "Paste Settings" = "Vložit nastavení";
+"Paste the token when Claude Desktop asks." = "Vložte token, až o něj Claude Desktop požádá.";
 "Path" = "Cesta";
 "Per line" = "Po řádcích";
 "Per word" = "Po slovech";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Náhledy přehrávání, průběhy, miniatury filmového pásu a přepisy. Bezpečné vymazat; soubory se podle potřeby znovu vytvoří.";
 "Pointer (V)" = "Výběr (V)";
 "Pop In" = "Vyskočení";
+"Port" = "Port";
 "Portrait (9:16)" = "Na výšku (9:16)";
 "Position" = "Pozice";
 "Preparing" = "Příprava";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Model přeformátování není k dispozici";
 "Reframe only works on video" = "Přeformátování funguje jen u videa";
 "Reframe…" = "Přeformátovat…";
+"Regenerate token" = "Vygenerovat token znovu";
+"Regenerate token?" = "Vygenerovat token znovu?";
 "Regenerate with the same parameters" = "Generovat znovu se stejnými parametry";
 "Relink Folder…" = "Znovu propojit složku…";
 "Relinked %lld of %lld offline clips." = "Znovu propojeno %lld z %lld offline klipů.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Smaže s posunem každý tichý úsek; následující klipy mezery uzavřou.";
 "Rotation" = "Otočení";
 "Roundness" = "Zaoblení";
-"Run this command once in Terminal." = "Tento příkaz spusťte jednou v Terminálu.";
 "Running on" = "Běží na";
 "Safe Zones" = "Bezpečné zóny";
 "Sample Key Color" = "Vzorkovat klíčovací barvu";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Nástroj výběru";
 "Send only the visible clip range to the model, not the full source." = "Odeslat modelu jen viditelný rozsah klipu, ne celý zdroj.";
 "Sequence" = "Sekvence";
-"Server URL" = "URL serveru";
 "Set as first frame" = "Nastavit jako první snímek";
 "Set as reference" = "Nastavit jako referenci";
 "Set by LENORA_BACKEND_URL for this launch." = "Nastaveno proměnnou LENORA_BACKEND_URL pro toto spuštění.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Text na hudbu";
 "Text to speak" = "Text k mluvení";
 "Text to speak (minimum %lld characters)" = "Text k mluvení (minimálně %lld znaků)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP není k dispozici. Zkontrolujte přístup ke Klíčence a zkuste to znovu.";
 "The clip you're adding has different settings than the current project." = "Klip, který přidáváte, má jiné nastavení než aktuální projekt.";
 "The export" = "Export";
 "The job already finished." = "Úloha už skončila.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Oříznout konec k přehrávací hlavě (W)";
 "Trim Start to Playhead" = "Oříznout začátek k přehrávací hlavě";
 "Trim Start to Playhead (Q)" = "Oříznout začátek k přehrávací hlavě (Q)";
-"Try again." = "Zkuste to znovu.";
 "Try another search." = "Zkuste jiné hledání.";
 "Turn off to skip audio generation." = "Vypněte, chcete-li přeskočit generování audia.";
 "Tutorial" = "Tutoriál";
@@ -894,7 +893,6 @@
 "Typewriter" = "Psací stroj";
 "UPPERCASE" = "VELKÁ PÍSMENA";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Claude Desktop se nepodařilo otevřít";
 "Unable to save skill" = "Dovednost se nepodařilo uložit";
 "Unchanged" = "Beze změny";
 "Underline" = "Podtržení";
@@ -914,6 +912,7 @@
 "Upscale…" = "Zvětšit rozlišení…";
 "Use Freeform" = "Použít Volný tvar";
 "Use Freeform to edit individual crop insets." = "Pro úpravu jednotlivých odsazení oříznutí použijte Volný tvar.";
+"Use a port between 1024 and 65535." = "Použijte port v rozsahu 1024 až 65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Zadejte poměr stran se dvěma kladnými čísly, například 3:2.";
 "Use as first frame or reference" = "Použít jako první snímek nebo referenci";
 "Use for non-English or mixed-language audio." = "Pro audio, které není v angličtině, nebo je vícejazyčné.";

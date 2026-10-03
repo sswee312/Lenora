@@ -53,7 +53,6 @@
 "Add models…" = "Add models…";
 "Add nonempty name and description fields to the skill frontmatter." = "Add nonempty name and description fields to the skill frontmatter.";
 "Add source media." = "Add source media.";
-"Add this configuration to ~/.cursor/mcp.json." = "Add this configuration to ~/.cursor/mcp.json.";
 "Add this skill to an external agent" = "Add this skill to an external agent";
 "Add to %@" = "Add to %@";
 "Add to Chat" = "Add to Chat";
@@ -66,6 +65,7 @@
 "Adjust Range" = "Adjust Range";
 "Agent Mode" = "Agent Mode";
 "Agent Panel" = "Agent Panel";
+"Agents sign in with this token and port. Treat the token like a password." = "Agents sign in with this token and port. Treat the token like a password.";
 "Alignment" = "Alignment";
 "All" = "All";
 "All Statuses" = "All Statuses";
@@ -310,6 +310,7 @@
 "Enhance" = "Enhance";
 "Enhance resolution or frame rate with AI" = "Enhance resolution or frame rate with AI";
 "Enter Full Screen" = "Enter Full Screen";
+"Every connected agent will need the new token." = "Every connected agent will need the new token.";
 "Exclusion" = "Exclusion";
 "Expand" = "Expand";
 "Export" = "Export";
@@ -427,11 +428,8 @@
 "Inspector" = "Inspector";
 "Inspector Panel" = "Inspector Panel";
 "Install" = "Install";
-"Install in Claude Desktop" = "Install in Claude Desktop";
-"Install in Cursor" = "Install in Cursor";
+"Install Extension" = "Install Extension";
 "Install skills to give the in-app agent specialized workflows." = "Install skills to give the in-app agent specialized workflows.";
-"Install the Lenora Pro MCP server in Cursor." = "Install the Lenora Pro MCP server in Cursor.";
-"Install the bundled Lenora Pro connector." = "Install the bundled Lenora Pro connector.";
 "Installed" = "Installed";
 "Instructions" = "Instructions";
 "Instrumental" = "Instrumental";
@@ -494,7 +492,6 @@
 "MCP Setup" = "MCP Setup";
 "Main + Sidebar" = "Main + Sidebar";
 "Make vertical shorts" = "Make vertical shorts";
-"Manual setup" = "Manual setup";
 "Mark Beats" = "Mark Beats";
 "Mark Range End" = "Mark Range End";
 "Mark Range Start" = "Mark Range Start";
@@ -614,6 +611,7 @@
 "Paste Clip Settings" = "Paste Clip Settings";
 "Paste LENORA_TOKEN" = "Paste LENORA_TOKEN";
 "Paste Settings" = "Paste Settings";
+"Paste the token when Claude Desktop asks." = "Paste the token when Claude Desktop asks.";
 "Path" = "Path";
 "Per line" = "Per line";
 "Per word" = "Per word";
@@ -629,6 +627,7 @@
 "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed." = "Playback previews, waveforms, filmstrip thumbnails, and transcripts. Safe to clear; files rebuild as needed.";
 "Pointer (V)" = "Pointer (V)";
 "Pop In" = "Pop In";
+"Port" = "Port";
 "Portrait (9:16)" = "Portrait (9:16)";
 "Position" = "Position";
 "Preparing" = "Preparing";
@@ -658,6 +657,8 @@
 "Reframe model not available" = "Reframe model not available";
 "Reframe only works on video" = "Reframe only works on video";
 "Reframe…" = "Reframe…";
+"Regenerate token" = "Regenerate token";
+"Regenerate token?" = "Regenerate token?";
 "Regenerate with the same parameters" = "Regenerate with the same parameters";
 "Relink Folder…" = "Relink Folder…";
 "Relinked %lld of %lld offline clips." = "Relinked %lld of %lld offline clips.";
@@ -705,7 +706,6 @@
 "Ripple-deletes every silent section; downstream clips close the gaps." = "Ripple-deletes every silent section; downstream clips close the gaps.";
 "Rotation" = "Rotation";
 "Roundness" = "Roundness";
-"Run this command once in Terminal." = "Run this command once in Terminal.";
 "Running on" = "Running on";
 "Safe Zones" = "Safe Zones";
 "Sample Key Color" = "Sample Key Color";
@@ -746,7 +746,6 @@
 "Selection Tool" = "Selection Tool";
 "Send only the visible clip range to the model, not the full source." = "Send only the visible clip range to the model, not the full source.";
 "Sequence" = "Sequence";
-"Server URL" = "Server URL";
 "Set as first frame" = "Set as first frame";
 "Set as reference" = "Set as reference";
 "Set by LENORA_BACKEND_URL for this launch." = "Set by LENORA_BACKEND_URL for this launch.";
@@ -835,6 +834,7 @@
 "Text to Music" = "Text to Music";
 "Text to speak" = "Text to speak";
 "Text to speak (minimum %lld characters)" = "Text to speak (minimum %lld characters)";
+"The MCP token is unavailable. Check Keychain access, then try again." = "The MCP token is unavailable. Check Keychain access, then try again.";
 "The clip you're adding has different settings than the current project." = "The clip you're adding has different settings than the current project.";
 "The export" = "The export";
 "The job already finished." = "The job already finished.";
@@ -886,7 +886,6 @@
 "Trim End to Playhead (W)" = "Trim End to Playhead (W)";
 "Trim Start to Playhead" = "Trim Start to Playhead";
 "Trim Start to Playhead (Q)" = "Trim Start to Playhead (Q)";
-"Try again." = "Try again.";
 "Try another search." = "Try another search.";
 "Turn off to skip audio generation." = "Turn off to skip audio generation.";
 "Tutorial" = "Tutorial";
@@ -894,7 +893,6 @@
 "Typewriter" = "Typewriter";
 "UPPERCASE" = "UPPERCASE";
 "URL" = "URL";
-"Unable to open Claude Desktop" = "Unable to open Claude Desktop";
 "Unable to save skill" = "Unable to save skill";
 "Unchanged" = "Unchanged";
 "Underline" = "Underline";
@@ -914,6 +912,7 @@
 "Upscale…" = "Upscale…";
 "Use Freeform" = "Use Freeform";
 "Use Freeform to edit individual crop insets." = "Use Freeform to edit individual crop insets.";
+"Use a port between 1024 and 65535." = "Use a port between 1024 and 65535.";
 "Use an aspect ratio with two positive numbers, such as 3:2." = "Use an aspect ratio with two positive numbers, such as 3:2.";
 "Use as first frame or reference" = "Use as first frame or reference";
 "Use for non-English or mixed-language audio." = "Use for non-English or mixed-language audio.";
