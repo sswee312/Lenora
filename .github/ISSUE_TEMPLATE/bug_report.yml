@@ -1,0 +1,55 @@
+name: Bug report
+description: Something in the editor, backend, protocol or skills does not work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Report security issues privately through SECURITY.md, not here. Never paste API keys, LENORA_TOKEN or your .env.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Editor (app/)
+        - In-app agent or MCP server
+        - Backend core
+        - Cloudinary adapter
+        - OpenAI adapter
+        - Protocol
+        - Skills
+        - Scripts or build
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a project with …
+        2. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit
+      description: Output of `git rev-parse --short HEAD`.
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS and Xcode versions
+      placeholder: macOS 26.0, Xcode 26.0
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Relevant `[app]` or `[backend]` output from ./scripts/dev, or the problem+json error. Remove secrets first.
+      render: text

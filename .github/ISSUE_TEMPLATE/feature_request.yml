@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest an editing workflow, agent tool, adapter or protocol change.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: The editing task or workflow, in filmmaking terms.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: What Lenora should do. For agent tools, describe the user request and the outcome; for adapters, name the provider and the operation kind.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
