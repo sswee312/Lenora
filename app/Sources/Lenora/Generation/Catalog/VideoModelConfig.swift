@@ -16,12 +16,6 @@ struct VideoModelConfig: Identifiable, Sendable {
     }
 
     @MainActor
-    static var reframe: VideoModelConfig? {
-        guard case .video(let config)? = ModelCatalog.shared.firstConfig(ofKind: "video.reframe") else { return nil }
-        return config
-    }
-
-    @MainActor
     static var firstAndLastFrame: VideoModelConfig? {
         allModels.first { !$0.requiresSourceVideo && $0.supportsFirstFrame && $0.supportsLastFrame }
     }
@@ -47,26 +41,6 @@ struct VideoModelConfig: Identifiable, Sendable {
         if let resolutions, resolutions.contains("2K") { return "2K" }
         if let resolutions, resolutions.contains("1080p") { return "1080p" }
         return resolutions?.first
-    }
-
-    var reframeDurationLimitLabel: String? {
-        if let maximum = maxCombinedVideoRefSeconds,
-           maximum.isFinite, maximum > 0,
-           let seconds = Int(exactly: maximum.rounded()) {
-            return Self.durationLimitLabel(seconds: seconds)
-        }
-        return durations.max().map(Self.durationLimitLabel)
-    }
-
-    func validateReframeDuration(_ duration: Double) -> String? {
-        guard duration.isFinite, duration > 0 else {
-            return "Loading video metadata…"
-        }
-        let maximum = maxCombinedVideoRefSeconds
-            ?? durations.max().map(Double.init)
-        guard let maximum, duration > maximum,
-              let limit = reframeDurationLimitLabel else { return nil }
-        return "\(displayName) supports source videos up to \(limit). Trim the clip to continue."
     }
 
     private static func durationLimitLabel(seconds: Int) -> String {

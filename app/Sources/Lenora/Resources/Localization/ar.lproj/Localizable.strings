@@ -137,6 +137,7 @@
 "Censor profanity" = "حجب الألفاظ النابية";
 "Center" = "الوسط";
 "Change aspect ratio and extend the frame with AI" = "تغيير نسبة العرض إلى الارتفاع وتوسيع الإطار بالذكاء الاصطناعي";
+"Change the color of an object" = "تغيير لون عنصر";
 "Change to Match" = "التغيير للمطابقة";
 "Changes take effect after restarting Lenora." = "تسري التغييرات بعد إعادة تشغيل Lenora.";
 "Changing the ratio preserves the shorter edge." = "يحافظ تغيير النسبة على الحافة الأقصر.";
@@ -313,6 +314,7 @@
 "Enhance" = "تحسين";
 "Enhance resolution or frame rate with AI" = "تحسين الدقة أو معدل الإطارات بالذكاء الاصطناعي";
 "Enter Full Screen" = "الدخول إلى ملء الشاشة";
+"Erase an object from the image" = "مسح عنصر من الصورة";
 "Every connected agent will need the new token." = "سيحتاج كل وكيل متصل إلى الرمز المميز الجديد.";
 "Exclusion" = "استبعاد";
 "Expand" = "توسيع";
@@ -325,6 +327,7 @@
 "Exporting…" = "جارٍ التصدير…";
 "Export…" = "تصدير…";
 "Exposure" = "التعريض";
+"Extend the image to a new aspect ratio" = "توسيع الصورة إلى نسبة عرض إلى ارتفاع جديدة";
 "Extend" = "تمديد";
 "Extends captions across short gaps and holds the final caption." = "يمد التسميات التوضيحية عبر الفجوات القصيرة ويثبت التسمية الأخيرة.";
 "Extra Large" = "كبير جدًا";
@@ -543,6 +546,7 @@
 "My Projects" = "مشاريعي";
 "Name" = "الاسم";
 "Nest settings discarded. Undo to restore." = "تم تجاهل إعدادات التداخل. تراجع لاستعادتها.";
+"New background (optional)" = "خلفية جديدة (اختياري)";
 "New" = "جديد";
 "New Folder" = "مجلد جديد";
 "New Project" = "مشروع جديد";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "غير متزامن. لا يمكن استخدامه كزاوية.";
 "Notifications" = "الإشعارات";
 "OK" = "موافق";
+"Object to recolor" = "العنصر المراد تلوينه";
+"Object to remove" = "العنصر المراد إزالته";
 "Off" = "إيقاف";
 "Offset" = "الإزاحة";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "تنسيق تبادل أقدم، وهو الأنسب عندما تكون الوجهة Premiere Pro. يدعم عمليات التحرير الأساسية والإطارات الرئيسية، لكنه لا يدعم النص أو اللون أو التأثيرات أو نعومة الحواف أو استدارتها.";
@@ -644,6 +650,7 @@
 "Project Settings" = "إعدادات المشروع";
 "Projects Couldn’t Be Deleted" = "تعذّر حذف المشاريع";
 "Prompt" = "المطالبة";
+"Put the subject on a new background" = "وضع العنصر على خلفية جديدة";
 "Quality" = "الجودة";
 "Queued" = "في قائمة الانتظار";
 "Quit Lenora" = "إنهاء Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "إعادة تسمية المسار";
 "Rendering" = "جارٍ التصيير";
 "Rendering…" = "جارٍ التصيير…";
+"Repair noise, blur and compression damage" = "إصلاح التشويش والضبابية وتلف الضغط";
 "Replace Background" = "استبدال الخلفية";
 "Replace clip source" = "استبدال مصدر المقطع";
 "Replace" = "استبدال";
@@ -825,6 +833,7 @@
 "Subtitle" = "الترجمة";
 "Subtitle file is unavailable." = "ملف الترجمة غير متاح.";
 "Swap Media" = "تبديل الوسائط";
+"Swap one object for another" = "استبدال عنصر بآخر";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "بدّل وسائط المقطع عند اكتمال الإنشاء. يتم الاحتفاظ بالسرعة ومستوى الصوت والتشذيب والتحويل.";
 "Switch Angle" = "تبديل الزاوية";
 "Switch Angle in Range" = "تبديل الزاوية في النطاق";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "المخطط الزمني كاملاً · ⁨%@⁩";
 "Wide (1.85:1)" = "عريض (1.85:1)";
 "Width" = "العرض";
+"With" = "بـ";
 "Word Reveal" = "كشف الكلمات";
 "Word Slide" = "انزلاق الكلمات";
 "Working on %@" = "جارٍ العمل على ⁨%@⁩";

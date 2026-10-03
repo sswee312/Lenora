@@ -137,6 +137,7 @@
 "Censor profanity" = "เซ็นเซอร์คำหยาบ";
 "Center" = "กึ่งกลาง";
 "Change aspect ratio and extend the frame with AI" = "เปลี่ยนอัตราส่วนภาพและขยายเฟรมด้วย AI";
+"Change the color of an object" = "เปลี่ยนสีของวัตถุ";
 "Change to Match" = "เปลี่ยนให้ตรงกัน";
 "Changes take effect after restarting Lenora." = "การเปลี่ยนแปลงมีผลหลังจากเริ่มต้น Lenora ใหม่";
 "Changing the ratio preserves the shorter edge." = "การเปลี่ยนอัตราส่วนจะคงขอบที่สั้นกว่าไว้";
@@ -313,6 +314,7 @@
 "Enhance" = "ปรับปรุง";
 "Enhance resolution or frame rate with AI" = "ปรับปรุงความละเอียดหรืออัตราเฟรมด้วย AI";
 "Enter Full Screen" = "เข้าสู่เต็มหน้าจอ";
+"Erase an object from the image" = "ลบวัตถุออกจากภาพ";
 "Every connected agent will need the new token." = "Agent ที่เชื่อมต่ออยู่ทุกตัวจะต้องใช้โทเค็นใหม่";
 "Exclusion" = "ยกเว้น";
 "Expand" = "ขยาย";
@@ -325,6 +327,7 @@
 "Exporting…" = "กำลังส่งออก…";
 "Export…" = "ส่งออก…";
 "Exposure" = "การรับแสง";
+"Extend the image to a new aspect ratio" = "ขยายภาพเป็นอัตราส่วนภาพใหม่";
 "Extend" = "ขยาย";
 "Extends captions across short gaps and holds the final caption." = "ขยายคำบรรยายข้ามช่องว่างสั้นๆ และคงคำบรรยายสุดท้ายไว้";
 "Extra Large" = "ใหญ่พิเศษ";
@@ -543,6 +546,7 @@
 "My Projects" = "โปรเจ็กต์ของฉัน";
 "Name" = "ชื่อ";
 "Nest settings discarded. Undo to restore." = "ละทิ้งการตั้งค่าการซ้อนแล้ว เลิกทำเพื่อคืนค่า";
+"New background (optional)" = "พื้นหลังใหม่ (ไม่บังคับ)";
 "New" = "ใหม่";
 "New Folder" = "โฟลเดอร์ใหม่";
 "New Project" = "โปรเจ็กต์ใหม่";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "ยังไม่ซิงค์ — ใช้เป็นมุมกล้องไม่ได้";
 "Notifications" = "การแจ้งเตือน";
 "OK" = "ตกลง";
+"Object to recolor" = "วัตถุที่จะเปลี่ยนสี";
+"Object to remove" = "วัตถุที่จะลบ";
 "Off" = "ปิด";
 "Offset" = "ออฟเซ็ต";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "รูปแบบแลกเปลี่ยนรุ่นเก่า เหมาะเมื่อปลายทางคือ Premiere Pro รองรับการตัดต่อพื้นฐานและคีย์เฟรม แต่ไม่รองรับข้อความ สี เอฟเฟกต์ ความนุ่มขอบ หรือความโค้งขอบ";
@@ -644,6 +650,7 @@
 "Project Settings" = "การตั้งค่าโปรเจ็กต์";
 "Projects Couldn’t Be Deleted" = "ไม่สามารถลบโปรเจ็กต์ได้";
 "Prompt" = "พรอมต์";
+"Put the subject on a new background" = "วางตัวแบบบนพื้นหลังใหม่";
 "Quality" = "คุณภาพ";
 "Queued" = "อยู่ในคิว";
 "Quit Lenora" = "ออกจาก Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "เปลี่ยนชื่อแทร็ก";
 "Rendering" = "กำลังเรนเดอร์";
 "Rendering…" = "กำลังเรนเดอร์…";
+"Repair noise, blur and compression damage" = "ซ่อมแซมสัญญาณรบกวน ความเบลอ และความเสียหายจากการบีบอัด";
 "Replace Background" = "แทนที่พื้นหลัง";
 "Replace clip source" = "แทนที่ต้นทางคลิป";
 "Replace" = "แทนที่";
@@ -825,6 +833,7 @@
 "Subtitle" = "คำบรรยาย";
 "Subtitle file is unavailable." = "ไฟล์คำบรรยายไม่พร้อมใช้งาน";
 "Swap Media" = "สลับมีเดีย";
+"Swap one object for another" = "สลับวัตถุหนึ่งเป็นอีกวัตถุหนึ่ง";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "สลับมีเดียของคลิปเมื่อการสร้างเสร็จ ความเร็ว ระดับเสียง การตัดแต่ง และการแปลงจะคงไว้";
 "Switch Angle" = "สลับมุมกล้อง";
 "Switch Angle in Range" = "สลับมุมกล้องในช่วง";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "ทั้งไทม์ไลน์ · %@";
 "Wide (1.85:1)" = "กว้าง (1.85:1)";
 "Width" = "ความกว้าง";
+"With" = "เป็น";
 "Word Reveal" = "เปิดเผยคำ";
 "Word Slide" = "สไลด์คำ";
 "Working on %@" = "กำลังทำงานกับ %@";

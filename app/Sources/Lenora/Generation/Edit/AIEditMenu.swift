@@ -18,6 +18,11 @@ struct AIEditMenu: View {
                         if enhanceActions.contains(.removeBackground) {
                             Button(L10n.string("Remove Background")) { editor.removeBackground(of: asset) }
                         }
+                        ForEach(EditAction.allAIEdits.filter(enhanceActions.contains), id: \.self) { action in
+                            Button(action == .restore ? action.aiEditTitle : action.aiEditTitle + "…") {
+                                editor.beginMediaEdit(action, of: asset)
+                            }
+                        }
                         if enhanceActions.contains(.edit) {
                             Button(L10n.string("Edit…")) { edit() }
                         }
@@ -28,7 +33,7 @@ struct AIEditMenu: View {
                             Button(L10n.string("Lip Sync…")) { lipSync() }
                         }
                         if enhanceActions.contains(.reframe) {
-                            Button(L10n.string("Reframe…")) { reframe() }
+                            Button(L10n.string("Reframe…")) { editor.beginMediaEdit(.reframe, of: asset) }
                         }
                         if enhanceActions.contains(.createVideo) {
                             Menu(L10n.string("Create Video")) {
@@ -86,11 +91,6 @@ struct AIEditMenu: View {
 
     private func edit() {
         guard let stored = EditSubmitter.editSeed(for: asset) else { return }
-        editor.seedGenerationPanel(asset: asset, stored: stored)
-    }
-
-    private func reframe() {
-        guard let stored = EditSubmitter.reframeSeed(for: asset) else { return }
         editor.seedGenerationPanel(asset: asset, stored: stored)
     }
 

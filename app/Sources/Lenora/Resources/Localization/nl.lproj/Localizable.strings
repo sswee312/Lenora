@@ -137,6 +137,7 @@
 "Censor profanity" = "Censureer grof taalgebruik";
 "Center" = "Midden";
 "Change aspect ratio and extend the frame with AI" = "Wijzig de beeldverhouding en breid het frame uit met AI";
+"Change the color of an object" = "De kleur van een object wijzigen";
 "Change to Match" = "Pas aan";
 "Changes take effect after restarting Lenora." = "Wijzigingen gaan in na het herstarten van Lenora.";
 "Changing the ratio preserves the shorter edge." = "Bij een wijziging van de verhouding blijft de korte zijde behouden.";
@@ -313,6 +314,7 @@
 "Enhance" = "Verbeter";
 "Enhance resolution or frame rate with AI" = "Verbeter resolutie of beeldsnelheid met AI";
 "Enter Full Screen" = "Schakel schermvullend in";
+"Erase an object from the image" = "Een object uit de afbeelding wissen";
 "Every connected agent will need the new token." = "Elke verbonden agent heeft het nieuwe token nodig.";
 "Exclusion" = "Uitsluiting";
 "Expand" = "Klap uit";
@@ -325,6 +327,7 @@
 "Exporting…" = "Exporteren…";
 "Export…" = "Exporteer…";
 "Exposure" = "Belichting";
+"Extend the image to a new aspect ratio" = "De afbeelding uitbreiden naar een nieuwe beeldverhouding";
 "Extend" = "Verleng";
 "Extends captions across short gaps and holds the final caption." = "Verlengt ondertitels over korte gaten en houdt de laatste ondertitel vast.";
 "Extra Large" = "Extra groot";
@@ -543,6 +546,7 @@
 "My Projects" = "Mijn projecten";
 "Name" = "Naam";
 "Nest settings discarded. Undo to restore." = "Nestinstellingen verworpen. Gebruik Herstel om terug te zetten.";
+"New background (optional)" = "Nieuwe achtergrond (optioneel)";
 "New" = "Nieuw";
 "New Folder" = "Nieuwe map";
 "New Project" = "Nieuw project";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Niet gesynchroniseerd — onbruikbaar als hoek.";
 "Notifications" = "Meldingen";
 "OK" = "OK";
+"Object to recolor" = "Object om opnieuw te kleuren";
+"Object to remove" = "Object om te verwijderen";
 "Off" = "Uit";
 "Offset" = "Offset";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Ouder uitwisselingsformaat, het meest geschikt als Premiere Pro de bestemming is. Ondersteunt basisbewerkingen en keyframes, maar geen tekst, kleur, effecten, randzachtheid of hoekafronding.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Projectinstellingen";
 "Projects Couldn’t Be Deleted" = "Projecten konden niet worden verwijderd";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Het onderwerp op een nieuwe achtergrond zetten";
 "Quality" = "Kwaliteit";
 "Queued" = "In wachtrij";
 "Quit Lenora" = "Stop Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "Wijzig Tracknaam";
 "Rendering" = "Renderen";
 "Rendering…" = "Renderen…";
+"Repair noise, blur and compression damage" = "Ruis, onscherpte en compressieschade herstellen";
 "Replace Background" = "Achtergrond vervangen";
 "Replace clip source" = "Vervang clipbron";
 "Replace" = "Vervangen";
@@ -825,6 +833,7 @@
 "Subtitle" = "Ondertitel";
 "Subtitle file is unavailable." = "Ondertitelbestand is niet beschikbaar.";
 "Swap Media" = "Verwissel media";
+"Swap one object for another" = "Het ene object door een ander vervangen";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Verwissel de media van de clip wanneer de generatie is voltooid. Snelheid, volume, trim en transformatie blijven behouden.";
 "Switch Angle" = "Wissel hoek";
 "Switch Angle in Range" = "Wissel hoek in bereik";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Hele Timeline · %@";
 "Wide (1.85:1)" = "Breed (1.85:1)";
 "Width" = "Breedte";
+"With" = "Door";
 "Word Reveal" = "Woord onthullen";
 "Word Slide" = "Woord schuiven";
 "Working on %@" = "Bezig met %@";

@@ -137,6 +137,7 @@
 "Censor profanity" = "비속어 검열";
 "Center" = "가운데";
 "Change aspect ratio and extend the frame with AI" = "AI로 화면비를 변경하고 프레임 확장";
+"Change the color of an object" = "개체의 색상 변경";
 "Change to Match" = "일치하도록 변경";
 "Changes take effect after restarting Lenora." = "변경 사항은 Lenora를 재시동한 후 적용됩니다.";
 "Changing the ratio preserves the shorter edge." = "화면비를 변경해도 짧은 쪽은 유지됩니다.";
@@ -313,6 +314,7 @@
 "Enhance" = "향상";
 "Enhance resolution or frame rate with AI" = "AI로 해상도 또는 프레임률 향상";
 "Enter Full Screen" = "전체 화면 시작";
+"Erase an object from the image" = "이미지에서 개체 지우기";
 "Every connected agent will need the new token." = "연결된 모든 에이전트에 새 토큰이 필요합니다.";
 "Exclusion" = "제외";
 "Expand" = "확장";
@@ -325,6 +327,7 @@
 "Exporting…" = "내보내는 중…";
 "Export…" = "내보내기…";
 "Exposure" = "노출";
+"Extend the image to a new aspect ratio" = "이미지를 새 화면비로 확장";
 "Extend" = "연장";
 "Extends captions across short gaps and holds the final caption." = "짧은 간격에 캡션을 연장하고 마지막 캡션을 유지합니다.";
 "Extra Large" = "매우 크게";
@@ -543,6 +546,7 @@
 "My Projects" = "나의 프로젝트";
 "Name" = "이름";
 "Nest settings discarded. Undo to restore." = "중첩 설정이 폐기되었습니다. 복원하려면 실행 취소하세요.";
+"New background (optional)" = "새 배경(선택 사항)";
 "New" = "신규";
 "New Folder" = "새 폴더";
 "New Project" = "새 프로젝트";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "동기화되지 않음 — 앵글로 사용할 수 없습니다.";
 "Notifications" = "알림";
 "OK" = "확인";
+"Object to recolor" = "색상을 바꿀 개체";
+"Object to remove" = "제거할 개체";
 "Off" = "끔";
 "Offset" = "오프셋";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Premiere Pro로 보낼 때 적합한 이전 교환 포맷입니다. 기본 편집과 키프레임을 지원하지만 텍스트, 색상, 효과, 가장자리 부드러움 또는 가장자리 둥글기는 지원하지 않습니다.";
@@ -644,6 +650,7 @@
 "Project Settings" = "프로젝트 설정";
 "Projects Couldn’t Be Deleted" = "프로젝트를 삭제할 수 없음";
 "Prompt" = "프롬프트";
+"Put the subject on a new background" = "피사체를 새 배경에 배치";
 "Quality" = "품질";
 "Queued" = "대기 중";
 "Quit Lenora" = "Lenora 종료";
@@ -691,6 +698,7 @@
 "Rename Track" = "트랙 이름 변경";
 "Rendering" = "렌더링 중";
 "Rendering…" = "렌더링하는 중…";
+"Repair noise, blur and compression damage" = "노이즈, 흐림, 압축 손상 복구";
 "Replace Background" = "배경 바꾸기";
 "Replace clip source" = "클립 소스 대체";
 "Replace" = "바꾸기";
@@ -825,6 +833,7 @@
 "Subtitle" = "자막";
 "Subtitle file is unavailable." = "자막 파일을 사용할 수 없습니다.";
 "Swap Media" = "미디어 교체";
+"Swap one object for another" = "한 개체를 다른 개체로 바꾸기";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "생성이 완료되면 클립의 미디어를 교체합니다. 속도, 음량, 트리밍 및 변형은 유지됩니다.";
 "Switch Angle" = "앵글 전환";
 "Switch Angle in Range" = "범위에서 앵글 전환";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "전체 타임라인 · %@";
 "Wide (1.85:1)" = "와이드 (1.85:1)";
 "Width" = "너비";
+"With" = "바꿀 대상";
 "Word Reveal" = "단어 나타내기";
 "Word Slide" = "단어 슬라이드";
 "Working on %@" = "%@ 작업 중";

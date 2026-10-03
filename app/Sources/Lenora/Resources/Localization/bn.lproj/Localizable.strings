@@ -137,6 +137,7 @@
 "Censor profanity" = "অশালীন শব্দ সেন্সর করুন";
 "Center" = "মাঝখানে";
 "Change aspect ratio and extend the frame with AI" = "AI দিয়ে অ্যাসপেক্ট রেশিও পরিবর্তন ও ফ্রেম এক্সটেন্ড করুন";
+"Change the color of an object" = "একটি বস্তুর রং পরিবর্তন করুন";
 "Change to Match" = "ম্যাচ করতে পরিবর্তন করুন";
 "Changes take effect after restarting Lenora." = "Lenora রিস্টার্ট করার পরে পরিবর্তন কার্যকর হবে।";
 "Changing the ratio preserves the shorter edge." = "রেশিও পরিবর্তন করলে ছোট দিকটি অপরিবর্তিত থাকে।";
@@ -313,6 +314,7 @@
 "Enhance" = "এনহ্যান্স";
 "Enhance resolution or frame rate with AI" = "AI দিয়ে রেজোলিউশন বা ফ্রেম রেট বাড়ান";
 "Enter Full Screen" = "ফুল স্ক্রিনে যান";
+"Erase an object from the image" = "ছবি থেকে একটি বস্তু মুছুন";
 "Every connected agent will need the new token." = "সংযুক্ত প্রতিটি এজেন্টের নতুন টোকেন লাগবে।";
 "Exclusion" = "এক্সক্লুশন";
 "Expand" = "প্রসারিত করুন";
@@ -325,6 +327,7 @@
 "Exporting…" = "এক্সপোর্ট হচ্ছে…";
 "Export…" = "এক্সপোর্ট…";
 "Exposure" = "এক্সপোজার";
+"Extend the image to a new aspect ratio" = "ছবিকে নতুন অনুপাতে প্রসারিত করুন";
 "Extend" = "এক্সটেন্ড";
 "Extends captions across short gaps and holds the final caption." = "ছোট গ্যাপ জুড়ে ক্যাপশন এক্সটেন্ড করে এবং শেষ ক্যাপশন হোল্ড করে।";
 "Extra Large" = "অনেক বড়";
@@ -543,6 +546,7 @@
 "My Projects" = "আমার প্রজেক্ট";
 "Name" = "নাম";
 "Nest settings discarded. Undo to restore." = "নেস্ট সেটিংস বাতিল হয়েছে। ফিরিয়ে আনতে আনডু করুন।";
+"New background (optional)" = "নতুন পটভূমি (ঐচ্ছিক)";
 "New" = "নতুন";
 "New Folder" = "নতুন ফোল্ডার";
 "New Project" = "নতুন প্রজেক্ট";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "সিঙ্ক করা নেই — অ্যাঙ্গেল হিসেবে ব্যবহার করা যাবে না।";
 "Notifications" = "নোটিফিকেশন";
 "OK" = "ঠিক আছে";
+"Object to recolor" = "যে বস্তুর রং বদলাবেন";
+"Object to remove" = "যে বস্তু সরাবেন";
 "Off" = "বন্ধ";
 "Offset" = "অফসেট";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "গন্তব্য Premiere Pro হলে উপযোগী পুরোনো ইন্টারচেঞ্জ ফরম্যাট। বেসিক এডিট ও কিফ্রেম সাপোর্ট করে; তবে টেক্সট, কালার, ইফেক্ট, এজ সফটনেস বা এজ রাউন্ডিং সাপোর্ট করে না।";
@@ -644,6 +650,7 @@
 "Project Settings" = "প্রজেক্ট সেটিংস";
 "Projects Couldn’t Be Deleted" = "প্রজেক্ট ডিলিট করা যায়নি";
 "Prompt" = "প্রম্পট";
+"Put the subject on a new background" = "বিষয়বস্তুকে নতুন পটভূমিতে রাখুন";
 "Quality" = "কোয়ালিটি";
 "Queued" = "কিউতে আছে";
 "Quit Lenora" = "Lenora বন্ধ করুন";
@@ -691,6 +698,7 @@
 "Rename Track" = "ট্র্যাকের নাম বদলান";
 "Rendering" = "রেন্ডার হচ্ছে";
 "Rendering…" = "রেন্ডার হচ্ছে…";
+"Repair noise, blur and compression damage" = "নয়েজ, ঝাপসা ও কমপ্রেশনের ক্ষতি মেরামত করুন";
 "Replace Background" = "পটভূমি প্রতিস্থাপন";
 "Replace clip source" = "ক্লিপের সোর্স বদলান";
 "Replace" = "প্রতিস্থাপন";
@@ -825,6 +833,7 @@
 "Subtitle" = "সাবটাইটেল";
 "Subtitle file is unavailable." = "সাবটাইটেল ফাইল পাওয়া যাচ্ছে না।";
 "Swap Media" = "মিডিয়া সোয়াপ করুন";
+"Swap one object for another" = "একটি বস্তুকে অন্যটি দিয়ে বদলান";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "জেনারেশন শেষ হলে ক্লিপের মিডিয়া সোয়াপ করে। স্পিড, ভলিউম, ট্রিম ও ট্রান্সফর্ম অপরিবর্তিত থাকে।";
 "Switch Angle" = "অ্যাঙ্গেল বদলান";
 "Switch Angle in Range" = "রেঞ্জে অ্যাঙ্গেল বদলান";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "পুরো টাইমলাইন · %@";
 "Wide (1.85:1)" = "ওয়াইড (1.85:1)";
 "Width" = "প্রস্থ";
+"With" = "দিয়ে";
 "Word Reveal" = "ওয়ার্ড রিভিল";
 "Word Slide" = "ওয়ার্ড স্লাইড";
 "Working on %@" = "%@ নিয়ে কাজ হচ্ছে";

@@ -137,6 +137,7 @@
 "Censor profanity" = "不適切な言葉を伏せる";
 "Center" = "中央";
 "Change aspect ratio and extend the frame with AI" = "アスペクト比を変更し、AIでフレームを拡張";
+"Change the color of an object" = "オブジェクトの色を変更";
 "Change to Match" = "設定を一致させる";
 "Changes take effect after restarting Lenora." = "変更はLenoraの再起動後に反映されます。";
 "Changing the ratio preserves the shorter edge." = "比率を変更しても短い辺の長さは維持されます。";
@@ -313,6 +314,7 @@
 "Enhance" = "補正";
 "Enhance resolution or frame rate with AI" = "AIで解像度やフレームレートを向上";
 "Enter Full Screen" = "フルスクリーンにする";
+"Erase an object from the image" = "画像からオブジェクトを消去";
 "Every connected agent will need the new token." = "接続中のすべてのエージェントで新しいトークンが必要になります。";
 "Exclusion" = "除外";
 "Expand" = "展開";
@@ -325,6 +327,7 @@
 "Exporting…" = "書き出し中…";
 "Export…" = "書き出す…";
 "Exposure" = "露出";
+"Extend the image to a new aspect ratio" = "画像を新しい縦横比に拡張";
 "Extend" = "延長";
 "Extends captions across short gaps and holds the final caption." = "短いギャップをまたいでキャプションを延長し、最後のキャプションを保持します。";
 "Extra Large" = "特大";
@@ -543,6 +546,7 @@
 "My Projects" = "マイプロジェクト";
 "Name" = "名前";
 "Nest settings discarded. Undo to restore." = "ネストの設定は破棄されました。取り消すと復元できます。";
+"New background (optional)" = "新しい背景(省略可)";
 "New" = "新規";
 "New Folder" = "新規フォルダ";
 "New Project" = "新規プロジェクト";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "未同期 — アングルとして使用できません。";
 "Notifications" = "通知";
 "OK" = "OK";
+"Object to recolor" = "色を変えるオブジェクト";
+"Object to remove" = "削除するオブジェクト";
 "Off" = "オフ";
 "Offset" = "オフセット";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Premiere Proを書き出し先とする場合に適した旧形式の交換フォーマットです。基本的な編集とキーフレームに対応していますが、テキスト、カラー、エフェクト、エッジの柔らかさ、エッジの丸みには対応していません。";
@@ -644,6 +650,7 @@
 "Project Settings" = "プロジェクト設定";
 "Projects Couldn’t Be Deleted" = "プロジェクトを削除できませんでした";
 "Prompt" = "プロンプト";
+"Put the subject on a new background" = "被写体を新しい背景に配置";
 "Quality" = "品質";
 "Queued" = "待機中";
 "Quit Lenora" = "Lenoraを終了";
@@ -691,6 +698,7 @@
 "Rename Track" = "トラック名を変更";
 "Rendering" = "レンダリング中";
 "Rendering…" = "レンダリング中…";
+"Repair noise, blur and compression damage" = "ノイズ、ぼやけ、圧縮による劣化を修復";
 "Replace Background" = "背景を置き換え";
 "Replace clip source" = "クリップのソースを差し替え";
 "Replace" = "置き換え";
@@ -825,6 +833,7 @@
 "Subtitle" = "字幕";
 "Subtitle file is unavailable." = "字幕ファイルを利用できません。";
 "Swap Media" = "メディアを入れ替え";
+"Swap one object for another" = "オブジェクトを別のものに置き換え";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "生成が完了したらクリップのメディアを入れ替えます。速度、音量、トリム、トランスフォームは維持されます。";
 "Switch Angle" = "アングルを切り替え";
 "Switch Angle in Range" = "範囲内のアングルを切り替え";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "タイムライン全体 · %@";
 "Wide (1.85:1)" = "ワイド（1.85:1）";
 "Width" = "幅";
+"With" = "置き換え後";
 "Word Reveal" = "単語リビール";
 "Word Slide" = "単語スライド";
 "Working on %@" = "%@を処理中";

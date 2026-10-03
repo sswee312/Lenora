@@ -137,6 +137,7 @@
 "Censor profanity" = "Cenzuruj wulgaryzmy";
 "Center" = "Środek";
 "Change aspect ratio and extend the frame with AI" = "Zmień proporcje i rozszerz kadr za pomocą AI";
+"Change the color of an object" = "Zmień kolor obiektu";
 "Change to Match" = "Zmień, aby dopasować";
 "Changes take effect after restarting Lenora." = "Zmiany zaczną obowiązywać po ponownym uruchomieniu Lenora.";
 "Changing the ratio preserves the shorter edge." = "Zmiana proporcji zachowuje krótszą krawędź.";
@@ -313,6 +314,7 @@
 "Enhance" = "Ulepsz";
 "Enhance resolution or frame rate with AI" = "Ulepsz rozdzielczość albo klatkaż za pomocą AI";
 "Enter Full Screen" = "Przełącz na pełny ekran";
+"Erase an object from the image" = "Usuń obiekt z obrazu";
 "Every connected agent will need the new token." = "Każdy połączony agent będzie potrzebował nowego tokenu.";
 "Exclusion" = "Wyłączenie";
 "Expand" = "Rozwiń";
@@ -325,6 +327,7 @@
 "Exporting…" = "Eksportowanie…";
 "Export…" = "Eksportuj…";
 "Exposure" = "Ekspozycja";
+"Extend the image to a new aspect ratio" = "Rozszerz obraz do nowych proporcji";
 "Extend" = "Wydłuż";
 "Extends captions across short gaps and holds the final caption." = "Wydłuża napisy przez krótkie przerwy i utrzymuje ostatni napis.";
 "Extra Large" = "Bardzo duży";
@@ -543,6 +546,7 @@
 "My Projects" = "Moje projekty";
 "Name" = "Nazwa";
 "Nest settings discarded. Undo to restore." = "Ustawienia zagnieżdżenia odrzucone. Cofnij, aby przywrócić.";
+"New background (optional)" = "Nowe tło (opcjonalnie)";
 "New" = "Nowy";
 "New Folder" = "Nowy folder";
 "New Project" = "Nowy projekt";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Niezsynchronizowane — nie nadaje się jako ujęcie.";
 "Notifications" = "Powiadomienia";
 "OK" = "OK";
+"Object to recolor" = "Obiekt do przekolorowania";
+"Object to remove" = "Obiekt do usunięcia";
 "Off" = "Wył.";
 "Offset" = "Przesunięcie";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Starszy format wymiany, najlepszy gdy celem jest Premiere Pro. Obsługuje podstawowy montaż i klatki kluczowe, ale nie tekst, kolor, efekty, miękkość krawędzi ani zaokrąglenie krawędzi.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Ustawienia projektu";
 "Projects Couldn’t Be Deleted" = "Nie udało się usunąć projektów";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Umieść obiekt na nowym tle";
 "Quality" = "Jakość";
 "Queued" = "W kolejce";
 "Quit Lenora" = "Zakończ Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "Zmień nazwę ścieżki";
 "Rendering" = "Renderowanie";
 "Rendering…" = "Renderowanie…";
+"Repair noise, blur and compression damage" = "Napraw szum, rozmycie i artefakty kompresji";
 "Replace Background" = "Zastąp tło";
 "Replace clip source" = "Zastąp źródło klipu";
 "Replace" = "Zastąp";
@@ -825,6 +833,7 @@
 "Subtitle" = "Napisy";
 "Subtitle file is unavailable." = "Plik napisów jest niedostępny.";
 "Swap Media" = "Zamień multimedia";
+"Swap one object for another" = "Zamień jeden obiekt na inny";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Zamień multimedia klipu po zakończeniu generowania. Szybkość, głośność, przycięcie i przekształcenie zostaną zachowane.";
 "Switch Angle" = "Przełącz ujęcie";
 "Switch Angle in Range" = "Przełącz ujęcie w zakresie";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Cała oś czasu · %@";
 "Wide (1.85:1)" = "Szeroki (1.85:1)";
 "Width" = "Szerokość";
+"With" = "Na";
 "Word Reveal" = "Odsłanianie słów";
 "Word Slide" = "Przesuwanie słów";
 "Working on %@" = "Praca nad %@";

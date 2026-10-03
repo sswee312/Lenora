@@ -137,6 +137,7 @@
 "Censor profanity" = "Küfürleri sansürle";
 "Center" = "Ortala";
 "Change aspect ratio and extend the frame with AI" = "En-boy oranını değiştirin ve kareyi yapay zekâyla genişletin";
+"Change the color of an object" = "Bir nesnenin rengini değiştir";
 "Change to Match" = "Eşleşecek Şekilde Değiştir";
 "Changes take effect after restarting Lenora." = "Değişiklikler Lenora yeniden başlatıldıktan sonra geçerli olur.";
 "Changing the ratio preserves the shorter edge." = "Oran değiştirildiğinde kısa kenar korunur.";
@@ -313,6 +314,7 @@
 "Enhance" = "İyileştir";
 "Enhance resolution or frame rate with AI" = "Çözünürlüğü veya kare hızını yapay zekâyla iyileştirin";
 "Enter Full Screen" = "Tam Ekrana Geç";
+"Erase an object from the image" = "Görüntüden bir nesneyi sil";
 "Every connected agent will need the new token." = "Bağlı her aracı yeni belirteci gerektirecek.";
 "Exclusion" = "Dışlama";
 "Expand" = "Genişlet";
@@ -325,6 +327,7 @@
 "Exporting…" = "Dışa aktarılıyor…";
 "Export…" = "Dışa Aktar…";
 "Exposure" = "Pozlama";
+"Extend the image to a new aspect ratio" = "Görüntüyü yeni bir en boy oranına genişlet";
 "Extend" = "Uzat";
 "Extends captions across short gaps and holds the final caption." = "Kısa boşluklarda altyazıları uzatır ve son altyazıyı tutar.";
 "Extra Large" = "Çok Büyük";
@@ -543,6 +546,7 @@
 "My Projects" = "Projelerim";
 "Name" = "Ad";
 "Nest settings discarded. Undo to restore." = "İç içe yerleştirme ayarları atıldı. Geri yüklemek için işlemi geri alın.";
+"New background (optional)" = "Yeni arka plan (isteğe bağlı)";
 "New" = "Yeni";
 "New Folder" = "Yeni Klasör";
 "New Project" = "Yeni Proje";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Eşzamanlanmadı — açı olarak kullanılamaz.";
 "Notifications" = "Bildirimler";
 "OK" = "Tamam";
+"Object to recolor" = "Yeniden renklendirilecek nesne";
+"Object to remove" = "Kaldırılacak nesne";
 "Off" = "Kapalı";
 "Offset" = "Kaydırma";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Hedef Premiere Pro olduğunda en uygun olan eski aktarım biçimi. Temel düzenlemeleri ve anahtar kareleri destekler; metin, renk, efekt, kenar yumuşaklığı veya kenar yuvarlaklığını desteklemez.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Proje Ayarları";
 "Projects Couldn’t Be Deleted" = "Projeler Silinemedi";
 "Prompt" = "İstem";
+"Put the subject on a new background" = "Konuyu yeni bir arka plana yerleştir";
 "Quality" = "Kalite";
 "Queued" = "Kuyruğa Alındı";
 "Quit Lenora" = "Lenora'dan Çık";
@@ -691,6 +698,7 @@
 "Rename Track" = "İzin Adını Değiştir";
 "Rendering" = "İşleniyor";
 "Rendering…" = "İşleniyor…";
+"Repair noise, blur and compression damage" = "Gürültü, bulanıklık ve sıkıştırma hasarını onar";
 "Replace Background" = "Arka Planı Değiştir";
 "Replace clip source" = "Klip kaynağını değiştir";
 "Replace" = "Değiştir";
@@ -825,6 +833,7 @@
 "Subtitle" = "Altyazı";
 "Subtitle file is unavailable." = "Altyazı dosyası kullanılamıyor.";
 "Swap Media" = "Medyayı Değiştir";
+"Swap one object for another" = "Bir nesneyi başkasıyla değiştir";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Oluşturma tamamlandığında klibin medyasını değiştirir. Hız, ses düzeyi, kırpma ve dönüşüm korunur.";
 "Switch Angle" = "Açıyı Değiştir";
 "Switch Angle in Range" = "Aralıkta Açıyı Değiştir";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Tüm zaman ekseni · %@";
 "Wide (1.85:1)" = "Geniş (1.85:1)";
 "Width" = "Genişlik";
+"With" = "Yerine";
 "Word Reveal" = "Sözcük Gösterme";
 "Word Slide" = "Sözcük Kaydırma";
 "Working on %@" = "%@ üzerinde çalışılıyor";

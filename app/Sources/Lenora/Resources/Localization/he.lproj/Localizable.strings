@@ -137,6 +137,7 @@
 "Censor profanity" = "צנזר גסויות";
 "Center" = "מרכז";
 "Change aspect ratio and extend the frame with AI" = "שנה יחס גובה-רוחב והרחב את המסגרת באמצעות AI";
+"Change the color of an object" = "שינוי צבע של אובייקט";
 "Change to Match" = "שנה להתאמה";
 "Changes take effect after restarting Lenora." = "השינויים ייכנסו לתוקף לאחר הפעלה מחדש של Lenora.";
 "Changing the ratio preserves the shorter edge." = "שינוי היחס שומר על הצלע הקצרה.";
@@ -313,6 +314,7 @@
 "Enhance" = "שפר";
 "Enhance resolution or frame rate with AI" = "שפר רזולוציה או קצב פריימים באמצעות AI";
 "Enter Full Screen" = "עבור למסך מלא";
+"Erase an object from the image" = "מחיקת אובייקט מהתמונה";
 "Every connected agent will need the new token." = "כל Agent מחובר יצטרך את הטוקן החדש.";
 "Exclusion" = "החרגה";
 "Expand" = "הרחב";
@@ -325,6 +327,7 @@
 "Exporting…" = "מייצא…";
 "Export…" = "ייצוא…";
 "Exposure" = "חשיפה";
+"Extend the image to a new aspect ratio" = "הרחבת התמונה ליחס גובה-רוחב חדש";
 "Extend" = "הרחב";
 "Extends captions across short gaps and holds the final caption." = "מרחיב כתוביות על פני רווחים קצרים ומחזיק את הכתובית האחרונה.";
 "Extra Large" = "גדול במיוחד";
@@ -543,6 +546,7 @@
 "My Projects" = "הפרויקטים שלי";
 "Name" = "שם";
 "Nest settings discarded. Undo to restore." = "הגדרות הקינון בוטלו. בטל כדי לשחזר.";
+"New background (optional)" = "רקע חדש (אופציונלי)";
 "New" = "חדש";
 "New Folder" = "תיקייה חדשה";
 "New Project" = "פרויקט חדש";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "לא מסונכרן — לא ניתן לשימוש כזווית.";
 "Notifications" = "התראות";
 "OK" = "אישור";
+"Object to recolor" = "אובייקט לצביעה מחדש";
+"Object to remove" = "אובייקט להסרה";
 "Off" = "כבוי";
 "Offset" = "היסט";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "פורמט חילופים ישן יותר, מתאים כשהיעד הוא Premiere Pro. תומך בעריכות בסיסיות ובפריימי מפתח, אך לא בטקסט, בצבע, באפקטים, בריכוך קצה או בעיגול קצה.";
@@ -644,6 +650,7 @@
 "Project Settings" = "הגדרות פרויקט";
 "Projects Couldn’t Be Deleted" = "לא ניתן היה למחוק פרויקטים";
 "Prompt" = "הנחיה";
+"Put the subject on a new background" = "הצבת הנושא על רקע חדש";
 "Quality" = "איכות";
 "Queued" = "בתור";
 "Quit Lenora" = "סיים את Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "שנה שם רצועה";
 "Rendering" = "מרנדר";
 "Rendering…" = "מרנדר…";
+"Repair noise, blur and compression damage" = "תיקון רעש, טשטוש ונזקי דחיסה";
 "Replace Background" = "החלפת רקע";
 "Replace clip source" = "החלף מקור קליפ";
 "Replace" = "החלפה";
@@ -825,6 +833,7 @@
 "Subtitle" = "כתובית";
 "Subtitle file is unavailable." = "קובץ הכתוביות אינו זמין.";
 "Swap Media" = "החלף מדיה";
+"Swap one object for another" = "החלפת אובייקט באחר";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "החלף את מדיית הקליפ כשההפקה מסתיימת. מהירות, עוצמה, חיתוך ושינוי צורה נשמרים.";
 "Switch Angle" = "החלף זווית";
 "Switch Angle in Range" = "החלף זווית בטווח";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "כל ציר הזמן · ⁨%@⁩";
 "Wide (1.85:1)" = "רחב (1.85:1)";
 "Width" = "רוחב";
+"With" = "ב-";
 "Word Reveal" = "חשיפת מילה";
 "Word Slide" = "החלקת מילה";
 "Working on %@" = "עובד על ⁨%@⁩";

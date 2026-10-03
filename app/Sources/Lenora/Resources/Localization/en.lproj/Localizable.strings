@@ -137,6 +137,7 @@
 "Censor profanity" = "Censor profanity";
 "Center" = "Center";
 "Change aspect ratio and extend the frame with AI" = "Change aspect ratio and extend the frame with AI";
+"Change the color of an object" = "Change the color of an object";
 "Change to Match" = "Change to Match";
 "Changes take effect after restarting Lenora." = "Changes take effect after restarting Lenora.";
 "Changing the ratio preserves the shorter edge." = "Changing the ratio preserves the shorter edge.";
@@ -313,6 +314,7 @@
 "Enhance" = "Enhance";
 "Enhance resolution or frame rate with AI" = "Enhance resolution or frame rate with AI";
 "Enter Full Screen" = "Enter Full Screen";
+"Erase an object from the image" = "Erase an object from the image";
 "Every connected agent will need the new token." = "Every connected agent will need the new token.";
 "Exclusion" = "Exclusion";
 "Expand" = "Expand";
@@ -326,6 +328,7 @@
 "Export…" = "Export…";
 "Exposure" = "Exposure";
 "Extend" = "Extend";
+"Extend the image to a new aspect ratio" = "Extend the image to a new aspect ratio";
 "Extends captions across short gaps and holds the final caption." = "Extends captions across short gaps and holds the final caption.";
 "Extra Large" = "Extra Large";
 "Extract Audio" = "Extract Audio";
@@ -547,6 +550,7 @@
 "New Folder" = "New Folder";
 "New Project" = "New Project";
 "New Skill" = "New Skill";
+"New background (optional)" = "New background (optional)";
 "New chat" = "New chat";
 "New skill" = "New skill";
 "New timeline" = "New timeline";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Not synced — unusable as an angle.";
 "Notifications" = "Notifications";
 "OK" = "OK";
+"Object to recolor" = "Object to recolor";
+"Object to remove" = "Object to remove";
 "Off" = "Off";
 "Offset" = "Offset";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Project Settings";
 "Projects Couldn’t Be Deleted" = "Projects Couldn’t Be Deleted";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Put the subject on a new background";
 "Quality" = "Quality";
 "Queued" = "Queued";
 "Quit Lenora" = "Quit Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "Rename Track";
 "Rendering" = "Rendering";
 "Rendering…" = "Rendering…";
+"Repair noise, blur and compression damage" = "Repair noise, blur and compression damage";
 "Replace" = "Replace";
 "Replace Background" = "Replace Background";
 "Replace clip source" = "Replace clip source";
@@ -825,6 +833,7 @@
 "Subtitle" = "Subtitle";
 "Subtitle file is unavailable." = "Subtitle file is unavailable.";
 "Swap Media" = "Swap Media";
+"Swap one object for another" = "Swap one object for another";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved.";
 "Switch Angle" = "Switch Angle";
 "Switch Angle in Range" = "Switch Angle in Range";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Whole timeline · %@";
 "Wide (1.85:1)" = "Wide (1.85:1)";
 "Width" = "Width";
+"With" = "With";
 "Word Reveal" = "Word Reveal";
 "Word Slide" = "Word Slide";
 "Working on %@" = "Working on %@";

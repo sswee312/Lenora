@@ -137,6 +137,7 @@
 "Censor profanity" = "Скрывать ненормативную лексику";
 "Center" = "По центру";
 "Change aspect ratio and extend the frame with AI" = "Изменить соотношение сторон и расширить кадр с помощью AI";
+"Change the color of an object" = "Изменить цвет объекта";
 "Change to Match" = "Изменить под клип";
 "Changes take effect after restarting Lenora." = "Изменения вступят в силу после перезапуска Lenora.";
 "Changing the ratio preserves the shorter edge." = "При изменении соотношения сохраняется более короткая сторона.";
@@ -313,6 +314,7 @@
 "Enhance" = "Улучшить";
 "Enhance resolution or frame rate with AI" = "Улучшить разрешение или частоту кадров с помощью AI";
 "Enter Full Screen" = "Перейти в полноэкранный режим";
+"Erase an object from the image" = "Стереть объект с изображения";
 "Every connected agent will need the new token." = "Каждому подключённому агенту понадобится новый токен.";
 "Exclusion" = "Исключение";
 "Expand" = "Развернуть";
@@ -325,6 +327,7 @@
 "Exporting…" = "Экспорт…";
 "Export…" = "Экспортировать…";
 "Exposure" = "Экспозиция";
+"Extend the image to a new aspect ratio" = "Расширить изображение до нового соотношения сторон";
 "Extend" = "Продлить";
 "Extends captions across short gaps and holds the final caption." = "Продлевает субтитры через короткие разрывы и удерживает последний субтитр.";
 "Extra Large" = "Очень большой";
@@ -543,6 +546,7 @@
 "My Projects" = "Мои проекты";
 "Name" = "Название";
 "Nest settings discarded. Undo to restore." = "Настройки вложения сброшены. Отмените действие, чтобы восстановить их.";
+"New background (optional)" = "Новый фон (необязательно)";
 "New" = "Новый";
 "New Folder" = "Новая папка";
 "New Project" = "Новый проект";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Не синхронизировано — нельзя использовать как ракурс.";
 "Notifications" = "Уведомления";
 "OK" = "ОК";
+"Object to recolor" = "Объект для перекрашивания";
+"Object to remove" = "Объект для удаления";
 "Off" = "Выкл.";
 "Offset" = "Смещение";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Старый формат обмена, наиболее подходящий для Premiere Pro. Поддерживает базовый монтаж и ключевые кадры, но не текст, цвет, эффекты, мягкость и скругление краёв.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Настройки проекта";
 "Projects Couldn’t Be Deleted" = "Не удалось удалить проекты";
 "Prompt" = "Запрос";
+"Put the subject on a new background" = "Поместить объект на новый фон";
 "Quality" = "Качество";
 "Queued" = "В очереди";
 "Quit Lenora" = "Завершить Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "Переименовать дорожку";
 "Rendering" = "Рендеринг";
 "Rendering…" = "Рендеринг…";
+"Repair noise, blur and compression damage" = "Исправить шум, размытие и артефакты сжатия";
 "Replace Background" = "Заменить фон";
 "Replace clip source" = "Заменить источник клипа";
 "Replace" = "Заменить";
@@ -825,6 +833,7 @@
 "Subtitle" = "Субтитры";
 "Subtitle file is unavailable." = "Файл субтитров недоступен.";
 "Swap Media" = "Заменить медиафайл";
+"Swap one object for another" = "Заменить один объект другим";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Заменить медиафайл клипа после завершения генерации. Скорость, громкость, обрезка и трансформация сохраняются.";
 "Switch Angle" = "Переключить ракурс";
 "Switch Angle in Range" = "Переключить ракурс в диапазоне";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Весь таймлайн · %@";
 "Wide (1.85:1)" = "Широкий (1.85:1)";
 "Width" = "Ширина";
+"With" = "На";
 "Word Reveal" = "Проявление слов";
 "Word Slide" = "Сдвиг слов";
 "Working on %@" = "Выполняется: %@";

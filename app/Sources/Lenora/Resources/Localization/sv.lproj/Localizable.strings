@@ -137,6 +137,7 @@
 "Censor profanity" = "Censurera svordomar";
 "Center" = "Centrera";
 "Change aspect ratio and extend the frame with AI" = "Ändra bildförhållande och utöka bilden med AI";
+"Change the color of an object" = "Ändra färgen på ett objekt";
 "Change to Match" = "Ändra så att det matchar";
 "Changes take effect after restarting Lenora." = "Ändringarna börjar gälla efter omstart av Lenora.";
 "Changing the ratio preserves the shorter edge." = "När förhållandet ändras behålls den kortare kanten.";
@@ -313,6 +314,7 @@
 "Enhance" = "Förbättra";
 "Enhance resolution or frame rate with AI" = "Förbättra upplösning eller bildfrekvens med AI";
 "Enter Full Screen" = "Gå till helskärm";
+"Erase an object from the image" = "Radera ett objekt från bilden";
 "Every connected agent will need the new token." = "Varje ansluten agent behöver den nya token.";
 "Exclusion" = "Uteslutning";
 "Expand" = "Expandera";
@@ -325,6 +327,7 @@
 "Exporting…" = "Exporterar…";
 "Export…" = "Exportera…";
 "Exposure" = "Exponering";
+"Extend the image to a new aspect ratio" = "Utöka bilden till ett nytt bildformat";
 "Extend" = "Utöka";
 "Extends captions across short gaps and holds the final caption." = "Förlänger undertexter över korta luckor och håller den sista undertexten.";
 "Extra Large" = "Extra stor";
@@ -543,6 +546,7 @@
 "My Projects" = "Mina projekt";
 "Name" = "Namn";
 "Nest settings discarded. Undo to restore." = "Inställningarna för inbäddning kastades. Ångra för att återställa.";
+"New background (optional)" = "Ny bakgrund (valfritt)";
 "New" = "Nytt";
 "New Folder" = "Ny mapp";
 "New Project" = "Nytt projekt";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Inte synkad — kan inte användas som vinkel.";
 "Notifications" = "Aviseringar";
 "OK" = "OK";
+"Object to recolor" = "Objekt att färga om";
+"Object to remove" = "Objekt att ta bort";
 "Off" = "Av";
 "Offset" = "Förskjutning";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Äldre utbytesformat, bäst när Premiere Pro är målet. Stödjer grundläggande redigering och nyckelbilder, men inte text, färg, effekter, kantmjukhet eller kantavrundning.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Projektinställningar";
 "Projects Couldn’t Be Deleted" = "Projekten kunde inte raderas";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Placera motivet på en ny bakgrund";
 "Quality" = "Kvalitet";
 "Queued" = "I kö";
 "Quit Lenora" = "Avsluta Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "Byt namn på spår";
 "Rendering" = "Renderar";
 "Rendering…" = "Renderar…";
+"Repair noise, blur and compression damage" = "Reparera brus, oskärpa och komprimeringsskador";
 "Replace Background" = "Ersätt bakgrund";
 "Replace clip source" = "Ersätt klippets källa";
 "Replace" = "Ersätt";
@@ -825,6 +833,7 @@
 "Subtitle" = "Undertext";
 "Subtitle file is unavailable." = "Undertextfilen är inte tillgänglig.";
 "Swap Media" = "Byt media";
+"Swap one object for another" = "Byt ut ett objekt mot ett annat";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Byt klippets media när genereringen är klar. Hastighet, volym, trimning och transformering behålls.";
 "Switch Angle" = "Byt vinkel";
 "Switch Angle in Range" = "Byt vinkel i området";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Hela tidslinjen · %@";
 "Wide (1.85:1)" = "Wide (1.85:1)";
 "Width" = "Bredd";
+"With" = "Mot";
 "Word Reveal" = "Ordvisning";
 "Word Slide" = "Ordglidning";
 "Working on %@" = "Arbetar med %@";

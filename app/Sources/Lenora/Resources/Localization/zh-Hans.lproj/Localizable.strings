@@ -137,6 +137,7 @@
 "Censor profanity" = "屏蔽不雅用语";
 "Center" = "居中";
 "Change aspect ratio and extend the frame with AI" = "使用 AI 更改宽高比并扩展画面";
+"Change the color of an object" = "更改对象的颜色";
 "Change to Match" = "更改以匹配";
 "Changes take effect after restarting Lenora." = "更改将在重新启动 Lenora 后生效。";
 "Changing the ratio preserves the shorter edge." = "更改比例时会保留较短边。";
@@ -313,6 +314,7 @@
 "Enhance" = "增强";
 "Enhance resolution or frame rate with AI" = "使用 AI 提升分辨率或帧率";
 "Enter Full Screen" = "进入全屏幕";
+"Erase an object from the image" = "从图像中擦除对象";
 "Every connected agent will need the new token." = "每个已连接的 Agent 都需要新令牌。";
 "Exclusion" = "排除";
 "Expand" = "展开";
@@ -325,6 +327,7 @@
 "Exporting…" = "正在导出…";
 "Export…" = "导出…";
 "Exposure" = "曝光";
+"Extend the image to a new aspect ratio" = "将图像扩展到新的宽高比";
 "Extend" = "延长";
 "Extends captions across short gaps and holds the final caption." = "将字幕延长以覆盖短间隙，并保持最后一条字幕。";
 "Extra Large" = "特大";
@@ -543,6 +546,7 @@
 "My Projects" = "我的项目";
 "Name" = "名称";
 "Nest settings discarded. Undo to restore." = "嵌套设置已丢弃。撤销可恢复。";
+"New background (optional)" = "新背景(可选)";
 "New" = "新建";
 "New Folder" = "新建文件夹";
 "New Project" = "新建项目";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "未同步，无法用作机位。";
 "Notifications" = "通知";
 "OK" = "好";
+"Object to recolor" = "要重新着色的对象";
+"Object to remove" = "要移除的对象";
 "Off" = "关闭";
 "Offset" = "偏移";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "较旧的交换格式，最适合导入 Premiere Pro。支持基本编辑和关键帧，但不支持文本、颜色、效果、边缘柔化或边缘圆角。";
@@ -644,6 +650,7 @@
 "Project Settings" = "项目设置";
 "Projects Couldn’t Be Deleted" = "无法删除项目";
 "Prompt" = "提示词";
+"Put the subject on a new background" = "将主体放到新背景上";
 "Quality" = "质量";
 "Queued" = "已排队";
 "Quit Lenora" = "退出 Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "重新命名轨道";
 "Rendering" = "正在渲染";
 "Rendering…" = "正在渲染…";
+"Repair noise, blur and compression damage" = "修复噪点、模糊和压缩损伤";
 "Replace Background" = "替换背景";
 "Replace clip source" = "替换片段源媒体";
 "Replace" = "替换";
@@ -825,6 +833,7 @@
 "Subtitle" = "字幕";
 "Subtitle file is unavailable." = "字幕文件不可用。";
 "Swap Media" = "替换媒体";
+"Swap one object for another" = "将一个对象换成另一个";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "生成完成后替换片段的媒体。速度、音量、修剪和变换将保留。";
 "Switch Angle" = "切换机位";
 "Switch Angle in Range" = "在范围内切换机位";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "整个时间线 · %@";
 "Wide (1.85:1)" = "宽银幕 (1.85:1)";
 "Width" = "宽度";
+"With" = "替换为";
 "Word Reveal" = "字词显现";
 "Word Slide" = "字词滑入";
 "Working on %@" = "正在处理 %@";

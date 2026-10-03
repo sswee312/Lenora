@@ -137,6 +137,7 @@
 "Censor profanity" = "Kiểm duyệt từ tục";
 "Center" = "Căn giữa";
 "Change aspect ratio and extend the frame with AI" = "Đổi tỷ lệ khung hình và mở rộng khung hình bằng AI";
+"Change the color of an object" = "Đổi màu một vật thể";
 "Change to Match" = "Đổi cho khớp";
 "Changes take effect after restarting Lenora." = "Thay đổi có hiệu lực sau khi khởi động lại Lenora.";
 "Changing the ratio preserves the shorter edge." = "Thay đổi tỷ lệ sẽ giữ nguyên cạnh ngắn hơn.";
@@ -313,6 +314,7 @@
 "Enhance" = "Nâng cao";
 "Enhance resolution or frame rate with AI" = "Nâng cao độ phân giải hoặc tốc độ khung hình bằng AI";
 "Enter Full Screen" = "Vào toàn màn hình";
+"Erase an object from the image" = "Xóa một vật thể khỏi hình ảnh";
 "Every connected agent will need the new token." = "Mọi agent đã kết nối sẽ cần token mới.";
 "Exclusion" = "Loại trừ";
 "Expand" = "Mở rộng";
@@ -325,6 +327,7 @@
 "Exporting…" = "Đang xuất…";
 "Export…" = "Xuất…";
 "Exposure" = "Độ phơi sáng";
+"Extend the image to a new aspect ratio" = "Mở rộng hình ảnh sang tỷ lệ khung hình mới";
 "Extend" = "Kéo dài";
 "Extends captions across short gaps and holds the final caption." = "Kéo dài phụ đề qua các khoảng trống ngắn và giữ phụ đề cuối.";
 "Extra Large" = "Rất lớn";
@@ -543,6 +546,7 @@
 "My Projects" = "Dự án của tôi";
 "Name" = "Tên";
 "Nest settings discarded. Undo to restore." = "Đã hủy cài đặt lồng ghép. Hoàn tác để khôi phục.";
+"New background (optional)" = "Nền mới (không bắt buộc)";
 "New" = "Mới";
 "New Folder" = "Thư mục mới";
 "New Project" = "Dự án mới";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Chưa đồng bộ nên không thể dùng làm góc máy.";
 "Notifications" = "Thông báo";
 "OK" = "OK";
+"Object to recolor" = "Vật thể cần tô màu lại";
+"Object to remove" = "Vật thể cần xóa";
 "Off" = "Tắt";
 "Offset" = "Độ lệch";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Định dạng trao đổi cũ hơn, phù hợp nhất khi đích là Premiere Pro. Hỗ trợ chỉnh sửa cơ bản và khung hình chính, nhưng không hỗ trợ văn bản, màu, hiệu ứng, độ mềm cạnh hoặc độ bo cạnh.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Cài đặt dự án";
 "Projects Couldn’t Be Deleted" = "Không thể xóa dự án";
 "Prompt" = "Câu lệnh";
+"Put the subject on a new background" = "Đặt chủ thể lên nền mới";
 "Quality" = "Chất lượng";
 "Queued" = "Đang chờ";
 "Quit Lenora" = "Thoát Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "Đổi tên track";
 "Rendering" = "Đang kết xuất";
 "Rendering…" = "Đang kết xuất…";
+"Repair noise, blur and compression damage" = "Sửa nhiễu, mờ và hư hại do nén";
 "Replace Background" = "Thay nền";
 "Replace clip source" = "Thay nguồn clip";
 "Replace" = "Thay thế";
@@ -825,6 +833,7 @@
 "Subtitle" = "Phụ đề";
 "Subtitle file is unavailable." = "Tệp phụ đề không khả dụng.";
 "Swap Media" = "Thay phương tiện";
+"Swap one object for another" = "Đổi một vật thể thành vật thể khác";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Thay phương tiện của clip khi hoàn tất tạo nội dung. Tốc độ, âm lượng, phần cắt và biến đổi được giữ nguyên.";
 "Switch Angle" = "Đổi góc";
 "Switch Angle in Range" = "Đổi góc trong vùng";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Toàn bộ timeline · %@";
 "Wide (1.85:1)" = "Rộng (1.85:1)";
 "Width" = "Chiều rộng";
+"With" = "Bằng";
 "Word Reveal" = "Hiện từ";
 "Word Slide" = "Trượt từ";
 "Working on %@" = "Đang xử lý %@";

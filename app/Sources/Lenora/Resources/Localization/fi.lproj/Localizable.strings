@@ -137,6 +137,7 @@
 "Censor profanity" = "Sensuroi kirosanat";
 "Center" = "Keskitä";
 "Change aspect ratio and extend the frame with AI" = "Vaihda kuvasuhdetta ja laajenna ruutua tekoälyllä";
+"Change the color of an object" = "Vaihda kohteen väri";
 "Change to Match" = "Muuta vastaamaan";
 "Changes take effect after restarting Lenora." = "Muutokset tulevat voimaan, kun käynnistät Lenora Pron uudelleen.";
 "Changing the ratio preserves the shorter edge." = "Suhteen vaihtaminen säilyttää lyhyemmän reunan.";
@@ -313,6 +314,7 @@
 "Enhance" = "Paranna";
 "Enhance resolution or frame rate with AI" = "Paranna resoluutiota tai kuvataajuutta tekoälyllä";
 "Enter Full Screen" = "Siirry koko näytön tilaan";
+"Erase an object from the image" = "Poista kohde kuvasta";
 "Every connected agent will need the new token." = "Jokainen yhdistetty agentti tarvitsee uuden tunnuksen.";
 "Exclusion" = "Poissulkeminen";
 "Expand" = "Laajenna";
@@ -325,6 +327,7 @@
 "Exporting…" = "Viedään…";
 "Export…" = "Vie…";
 "Exposure" = "Valotus";
+"Extend the image to a new aspect ratio" = "Laajenna kuva uuteen kuvasuhteeseen";
 "Extend" = "Pidennä";
 "Extends captions across short gaps and holds the final caption." = "Jatkaa tekstityksiä lyhyiden aukkojen yli ja pitää viimeisen tekstityksen.";
 "Extra Large" = "Erittäin suuri";
@@ -543,6 +546,7 @@
 "My Projects" = "Omat projektit";
 "Name" = "Nimi";
 "Nest settings discarded. Undo to restore." = "Sisäkkäisasetukset hylättiin. Kumoa palauttaaksesi.";
+"New background (optional)" = "Uusi tausta (valinnainen)";
 "New" = "Uusi";
 "New Folder" = "Uusi kansio";
 "New Project" = "Uusi projekti";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Ei synkronoitu — käyttökelvoton kulmana.";
 "Notifications" = "Ilmoitukset";
 "OK" = "OK";
+"Object to recolor" = "Uudelleen väritettävä kohde";
+"Object to remove" = "Poistettava kohde";
 "Off" = "Pois";
 "Offset" = "Siirtymä";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Vanhempi vaihtoformaatti, paras kun kohde on Premiere Pro. Tukee perusmuokkauksia ja avainkuvia, mutta ei tekstiä, väriä, tehosteita, reunojen pehmeyttä eikä reunojen pyöristystä.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Projektin asetukset";
 "Projects Couldn’t Be Deleted" = "Projekteja ei voitu poistaa";
 "Prompt" = "Kehote";
+"Put the subject on a new background" = "Siirrä kohde uudelle taustalle";
 "Quality" = "Laatu";
 "Queued" = "Jonossa";
 "Quit Lenora" = "Lopeta Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "Nimeä raita uudelleen";
 "Rendering" = "Renderöidään";
 "Rendering…" = "Renderöidään…";
+"Repair noise, blur and compression damage" = "Korjaa kohina, epätarkkuus ja pakkausvirheet";
 "Replace Background" = "Korvaa tausta";
 "Replace clip source" = "Korvaa leikkeen lähde";
 "Replace" = "Korvaa";
@@ -825,6 +833,7 @@
 "Subtitle" = "Tekstitys";
 "Subtitle file is unavailable." = "Tekstitystiedosto ei ole käytettävissä.";
 "Swap Media" = "Vaihda media";
+"Swap one object for another" = "Vaihda kohde toiseen";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Vaihda leikkeen media, kun generointi valmistuu. Nopeus, äänenvoimakkuus, rajaus ja muunnos säilyvät.";
 "Switch Angle" = "Vaihda kulmaa";
 "Switch Angle in Range" = "Vaihda kulmaa alueella";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Koko aikajana · %@";
 "Wide (1.85:1)" = "Wide (1.85:1)";
 "Width" = "Leveys";
+"With" = "Tilalle";
 "Word Reveal" = "Sanan paljastus";
 "Word Slide" = "Sanan liuku";
 "Working on %@" = "Käsitellään %@";

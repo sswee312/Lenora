@@ -137,6 +137,7 @@
 "Censor profanity" = "Masquer les grossièretés";
 "Center" = "Centrer";
 "Change aspect ratio and extend the frame with AI" = "Changer le format d’image et étendre le cadre avec l’IA";
+"Change the color of an object" = "Changer la couleur d’un objet";
 "Change to Match" = "Modifier pour correspondre";
 "Changes take effect after restarting Lenora." = "Les modifications prennent effet après le redémarrage de Lenora.";
 "Changing the ratio preserves the shorter edge." = "Le changement de format conserve le côté le plus court.";
@@ -313,6 +314,7 @@
 "Enhance" = "Améliorer";
 "Enhance resolution or frame rate with AI" = "Améliorer la résolution ou la fréquence d’images avec l’IA";
 "Enter Full Screen" = "Activer le mode plein écran";
+"Erase an object from the image" = "Effacer un objet de l’image";
 "Every connected agent will need the new token." = "Chaque agent connecté aura besoin du nouveau jeton.";
 "Exclusion" = "Exclusion";
 "Expand" = "Développer";
@@ -325,6 +327,7 @@
 "Exporting…" = "Exportation…";
 "Export…" = "Exporter…";
 "Exposure" = "Exposition";
+"Extend the image to a new aspect ratio" = "Étendre l’image à un nouveau format";
 "Extend" = "Prolonger";
 "Extends captions across short gaps and holds the final caption." = "Prolonge les sous-titres sur les écarts courts et conserve le dernier sous-titre.";
 "Extra Large" = "Très grande";
@@ -543,6 +546,7 @@
 "My Projects" = "Mes projets";
 "Name" = "Nom";
 "Nest settings discarded. Undo to restore." = "Réglages d’imbrication ignorés. Annulez pour les restaurer.";
+"New background (optional)" = "Nouvel arrière-plan (facultatif)";
 "New" = "Nouveau";
 "New Folder" = "Nouveau dossier";
 "New Project" = "Nouveau projet";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Non synchronisé : inutilisable comme angle.";
 "Notifications" = "Notifications";
 "OK" = "OK";
+"Object to recolor" = "Objet à recolorer";
+"Object to remove" = "Objet à supprimer";
 "Off" = "Désactivé";
 "Offset" = "Décalage";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Ancien format d’échange, recommandé lorsque Premiere Pro est la destination. Prend en charge le montage de base et les images clés, mais pas le texte, la couleur, les effets, l’adoucissement ou l’arrondi des bords.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Réglages du projet";
 "Projects Couldn’t Be Deleted" = "Impossible de supprimer les projets";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Placer le sujet sur un nouvel arrière-plan";
 "Quality" = "Qualité";
 "Queued" = "En attente";
 "Quit Lenora" = "Quitter Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "Renommer la piste";
 "Rendering" = "Rendu";
 "Rendering…" = "Rendu…";
+"Repair noise, blur and compression damage" = "Corriger le bruit, le flou et les artefacts de compression";
 "Replace Background" = "Remplacer l’arrière-plan";
 "Replace clip source" = "Remplacer la source du clip";
 "Replace" = "Remplacer";
@@ -825,6 +833,7 @@
 "Subtitle" = "Sous-titre";
 "Subtitle file is unavailable." = "Le fichier de sous-titres est indisponible.";
 "Swap Media" = "Remplacer le média";
+"Swap one object for another" = "Remplacer un objet par un autre";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Remplace le média du clip à la fin de la génération. La vitesse, le volume, l’élagage et la transformation sont conservés.";
 "Switch Angle" = "Changer d’angle";
 "Switch Angle in Range" = "Changer d’angle dans la plage";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Toute la timeline · %@";
 "Wide (1.85:1)" = "Large (1.85:1)";
 "Width" = "Largeur";
+"With" = "Par";
 "Word Reveal" = "Révélation des mots";
 "Word Slide" = "Glissement des mots";
 "Working on %@" = "Traitement de %@";

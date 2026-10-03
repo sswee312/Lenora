@@ -137,6 +137,7 @@
 "Censor profanity" = "Sensor kata kasar";
 "Center" = "Tengah";
 "Change aspect ratio and extend the frame with AI" = "Ubah rasio aspek dan perluas frame dengan AI";
+"Change the color of an object" = "Ubah warna objek";
 "Change to Match" = "Ubah Agar Cocok";
 "Changes take effect after restarting Lenora." = "Perubahan berlaku setelah Lenora dimulai ulang.";
 "Changing the ratio preserves the shorter edge." = "Mengubah rasio mempertahankan sisi yang lebih pendek.";
@@ -313,6 +314,7 @@
 "Enhance" = "Tingkatkan";
 "Enhance resolution or frame rate with AI" = "Tingkatkan resolusi atau kecepatan frame dengan AI";
 "Enter Full Screen" = "Masuk ke Layar Penuh";
+"Erase an object from the image" = "Hapus objek dari gambar";
 "Every connected agent will need the new token." = "Setiap agent yang terhubung memerlukan token baru.";
 "Exclusion" = "Exclusion";
 "Expand" = "Perluas";
@@ -325,6 +327,7 @@
 "Exporting…" = "Mengekspor…";
 "Export…" = "Ekspor…";
 "Exposure" = "Eksposur";
+"Extend the image to a new aspect ratio" = "Perluas gambar ke rasio aspek baru";
 "Extend" = "Perpanjang";
 "Extends captions across short gaps and holds the final caption." = "Memperpanjang teks terjemahan di celah pendek dan menahan teks terjemahan terakhir.";
 "Extra Large" = "Sangat Besar";
@@ -543,6 +546,7 @@
 "My Projects" = "Proyek Saya";
 "Name" = "Nama";
 "Nest settings discarded. Undo to restore." = "Pengaturan linimasa tersarang dibuang. Urungkan untuk memulihkan.";
+"New background (optional)" = "Latar baru (opsional)";
 "New" = "Baru";
 "New Folder" = "Folder Baru";
 "New Project" = "Proyek Baru";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Tidak tersinkronisasi — tidak dapat digunakan sebagai sudut.";
 "Notifications" = "Pemberitahuan";
 "OK" = "OK";
+"Object to recolor" = "Objek yang diwarnai ulang";
+"Object to remove" = "Objek yang dihapus";
 "Off" = "Nonaktif";
 "Offset" = "Ofset";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Format pertukaran yang lebih lama, paling sesuai jika Premiere Pro adalah tujuan. Mendukung edit dasar dan keyframe, tetapi tidak teks, warna, efek, kelembutan tepi, atau pembulatan tepi.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Pengaturan Proyek";
 "Projects Couldn’t Be Deleted" = "Proyek Tidak Dapat Dihapus";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Tempatkan subjek di latar baru";
 "Quality" = "Kualitas";
 "Queued" = "Dalam antrean";
 "Quit Lenora" = "Keluar dari Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "Ganti Nama Trek";
 "Rendering" = "Merender";
 "Rendering…" = "Merender…";
+"Repair noise, blur and compression damage" = "Perbaiki noise, blur, dan kerusakan kompresi";
 "Replace Background" = "Ganti Latar";
 "Replace clip source" = "Ganti sumber klip";
 "Replace" = "Ganti";
@@ -825,6 +833,7 @@
 "Subtitle" = "Subtitle";
 "Subtitle file is unavailable." = "File subtitle tidak tersedia.";
 "Swap Media" = "Tukar Media";
+"Swap one object for another" = "Tukar satu objek dengan yang lain";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Tukar media klip saat generasi selesai. Kecepatan, volume, pangkasan, dan transformasi dipertahankan.";
 "Switch Angle" = "Ganti Sudut";
 "Switch Angle in Range" = "Ganti Sudut dalam Rentang";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Seluruh linimasa · %@";
 "Wide (1.85:1)" = "Lebar (1.85:1)";
 "Width" = "Lebar";
+"With" = "Dengan";
 "Word Reveal" = "Ungkap Kata";
 "Word Slide" = "Geser Kata";
 "Working on %@" = "Mengerjakan %@";

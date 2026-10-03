@@ -16,8 +16,7 @@ struct ImageModelConfig: Identifiable, Sendable {
 
     @MainActor
     static var edit: ImageModelConfig? {
-        guard case .image(let config)? = ModelCatalog.shared.firstConfig(ofKind: "image.edit") else { return nil }
-        return config
+        allModels.first(where: \.supportsImageReference)
     }
 
     let entry: CatalogEntry

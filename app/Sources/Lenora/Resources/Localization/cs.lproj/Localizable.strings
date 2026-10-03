@@ -137,6 +137,7 @@
 "Censor profanity" = "Cenzurovat vulgarity";
 "Center" = "Na střed";
 "Change aspect ratio and extend the frame with AI" = "Změnit poměr stran a rozšířit rámeček pomocí AI";
+"Change the color of an object" = "Změnit barvu objektu";
 "Change to Match" = "Změnit podle projektu";
 "Changes take effect after restarting Lenora." = "Změny se projeví po restartu Lenora.";
 "Changing the ratio preserves the shorter edge." = "Změna poměru zachová kratší stranu.";
@@ -313,6 +314,7 @@
 "Enhance" = "Vylepšit";
 "Enhance resolution or frame rate with AI" = "Vylepšit rozlišení nebo snímkovou frekvenci pomocí AI";
 "Enter Full Screen" = "Přejít do režimu na celou obrazovku";
+"Erase an object from the image" = "Vymazat objekt z obrázku";
 "Every connected agent will need the new token." = "Každý připojený agent bude potřebovat nový token.";
 "Exclusion" = "Vyloučení";
 "Expand" = "Rozbalit";
@@ -325,6 +327,7 @@
 "Exporting…" = "Exportování…";
 "Export…" = "Exportovat…";
 "Exposure" = "Expozice";
+"Extend the image to a new aspect ratio" = "Rozšířit obrázek na nový poměr stran";
 "Extend" = "Prodloužit";
 "Extends captions across short gaps and holds the final caption." = "Prodlouží titulky přes krátké mezery a podrží poslední titulek.";
 "Extra Large" = "Extra velké";
@@ -543,6 +546,7 @@
 "My Projects" = "Moje projekty";
 "Name" = "Název";
 "Nest settings discarded. Undo to restore." = "Nastavení vnoření zahozeno. Zpět je obnoví.";
+"New background (optional)" = "Nové pozadí (volitelné)";
 "New" = "Nový";
 "New Folder" = "Nová složka";
 "New Project" = "Nový projekt";
@@ -586,6 +590,8 @@
 "Not synced — unusable as an angle." = "Nesynchronizováno — nelze použít jako úhel.";
 "Notifications" = "Oznámení";
 "OK" = "OK";
+"Object to recolor" = "Objekt k přebarvení";
+"Object to remove" = "Objekt k odstranění";
 "Off" = "Vypnuto";
 "Offset" = "Posun";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Starší výměnný formát, vhodný jako cíl pro Premiere Pro. Podporuje základní střihy a klíčové snímky, ale ne text, barvu, efekty, měkkost okraje ani zaoblení okraje.";
@@ -644,6 +650,7 @@
 "Project Settings" = "Nastavení projektu";
 "Projects Couldn’t Be Deleted" = "Projekty se nepodařilo smazat";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Umístit objekt na nové pozadí";
 "Quality" = "Kvalita";
 "Queued" = "Ve frontě";
 "Quit Lenora" = "Ukončit Lenora";
@@ -691,6 +698,7 @@
 "Rename Track" = "Přejmenovat stopu";
 "Rendering" = "Vykreslování";
 "Rendering…" = "Vykreslování…";
+"Repair noise, blur and compression damage" = "Opravit šum, rozmazání a kompresní vady";
 "Replace Background" = "Nahradit pozadí";
 "Replace clip source" = "Nahradit zdroj klipu";
 "Replace" = "Nahradit";
@@ -825,6 +833,7 @@
 "Subtitle" = "Titulek";
 "Subtitle file is unavailable." = "Soubor titulků není k dispozici.";
 "Swap Media" = "Zaměnit média";
+"Swap one object for another" = "Zaměnit jeden objekt za jiný";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Po dokončení generování zaměnit média klipu. Rychlost, hlasitost, ořez a transformace zůstanou zachovány.";
 "Switch Angle" = "Přepnout úhel";
 "Switch Angle in Range" = "Přepnout úhel v rozsahu";
@@ -967,6 +976,7 @@
 "Whole timeline · %@" = "Celá časová osa · %@";
 "Wide (1.85:1)" = "Širokoúhlý (1.85:1)";
 "Width" = "Šířka";
+"With" = "Za";
 "Word Reveal" = "Odhalení slov";
 "Word Slide" = "Posun slov";
 "Working on %@" = "Zpracovává se %@";

@@ -34,16 +34,18 @@ extension EditorViewModel {
         )
     }
 
-    func beginAIReframe(clipId: String) {
-        guard let (clip, asset) = aiEditClipAsset(clipId), clip.mediaType == .video else { return }
-        let trim = aiEditTrimmedSource(clipId: clipId)
-        guard let stored = EditSubmitter.reframeSeed(for: asset, trimmedSource: trim) else { return }
-        seedGenerationPanel(
-            asset: asset,
-            stored: stored,
-            replacementClipId: clipId,
-            trimmedSource: trim
-        )
+    func beginAIMediaEdit(clipId: String, action: EditAction) {
+        guard let (_, asset) = aiEditClipAsset(clipId) else { return }
+        beginMediaEdit(action, of: asset)
+    }
+
+    /// Restore needs no input and submits at once; the other AI edits and Reframe open the edit sheet.
+    func beginMediaEdit(_ action: EditAction, of asset: MediaAsset) {
+        if action == .restore {
+            submitMediaEdit(.edit(.restore), of: asset)
+        } else {
+            pendingMediaEdit = PendingMediaEdit(asset: asset, action: action)
+        }
     }
 
     func beginAILipSync(clipId: String) {
@@ -77,8 +79,12 @@ extension EditorViewModel {
     }
 
     func removeBackground(of asset: MediaAsset) {
+        submitMediaEdit(.removeBackground, of: asset)
+    }
+
+    private func submitMediaEdit(_ request: MediaEditRequest, of asset: MediaAsset) {
         Task {
-            if case .refused(let refusal) = await EditSubmitter.submitEdit(.removeBackground, asset: asset, editor: self) {
+            if case .refused(let refusal) = await EditSubmitter.submitEdit(request, asset: asset, editor: self) {
                 mediaPanelToast = MediaPanelToast(message: refusal.userMessage, kind: .warning)
             }
         }
