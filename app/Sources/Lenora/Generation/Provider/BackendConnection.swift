@@ -24,17 +24,20 @@ final class BackendConnection {
     @ObservationIgnored private let catalog: ModelCatalog
     @ObservationIgnored private let environment: [String: String]
     @ObservationIgnored private let defaults: UserDefaults
+    @ObservationIgnored private let loadToken: @Sendable () async -> String?
     @ObservationIgnored private let makeProvider: @MainActor (LenoraBackendConfiguration) -> any GenerationProvider
 
     init(
         catalog: ModelCatalog = .shared,
         environment: [String: String] = ProcessInfo.processInfo.environment,
         defaults: UserDefaults = .standard,
+        loadToken: @escaping @Sendable () async -> String? = { await BackendConnection.loadStoredToken() },
         makeProvider: @escaping @MainActor (LenoraBackendConfiguration) -> any GenerationProvider = { LenoraBackendClient(configuration: $0) }
     ) {
         self.catalog = catalog
         self.environment = environment
         self.defaults = defaults
+        self.loadToken = loadToken
         self.makeProvider = makeProvider
     }
 
@@ -46,7 +49,7 @@ final class BackendConnection {
             environment: environment,
             storedURL: defaults.string(forKey: LenoraBackendConfiguration.urlDefaultsKey),
             plistURL: Bundle.main.object(forInfoDictionaryKey: "LenoraBackendURL") as? String,
-            keychainToken: await Self.loadToken()
+            keychainToken: await loadToken()
         )
         guard current == generation else { return }
         urlFromEnvironment = LenoraBackendConfiguration.environmentURL(sources.environment) != nil
@@ -87,7 +90,7 @@ final class BackendConnection {
     }
 
     func refreshCapabilities() async {
-        guard let provider else { return }
+        guard state == .connected, let provider else { return }
         let current = generation
         do {
             let health = try await provider.health(recheckAddons: false)
@@ -126,7 +129,7 @@ final class BackendConnection {
         catalog.apply(.empty)
     }
 
-    @concurrent private static func loadToken() async -> String? {
+    @concurrent private static func loadStoredToken() async -> String? {
         (try? CredentialStore.current.read(LenoraBackendConfiguration.tokenAccount)) ?? nil
     }
 
