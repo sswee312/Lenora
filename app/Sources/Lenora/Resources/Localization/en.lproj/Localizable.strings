@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld images are ready in Lenora.";
 "%lld items" = "%lld items";
 "%lld media files are missing and will be skipped." = "%lld media files are missing and will be skipped.";
-"%lld seconds" = "%lld seconds";
 "%lld selected" = "%lld selected";
 "%lld subtitle files are ready in Lenora." = "%lld subtitle files are ready in Lenora.";
 "%lld text clips are ready in Lenora." = "%lld text clips are ready in Lenora.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "Can't import \"%@\" — unsupported file type.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "Can't paste \"%@\" here — it would nest this timeline inside itself.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Can't reach backend at %@. Start it with ./scripts/dev, then test again.";
+"Can't reach the backend." = "Can't reach the backend.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "Can't relink \"%@\". Required media type: %@. Selected media type: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Can't unlock sync on a multicam track — \"%@\" stays aligned through it.";
 "Cancel" = "Cancel";
@@ -221,6 +221,7 @@
 "Couldn't align %lld clips." = "Couldn't align %lld clips.";
 "Couldn't change marker." = "Couldn't change marker.";
 "Couldn't delete marker." = "Couldn't delete marker.";
+"Couldn't reach the provider to upload the file." = "Couldn't reach the provider to upload the file.";
 "Couldn't save the token to the Keychain." = "Couldn't save the token to the Keychain.";
 "Couldn't switch angle." = "Couldn't switch angle.";
 "Couldn’t move %@ to the Trash." = "Couldn’t move %@ to the Trash.";
@@ -581,6 +582,7 @@
 "No adjustments yet" = "No adjustments yet";
 "No audio" = "No audio";
 "No audio selected." = "No audio selected.";
+"No backend is connected." = "No backend is connected.";
 "No beats detected." = "No beats detected.";
 "No connected backend can publish video." = "No connected backend can publish video.";
 "No conversations yet" = "No conversations yet";
@@ -668,6 +670,7 @@
 "Press M in the timeline to add a marker." = "Press M in the timeline to add a marker.";
 "Preview" = "Preview";
 "Processing is billed by the backend. The estimate appears once processing starts." = "Processing is billed by the backend. The estimate appears once processing starts.";
+"Processing request interrupted." = "Processing request interrupted.";
 "Processing…" = "Processing…";
 "Processing… Estimated %@ %@" = "Processing… Estimated %@ %@";
 "Project" = "Project";
@@ -676,6 +679,7 @@
 "Prompt" = "Prompt";
 "Publish" = "Publish";
 "Published" = "Published";
+"Publishing failed." = "Publishing failed.";
 "Publish…" = "Publish…";
 "Put the subject on a new background" = "Put the subject on a new background";
 "Quality" = "Quality";
@@ -689,6 +693,7 @@
 "Ready, %lld failed" = "Ready, %lld failed";
 "Reasoning effort" = "Reasoning effort";
 "Recolor" = "Recolor";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "Reconnect a backend that publishes video to unpublish or add outputs.";
 "Redetect Beats" = "Redetect Beats";
 "Redo" = "Redo";
 "Redo (⇧⌘Z)" = "Redo (⇧⌘Z)";
@@ -889,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "Text to speak (minimum %lld characters)";
 "The MCP server could not start. Check the port, then try again." = "The MCP server could not start. Check the port, then try again.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "The MCP token is unavailable. Check Keychain access, then try again.";
+"The backend rejected the token." = "The backend rejected the token.";
+"The backend returned an unexpected response." = "The backend returned an unexpected response.";
+"The backend returned no result for this output." = "The backend returned no result for this output.";
 "The clip you're adding has different settings than the current project." = "The clip you're adding has different settings than the current project.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "The connected backend doesn't offer this edit. Open Settings → Backend.";
 "The export" = "The export";
@@ -905,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "The selected model refused this request. Revise the prompt and try again.";
 "The selected projects will be moved to the Trash." = "The selected projects will be moved to the Trash.";
 "The source file is missing." = "The source file is missing.";
-"The teaser must be shorter than the video." = "The teaser must be shorter than the video.";
 "The timeline settings changed. Close this sheet and try again." = "The timeline settings changed. Close this sheet and try again.";
 "The upload didn't finish. Publish the export again." = "The upload didn't finish. Publish the export again.";
+"The upload to the provider failed." = "The upload to the provider failed.";
 "Theme" = "Theme";
 "This build includes no skills." = "This build includes no skills.";
 "This edit works on images only." = "This edit works on images only.";
@@ -918,6 +926,7 @@
 "This model cannot cap the output at 60 FPS." = "This model cannot cap the output at 60 FPS.";
 "This permanently removes %@." = "This permanently removes %@.";
 "This source can’t replace the clip." = "This source can’t replace the clip.";
+"This video allows teasers up to %@." = "This video allows teasers up to %@.";
 "This video was unpublished." = "This video was unpublished.";
 "Three-Stack" = "Three-Stack";
 "Three-Up" = "Three-Up";
@@ -975,6 +984,7 @@
 "Update" = "Update";
 "Update available" = "Update available";
 "Updating %@" = "Updating %@";
+"Upload interrupted." = "Upload interrupted.";
 "Uploading…" = "Uploading…";
 "Upscale" = "Upscale";
 "Upscale model not available" = "Upscale model not available";
@@ -994,8 +1004,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Uses the whole timeline by default. Mark a range on the timeline to score only that span.";
 "Version" = "Version";
 "Vertical" = "Vertical";
-"Vertical aspect %@ isn't supported." = "Vertical aspect %@ isn't supported.";
+"Vertical aspect %@ isn't supported. Use %@." = "Vertical aspect %@ isn't supported. Use %@.";
 "Vertical cut" = "Vertical cut";
+"Vertical cuts aren't available." = "Vertical cuts aren't available.";
 "Vertical workspace layout" = "Vertical workspace layout";
 "Vibrance" = "Vibrance";
 "Video" = "Video";

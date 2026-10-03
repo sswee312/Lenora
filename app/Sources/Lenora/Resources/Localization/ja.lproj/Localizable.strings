@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld枚の画像をLenoraで使用できます。";
 "%lld items" = "%lld項目";
 "%lld media files are missing and will be skipped." = "%lld個のメディアファイルが見つからないためスキップされます。";
-"%lld seconds" = "%lld 秒";
 "%lld selected" = "%lld件選択中";
 "%lld subtitle files are ready in Lenora." = "%lld個の字幕ファイルをLenoraで使用できます。";
 "%lld text clips are ready in Lenora." = "%lld個のテキストクリップをLenoraで使用できます。";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "「%@」を読み込めません。対応していないファイル形式です。";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "「%@」をここにペーストできません。このタイムライン自身が入れ子になります。";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "%@のバックエンドに接続できません。./scripts/devで起動してから、もう一度テストしてください。";
+"Can't reach the backend." = "バックエンドに接続できません。";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "「%@」を再リンクできません。必要なメディア形式：%@。選択したメディア形式：%@。";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "マルチカムトラックの同期は解除できません。「%@」はこのトラックを通して同期を維持します。";
 "Cancel" = "キャンセル";
@@ -221,6 +221,7 @@
 "Couldn't align %lld clips." = "%lld個のクリップを同期できませんでした。";
 "Couldn't change marker." = "マーカーを変更できませんでした。";
 "Couldn't delete marker." = "マーカーを削除できませんでした。";
+"Couldn't reach the provider to upload the file." = "ファイルをアップロードするためにプロバイダに接続できませんでした。";
 "Couldn't save the token to the Keychain." = "トークンをキーチェーンに保存できませんでした。";
 "Couldn't switch angle." = "アングルを切り替えられませんでした。";
 "Couldn’t move %@ to the Trash." = "%@をゴミ箱に移動できませんでした。";
@@ -581,6 +582,7 @@
 "No adjustments yet" = "調整はまだありません";
 "No audio" = "オーディオなし";
 "No audio selected." = "オーディオが選択されていません。";
+"No backend is connected." = "バックエンドが接続されていません。";
 "No beats detected." = "ビートが検出されませんでした。";
 "No connected backend can publish video." = "動画を公開できる接続済みのバックエンドがありません。";
 "No conversations yet" = "チャットはまだありません";
@@ -668,6 +670,7 @@
 "Press M in the timeline to add a marker." = "タイムラインでMキーを押すとマーカーを追加できます。";
 "Preview" = "プレビュー";
 "Processing is billed by the backend. The estimate appears once processing starts." = "処理料金はバックエンドから請求されます。見積もりは処理の開始後に表示されます。";
+"Processing request interrupted." = "処理リクエストが中断されました。";
 "Processing…" = "処理中…";
 "Processing… Estimated %@ %@" = "処理中… 見積もり: %@ %@";
 "Project" = "プロジェクト";
@@ -676,6 +679,7 @@
 "Prompt" = "プロンプト";
 "Publish" = "公開";
 "Published" = "公開済み";
+"Publishing failed." = "公開に失敗しました。";
 "Publish…" = "公開…";
 "Put the subject on a new background" = "被写体を新しい背景に配置";
 "Quality" = "品質";
@@ -689,6 +693,7 @@
 "Ready, %lld failed" = "準備完了、%lld 件失敗";
 "Reasoning effort" = "推論の強度";
 "Recolor" = "色を変更";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "公開を取り消すか出力を追加するには、動画を公開できるバックエンドに再接続してください。";
 "Redetect Beats" = "ビートを再検出";
 "Redo" = "やり直す";
 "Redo (⇧⌘Z)" = "やり直す（⇧⌘Z）";
@@ -889,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "読み上げるテキスト（%lld文字以上）";
 "The MCP server could not start. Check the port, then try again." = "MCPサーバを起動できませんでした。ポートを確認して、もう一度お試しください。";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCPトークンを利用できません。キーチェーンへのアクセスを確認して、もう一度お試しください。";
+"The backend rejected the token." = "バックエンドがトークンを拒否しました。";
+"The backend returned an unexpected response." = "バックエンドから予期しない応答が返されました。";
+"The backend returned no result for this output." = "バックエンドからこの出力の結果が返されませんでした。";
 "The clip you're adding has different settings than the current project." = "追加しようとしているクリップの設定が現在のプロジェクトと異なります。";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "接続中のバックエンドはこの編集を提供していません。設定 → バックエンドを開いてください。";
 "The export" = "書き出し";
@@ -905,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "選択したモデルがこのリクエストを拒否しました。プロンプトを見直してもう一度お試しください。";
 "The selected projects will be moved to the Trash." = "選択したプロジェクトはゴミ箱に移動されます。";
 "The source file is missing." = "ソースファイルが見つかりません。";
-"The teaser must be shorter than the video." = "ティーザーは動画より短くしてください。";
 "The timeline settings changed. Close this sheet and try again." = "タイムライン設定が変更されました。このシートを閉じてもう一度お試しください。";
 "The upload didn't finish. Publish the export again." = "アップロードが完了しませんでした。書き出しをもう一度公開してください。";
+"The upload to the provider failed." = "プロバイダへのアップロードに失敗しました。";
 "Theme" = "テーマ";
 "This build includes no skills." = "このビルドにはスキルが含まれていません。";
 "This edit works on images only." = "この編集は画像専用です。";
@@ -918,6 +926,7 @@
 "This model cannot cap the output at 60 FPS." = "このモデルでは出力を60 FPSに制限できません。";
 "This permanently removes %@." = "%@を完全に削除します。";
 "This source can’t replace the clip." = "このソースではクリップを差し替えられません。";
+"This video allows teasers up to %@." = "この動画のティーザーは最長%@です。";
 "This video was unpublished." = "この動画の公開は取り消されました。";
 "Three-Stack" = "3スタック";
 "Three-Up" = "3分割";
@@ -975,6 +984,7 @@
 "Update" = "アップデート";
 "Update available" = "アップデートがあります";
 "Updating %@" = "%@をアップデート中";
+"Upload interrupted." = "アップロードが中断されました。";
 "Uploading…" = "アップロード中…";
 "Upscale" = "アップスケール";
 "Upscale model not available" = "アップスケールモデルを利用できません";
@@ -994,8 +1004,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "デフォルトではタイムライン全体を使用します。その区間だけに音楽を付けるには、タイムライン上で範囲をマークしてください。";
 "Version" = "バージョン";
 "Vertical" = "縦";
-"Vertical aspect %@ isn't supported." = "縦長のアスペクト比 %@ はサポートされていません。";
+"Vertical aspect %@ isn't supported. Use %@." = "縦長のアスペクト比 %@ はサポートされていません。%@ を使用してください。";
 "Vertical cut" = "縦型カット";
+"Vertical cuts aren't available." = "縦型カットは利用できません。";
 "Vertical workspace layout" = "縦型のワークスペースレイアウト";
 "Vibrance" = "自然な彩度";
 "Video" = "ビデオ";

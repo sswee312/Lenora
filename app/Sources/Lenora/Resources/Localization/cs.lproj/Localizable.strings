@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "V Lenora je připraveno %lld obrázků.";
 "%lld items" = "%lld položek";
 "%lld media files are missing and will be skipped." = "Chybí %lld mediálních souborů, budou přeskočeny.";
-"%lld seconds" = "%lld s";
 "%lld selected" = "Vybráno: %lld";
 "%lld subtitle files are ready in Lenora." = "V Lenora je připraveno %lld souborů titulků.";
 "%lld text clips are ready in Lenora." = "V Lenora je připraveno %lld textových klipů.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "Nelze importovat \"%@\" — nepodporovaný typ souboru.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "Sem nelze vložit \"%@\" — vnořilo by to tuto časovou osu do sebe samé.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Backend na adrese %@ není dostupný. Spusťte ho pomocí ./scripts/dev a test zopakujte.";
+"Can't reach the backend." = "Backend není dostupný.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "Nelze znovu propojit \"%@\". Požadovaný typ média: %@. Vybraný typ média: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Nelze odemknout synchronizaci na stopě multicam — \"%@\" zůstává zarovnaný přes ni.";
 "Cancel" = "Zrušit";
@@ -221,6 +221,7 @@
 "Couldn't align %lld clips." = "Nepodařilo se zarovnat %lld klipů.";
 "Couldn't change marker." = "Značku se nepodařilo změnit.";
 "Couldn't delete marker." = "Značku se nepodařilo smazat.";
+"Couldn't reach the provider to upload the file." = "Nepodařilo se spojit s poskytovatelem kvůli nahrání souboru.";
 "Couldn't save the token to the Keychain." = "Token se nepodařilo uložit do Klíčenky.";
 "Couldn't switch angle." = "Úhel se nepodařilo přepnout.";
 "Couldn’t move %@ to the Trash." = "Nepodařilo se přesunout %@ do Koše.";
@@ -581,6 +582,7 @@
 "No adjustments yet" = "Zatím žádné úpravy";
 "No audio" = "Žádné audio";
 "No audio selected." = "Není vybráno žádné audio.";
+"No backend is connected." = "Není připojen žádný backend.";
 "No beats detected." = "Nebyly zjištěny žádné doby.";
 "No connected backend can publish video." = "Žádný připojený backend neumí publikovat video.";
 "No conversations yet" = "Zatím žádné konverzace";
@@ -668,6 +670,7 @@
 "Press M in the timeline to add a marker." = "Stiskněte M na časové ose pro přidání značky.";
 "Preview" = "Náhled";
 "Processing is billed by the backend. The estimate appears once processing starts." = "Zpracování účtuje backend. Odhad se zobrazí po zahájení zpracování.";
+"Processing request interrupted." = "Požadavek na zpracování byl přerušen.";
 "Processing…" = "Zpracování…";
 "Processing… Estimated %@ %@" = "Zpracování… Odhad: %@ %@";
 "Project" = "Projekt";
@@ -676,6 +679,7 @@
 "Prompt" = "Prompt";
 "Publish" = "Publikovat";
 "Published" = "Publikováno";
+"Publishing failed." = "Publikování selhalo.";
 "Publish…" = "Publikovat…";
 "Put the subject on a new background" = "Umístit objekt na nové pozadí";
 "Quality" = "Kvalita";
@@ -689,6 +693,7 @@
 "Ready, %lld failed" = "Připraveno, %lld selhalo";
 "Reasoning effort" = "Úsilí uvažování";
 "Recolor" = "Přebarvit";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "Chcete-li zrušit publikování nebo přidat výstupy, znovu připojte backend, který publikuje video.";
 "Redetect Beats" = "Znovu detekovat doby";
 "Redo" = "Znovu";
 "Redo (⇧⌘Z)" = "Znovu (⇧⌘Z)";
@@ -889,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "Text k mluvení (minimálně %lld znaků)";
 "The MCP server could not start. Check the port, then try again." = "Server MCP se nepodařilo spustit. Zkontrolujte port a zkuste to znovu.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP není k dispozici. Zkontrolujte přístup ke Klíčence a zkuste to znovu.";
+"The backend rejected the token." = "Backend odmítl token.";
+"The backend returned an unexpected response." = "Backend vrátil neočekávanou odpověď.";
+"The backend returned no result for this output." = "Backend pro tento výstup nevrátil žádný výsledek.";
 "The clip you're adding has different settings than the current project." = "Klip, který přidáváte, má jiné nastavení než aktuální projekt.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Připojený backend tuto úpravu nenabízí. Otevřete Nastavení → Backend.";
 "The export" = "Export";
@@ -905,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "Vybraný model tento požadavek odmítl. Upravte prompt a zkuste to znovu.";
 "The selected projects will be moved to the Trash." = "Vybrané projekty budou přesunuty do Koše.";
 "The source file is missing." = "Zdrojový soubor chybí.";
-"The teaser must be shorter than the video." = "Upoutávka musí být kratší než video.";
 "The timeline settings changed. Close this sheet and try again." = "Nastavení časové osy se změnilo. Zavřete tento list a zkuste to znovu.";
 "The upload didn't finish. Publish the export again." = "Nahrávání nebylo dokončeno. Publikujte export znovu.";
+"The upload to the provider failed." = "Nahrání k poskytovateli selhalo.";
 "Theme" = "Motiv";
 "This build includes no skills." = "Toto sestavení neobsahuje žádné dovednosti.";
 "This edit works on images only." = "Tato úprava funguje jen u obrázků.";
@@ -918,6 +926,7 @@
 "This model cannot cap the output at 60 FPS." = "Tento model nemůže omezit výstup na 60 FPS.";
 "This permanently removes %@." = "Tímto se trvale odebere %@.";
 "This source can’t replace the clip." = "Tento zdroj nemůže klip nahradit.";
+"This video allows teasers up to %@." = "Toto video umožňuje upoutávky dlouhé nejvýše %@.";
 "This video was unpublished." = "Publikování tohoto videa bylo zrušeno.";
 "Three-Stack" = "Tři pod sebou";
 "Three-Up" = "Tři vedle sebe";
@@ -975,6 +984,7 @@
 "Update" = "Aktualizovat";
 "Update available" = "Aktualizace k dispozici";
 "Updating %@" = "Aktualizace %@";
+"Upload interrupted." = "Nahrávání bylo přerušeno.";
 "Uploading…" = "Odesílání…";
 "Upscale" = "Zvětšit rozlišení";
 "Upscale model not available" = "Model zvětšení rozlišení není k dispozici";
@@ -994,8 +1004,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Ve výchozím stavu použije celou časovou osu. Označte rozsah na časové ose, chcete-li zhudebnit jen ten úsek.";
 "Version" = "Verze";
 "Vertical" = "Svisle";
-"Vertical aspect %@ isn't supported." = "Svislý poměr stran %@ není podporován.";
+"Vertical aspect %@ isn't supported. Use %@." = "Svislý poměr stran %@ není podporován. Použijte %@.";
 "Vertical cut" = "Svislá verze";
+"Vertical cuts aren't available." = "Svislé verze nejsou k dispozici.";
 "Vertical workspace layout" = "Svislé rozložení pracovního prostoru";
 "Vibrance" = "Živost";
 "Video" = "Video";

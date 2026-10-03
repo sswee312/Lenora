@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld 張影像已在 Lenora 中準備就緒。";
 "%lld items" = "%lld 個專案";
 "%lld media files are missing and will be skipped." = "%lld 個媒體檔案缺失，將被跳過。";
-"%lld seconds" = "%lld 秒";
 "%lld selected" = "已選擇 %lld 個";
 "%lld subtitle files are ready in Lenora." = "%lld 個字幕檔案已在 Lenora 中準備就緒。";
 "%lld text clips are ready in Lenora." = "%lld 個文字片段已在 Lenora 中準備就緒。";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "無法匯入“%@”。不支援此檔案類型。";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "無法在此貼上“%@”。這會將時間軸巢狀到自身中。";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "無法連線至 %@ 的後端。請先用 ./scripts/dev 啟動，然後重新測試。";
+"Can't reach the backend." = "無法連線到後端。";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "無法重新連結「%@」。所需媒體類型：%@。所選媒體類型：%@。";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "無法解鎖多機位軌道的同步。“%@”需要透過該軌道保持對齊。";
 "Cancel" = "取消";
@@ -221,6 +221,7 @@
 "Couldn't align %lld clips." = "無法對齊 %lld 個片段。";
 "Couldn't change marker." = "無法更改標記。";
 "Couldn't delete marker." = "無法刪除標記。";
+"Couldn't reach the provider to upload the file." = "無法連線到供應商以上傳檔案。";
 "Couldn't save the token to the Keychain." = "無法將權杖儲存到鑰匙圈。";
 "Couldn't switch angle." = "無法切換角度。";
 "Couldn’t move %@ to the Trash." = "無法將 %@ 移到垃圾桶。";
@@ -581,6 +582,7 @@
 "No adjustments yet" = "尚未進行調整";
 "No audio" = "沒有音訊";
 "No audio selected." = "未選擇音訊。";
+"No backend is connected." = "未連接後端。";
 "No beats detected." = "未偵測到節拍。";
 "No connected backend can publish video." = "沒有已連線的後端可以發布影片。";
 "No conversations yet" = "尚無對話";
@@ -668,6 +670,7 @@
 "Press M in the timeline to add a marker." = "在時間軸上按 M 可加入標記。";
 "Preview" = "預覽";
 "Processing is billed by the backend. The estimate appears once processing starts." = "處理費用由後端計費。處理開始後會顯示預估費用。";
+"Processing request interrupted." = "處理要求已中斷。";
 "Processing…" = "處理中…";
 "Processing… Estimated %@ %@" = "處理中… 預估：%@ %@";
 "Project" = "專案";
@@ -676,6 +679,7 @@
 "Prompt" = "提示詞";
 "Publish" = "發佈";
 "Published" = "已發佈";
+"Publishing failed." = "發佈失敗。";
 "Publish…" = "發佈…";
 "Put the subject on a new background" = "將主體放到新背景上";
 "Quality" = "品質";
@@ -689,6 +693,7 @@
 "Ready, %lld failed" = "就緒，%lld 個失敗";
 "Reasoning effort" = "推理強度";
 "Recolor" = "重新著色";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "請重新連接可發佈影片的後端，以取消發佈或加入輸出。";
 "Redetect Beats" = "重新偵測節拍";
 "Redo" = "重做";
 "Redo (⇧⌘Z)" = "重做 (⇧⌘Z)";
@@ -889,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "要朗讀的文字（至少 %lld 個字元）";
 "The MCP server could not start. Check the port, then try again." = "無法啟動 MCP 伺服器。請檢查連接埠，然後重試。";
 "The MCP token is unavailable. Check Keychain access, then try again." = "無法使用 MCP 權杖。請檢查鑰匙圈存取權限，然後重試。";
+"The backend rejected the token." = "後端拒絕了權杖。";
+"The backend returned an unexpected response." = "後端傳回了非預期的回應。";
+"The backend returned no result for this output." = "後端未傳回此輸出的結果。";
 "The clip you're adding has different settings than the current project." = "要加入的片段與目前專案的設定不同。";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "已連線的後端不提供此編輯。請打開「設定 → 後端」。";
 "The export" = "匯出任務";
@@ -905,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "所選模型拒絕了此請求。請修改提示詞後重試。";
 "The selected projects will be moved to the Trash." = "所選專案將被移到垃圾桶。";
 "The source file is missing." = "找不到來源檔案。";
-"The teaser must be shorter than the video." = "預告片必須短於影片。";
 "The timeline settings changed. Close this sheet and try again." = "時間軸設定已更改。請關閉此表單後重試。";
 "The upload didn't finish. Publish the export again." = "上傳未完成。請再次發布匯出。";
+"The upload to the provider failed." = "上傳到供應商失敗。";
 "Theme" = "主題";
 "This build includes no skills." = "此版本不包含任何技能。";
 "This edit works on images only." = "此編輯僅適用於影像。";
@@ -918,6 +926,7 @@
 "This model cannot cap the output at 60 FPS." = "此模型無法將輸出限制為 60 FPS。";
 "This permanently removes %@." = "這將永久移除 %@。";
 "This source can’t replace the clip." = "此來源媒體無法替換該片段。";
+"This video allows teasers up to %@." = "此影片的預告片最長為 %@。";
 "This video was unpublished." = "此影片已取消發布。";
 "Three-Stack" = "三疊";
 "Three-Up" = "三畫面";
@@ -975,6 +984,7 @@
 "Update" = "更新";
 "Update available" = "有可用更新";
 "Updating %@" = "正在更新 %@";
+"Upload interrupted." = "上傳已中斷。";
 "Uploading…" = "正在上傳…";
 "Upscale" = "放大";
 "Upscale model not available" = "放大模型不可用";
@@ -994,8 +1004,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "預設使用整個時間軸。在時間軸上標記範圍可僅為該區段配樂。";
 "Version" = "版本";
 "Vertical" = "垂直";
-"Vertical aspect %@ isn't supported." = "不支援直式長寬比 %@。";
+"Vertical aspect %@ isn't supported. Use %@." = "不支援直式長寬比 %@。請使用 %@。";
 "Vertical cut" = "直式版本";
+"Vertical cuts aren't available." = "直式版本無法使用。";
 "Vertical workspace layout" = "垂直工作區配置";
 "Vibrance" = "自然飽和度";
 "Video" = "影片";

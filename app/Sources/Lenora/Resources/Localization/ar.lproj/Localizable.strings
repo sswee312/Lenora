@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "⁨%lld⁩ من الصور جاهزة في Lenora.";
 "%lld items" = "⁨%lld⁩ عنصر";
 "%lld media files are missing and will be skipped." = "هناك ⁨%lld⁩ من ملفات الوسائط مفقودة وسيتم تخطيها.";
-"%lld seconds" = "%lld ثانية";
 "%lld selected" = "تم تحديد ⁨%lld⁩";
 "%lld subtitle files are ready in Lenora." = "⁨%lld⁩ من ملفات الترجمة جاهزة في Lenora.";
 "%lld text clips are ready in Lenora." = "⁨%lld⁩ من مقاطع النص جاهزة في Lenora.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "لا يمكن استيراد \"⁨%@⁩\" لأن نوع الملف غير مدعوم.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "لا يمكن لصق \"⁨%@⁩\" هنا لأن ذلك سيدمج المخطط الزمني داخل نفسه.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "تعذّر الوصول إلى الخادم الخلفي على ⁨%@⁩. شغّله باستخدام ./scripts/dev ثم اختبر الاتصال مرة أخرى.";
+"Can't reach the backend." = "تعذّر الوصول إلى الخادم الخلفي.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "لا يمكن إعادة ربط \"⁨%@⁩\". نوع الوسائط المطلوب: ⁨%@⁩. نوع الوسائط المحدد: ⁨%@⁩.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "لا يمكن إلغاء قفل المزامنة على مسار متعدد الكاميرات. يظل \"⁨%@⁩\" محاذيًا من خلاله.";
 "Cancel" = "إلغاء";
@@ -221,6 +221,7 @@
 "Couldn't align %lld clips." = "تعذّرت محاذاة ⁨%lld⁩ من المقاطع.";
 "Couldn't change marker." = "تعذّر تغيير العلامة.";
 "Couldn't delete marker." = "تعذّر حذف العلامة.";
+"Couldn't reach the provider to upload the file." = "تعذّر الوصول إلى المزوّد لرفع الملف.";
 "Couldn't save the token to the Keychain." = "تعذّر حفظ الرمز المميز في سلسلة المفاتيح.";
 "Couldn't switch angle." = "تعذّر تبديل الزاوية.";
 "Couldn’t move %@ to the Trash." = "تعذّر نقل ⁨%@⁩ إلى سلة المهملات.";
@@ -581,6 +582,7 @@
 "No adjustments yet" = "لا توجد تعديلات بعد";
 "No audio" = "لا يوجد صوت";
 "No audio selected." = "لم يتم تحديد صوت.";
+"No backend is connected." = "لا يوجد خادم خلفي متصل.";
 "No beats detected." = "لم يتم اكتشاف إيقاعات.";
 "No connected backend can publish video." = "لا يوجد خادم متصل يمكنه نشر الفيديو.";
 "No conversations yet" = "لا توجد محادثات بعد";
@@ -668,6 +670,7 @@
 "Press M in the timeline to add a marker." = "اضغط M في المخطط الزمني لإضافة علامة.";
 "Preview" = "المعاينة";
 "Processing is billed by the backend. The estimate appears once processing starts." = "تتم محاسبة المعالجة من قِبل الخادم. يظهر التقدير عند بدء المعالجة.";
+"Processing request interrupted." = "انقطع طلب المعالجة.";
 "Processing…" = "جارٍ المعالجة…";
 "Processing… Estimated %@ %@" = "جارٍ المعالجة… التقدير: %@ %@";
 "Project" = "المشروع";
@@ -676,6 +679,7 @@
 "Prompt" = "المطالبة";
 "Publish" = "نشر";
 "Published" = "تم النشر";
+"Publishing failed." = "فشل النشر.";
 "Publish…" = "نشر…";
 "Put the subject on a new background" = "وضع العنصر على خلفية جديدة";
 "Quality" = "الجودة";
@@ -689,6 +693,7 @@
 "Ready, %lld failed" = "جاهز، فشل %lld";
 "Reasoning effort" = "مستوى الاستدلال";
 "Recolor" = "إعادة التلوين";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "أعد توصيل خادم خلفي ينشر الفيديو لإلغاء النشر أو إضافة مخرجات.";
 "Redetect Beats" = "إعادة اكتشاف الإيقاعات";
 "Redo" = "إعادة";
 "Redo (⇧⌘Z)" = "إعادة ⁨(⇧⌘Z)⁩";
@@ -889,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "النص المطلوب نطقه (⁨%lld⁩ حرفًا على الأقل)";
 "The MCP server could not start. Check the port, then try again." = "تعذّر بدء خادم MCP. تحقق من المنفذ ثم حاول مرة أخرى.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "رمز MCP المميز غير متاح. تحقق من الوصول إلى سلسلة المفاتيح ثم حاول مرة أخرى.";
+"The backend rejected the token." = "رفض الخادم الخلفي الرمز المميز.";
+"The backend returned an unexpected response." = "أعاد الخادم الخلفي استجابة غير متوقعة.";
+"The backend returned no result for this output." = "لم يُرجع الخادم الخلفي أي نتيجة لهذا المُخرَج.";
 "The clip you're adding has different settings than the current project." = "للمقطع الذي تضيفه إعدادات مختلفة عن المشروع الحالي.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "الخادم المتصل لا يوفر هذا التعديل. افتح الإعدادات ← الخادم.";
 "The export" = "الملف";
@@ -905,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "رفض النموذج المحدد هذا الطلب. راجع المطالبة وأعد المحاولة.";
 "The selected projects will be moved to the Trash." = "سيتم نقل المشاريع المحددة إلى سلة المهملات.";
 "The source file is missing." = "ملف المصدر مفقود.";
-"The teaser must be shorter than the video." = "يجب أن يكون المقطع التشويقي أقصر من الفيديو.";
 "The timeline settings changed. Close this sheet and try again." = "تغيرت إعدادات المخطط الزمني. أغلق هذه اللوحة وأعد المحاولة.";
 "The upload didn't finish. Publish the export again." = "لم يكتمل الرفع. انشر التصدير مرة أخرى.";
+"The upload to the provider failed." = "فشل الرفع إلى المزوّد.";
 "Theme" = "السمة";
 "This build includes no skills." = "لا يتضمن هذا الإصدار أي مهارات.";
 "This edit works on images only." = "هذا التعديل يعمل على الصور فقط.";
@@ -918,6 +926,7 @@
 "This model cannot cap the output at 60 FPS." = "لا يمكن لهذا النموذج تحديد سقف الإخراج عند ⁨60 FPS⁩.";
 "This permanently removes %@." = "يؤدي هذا إلى إزالة ⁨%@⁩ نهائيًا.";
 "This source can’t replace the clip." = "لا يمكن لهذا المصدر استبدال المقطع.";
+"This video allows teasers up to %@." = "يسمح هذا الفيديو بمقاطع تشويقية حتى %@.";
 "This video was unpublished." = "أُلغي نشر هذا الفيديو.";
 "Three-Stack" = "تكديس ثلاثي";
 "Three-Up" = "عرض ثلاثي";
@@ -975,6 +984,7 @@
 "Update" = "تحديث";
 "Update available" = "يتوفر تحديث";
 "Updating %@" = "جارٍ تحديث ⁨%@⁩";
+"Upload interrupted." = "انقطع الرفع.";
 "Uploading…" = "جارٍ الرفع…";
 "Upscale" = "رفع الدقة";
 "Upscale model not available" = "نموذج رفع الدقة غير متاح";
@@ -994,8 +1004,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "يستخدم المخطط الزمني كاملاً افتراضيًا. حدّد نطاقًا على المخطط لإنشاء موسيقى لذلك الجزء فقط.";
 "Version" = "الإصدار";
 "Vertical" = "رأسي";
-"Vertical aspect %@ isn't supported." = "نسبة العرض إلى الارتفاع العمودية %@ غير مدعومة.";
+"Vertical aspect %@ isn't supported. Use %@." = "نسبة العرض إلى الارتفاع العمودية %@ غير مدعومة. استخدم %@.";
 "Vertical cut" = "مقطع عمودي";
+"Vertical cuts aren't available." = "المقاطع العمودية غير متاحة.";
 "Vertical workspace layout" = "تخطيط مساحة العمل الرأسي";
 "Vibrance" = "حيوية الألوان";
 "Video" = "الفيديو";
