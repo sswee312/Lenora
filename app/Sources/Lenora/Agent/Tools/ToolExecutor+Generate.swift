@@ -19,9 +19,6 @@ extension ToolExecutor {
 
     func generate(_ editor: EditorViewModel, _ args: [String: Any], type: ClipType) throws -> ToolResult {
         let prompt = args["prompt"] == nil ? "" : try args.requireString("prompt")
-        guard type.generationKinds.isEmpty || ModelCatalog.shared.supportsAny(of: type.generationKinds) else {
-            throw ToolError("No backend adapter provides \(type.rawValue) generation. Connect a backend in Settings → Backend.")
-        }
         switch type {
         case .sequence:
             throw ToolError("Cannot generate a sequence. Sequences are timelines.")
@@ -270,9 +267,6 @@ extension ToolExecutor {
     }
 
     func generateAudio(_ editor: EditorViewModel, _ args: [String: Any]) async throws -> ToolResult {
-        guard ModelCatalog.shared.supportsAny(of: ClipType.audio.generationKinds) else {
-            throw ToolError("No backend adapter provides audio generation. Connect a backend in Settings → Backend.")
-        }
         let modelId = try args.string("model") ?? defaultModelId(
             AudioModelConfig.allModels.map(\.id), kind: "audio")
         guard let model = AudioModelConfig.allModels.first(where: { $0.id == modelId }) else {
@@ -454,9 +448,6 @@ extension ToolExecutor {
         guard asset.type != .video || asset.sourceFPS != nil else {
             throw ToolError("Source FPS is not available yet. Poll get_media until the asset is ready.")
         }
-        guard ModelCatalog.shared.supportsAny(of: ["image.upscale", "video.upscale"]) else {
-            throw ToolError("No backend adapter provides upscaling. Connect a backend in Settings → Backend.")
-        }
 
         let available = UpscaleModelConfig.models(for: asset.type)
         let model: UpscaleModelConfig
@@ -571,6 +562,10 @@ extension ToolExecutor {
             out += UpscaleModelConfig.allModels
                 .map { Self.upscaleModelInfo($0) }
         }
+        if filter == nil || filter == "transform" {
+            out += ModelCatalog.shared.models(ofKind: EditSubmitter.removeBackgroundKind)
+                .map { Self.transformModelInfo($0) }
+        }
         let body: [String: Any] = [
             "models": out,
             "loaded": ModelCatalog.shared.isLoaded,
@@ -663,6 +658,18 @@ extension ToolExecutor {
         if let targetLanguages = m.targetLanguages {
             info["targetLanguages"] = targetLanguages
         }
+        return info
+    }
+
+    nonisolated static func transformModelInfo(_ m: BackendModel) -> [String: Any] {
+        var info: [String: Any] = [
+            "id": m.id, "displayName": m.displayName,
+            "type": "transform",
+            "operation": "removeBackground",
+            "acceptedTypes": m.inputs.types,
+            "maxBytes": m.inputs.maxBytes,
+        ]
+        if let estimate = m.estimate { info["estimate"] = ["amount": estimate.amount, "unit": estimate.unit] }
         return info
     }
 

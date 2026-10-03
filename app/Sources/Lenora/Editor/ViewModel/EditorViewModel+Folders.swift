@@ -192,6 +192,26 @@ extension EditorViewModel {
         )
     }
 
+    func mediaLibraryUndoSnapshot(removing assetId: String) -> MediaLibraryUndoSnapshot {
+        let current = mediaLibraryUndoSnapshot()
+        var manifest = current.mediaManifest
+        manifest.entries.removeAll { $0.id == assetId }
+        let tabId = PreviewTab.mediaAssetTabId(for: assetId)
+        return MediaLibraryUndoSnapshot(
+            timelines: current.timelines,
+            activeTimelineId: current.activeTimelineId,
+            openTimelineIds: current.openTimelineIds,
+            mediaManifest: manifest,
+            mediaAssets: current.mediaAssets.filter { $0.id != assetId },
+            selectedClipIds: current.selectedClipIds,
+            selectedMediaAssetIds: current.selectedMediaAssetIds.subtracting([assetId]),
+            selectedFolderIds: current.selectedFolderIds,
+            previewTabs: current.previewTabs.filter { $0.id != tabId },
+            activePreviewTabId: current.activePreviewTabId == tabId ? PreviewTab.timeline.id : current.activePreviewTabId,
+            sourcePlayheadFrame: current.sourcePlayheadFrame
+        )
+    }
+
     func restoreMediaLibraryUndoSnapshot(_ snapshot: MediaLibraryUndoSnapshot, actionName: String) {
         let redo = mediaLibraryUndoSnapshot()
         timelines = snapshot.timelines

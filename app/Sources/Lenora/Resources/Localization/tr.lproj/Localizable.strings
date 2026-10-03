@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ bu medya türünü desteklemiyor.";
 "%@ exported with %lld warnings." = "%@, %lld uyarıyla dışa aktarıldı.";
 "%@ exported with 1 warning." = "%@, 1 uyarıyla dışa aktarıldı.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ görselleri desteklenmiyor. PNG, JPEG, WebP, HEIC veya TIFF kullanın.";
 "%@ is not a valid URL." = "%@ geçerli bir URL değil.";
 "%@ is ready." = "%@ hazır.";
 "%@ model not available" = "%@ modeli kullanılamıyor";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Özel En-Boy Oranı";
 "Custom…" = "Özel…";
 "Cut" = "Kes";
+"Cut out the subject as a transparent PNG" = "Özneyi saydam PNG olarak kes";
 "Cut to the beat" = "Ritme göre kes";
 "Dark" = "Koyu";
 "Dark appearance" = "Koyu görünüm";
@@ -556,6 +558,7 @@
 "No audio" = "Ses yok";
 "No audio selected." = "Ses seçilmedi.";
 "No beats detected." = "Vuruş algılanmadı.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Bağlı hiçbir arka uç arka planları kaldıramıyor. Ayarlar → Backend bölümünü açın.";
 "No conversations yet" = "Henüz sohbet yok";
 "No exports yet" = "Henüz dışa aktarma yok";
 "No images" = "Görüntü yok";
@@ -667,6 +670,9 @@
 "Remove" = "Kaldır";
 "Remove %@" = "%@ Öğesini Kaldır";
 "Remove API key" = "API anahtarını kaldır";
+"Remove Background" = "Arka Planı Kaldır";
+"Remove Background isn't available from the connected backend" = "Arka Planı Kaldır, bağlı arka uçta kullanılamıyor";
+"Remove Background works on images only." = "Arka Planı Kaldır yalnızca görsellerde çalışır.";
 "Remove Dead Air" = "Sessiz Bölümleri Kaldır";
 "Remove Marker" = "İşaretleyiciyi Kaldır";
 "Remove background sound and keep speech" = "Arka plan sesini kaldır ve konuşmayı koru";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP belirteci kullanılamıyor. Anahtar Zinciri erişimini kontrol edip tekrar deneyin.";
 "The clip you're adding has different settings than the current project." = "Eklediğiniz klibin ayarları geçerli projeden farklı.";
 "The export" = "Dışa aktarma";
+"The image is larger than %@." = "Görsel %@ boyutundan büyük.";
 "The job already finished." = "İş zaten tamamlandı.";
 "The job finished without a result." = "İş sonuç üretmeden tamamlandı.";
 "The marker comment changed while you were editing. Review it and try again." = "İşaretleyici yorumu siz düzenlerken değişti. Gözden geçirip yeniden deneyin.";
 "The project will be moved to the Trash." = "Proje Çöp Sepeti'ne taşınacak.";
 "The selected model refused this request. Revise the prompt and try again." = "Seçili model bu isteği reddetti. İstemi gözden geçirip yeniden deneyin.";
 "The selected projects will be moved to the Trash." = "Seçili projeler Çöp Sepeti'ne taşınacak.";
+"The source file is missing." = "Kaynak dosya eksik.";
 "The timeline settings changed. Close this sheet and try again." = "Zaman ekseni ayarları değişti. Bu sayfayı kapatıp yeniden deneyin.";
 "Theme" = "Tema";
 "This build includes no skills." = "Bu derleme hiç beceri içermiyor.";

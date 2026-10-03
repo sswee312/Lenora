@@ -228,6 +228,19 @@ actor MCPHTTPServer {
         }
     }
 
+    func broadcastToolListChanged() {
+        for (id, session) in sessions {
+            let server = session.server
+            Task {
+                do {
+                    try await server.notify(ToolListChangedNotification.message())
+                } catch {
+                    Log.mcp.warning("tool list_changed broadcast failed id=\(id): \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+
     // A failed announce retries on the next GET-stream attach.
     private func resetToolListAnnouncement(sessionID: String) {
         guard var session = sessions[sessionID] else { return }

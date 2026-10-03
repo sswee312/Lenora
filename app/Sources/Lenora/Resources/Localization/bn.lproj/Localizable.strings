@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ এই মিডিয়ার ধরন সাপোর্ট করে না।";
 "%@ exported with %lld warnings." = "%@, %lldটি সতর্কতাসহ এক্সপোর্ট হয়েছে।";
 "%@ exported with 1 warning." = "%@, ১টি সতর্কতাসহ এক্সপোর্ট হয়েছে।";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ ছবি সমর্থিত নয়। PNG, JPEG, WebP, HEIC বা TIFF ব্যবহার করুন।";
 "%@ is not a valid URL." = "%@ একটি বৈধ URL নয়।";
 "%@ is ready." = "%@ প্রস্তুত।";
 "%@ model not available" = "%@ মডেল পাওয়া যাচ্ছে না";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "কাস্টম অ্যাসপেক্ট রেশিও";
 "Custom…" = "কাস্টম…";
 "Cut" = "কাট";
+"Cut out the subject as a transparent PNG" = "বিষয়টি স্বচ্ছ PNG হিসেবে কেটে নিন";
 "Cut to the beat" = "বিট অনুসারে কাটুন";
 "Dark" = "ডার্ক";
 "Dark appearance" = "ডার্ক অ্যাপিয়ারেন্স";
@@ -556,6 +558,7 @@
 "No audio" = "কোনো অডিও নেই";
 "No audio selected." = "কোনো অডিও সিলেক্ট করা হয়নি।";
 "No beats detected." = "কোনো বিট শনাক্ত হয়নি।";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "কোনো সংযুক্ত ব্যাকএন্ড ব্যাকগ্রাউন্ড সরাতে পারে না। সেটিংস → ব্যাকএন্ড খুলুন।";
 "No conversations yet" = "এখনও কোনো কথোপকথন নেই";
 "No exports yet" = "এখনও কোনো এক্সপোর্ট নেই";
 "No images" = "কোনো ইমেজ নেই";
@@ -667,6 +670,9 @@
 "Remove" = "সরান";
 "Remove %@" = "%@ সরান";
 "Remove API key" = "API কী সরান";
+"Remove Background" = "ব্যাকগ্রাউন্ড সরান";
+"Remove Background isn't available from the connected backend" = "সংযুক্ত ব্যাকএন্ডে ব্যাকগ্রাউন্ড সরানো উপলব্ধ নয়";
+"Remove Background works on images only." = "ব্যাকগ্রাউন্ড সরানো শুধু ছবিতে কাজ করে।";
 "Remove Dead Air" = "নীরব অংশ সরান";
 "Remove Marker" = "মার্কার সরান";
 "Remove background sound and keep speech" = "ব্যাকগ্রাউন্ড সাউন্ড সরিয়ে স্পিচ রাখুন";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP টোকেন পাওয়া যাচ্ছে না। Keychain অ্যাক্সেস পরীক্ষা করে আবার চেষ্টা করুন।";
 "The clip you're adding has different settings than the current project." = "আপনি যে ক্লিপ যোগ করছেন তার সেটিংস বর্তমান প্রজেক্ট থেকে আলাদা।";
 "The export" = "এক্সপোর্টটি";
+"The image is larger than %@." = "ছবিটি %@ এর চেয়ে বড়।";
 "The job already finished." = "কাজটি ইতিমধ্যে শেষ হয়েছে।";
 "The job finished without a result." = "কাজটি কোনো ফলাফল ছাড়াই শেষ হয়েছে।";
 "The marker comment changed while you were editing. Review it and try again." = "এডিট করার সময় মার্কার কমেন্ট বদলেছে। রিভিউ করে আবার চেষ্টা করুন।";
 "The project will be moved to the Trash." = "প্রজেক্টটি ট্র্যাশে সরানো হবে।";
 "The selected model refused this request. Revise the prompt and try again." = "সিলেক্ট করা মডেল এই অনুরোধ প্রত্যাখ্যান করেছে। প্রম্পট সংশোধন করে আবার চেষ্টা করুন।";
 "The selected projects will be moved to the Trash." = "সিলেক্ট করা প্রজেক্টগুলো ট্র্যাশে সরানো হবে।";
+"The source file is missing." = "সোর্স ফাইলটি পাওয়া যাচ্ছে না।";
 "The timeline settings changed. Close this sheet and try again." = "টাইমলাইন সেটিংস বদলেছে। এই শিট বন্ধ করে আবার চেষ্টা করুন।";
 "Theme" = "থিম";
 "This build includes no skills." = "এই বিল্ডে কোনো স্কিল অন্তর্ভুক্ত নেই।";

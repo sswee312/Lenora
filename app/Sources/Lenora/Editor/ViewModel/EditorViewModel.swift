@@ -226,7 +226,7 @@ final class EditorViewModel {
         manifest: { MediaManifest() }, projectURL: { nil }
     )
 
-    @ObservationIgnored var generationService = GenerationService(provider: { BackendConnection.shared.provider })
+    @ObservationIgnored var generationService: GenerationService
     @ObservationIgnored var remoteDownloadFetch: RemoteMediaDownloader.Fetch?
     let agentService = AgentService()
 
@@ -320,7 +320,11 @@ final class EditorViewModel {
         mediaPanelSearchFocusPending = false
     }
 
-    init() {
+    init(
+        generationProvider: @escaping @MainActor () -> (any GenerationProvider)? = { BackendConnection.shared.provider },
+        modelCatalog: ModelCatalog = .shared
+    ) {
+        generationService = GenerationService(provider: generationProvider, catalog: modelCatalog)
         let first = Timeline()
         timelines = [first]
         activeTimelineId = first.id

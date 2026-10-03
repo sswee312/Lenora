@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ støtter ikke denne mediatypen.";
 "%@ exported with %lld warnings." = "%@ eksportert med %lld advarsler.";
 "%@ exported with 1 warning." = "%@ eksportert med 1 advarsel.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-bilder støttes ikke. Bruk PNG, JPEG, WebP, HEIC eller TIFF.";
 "%@ is not a valid URL." = "%@ er ikke en gyldig URL.";
 "%@ is ready." = "%@ er klar.";
 "%@ model not available" = "%@-modell ikke tilgjengelig";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Tilpasset sideforhold";
 "Custom…" = "Tilpasset…";
 "Cut" = "Klipp ut";
+"Cut out the subject as a transparent PNG" = "Frilegg motivet som en gjennomsiktig PNG";
 "Cut to the beat" = "Klipp til takten";
 "Dark" = "Mørk";
 "Dark appearance" = "Mørkt utseende";
@@ -556,6 +558,7 @@
 "No audio" = "Ingen lyd";
 "No audio selected." = "Ingen lyd valgt.";
 "No beats detected." = "Ingen takter gjenkjent.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Ingen tilkoblet backend kan fjerne bakgrunner. Åpne Innstillinger → Backend.";
 "No conversations yet" = "Ingen samtaler ennå";
 "No exports yet" = "Ingen eksporter ennå";
 "No images" = "Ingen bilder";
@@ -667,6 +670,9 @@
 "Remove" = "Fjern";
 "Remove %@" = "Fjern %@";
 "Remove API key" = "Fjern API-nøkkel";
+"Remove Background" = "Fjern bakgrunn";
+"Remove Background isn't available from the connected backend" = "Fjerning av bakgrunn er ikke tilgjengelig fra den tilkoblede backenden";
+"Remove Background works on images only." = "Fjern bakgrunn fungerer bare på bilder.";
 "Remove Dead Air" = "Fjern dødtid";
 "Remove Marker" = "Fjern markør";
 "Remove background sound and keep speech" = "Fjern bakgrunnslyd og behold tale";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-tokenet er utilgjengelig. Sjekk tilgangen til nøkkelringen, og prøv igjen.";
 "The clip you're adding has different settings than the current project." = "Klippet du legger til har andre innstillinger enn det gjeldende prosjektet.";
 "The export" = "Eksporten";
+"The image is larger than %@." = "Bildet er større enn %@.";
 "The job already finished." = "Jobben er allerede ferdig.";
 "The job finished without a result." = "Jobben ble avsluttet uten resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markørkommentaren ble endret mens du redigerte. Se gjennom den, og prøv på nytt.";
 "The project will be moved to the Trash." = "Prosjektet flyttes til papirkurven.";
 "The selected model refused this request. Revise the prompt and try again." = "Den valgte modellen avviste denne forespørselen. Endre prompten, og prøv på nytt.";
 "The selected projects will be moved to the Trash." = "De valgte prosjektene flyttes til papirkurven.";
+"The source file is missing." = "Kildefilen mangler.";
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeinnstillingene ble endret. Lukk dette arket, og prøv på nytt.";
 "Theme" = "Tema";
 "This build includes no skills." = "Denne versjonen inneholder ingen ferdigheter.";

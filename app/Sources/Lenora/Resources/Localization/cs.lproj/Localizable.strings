@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ tento typ média nepodporuje.";
 "%@ exported with %lld warnings." = "%@ exportováno s %lld upozorněními.";
 "%@ exported with 1 warning." = "%@ exportováno s 1 upozorněním.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Obrázky %@ nejsou podporovány. Použijte PNG, JPEG, WebP, HEIC nebo TIFF.";
 "%@ is not a valid URL." = "%@ není platná adresa URL.";
 "%@ is ready." = "%@ je připraveno.";
 "%@ model not available" = "Model %@ není k dispozici";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Vlastní poměr stran";
 "Custom…" = "Vlastní…";
 "Cut" = "Vyjmout";
+"Cut out the subject as a transparent PNG" = "Vyříznout objekt jako průhledné PNG";
 "Cut to the beat" = "Střih na dobu";
 "Dark" = "Tmavý";
 "Dark appearance" = "Tmavý vzhled";
@@ -556,6 +558,7 @@
 "No audio" = "Žádné audio";
 "No audio selected." = "Není vybráno žádné audio.";
 "No beats detected." = "Nebyly zjištěny žádné doby.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Žádný připojený backend nedokáže odstraňovat pozadí. Otevřete Nastavení → Backend.";
 "No conversations yet" = "Zatím žádné konverzace";
 "No exports yet" = "Zatím žádné exporty";
 "No images" = "Žádné obrázky";
@@ -667,6 +670,9 @@
 "Remove" = "Odebrat";
 "Remove %@" = "Odebrat %@";
 "Remove API key" = "Odebrat API klíč";
+"Remove Background" = "Odstranit pozadí";
+"Remove Background isn't available from the connected backend" = "Odstranění pozadí není u připojeného backendu k dispozici";
+"Remove Background works on images only." = "Odstranění pozadí funguje jen u obrázků.";
 "Remove Dead Air" = "Odstranit ticho";
 "Remove Marker" = "Odebrat značku";
 "Remove background sound and keep speech" = "Odstranit zvuk na pozadí a ponechat řeč";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP není k dispozici. Zkontrolujte přístup ke Klíčence a zkuste to znovu.";
 "The clip you're adding has different settings than the current project." = "Klip, který přidáváte, má jiné nastavení než aktuální projekt.";
 "The export" = "Export";
+"The image is larger than %@." = "Obrázek je větší než %@.";
 "The job already finished." = "Úloha už skončila.";
 "The job finished without a result." = "Úloha skončila bez výsledku.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentář značky se během úprav změnil. Zkontrolujte ho a zkuste to znovu.";
 "The project will be moved to the Trash." = "Projekt bude přesunut do Koše.";
 "The selected model refused this request. Revise the prompt and try again." = "Vybraný model tento požadavek odmítl. Upravte prompt a zkuste to znovu.";
 "The selected projects will be moved to the Trash." = "Vybrané projekty budou přesunuty do Koše.";
+"The source file is missing." = "Zdrojový soubor chybí.";
 "The timeline settings changed. Close this sheet and try again." = "Nastavení časové osy se změnilo. Zavřete tento list a zkuste to znovu.";
 "Theme" = "Motiv";
 "This build includes no skills." = "Toto sestavení neobsahuje žádné dovednosti.";

@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ stöder inte den här mediatypen.";
 "%@ exported with %lld warnings." = "%@ exporterades med %lld varningar.";
 "%@ exported with 1 warning." = "%@ exporterades med 1 varning.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-bilder stöds inte. Använd PNG, JPEG, WebP, HEIC eller TIFF.";
 "%@ is not a valid URL." = "%@ är inte en giltig URL.";
 "%@ is ready." = "%@ är klar.";
 "%@ model not available" = "Modellen %@ är inte tillgänglig";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Anpassat bildförhållande";
 "Custom…" = "Anpassat…";
 "Cut" = "Klipp ut";
+"Cut out the subject as a transparent PNG" = "Frilägg motivet som en genomskinlig PNG";
 "Cut to the beat" = "Klipp till takten";
 "Dark" = "Mörkt";
 "Dark appearance" = "Mörkt utseende";
@@ -556,6 +558,7 @@
 "No audio" = "Inget ljud";
 "No audio selected." = "Inget ljud markerat.";
 "No beats detected." = "Inga takter identifierades.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Ingen ansluten backend kan ta bort bakgrunder. Öppna Inställningar → Backend.";
 "No conversations yet" = "Inga konversationer än";
 "No exports yet" = "Inga exporter än";
 "No images" = "Inga bilder";
@@ -667,6 +670,9 @@
 "Remove" = "Ta bort";
 "Remove %@" = "Ta bort %@";
 "Remove API key" = "Ta bort API-nyckel";
+"Remove Background" = "Ta bort bakgrund";
+"Remove Background isn't available from the connected backend" = "Ta bort bakgrund är inte tillgängligt från den anslutna backenden";
+"Remove Background works on images only." = "Ta bort bakgrund fungerar bara på bilder.";
 "Remove Dead Air" = "Ta bort tystnad";
 "Remove Marker" = "Ta bort markör";
 "Remove background sound and keep speech" = "Ta bort bakgrundsljud och behåll tal";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-token är inte tillgänglig. Kontrollera åtkomsten till nyckelringen och försök igen.";
 "The clip you're adding has different settings than the current project." = "Klippet du lägger till har andra inställningar än det aktuella projektet.";
 "The export" = "Exporten";
+"The image is larger than %@." = "Bilden är större än %@.";
 "The job already finished." = "Jobbet är redan klart.";
 "The job finished without a result." = "Jobbet avslutades utan resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markörkommentaren ändrades medan du redigerade. Granska den och försök igen.";
 "The project will be moved to the Trash." = "Projektet flyttas till Papperskorgen.";
 "The selected model refused this request. Revise the prompt and try again." = "Den valda modellen avvisade den här begäran. Ändra prompten och försök igen.";
 "The selected projects will be moved to the Trash." = "De markerade projekten flyttas till Papperskorgen.";
+"The source file is missing." = "Källfilen saknas.";
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeinställningarna ändrades. Stäng det här bladet och försök igen.";
 "Theme" = "Tema";
 "This build includes no skills." = "Den här versionen innehåller inga färdigheter.";

@@ -15,6 +15,9 @@ struct AIEditMenu: View {
                         if enhanceActions.contains(.upscale) {
                             Button(L10n.string("Upscale…")) { runUpscale() }
                         }
+                        if enhanceActions.contains(.removeBackground) {
+                            Button(L10n.string("Remove Background")) { editor.removeBackground(of: asset) }
+                        }
                         if enhanceActions.contains(.edit) {
                             Button(L10n.string("Edit…")) { edit() }
                         }

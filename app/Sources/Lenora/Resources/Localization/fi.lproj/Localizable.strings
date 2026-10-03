@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ ei tue tätä mediatyyppiä.";
 "%@ exported with %lld warnings." = "%@ vietiin %lld varoituksella.";
 "%@ exported with 1 warning." = "%@ vietiin yhdellä varoituksella.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-kuvia ei tueta. Käytä PNG-, JPEG-, WebP-, HEIC- tai TIFF-muotoa.";
 "%@ is not a valid URL." = "%@ ei ole kelvollinen URL-osoite.";
 "%@ is ready." = "%@ on valmis.";
 "%@ model not available" = "Malli %@ ei ole käytettävissä";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Oma kuvasuhde";
 "Custom…" = "Oma…";
 "Cut" = "Leikkaa";
+"Cut out the subject as a transparent PNG" = "Rajaa kohde läpinäkyväksi PNG-kuvaksi";
 "Cut to the beat" = "Leikkaa iskuun";
 "Dark" = "Tumma";
 "Dark appearance" = "Tumma ulkoasu";
@@ -556,6 +558,7 @@
 "No audio" = "Ei ääntä";
 "No audio selected." = "Ääntä ei ole valittu.";
 "No beats detected." = "Iskuja ei tunnistettu.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Mikään yhdistetty taustajärjestelmä ei voi poistaa taustoja. Avaa Asetukset → Taustapalvelin.";
 "No conversations yet" = "Ei keskusteluja vielä";
 "No exports yet" = "Ei vientejä vielä";
 "No images" = "Ei kuvia";
@@ -667,6 +670,9 @@
 "Remove" = "Poista";
 "Remove %@" = "Poista %@";
 "Remove API key" = "Poista API-avain";
+"Remove Background" = "Poista tausta";
+"Remove Background isn't available from the connected backend" = "Taustan poisto ei ole käytettävissä yhdistetyssä taustajärjestelmässä";
+"Remove Background works on images only." = "Taustan poisto toimii vain kuvilla.";
 "Remove Dead Air" = "Poista hiljaiset kohdat";
 "Remove Marker" = "Poista merkki";
 "Remove background sound and keep speech" = "Poista taustaääni ja säilytä puhe";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-tunnus ei ole käytettävissä. Tarkista avainnipun käyttöoikeus ja yritä uudelleen.";
 "The clip you're adding has different settings than the current project." = "Lisättävän leikkeen asetukset poikkeavat nykyisestä projektista.";
 "The export" = "Vienti";
+"The image is larger than %@." = "Kuva on suurempi kuin %@.";
 "The job already finished." = "Työ on jo valmis.";
 "The job finished without a result." = "Työ päättyi ilman tulosta.";
 "The marker comment changed while you were editing. Review it and try again." = "Merkin kommentti muuttui muokkauksen aikana. Tarkista se ja yritä uudelleen.";
 "The project will be moved to the Trash." = "Projekti siirretään roskakoriin.";
 "The selected model refused this request. Revise the prompt and try again." = "Valittu malli hylkäsi tämän pyynnön. Muokkaa kehotetta ja yritä uudelleen.";
 "The selected projects will be moved to the Trash." = "Valitut projektit siirretään roskakoriin.";
+"The source file is missing." = "Lähdetiedosto puuttuu.";
 "The timeline settings changed. Close this sheet and try again." = "Aikajanan asetukset muuttuivat. Sulje tämä arkki ja yritä uudelleen.";
 "Theme" = "Teema";
 "This build includes no skills." = "Tämä versio ei sisällä taitoja.";

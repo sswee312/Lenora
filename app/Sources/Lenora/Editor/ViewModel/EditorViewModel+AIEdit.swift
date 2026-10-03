@@ -71,6 +71,19 @@ extension EditorViewModel {
         )
     }
 
+    func beginAIRemoveBackground(clipId: String) {
+        guard let (_, asset) = aiEditClipAsset(clipId) else { return }
+        removeBackground(of: asset)
+    }
+
+    func removeBackground(of asset: MediaAsset) {
+        Task {
+            if case .refused(let refusal) = await EditSubmitter.submitRemoveBackground(asset: asset, editor: self) {
+                mediaPanelToast = MediaPanelToast(message: refusal.userMessage, kind: .warning)
+            }
+        }
+    }
+
     /// Music/SFX: output is new audio, so no source replacement — place it on the timeline at the clip.
     func beginAIVideoAudio(clipId: String, kind: VideoToAudioEditKind) {
         guard let (_, asset) = aiEditClipAsset(clipId),

@@ -114,6 +114,9 @@ final class ToolExecutor {
         guard let editor else {
             return ToolResult.error("Editor not available")
         }
+        if let kinds = tool.requiredKinds, !editor.generationService.catalog.supportsAny(of: kinds) {
+            return ToolResult.error("\(name) is unavailable: the connected backend does not support it. Tell the user to check Settings → Backend.")
+        }
         let activeTimelineIdBefore = editor.activeTimelineId
         let nonAgentMutationRevisionBefore = editor.nonAgentTimelineMutationRevision
         let before = editor.timelines
@@ -221,6 +224,7 @@ final class ToolExecutor {
         case .generateImage: return try generate(editor, args, type: .image)
         case .generateAudio: return try await generateAudio(editor, args)
         case .upscaleMedia:  return try upscaleMedia(editor, args)
+        case .transformMedia: return try await transformMedia(editor, args)
         case .importMedia:   return try await importMedia(editor, args)
         case .listModels:    return listModels(args)
         case .organizeMedia: return try organizeMedia(editor, args)

@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ इस मीडिया प्रकार का समर्थन नहीं करता।";
 "%@ exported with %lld warnings." = "%@ को %lld चेतावनियों के साथ एक्सपोर्ट किया गया।";
 "%@ exported with 1 warning." = "%@ को 1 चेतावनी के साथ एक्सपोर्ट किया गया।";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ इमेज समर्थित नहीं हैं। PNG, JPEG, WebP, HEIC या TIFF इस्तेमाल करें।";
 "%@ is not a valid URL." = "%@ मान्य URL नहीं है।";
 "%@ is ready." = "%@ तैयार है।";
 "%@ model not available" = "%@ मॉडल उपलब्ध नहीं है";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "कस्टम आस्पेक्ट रेशियो";
 "Custom…" = "कस्टम…";
 "Cut" = "कट";
+"Cut out the subject as a transparent PNG" = "सब्जेक्ट को ट्रांसपेरेंट PNG के रूप में काटें";
 "Cut to the beat" = "बीट पर कट करें";
 "Dark" = "डार्क";
 "Dark appearance" = "डार्क अपीयरेंस";
@@ -556,6 +558,7 @@
 "No audio" = "कोई ऑडियो नहीं";
 "No audio selected." = "कोई ऑडियो चयनित नहीं।";
 "No beats detected." = "कोई बीट नहीं पहचानी गई।";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "कोई कनेक्टेड बैकएंड बैकग्राउंड नहीं हटा सकता। सेटिंग्स → बैकएंड खोलें।";
 "No conversations yet" = "अभी कोई बातचीत नहीं";
 "No exports yet" = "अभी कोई एक्सपोर्ट नहीं";
 "No images" = "कोई इमेज नहीं";
@@ -667,6 +670,9 @@
 "Remove" = "हटाएँ";
 "Remove %@" = "%@ हटाएँ";
 "Remove API key" = "API कुंजी हटाएँ";
+"Remove Background" = "बैकग्राउंड हटाएँ";
+"Remove Background isn't available from the connected backend" = "कनेक्टेड बैकएंड से बैकग्राउंड हटाना उपलब्ध नहीं है";
+"Remove Background works on images only." = "बैकग्राउंड हटाना सिर्फ़ इमेज पर काम करता है।";
 "Remove Dead Air" = "खाली हिस्से हटाएँ";
 "Remove Marker" = "मार्कर हटाएँ";
 "Remove background sound and keep speech" = "बैकग्राउंड साउंड हटाकर स्पीच रखें";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP टोकन उपलब्ध नहीं है। Keychain एक्सेस जाँचें, फिर दोबारा कोशिश करें।";
 "The clip you're adding has different settings than the current project." = "आप जो क्लिप जोड़ रहे हैं उसकी सेटिंग्स मौजूदा प्रोजेक्ट से अलग हैं।";
 "The export" = "एक्सपोर्ट";
+"The image is larger than %@." = "इमेज %@ से बड़ी है।";
 "The job already finished." = "जॉब पहले ही पूरा हो चुका है।";
 "The job finished without a result." = "जॉब बिना परिणाम के समाप्त हुआ।";
 "The marker comment changed while you were editing. Review it and try again." = "एडिट करते समय मार्कर कमेंट बदल गया। जाँचें और फिर कोशिश करें।";
 "The project will be moved to the Trash." = "प्रोजेक्ट ट्रैश में ले जाया जाएगा।";
 "The selected model refused this request. Revise the prompt and try again." = "चयनित मॉडल ने यह अनुरोध अस्वीकार कर दिया। प्रॉम्प्ट संशोधित करें और फिर कोशिश करें।";
 "The selected projects will be moved to the Trash." = "चयनित प्रोजेक्ट ट्रैश में भेज दिए जाएँगे।";
+"The source file is missing." = "सोर्स फ़ाइल नहीं मिली।";
 "The timeline settings changed. Close this sheet and try again." = "टाइमलाइन सेटिंग्स बदल गई हैं। यह शीट बंद करके फिर कोशिश करें।";
 "Theme" = "थीम";
 "This build includes no skills." = "इस बिल्ड में कोई स्किल शामिल नहीं है।";

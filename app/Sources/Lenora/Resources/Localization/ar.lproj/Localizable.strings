@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "⁨%@⁩ لا يدعم نوع الوسائط هذا.";
 "%@ exported with %lld warnings." = "تم تصدير ⁨%@⁩ مع ⁨%lld⁩ تحذيرًا.";
 "%@ exported with 1 warning." = "تم تصدير ⁨%@⁩ مع تحذير واحد.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "الصور بصيغة %@ غير مدعومة. استخدم PNG أو JPEG أو WebP أو HEIC أو TIFF.";
 "%@ is not a valid URL." = "⁨%@⁩ ليس عنوان URL صالحًا.";
 "%@ is ready." = "اكتمل إعداد ⁨%@⁩.";
 "%@ model not available" = "نموذج ⁨%@⁩ غير متوفر";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "نسبة عرض إلى ارتفاع مخصصة";
 "Custom…" = "مخصص…";
 "Cut" = "قص";
+"Cut out the subject as a transparent PNG" = "قص العنصر الرئيسي كصورة PNG شفافة";
 "Cut to the beat" = "القص على الإيقاع";
 "Dark" = "داكن";
 "Dark appearance" = "مظهر داكن";
@@ -556,6 +558,7 @@
 "No audio" = "لا يوجد صوت";
 "No audio selected." = "لم يتم تحديد صوت.";
 "No beats detected." = "لم يتم اكتشاف إيقاعات.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "لا يوجد خادم خلفي متصل يمكنه إزالة الخلفيات. افتح الإعدادات ← الخادم الخلفي.";
 "No conversations yet" = "لا توجد محادثات بعد";
 "No exports yet" = "لا توجد عمليات تصدير بعد";
 "No images" = "لا توجد صور";
@@ -667,6 +670,9 @@
 "Remove" = "إزالة";
 "Remove %@" = "إزالة ⁨%@⁩";
 "Remove API key" = "إزالة مفتاح واجهة API";
+"Remove Background" = "إزالة الخلفية";
+"Remove Background isn't available from the connected backend" = "إزالة الخلفية غير متاحة من الخادم الخلفي المتصل";
+"Remove Background works on images only." = "إزالة الخلفية تعمل مع الصور فقط.";
 "Remove Dead Air" = "إزالة فترات الصمت";
 "Remove Marker" = "حذف العلامة";
 "Remove background sound and keep speech" = "إزالة صوت الخلفية والإبقاء على الكلام";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "رمز MCP المميز غير متاح. تحقق من الوصول إلى سلسلة المفاتيح ثم حاول مرة أخرى.";
 "The clip you're adding has different settings than the current project." = "للمقطع الذي تضيفه إعدادات مختلفة عن المشروع الحالي.";
 "The export" = "الملف";
+"The image is larger than %@." = "حجم الصورة أكبر من %@.";
 "The job already finished." = "انتهت المهمة بالفعل.";
 "The job finished without a result." = "انتهت المهمة بدون نتيجة.";
 "The marker comment changed while you were editing. Review it and try again." = "تغيّر تعليق العلامة أثناء تحريرك له. راجعه وأعد المحاولة.";
 "The project will be moved to the Trash." = "سيتم نقل المشروع إلى سلة المهملات.";
 "The selected model refused this request. Revise the prompt and try again." = "رفض النموذج المحدد هذا الطلب. راجع المطالبة وأعد المحاولة.";
 "The selected projects will be moved to the Trash." = "سيتم نقل المشاريع المحددة إلى سلة المهملات.";
+"The source file is missing." = "ملف المصدر مفقود.";
 "The timeline settings changed. Close this sheet and try again." = "تغيرت إعدادات المخطط الزمني. أغلق هذه اللوحة وأعد المحاولة.";
 "Theme" = "السمة";
 "This build includes no skills." = "لا يتضمن هذا الإصدار أي مهارات.";

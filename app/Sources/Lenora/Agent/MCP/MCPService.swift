@@ -39,6 +39,11 @@ final class MCPService {
     private var httpServer: MCPHTTPServer?
 
     @ObservationIgnored
+    private var catalogObserver: (any NSObjectProtocol)?
+    @ObservationIgnored
+    private var announcedToolNames: Set<ToolName> = []
+
+    @ObservationIgnored
     private let portProvider: () -> UInt16
     @ObservationIgnored
     private let loadToken: @Sendable () async throws -> String
@@ -89,6 +94,7 @@ final class MCPService {
             return server
         }
         self.httpServer = httpServer
+        observeCatalog()
         do {
             try await httpServer.start()
             guard attempt == generation else { return }
@@ -107,6 +113,21 @@ final class MCPService {
         }
     }
 
+    private func observeCatalog() {
+        stopObservingCatalog()
+        announcedToolNames = Set(Self.availableTools().map(\.name))
+        catalogObserver = NotificationCenter.default.addObserver(
+            forName: ModelCatalog.didChange, object: ModelCatalog.shared, queue: .main
+        ) { [weak self] _ in
+            MainActor.assumeIsolated { self?.catalogDidChange() }
+        }
+    }
+
+    private func stopObservingCatalog() {
+        if let catalogObserver { NotificationCenter.default.removeObserver(catalogObserver) }
+        catalogObserver = nil
+    }
+
     func restart() async {
         await stop()
         await start()
@@ -118,6 +139,7 @@ final class MCPService {
 
     func stop() async {
         generation += 1
+        stopObservingCatalog()
         let server = httpServer
         httpServer = nil
         isRunning = false
@@ -126,17 +148,30 @@ final class MCPService {
     }
 
     nonisolated static func registerTools(on server: Server, executor: ToolExecutor) async {
-        let tools: [Tool] = ToolDefinitions.mcpServer.map { def in
-            Tool(name: def.name.rawValue, description: def.description, inputSchema: def.mcpSchemaValue)
-        }
-
         await server.withMethodHandler(ListTools.self) { _ in
-            .init(tools: tools)
+            let tools = await MainActor.run {
+                availableTools().map { def in
+                    Tool(name: def.name.rawValue, description: def.description, inputSchema: def.mcpSchemaValue)
+                }
+            }
+            return .init(tools: tools)
         }
 
         await server.withMethodHandler(CallTool.self) { params in
             await dispatchCall(params, executor: executor)
         }
+    }
+
+    private static func availableTools() -> [AgentTool] {
+        ToolDefinitions.available(ToolDefinitions.mcpServer, catalog: .shared)
+    }
+
+    private func catalogDidChange() {
+        let names = Set(Self.availableTools().map(\.name))
+        guard names != announcedToolNames else { return }
+        announcedToolNames = names
+        guard let httpServer else { return }
+        Task { await httpServer.broadcastToolListChanged() }
     }
 
     // Convert args on the main actor so the non-Sendable dict never crosses the hop.

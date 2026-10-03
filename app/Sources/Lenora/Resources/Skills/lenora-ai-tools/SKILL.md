@@ -9,12 +9,12 @@ Lenora's AI tools run through the Lenora backend the user connected in Settings 
 
 ## Before calling an AI tool
 - AI tools appear in the tool list only while the connected backend supports them. If a tool you expect is missing, tell the user to open Settings → Backend; do not try a different tool to work around it.
-- Call `list_models` to see the models, accepted input types and size limits.
+- Call `list_models` to see the models, accepted input types and size limits. An empty `models` array with `loaded: true` means the backend isn't connected or configured; `loaded: false` means the first sync hasn't finished, so retry shortly.
 
 ## transform_media
-- `operation: "removeBackground"` cuts out the subject of an image asset and imports a transparent PNG next to it.
-- Inputs: PNG, JPEG, WebP, HEIC or TIFF within the model's size limit (10 MB on Cloudinary's free plan). Convert or downscale first if needed.
-- It costs provider credits; the receipt's `estimate` is informational. Confirm with the user before running it on many assets.
+- Listed only when the backend supports it. `operation: "removeBackground"` cuts out the subject of an image asset, importing a transparent PNG next to it.
+- Inputs: PNG, JPEG, WebP, HEIC or TIFF within the model's size limit (`list_models` with `type: "transform"` reports it, 10 MB on Cloudinary's free plan). Convert or downscale first if needed.
+- It has a provider cost; the receipt's `estimate` is informational. Confirm with the user before running it on many assets.
 - It returns `{mediaRef, status: "generating", estimate}` at once. Poll `get_media` until `mediaRef` is ready, check it with `inspect_media`, then place it with `add_clips`.
 - The finished import is one undo step; `undo` removes it.
 

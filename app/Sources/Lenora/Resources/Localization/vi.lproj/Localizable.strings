@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ không hỗ trợ loại phương tiện này.";
 "%@ exported with %lld warnings." = "Đã xuất %@ với %lld cảnh báo.";
 "%@ exported with 1 warning." = "Đã xuất %@ với 1 cảnh báo.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Không hỗ trợ ảnh %@. Hãy dùng PNG, JPEG, WebP, HEIC hoặc TIFF.";
 "%@ is not a valid URL." = "%@ không phải là URL hợp lệ.";
 "%@ is ready." = "%@ đã sẵn sàng.";
 "%@ model not available" = "Mô hình %@ không khả dụng";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Tỷ lệ khung hình tùy chỉnh";
 "Custom…" = "Tùy chỉnh…";
 "Cut" = "Cắt";
+"Cut out the subject as a transparent PNG" = "Tách chủ thể thành PNG trong suốt";
 "Cut to the beat" = "Cắt theo nhịp";
 "Dark" = "Tối";
 "Dark appearance" = "Giao diện tối";
@@ -556,6 +558,7 @@
 "No audio" = "Không có âm thanh";
 "No audio selected." = "Chưa chọn âm thanh.";
 "No beats detected." = "Không phát hiện nhịp.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Không có backend nào đang kết nối có thể xóa nền. Mở Cài đặt → Backend.";
 "No conversations yet" = "Chưa có cuộc trò chuyện";
 "No exports yet" = "Chưa có bản xuất";
 "No images" = "Không có hình ảnh";
@@ -667,6 +670,9 @@
 "Remove" = "Xóa";
 "Remove %@" = "Xóa %@";
 "Remove API key" = "Xóa khóa API";
+"Remove Background" = "Xóa nền";
+"Remove Background isn't available from the connected backend" = "Backend đang kết nối không hỗ trợ xóa nền";
+"Remove Background works on images only." = "Xóa nền chỉ dùng được cho ảnh.";
 "Remove Dead Air" = "Xóa khoảng lặng";
 "Remove Marker" = "Xóa marker";
 "Remove background sound and keep speech" = "Xóa âm thanh nền và giữ lại giọng nói";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "Không thể dùng token MCP. Hãy kiểm tra quyền truy cập Chuỗi khóa rồi thử lại.";
 "The clip you're adding has different settings than the current project." = "Clip bạn đang thêm có cài đặt khác với dự án hiện tại.";
 "The export" = "Bản xuất";
+"The image is larger than %@." = "Ảnh lớn hơn %@.";
 "The job already finished." = "Tác vụ đã hoàn tất.";
 "The job finished without a result." = "Tác vụ kết thúc mà không có kết quả.";
 "The marker comment changed while you were editing. Review it and try again." = "Bình luận của marker đã đổi trong lúc bạn chỉnh. Xem lại và thử lại.";
 "The project will be moved to the Trash." = "Dự án sẽ được chuyển vào Thùng rác.";
 "The selected model refused this request. Revise the prompt and try again." = "Mô hình đã chọn từ chối yêu cầu này. Chỉnh lại prompt và thử lại.";
 "The selected projects will be moved to the Trash." = "Các dự án đã chọn sẽ được chuyển vào Thùng rác.";
+"The source file is missing." = "Không tìm thấy tệp nguồn.";
 "The timeline settings changed. Close this sheet and try again." = "Cài đặt timeline đã thay đổi. Đóng bảng này và thử lại.";
 "Theme" = "Chủ đề";
 "This build includes no skills." = "Bản dựng này không có kỹ năng nào.";

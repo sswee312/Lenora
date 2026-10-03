@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@はこのメディア形式に対応していません。";
 "%@ exported with %lld warnings." = "%@は%lld件の警告付きで書き出されました。";
 "%@ exported with 1 warning." = "%@は1件の警告付きで書き出されました。";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@画像には対応していません。PNG、JPEG、WebP、HEIC、またはTIFFを使用してください。";
 "%@ is not a valid URL." = "%@は有効なURLではありません。";
 "%@ is ready." = "%@の準備ができました。";
 "%@ model not available" = "%@モデルは利用できません";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "カスタムアスペクト比";
 "Custom…" = "カスタム…";
 "Cut" = "カット";
+"Cut out the subject as a transparent PNG" = "被写体を透明なPNGとして切り抜く";
 "Cut to the beat" = "ビートに合わせてカット";
 "Dark" = "ダーク";
 "Dark appearance" = "ダークの外観";
@@ -556,6 +558,7 @@
 "No audio" = "オーディオなし";
 "No audio selected." = "オーディオが選択されていません。";
 "No beats detected." = "ビートが検出されませんでした。";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "背景を削除できるバックエンドが接続されていません。設定 → バックエンドを開いてください。";
 "No conversations yet" = "チャットはまだありません";
 "No exports yet" = "書き出しはまだありません";
 "No images" = "画像がありません";
@@ -667,6 +670,9 @@
 "Remove" = "削除";
 "Remove %@" = "%@を削除";
 "Remove API key" = "APIキーを削除";
+"Remove Background" = "背景を削除";
+"Remove Background isn't available from the connected backend" = "接続中のバックエンドでは背景の削除を利用できません";
+"Remove Background works on images only." = "背景の削除は画像でのみ使用できます。";
 "Remove Dead Air" = "無音部分を削除";
 "Remove Marker" = "マーカーを削除";
 "Remove background sound and keep speech" = "背景音を除去して音声を残す";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCPトークンを利用できません。キーチェーンへのアクセスを確認して、もう一度お試しください。";
 "The clip you're adding has different settings than the current project." = "追加しようとしているクリップの設定が現在のプロジェクトと異なります。";
 "The export" = "書き出し";
+"The image is larger than %@." = "画像のサイズが%@を超えています。";
 "The job already finished." = "ジョブはすでに完了しています。";
 "The job finished without a result." = "ジョブは結果なしで終了しました。";
 "The marker comment changed while you were editing. Review it and try again." = "編集中にマーカーのコメントが変更されました。内容を確認してもう一度お試しください。";
 "The project will be moved to the Trash." = "プロジェクトはゴミ箱に移動されます。";
 "The selected model refused this request. Revise the prompt and try again." = "選択したモデルがこのリクエストを拒否しました。プロンプトを見直してもう一度お試しください。";
 "The selected projects will be moved to the Trash." = "選択したプロジェクトはゴミ箱に移動されます。";
+"The source file is missing." = "ソースファイルが見つかりません。";
 "The timeline settings changed. Close this sheet and try again." = "タイムライン設定が変更されました。このシートを閉じてもう一度お試しください。";
 "Theme" = "テーマ";
 "This build includes no skills." = "このビルドにはスキルが含まれていません。";

@@ -10,18 +10,52 @@ struct EditorTestFixture {
 
     let editor: EditorViewModel
     let image: MediaAsset
+    let video: MediaAsset?
+    let executor: ToolExecutor
+    let undoManager: UndoManager
     private let root: URL
 
     var servedImageURL: URL { Self.servedImageURL }
 
-    static func withImage(editor: EditorViewModel = EditorViewModel()) async throws -> EditorTestFixture {
+    static func connectedCatalog() throws -> ModelCatalog {
+        let catalog = ModelCatalog()
+        catalog.apply(try BackendCoding.decoder().decode(BackendCapabilities.self, from: ProtocolFixtures.data("Capabilities.cloudinary")))
+        return catalog
+    }
+
+    static func withImage(
+        editor: EditorViewModel? = nil,
+        byteCount: Int? = nil,
+        fileExtension: String = "png",
+        provider: (any GenerationProvider)? = nil,
+        catalog: ModelCatalog = ModelCatalog()
+    ) async throws -> EditorTestFixture {
+        let editor = editor ?? EditorViewModel(generationProvider: { provider }, modelCatalog: catalog)
+        return try make(editor: editor, byteCount: byteCount, fileExtension: fileExtension, includesVideo: false)
+    }
+
+    static func withVideo(catalog: ModelCatalog = ModelCatalog()) async throws -> EditorTestFixture {
+        let editor = EditorViewModel(generationProvider: { nil }, modelCatalog: catalog)
+        return try make(editor: editor, byteCount: nil, fileExtension: "png", includesVideo: true)
+    }
+
+    private static func make(
+        editor: EditorViewModel,
+        byteCount: Int?,
+        fileExtension: String,
+        includesVideo: Bool
+    ) throws -> EditorTestFixture {
         let root = FileManager.default.temporaryDirectory.appending(path: "generation-\(UUID().uuidString)")
         let project = root.appending(path: "P.lenora")
         let media = project.appending(path: Project.mediaDirectoryName)
         try FileManager.default.createDirectory(at: media, withIntermediateDirectories: true)
-        let png = pngData()
-        let sourceURL = media.appending(path: "source.png")
-        try png.write(to: sourceURL)
+        let png = imageData(fileExtension: "png")
+        var sourceData = imageData(fileExtension: fileExtension)
+        if let byteCount, sourceData.count < byteCount {
+            sourceData.append(Data(count: byteCount - sourceData.count))
+        }
+        let sourceURL = media.appending(path: "source.\(fileExtension)")
+        try sourceData.write(to: sourceURL)
 
         editor.projectURL = project
         editor.remoteDownloadFetch = { request in
@@ -30,8 +64,20 @@ struct EditorTestFixture {
             let response = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: ["Content-Type": "image/png"])!
             return (file, response)
         }
+        let undoManager = UndoManager()
+        editor.undo.attach(undoManager)
         let image = editor.addMediaAsset(from: sourceURL, type: .image, finalize: false)
-        return EditorTestFixture(editor: editor, image: image, root: root)
+        var video: MediaAsset?
+        if includesVideo {
+            let videoURL = media.appending(path: "clip.mp4")
+            try Data(count: 16).write(to: videoURL)
+            video = editor.addMediaAsset(from: videoURL, type: .video, finalize: false)
+        }
+        return EditorTestFixture(
+            editor: editor, image: image, video: video,
+            executor: ToolExecutor(editor: editor, exportQueue: ExportQueue()),
+            undoManager: undoManager, root: root
+        )
     }
 
     func cleanup() { try? FileManager.default.removeItem(at: root) }
@@ -60,12 +106,18 @@ struct EditorTestFixture {
         !asset.isGenerating && asset.generationStatus == .none && FileManager.default.fileExists(atPath: asset.url.path)
     }
 
-    private static func pngData() -> Data {
+    private static func imageData(fileExtension: String) -> Data {
         let rep = NSBitmapImageRep(
             bitmapDataPlanes: nil, pixelsWide: 4, pixelsHigh: 4, bitsPerSample: 8,
             samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
             colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0
         )!
-        return rep.representation(using: .png, properties: [:])!
+        let type: NSBitmapImageRep.FileType = switch fileExtension {
+        case "gif": .gif
+        case "jpg", "jpeg": .jpeg
+        case "tif", "tiff": .tiff
+        default: .png
+        }
+        return rep.representation(using: type, properties: [:])!
     }
 }

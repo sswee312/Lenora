@@ -30,7 +30,7 @@ enum GenerationCancelOutcome: Equatable { case cancelled, notCancellable, failed
 final class GenerationService {
 
     private let provider: @MainActor () -> (any GenerationProvider)?
-    private let catalog: ModelCatalog
+    let catalog: ModelCatalog
     private var tasks: [UUID: Task<Void, Never>] = [:]
     private(set) var monitoredJobIds: Set<String> = []
     private var submittingKeys: Set<String> = []
@@ -564,7 +564,10 @@ final class GenerationService {
         }
         do {
             try Task.checkCancellation()
-            try await editor.downloadRemoteMedia(into: asset, from: remoteURL, fileExtension: fileExtension)
+            try await editor.downloadRemoteMedia(
+                into: asset, from: remoteURL, fileExtension: fileExtension,
+                undoActionName: asset.generationInput?.undoActionName
+            )
             return true
         } catch is CancellationError {
             return false

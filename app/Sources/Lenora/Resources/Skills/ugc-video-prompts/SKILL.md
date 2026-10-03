@@ -45,7 +45,7 @@ Hailuo 2.3 Pro and other catalog models are available but not part of the defaul
 
 ## Running this inside Lenora
 
-1. **Gate.** `get_timeline` — if `canGenerate` is false, ask the user to sign in/subscribe. `list_models({ type: "video" })` before every generate so model ids/caps match the live catalog. Propose model + duration + aspect + prompt; wait for confirmation (paid, not undoable).
+1. **Gate.** `list_models({ type: "video" })` before every generate so model ids/caps match the live catalog; if it returns no models, the Lenora backend isn't connected or configured — tell the user to check Settings → Backend. Propose model + duration + aspect + prompt; wait for confirmation (paid, not undoable).
 2. **Get the anchor.** `get_media` for an existing still; otherwise run `ugc-photo-prompts` first.
 3. **Match the canvas.** Use project width/height/fps for `aspectRatio` and beat duration.
 4. **Generate.** `generate_video` with `startFrameMediaRef` = anchor still (image-to-video). For Seedance multi-element beats use `referenceImageMediaRefs` / `referenceAudioMediaRefs` / `referenceVideoMediaRefs` and refer to them in the prompt as `@Image1`, `@Audio1`, etc. Apply the motion-prompt formula above. Optional `folder: "UGC/Beats"`.

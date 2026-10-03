@@ -1,0 +1,38 @@
+import Testing
+@testable import Lenora
+
+@MainActor
+struct ToolAvailabilityTests {
+    private func names(in catalog: ModelCatalog) -> Set<ToolName> {
+        Set(ToolDefinitions.available(ToolDefinitions.mcpServer, catalog: catalog).map(\.name))
+    }
+
+    @Test func transformMediaIsListedOnlyWithBackgroundRemoval() throws {
+        #expect(!names(in: ModelCatalog()).contains(.transformMedia))
+        let connected = names(in: try EditorTestFixture.connectedCatalog())
+        #expect(connected.contains(.transformMedia))
+        #expect(!connected.contains(.generateVideo) && !connected.contains(.upscaleMedia))
+        #expect(connected.contains(.getTimeline))
+    }
+
+    @Test func disconnectedBackendHidesEveryBackendTool() {
+        let listed = names(in: ModelCatalog())
+        let backendTools: Set<ToolName> = [.transformMedia, .generateVideo, .generateImage, .generateAudio, .upscaleMedia]
+        #expect(listed.isDisjoint(with: backendTools))
+    }
+
+    @Test func listModelsStaysListedWithoutBackend() {
+        #expect(names(in: ModelCatalog()).contains(.listModels))
+    }
+
+    @Test func inAppAgentListIsFilteredLikeMCP() throws {
+        let listed = ToolDefinitions.available(ToolDefinitions.inAppAgent, catalog: ModelCatalog()).map(\.name)
+        #expect(!listed.contains(.transformMedia))
+        #expect(listed.contains(.readSkill))
+    }
+
+    @Test func editingToolsNeverDependOnTheBackend() {
+        let unconditional = ToolDefinitions.mcpServer.filter { $0.name.requiredKinds == nil }.map(\.name)
+        #expect(unconditional.contains(.getTimeline) && unconditional.contains(.addClips))
+    }
+}

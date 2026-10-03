@@ -81,6 +81,7 @@ struct GenerationInput: Codable, Sendable, Equatable {
     var outputIndex: Int?
     var results: [JobResult]?
     var estimate: BackendEstimate?
+    var undoActionName: String?
 }
 
 enum MediaSource: Codable, Sendable, Equatable {

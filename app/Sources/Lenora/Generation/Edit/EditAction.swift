@@ -2,6 +2,7 @@ import Foundation
 
 enum EditAction {
     case upscale
+    case removeBackground
     case edit
     case rerun
     case lipSync
@@ -16,6 +17,7 @@ enum EditAction {
         switch (self, mediaType) {
         case (.upscale, .image): ["image.upscale"]
         case (.upscale, .video): ["video.upscale"]
+        case (.removeBackground, .image): ["image.removeBackground"]
         case (.edit, .image): ["image.edit"]
         case (.edit, .video): ["video.edit"]
         case (.rerun, .image): ["image.generate", "image.edit", "image.upscale"]
@@ -40,7 +42,7 @@ enum EditAction {
             .audio
         case .rerun where mediaType == .audio:
             .audio
-        case .upscale, .edit, .rerun, .lipSync, .reframe, .createVideo:
+        case .upscale, .removeBackground, .edit, .rerun, .lipSync, .reframe, .createVideo:
             .enhance
         }
     }
@@ -49,7 +51,7 @@ enum EditAction {
     static func available(for asset: MediaAsset, effectiveDurationOverride: Double? = nil) -> [EditAction] {
         let candidates: [EditAction]
         switch asset.type {
-        case .image: candidates = [.upscale, .edit, .rerun, .createVideo]
+        case .image: candidates = [.upscale, .removeBackground, .edit, .rerun, .createVideo]
         case .video:
             candidates = [
                 .upscale, .edit, .rerun, .lipSync, .reframe,
@@ -72,6 +74,18 @@ enum EditAction {
             }
             guard isAvailable(for: asset.type), !UpscaleModelConfig.models(for: asset.type).isEmpty else {
                 return .disabled(reason: L10n.string("Upscale model not available"))
+            }
+            if asset.isGenerating {
+                return .disabled(reason: L10n.string("Generation in progress"))
+            }
+            return .available
+
+        case .removeBackground:
+            guard asset.type == .image else {
+                return .disabled(reason: L10n.string("Remove Background works on images only."))
+            }
+            guard isAvailable(for: asset.type) else {
+                return .disabled(reason: L10n.string("Remove Background isn't available from the connected backend"))
             }
             if asset.isGenerating {
                 return .disabled(reason: L10n.string("Generation in progress"))

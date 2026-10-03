@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@은(는) 이 미디어 유형을 지원하지 않습니다.";
 "%@ exported with %lld warnings." = "%@을(를) %lld개의 경고와 함께 내보냈습니다.";
 "%@ exported with 1 warning." = "%@을(를) 경고 1개와 함께 내보냈습니다.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ 이미지는 지원되지 않습니다. PNG, JPEG, WebP, HEIC 또는 TIFF를 사용하세요.";
 "%@ is not a valid URL." = "%@은(는) 올바른 URL이 아닙니다.";
 "%@ is ready." = "%@이(가) 준비되었습니다.";
 "%@ model not available" = "%@ 모델을 사용할 수 없음";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "사용자 설정 화면비";
 "Custom…" = "사용자 설정…";
 "Cut" = "오려두기";
+"Cut out the subject as a transparent PNG" = "피사체를 투명한 PNG로 오려내기";
 "Cut to the beat" = "비트에 맞춰 컷";
 "Dark" = "다크";
 "Dark appearance" = "다크 모드";
@@ -556,6 +558,7 @@
 "No audio" = "오디오 없음";
 "No audio selected." = "선택한 오디오가 없습니다.";
 "No beats detected." = "감지된 비트가 없습니다.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "배경을 제거할 수 있는 연결된 백엔드가 없습니다. 설정 → 백엔드을(를) 여세요.";
 "No conversations yet" = "아직 대화 없음";
 "No exports yet" = "아직 내보내기 없음";
 "No images" = "이미지 없음";
@@ -667,6 +670,9 @@
 "Remove" = "제거";
 "Remove %@" = "%@ 제거";
 "Remove API key" = "API 키 제거";
+"Remove Background" = "배경 제거";
+"Remove Background isn't available from the connected backend" = "연결된 백엔드에서는 배경 제거를 사용할 수 없습니다";
+"Remove Background works on images only." = "배경 제거는 이미지에서만 사용할 수 있습니다.";
 "Remove Dead Air" = "무음 구간 제거";
 "Remove Marker" = "마커 제거";
 "Remove background sound and keep speech" = "배경음을 제거하고 음성 유지";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP 토큰을 사용할 수 없습니다. 키체인 접근 권한을 확인한 다음 다시 시도하세요.";
 "The clip you're adding has different settings than the current project." = "추가하려는 클립의 설정이 현재 프로젝트와 다릅니다.";
 "The export" = "내보내기";
+"The image is larger than %@." = "이미지가 %@보다 큽니다.";
 "The job already finished." = "작업이 이미 완료되었습니다.";
 "The job finished without a result." = "작업이 결과 없이 종료되었습니다.";
 "The marker comment changed while you were editing. Review it and try again." = "편집하는 동안 마커 코멘트가 변경되었습니다. 확인한 후 다시 시도하세요.";
 "The project will be moved to the Trash." = "프로젝트가 휴지통으로 이동됩니다.";
 "The selected model refused this request. Revise the prompt and try again." = "선택한 모델이 이 요청을 거부했습니다. 프롬프트를 수정한 후 다시 시도하세요.";
 "The selected projects will be moved to the Trash." = "선택한 프로젝트가 휴지통으로 이동됩니다.";
+"The source file is missing." = "소스 파일이 없습니다.";
 "The timeline settings changed. Close this sheet and try again." = "타임라인 설정이 변경되었습니다. 이 시트를 닫고 다시 시도하세요.";
 "Theme" = "테마";
 "This build includes no skills." = "이 빌드에는 스킬이 포함되어 있지 않습니다.";

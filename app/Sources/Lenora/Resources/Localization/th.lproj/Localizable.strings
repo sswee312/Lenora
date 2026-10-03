@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ ไม่รองรับประเภทมีเดียนี้";
 "%@ exported with %lld warnings." = "ส่งออก %@ แล้ว มีคำเตือน %lld รายการ";
 "%@ exported with 1 warning." = "ส่งออก %@ แล้ว มีคำเตือน 1 รายการ";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "ไม่รองรับรูปภาพ %@ ใช้ PNG, JPEG, WebP, HEIC หรือ TIFF";
 "%@ is not a valid URL." = "%@ ไม่ใช่ URL ที่ถูกต้อง";
 "%@ is ready." = "%@ พร้อมแล้ว";
 "%@ model not available" = "โมเดล %@ ไม่พร้อมใช้งาน";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "อัตราส่วนภาพกำหนดเอง";
 "Custom…" = "กำหนดเอง…";
 "Cut" = "ตัด";
+"Cut out the subject as a transparent PNG" = "ตัดวัตถุออกมาเป็น PNG โปร่งใส";
 "Cut to the beat" = "ตัดตามจังหวะ";
 "Dark" = "มืด";
 "Dark appearance" = "ลักษณะมืด";
@@ -556,6 +558,7 @@
 "No audio" = "ไม่มีเสียง";
 "No audio selected." = "ยังไม่ได้เลือกเสียง";
 "No beats detected." = "ไม่พบจังหวะ";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "ไม่มีแบ็กเอนด์ที่เชื่อมต่อซึ่งลบพื้นหลังได้ เปิด การตั้งค่า → แบ็กเอนด์";
 "No conversations yet" = "ยังไม่มีการสนทนา";
 "No exports yet" = "ยังไม่มีการส่งออก";
 "No images" = "ไม่มีภาพ";
@@ -667,6 +670,9 @@
 "Remove" = "ลบออก";
 "Remove %@" = "ลบออก %@";
 "Remove API key" = "ลบคีย์ API";
+"Remove Background" = "ลบพื้นหลัง";
+"Remove Background isn't available from the connected backend" = "แบ็กเอนด์ที่เชื่อมต่อไม่รองรับการลบพื้นหลัง";
+"Remove Background works on images only." = "การลบพื้นหลังใช้ได้กับรูปภาพเท่านั้น";
 "Remove Dead Air" = "ลบช่วงเงียบ";
 "Remove Marker" = "ลบมาร์กเกอร์";
 "Remove background sound and keep speech" = "ลบเสียงพื้นหลังและคงคำพูดไว้";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "ไม่สามารถใช้โทเค็น MCP ได้ ตรวจสอบสิทธิ์เข้าถึงพวงกุญแจ แล้วลองอีกครั้ง";
 "The clip you're adding has different settings than the current project." = "คลิปที่คุณกำลังเพิ่มมีการตั้งค่าต่างจากโปรเจ็กต์ปัจจุบัน";
 "The export" = "รายการส่งออก";
+"The image is larger than %@." = "รูปภาพมีขนาดใหญ่กว่า %@";
 "The job already finished." = "งานเสร็จสิ้นแล้ว";
 "The job finished without a result." = "งานสิ้นสุดโดยไม่มีผลลัพธ์";
 "The marker comment changed while you were editing. Review it and try again." = "ความคิดเห็นของมาร์กเกอร์เปลี่ยนระหว่างที่คุณแก้ไข ตรวจทานแล้วลองอีกครั้ง";
 "The project will be moved to the Trash." = "โปรเจ็กต์จะถูกย้ายไปที่ถังขยะ";
 "The selected model refused this request. Revise the prompt and try again." = "โมเดลที่เลือกปฏิเสธคำขอนี้ แก้ไขพรอมต์แล้วลองอีกครั้ง";
 "The selected projects will be moved to the Trash." = "โปรเจ็กต์ที่เลือกจะถูกย้ายไปที่ถังขยะ";
+"The source file is missing." = "ไม่พบไฟล์ต้นทาง";
 "The timeline settings changed. Close this sheet and try again." = "การตั้งค่าไทม์ไลน์เปลี่ยนไป ปิดชีตนี้แล้วลองอีกครั้ง";
 "Theme" = "ธีม";
 "This build includes no skills." = "บิลด์นี้ไม่มีสกิล";

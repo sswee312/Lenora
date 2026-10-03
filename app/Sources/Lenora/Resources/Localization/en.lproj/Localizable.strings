@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ does not support this media type.";
 "%@ exported with %lld warnings." = "%@ exported with %lld warnings.";
 "%@ exported with 1 warning." = "%@ exported with 1 warning.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF.";
 "%@ is not a valid URL." = "%@ is not a valid URL.";
 "%@ is ready." = "%@ is ready.";
 "%@ model not available" = "%@ model not available";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Custom Aspect Ratio";
 "Custom…" = "Custom…";
 "Cut" = "Cut";
+"Cut out the subject as a transparent PNG" = "Cut out the subject as a transparent PNG";
 "Cut to the beat" = "Cut to the beat";
 "Dark" = "Dark";
 "Dark appearance" = "Dark appearance";
@@ -556,6 +558,7 @@
 "No audio" = "No audio";
 "No audio selected." = "No audio selected.";
 "No beats detected." = "No beats detected.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "No connected backend can remove backgrounds. Open Settings → Backend.";
 "No conversations yet" = "No conversations yet";
 "No exports yet" = "No exports yet";
 "No images" = "No images";
@@ -667,6 +670,9 @@
 "Remove" = "Remove";
 "Remove %@" = "Remove %@";
 "Remove API key" = "Remove API key";
+"Remove Background" = "Remove Background";
+"Remove Background isn't available from the connected backend" = "Remove Background isn't available from the connected backend";
+"Remove Background works on images only." = "Remove Background works on images only.";
 "Remove Dead Air" = "Remove Dead Air";
 "Remove Marker" = "Remove Marker";
 "Remove background sound and keep speech" = "Remove background sound and keep speech";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "The MCP token is unavailable. Check Keychain access, then try again.";
 "The clip you're adding has different settings than the current project." = "The clip you're adding has different settings than the current project.";
 "The export" = "The export";
+"The image is larger than %@." = "The image is larger than %@.";
 "The job already finished." = "The job already finished.";
 "The job finished without a result." = "The job finished without a result.";
 "The marker comment changed while you were editing. Review it and try again." = "The marker comment changed while you were editing. Review it and try again.";
 "The project will be moved to the Trash." = "The project will be moved to the Trash.";
 "The selected model refused this request. Revise the prompt and try again." = "The selected model refused this request. Revise the prompt and try again.";
 "The selected projects will be moved to the Trash." = "The selected projects will be moved to the Trash.";
+"The source file is missing." = "The source file is missing.";
 "The timeline settings changed. Close this sheet and try again." = "The timeline settings changed. Close this sheet and try again.";
 "Theme" = "Theme";
 "This build includes no skills." = "This build includes no skills.";

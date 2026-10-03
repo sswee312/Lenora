@@ -99,6 +99,14 @@ struct AIEditTab: View {
                 title: L10n.string("Upscale"),
                 description: L10n.string("Enhance resolution or frame rate with AI")
             )
+            if asset.type == .image {
+                actionTile(
+                    action: .removeBackground,
+                    icon: "person.crop.rectangle",
+                    title: L10n.string("Remove Background"),
+                    description: L10n.string("Cut out the subject as a transparent PNG")
+                )
+            }
             actionTile(
                 action: .edit,
                 icon: "wand.and.stars",
@@ -271,7 +279,7 @@ struct AIEditTab: View {
                     createVideoOptions
                 }
             }
-        case .upscale, .lipSync, .reframe, .edit,
+        case .upscale, .removeBackground, .lipSync, .reframe, .edit,
              .generateMusic, .generateSFX, .rerun:
             actionTileSurface(
                 description: description,
@@ -429,6 +437,8 @@ struct AIEditTab: View {
                 stored: EditSubmitter.upscaleSeed(for: asset, model: model, trimmedSource: trim),
                 trimmed: trim
             )
+        case .removeBackground:
+            editor.removeBackground(of: asset)
         case .reframe:
             let trim = trimmedSourceIfEnabled()
             guard let stored = EditSubmitter.reframeSeed(for: asset, trimmedSource: trim) else { return }

@@ -80,11 +80,11 @@ Format: candid iPhone photo, 4:5. Framing: mid-distance, chest-up or mid-thigh, 
 
 This skill drives Lenora's MCP tools directly. Standard sequence:
 
-1. **Session / canvas.** `get_timeline` first. If `canGenerate` is false, stop and ask the user to sign in + subscribe before any `generate_*`. Derive `aspectRatio` from project width/height — a 9:16 project wants 9:16 stills, not default 4:5.
-2. **Models.** Always `list_models({ type: "image" })` before generating — ids and caps change. Then pick:
+1. **Canvas.** `get_timeline` first. Derive `aspectRatio` from project width/height — a 9:16 project wants 9:16 stills, not default 4:5.
+2. **Models.** Always `list_models({ type: "image" })` before generating — ids and caps change. If it returns no models, the Lenora backend isn't connected or configured: stop and tell the user to check Settings → Backend. Then pick:
    - **Realism / "doesn't look AI"** (most UGC) → `nano-banana-pro` (or whatever the catalog currently lists as Nano Banana Pro).
    - **Product must read unmistakably** → GPT Image family (`gpt-image-2` when available).
-   - When it matters, generate one of each and compare. Propose model + prompt to the user before spending credits (generation is paid and not undoable).
+   - When it matters, generate one of each and compare. Propose model + prompt to the user before generating (generation is paid and not undoable).
 3. **References.** `get_media` for an existing product/subject still; pass ids in `referenceMediaRefs`. Optional `folder: "UGC/Stills"` keeps campaign assets grouped (folder paths, not folder ids).
 4. **Generate, then verify.** `generate_image` returns a placeholder immediately. Ready when `get_media({ ids: [placeholder] })` shows **no** `generationStatus` field (absence = ready). Values like `preparing` / `generating` / `downloading` / `failed` mean not ready — on `failed`, tell the user and ask before retrying. Don't busy-poll.
 5. **Place it.** If the user wants it on the timeline:

@@ -22,8 +22,7 @@ Do **not** skip to scene placement without an approved sheet. Reroll stills unti
 
 ## Session gates
 
-- `get_timeline` → `canGenerate`
-- `list_models({ type: "image" })`
+- `list_models({ type: "image" })` — if it returns no models, the Lenora backend isn't connected or configured: tell the user to check Settings → Backend
 - Propose each paid generation; wait for confirmation
 - Folders e.g. `Character/Hero`, `Character/Sheets`, `Character/Scenes`
 

@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ не підтримує цей тип медіа.";
 "%@ exported with %lld warnings." = "%@ експортовано з попередженнями: %lld.";
 "%@ exported with 1 warning." = "%@ експортовано з 1 попередженням.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Зображення %@ не підтримуються. Використовуйте PNG, JPEG, WebP, HEIC або TIFF.";
 "%@ is not a valid URL." = "%@ — недійсна URL-адреса.";
 "%@ is ready." = "%@ готово.";
 "%@ model not available" = "Модель %@ недоступна";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Власне співвідношення сторін";
 "Custom…" = "Власне…";
 "Cut" = "Вирізати";
+"Cut out the subject as a transparent PNG" = "Вирізати об’єкт як прозорий PNG";
 "Cut to the beat" = "Монтувати під біт";
 "Dark" = "Темна";
 "Dark appearance" = "Темний вигляд";
@@ -556,6 +558,7 @@
 "No audio" = "Немає аудіо";
 "No audio selected." = "Аудіо не вибрано.";
 "No beats detected." = "Бітів не визначено.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Жоден підключений бекенд не може видаляти тло. Відкрийте Параметри → Бекенд.";
 "No conversations yet" = "Розмов ще немає";
 "No exports yet" = "Експортів ще немає";
 "No images" = "Немає зображень";
@@ -667,6 +670,9 @@
 "Remove" = "Вилучити";
 "Remove %@" = "Вилучити %@";
 "Remove API key" = "Вилучити API-ключ";
+"Remove Background" = "Видалити тло";
+"Remove Background isn't available from the connected backend" = "Видалення тла недоступне в підключеному бекенді";
+"Remove Background works on images only." = "Видалення тла працює лише із зображеннями.";
 "Remove Dead Air" = "Видалити паузи";
 "Remove Marker" = "Вилучити маркер";
 "Remove background sound and keep speech" = "Прибрати фоновий звук і залишити мовлення";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "Токен MCP недоступний. Перевірте доступ до В'язки ключів і повторіть спробу.";
 "The clip you're adding has different settings than the current project." = "Кліп, який ви додаєте, має інші параметри, ніж поточний проєкт.";
 "The export" = "Експорт";
+"The image is larger than %@." = "Зображення більше за %@.";
 "The job already finished." = "Завдання вже завершено.";
 "The job finished without a result." = "Завдання завершилося без результату.";
 "The marker comment changed while you were editing. Review it and try again." = "Коментар маркера змінився під час редагування. Перегляньте його й повторіть спробу.";
 "The project will be moved to the Trash." = "Проєкт буде переміщено в Кошик.";
 "The selected model refused this request. Revise the prompt and try again." = "Вибрана модель відхилила цей запит. Змініть промпт і повторіть спробу.";
 "The selected projects will be moved to the Trash." = "Вибрані проєкти буде переміщено в Кошик.";
+"The source file is missing." = "Вихідний файл відсутній.";
 "The timeline settings changed. Close this sheet and try again." = "Параметри таймлайну змінилися. Закрийте це вікно й повторіть спробу.";
 "Theme" = "Тема";
 "This build includes no skills." = "У цій збірці немає навичок.";

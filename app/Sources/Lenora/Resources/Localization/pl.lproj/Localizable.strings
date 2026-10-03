@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ nie obsługuje tego typu multimediów.";
 "%@ exported with %lld warnings." = "Wyeksportowano %@ z %lld ostrzeżeniami.";
 "%@ exported with 1 warning." = "Wyeksportowano %@ z 1 ostrzeżeniem.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Obrazy %@ nie są obsługiwane. Użyj PNG, JPEG, WebP, HEIC lub TIFF.";
 "%@ is not a valid URL." = "%@ nie jest prawidłowym adresem URL.";
 "%@ is ready." = "%@ jest gotowe.";
 "%@ model not available" = "Model %@ jest niedostępny";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Własne proporcje obrazu";
 "Custom…" = "Własne…";
 "Cut" = "Wytnij";
+"Cut out the subject as a transparent PNG" = "Wytnij obiekt jako przezroczysty PNG";
 "Cut to the beat" = "Tnij do taktu";
 "Dark" = "Ciemny";
 "Dark appearance" = "Wygląd ciemny";
@@ -556,6 +558,7 @@
 "No audio" = "Brak dźwięku";
 "No audio selected." = "Nie zaznaczono dźwięku.";
 "No beats detected." = "Nie wykryto taktów.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Żaden połączony backend nie potrafi usuwać teł. Otwórz Ustawienia → Backend.";
 "No conversations yet" = "Brak rozmów";
 "No exports yet" = "Brak eksportów";
 "No images" = "Brak obrazów";
@@ -667,6 +670,9 @@
 "Remove" = "Usuń";
 "Remove %@" = "Usuń %@";
 "Remove API key" = "Usuń klucz API";
+"Remove Background" = "Usuń tło";
+"Remove Background isn't available from the connected backend" = "Usuwanie tła nie jest dostępne w połączonym backendzie";
+"Remove Background works on images only." = "Usuwanie tła działa tylko na obrazach.";
 "Remove Dead Air" = "Usuń ciszę";
 "Remove Marker" = "Usuń znacznik";
 "Remove background sound and keep speech" = "Usuń dźwięk tła i zachowaj mowę";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP jest niedostępny. Sprawdź dostęp do Pęku kluczy i spróbuj ponownie.";
 "The clip you're adding has different settings than the current project." = "Dodawany klip ma inne ustawienia niż bieżący projekt.";
 "The export" = "Eksport";
+"The image is larger than %@." = "Obraz jest większy niż %@.";
 "The job already finished." = "Zadanie już się zakończyło.";
 "The job finished without a result." = "Zadanie zakończyło się bez wyniku.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentarz znacznika zmienił się podczas edycji. Przejrzyj go i spróbuj ponownie.";
 "The project will be moved to the Trash." = "Projekt zostanie przeniesiony do Kosza.";
 "The selected model refused this request. Revise the prompt and try again." = "Wybrany model odrzucił to żądanie. Zmień prompt i spróbuj ponownie.";
 "The selected projects will be moved to the Trash." = "Zaznaczone projekty zostaną przeniesione do Kosza.";
+"The source file is missing." = "Brak pliku źródłowego.";
 "The timeline settings changed. Close this sheet and try again." = "Ustawienia osi czasu uległy zmianie. Zamknij ten arkusz i spróbuj ponownie.";
 "Theme" = "Motyw";
 "This build includes no skills." = "Ta wersja nie zawiera umiejętności.";

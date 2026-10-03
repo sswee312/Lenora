@@ -29,11 +29,10 @@ Do **not** route logo or ref work to `hailuo-03` unless the user explicitly asks
 
 ## Session gates
 
-1. `get_timeline` — if `canGenerate` is false, ask sign-in / subscribe.
-2. `list_models({ type: "video" })` — confirm `hailuo-03-max` + ref caps.
-3. Propose prompt + duration + aspect + resolution (+ refs/frames). **Wait for confirmation.**
-4. `generate_video` with `model: "hailuo-03-max"`. Do not busy-poll.
-5. Assemble with `create_timeline` + `add_clips`. Retry failures once.
+1. `list_models({ type: "video" })` — confirm `hailuo-03-max` + ref caps. If it returns no models, the Lenora backend isn't connected or configured: tell the user to check Settings → Backend.
+2. Propose prompt + duration + aspect + resolution (+ refs/frames). **Wait for confirmation.**
+3. `generate_video` with `model: "hailuo-03-max"`. Do not busy-poll.
+4. Assemble with `create_timeline` + `add_clips`. Retry failures once.
 
 ## Hard rules
 

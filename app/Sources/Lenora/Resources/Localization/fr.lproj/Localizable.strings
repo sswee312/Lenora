@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ ne prend pas en charge ce type de média.";
 "%@ exported with %lld warnings." = "Exportation de %@ terminée avec %lld avertissements.";
 "%@ exported with 1 warning." = "Exportation de %@ terminée avec 1 avertissement.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Les images %@ ne sont pas prises en charge. Utilisez PNG, JPEG, WebP, HEIC ou TIFF.";
 "%@ is not a valid URL." = "%@ n’est pas une URL valide.";
 "%@ is ready." = "%@ est disponible.";
 "%@ model not available" = "Modèle %@ indisponible";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Format d’image personnalisé";
 "Custom…" = "Personnalisé…";
 "Cut" = "Couper";
+"Cut out the subject as a transparent PNG" = "Détourer le sujet en PNG transparent";
 "Cut to the beat" = "Couper sur le rythme";
 "Dark" = "Sombre";
 "Dark appearance" = "Apparence sombre";
@@ -556,6 +558,7 @@
 "No audio" = "Aucun audio";
 "No audio selected." = "Aucun audio sélectionné.";
 "No beats detected." = "Aucun temps détecté.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Aucun backend connecté ne peut supprimer les arrière-plans. Ouvrez Réglages → Backend.";
 "No conversations yet" = "Aucune conversation pour le moment";
 "No exports yet" = "Aucune exportation pour le moment";
 "No images" = "Aucune image";
@@ -667,6 +670,9 @@
 "Remove" = "Supprimer";
 "Remove %@" = "Supprimer %@";
 "Remove API key" = "Supprimer la clé API";
+"Remove Background" = "Supprimer l’arrière-plan";
+"Remove Background isn't available from the connected backend" = "La suppression de l’arrière-plan n’est pas disponible avec le backend connecté";
+"Remove Background works on images only." = "La suppression de l’arrière-plan ne fonctionne que sur les images.";
 "Remove Dead Air" = "Supprimer les silences";
 "Remove Marker" = "Supprimer le marqueur";
 "Remove background sound and keep speech" = "Supprimer le son de fond et conserver la parole";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "Le jeton MCP est indisponible. Vérifiez l’accès au Trousseau, puis réessayez.";
 "The clip you're adding has different settings than the current project." = "Le clip que vous ajoutez possède des réglages différents de ceux du projet actuel.";
 "The export" = "L’exportation";
+"The image is larger than %@." = "L’image dépasse %@.";
 "The job already finished." = "La tâche est déjà terminée.";
 "The job finished without a result." = "La tâche s’est terminée sans résultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Le commentaire du marqueur a changé pendant la modification. Relisez-le et réessayez.";
 "The project will be moved to the Trash." = "Le projet sera placé dans la Corbeille.";
 "The selected model refused this request. Revise the prompt and try again." = "Le modèle sélectionné a refusé cette demande. Modifiez le prompt et réessayez.";
 "The selected projects will be moved to the Trash." = "Les projets sélectionnés seront placés dans la Corbeille.";
+"The source file is missing." = "Le fichier source est introuvable.";
 "The timeline settings changed. Close this sheet and try again." = "Les réglages de la timeline ont changé. Fermez cette feuille et réessayez.";
 "Theme" = "Thème";
 "This build includes no skills." = "Cette version n’inclut aucune compétence.";

@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ tidak mendukung jenis media ini.";
 "%@ exported with %lld warnings." = "%@ diekspor dengan %lld peringatan.";
 "%@ exported with 1 warning." = "%@ diekspor dengan 1 peringatan.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Gambar %@ tidak didukung. Gunakan PNG, JPEG, WebP, HEIC, atau TIFF.";
 "%@ is not a valid URL." = "%@ bukan URL yang valid.";
 "%@ is ready." = "%@ siap.";
 "%@ model not available" = "Model %@ tidak tersedia";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Rasio Aspek Kustom";
 "Custom…" = "Kustom…";
 "Cut" = "Potong";
+"Cut out the subject as a transparent PNG" = "Potong subjek sebagai PNG transparan";
 "Cut to the beat" = "Potong mengikuti ketukan";
 "Dark" = "Gelap";
 "Dark appearance" = "Tampilan gelap";
@@ -556,6 +558,7 @@
 "No audio" = "Tidak ada audio";
 "No audio selected." = "Tidak ada audio yang dipilih.";
 "No beats detected." = "Tidak ada ketukan terdeteksi.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Tidak ada backend terhubung yang dapat menghapus latar belakang. Buka Pengaturan → Backend.";
 "No conversations yet" = "Belum ada percakapan";
 "No exports yet" = "Belum ada ekspor";
 "No images" = "Tidak ada gambar";
@@ -667,6 +670,9 @@
 "Remove" = "Hapus";
 "Remove %@" = "Hapus %@";
 "Remove API key" = "Hapus kunci API";
+"Remove Background" = "Hapus Latar Belakang";
+"Remove Background isn't available from the connected backend" = "Hapus Latar Belakang tidak tersedia dari backend yang terhubung";
+"Remove Background works on images only." = "Hapus Latar Belakang hanya berfungsi pada gambar.";
 "Remove Dead Air" = "Hapus Keheningan";
 "Remove Marker" = "Hapus Penanda";
 "Remove background sound and keep speech" = "Hapus suara latar dan pertahankan ucapan";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP tidak tersedia. Periksa akses Rantai Kunci, lalu coba lagi.";
 "The clip you're adding has different settings than the current project." = "Klip yang Anda tambahkan memiliki pengaturan berbeda dari proyek saat ini.";
 "The export" = "Ekspor";
+"The image is larger than %@." = "Gambar lebih besar dari %@.";
 "The job already finished." = "Tugas sudah selesai.";
 "The job finished without a result." = "Tugas selesai tanpa hasil.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentar penanda berubah saat Anda mengedit. Tinjau dan coba lagi.";
 "The project will be moved to the Trash." = "Proyek akan dipindahkan ke Tong Sampah.";
 "The selected model refused this request. Revise the prompt and try again." = "Model yang dipilih menolak permintaan ini. Revisi prompt dan coba lagi.";
 "The selected projects will be moved to the Trash." = "Proyek yang dipilih akan dipindahkan ke Tong Sampah.";
+"The source file is missing." = "File sumber tidak ditemukan.";
 "The timeline settings changed. Close this sheet and try again." = "Pengaturan linimasa berubah. Tutup lembar ini dan coba lagi.";
 "Theme" = "Tema";
 "This build includes no skills." = "Build ini tidak menyertakan skill.";

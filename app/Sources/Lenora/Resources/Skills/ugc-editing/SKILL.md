@@ -15,7 +15,7 @@ Editing is footage-source-agnostic. The same assemble → trim → layout → ca
 
 ## Step 0: Pre-flight — always run before touching the timeline
 
-1. **`get_timeline`** — check resolution / `canGenerate`. Must be 9:16 (typically 1080×1920). If not:
+1. **`get_timeline`** — check resolution. Must be 9:16 (typically 1080×1920). If not:
    ```
    set_project_settings({ aspectRatio: "9:16", quality: "1080p" })
    ```

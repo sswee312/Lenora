@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ 不支持此媒体类型。";
 "%@ exported with %lld warnings." = "%@ 已导出，有 %lld 条警告。";
 "%@ exported with 1 warning." = "%@ 已导出，有 1 条警告。";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "不支持 %@ 图像。请使用 PNG、JPEG、WebP、HEIC 或 TIFF。";
 "%@ is not a valid URL." = "%@ 不是有效的 URL。";
 "%@ is ready." = "%@ 已就绪。";
 "%@ model not available" = "%@ 模型不可用";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "自定义宽高比";
 "Custom…" = "自定义…";
 "Cut" = "剪切";
+"Cut out the subject as a transparent PNG" = "将主体抠出为透明 PNG";
 "Cut to the beat" = "按节拍剪辑";
 "Dark" = "深色";
 "Dark appearance" = "深色外观";
@@ -556,6 +558,7 @@
 "No audio" = "没有音频";
 "No audio selected." = "未选择音频。";
 "No beats detected." = "未检测到节拍。";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "没有已连接的后端可以移除背景。请打开设置 → 后端。";
 "No conversations yet" = "尚无对话";
 "No exports yet" = "尚无导出任务";
 "No images" = "没有图像";
@@ -667,6 +670,9 @@
 "Remove" = "移除";
 "Remove %@" = "移除 %@";
 "Remove API key" = "移除 API key";
+"Remove Background" = "移除背景";
+"Remove Background isn't available from the connected backend" = "已连接的后端不支持移除背景";
+"Remove Background works on images only." = "移除背景仅适用于图像。";
 "Remove Dead Air" = "移除无声部分";
 "Remove Marker" = "移除标记";
 "Remove background sound and keep speech" = "移除背景声音并保留语音";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "无法使用 MCP 令牌。请检查钥匙串访问权限，然后重试。";
 "The clip you're adding has different settings than the current project." = "要添加的片段与当前项目的设置不同。";
 "The export" = "导出任务";
+"The image is larger than %@." = "图像大于 %@。";
 "The job already finished." = "任务已完成。";
 "The job finished without a result." = "任务已结束，但没有结果。";
 "The marker comment changed while you were editing. Review it and try again." = "你编辑时标记注释已更改。请查看后重试。";
 "The project will be moved to the Trash." = "项目将被移到废纸篓。";
 "The selected model refused this request. Revise the prompt and try again." = "所选模型拒绝了此请求。请修改提示词后重试。";
 "The selected projects will be moved to the Trash." = "所选项目将被移到废纸篓。";
+"The source file is missing." = "找不到源文件。";
 "The timeline settings changed. Close this sheet and try again." = "时间线设置已更改。请关闭此表单后重试。";
 "Theme" = "主题";
 "This build includes no skills." = "此版本不包含任何技能。";

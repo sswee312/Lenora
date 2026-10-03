@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "⁨%@⁩ אינו תומך בסוג מדיה זה.";
 "%@ exported with %lld warnings." = "⁨%@⁩ יוצא עם ⁨%lld⁩ אזהרות.";
 "%@ exported with 1 warning." = "⁨%@⁩ יוצא עם אזהרה אחת.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "תמונות %@ אינן נתמכות. השתמש ב-PNG‏, JPEG‏, WebP‏, HEIC או TIFF.";
 "%@ is not a valid URL." = "⁨%@⁩ אינו URL תקין.";
 "%@ is ready." = "⁨%@⁩ מוכן.";
 "%@ model not available" = "המודל ⁨%@⁩ אינו זמין";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "יחס גובה-רוחב מותאם";
 "Custom…" = "מותאם אישית…";
 "Cut" = "גזור";
+"Cut out the subject as a transparent PNG" = "חתוך את הנושא כ-PNG שקוף";
 "Cut to the beat" = "חתוך לפי הפעימה";
 "Dark" = "כהה";
 "Dark appearance" = "מראה כהה";
@@ -556,6 +558,7 @@
 "No audio" = "אין שמע";
 "No audio selected." = "לא נבחר שמע.";
 "No beats detected." = "לא זוהו פעימות.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "אין קצה אחורי מחובר שיכול להסיר רקעים. פתח הגדרות ← Backend.";
 "No conversations yet" = "אין שיחות עדיין";
 "No exports yet" = "אין ייצואים עדיין";
 "No images" = "אין תמונות";
@@ -667,6 +670,9 @@
 "Remove" = "הסר";
 "Remove %@" = "הסר את ⁨%@⁩";
 "Remove API key" = "הסר מפתח API";
+"Remove Background" = "הסר רקע";
+"Remove Background isn't available from the connected backend" = "הסרת רקע אינה זמינה בקצה האחורי המחובר";
+"Remove Background works on images only." = "הסרת רקע פועלת על תמונות בלבד.";
 "Remove Dead Air" = "הסר השתקות";
 "Remove Marker" = "הסר סמן";
 "Remove background sound and keep speech" = "הסר רעש רקע והשאר דיבור";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "טוקן ה-MCP אינו זמין. בדוק את הגישה לצרור המפתחות ונסה שוב.";
 "The clip you're adding has different settings than the current project." = "לקליפ שאתה מוסיף יש הגדרות שונות מאלה של הפרויקט הנוכחי.";
 "The export" = "הייצוא";
+"The image is larger than %@." = "התמונה גדולה מ-%@.";
 "The job already finished." = "המשימה כבר הסתיימה.";
 "The job finished without a result." = "המשימה הסתיימה ללא תוצאה.";
 "The marker comment changed while you were editing. Review it and try again." = "הערת הסמן השתנתה בזמן העריכה. סקור אותה ונסה שוב.";
 "The project will be moved to the Trash." = "הפרויקט יועבר לפח.";
 "The selected model refused this request. Revise the prompt and try again." = "המודל שנבחר דחה את הבקשה. עדכן את ההנחיה ונסה שוב.";
 "The selected projects will be moved to the Trash." = "הפרויקטים שנבחרו יועברו לפח.";
+"The source file is missing." = "קובץ המקור חסר.";
 "The timeline settings changed. Close this sheet and try again." = "הגדרות ציר הזמן השתנו. סגור גיליון זה ונסה שוב.";
 "Theme" = "ערכת נושא";
 "This build includes no skills." = "גרסה זו אינה כוללת מיומנויות.";

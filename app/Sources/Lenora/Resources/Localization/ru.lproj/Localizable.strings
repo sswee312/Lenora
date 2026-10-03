@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ не поддерживает медиафайлы этого типа.";
 "%@ exported with %lld warnings." = "%@ экспортирован с предупреждениями: %lld.";
 "%@ exported with 1 warning." = "%@ экспортирован с 1 предупреждением.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Изображения %@ не поддерживаются. Используйте PNG, JPEG, WebP, HEIC или TIFF.";
 "%@ is not a valid URL." = "%@ — недопустимый URL.";
 "%@ is ready." = "%@ готов.";
 "%@ model not available" = "Модель %@ недоступна";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Пользовательское соотношение сторон";
 "Custom…" = "Другое…";
 "Cut" = "Вырезать";
+"Cut out the subject as a transparent PNG" = "Вырезать объект в виде прозрачного PNG";
 "Cut to the beat" = "Резать под бит";
 "Dark" = "Тёмное";
 "Dark appearance" = "Тёмное оформление";
@@ -556,6 +558,7 @@
 "No audio" = "Нет аудио";
 "No audio selected." = "Аудио не выбрано.";
 "No beats detected." = "Доли не обнаружены.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Ни один подключённый бэкенд не может удалять фон. Откройте Настройки → Бэкенд.";
 "No conversations yet" = "Пока нет бесед";
 "No exports yet" = "Пока нет экспортов";
 "No images" = "Нет изображений";
@@ -667,6 +670,9 @@
 "Remove" = "Удалить";
 "Remove %@" = "Удалить %@";
 "Remove API key" = "Удалить API-ключ";
+"Remove Background" = "Удалить фон";
+"Remove Background isn't available from the connected backend" = "Удаление фона недоступно в подключённом бэкенде";
+"Remove Background works on images only." = "Удаление фона работает только с изображениями.";
 "Remove Dead Air" = "Удалить паузы";
 "Remove Marker" = "Удалить маркер";
 "Remove background sound and keep speech" = "Удалить фоновый шум и оставить речь";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "Токен MCP недоступен. Проверьте доступ к Связке ключей и повторите попытку.";
 "The clip you're adding has different settings than the current project." = "У добавляемого клипа настройки отличаются от текущего проекта.";
 "The export" = "задачу экспорта";
+"The image is larger than %@." = "Изображение больше %@.";
 "The job already finished." = "Задача уже завершена.";
 "The job finished without a result." = "Задача завершилась без результата.";
 "The marker comment changed while you were editing. Review it and try again." = "Комментарий маркера изменился, пока вы его редактировали. Проверьте его и повторите попытку.";
 "The project will be moved to the Trash." = "Проект будет перемещён в Корзину.";
 "The selected model refused this request. Revise the prompt and try again." = "Выбранная модель отклонила этот запрос. Измените запрос и повторите попытку.";
 "The selected projects will be moved to the Trash." = "Выбранные проекты будут перемещены в Корзину.";
+"The source file is missing." = "Исходный файл отсутствует.";
 "The timeline settings changed. Close this sheet and try again." = "Настройки таймлайна изменились. Закройте это окно и повторите попытку.";
 "Theme" = "Тема";
 "This build includes no skills." = "В этой сборке нет навыков.";

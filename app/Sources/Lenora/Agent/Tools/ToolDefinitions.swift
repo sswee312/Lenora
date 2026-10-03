@@ -68,6 +68,7 @@ enum ToolName: String, CaseIterable, Sendable {
     case generateImage = "generate_image"
     case generateAudio = "generate_audio"
     case upscaleMedia = "upscale_media"
+    case transformMedia = "transform_media"
 
     // Meta
     case readSkill = "read_skill"
@@ -1060,10 +1061,10 @@ enum ToolDefinitions {
         ),
         AgentTool(
             name: .listModels,
-            description: "Lists AI models with their capabilities (durations, aspect ratios, resolutions, draft mode, first/last frame support, reference support, voices/category for audio, and configurable settings for upscalers). Always call before generate_video, generate_image, generate_audio, or upscale_media so the model you pick actually supports the constraints you need. Returns { models, loaded } — if loaded=false the catalog hasn't synced yet (e.g. the Lenora backend isn't connected); the models array may be empty even when models exist, so do not conclude no models are available. Retry once the backend is connected.",
+            description: "Lists AI models with their capabilities (durations, aspect ratios, resolutions, draft mode, first/last frame support, reference support, voices/category for audio, and configurable settings for upscalers). Always call before generate_video, generate_image, generate_audio, or upscale_media so the model you pick actually supports the constraints you need. Returns { models, loaded } — loaded=false means the catalog hasn't finished its first sync, so retry shortly; an empty models array with loaded=true usually means the Lenora backend isn't connected or configured — tell the user to check Settings → Backend.",
             inputSchema: objectSchema(
                 properties: [
-                    "type": ["type": "string", "enum": ["video", "image", "audio", "upscale"], "description": "Filter by type. Omit to list all models."],
+                    "type": ["type": "string", "enum": ["video", "image", "audio", "upscale", "transform"], "description": "Filter by type. Omit to list all models."],
                 ]
             )
         ),
@@ -1147,6 +1148,17 @@ enum ToolDefinitions {
                     ],
                 ],
                 required: ["mediaRef"]
+            )
+        ),
+        AgentTool(
+            name: .transformMedia,
+            description: "Applies an AI transform to an existing image asset and imports the result as a new asset next to it. Operation removeBackground cuts out the subject and returns a transparent PNG. Accepts PNG, JPEG, WebP, HEIC or TIFF up to the limit list_models reports (10 MB on Cloudinary's free plan). Costs provider credits (about 0.075 Cloudinary credits per image); the receipt's estimate is informational. Returns {mediaRef, status: \"generating\", estimate} immediately — poll get_media until mediaRef is ready, then place it with add_clips. The finished import is one undo step. Listed only while the connected backend supports the operation.",
+            inputSchema: objectSchema(
+                properties: [
+                    "mediaRef": ["type": "string", "description": "ID of the image asset to transform"],
+                    "operation": ["type": "string", "enum": ["removeBackground"], "description": "The transform to apply"],
+                ],
+                required: ["mediaRef", "operation"]
             )
         ),
     ]
@@ -1417,5 +1429,25 @@ enum ToolArgsBridge {
             for (k, v) in obj { out[k] = anyFromValue(v) }
             return out
         }
+    }
+}
+
+extension ToolName {
+    /// Backend model kinds the tool needs; nil means it never depends on the backend.
+    var requiredKinds: [String]? {
+        switch self {
+        case .transformMedia: ["image.removeBackground"]
+        case .generateVideo: ClipType.video.generationKinds
+        case .generateImage: ClipType.image.generationKinds
+        case .generateAudio: ClipType.audio.generationKinds
+        case .upscaleMedia: ["image.upscale", "video.upscale"]
+        default: nil
+        }
+    }
+}
+
+extension ToolDefinitions {
+    @MainActor static func available(_ tools: [AgentTool], catalog: ModelCatalog) -> [AgentTool] {
+        tools.filter { tool in tool.name.requiredKinds.map(catalog.supportsAny(of:)) ?? true }
     }
 }

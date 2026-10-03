@@ -5,6 +5,7 @@
 "%@ does not support this media type." = "%@ ondersteunt dit mediatype niet.";
 "%@ exported with %lld warnings." = "%@ geëxporteerd met %lld waarschuwingen.";
 "%@ exported with 1 warning." = "%@ geëxporteerd met 1 waarschuwing.";
+"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-afbeeldingen worden niet ondersteund. Gebruik PNG, JPEG, WebP, HEIC of TIFF.";
 "%@ is not a valid URL." = "%@ is geen geldige URL.";
 "%@ is ready." = "%@ is gereed.";
 "%@ model not available" = "Model %@ niet beschikbaar";
@@ -223,6 +224,7 @@
 "Custom Aspect Ratio" = "Aangepaste beeldverhouding";
 "Custom…" = "Aangepast…";
 "Cut" = "Knip";
+"Cut out the subject as a transparent PNG" = "Het onderwerp uitknippen als transparante PNG";
 "Cut to the beat" = "Knip op de beat";
 "Dark" = "Donker";
 "Dark appearance" = "Donkere weergave";
@@ -556,6 +558,7 @@
 "No audio" = "Geen audio";
 "No audio selected." = "Geen audio geselecteerd.";
 "No beats detected." = "Geen beats gedetecteerd.";
+"No connected backend can remove backgrounds. Open Settings → Backend." = "Geen verbonden backend kan achtergronden verwijderen. Open Instellingen → Backend.";
 "No conversations yet" = "Nog geen gesprekken";
 "No exports yet" = "Nog geen exports";
 "No images" = "Geen afbeeldingen";
@@ -667,6 +670,9 @@
 "Remove" = "Verwijder";
 "Remove %@" = "Verwijder %@";
 "Remove API key" = "Verwijder API-sleutel";
+"Remove Background" = "Achtergrond verwijderen";
+"Remove Background isn't available from the connected backend" = "Achtergrond verwijderen is niet beschikbaar bij de verbonden backend";
+"Remove Background works on images only." = "Achtergrond verwijderen werkt alleen op afbeeldingen.";
 "Remove Dead Air" = "Verwijder stiltes";
 "Remove Marker" = "Verwijder markering";
 "Remove background sound and keep speech" = "Verwijder achtergrondgeluid en behoud spraak";
@@ -839,12 +845,14 @@
 "The MCP token is unavailable. Check Keychain access, then try again." = "Het MCP-token is niet beschikbaar. Controleer de toegang tot de sleutelhanger en probeer het opnieuw.";
 "The clip you're adding has different settings than the current project." = "De clip die u toevoegt heeft andere instellingen dan het huidige project.";
 "The export" = "De export";
+"The image is larger than %@." = "De afbeelding is groter dan %@.";
 "The job already finished." = "De taak is al voltooid.";
 "The job finished without a result." = "De taak is beëindigd zonder resultaat.";
 "The marker comment changed while you were editing. Review it and try again." = "De opmerking bij de markering is gewijzigd tijdens het bewerken. Beoordeel deze en probeer het opnieuw.";
 "The project will be moved to the Trash." = "Het project wordt naar de Prullenmand verplaatst.";
 "The selected model refused this request. Revise the prompt and try again." = "Het geselecteerde model heeft dit verzoek geweigerd. Pas de prompt aan en probeer het opnieuw.";
 "The selected projects will be moved to the Trash." = "De geselecteerde projecten worden naar de Prullenmand verplaatst.";
+"The source file is missing." = "Het bronbestand ontbreekt.";
 "The timeline settings changed. Close this sheet and try again." = "De Timeline-instellingen zijn gewijzigd. Sluit dit venster en probeer het opnieuw.";
 "Theme" = "Thema";
 "This build includes no skills." = "Deze build bevat geen skills.";

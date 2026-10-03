@@ -25,6 +25,7 @@ extension EditorViewModel {
         into asset: MediaAsset,
         from remoteURL: URL,
         fileExtension: String?,
+        undoActionName: String? = nil,
         downloader: RemoteMediaDownloader? = nil
     ) async throws {
         let downloader = downloader ?? RemoteMediaDownloader(
@@ -55,6 +56,15 @@ extension EditorViewModel {
             throw CancellationError()
         }
         guard finalized else { throw RemoteDownloadError.unreadableMedia }
+        if let undoActionName { registerImportUndo(of: asset, actionName: undoActionName) }
+    }
+
+    private func registerImportUndo(of asset: MediaAsset, actionName: String) {
+        let before = mediaLibraryUndoSnapshot(removing: asset.id)
+        undo.register(actionName, withTarget: self) { editor in
+            editor.restoreMediaLibraryUndoSnapshot(before, actionName: actionName)
+        }
+        onProjectCheckpointRequired?()
     }
 
     private static func removeFile(_ url: URL) async {

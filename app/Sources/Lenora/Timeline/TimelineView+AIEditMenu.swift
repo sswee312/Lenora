@@ -18,6 +18,11 @@ extension TimelineView {
                 upscaleItem.target = self
                 upscaleItem.representedObject = clipId
                 submenu.addItem(upscaleItem)
+            case .removeBackground:
+                let item = NSMenuItem(title: L10n.string("Remove Background"), action: #selector(self.performAIEditRemoveBackground(_:)), keyEquivalent: "")
+                item.target = self
+                item.representedObject = clipId
+                submenu.addItem(item)
             case .reframe:
                 let item = NSMenuItem(title: L10n.string("Reframe…"), action: #selector(self.performAIEditReframe(_:)), keyEquivalent: "")
                 item.target = self
@@ -110,6 +115,11 @@ extension TimelineView {
     @objc private func performAIEditUpscale(_ sender: Any?) {
         guard let clipId = (sender as? NSMenuItem)?.representedObject as? String else { return }
         editor.beginAIUpscale(clipId: clipId)
+    }
+
+    @objc private func performAIEditRemoveBackground(_ sender: Any?) {
+        guard let clipId = (sender as? NSMenuItem)?.representedObject as? String else { return }
+        editor.beginAIRemoveBackground(clipId: clipId)
     }
 
     @objc private func performAIEditVideoAudio(_ sender: Any?) {

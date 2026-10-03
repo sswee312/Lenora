@@ -390,7 +390,7 @@ final class AgentService {
         await SkillStore.shared.waitForSkillSync()
         if Task.isCancelled { return }
         await SkillStore.shared.reloadSkills()
-        let tools = ToolDefinitions.inAppAgent.map {
+        let tools = ToolDefinitions.available(ToolDefinitions.inAppAgent, catalog: .shared).map {
             AgentToolSchema(name: $0.name.rawValue, description: $0.description, inputSchema: $0.inputSchema)
         }
 
