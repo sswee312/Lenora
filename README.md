@@ -11,7 +11,7 @@ Open-source, agent-native video editor for the Mac. Edit by hand, or let Claude 
 
 ## Get started
 ```bash
-git clone https://github.com/vermatushar/lenora.git
+git clone https://github.com/vermatushar/Lenora.git
 cd lenora
 ./scripts/bootstrap
 ./scripts/dev

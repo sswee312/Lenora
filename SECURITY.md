@@ -6,7 +6,7 @@ Only the latest release receives security fixes.
 
 ## Report a vulnerability
 
-Report privately through GitHub: open the repository's **Security** tab and choose **Report a vulnerability**. Do not open a public issue.
+Report privately through GitHub: open the repository's **Security** tab and choose **Report a vulnerability**, or go to https://github.com/vermatushar/Lenora/security/advisories/new. Do not open a public issue.
 
 Include the affected version, steps to reproduce, and the impact you observed. You will get an acknowledgement, and the fix will be coordinated with you before disclosure.
 

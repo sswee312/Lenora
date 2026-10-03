@@ -12,7 +12,7 @@ library_name: coreml
 
 Core ML conversion of [google/siglip2-base-patch16-256](https://huggingface.co/google/siglip2-base-patch16-256),
 split into separate image and text encoders for on-device text→image retrieval.
-Built for [Lenora](https://github.com/vermatushar/lenora)'s footage search; usable by anything
+Built for [Lenora](https://github.com/vermatushar/Lenora)'s footage search; usable by anything
 that wants SigLIP 2 on Apple silicon.
 
 ## Files
@@ -36,7 +36,7 @@ is a plain dot product. Minimum deployment target: macOS 15.
   embeddings drift if padding differs.
 - Conversion is parity-gated: every release's embeddings match the PyTorch
   reference at cosine ≥ 0.99 on a fixture set. Conversion source:
-  [vermatushar/lenora `models/siglip2`](https://github.com/vermatushar/lenora).
+  [vermatushar/Lenora `app/models/siglip2`](https://github.com/vermatushar/Lenora/tree/main/app/models/siglip2).
 
 ## Versioning
 

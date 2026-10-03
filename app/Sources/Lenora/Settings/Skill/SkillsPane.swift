@@ -61,7 +61,7 @@ struct SkillsPane: View {
                 .font(.system(size: AppTheme.FontSize.sm))
                 .foregroundStyle(AppTheme.Text.tertiaryColor)
 
-            if let url = URL(string: "https://github.com/vermatushar/lenora/tree/main/skills") {
+            if let url = URL(string: "https://github.com/vermatushar/Lenora/tree/main/skills") {
                 Link(L10n.string("View Skill Sources ↗"), destination: url)
                     .font(.system(size: AppTheme.FontSize.sm))
                     .foregroundStyle(AppTheme.Accent.link)
