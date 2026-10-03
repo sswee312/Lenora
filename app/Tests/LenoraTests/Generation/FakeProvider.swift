@@ -108,15 +108,20 @@ actor FakeProvider: GenerationProvider {
         parkedCalls.removeValue(forKey: call)?.forEach { $0.resume() }
     }
 
-    /// Returns once `call` has been made `count` times, or when the waiting test is cancelled.
-    func waitForCalls(_ call: Call, count: Int = 1) async {
+    /// Returns once `call` has been made `count` times; throws `Timeout` at the deadline or on test cancellation.
+    func waitForCalls(_ call: Call, count: Int = 1) async throws {
         if arrivals[call, default: 0] >= count { return }
+        let timer = Task { try await Task.sleep(for: Self.waitTimeout); await self.resumeArrivalWaiters() }
+        defer { timer.cancel() }
         await withTaskCancellationHandler {
             await withCheckedContinuation { arrivalWaiters.append((call, count, $0)) }
         } onCancel: {
             Task { await self.resumeArrivalWaiters() }
         }
+        guard arrivals[call, default: 0] >= count else { throw EditorTestFixture.Timeout() }
     }
+
+    private static let waitTimeout = Duration.seconds(30)
 
     private func resumeArrivalWaiters() {
         arrivalWaiters.forEach { $0.continuation.resume() }
@@ -157,14 +162,17 @@ actor FakeProvider: GenerationProvider {
         cancellationWaiters.removeAll { $0.call == call }
     }
 
-    /// Returns once a consumer has attached to `jobUpdates`, or when the waiting test is cancelled.
-    func waitForPoller() async {
+    /// Returns once a consumer has attached to `jobUpdates`; throws `Timeout` at the deadline or on test cancellation.
+    func waitForPoller() async throws {
         if pollers > 0 { return }
+        let timer = Task { try await Task.sleep(for: Self.waitTimeout); await self.resumePollerWaiters() }
+        defer { timer.cancel() }
         await withTaskCancellationHandler {
             await withCheckedContinuation { pollerWaiters.append($0) }
         } onCancel: {
             Task { await self.resumePollerWaiters() }
         }
+        guard pollers > 0 else { throw EditorTestFixture.Timeout() }
     }
 
     private func resumePollerWaiters() {

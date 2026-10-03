@@ -31,8 +31,8 @@ struct GenerateAudioToolTests {
         let fixture = try await fixture(provider)
         defer { fixture.cleanup() }
         let result = await run(fixture, ["prompt": "Welcome back.", "voice": "nova", "styleInstructions": "Warm."])
-        #expect(!result.isError)
-        await provider.waitForPoller()
+        try #require(!result.isError)
+        try await provider.waitForPoller()
         let job = try #require(await provider.submitted.first?.0)
         let encoded = try JSONSerialization.jsonObject(with: BackendCoding.encoder().encode(job)) as? NSDictionary
         #expect(encoded == ["kind": "audio.speech", "model": "openai/voice", "inputs": [],
