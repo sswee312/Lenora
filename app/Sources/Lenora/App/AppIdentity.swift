@@ -1,3 +1,3 @@
 enum AppIdentity {
-    static let name = "Lenora Pro"
+    static let name = "Lenora"
 }

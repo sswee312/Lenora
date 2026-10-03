@@ -8,6 +8,8 @@ set -euo pipefail
 #   scripts/bundle.sh debug --all                # include all optional traits
 #   scripts/bundle.sh release --sign            # build + Developer ID codesign
 #   scripts/bundle.sh release --dist            # build + sign + notarize + staple + DMG
+#
+# SIGNING_IDENTITY defaults to "-" (ad-hoc). --sign and --dist require a Developer ID identity.
 
 CONFIG="release"
 MODE="dev"
@@ -48,7 +50,7 @@ if [ -f "$ROOT/$ENV_FILE" ]; then
   set +a
 fi
 
-SIGNING_IDENTITY="${SIGNING_IDENTITY:-Developer ID Application: Lenora, Inc. (MMFLRC7562)}"
+SIGNING_IDENTITY="${SIGNING_IDENTITY:--}"   # "-" = ad-hoc; set a Developer ID to sign for distribution
 NOTARY_PROFILE="${NOTARY_PROFILE:-lenora-notary}"
 PROVISION_PROFILE="${PROVISION_PROFILE:-$ROOT/scripts/Lenora_Pro_Developer_ID.provisionprofile}"
 ENTITLEMENTS="$ROOT/scripts/Lenora.entitlements"
@@ -180,11 +182,16 @@ rm -rf "$DSYM"
 dsymutil "$APP/Contents/MacOS/Lenora" -o "$DSYM"
 
 if [ "$MODE" = "dev" ]; then
-  echo "==> Ad-hoc signing dev app"
-  codesign --force --deep --sign - "$APP"
+  echo "==> Signing dev app with $SIGNING_IDENTITY"
+  codesign --force --deep --sign "$SIGNING_IDENTITY" "$APP"
   codesign --verify --strict --verbose=2 "$APP"
-  echo "==> Done: $APP (ad-hoc signed)"
+  echo "==> Done: $APP (dev signed)"
   exit 0
+fi
+
+if [ "$SIGNING_IDENTITY" = "-" ]; then
+  echo "!! --$MODE needs SIGNING_IDENTITY set to a Developer ID Application identity (ad-hoc is only for dev and --fast builds)" >&2
+  exit 1
 fi
 
 echo "==> Embedding provisioning profile"

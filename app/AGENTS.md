@@ -4,10 +4,18 @@ AI-native macOS video editor. Swift 6.2, SwiftUI + AppKit, AVFoundation. macOS 2
 
 ## Build
 
+Run from `app/`:
+
 ```bash
 swift build
 swift run
 swift test
+```
+
+Run from the repo root to assemble `app/.build/Lenora.app` (ad-hoc signed unless `SIGNING_IDENTITY` is set):
+
+```bash
+scripts/bundle.sh debug --fast
 ```
 
 Use `swift build --traits BundledSpeech` for changes that touch MLX, speech analysis, transcription, or bundled speech resources.

@@ -1,0 +1,16 @@
+Lenora
+Copyright 2026 Tushar Verma
+
+The editor in app/ is a derivative of Palmier Pro, licensed under the GNU
+General Public License v3.0, from the source tagged last-gpl-source
+(commit 8805801). The editor is distributed under GPLv3; see LICENSE.
+
+protocol/, backend/ and skills/ are licensed under the Apache License 2.0.
+
+Bundled agent skills (app/Sources/Lenora/Resources/Skills/, repo-root symlink skills/)
+Forked from palmier-skills (https://github.com/palmier-io/palmier-skills), commit 040e82ffab6f616aec5d1ed4541a1d0260a95613.
+Licensed under the Apache License, Version 2.0 (full text in app/Sources/Lenora/Resources/Skills/LICENSE).
+Modified: rebranded to Lenora, catalog paths and hashes regenerated, lenora-ai-tools skill added.
+
+The semantic search model vermatushar/siglip2-base-coreml is converted from
+google/siglip2-base-patch16-256 (Apache License 2.0).
