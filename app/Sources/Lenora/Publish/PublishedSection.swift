@@ -19,7 +19,7 @@ struct PublishedSection: View {
                 .padding(.vertical, AppTheme.Spacing.md)
             ScrollView {
                 LazyVStack(spacing: AppTheme.Spacing.zero) {
-                    ForEach(editor.publishService.publications.reversed()) { row($0) }
+                    ForEach(editor.publishService.publicationsNewestFirst) { row($0) }
                 }
             }
             if !editor.publishService.isAvailable {

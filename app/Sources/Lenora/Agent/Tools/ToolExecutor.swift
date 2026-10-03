@@ -115,7 +115,7 @@ final class ToolExecutor {
             return ToolResult.error("Editor not available")
         }
         if let kinds = tool.requiredKinds, !editor.generationService.catalog.supportsAny(of: kinds) {
-            return ToolResult.error("\(name) is unavailable: the connected backend does not support it. Tell the user to check Settings → Backend.")
+            return Self.transformError(code: "unavailable", message: "\(name) is unavailable: the connected backend does not support it. Tell the user to check Settings → Backend.", field: nil)
         }
         let activeTimelineIdBefore = editor.activeTimelineId
         let nonAgentMutationRevisionBefore = editor.nonAgentTimelineMutationRevision

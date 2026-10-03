@@ -50,8 +50,59 @@ struct PublishToolTests {
     @Test func unavailableBackendRefusesBothTools() async throws {
         let fixture = try await EditorTestFixture.withImage(catalog: EditorTestFixture.connectedCatalog())
         defer { fixture.cleanup() }
-        #expect(await run(fixture, "publish_export", ["confirmPublic": true]).isError)
-        #expect(await run(fixture, "manage_publications", ["action": "list"]).isError)
+        #expect(try refusal(await run(fixture, "publish_export", ["confirmPublic": true])).code == "unavailable")
+        #expect(try refusal(await run(fixture, "manage_publications", ["action": "list"])).code == "unavailable")
+    }
+
+    @Test(arguments: [false, "true"] as [any Sendable])
+    func confirmPublicMustBeTrue(_ confirm: any Sendable) async throws {
+        let provider = FakeProvider(states: [])
+        let fixture = try await fixture(provider)
+        defer { fixture.cleanup() }
+        let result = try refusal(await run(fixture, "publish_export", ["exportJobId": UUID().uuidString, "confirmPublic": confirm]))
+        #expect(result.code == "invalid_request")
+        #expect(fixture.editor.publishService.publications.isEmpty)
+        #expect(await provider.uploads.isEmpty)
+    }
+
+    @Test func teaserSecondsAsAStringIsRefused() async throws {
+        let fixture = try await fixture()
+        defer { fixture.cleanup() }
+        let args: [String: Any] = ["exportJobId": UUID().uuidString, "confirmPublic": true, "teaserSeconds": "5"]
+        #expect(try refusal(await run(fixture, "publish_export", args)).code == "invalid_request")
+    }
+
+    @Test func backendErrorsKeepTheirCode() async throws {
+        let provider = FakeProvider(states: [])
+        await provider.setDeleteResult(.failure(.problem(BackendProblem(code: "rate_limited", detail: "Slow down.", status: 429, retryable: true))))
+        let fixture = try await fixture(provider)
+        defer { fixture.cleanup() }
+        let record = PublishFixtures.readyRecord()
+        fixture.editor.publishService.restore([record])
+        let result = try refusal(await run(fixture, "manage_publications", ["action": "unpublish", "publicationId": record.id.uuidString]))
+        #expect(result.code == "rate_limited")
+        #expect(await provider.deletedAssets == ["a"])
+    }
+
+    @Test func nonBackendFailuresAreInternalErrors() throws {
+        let error = try #require(try json(ToolExecutor.publishError(CocoaError(.fileReadUnknown)))["error"] as? [String: Any])
+        #expect(error["code"] as? String == "internal_error")
+    }
+
+    @Test func listIsNewestFirstByCreationTime() async throws {
+        let fixture = try await fixture()
+        defer { fixture.cleanup() }
+        let newer = PublishFixtures.readyRecord(createdAt: Date(timeIntervalSince1970: 100))
+        let older = PublishFixtures.readyRecord()
+        fixture.editor.publishService.restore([newer, older])
+        let list = try receipt(await run(fixture, "manage_publications", ["action": "list"]))["publications"] as? [[String: Any]]
+        #expect(list?.map { $0["publicationId"] as? String } == [newer.id.uuidString, older.id.uuidString])
+    }
+
+    @Test func mcpToolListSignatureChangesWhenPublishingAppears() throws {
+        let without = MCPService.toolListSignature(catalog: try EditorTestFixture.connectedCatalog())
+        let with = MCPService.toolListSignature(catalog: try EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull"))
+        #expect(!without.contains("publish_export") && with.contains("publish_export") && with.contains("manage_publications"))
     }
 
     @Test func publishRequiresConfirmationBeforeAnythingElse() async throws {

@@ -34,6 +34,7 @@ final class PublishService {
     var model: BackendModel? { catalog.models(ofKind: Self.kind).first }
     var limits: PublishLimits? { model.flatMap(PublishLimits.init(model:)) }
     var isAvailable: Bool { limits != nil }
+    var publicationsNewestFirst: [Publication] { publications.sorted { $0.createdAt > $1.createdAt } }
 
     func canPublish(_ job: ExportJob) -> Bool {
         guard job.status == .completed, let contentType = job.videoContentType else { return false }
