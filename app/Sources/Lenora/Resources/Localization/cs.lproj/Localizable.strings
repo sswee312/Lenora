@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ tento typ média nepodporuje.";
 "%@ exported with %lld warnings." = "%@ exportováno s %lld upozorněními.";
 "%@ exported with 1 warning." = "%@ exportováno s 1 upozorněním.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Obrázky %@ nejsou podporovány. Použijte PNG, JPEG, WebP, HEIC nebo TIFF.";
+"%@ files aren't supported by this edit." = "Soubory %@ tato úprava nepodporuje.";
 "%@ is not a valid URL." = "%@ není platná adresa URL.";
 "%@ is ready." = "%@ je připraveno.";
 "%@ model not available" = "Model %@ není k dispozici";
@@ -386,6 +386,7 @@
 "Generation in progress" = "Generování probíhá";
 "Generation panel" = "Panel generování";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generování běží na vašem backendu Lenora. Token se ukládá do Klíčenky macOS.";
+"Generative Fill" = "Generativní výplň";
 "Get Anthropic API key" = "Získat API klíč Anthropic";
 "Get OpenAI API key" = "Získat API klíč OpenAI";
 "Get Started" = "Začínáme";
@@ -559,7 +560,6 @@
 "No audio" = "Žádné audio";
 "No audio selected." = "Není vybráno žádné audio.";
 "No beats detected." = "Nebyly zjištěny žádné doby.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Žádný připojený backend nedokáže odstraňovat pozadí. Otevřete Nastavení → Backend.";
 "No conversations yet" = "Zatím žádné konverzace";
 "No exports yet" = "Zatím žádné exporty";
 "No images" = "Žádné obrázky";
@@ -652,6 +652,7 @@
 "Razor (C)" = "Břitva (C)";
 "Razor Tool" = "Nástroj břitva";
 "Reasoning effort" = "Úsilí uvažování";
+"Recolor" = "Přebarvit";
 "Redetect Beats" = "Znovu detekovat doby";
 "Redo" = "Znovu";
 "Redo (⇧⌘Z)" = "Znovu (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "Přejmenovat stopu";
 "Rendering" = "Vykreslování";
 "Rendering…" = "Vykreslování…";
+"Replace Background" = "Nahradit pozadí";
 "Replace clip source" = "Nahradit zdroj klipu";
+"Replace" = "Nahradit";
 "Replacement Audio" = "Náhradní audio";
 "Rerun" = "Spustit znovu";
 "Reset All" = "Resetovat vše";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Rozlišení nesmí na žádné straně přesáhnout 8192 pixelů.";
 "Resolved" = "Vyřešeno";
 "Restart Lenora" = "Restartovat Lenora";
+"Restore" = "Obnovit";
 "Retry" = "Zkusit znovu";
 "Retry Download" = "Znovu stáhnout";
 "Reveal in Finder" = "Zobrazit ve Finderu";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "Server MCP se nepodařilo spustit. Zkontrolujte port a zkuste to znovu.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP není k dispozici. Zkontrolujte přístup ke Klíčence a zkuste to znovu.";
 "The clip you're adding has different settings than the current project." = "Klip, který přidáváte, má jiné nastavení než aktuální projekt.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Připojený backend tuto úpravu nenabízí. Otevřete Nastavení → Backend.";
 "The export" = "Export";
-"The image is larger than %@." = "Obrázek je větší než %@.";
+"The file is larger than %@." = "Soubor je větší než %@.";
+"The image is larger than %lld pixels in total." = "Obrázek má celkem více než %lld pixelů.";
+"The image size isn't known yet. Try again in a moment." = "Velikost obrázku zatím není známa. Zkuste to za chvíli znovu.";
 "The job already finished." = "Úloha už skončila.";
 "The job finished without a result." = "Úloha skončila bez výsledku.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentář značky se během úprav změnil. Zkontrolujte ho a zkuste to znovu.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Nastavení časové osy se změnilo. Zavřete tento list a zkuste to znovu.";
 "Theme" = "Motiv";
 "This build includes no skills." = "Toto sestavení neobsahuje žádné dovednosti.";
+"This edit works on images only." = "Tato úprava funguje jen u obrázků.";
+"This edit works on videos only." = "Tato úprava funguje jen u videí.";
 "This is where all your footage and assets live." = "Tady jsou všechny záběry a materiály.";
 "This is your preview panel to play a selected media or the whole timeline." = "Náhledový panel pro přehrání vybraného média nebo celé časové osy.";
 "This job can't be cancelled. It will finish on its own." = "Tuto úlohu nelze zrušit. Dokončí se sama.";

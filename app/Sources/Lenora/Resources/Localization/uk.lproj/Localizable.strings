@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ не підтримує цей тип медіа.";
 "%@ exported with %lld warnings." = "%@ експортовано з попередженнями: %lld.";
 "%@ exported with 1 warning." = "%@ експортовано з 1 попередженням.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Зображення %@ не підтримуються. Використовуйте PNG, JPEG, WebP, HEIC або TIFF.";
+"%@ files aren't supported by this edit." = "Ця правка не підтримує файли %@.";
 "%@ is not a valid URL." = "%@ — недійсна URL-адреса.";
 "%@ is ready." = "%@ готово.";
 "%@ model not available" = "Модель %@ недоступна";
@@ -386,6 +386,7 @@
 "Generation in progress" = "Триває генерація";
 "Generation panel" = "Панель генерації";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Генерація виконується на вашому бекенді Lenora. Токен зберігається у В'язці ключів macOS.";
+"Generative Fill" = "Генеративне заповнення";
 "Get Anthropic API key" = "Отримати API-ключ Anthropic";
 "Get OpenAI API key" = "Отримати API-ключ OpenAI";
 "Get Started" = "Почати";
@@ -559,7 +560,6 @@
 "No audio" = "Немає аудіо";
 "No audio selected." = "Аудіо не вибрано.";
 "No beats detected." = "Бітів не визначено.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Жоден підключений бекенд не може видаляти тло. Відкрийте Параметри → Бекенд.";
 "No conversations yet" = "Розмов ще немає";
 "No exports yet" = "Експортів ще немає";
 "No images" = "Немає зображень";
@@ -652,6 +652,7 @@
 "Razor (C)" = "Лезо (C)";
 "Razor Tool" = "Інструмент «Лезо»";
 "Reasoning effort" = "Глибина міркування";
+"Recolor" = "Перефарбувати";
 "Redetect Beats" = "Визначити біти знову";
 "Redo" = "Повторити";
 "Redo (⇧⌘Z)" = "Повторити (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "Перейменувати доріжку";
 "Rendering" = "Рендеринг";
 "Rendering…" = "Рендеринг…";
+"Replace Background" = "Замінити тло";
 "Replace clip source" = "Замінити джерело кліпу";
+"Replace" = "Замінити";
 "Replacement Audio" = "Замінне аудіо";
 "Rerun" = "Запустити знову";
 "Reset All" = "Скинути все";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Роздільність не повинна перевищувати 8192 пікселі з будь-якого боку.";
 "Resolved" = "Розв'язано";
 "Restart Lenora" = "Перезапустити Lenora";
+"Restore" = "Відновити";
 "Retry" = "Повторити спробу";
 "Retry Download" = "Повторити завантаження";
 "Reveal in Finder" = "Показати у Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "Не вдалося запустити сервер MCP. Перевірте порт і повторіть спробу.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Токен MCP недоступний. Перевірте доступ до В'язки ключів і повторіть спробу.";
 "The clip you're adding has different settings than the current project." = "Кліп, який ви додаєте, має інші параметри, ніж поточний проєкт.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Підключений бекенд не пропонує цю правку. Відкрийте Параметри → Бекенд.";
 "The export" = "Експорт";
-"The image is larger than %@." = "Зображення більше за %@.";
+"The file is larger than %@." = "Файл більший за %@.";
+"The image is larger than %lld pixels in total." = "Зображення більше за %lld пікселів загалом.";
+"The image size isn't known yet. Try again in a moment." = "Розмір зображення ще невідомий. Спробуйте ще раз за мить.";
 "The job already finished." = "Завдання вже завершено.";
 "The job finished without a result." = "Завдання завершилося без результату.";
 "The marker comment changed while you were editing. Review it and try again." = "Коментар маркера змінився під час редагування. Перегляньте його й повторіть спробу.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Параметри таймлайну змінилися. Закрийте це вікно й повторіть спробу.";
 "Theme" = "Тема";
 "This build includes no skills." = "У цій збірці немає навичок.";
+"This edit works on images only." = "Ця правка працює лише із зображеннями.";
+"This edit works on videos only." = "Ця правка працює лише з відео.";
 "This is where all your footage and assets live." = "Тут зберігаються всі матеріали та ресурси.";
 "This is your preview panel to play a selected media or the whole timeline." = "Панель перегляду: відтворюйте вибрані медіа або весь таймлайн.";
 "This job can't be cancelled. It will finish on its own." = "Це завдання не можна скасувати. Воно завершиться саме.";

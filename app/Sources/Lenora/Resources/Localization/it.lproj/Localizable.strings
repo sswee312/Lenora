@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ non supporta questo tipo di contenuto multimediale.";
 "%@ exported with %lld warnings." = "%@ esportato con %lld avvisi.";
 "%@ exported with 1 warning." = "%@ esportato con 1 avviso.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Le immagini %@ non sono supportate. Usa PNG, JPEG, WebP, HEIC o TIFF.";
+"%@ files aren't supported by this edit." = "I file %@ non sono supportati da questa modifica.";
 "%@ is not a valid URL." = "%@ non è un URL valido.";
 "%@ is ready." = "%@ è pronto.";
 "%@ model not available" = "Modello %@ non disponibile";
@@ -386,6 +386,7 @@
 "Generation in progress" = "Generazione in corso";
 "Generation panel" = "Pannello di generazione";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "La generazione viene eseguita sul tuo backend Lenora. Il token è archiviato nel Portachiavi di macOS.";
+"Generative Fill" = "Riempimento generativo";
 "Get Anthropic API key" = "Ottieni chiave API Anthropic";
 "Get OpenAI API key" = "Ottieni chiave API OpenAI";
 "Get Started" = "Inizia";
@@ -559,7 +560,6 @@
 "No audio" = "Nessun audio";
 "No audio selected." = "Nessun audio selezionato.";
 "No beats detected." = "Nessun battito rilevato.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Nessun backend connesso può rimuovere gli sfondi. Apri Impostazioni → Backend.";
 "No conversations yet" = "Nessuna conversazione";
 "No exports yet" = "Nessuna esportazione";
 "No images" = "Nessuna immagine";
@@ -652,6 +652,7 @@
 "Razor (C)" = "Lametta (C)";
 "Razor Tool" = "Strumento lametta";
 "Reasoning effort" = "Intensità del ragionamento";
+"Recolor" = "Ricolora";
 "Redetect Beats" = "Rileva nuovamente i battiti";
 "Redo" = "Ripeti";
 "Redo (⇧⌘Z)" = "Ripeti (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "Rinomina traccia";
 "Rendering" = "Rendering";
 "Rendering…" = "Rendering…";
+"Replace Background" = "Sostituisci sfondo";
 "Replace clip source" = "Sostituisci sorgente clip";
+"Replace" = "Sostituisci";
 "Replacement Audio" = "Audio sostitutivo";
 "Rerun" = "Esegui di nuovo";
 "Reset All" = "Reimposta tutto";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "La risoluzione non deve superare 8192 pixel su nessun lato.";
 "Resolved" = "Risolto";
 "Restart Lenora" = "Riavvia Lenora";
+"Restore" = "Ripristina";
 "Retry" = "Riprova";
 "Retry Download" = "Riprova download";
 "Reveal in Finder" = "Mostra nel Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "Impossibile avviare il server MCP. Controlla la porta e riprova.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Il token MCP non è disponibile. Controlla l'accesso al Portachiavi e riprova.";
 "The clip you're adding has different settings than the current project." = "La clip che stai aggiungendo ha impostazioni diverse dal progetto attuale.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Il backend connesso non offre questa modifica. Apri Impostazioni → Backend.";
 "The export" = "L'esportazione";
-"The image is larger than %@." = "L’immagine supera %@.";
+"The file is larger than %@." = "Il file supera %@.";
+"The image is larger than %lld pixels in total." = "L’immagine supera i %lld pixel totali.";
+"The image size isn't known yet. Try again in a moment." = "Le dimensioni dell’immagine non sono ancora note. Riprova tra un momento.";
 "The job already finished." = "Il processo è già terminato.";
 "The job finished without a result." = "Il processo è terminato senza un risultato.";
 "The marker comment changed while you were editing. Review it and try again." = "Il commento del marcatore è cambiato durante la modifica. Controllalo e riprova.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Le impostazioni della timeline sono cambiate. Chiudi questo pannello e riprova.";
 "Theme" = "Tema";
 "This build includes no skills." = "Questa build non include competenze.";
+"This edit works on images only." = "Questa modifica funziona solo con le immagini.";
+"This edit works on videos only." = "Questa modifica funziona solo con i video.";
 "This is where all your footage and assets live." = "Qui si trovano tutti i filmati e le risorse.";
 "This is your preview panel to play a selected media or the whole timeline." = "Questo è il pannello di anteprima per riprodurre i contenuti multimediali selezionati o l'intera timeline.";
 "This job can't be cancelled. It will finish on its own." = "Questo processo non può essere annullato. Terminerà da solo.";

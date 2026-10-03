@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ không hỗ trợ loại phương tiện này.";
 "%@ exported with %lld warnings." = "Đã xuất %@ với %lld cảnh báo.";
 "%@ exported with 1 warning." = "Đã xuất %@ với 1 cảnh báo.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Không hỗ trợ ảnh %@. Hãy dùng PNG, JPEG, WebP, HEIC hoặc TIFF.";
+"%@ files aren't supported by this edit." = "Bản chỉnh sửa này không hỗ trợ tệp %@.";
 "%@ is not a valid URL." = "%@ không phải là URL hợp lệ.";
 "%@ is ready." = "%@ đã sẵn sàng.";
 "%@ model not available" = "Mô hình %@ không khả dụng";
@@ -386,6 +386,7 @@
 "Generation in progress" = "Đang tạo";
 "Generation panel" = "Bảng tạo nội dung";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Việc tạo nội dung chạy trên backend Lenora của bạn. Token được lưu trong Chuỗi khóa macOS.";
+"Generative Fill" = "Tô đầy tạo sinh";
 "Get Anthropic API key" = "Lấy khóa API Anthropic";
 "Get OpenAI API key" = "Lấy khóa API OpenAI";
 "Get Started" = "Bắt đầu";
@@ -559,7 +560,6 @@
 "No audio" = "Không có âm thanh";
 "No audio selected." = "Chưa chọn âm thanh.";
 "No beats detected." = "Không phát hiện nhịp.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Không có backend nào đang kết nối có thể xóa nền. Mở Cài đặt → Backend.";
 "No conversations yet" = "Chưa có cuộc trò chuyện";
 "No exports yet" = "Chưa có bản xuất";
 "No images" = "Không có hình ảnh";
@@ -652,6 +652,7 @@
 "Razor (C)" = "Dao cắt (C)";
 "Razor Tool" = "Công cụ Dao cắt";
 "Reasoning effort" = "Mức độ lập luận";
+"Recolor" = "Tô màu lại";
 "Redetect Beats" = "Phát hiện lại nhịp";
 "Redo" = "Làm lại";
 "Redo (⇧⌘Z)" = "Làm lại (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "Đổi tên track";
 "Rendering" = "Đang kết xuất";
 "Rendering…" = "Đang kết xuất…";
+"Replace Background" = "Thay nền";
 "Replace clip source" = "Thay nguồn clip";
+"Replace" = "Thay thế";
 "Replacement Audio" = "Âm thanh thay thế";
 "Rerun" = "Chạy lại";
 "Reset All" = "Đặt lại tất cả";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Độ phân giải không được vượt quá 8192 pixel ở bất kỳ cạnh nào.";
 "Resolved" = "Đã xử lý";
 "Restart Lenora" = "Khởi động lại Lenora";
+"Restore" = "Khôi phục";
 "Retry" = "Thử lại";
 "Retry Download" = "Thử tải lại";
 "Reveal in Finder" = "Hiển thị trong Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "Không thể khởi động máy chủ MCP. Hãy kiểm tra cổng rồi thử lại.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Không thể dùng token MCP. Hãy kiểm tra quyền truy cập Chuỗi khóa rồi thử lại.";
 "The clip you're adding has different settings than the current project." = "Clip bạn đang thêm có cài đặt khác với dự án hiện tại.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Backend đã kết nối không cung cấp bản chỉnh sửa này. Mở Cài đặt → Backend.";
 "The export" = "Bản xuất";
-"The image is larger than %@." = "Ảnh lớn hơn %@.";
+"The file is larger than %@." = "Tệp lớn hơn %@.";
+"The image is larger than %lld pixels in total." = "Hình ảnh lớn hơn tổng cộng %lld điểm ảnh.";
+"The image size isn't known yet. Try again in a moment." = "Chưa biết kích thước hình ảnh. Hãy thử lại sau giây lát.";
 "The job already finished." = "Tác vụ đã hoàn tất.";
 "The job finished without a result." = "Tác vụ kết thúc mà không có kết quả.";
 "The marker comment changed while you were editing. Review it and try again." = "Bình luận của marker đã đổi trong lúc bạn chỉnh. Xem lại và thử lại.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Cài đặt timeline đã thay đổi. Đóng bảng này và thử lại.";
 "Theme" = "Chủ đề";
 "This build includes no skills." = "Bản dựng này không có kỹ năng nào.";
+"This edit works on images only." = "Bản chỉnh sửa này chỉ dùng cho hình ảnh.";
+"This edit works on videos only." = "Bản chỉnh sửa này chỉ dùng cho video.";
 "This is where all your footage and assets live." = "Đây là nơi chứa toàn bộ cảnh quay và tài nguyên của bạn.";
 "This is your preview panel to play a selected media or the whole timeline." = "Đây là bảng xem trước để phát phương tiện đã chọn hoặc toàn bộ timeline.";
 "This job can't be cancelled. It will finish on its own." = "Không thể hủy tác vụ này. Tác vụ sẽ tự hoàn tất.";

@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ bu medya türünü desteklemiyor.";
 "%@ exported with %lld warnings." = "%@, %lld uyarıyla dışa aktarıldı.";
 "%@ exported with 1 warning." = "%@, 1 uyarıyla dışa aktarıldı.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ görselleri desteklenmiyor. PNG, JPEG, WebP, HEIC veya TIFF kullanın.";
+"%@ files aren't supported by this edit." = "Bu düzenleme %@ dosyalarını desteklemiyor.";
 "%@ is not a valid URL." = "%@ geçerli bir URL değil.";
 "%@ is ready." = "%@ hazır.";
 "%@ model not available" = "%@ modeli kullanılamıyor";
@@ -386,6 +386,7 @@
 "Generation in progress" = "Oluşturma sürüyor";
 "Generation panel" = "Oluşturma paneli";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Oluşturma, Lenora backend'inizde çalışır. Belirteç macOS Anahtar Zinciri'nde saklanır.";
+"Generative Fill" = "Üretken Doldurma";
 "Get Anthropic API key" = "Anthropic API anahtarı al";
 "Get OpenAI API key" = "OpenAI API anahtarı al";
 "Get Started" = "Başlayın";
@@ -559,7 +560,6 @@
 "No audio" = "Ses yok";
 "No audio selected." = "Ses seçilmedi.";
 "No beats detected." = "Vuruş algılanmadı.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Bağlı hiçbir arka uç arka planları kaldıramıyor. Ayarlar → Backend bölümünü açın.";
 "No conversations yet" = "Henüz sohbet yok";
 "No exports yet" = "Henüz dışa aktarma yok";
 "No images" = "Görüntü yok";
@@ -652,6 +652,7 @@
 "Razor (C)" = "Kesme (C)";
 "Razor Tool" = "Kesme Aracı";
 "Reasoning effort" = "Akıl yürütme düzeyi";
+"Recolor" = "Yeniden Renklendir";
 "Redetect Beats" = "Vuruşları Yeniden Algıla";
 "Redo" = "Yinele";
 "Redo (⇧⌘Z)" = "Yinele (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "İzin Adını Değiştir";
 "Rendering" = "İşleniyor";
 "Rendering…" = "İşleniyor…";
+"Replace Background" = "Arka Planı Değiştir";
 "Replace clip source" = "Klip kaynağını değiştir";
+"Replace" = "Değiştir";
 "Replacement Audio" = "Yeni Ses";
 "Rerun" = "Yeniden Çalıştır";
 "Reset All" = "Tümünü Sıfırla";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Çözünürlük hiçbir kenarda 8192 pikseli aşmamalıdır.";
 "Resolved" = "Çözüldü";
 "Restart Lenora" = "Lenora'yu Yeniden Başlat";
+"Restore" = "Onar";
 "Retry" = "Yeniden Dene";
 "Retry Download" = "İndirmeyi Yeniden Dene";
 "Reveal in Finder" = "Finder'da Göster";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "MCP sunucusu başlatılamadı. Bağlantı noktasını kontrol edip tekrar deneyin.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP belirteci kullanılamıyor. Anahtar Zinciri erişimini kontrol edip tekrar deneyin.";
 "The clip you're adding has different settings than the current project." = "Eklediğiniz klibin ayarları geçerli projeden farklı.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Bağlı arka uç bu düzenlemeyi sunmuyor. Ayarlar → Arka Uç’u açın.";
 "The export" = "Dışa aktarma";
-"The image is larger than %@." = "Görsel %@ boyutundan büyük.";
+"The file is larger than %@." = "Dosya %@ boyutundan büyük.";
+"The image is larger than %lld pixels in total." = "Görüntü toplamda %lld pikselden büyük.";
+"The image size isn't known yet. Try again in a moment." = "Görüntü boyutu henüz bilinmiyor. Biraz sonra yeniden deneyin.";
 "The job already finished." = "İş zaten tamamlandı.";
 "The job finished without a result." = "İş sonuç üretmeden tamamlandı.";
 "The marker comment changed while you were editing. Review it and try again." = "İşaretleyici yorumu siz düzenlerken değişti. Gözden geçirip yeniden deneyin.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Zaman ekseni ayarları değişti. Bu sayfayı kapatıp yeniden deneyin.";
 "Theme" = "Tema";
 "This build includes no skills." = "Bu derleme hiç beceri içermiyor.";
+"This edit works on images only." = "Bu düzenleme yalnızca görüntülerde çalışır.";
+"This edit works on videos only." = "Bu düzenleme yalnızca videolarda çalışır.";
 "This is where all your footage and assets live." = "Tüm çekimleriniz ve varlıklarınız burada bulunur.";
 "This is your preview panel to play a selected media or the whole timeline." = "Bu, seçili medyayı veya tüm zaman eksenini oynatabileceğiniz önizleme panelinizdir.";
 "This job can't be cancelled. It will finish on its own." = "Bu iş iptal edilemez. Kendiliğinden tamamlanacak.";

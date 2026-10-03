@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ 不支援此媒體類型。";
 "%@ exported with %lld warnings." = "%@ 已匯出，有 %lld 條警告。";
 "%@ exported with 1 warning." = "%@ 已匯出，有 1 條警告。";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "不支援 %@ 影像。請使用 PNG、JPEG、WebP、HEIC 或 TIFF。";
+"%@ files aren't supported by this edit." = "此編輯不支援 %@ 檔案。";
 "%@ is not a valid URL." = "%@ 不是有效的 URL。";
 "%@ is ready." = "%@ 已就緒。";
 "%@ model not available" = "%@ 模型不可用";
@@ -386,6 +386,7 @@
 "Generation in progress" = "正在產生";
 "Generation panel" = "產生面板";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "產生作業會在你的 Lenora 後端上執行。權杖儲存在 macOS 鑰匙圈中。";
+"Generative Fill" = "生成式填色";
 "Get Anthropic API key" = "取得 Anthropic API key";
 "Get OpenAI API key" = "取得 OpenAI API key";
 "Get Started" = "開始使用";
@@ -559,7 +560,6 @@
 "No audio" = "沒有音訊";
 "No audio selected." = "未選擇音訊。";
 "No beats detected." = "未偵測到節拍。";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "沒有已連線的後端可以移除背景。請開啟設定 → 後端。";
 "No conversations yet" = "尚無對話";
 "No exports yet" = "尚無匯出任務";
 "No images" = "沒有圖像";
@@ -652,6 +652,7 @@
 "Razor (C)" = "剃刀 (C)";
 "Razor Tool" = "剃刀工具";
 "Reasoning effort" = "推理強度";
+"Recolor" = "重新著色";
 "Redetect Beats" = "重新偵測節拍";
 "Redo" = "重做";
 "Redo (⇧⌘Z)" = "重做 (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "重新命名軌道";
 "Rendering" = "正在算繪";
 "Rendering…" = "正在算繪…";
+"Replace Background" = "取代背景";
 "Replace clip source" = "替換片段來源媒體";
+"Replace" = "取代";
 "Replacement Audio" = "替換音訊";
 "Rerun" = "重新運行";
 "Reset All" = "全部還原";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "任一邊的解析度不得超過 8192 像素。";
 "Resolved" = "已解決";
 "Restart Lenora" = "重新啓動 Lenora";
+"Restore" = "修復";
 "Retry" = "重試";
 "Retry Download" = "重試下載";
 "Reveal in Finder" = "在 Finder 中顯示";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "無法啟動 MCP 伺服器。請檢查連接埠，然後重試。";
 "The MCP token is unavailable. Check Keychain access, then try again." = "無法使用 MCP 權杖。請檢查鑰匙圈存取權限，然後重試。";
 "The clip you're adding has different settings than the current project." = "要加入的片段與目前專案的設定不同。";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "已連線的後端不提供此編輯。請打開「設定 → 後端」。";
 "The export" = "匯出任務";
-"The image is larger than %@." = "影像大於 %@。";
+"The file is larger than %@." = "檔案大於 %@。";
+"The image is larger than %lld pixels in total." = "影像總像素數超過 %lld。";
+"The image size isn't known yet. Try again in a moment." = "尚不知道影像尺寸。請稍後再試。";
 "The job already finished." = "工作已完成。";
 "The job finished without a result." = "工作已結束，但沒有結果。";
 "The marker comment changed while you were editing. Review it and try again." = "你編輯時標記註解已更改。請查看後重試。";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "時間軸設定已更改。請關閉此表單後重試。";
 "Theme" = "主題";
 "This build includes no skills." = "此版本不包含任何技能。";
+"This edit works on images only." = "此編輯僅適用於影像。";
+"This edit works on videos only." = "此編輯僅適用於影片。";
 "This is where all your footage and assets live." = "你的所有素材和資源都位於此處。";
 "This is your preview panel to play a selected media or the whole timeline." = "這是預覽面板，用於播放所選媒體或整個時間軸。";
 "This job can't be cancelled. It will finish on its own." = "無法取消此工作。它會自行完成。";

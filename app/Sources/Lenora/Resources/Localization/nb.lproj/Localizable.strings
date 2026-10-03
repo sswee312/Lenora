@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ støtter ikke denne mediatypen.";
 "%@ exported with %lld warnings." = "%@ eksportert med %lld advarsler.";
 "%@ exported with 1 warning." = "%@ eksportert med 1 advarsel.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-bilder støttes ikke. Bruk PNG, JPEG, WebP, HEIC eller TIFF.";
+"%@ files aren't supported by this edit." = "%@-filer støttes ikke av denne redigeringen.";
 "%@ is not a valid URL." = "%@ er ikke en gyldig URL.";
 "%@ is ready." = "%@ er klar.";
 "%@ model not available" = "%@-modell ikke tilgjengelig";
@@ -386,6 +386,7 @@
 "Generation in progress" = "Generering pågår";
 "Generation panel" = "Genereringspanel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generering kjører på Lenora-backend-en din. Token lagres i nøkkelringen i macOS.";
+"Generative Fill" = "Generativ utfylling";
 "Get Anthropic API key" = "Hent Anthropic API-nøkkel";
 "Get OpenAI API key" = "Hent OpenAI API-nøkkel";
 "Get Started" = "Kom i gang";
@@ -559,7 +560,6 @@
 "No audio" = "Ingen lyd";
 "No audio selected." = "Ingen lyd valgt.";
 "No beats detected." = "Ingen takter gjenkjent.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Ingen tilkoblet backend kan fjerne bakgrunner. Åpne Innstillinger → Backend.";
 "No conversations yet" = "Ingen samtaler ennå";
 "No exports yet" = "Ingen eksporter ennå";
 "No images" = "Ingen bilder";
@@ -652,6 +652,7 @@
 "Razor (C)" = "Barberkniv (C)";
 "Razor Tool" = "Barberknivverktøy";
 "Reasoning effort" = "Resonneringsinnsats";
+"Recolor" = "Fargelegg på nytt";
 "Redetect Beats" = "Gjenkjenn takter på nytt";
 "Redo" = "Utfør på nytt";
 "Redo (⇧⌘Z)" = "Utfør på nytt (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "Endre navn på spor";
 "Rendering" = "Renderer";
 "Rendering…" = "Renderer…";
+"Replace Background" = "Erstatt bakgrunn";
 "Replace clip source" = "Erstatt klippekilde";
+"Replace" = "Erstatt";
 "Replacement Audio" = "Erstatningslyd";
 "Rerun" = "Kjør på nytt";
 "Reset All" = "Tilbakestill alle";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Oppløsningen må ikke overskride 8192 piksler på noen kant.";
 "Resolved" = "Løst";
 "Restart Lenora" = "Start Lenora på nytt";
+"Restore" = "Gjenopprett";
 "Retry" = "Prøv på nytt";
 "Retry Download" = "Prøv nedlasting på nytt";
 "Reveal in Finder" = "Vis i Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "MCP-tjeneren kunne ikke starte. Sjekk porten, og prøv igjen.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-tokenet er utilgjengelig. Sjekk tilgangen til nøkkelringen, og prøv igjen.";
 "The clip you're adding has different settings than the current project." = "Klippet du legger til har andre innstillinger enn det gjeldende prosjektet.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Den tilkoblede backenden tilbyr ikke denne redigeringen. Åpne Innstillinger → Backend.";
 "The export" = "Eksporten";
-"The image is larger than %@." = "Bildet er større enn %@.";
+"The file is larger than %@." = "Filen er større enn %@.";
+"The image is larger than %lld pixels in total." = "Bildet er større enn %lld piksler totalt.";
+"The image size isn't known yet. Try again in a moment." = "Bildestørrelsen er ikke kjent ennå. Prøv igjen om et øyeblikk.";
 "The job already finished." = "Jobben er allerede ferdig.";
 "The job finished without a result." = "Jobben ble avsluttet uten resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markørkommentaren ble endret mens du redigerte. Se gjennom den, og prøv på nytt.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeinnstillingene ble endret. Lukk dette arket, og prøv på nytt.";
 "Theme" = "Tema";
 "This build includes no skills." = "Denne versjonen inneholder ingen ferdigheter.";
+"This edit works on images only." = "Denne redigeringen fungerer bare på bilder.";
+"This edit works on videos only." = "Denne redigeringen fungerer bare på videoer.";
 "This is where all your footage and assets live." = "Her ligger alle opptakene og ressursene dine.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dette er forhåndsvisningspanelet for å spille av valgt media eller hele tidslinjen.";
 "This job can't be cancelled. It will finish on its own." = "Denne jobben kan ikke avbrytes. Den fullføres av seg selv.";

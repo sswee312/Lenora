@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ no admite este tipo de contenido multimedia.";
 "%@ exported with %lld warnings." = "%@ se exportó con %lld advertencias.";
 "%@ exported with 1 warning." = "%@ se exportó con 1 advertencia.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Las imágenes %@ no son compatibles. Usa PNG, JPEG, WebP, HEIC o TIFF.";
+"%@ files aren't supported by this edit." = "Esta edición no admite archivos %@.";
 "%@ is not a valid URL." = "%@ no es una URL válida.";
 "%@ is ready." = "%@ ya está disponible.";
 "%@ model not available" = "El modelo %@ no está disponible";
@@ -386,6 +386,7 @@
 "Generation in progress" = "Generación en curso";
 "Generation panel" = "Panel de generación";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "La generación se ejecuta en tu backend de Lenora. El token se guarda en el llavero de macOS.";
+"Generative Fill" = "Relleno generativo";
 "Get Anthropic API key" = "Obtener clave de API de Anthropic";
 "Get OpenAI API key" = "Obtener clave de API de OpenAI";
 "Get Started" = "Empezar";
@@ -559,7 +560,6 @@
 "No audio" = "No hay audio";
 "No audio selected." = "No hay audio seleccionado.";
 "No beats detected." = "No se detectaron pulsos.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Ningún backend conectado puede quitar fondos. Abre Ajustes → Backend.";
 "No conversations yet" = "Aún no hay conversaciones";
 "No exports yet" = "Aún no hay exportaciones";
 "No images" = "No hay imágenes";
@@ -652,6 +652,7 @@
 "Razor (C)" = "Cuchilla (C)";
 "Razor Tool" = "Herramienta Cuchilla";
 "Reasoning effort" = "Esfuerzo de razonamiento";
+"Recolor" = "Cambiar color";
 "Redetect Beats" = "Volver a detectar pulsos";
 "Redo" = "Rehacer";
 "Redo (⇧⌘Z)" = "Rehacer (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "Renombrar pista";
 "Rendering" = "Renderizando";
 "Rendering…" = "Renderizando…";
+"Replace Background" = "Reemplazar fondo";
 "Replace clip source" = "Sustituir origen del clip";
+"Replace" = "Reemplazar";
 "Replacement Audio" = "Audio de sustitución";
 "Rerun" = "Volver a ejecutar";
 "Reset All" = "Restablecer todo";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "La resolución no debe superar los 8192 píxeles en ningún borde.";
 "Resolved" = "Resuelto";
 "Restart Lenora" = "Reiniciar Lenora";
+"Restore" = "Restaurar";
 "Retry" = "Reintentar";
 "Retry Download" = "Reintentar descarga";
 "Reveal in Finder" = "Mostrar en el Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "No se pudo iniciar el servidor MCP. Comprueba el puerto e inténtalo de nuevo.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "El token de MCP no está disponible. Comprueba el acceso al llavero e inténtalo de nuevo.";
 "The clip you're adding has different settings than the current project." = "El clip que estás añadiendo tiene ajustes distintos a los del proyecto actual.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "El backend conectado no ofrece esta edición. Abre Ajustes → Backend.";
 "The export" = "La exportación";
-"The image is larger than %@." = "La imagen supera %@.";
+"The file is larger than %@." = "El archivo supera %@.";
+"The image is larger than %lld pixels in total." = "La imagen supera los %lld píxeles en total.";
+"The image size isn't known yet. Try again in a moment." = "Aún no se conoce el tamaño de la imagen. Inténtalo de nuevo en un momento.";
 "The job already finished." = "El trabajo ya ha terminado.";
 "The job finished without a result." = "El trabajo terminó sin resultado.";
 "The marker comment changed while you were editing. Review it and try again." = "El comentario del marcador cambió mientras lo editabas. Revísalo e inténtalo de nuevo.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Los ajustes de la línea de tiempo han cambiado. Cierra esta hoja y vuelve a intentarlo.";
 "Theme" = "Tema";
 "This build includes no skills." = "Esta compilación no incluye habilidades.";
+"This edit works on images only." = "Esta edición solo funciona con imágenes.";
+"This edit works on videos only." = "Esta edición solo funciona con vídeos.";
 "This is where all your footage and assets live." = "Aquí se encuentran todo tu material y tus recursos.";
 "This is your preview panel to play a selected media or the whole timeline." = "Este es el panel de previsualización, donde puedes reproducir el contenido seleccionado o toda la línea de tiempo.";
 "This job can't be cancelled. It will finish on its own." = "Este trabajo no se puede cancelar. Terminará por sí solo.";

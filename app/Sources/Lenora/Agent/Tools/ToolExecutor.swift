@@ -223,7 +223,7 @@ final class ToolExecutor {
         case .generateVideo: return try generate(editor, args, type: .video)
         case .generateImage: return try generate(editor, args, type: .image)
         case .generateAudio: return try await generateAudio(editor, args)
-        case .upscaleMedia:  return try upscaleMedia(editor, args)
+        case .upscaleMedia:  return try await upscaleMedia(editor, args)
         case .transformMedia: return try await transformMedia(editor, args)
         case .importMedia:   return try await importMedia(editor, args)
         case .listModels:    return listModels(args)

@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ does not support this media type.";
 "%@ exported with %lld warnings." = "%@ exported with %lld warnings.";
 "%@ exported with 1 warning." = "%@ exported with 1 warning.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF.";
+"%@ files aren't supported by this edit." = "%@ files aren't supported by this edit.";
 "%@ is not a valid URL." = "%@ is not a valid URL.";
 "%@ is ready." = "%@ is ready.";
 "%@ model not available" = "%@ model not available";
@@ -386,6 +386,7 @@
 "Generation in progress" = "Generation in progress";
 "Generation panel" = "Generation panel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generation runs on your Lenora backend. The token is stored in the macOS Keychain.";
+"Generative Fill" = "Generative Fill";
 "Get Anthropic API key" = "Get Anthropic API key";
 "Get OpenAI API key" = "Get OpenAI API key";
 "Get Started" = "Get Started";
@@ -559,7 +560,6 @@
 "No audio" = "No audio";
 "No audio selected." = "No audio selected.";
 "No beats detected." = "No beats detected.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "No connected backend can remove backgrounds. Open Settings → Backend.";
 "No conversations yet" = "No conversations yet";
 "No exports yet" = "No exports yet";
 "No images" = "No images";
@@ -652,6 +652,7 @@
 "Razor (C)" = "Razor (C)";
 "Razor Tool" = "Razor Tool";
 "Reasoning effort" = "Reasoning effort";
+"Recolor" = "Recolor";
 "Redetect Beats" = "Redetect Beats";
 "Redo" = "Redo";
 "Redo (⇧⌘Z)" = "Redo (⇧⌘Z)";
@@ -690,6 +691,8 @@
 "Rename Track" = "Rename Track";
 "Rendering" = "Rendering";
 "Rendering…" = "Rendering…";
+"Replace" = "Replace";
+"Replace Background" = "Replace Background";
 "Replace clip source" = "Replace clip source";
 "Replacement Audio" = "Replacement Audio";
 "Rerun" = "Rerun";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Resolution must not exceed 8192 pixels on either edge.";
 "Resolved" = "Resolved";
 "Restart Lenora" = "Restart Lenora";
+"Restore" = "Restore";
 "Retry" = "Retry";
 "Retry Download" = "Retry Download";
 "Reveal in Finder" = "Reveal in Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "The MCP server could not start. Check the port, then try again.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "The MCP token is unavailable. Check Keychain access, then try again.";
 "The clip you're adding has different settings than the current project." = "The clip you're adding has different settings than the current project.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "The connected backend doesn't offer this edit. Open Settings → Backend.";
 "The export" = "The export";
-"The image is larger than %@." = "The image is larger than %@.";
+"The file is larger than %@." = "The file is larger than %@.";
+"The image is larger than %lld pixels in total." = "The image is larger than %lld pixels in total.";
+"The image size isn't known yet. Try again in a moment." = "The image size isn't known yet. Try again in a moment.";
 "The job already finished." = "The job already finished.";
 "The job finished without a result." = "The job finished without a result.";
 "The marker comment changed while you were editing. Review it and try again." = "The marker comment changed while you were editing. Review it and try again.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "The timeline settings changed. Close this sheet and try again.";
 "Theme" = "Theme";
 "This build includes no skills." = "This build includes no skills.";
+"This edit works on images only." = "This edit works on images only.";
+"This edit works on videos only." = "This edit works on videos only.";
 "This is where all your footage and assets live." = "This is where all your footage and assets live.";
 "This is your preview panel to play a selected media or the whole timeline." = "This is your preview panel to play a selected media or the whole timeline.";
 "This job can't be cancelled. It will finish on its own." = "This job can't be cancelled. It will finish on its own.";

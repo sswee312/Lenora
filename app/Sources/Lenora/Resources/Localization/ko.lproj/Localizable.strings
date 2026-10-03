@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@은(는) 이 미디어 유형을 지원하지 않습니다.";
 "%@ exported with %lld warnings." = "%@을(를) %lld개의 경고와 함께 내보냈습니다.";
 "%@ exported with 1 warning." = "%@을(를) 경고 1개와 함께 내보냈습니다.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ 이미지는 지원되지 않습니다. PNG, JPEG, WebP, HEIC 또는 TIFF를 사용하세요.";
+"%@ files aren't supported by this edit." = "이 편집은 %@ 파일을 지원하지 않습니다.";
 "%@ is not a valid URL." = "%@은(는) 올바른 URL이 아닙니다.";
 "%@ is ready." = "%@이(가) 준비되었습니다.";
 "%@ model not available" = "%@ 모델을 사용할 수 없음";
@@ -386,6 +386,7 @@
 "Generation in progress" = "생성 진행 중";
 "Generation panel" = "생성 패널";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "생성은 Lenora 백엔드에서 실행됩니다. 토큰은 macOS 키체인에 저장됩니다.";
+"Generative Fill" = "생성형 채우기";
 "Get Anthropic API key" = "Anthropic API 키 받기";
 "Get OpenAI API key" = "OpenAI API 키 받기";
 "Get Started" = "시작하기";
@@ -559,7 +560,6 @@
 "No audio" = "오디오 없음";
 "No audio selected." = "선택한 오디오가 없습니다.";
 "No beats detected." = "감지된 비트가 없습니다.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "배경을 제거할 수 있는 연결된 백엔드가 없습니다. 설정 → 백엔드을(를) 여세요.";
 "No conversations yet" = "아직 대화 없음";
 "No exports yet" = "아직 내보내기 없음";
 "No images" = "이미지 없음";
@@ -652,6 +652,7 @@
 "Razor (C)" = "면도날(C)";
 "Razor Tool" = "면도날 도구";
 "Reasoning effort" = "추론 강도";
+"Recolor" = "색상 변경";
 "Redetect Beats" = "비트 다시 감지";
 "Redo" = "다시 실행";
 "Redo (⇧⌘Z)" = "다시 실행(⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "트랙 이름 변경";
 "Rendering" = "렌더링 중";
 "Rendering…" = "렌더링하는 중…";
+"Replace Background" = "배경 바꾸기";
 "Replace clip source" = "클립 소스 대체";
+"Replace" = "바꾸기";
 "Replacement Audio" = "대체 오디오";
 "Rerun" = "다시 실행";
 "Reset All" = "모두 재설정";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "어느 쪽도 해상도가 8192픽셀을 초과할 수 없습니다.";
 "Resolved" = "해결됨";
 "Restart Lenora" = "Lenora 재시동";
+"Restore" = "복원";
 "Retry" = "재시도";
 "Retry Download" = "다운로드 재시도";
 "Reveal in Finder" = "Finder에서 보기";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "MCP 서버를 시작할 수 없습니다. 포트를 확인한 다음 다시 시도하세요.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP 토큰을 사용할 수 없습니다. 키체인 접근 권한을 확인한 다음 다시 시도하세요.";
 "The clip you're adding has different settings than the current project." = "추가하려는 클립의 설정이 현재 프로젝트와 다릅니다.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "연결된 백엔드가 이 편집을 제공하지 않습니다. 설정 → 백엔드를 여세요.";
 "The export" = "내보내기";
-"The image is larger than %@." = "이미지가 %@보다 큽니다.";
+"The file is larger than %@." = "파일이 %@보다 큽니다.";
+"The image is larger than %lld pixels in total." = "이미지의 총 픽셀 수가 %lld를 초과합니다.";
+"The image size isn't known yet. Try again in a moment." = "아직 이미지 크기를 알 수 없습니다. 잠시 후 다시 시도하세요.";
 "The job already finished." = "작업이 이미 완료되었습니다.";
 "The job finished without a result." = "작업이 결과 없이 종료되었습니다.";
 "The marker comment changed while you were editing. Review it and try again." = "편집하는 동안 마커 코멘트가 변경되었습니다. 확인한 후 다시 시도하세요.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "타임라인 설정이 변경되었습니다. 이 시트를 닫고 다시 시도하세요.";
 "Theme" = "테마";
 "This build includes no skills." = "이 빌드에는 스킬이 포함되어 있지 않습니다.";
+"This edit works on images only." = "이 편집은 이미지에서만 작동합니다.";
+"This edit works on videos only." = "이 편집은 비디오에서만 작동합니다.";
 "This is where all your footage and assets live." = "모든 푸티지와 에셋이 보관되는 곳입니다.";
 "This is your preview panel to play a selected media or the whole timeline." = "선택한 미디어 또는 전체 타임라인을 재생하는 미리보기 패널입니다.";
 "This job can't be cancelled. It will finish on its own." = "이 작업은 취소할 수 없습니다. 자동으로 완료됩니다.";

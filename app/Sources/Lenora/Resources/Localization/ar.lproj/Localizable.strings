@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "⁨%@⁩ لا يدعم نوع الوسائط هذا.";
 "%@ exported with %lld warnings." = "تم تصدير ⁨%@⁩ مع ⁨%lld⁩ تحذيرًا.";
 "%@ exported with 1 warning." = "تم تصدير ⁨%@⁩ مع تحذير واحد.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "الصور بصيغة %@ غير مدعومة. استخدم PNG أو JPEG أو WebP أو HEIC أو TIFF.";
+"%@ files aren't supported by this edit." = "ملفات %@ غير مدعومة في هذا التعديل.";
 "%@ is not a valid URL." = "⁨%@⁩ ليس عنوان URL صالحًا.";
 "%@ is ready." = "اكتمل إعداد ⁨%@⁩.";
 "%@ model not available" = "نموذج ⁨%@⁩ غير متوفر";
@@ -386,6 +386,7 @@
 "Generation in progress" = "الإنشاء قيد التنفيذ";
 "Generation panel" = "لوحة الإنشاء";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "يتم التوليد على خادم Lenora الخلفي الخاص بك. يُخزَّن الرمز المميز في سلسلة مفاتيح macOS.";
+"Generative Fill" = "تعبئة توليدية";
 "Get Anthropic API key" = "الحصول على مفتاح واجهة API من Anthropic";
 "Get OpenAI API key" = "الحصول على مفتاح واجهة API من OpenAI";
 "Get Started" = "ابدأ الآن";
@@ -559,7 +560,6 @@
 "No audio" = "لا يوجد صوت";
 "No audio selected." = "لم يتم تحديد صوت.";
 "No beats detected." = "لم يتم اكتشاف إيقاعات.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "لا يوجد خادم خلفي متصل يمكنه إزالة الخلفيات. افتح الإعدادات ← الخادم الخلفي.";
 "No conversations yet" = "لا توجد محادثات بعد";
 "No exports yet" = "لا توجد عمليات تصدير بعد";
 "No images" = "لا توجد صور";
@@ -652,6 +652,7 @@
 "Razor (C)" = "الشفرة ⁨(C)⁩";
 "Razor Tool" = "أداة الشفرة";
 "Reasoning effort" = "مستوى الاستدلال";
+"Recolor" = "إعادة التلوين";
 "Redetect Beats" = "إعادة اكتشاف الإيقاعات";
 "Redo" = "إعادة";
 "Redo (⇧⌘Z)" = "إعادة ⁨(⇧⌘Z)⁩";
@@ -690,7 +691,9 @@
 "Rename Track" = "إعادة تسمية المسار";
 "Rendering" = "جارٍ التصيير";
 "Rendering…" = "جارٍ التصيير…";
+"Replace Background" = "استبدال الخلفية";
 "Replace clip source" = "استبدال مصدر المقطع";
+"Replace" = "استبدال";
 "Replacement Audio" = "الصوت البديل";
 "Rerun" = "إعادة التشغيل";
 "Reset All" = "إعادة ضبط الكل";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "يجب ألا تتجاوز الدقة 8192 بكسل على أي من الحافتين.";
 "Resolved" = "تم الحل";
 "Restart Lenora" = "إعادة تشغيل Lenora";
+"Restore" = "استعادة";
 "Retry" = "إعادة المحاولة";
 "Retry Download" = "إعادة محاولة التنزيل";
 "Reveal in Finder" = "إظهار في Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "تعذّر بدء خادم MCP. تحقق من المنفذ ثم حاول مرة أخرى.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "رمز MCP المميز غير متاح. تحقق من الوصول إلى سلسلة المفاتيح ثم حاول مرة أخرى.";
 "The clip you're adding has different settings than the current project." = "للمقطع الذي تضيفه إعدادات مختلفة عن المشروع الحالي.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "الخادم المتصل لا يوفر هذا التعديل. افتح الإعدادات ← الخادم.";
 "The export" = "الملف";
-"The image is larger than %@." = "حجم الصورة أكبر من %@.";
+"The file is larger than %@." = "حجم الملف أكبر من %@.";
+"The image is larger than %lld pixels in total." = "الصورة أكبر من %lld بكسل إجمالًا.";
+"The image size isn't known yet. Try again in a moment." = "حجم الصورة غير معروف بعد. حاول مرة أخرى بعد لحظة.";
 "The job already finished." = "انتهت المهمة بالفعل.";
 "The job finished without a result." = "انتهت المهمة بدون نتيجة.";
 "The marker comment changed while you were editing. Review it and try again." = "تغيّر تعليق العلامة أثناء تحريرك له. راجعه وأعد المحاولة.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "تغيرت إعدادات المخطط الزمني. أغلق هذه اللوحة وأعد المحاولة.";
 "Theme" = "السمة";
 "This build includes no skills." = "لا يتضمن هذا الإصدار أي مهارات.";
+"This edit works on images only." = "هذا التعديل يعمل على الصور فقط.";
+"This edit works on videos only." = "هذا التعديل يعمل على الفيديوهات فقط.";
 "This is where all your footage and assets live." = "هنا توجد كل لقطاتك وأصولك.";
 "This is your preview panel to play a selected media or the whole timeline." = "هذه لوحة المعاينة لتشغيل الوسائط المحددة أو المخطط الزمني كاملاً.";
 "This job can't be cancelled. It will finish on its own." = "لا يمكن إلغاء هذه المهمة. ستنتهي من تلقاء نفسها.";

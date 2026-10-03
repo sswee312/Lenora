@@ -457,7 +457,7 @@ extension ToolExecutor {
         return .ok("Generation started. Placeholder asset ID: \(placeholderId). Model: \(model.displayName), \(model.category.label)\(sourceNote). Place it with add_clips.")
     }
 
-    func upscaleMedia(_ editor: EditorViewModel, _ args: [String: Any]) throws -> ToolResult {
+    func upscaleMedia(_ editor: EditorViewModel, _ args: [String: Any]) async throws -> ToolResult {
         let mediaRef = try args.requireString("mediaRef")
         let asset = try asset(mediaRef, editor: editor)
         guard asset.type == .video || asset.type == .image else {
@@ -490,6 +490,10 @@ extension ToolExecutor {
 
         let settings = try resolvedUpscaleSettings(args["settings"], model: model, source: asset)
         let trimmed = try trimmedSource(args, editor: editor, source: asset)
+        if let refusal = await EditSubmitter.upscaleRefusal(asset: asset, modelId: model.id, editor: editor) {
+            throw ToolError(refusal.toolMessage)
+        }
+        guard editor.mediaAssetsById[asset.id] === asset else { throw ToolError(MediaEditRefusal.sourceMissing.toolMessage) }
         guard let placeholderId = EditSubmitter.submitUpscale(
             asset: asset, model: model, editor: editor, settings: settings, trimmedSource: trimmed
         ) else {
@@ -584,7 +588,7 @@ extension ToolExecutor {
                 .map { Self.upscaleModelInfo($0) }
         }
         if filter == nil || filter == "transform" {
-            out += ModelCatalog.shared.models(ofKind: EditSubmitter.removeBackgroundKind)
+            out += ModelCatalog.shared.models(ofKind: MediaEditRequest.removeBackground.kind)
                 .map { Self.transformModelInfo($0) }
         }
         let body: [String: Any] = [

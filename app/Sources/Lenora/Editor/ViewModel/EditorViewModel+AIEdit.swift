@@ -78,7 +78,7 @@ extension EditorViewModel {
 
     func removeBackground(of asset: MediaAsset) {
         Task {
-            if case .refused(let refusal) = await EditSubmitter.submitRemoveBackground(asset: asset, editor: self) {
+            if case .refused(let refusal) = await EditSubmitter.submitEdit(.removeBackground, asset: asset, editor: self) {
                 mediaPanelToast = MediaPanelToast(message: refusal.userMessage, kind: .warning)
             }
         }

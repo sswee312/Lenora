@@ -8,7 +8,7 @@ extension ToolExecutor {
             throw ToolError("Unsupported operation '\(operation)'. Supported: removeBackground")
         }
         let source = try asset(mediaRef, editor: editor)
-        switch await EditSubmitter.submitRemoveBackground(asset: source, editor: editor) {
+        switch await EditSubmitter.submitEdit(.removeBackground, asset: source, editor: editor) {
         case .refused(let refusal):
             throw ToolError(refusal.toolMessage)
         case .started(let placeholderId, let estimate):

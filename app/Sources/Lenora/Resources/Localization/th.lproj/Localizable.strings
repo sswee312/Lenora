@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ ไม่รองรับประเภทมีเดียนี้";
 "%@ exported with %lld warnings." = "ส่งออก %@ แล้ว มีคำเตือน %lld รายการ";
 "%@ exported with 1 warning." = "ส่งออก %@ แล้ว มีคำเตือน 1 รายการ";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "ไม่รองรับรูปภาพ %@ ใช้ PNG, JPEG, WebP, HEIC หรือ TIFF";
+"%@ files aren't supported by this edit." = "การแก้ไขนี้ไม่รองรับไฟล์ %@";
 "%@ is not a valid URL." = "%@ ไม่ใช่ URL ที่ถูกต้อง";
 "%@ is ready." = "%@ พร้อมแล้ว";
 "%@ model not available" = "โมเดล %@ ไม่พร้อมใช้งาน";
@@ -386,6 +386,7 @@
 "Generation in progress" = "กำลังสร้าง";
 "Generation panel" = "แผงการสร้าง";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "การสร้างทำงานบนแบ็กเอนด์ Lenora ของคุณ โทเค็นจะเก็บไว้ในพวงกุญแจของ macOS";
+"Generative Fill" = "เติมแบบสร้างสรรค์";
 "Get Anthropic API key" = "รับคีย์ API ของ Anthropic";
 "Get OpenAI API key" = "รับคีย์ API ของ OpenAI";
 "Get Started" = "เริ่มต้นใช้งาน";
@@ -559,7 +560,6 @@
 "No audio" = "ไม่มีเสียง";
 "No audio selected." = "ยังไม่ได้เลือกเสียง";
 "No beats detected." = "ไม่พบจังหวะ";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "ไม่มีแบ็กเอนด์ที่เชื่อมต่อซึ่งลบพื้นหลังได้ เปิด การตั้งค่า → แบ็กเอนด์";
 "No conversations yet" = "ยังไม่มีการสนทนา";
 "No exports yet" = "ยังไม่มีการส่งออก";
 "No images" = "ไม่มีภาพ";
@@ -652,6 +652,7 @@
 "Razor (C)" = "มีดตัด (C)";
 "Razor Tool" = "เครื่องมือมีดตัด";
 "Reasoning effort" = "ความพยายามในการให้เหตุผล";
+"Recolor" = "เปลี่ยนสี";
 "Redetect Beats" = "ตรวจจับจังหวะอีกครั้ง";
 "Redo" = "ทำอีกครั้ง";
 "Redo (⇧⌘Z)" = "ทำอีกครั้ง (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "เปลี่ยนชื่อแทร็ก";
 "Rendering" = "กำลังเรนเดอร์";
 "Rendering…" = "กำลังเรนเดอร์…";
+"Replace Background" = "แทนที่พื้นหลัง";
 "Replace clip source" = "แทนที่ต้นทางคลิป";
+"Replace" = "แทนที่";
 "Replacement Audio" = "เสียงแทนที่";
 "Rerun" = "เรียกใช้อีกครั้ง";
 "Reset All" = "รีเซ็ตทั้งหมด";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "ความละเอียดต้องไม่เกิน 8192 พิกเซลในแต่ละด้าน";
 "Resolved" = "แก้ไขแล้ว";
 "Restart Lenora" = "เริ่มต้น Lenora ใหม่";
+"Restore" = "กู้คืน";
 "Retry" = "ลองอีกครั้ง";
 "Retry Download" = "ดาวน์โหลดอีกครั้ง";
 "Reveal in Finder" = "แสดงใน Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "เริ่มเซิร์ฟเวอร์ MCP ไม่ได้ ตรวจสอบพอร์ตแล้วลองอีกครั้ง";
 "The MCP token is unavailable. Check Keychain access, then try again." = "ไม่สามารถใช้โทเค็น MCP ได้ ตรวจสอบสิทธิ์เข้าถึงพวงกุญแจ แล้วลองอีกครั้ง";
 "The clip you're adding has different settings than the current project." = "คลิปที่คุณกำลังเพิ่มมีการตั้งค่าต่างจากโปรเจ็กต์ปัจจุบัน";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "แบ็กเอนด์ที่เชื่อมต่อไม่มีการแก้ไขนี้ เปิดการตั้งค่า → แบ็กเอนด์";
 "The export" = "รายการส่งออก";
-"The image is larger than %@." = "รูปภาพมีขนาดใหญ่กว่า %@";
+"The file is larger than %@." = "ไฟล์มีขนาดใหญ่กว่า %@";
+"The image is larger than %lld pixels in total." = "ภาพมีจำนวนพิกเซลรวมมากกว่า %lld";
+"The image size isn't known yet. Try again in a moment." = "ยังไม่ทราบขนาดภาพ ลองอีกครั้งในอีกสักครู่";
 "The job already finished." = "งานเสร็จสิ้นแล้ว";
 "The job finished without a result." = "งานสิ้นสุดโดยไม่มีผลลัพธ์";
 "The marker comment changed while you were editing. Review it and try again." = "ความคิดเห็นของมาร์กเกอร์เปลี่ยนระหว่างที่คุณแก้ไข ตรวจทานแล้วลองอีกครั้ง";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "การตั้งค่าไทม์ไลน์เปลี่ยนไป ปิดชีตนี้แล้วลองอีกครั้ง";
 "Theme" = "ธีม";
 "This build includes no skills." = "บิลด์นี้ไม่มีสกิล";
+"This edit works on images only." = "การแก้ไขนี้ใช้ได้กับภาพเท่านั้น";
+"This edit works on videos only." = "การแก้ไขนี้ใช้ได้กับวิดีโอเท่านั้น";
 "This is where all your footage and assets live." = "ที่นี่คือที่เก็บฟุตเทจและแอสเซ็ตทั้งหมดของคุณ";
 "This is your preview panel to play a selected media or the whole timeline." = "นี่คือแผงตัวอย่างสำหรับเล่นมีเดียที่เลือกหรือทั้งไทม์ไลน์";
 "This job can't be cancelled. It will finish on its own." = "ไม่สามารถยกเลิกงานนี้ได้ งานจะเสร็จสิ้นเอง";

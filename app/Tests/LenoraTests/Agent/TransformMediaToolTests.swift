@@ -35,7 +35,7 @@ struct TransformMediaToolTests {
             byteCount: 10_485_761, provider: provider, catalog: EditorTestFixture.connectedCatalog()
         )
         defer { fixture.cleanup() }
-        let outcome = await EditSubmitter.submitRemoveBackground(asset: fixture.image, editor: fixture.editor)
+        let outcome = await EditSubmitter.submitEdit(.removeBackground, asset: fixture.image, editor: fixture.editor)
         #expect(outcome == .refused(.tooLarge(maxBytes: 10_485_760)))
         #expect(fixture.editor.mediaAssets.count == 1)
         #expect(await provider.uploads.isEmpty)
@@ -44,7 +44,7 @@ struct TransformMediaToolTests {
     @Test func refusesUnsupportedType() async throws {
         let fixture = try await EditorTestFixture.withImage(fileExtension: "gif", catalog: EditorTestFixture.connectedCatalog())
         defer { fixture.cleanup() }
-        let outcome = await EditSubmitter.submitRemoveBackground(asset: fixture.image, editor: fixture.editor)
+        let outcome = await EditSubmitter.submitEdit(.removeBackground, asset: fixture.image, editor: fixture.editor)
         #expect(outcome == .refused(.unsupportedType("image/gif")))
         #expect(fixture.editor.mediaAssets.count == 1)
     }
@@ -53,13 +53,13 @@ struct TransformMediaToolTests {
         let fixture = try await EditorTestFixture.withVideo(catalog: EditorTestFixture.connectedCatalog())
         defer { fixture.cleanup() }
         let video = try #require(fixture.video)
-        #expect(await EditSubmitter.submitRemoveBackground(asset: video, editor: fixture.editor) == .refused(.notAnImage))
+        #expect(await EditSubmitter.submitEdit(.removeBackground, asset: video, editor: fixture.editor) == .refused(.wrongMediaType(.image)))
     }
 
     @Test func refusesWhenBackendLacksTheOperation() async throws {
         let fixture = try await EditorTestFixture.withImage()
         defer { fixture.cleanup() }
-        #expect(await EditSubmitter.submitRemoveBackground(asset: fixture.image, editor: fixture.editor) == .refused(.unavailable))
+        #expect(await EditSubmitter.submitEdit(.removeBackground, asset: fixture.image, editor: fixture.editor) == .refused(.unavailable(kind: "image.removeBackground")))
     }
 
     @Test func startReturnsStructuredReceipt() async throws {
@@ -88,7 +88,7 @@ struct TransformMediaToolTests {
             catalog: EditorTestFixture.connectedCatalog()
         )
         defer { fixture.cleanup() }
-        guard case .started(let id, _) = await EditSubmitter.submitRemoveBackground(asset: fixture.image, editor: fixture.editor) else {
+        guard case .started(let id, _) = await EditSubmitter.submitEdit(.removeBackground, asset: fixture.image, editor: fixture.editor) else {
             Issue.record("expected the job to start"); return
         }
         let placeholder = try #require(fixture.editor.mediaAssets.first { $0.id == id })
@@ -109,7 +109,7 @@ struct TransformMediaToolTests {
         )
         defer { fixture.cleanup() }
         fixture.editor.remoteDownloadFetch = { _ in throw URLError(.notConnectedToInternet) }
-        guard case .started(let id, _) = await EditSubmitter.submitRemoveBackground(asset: fixture.image, editor: fixture.editor) else {
+        guard case .started(let id, _) = await EditSubmitter.submitEdit(.removeBackground, asset: fixture.image, editor: fixture.editor) else {
             Issue.record("expected the job to start"); return
         }
         let placeholder = try #require(fixture.editor.mediaAssets.first { $0.id == id })
@@ -117,8 +117,33 @@ struct TransformMediaToolTests {
         #expect(!fixture.undoManager.canUndo)
     }
 
+    @Test func unadvertisedOpIsRefused() async throws {
+        let fixture = try await EditorTestFixture.withImage(catalog: EditorTestFixture.connectedCatalog())
+        defer { fixture.cleanup() }
+        #expect(await EditSubmitter.submitEdit(.edit(.restore), asset: fixture.image, editor: fixture.editor) == .refused(.unavailable(kind: "image.edit")))
+    }
+
+    @Test func upscaleRefusesTooManyPixelsBeforeSubmitting() async throws {
+        let fixture = try await EditorTestFixture.withImage(
+            width: 2049, height: 2048, catalog: EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")
+        )
+        defer { fixture.cleanup() }
+        let refusal = await EditSubmitter.upscaleRefusal(asset: fixture.image, modelId: "cloudinary/upscale", editor: fixture.editor)
+        #expect(refusal == .tooManyPixels(maxPixels: 4_194_304))
+        #expect(fixture.editor.mediaAssets.count == 1)
+        #expect(!fixture.undoManager.canUndo)
+    }
+
+    @Test func upscaleAcceptsTheLargestImage() async throws {
+        let fixture = try await EditorTestFixture.withImage(
+            width: 2048, height: 2048, catalog: EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")
+        )
+        defer { fixture.cleanup() }
+        #expect(await EditSubmitter.upscaleRefusal(asset: fixture.image, modelId: "cloudinary/upscale", editor: fixture.editor) == nil)
+    }
+
     @Test func listModelsDescribesBackgroundRemovalModel() throws {
-        let model = try #require(EditorTestFixture.connectedCatalog().models(ofKind: EditSubmitter.removeBackgroundKind).first)
+        let model = try #require(EditorTestFixture.connectedCatalog().models(ofKind: "image.removeBackground").first)
         let info = ToolExecutor.transformModelInfo(model)
         #expect(info["type"] as? String == "transform")
         #expect(info["operation"] as? String == "removeBackground")

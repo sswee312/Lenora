@@ -6,6 +6,8 @@ enum GenerationJobParams: Sendable {
     case audio(AudioGenerationParams)
     case upscale(UpscaleGenerationParams)
     case removeBackground
+    case edit(ImageEditParams)
+    case reframe(VideoReframeParams)
 }
 
 extension GenerationJobParams {
@@ -29,6 +31,10 @@ extension GenerationJobParams {
             return (uploaded.map { .assetRef($0) }, p)
         case .removeBackground:
             return (uploaded.map { .assetRef($0) }, EmptyParams())
+        case .edit(let params):
+            return (uploaded.map { .assetRef($0) }, params)
+        case .reframe(let params):
+            return (uploaded.map { .assetRef($0) }, params)
         }
     }
 }

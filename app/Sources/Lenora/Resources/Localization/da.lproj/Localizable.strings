@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ understøtter ikke denne medietype.";
 "%@ exported with %lld warnings." = "%@ eksporteret med %lld advarsler.";
 "%@ exported with 1 warning." = "%@ eksporteret med 1 advarsel.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-billeder understøttes ikke. Brug PNG, JPEG, WebP, HEIC eller TIFF.";
+"%@ files aren't supported by this edit." = "%@-filer understøttes ikke af denne redigering.";
 "%@ is not a valid URL." = "%@ er ikke en gyldig URL.";
 "%@ is ready." = "%@ er klar.";
 "%@ model not available" = "%@-model ikke tilgængelig";
@@ -386,6 +386,7 @@
 "Generation in progress" = "Generering i gang";
 "Generation panel" = "Genereringspanel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generering kører på din Lenora-backend. Tokenet gemmes i macOS-nøgleringen.";
+"Generative Fill" = "Generativ udfyldning";
 "Get Anthropic API key" = "Hent Anthropic API-nøgle";
 "Get OpenAI API key" = "Hent OpenAI API-nøgle";
 "Get Started" = "Kom i gang";
@@ -559,7 +560,6 @@
 "No audio" = "Ingen lyd";
 "No audio selected." = "Ingen lyd valgt.";
 "No beats detected." = "Ingen takter registreret.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Ingen tilsluttet backend kan fjerne baggrunde. Åbn Indstillinger → Backend.";
 "No conversations yet" = "Ingen samtaler endnu";
 "No exports yet" = "Ingen eksporter endnu";
 "No images" = "Ingen billeder";
@@ -652,6 +652,7 @@
 "Razor (C)" = "Barberkniv (C)";
 "Razor Tool" = "Barberknivsværktøj";
 "Reasoning effort" = "Ræsonnementsindsats";
+"Recolor" = "Farv om";
 "Redetect Beats" = "Registrer takter igen";
 "Redo" = "Gentag";
 "Redo (⇧⌘Z)" = "Gentag (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "Omdøb spor";
 "Rendering" = "Renderer";
 "Rendering…" = "Renderer…";
+"Replace Background" = "Erstat baggrund";
 "Replace clip source" = "Erstat klippets kilde";
+"Replace" = "Erstat";
 "Replacement Audio" = "Erstatningslyd";
 "Rerun" = "Kør igen";
 "Reset All" = "Nulstil alle";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Opløsningen må ikke overstige 8192 pixels på nogen kant.";
 "Resolved" = "Løst";
 "Restart Lenora" = "Genstart Lenora";
+"Restore" = "Gendan";
 "Retry" = "Prøv igen";
 "Retry Download" = "Prøv at hente igen";
 "Reveal in Finder" = "Vis i Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "MCP-serveren kunne ikke starte. Tjek porten, og prøv igen.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-tokenet er ikke tilgængeligt. Tjek adgangen til nøgleringen, og prøv igen.";
 "The clip you're adding has different settings than the current project." = "Klippet, du tilføjer, har andre indstillinger end det aktuelle projekt.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Den forbundne backend tilbyder ikke denne redigering. Åbn Indstillinger → Backend.";
 "The export" = "Eksporten";
-"The image is larger than %@." = "Billedet er større end %@.";
+"The file is larger than %@." = "Filen er større end %@.";
+"The image is larger than %lld pixels in total." = "Billedet er større end %lld pixels i alt.";
+"The image size isn't known yet. Try again in a moment." = "Billedets størrelse er ikke kendt endnu. Prøv igen om et øjeblik.";
 "The job already finished." = "Jobbet er allerede afsluttet.";
 "The job finished without a result." = "Jobbet blev afsluttet uden et resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markørkommentaren blev ændret, mens du redigerede. Gennemgå den, og prøv igen.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeindstillingerne blev ændret. Luk dette ark, og prøv igen.";
 "Theme" = "Tema";
 "This build includes no skills." = "Denne version indeholder ingen færdigheder.";
+"This edit works on images only." = "Denne redigering virker kun på billeder.";
+"This edit works on videos only." = "Denne redigering virker kun på videoer.";
 "This is where all your footage and assets live." = "Her ligger alle dine optagelser og medier.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dette er dit forhåndsvisningspanel til at afspille et valgt medie eller hele tidslinjen.";
 "This job can't be cancelled. It will finish on its own." = "Dette job kan ikke annulleres. Det afsluttes af sig selv.";

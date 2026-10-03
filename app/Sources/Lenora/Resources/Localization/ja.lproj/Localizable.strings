@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@はこのメディア形式に対応していません。";
 "%@ exported with %lld warnings." = "%@は%lld件の警告付きで書き出されました。";
 "%@ exported with 1 warning." = "%@は1件の警告付きで書き出されました。";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@画像には対応していません。PNG、JPEG、WebP、HEIC、またはTIFFを使用してください。";
+"%@ files aren't supported by this edit." = "この編集は %@ ファイルに対応していません。";
 "%@ is not a valid URL." = "%@は有効なURLではありません。";
 "%@ is ready." = "%@の準備ができました。";
 "%@ model not available" = "%@モデルは利用できません";
@@ -386,6 +386,7 @@
 "Generation in progress" = "生成中";
 "Generation panel" = "生成パネル";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "生成はLenoraバックエンドで実行されます。トークンはmacOSキーチェーンに保存されます。";
+"Generative Fill" = "生成塗りつぶし";
 "Get Anthropic API key" = "Anthropic APIキーを取得";
 "Get OpenAI API key" = "OpenAI APIキーを取得";
 "Get Started" = "はじめる";
@@ -559,7 +560,6 @@
 "No audio" = "オーディオなし";
 "No audio selected." = "オーディオが選択されていません。";
 "No beats detected." = "ビートが検出されませんでした。";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "背景を削除できるバックエンドが接続されていません。設定 → バックエンドを開いてください。";
 "No conversations yet" = "チャットはまだありません";
 "No exports yet" = "書き出しはまだありません";
 "No images" = "画像がありません";
@@ -652,6 +652,7 @@
 "Razor (C)" = "レーザー（C）";
 "Razor Tool" = "レーザーツール";
 "Reasoning effort" = "推論の強度";
+"Recolor" = "色を変更";
 "Redetect Beats" = "ビートを再検出";
 "Redo" = "やり直す";
 "Redo (⇧⌘Z)" = "やり直す（⇧⌘Z）";
@@ -690,7 +691,9 @@
 "Rename Track" = "トラック名を変更";
 "Rendering" = "レンダリング中";
 "Rendering…" = "レンダリング中…";
+"Replace Background" = "背景を置き換え";
 "Replace clip source" = "クリップのソースを差し替え";
+"Replace" = "置き換え";
 "Replacement Audio" = "差し替えオーディオ";
 "Rerun" = "再実行";
 "Reset All" = "すべてリセット";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "解像度はどちらの辺も8192ピクセル以下にする必要があります。";
 "Resolved" = "解決済み";
 "Restart Lenora" = "Lenoraを再起動";
+"Restore" = "修復";
 "Retry" = "再試行";
 "Retry Download" = "ダウンロードを再試行";
 "Reveal in Finder" = "Finderに表示";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "MCPサーバを起動できませんでした。ポートを確認して、もう一度お試しください。";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCPトークンを利用できません。キーチェーンへのアクセスを確認して、もう一度お試しください。";
 "The clip you're adding has different settings than the current project." = "追加しようとしているクリップの設定が現在のプロジェクトと異なります。";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "接続中のバックエンドはこの編集を提供していません。設定 → バックエンドを開いてください。";
 "The export" = "書き出し";
-"The image is larger than %@." = "画像のサイズが%@を超えています。";
+"The file is larger than %@." = "ファイルが %@ を超えています。";
+"The image is larger than %lld pixels in total." = "画像の総ピクセル数が %lld を超えています。";
+"The image size isn't known yet. Try again in a moment." = "画像サイズがまだ不明です。少し待ってからもう一度お試しください。";
 "The job already finished." = "ジョブはすでに完了しています。";
 "The job finished without a result." = "ジョブは結果なしで終了しました。";
 "The marker comment changed while you were editing. Review it and try again." = "編集中にマーカーのコメントが変更されました。内容を確認してもう一度お試しください。";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "タイムライン設定が変更されました。このシートを閉じてもう一度お試しください。";
 "Theme" = "テーマ";
 "This build includes no skills." = "このビルドにはスキルが含まれていません。";
+"This edit works on images only." = "この編集は画像専用です。";
+"This edit works on videos only." = "この編集はビデオ専用です。";
 "This is where all your footage and assets live." = "すべての映像素材とアセットはここに表示されます。";
 "This is your preview panel to play a selected media or the whole timeline." = "これは選択したメディアまたはタイムライン全体を再生するプレビューパネルです。";
 "This job can't be cancelled. It will finish on its own." = "このジョブはキャンセルできません。自動的に完了します。";

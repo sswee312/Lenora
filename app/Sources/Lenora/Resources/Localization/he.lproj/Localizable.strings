@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "⁨%@⁩ אינו תומך בסוג מדיה זה.";
 "%@ exported with %lld warnings." = "⁨%@⁩ יוצא עם ⁨%lld⁩ אזהרות.";
 "%@ exported with 1 warning." = "⁨%@⁩ יוצא עם אזהרה אחת.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "תמונות %@ אינן נתמכות. השתמש ב-PNG‏, JPEG‏, WebP‏, HEIC או TIFF.";
+"%@ files aren't supported by this edit." = "קובצי %@ אינם נתמכים בעריכה זו.";
 "%@ is not a valid URL." = "⁨%@⁩ אינו URL תקין.";
 "%@ is ready." = "⁨%@⁩ מוכן.";
 "%@ model not available" = "המודל ⁨%@⁩ אינו זמין";
@@ -386,6 +386,7 @@
 "Generation in progress" = "הפקה בתהליך";
 "Generation panel" = "לוח הפקה";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "היצירה מתבצעת ב-Backend של Lenora שלך. הטוקן נשמר בצרור המפתחות של macOS.";
+"Generative Fill" = "מילוי גנרטיבי";
 "Get Anthropic API key" = "קבל מפתח API של Anthropic";
 "Get OpenAI API key" = "קבל מפתח API של OpenAI";
 "Get Started" = "התחל";
@@ -559,7 +560,6 @@
 "No audio" = "אין שמע";
 "No audio selected." = "לא נבחר שמע.";
 "No beats detected." = "לא זוהו פעימות.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "אין קצה אחורי מחובר שיכול להסיר רקעים. פתח הגדרות ← Backend.";
 "No conversations yet" = "אין שיחות עדיין";
 "No exports yet" = "אין ייצואים עדיין";
 "No images" = "אין תמונות";
@@ -652,6 +652,7 @@
 "Razor (C)" = "סכין ⁨(C)⁩";
 "Razor Tool" = "כלי סכין";
 "Reasoning effort" = "מאמץ חשיבה";
+"Recolor" = "צביעה מחדש";
 "Redetect Beats" = "זהה פעימות מחדש";
 "Redo" = "בצע שוב";
 "Redo (⇧⌘Z)" = "בצע שוב ⁨(⇧⌘Z)⁩";
@@ -690,7 +691,9 @@
 "Rename Track" = "שנה שם רצועה";
 "Rendering" = "מרנדר";
 "Rendering…" = "מרנדר…";
+"Replace Background" = "החלפת רקע";
 "Replace clip source" = "החלף מקור קליפ";
+"Replace" = "החלפה";
 "Replacement Audio" = "שמע חלופי";
 "Rerun" = "הפעל שוב";
 "Reset All" = "אפס הכול";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "הרזולוציה לא תעלה על ⁨8192⁩ פיקסלים באף צלע.";
 "Resolved" = "נפתר";
 "Restart Lenora" = "הפעל מחדש את Lenora";
+"Restore" = "שחזור";
 "Retry" = "נסה שוב";
 "Retry Download" = "נסה הורדה שוב";
 "Reveal in Finder" = "הצג ב-Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "לא ניתן היה להפעיל את שרת ה-MCP. בדוק את הפורט ונסה שוב.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "טוקן ה-MCP אינו זמין. בדוק את הגישה לצרור המפתחות ונסה שוב.";
 "The clip you're adding has different settings than the current project." = "לקליפ שאתה מוסיף יש הגדרות שונות מאלה של הפרויקט הנוכחי.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "השרת המחובר אינו מציע עריכה זו. פתח הגדרות ← שרת.";
 "The export" = "הייצוא";
-"The image is larger than %@." = "התמונה גדולה מ-%@.";
+"The file is larger than %@." = "הקובץ גדול מ-%@.";
+"The image is larger than %lld pixels in total." = "התמונה גדולה מ-%lld פיקסלים בסך הכול.";
+"The image size isn't known yet. Try again in a moment." = "גודל התמונה עדיין לא ידוע. נסה שוב בעוד רגע.";
 "The job already finished." = "המשימה כבר הסתיימה.";
 "The job finished without a result." = "המשימה הסתיימה ללא תוצאה.";
 "The marker comment changed while you were editing. Review it and try again." = "הערת הסמן השתנתה בזמן העריכה. סקור אותה ונסה שוב.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "הגדרות ציר הזמן השתנו. סגור גיליון זה ונסה שוב.";
 "Theme" = "ערכת נושא";
 "This build includes no skills." = "גרסה זו אינה כוללת מיומנויות.";
+"This edit works on images only." = "עריכה זו פועלת על תמונות בלבד.";
+"This edit works on videos only." = "עריכה זו פועלת על סרטונים בלבד.";
 "This is where all your footage and assets live." = "כאן נמצאים כל הצילומים והנכסים.";
 "This is your preview panel to play a selected media or the whole timeline." = "זה לוח התצוגה המקדימה לניגון מדיה שנבחרה או ציר הזמן כולו.";
 "This job can't be cancelled. It will finish on its own." = "לא ניתן לבטל משימה זו. היא תסתיים מעצמה.";

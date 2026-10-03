@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ ondersteunt dit mediatype niet.";
 "%@ exported with %lld warnings." = "%@ geëxporteerd met %lld waarschuwingen.";
 "%@ exported with 1 warning." = "%@ geëxporteerd met 1 waarschuwing.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-afbeeldingen worden niet ondersteund. Gebruik PNG, JPEG, WebP, HEIC of TIFF.";
+"%@ files aren't supported by this edit." = "%@-bestanden worden niet ondersteund door deze bewerking.";
 "%@ is not a valid URL." = "%@ is geen geldige URL.";
 "%@ is ready." = "%@ is gereed.";
 "%@ model not available" = "Model %@ niet beschikbaar";
@@ -386,6 +386,7 @@
 "Generation in progress" = "Generatie bezig";
 "Generation panel" = "Generatiepaneel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generatie draait op uw Lenora-backend. Het token wordt bewaard in de macOS-sleutelhanger.";
+"Generative Fill" = "Generatieve opvulling";
 "Get Anthropic API key" = "Haal Anthropic API-sleutel op";
 "Get OpenAI API key" = "Haal OpenAI API-sleutel op";
 "Get Started" = "Aan de slag";
@@ -559,7 +560,6 @@
 "No audio" = "Geen audio";
 "No audio selected." = "Geen audio geselecteerd.";
 "No beats detected." = "Geen beats gedetecteerd.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Geen verbonden backend kan achtergronden verwijderen. Open Instellingen → Backend.";
 "No conversations yet" = "Nog geen gesprekken";
 "No exports yet" = "Nog geen exports";
 "No images" = "Geen afbeeldingen";
@@ -652,6 +652,7 @@
 "Razor (C)" = "Mes (C)";
 "Razor Tool" = "Mesgereedschap";
 "Reasoning effort" = "Redeneerinspanning";
+"Recolor" = "Opnieuw kleuren";
 "Redetect Beats" = "Detecteer beats opnieuw";
 "Redo" = "Opnieuw";
 "Redo (⇧⌘Z)" = "Opnieuw (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "Wijzig Tracknaam";
 "Rendering" = "Renderen";
 "Rendering…" = "Renderen…";
+"Replace Background" = "Achtergrond vervangen";
 "Replace clip source" = "Vervang clipbron";
+"Replace" = "Vervangen";
 "Replacement Audio" = "Vervangende audio";
 "Rerun" = "Voer opnieuw uit";
 "Reset All" = "Zet alles terug";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Resolutie mag aan geen enkele zijde groter zijn dan 8192 pixels.";
 "Resolved" = "Opgelost";
 "Restart Lenora" = "Herstart Lenora";
+"Restore" = "Herstellen";
 "Retry" = "Probeer opnieuw";
 "Retry Download" = "Download opnieuw";
 "Reveal in Finder" = "Toon in Finder";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "De MCP-server kan niet worden gestart. Controleer de poort en probeer het opnieuw.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Het MCP-token is niet beschikbaar. Controleer de toegang tot de sleutelhanger en probeer het opnieuw.";
 "The clip you're adding has different settings than the current project." = "De clip die u toevoegt heeft andere instellingen dan het huidige project.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "De verbonden backend biedt deze bewerking niet aan. Open Instellingen → Backend.";
 "The export" = "De export";
-"The image is larger than %@." = "De afbeelding is groter dan %@.";
+"The file is larger than %@." = "Het bestand is groter dan %@.";
+"The image is larger than %lld pixels in total." = "De afbeelding is in totaal groter dan %lld pixels.";
+"The image size isn't known yet. Try again in a moment." = "De afbeeldingsgrootte is nog niet bekend. Probeer het zo opnieuw.";
 "The job already finished." = "De taak is al voltooid.";
 "The job finished without a result." = "De taak is beëindigd zonder resultaat.";
 "The marker comment changed while you were editing. Review it and try again." = "De opmerking bij de markering is gewijzigd tijdens het bewerken. Beoordeel deze en probeer het opnieuw.";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "De Timeline-instellingen zijn gewijzigd. Sluit dit venster en probeer het opnieuw.";
 "Theme" = "Thema";
 "This build includes no skills." = "Deze build bevat geen skills.";
+"This edit works on images only." = "Deze bewerking werkt alleen op afbeeldingen.";
+"This edit works on videos only." = "Deze bewerking werkt alleen op video’s.";
 "This is where all your footage and assets live." = "Hier staan al uw beeldmateriaal en assets.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dit is uw voorvertoningspaneel om geselecteerde media of de hele Timeline af te spelen.";
 "This job can't be cancelled. It will finish on its own." = "Deze taak kan niet worden geannuleerd. Hij wordt vanzelf voltooid.";

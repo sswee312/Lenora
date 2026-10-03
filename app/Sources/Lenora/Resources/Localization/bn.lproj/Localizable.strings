@@ -5,7 +5,7 @@
 "%@ does not support this media type." = "%@ এই মিডিয়ার ধরন সাপোর্ট করে না।";
 "%@ exported with %lld warnings." = "%@, %lldটি সতর্কতাসহ এক্সপোর্ট হয়েছে।";
 "%@ exported with 1 warning." = "%@, ১টি সতর্কতাসহ এক্সপোর্ট হয়েছে।";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ ছবি সমর্থিত নয়। PNG, JPEG, WebP, HEIC বা TIFF ব্যবহার করুন।";
+"%@ files aren't supported by this edit." = "এই সম্পাদনায় %@ ফাইল সমর্থিত নয়।";
 "%@ is not a valid URL." = "%@ একটি বৈধ URL নয়।";
 "%@ is ready." = "%@ প্রস্তুত।";
 "%@ model not available" = "%@ মডেল পাওয়া যাচ্ছে না";
@@ -386,6 +386,7 @@
 "Generation in progress" = "জেনারেশন চলছে";
 "Generation panel" = "জেনারেশন প্যানেল";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "জেনারেশন আপনার Lenora ব্যাকএন্ডে চলে। টোকেন macOS Keychain-এ সেভ থাকে।";
+"Generative Fill" = "জেনারেটিভ ফিল";
 "Get Anthropic API key" = "Anthropic API কী নিন";
 "Get OpenAI API key" = "OpenAI API কী নিন";
 "Get Started" = "শুরু করুন";
@@ -559,7 +560,6 @@
 "No audio" = "কোনো অডিও নেই";
 "No audio selected." = "কোনো অডিও সিলেক্ট করা হয়নি।";
 "No beats detected." = "কোনো বিট শনাক্ত হয়নি।";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "কোনো সংযুক্ত ব্যাকএন্ড ব্যাকগ্রাউন্ড সরাতে পারে না। সেটিংস → ব্যাকএন্ড খুলুন।";
 "No conversations yet" = "এখনও কোনো কথোপকথন নেই";
 "No exports yet" = "এখনও কোনো এক্সপোর্ট নেই";
 "No images" = "কোনো ইমেজ নেই";
@@ -652,6 +652,7 @@
 "Razor (C)" = "রেজর (C)";
 "Razor Tool" = "রেজর টুল";
 "Reasoning effort" = "রিজনিং এফর্ট";
+"Recolor" = "পুনরায় রং করুন";
 "Redetect Beats" = "বিট আবার শনাক্ত করুন";
 "Redo" = "রিডু";
 "Redo (⇧⌘Z)" = "রিডু (⇧⌘Z)";
@@ -690,7 +691,9 @@
 "Rename Track" = "ট্র্যাকের নাম বদলান";
 "Rendering" = "রেন্ডার হচ্ছে";
 "Rendering…" = "রেন্ডার হচ্ছে…";
+"Replace Background" = "পটভূমি প্রতিস্থাপন";
 "Replace clip source" = "ক্লিপের সোর্স বদলান";
+"Replace" = "প্রতিস্থাপন";
 "Replacement Audio" = "রিপ্লেসমেন্ট অডিও";
 "Rerun" = "আবার চালান";
 "Reset All" = "সব রিসেট করুন";
@@ -701,6 +704,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "কোনো দিকেই রেজোলিউশন ৮১৯২ পিক্সেলের বেশি হতে পারবে না।";
 "Resolved" = "সমাধান";
 "Restart Lenora" = "Lenora রিস্টার্ট করুন";
+"Restore" = "পুনরুদ্ধার";
 "Retry" = "আবার চেষ্টা করুন";
 "Retry Download" = "ডাউনলোড আবার চেষ্টা করুন";
 "Reveal in Finder" = "Finder-এ দেখান";
@@ -845,8 +849,11 @@
 "The MCP server could not start. Check the port, then try again." = "MCP সার্ভার চালু করা যায়নি। পোর্ট পরীক্ষা করে আবার চেষ্টা করুন।";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP টোকেন পাওয়া যাচ্ছে না। Keychain অ্যাক্সেস পরীক্ষা করে আবার চেষ্টা করুন।";
 "The clip you're adding has different settings than the current project." = "আপনি যে ক্লিপ যোগ করছেন তার সেটিংস বর্তমান প্রজেক্ট থেকে আলাদা।";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "সংযুক্ত ব্যাকএন্ড এই সম্পাদনা সরবরাহ করে না। সেটিংস → ব্যাকএন্ড খুলুন।";
 "The export" = "এক্সপোর্টটি";
-"The image is larger than %@." = "ছবিটি %@ এর চেয়ে বড়।";
+"The file is larger than %@." = "ফাইলটি %@-এর চেয়ে বড়।";
+"The image is larger than %lld pixels in total." = "ছবিটি মোট %lld পিক্সেলের চেয়ে বড়।";
+"The image size isn't known yet. Try again in a moment." = "ছবির আকার এখনও জানা নেই। একটু পরে আবার চেষ্টা করুন।";
 "The job already finished." = "কাজটি ইতিমধ্যে শেষ হয়েছে।";
 "The job finished without a result." = "কাজটি কোনো ফলাফল ছাড়াই শেষ হয়েছে।";
 "The marker comment changed while you were editing. Review it and try again." = "এডিট করার সময় মার্কার কমেন্ট বদলেছে। রিভিউ করে আবার চেষ্টা করুন।";
@@ -857,6 +864,8 @@
 "The timeline settings changed. Close this sheet and try again." = "টাইমলাইন সেটিংস বদলেছে। এই শিট বন্ধ করে আবার চেষ্টা করুন।";
 "Theme" = "থিম";
 "This build includes no skills." = "এই বিল্ডে কোনো স্কিল অন্তর্ভুক্ত নেই।";
+"This edit works on images only." = "এই সম্পাদনা শুধু ছবিতে কাজ করে।";
+"This edit works on videos only." = "এই সম্পাদনা শুধু ভিডিওতে কাজ করে।";
 "This is where all your footage and assets live." = "আপনার সব ফুটেজ ও অ্যাসেট এখানে থাকে।";
 "This is your preview panel to play a selected media or the whole timeline." = "এটি সিলেক্ট করা মিডিয়া বা পুরো টাইমলাইন প্লে করার প্রিভিউ প্যানেল।";
 "This job can't be cancelled. It will finish on its own." = "এই কাজটি বাতিল করা যাবে না। এটি নিজে থেকেই শেষ হবে।";
