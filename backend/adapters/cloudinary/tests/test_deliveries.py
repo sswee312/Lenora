@@ -58,6 +58,14 @@ def test_upscale_pixel_limit_and_estimate(width, height, ok, credits):
         assert info.value.code == "input_too_large"
 
 
+@pytest.mark.parametrize("width, height", [(None, 500), (500, None), (None, None), (0, 500), (500, -1)])
+def test_upscale_refuses_missing_or_nonpositive_dimensions(width, height):
+    request = job("image.upscale", "cloudinary/upscale")
+    with pytest.raises(ProblemError) as info:
+        run(lambda a: a.submit(request.model, request), mock=lambda r: admin(r, width=width, height=height))
+    assert info.value.code == "invalid_request"
+
+
 def test_missing_asset_is_invalid_request():
     request = job("image.upscale", "cloudinary/upscale")
     with pytest.raises(ProblemError) as info:

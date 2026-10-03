@@ -42,7 +42,9 @@ async def plan(api: CloudinaryAPI, job: JobRequest) -> tuple[str, Estimate]:
         transformation, estimate = edit_transformation(op), costs.credits(costs.EDIT[op.op])
     elif job.kind == "image.upscale":
         asset = await api.asset(ref)
-        pixels = (asset.width or 0) * (asset.height or 0)
+        if (asset.width or 0) <= 0 or (asset.height or 0) <= 0:
+            raise ProblemError("invalid_request", "Upscale needs an image with known dimensions.")
+        pixels = asset.width * asset.height
         if pixels > UPSCALE_MAX_PIXELS:
             raise ProblemError("input_too_large", f"Upscale accepts images up to {UPSCALE_MAX_PIXELS} pixels; this one has {pixels}.")
         transformation, estimate = "e_upscale", costs.upscale(pixels)
