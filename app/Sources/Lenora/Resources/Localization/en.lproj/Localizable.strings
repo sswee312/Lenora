@@ -927,6 +927,7 @@
 "This permanently removes %@." = "This permanently removes %@.";
 "This source can’t replace the clip." = "This source can’t replace the clip.";
 "This video allows teasers up to %@." = "This video allows teasers up to %@.";
+"This video is too short for a teaser." = "This video is too short for a teaser.";
 "This video was unpublished." = "This video was unpublished.";
 "Three-Stack" = "Three-Stack";
 "Three-Up" = "Three-Up";

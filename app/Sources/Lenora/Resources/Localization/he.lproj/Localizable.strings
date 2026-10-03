@@ -927,6 +927,7 @@
 "This permanently removes %@." = "פעולה זו מסירה את ⁨%@⁩ לצמיתות.";
 "This source can’t replace the clip." = "מקור זה אינו יכול להחליף את הקליפ.";
 "This video allows teasers up to %@." = "סרטון זה מאפשר טריילרים באורך של עד %@.";
+"This video is too short for a teaser." = "הסרטון קצר מדי לטריילר.";
 "This video was unpublished." = "פרסום הסרטון הזה בוטל.";
 "Three-Stack" = "שלוש ערימות";
 "Three-Up" = "שלושה לרוחב";

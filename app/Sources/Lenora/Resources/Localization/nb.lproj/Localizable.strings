@@ -927,6 +927,7 @@
 "This permanently removes %@." = "Dette fjerner %@ permanent.";
 "This source can’t replace the clip." = "Denne kilden kan ikke erstatte klippet.";
 "This video allows teasers up to %@." = "Denne videoen tillater teasere på opptil %@.";
+"This video is too short for a teaser." = "Denne videoen er for kort for en teaser.";
 "This video was unpublished." = "Denne videoen er avpublisert.";
 "Three-Stack" = "Tre stablet";
 "Three-Up" = "Tre ved siden av";

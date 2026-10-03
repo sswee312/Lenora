@@ -926,7 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Ця модель не може обмежити вихід до 60 FPS.";
 "This permanently removes %@." = "Це остаточно вилучає %@.";
 "This source can’t replace the clip." = "Це джерело не може замінити кліп.";
-"This video allows teasers up to %@." = "Для цього відео тизер може тривати не більше %@.";
+"This video allows teasers up to %@." = "Максимальна тривалість тизера для цього відео: %@.";
+"This video is too short for a teaser." = "Це відео закоротке для тизера.";
 "This video was unpublished." = "Публікацію цього відео знято.";
 "Three-Stack" = "Три стоси";
 "Three-Up" = "Три панелі";

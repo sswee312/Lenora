@@ -926,7 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Ten model nie może ograniczyć wyjścia do 60 FPS.";
 "This permanently removes %@." = "To trwale usuwa %@.";
 "This source can’t replace the clip." = "To źródło nie może zastąpić klipu.";
-"This video allows teasers up to %@." = "To wideo pozwala na zwiastuny o długości do %@.";
+"This video allows teasers up to %@." = "Maksymalna długość zwiastuna dla tego wideo: %@.";
+"This video is too short for a teaser." = "To wideo jest za krótkie na zwiastun.";
 "This video was unpublished." = "Publikacja tego wideo została cofnięta.";
 "Three-Stack" = "Trzy stosy";
 "Three-Up" = "Trzy panele";

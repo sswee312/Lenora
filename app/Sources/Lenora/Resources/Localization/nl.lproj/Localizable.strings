@@ -927,6 +927,7 @@
 "This permanently removes %@." = "Hiermee wordt %@ definitief verwijderd.";
 "This source can’t replace the clip." = "Deze bron kan de clip niet vervangen.";
 "This video allows teasers up to %@." = "Deze video staat teasers toe tot %@.";
+"This video is too short for a teaser." = "Deze video is te kort voor een teaser.";
 "This video was unpublished." = "Deze video is niet meer gepubliceerd.";
 "Three-Stack" = "Drie gestapeld";
 "Three-Up" = "Drie naast elkaar";

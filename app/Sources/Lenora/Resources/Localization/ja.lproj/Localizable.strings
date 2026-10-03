@@ -927,6 +927,7 @@
 "This permanently removes %@." = "%@を完全に削除します。";
 "This source can’t replace the clip." = "このソースではクリップを差し替えられません。";
 "This video allows teasers up to %@." = "この動画のティーザーは最長%@です。";
+"This video is too short for a teaser." = "この動画はティーザーを作成するには短すぎます。";
 "This video was unpublished." = "この動画の公開は取り消されました。";
 "Three-Stack" = "3スタック";
 "Three-Up" = "3分割";

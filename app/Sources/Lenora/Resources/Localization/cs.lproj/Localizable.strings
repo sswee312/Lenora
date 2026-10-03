@@ -926,7 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Tento model nemůže omezit výstup na 60 FPS.";
 "This permanently removes %@." = "Tímto se trvale odebere %@.";
 "This source can’t replace the clip." = "Tento zdroj nemůže klip nahradit.";
-"This video allows teasers up to %@." = "Toto video umožňuje upoutávky dlouhé nejvýše %@.";
+"This video allows teasers up to %@." = "Maximální délka upoutávky pro toto video: %@.";
+"This video is too short for a teaser." = "Toto video je na upoutávku příliš krátké.";
 "This video was unpublished." = "Publikování tohoto videa bylo zrušeno.";
 "Three-Stack" = "Tři pod sebou";
 "Three-Up" = "Tři vedle sebe";

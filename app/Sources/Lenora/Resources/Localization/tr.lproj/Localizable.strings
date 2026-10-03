@@ -927,6 +927,7 @@
 "This permanently removes %@." = "Bu işlem %@ öğesini kalıcı olarak kaldırır.";
 "This source can’t replace the clip." = "Bu kaynak klibin yerini alamaz.";
 "This video allows teasers up to %@." = "Bu video en fazla %@ uzunluğunda teaser'lara izin veriyor.";
+"This video is too short for a teaser." = "Bu video teaser için çok kısa.";
 "This video was unpublished." = "Bu videonun yayını kaldırıldı.";
 "Three-Stack" = "Üçlü Yığın";
 "Three-Up" = "Üçlü";

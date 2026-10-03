@@ -927,6 +927,7 @@
 "This permanently removes %@." = "Det här tar bort %@ permanent.";
 "This source can’t replace the clip." = "Den här källan kan inte ersätta klippet.";
 "This video allows teasers up to %@." = "Den här videon tillåter teasers på upp till %@.";
+"This video is too short for a teaser." = "Den här videon är för kort för en teaser.";
 "This video was unpublished." = "Den här videon har avpublicerats.";
 "Three-Stack" = "Trestapel";
 "Three-Up" = "Tre bredvid";

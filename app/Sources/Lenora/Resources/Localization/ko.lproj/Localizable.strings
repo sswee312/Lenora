@@ -927,6 +927,7 @@
 "This permanently removes %@." = "%@이(가) 영구적으로 제거됩니다.";
 "This source can’t replace the clip." = "이 소스로는 클립을 대체할 수 없습니다.";
 "This video allows teasers up to %@." = "이 동영상의 티저는 최대 %@까지 가능합니다.";
+"This video is too short for a teaser." = "이 동영상은 티저를 만들기에 너무 짧습니다.";
 "This video was unpublished." = "이 동영상의 게시가 취소되었습니다.";
 "Three-Stack" = "3스택";
 "Three-Up" = "3분할";

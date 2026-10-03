@@ -927,6 +927,7 @@
 "This permanently removes %@." = "Esto elimina %@ de forma permanente.";
 "This source can’t replace the clip." = "Este origen no puede reemplazar el clip.";
 "This video allows teasers up to %@." = "Este vídeo admite teasers de hasta %@.";
+"This video is too short for a teaser." = "Este vídeo es demasiado corto para un teaser.";
 "This video was unpublished." = "Se ha despublicado este vídeo.";
 "Three-Stack" = "Tres apilados";
 "Three-Up" = "Tres vistas";

@@ -927,6 +927,7 @@
 "This permanently removes %@." = "這將永久移除 %@。";
 "This source can’t replace the clip." = "此來源媒體無法替換該片段。";
 "This video allows teasers up to %@." = "此影片的預告片最長為 %@。";
+"This video is too short for a teaser." = "此影片太短，無法製作預告片。";
 "This video was unpublished." = "此影片已取消發布。";
 "Three-Stack" = "三疊";
 "Three-Up" = "三畫面";

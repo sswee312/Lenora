@@ -926,7 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Tämä malli ei voi rajoittaa tulosta 60 FPS:ään.";
 "This permanently removes %@." = "Tämä poistaa kohteen %@ pysyvästi.";
 "This source can’t replace the clip." = "Tämä lähde ei voi korvata leikettä.";
-"This video allows teasers up to %@." = "Tämä video sallii enintään %@ pituiset teaserit.";
+"This video allows teasers up to %@." = "Teaserin enimmäispituus tälle videolle: %@.";
+"This video is too short for a teaser." = "Tämä video on liian lyhyt teaserille.";
 "This video was unpublished." = "Tämän videon julkaisu on peruttu.";
 "Three-Stack" = "Kolmipino";
 "Three-Up" = "Kolme rinnakkain";

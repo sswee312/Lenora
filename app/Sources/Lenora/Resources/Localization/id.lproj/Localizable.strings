@@ -927,6 +927,7 @@
 "This permanently removes %@." = "Ini menghapus %@ secara permanen.";
 "This source can’t replace the clip." = "Sumber ini tidak dapat mengganti klip.";
 "This video allows teasers up to %@." = "Video ini mengizinkan teaser hingga %@.";
+"This video is too short for a teaser." = "Video ini terlalu pendek untuk teaser.";
 "This video was unpublished." = "Publikasi video ini telah dibatalkan.";
 "Three-Stack" = "Tiga Tumpuk";
 "Three-Up" = "Tiga Panel";

@@ -927,6 +927,7 @@
 "This permanently removes %@." = "Thao tác này sẽ xóa vĩnh viễn %@.";
 "This source can’t replace the clip." = "Nguồn này không thể thay clip.";
 "This video allows teasers up to %@." = "Video này cho phép teaser dài tối đa %@.";
+"This video is too short for a teaser." = "Video này quá ngắn để tạo teaser.";
 "This video was unpublished." = "Video này đã được hủy xuất bản.";
 "Three-Stack" = "Ba tầng";
 "Three-Up" = "Ba khung";

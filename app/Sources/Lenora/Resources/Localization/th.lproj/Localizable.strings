@@ -927,6 +927,7 @@
 "This permanently removes %@." = "การดำเนินการนี้จะลบ %@ อย่างถาวร";
 "This source can’t replace the clip." = "ต้นทางนี้แทนที่คลิปไม่ได้";
 "This video allows teasers up to %@." = "วิดีโอนี้อนุญาตทีเซอร์ยาวได้สูงสุด %@";
+"This video is too short for a teaser." = "วิดีโอนี้สั้นเกินไปสำหรับทีเซอร์";
 "This video was unpublished." = "วิดีโอนี้ถูกยกเลิกการเผยแพร่แล้ว";
 "Three-Stack" = "สามชั้น";
 "Three-Up" = "สามช่อง";
