@@ -119,7 +119,7 @@ def test_eager_job_succeeds_once_derived_exists():
 def test_eager_job_fails_after_the_deadline(now, status):
     from lenora_adapter_cloudinary import eager
     job_id = eager.encode(PUBLIC_ID, TRANSFORMATION, 1000, SECRET)
-    state = run(lambda a: a.status(job_id), mock=lambda r: r.get(ADMIN_VIDEO).respond(200, json={"derived": []}), clock=lambda: now)
+    state = run(lambda a: a.status(job_id), mock=lambda r: r.get(ADMIN_VIDEO).respond(200, json={"asset_id": "a", "bytes": 1, "derived": []}), clock=lambda: now)
     assert state.status == status
     if status == "failed":
         assert (state.error.code, state.error.retryable) == ("provider_error", True)
@@ -164,10 +164,17 @@ def test_unsigned_or_tampered_eager_ids_are_not_found_without_a_lookup(job_id):
     route = {}
 
     def mock(r):
-        route["get"] = r.get(ADMIN_VIDEO).respond(200, json={"derived": []})
+        route["get"] = r.get(ADMIN_VIDEO).respond(200, json={"asset_id": "a", "bytes": 1, "derived": []})
     with pytest.raises(ProblemError) as info:
         run(lambda a: a.status(job_id), mock=mock)
     assert info.value.code == "not_found" and not route["get"].called
+
+
+def test_verify_job_requires_its_domain_prefix():
+    from lenora_adapter_cloudinary.delivery import verify_job
+    signed = sign_job("eager", "{}", SECRET)
+    assert verify_job("eager", signed, SECRET) == "{}"
+    assert verify_job("eager", signed.removeprefix("eager:"), SECRET) is None
 
 
 def test_eager_job_for_a_deleted_video_fails_without_retry():

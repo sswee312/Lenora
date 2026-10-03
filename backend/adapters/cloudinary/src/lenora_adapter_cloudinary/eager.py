@@ -4,7 +4,7 @@ import re
 
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import JobError, JobResult, JobState
-from lenora_adapter_cloudinary.api import PUBLIC_ID, AssetRef, CloudinaryAPI, problem
+from lenora_adapter_cloudinary.api import PUBLIC_ID, AssetNotFound, AssetRef, CloudinaryAPI, problem
 from lenora_adapter_cloudinary.delivery import sign_job, sign_upload, signed_url, verify_job
 
 # Admin API calls are rate limited (500/hour on Free); poll slowly.
@@ -48,13 +48,12 @@ async def status(api: CloudinaryAPI, job_id: str, now: float) -> JobState:
     if decoded is None:
         raise ProblemError("not_found", "Unknown job.")
     public_id, transformation, started = decoded
-    response = await api.request("GET", f"/v1_1/{api.settings.cloud_name}/resources/video/upload/{public_id}")
-    if response.status_code == 404:
+    try:
+        asset = await api.asset(AssetRef("video", public_id))
+    except AssetNotFound:
         return JobState(jobId=job_id, status="failed", error=JobError(
             code="provider_error", message="The video no longer exists.", retryable=False))
-    if response.status_code != 200:
-        raise problem(response)
-    if not any(d.get("transformation") == transformation for d in response.json().get("derived") or []):
+    if not any(t == transformation for t, _ in asset.derived):
         if now - started > EAGER_DEADLINE_SECONDS:
             error = JobError(code="provider_error", retryable=True,
                              message="Cloudinary did not finish the reframe in time. Submit it again.")

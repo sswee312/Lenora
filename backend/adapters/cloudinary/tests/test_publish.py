@@ -6,7 +6,7 @@ import httpx
 import pytest
 
 from cld import ADMIN_VIDEO, API, CLOUD, SECRET, UUID, VIDEO_REF, job, run, settings
-from lenora_backend.errors import ProblemError
+from lenora_backend.errors import ProblemError, provider_call
 from lenora_backend.kinds import AssetInput
 from lenora_adapter_cloudinary import publish
 from lenora_adapter_cloudinary.delivery import sign_job, signed_url
@@ -130,6 +130,33 @@ def test_a_timed_out_eager_request_keeps_the_charge(tmp_path):
     def mock(r):
         video(r)
         r.post(EXPLICIT).mock(side_effect=httpx.ReadTimeout("slow"))
+    assert run(scenario, settings(tmp_path, daily_credit_budget=5), mock=mock) > 0
+
+
+@pytest.mark.parametrize("error", [httpx.ConnectError("refused"), httpx.ConnectTimeout("slow"), httpx.PoolTimeout("busy")])
+def test_a_request_that_never_left_is_refunded(error, tmp_path):
+    async def scenario(adapter):
+        with pytest.raises(ProblemError) as info:
+            await adapter.submit("cloudinary/publish", publish_job())
+        return adapter.budget.usage()["used"], info.value.code
+
+    def mock(r):
+        video(r)
+        r.post(EXPLICIT).mock(side_effect=error)
+    assert run(scenario, settings(tmp_path, daily_credit_budget=5), mock=mock) == (0, "provider_unavailable")
+
+
+def test_a_hung_eager_request_cancelled_by_the_provider_timeout_keeps_the_charge(tmp_path):
+    async def scenario(adapter):
+        with pytest.raises(ProblemError):
+            await provider_call(adapter.submit("cloudinary/publish", publish_job()), 0.05)
+        return adapter.budget.usage()["used"]
+
+    def mock(r):
+        video(r)
+        async def hang(request):
+            await asyncio.Event().wait()
+        r.post(EXPLICIT).mock(side_effect=hang)
     assert run(scenario, settings(tmp_path, daily_credit_budget=5), mock=mock) > 0
 
 

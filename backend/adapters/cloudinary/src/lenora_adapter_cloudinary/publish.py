@@ -8,7 +8,7 @@ from lenora_backend.kinds import (
     Estimate, FailedOutput, JobError, JobRequest, JobResult, JobState, VideoPublishParams,
 )
 from lenora_adapter_cloudinary import costs
-from lenora_adapter_cloudinary.api import PUBLIC_ID, AssetNotFound, AssetRef, CloudinaryAPI, parse_ref, problem
+from lenora_adapter_cloudinary.api import PUBLIC_ID, AssetNotFound, AssetRef, CloudinaryAPI, RequestNotSent, parse_ref, problem
 from lenora_adapter_cloudinary.costs import Budget
 from lenora_adapter_cloudinary.delivery import CONTENT_TYPES, sign_job, sign_upload, signed_url, verify_job
 
@@ -121,10 +121,14 @@ async def submit(api: CloudinaryAPI, budget: Budget, job: JobRequest, limit: int
     estimate = costs.publish(asset.duration, [o.role for o in pending])
     if pending:
         budget.reserve(estimate)
-        # A transport failure or timeout may still have reached Cloudinary, so only a refusal is refunded.
-        response = await _post(api, "explicit", {
-            "public_id": ref.public_id, "type": "upload", "eager": "|".join(o.eager for o in pending),
-            "eager_async": "true", "timestamp": str(now)})
+        # A read timeout or cancellation may still have reached Cloudinary: refund only a refusal or an unsent request.
+        try:
+            response = await _post(api, "explicit", {
+                "public_id": ref.public_id, "type": "upload", "eager": "|".join(o.eager for o in pending),
+                "eager_async": "true", "timestamp": str(now)})
+        except RequestNotSent:
+            budget.refund(estimate)
+            raise
         if response.status_code != 200:
             budget.refund(estimate)
             raise problem(response)

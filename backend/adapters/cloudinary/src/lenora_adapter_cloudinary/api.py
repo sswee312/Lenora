@@ -13,6 +13,10 @@ ASSET_REF = re.compile(rf"(image|video)/upload/({PUBLIC_ID_PATTERN})")
 DEFAULT_RATE_LIMIT_RETRY = 30
 
 
+class RequestNotSent(ProblemError):
+    """The request provably never reached Cloudinary (connect or pool failure), so nothing was billed."""
+
+
 class AssetNotFound(ProblemError):
     """Cloudinary answered 404: the asset does not exist (any other refusal is not proof it is gone)."""
 
@@ -82,7 +86,8 @@ class CloudinaryAPI:
         try:
             return await self.http.request(method, self.base + path, json=json, data=data, auth=self.auth)
         except httpx.TransportError as error:
-            raise ProblemError("provider_unavailable", f"Cloudinary is unreachable ({type(error).__name__}).") from None
+            kind = RequestNotSent if isinstance(error, (httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout)) else ProblemError
+            raise kind("provider_unavailable", f"Cloudinary is unreachable ({type(error).__name__}).") from None
 
     async def asset(self, ref: AssetRef, *, duration: bool = False) -> Asset:
         path = f"/v1_1/{self.settings.cloud_name}/resources/{ref.resource_type}/upload/{ref.public_id}"

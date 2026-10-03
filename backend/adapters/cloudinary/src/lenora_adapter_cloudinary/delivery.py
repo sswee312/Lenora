@@ -6,6 +6,7 @@ import re
 from urllib.parse import quote
 
 from lenora_backend.kinds import EditOp
+from lenora_adapter_cloudinary.api import PUBLIC_ID_PATTERN
 
 CONTENT_TYPES = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp", "mp4": "video/mp4",
                  "mov": "video/quicktime", "webm": "video/webm", "m3u8": "application/vnd.apple.mpegurl"}
@@ -37,8 +38,9 @@ def sign_job(domain: str, raw: str, secret: str) -> str:
 
 def verify_job(domain: str, job_id: str, secret: str) -> str | None:
     """The signed payload text, only if this backend signed it for this domain."""
-    payload, _, signature = job_id.removeprefix(f"{domain}:").partition(".")
-    if not payload or not hmac.compare_digest(_job_signature(domain, payload, secret).encode(), signature.encode()):
+    prefix, _, rest = job_id.partition(":")
+    payload, _, signature = rest.partition(".")
+    if prefix != domain or not payload or not hmac.compare_digest(_job_signature(domain, payload, secret).encode(), signature.encode()):
         return None
     try:
         return base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4)).decode()
@@ -72,7 +74,7 @@ def encode_url_job(url: str) -> str:
 
 
 DELIVERY_URL = re.compile(
-    r"https://res\.cloudinary\.com/([^/]+)/(image|video)/upload/s--[A-Za-z0-9_-]{8}--/(.+)/(lenora/[0-9a-f-]{36}\.([a-z0-9]+))")
+    rf"https://res\.cloudinary\.com/([^/]+)/(image|video)/upload/s--[A-Za-z0-9_-]{{8}}--/(.+)/({PUBLIC_ID_PATTERN}\.([a-z0-9]+))")
 
 
 def verify_url_job(job_id: str, cloud_name: str, secret: str) -> tuple[str, str] | None:
