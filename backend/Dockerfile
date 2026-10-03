@@ -5,6 +5,7 @@ ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy LENORA_ENV=production
 COPY pyproject.toml uv.lock ./
 COPY src ./src
 COPY adapters/cloudinary ./adapters/cloudinary
+COPY adapters/openai ./adapters/openai
 RUN uv sync --frozen --no-dev --all-packages
 RUN useradd --system --uid 10001 lenora
 USER lenora

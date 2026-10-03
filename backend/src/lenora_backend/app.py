@@ -43,11 +43,14 @@ def create_app(settings: CoreSettings, load_registry: Callable[[httpx.AsyncClien
         await _sweep(app.state.results)
         sweeper = asyncio.create_task(_sweep_hourly(app.state.results))
         async with httpx.AsyncClient(timeout=HTTP_TIMEOUT, follow_redirects=False) as http:
+            registry: Registry | None = None
             try:
-                app.state.registry = load_registry(http)
-                await app.state.registry.start(settings.provider_timeout_seconds)
+                registry = app.state.registry = load_registry(http)
+                await registry.start(settings.provider_timeout_seconds)
                 yield
             finally:
+                if registry is not None:
+                    await registry.stop(settings.provider_timeout_seconds)
                 sweeper.cancel()
                 with suppress(asyncio.CancelledError):
                     await sweeper

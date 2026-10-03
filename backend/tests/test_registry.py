@@ -1,8 +1,9 @@
 import pytest
-from pydantic import Field, ValidationError
+from fastapi.testclient import TestClient
+from pydantic import AliasChoices, Field, ValidationError
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from fakes import AUTH, FakeAdapter
+from fakes import AUTH, FakeAdapter, build_app
 from lenora_backend.errors import ProblemError
 from lenora_backend.registry import AdapterStatus, Registry, missing_settings_reason
 
@@ -46,3 +47,31 @@ def test_capabilities_lists_only_enabled_adapters(make_client):
     assert body["protocolVersion"] == "1"
     assert body["adapters"] == [{"id": "fake", "version": "0.0.1"}]
     assert [m["id"] for m in body["models"]] == ["fake/cutout"]
+
+
+class AliasedKey(BaseSettings):
+    model_config = SettingsConfigDict(env_prefix="LENORA_DEMO_", populate_by_name=True)
+    api_key: str = Field(min_length=1, validation_alias=AliasChoices("LENORA_DEMO_API_KEY", "DEMO_API_KEY"))
+
+
+def test_missing_aliased_setting_names_the_lenora_variable(monkeypatch):
+    monkeypatch.delenv("DEMO_API_KEY", raising=False)
+    with pytest.raises(ValidationError) as info:
+        AliasedKey()
+    assert missing_settings_reason("demo", info.value) == "missing or invalid: LENORA_DEMO_API_KEY"
+
+
+class StoppingAdapter(FakeAdapter):
+    def __init__(self, settings=None, http=None):
+        super().__init__(settings, http)
+        self.stopped = 0
+
+    async def stop(self) -> None:
+        self.stopped += 1
+
+
+def test_shutdown_stops_each_adapter_once():
+    adapter = StoppingAdapter()
+    with TestClient(build_app(adapter)):
+        assert adapter.stopped == 0
+    assert adapter.stopped == 1
