@@ -165,10 +165,13 @@ class OpenAIAdapter:
         except asyncio.CancelledError:
             # The threaded write cannot be interrupted: let it finish, then remove what it installed.
             await asyncio.wait({write})
+            if not write.cancelled() and (failure := write.exception()) is not None:
+                log.warning("speech job %s could not write its cancelled result: %s", result_id, type(failure).__name__)
             try:
                 await self.results.delete(result_id)
             except OSError as error:
                 log.warning("speech job %s could not remove its cancelled result: %s", result_id, type(error).__name__)
+                job.orphaned = True
             raise
 
     async def _speech_state(self, job_id: str, result_id: str) -> JobState:

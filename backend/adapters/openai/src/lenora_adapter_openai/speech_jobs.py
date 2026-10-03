@@ -13,7 +13,8 @@ from lenora_adapter_openai.api import Refused
 
 log = logging.getLogger("lenora.openai")
 
-# Each call holds one OpenAI connection for up to ~90 s and buffers up to 25 MB: 4 caps that at 100 MB.
+# Each call holds one OpenAI connection for up to ~90 s and buffers up to 25 MB, briefly 50 MB while the buffer is
+# copied out: 4 caps that at 200 MB.
 MAX_RUNNING = 4
 # Queued plus running; bounds memory and the worst-case wait (32 / 4 × ~90 s ≈ 12 min).
 MAX_PENDING = 32
@@ -21,6 +22,8 @@ MAX_PENDING = 32
 MAX_FINISHED = 256
 ADMISSION_RETRY_SECONDS = 10
 LIVE = ("queued", "running")
+ORPHANED = JobError(code="provider_error", retryable=False,
+                    message="The voiceover was cancelled, but its audio could not be removed.")
 
 
 @dataclass
@@ -29,6 +32,9 @@ class SpeechJob:
     phase: Literal["queued", "request", "store"] = "queued"
     error: JobError | None = None
     finished_at: float = 0.0
+    # A cancelled write left its result behind: reported failed and never pruned.
+    # ponytail: after a restart that result reads as succeeded until the 24 h sweep; add a tombstone if it matters.
+    orphaned: bool = False
     refund: Callable[[], None] = field(default=lambda: None, repr=False)
     task: asyncio.Task | None = field(default=None, repr=False)
 
@@ -91,7 +97,10 @@ class SpeechJobs:
             if not self._stopped:
                 if job.status == "queued":
                     job.refund()
-                self._finish(job, "cancelled")
+                if job.orphaned:
+                    self._finish(job, "failed", ORPHANED)
+                else:
+                    self._finish(job, "cancelled")
             raise
         except Exception as error:
             if not self._stopped:
@@ -108,7 +117,8 @@ class SpeechJobs:
         else:
             failure = JobError(code="provider_error", message="The voiceover failed unexpectedly.", retryable=False)
             reason = type(error).__name__
-        log.warning("speech job %s failed in %s: %s", result_id, job.phase, reason)
+        log.warning("speech job %s failed in %s: %s", result_id, job.phase, reason,
+                    exc_info=None if isinstance(error, ProblemError) else error)
         self._finish(job, "failed", failure)
 
     def _finish(self, job: SpeechJob, status: Literal["failed", "cancelled"], error: JobError | None = None) -> None:
@@ -117,8 +127,8 @@ class SpeechJobs:
     def _prune(self) -> None:
         now = self.clock()
         # Stable sort: equal finish times keep launch order.
-        finished = sorted(((rid, job) for rid, job in self._jobs.items() if job.status not in LIVE),
-                          key=lambda item: item[1].finished_at)
+        finished = sorted(((rid, job) for rid, job in self._jobs.items()
+                           if job.status not in LIVE and not job.orphaned), key=lambda item: item[1].finished_at)
         excess = len(finished) - MAX_FINISHED
         for index, (rid, job) in enumerate(finished):
             if index < excess or now - job.finished_at > TTL_SECONDS:

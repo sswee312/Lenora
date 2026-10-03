@@ -249,16 +249,24 @@ def test_cancel_while_running_keeps_the_reservation_and_leaves_no_file(tmp_path)
     assert list((tmp_path / "results").glob("*")) == []
 
 
+def hold_writes(a, failure: Exception | None = None) -> tuple[asyncio.Event, asyncio.Event]:
+    """Hold every result write once it starts until `proceed` is set; then write, or raise `failure`."""
+    entered, proceed = asyncio.Event(), asyncio.Event()
+    put = a.results.put_bytes
+
+    async def held_put(*args, **kwargs):
+        entered.set()
+        await proceed.wait()
+        if failure is not None:
+            raise failure
+        return await put(*args, **kwargs)
+    a.results.put_bytes = held_put
+    return entered, proceed
+
+
 def test_cancel_during_the_write_leaves_no_file(tmp_path):
     async def scenario(a):
-        entered, proceed = asyncio.Event(), asyncio.Event()
-        put = a.results.put_bytes
-
-        async def held_put(*args, **kwargs):
-            entered.set()
-            await proceed.wait()
-            return await put(*args, **kwargs)
-        a.results.put_bytes = held_put
+        entered, proceed = hold_writes(a)
         job = await a.submit("openai/voice", speech())
         await entered.wait()
         cancelling = asyncio.create_task(a.cancel(job.jobId))
@@ -266,6 +274,67 @@ def test_cancel_during_the_write_leaves_no_file(tmp_path):
         return (await cancelling).status, (await a.status(job.jobId)).status
     assert run(scenario, settings(tmp_path), mp3) == ("cancelled", "cancelled")
     assert list((tmp_path / "results").glob("*")) == []
+
+
+def test_stop_during_the_write_leaves_no_file(tmp_path):
+    async def scenario(a):
+        entered, proceed = hold_writes(a)
+        job = await a.submit("openai/voice", speech())
+        await entered.wait()
+        stopping = asyncio.create_task(a.stop())
+        proceed.set()
+        await stopping
+        return job.jobId, (await a.status(job.jobId)).status
+    job_id, status = run(scenario, settings(tmp_path), mp3)
+    assert status == "running" and list((tmp_path / "results").glob("*")) == []
+    assert run(lambda a: a.status(job_id), settings(tmp_path)).status == "failed"
+
+
+def test_a_cancelled_result_that_cannot_be_removed_reports_failed(tmp_path, monkeypatch, caplog):
+    monkeypatch.setattr(speech_jobs, "MAX_FINISHED", 0)
+
+    async def scenario(a):
+        entered, proceed = hold_writes(a)
+
+        async def broken_delete(result_id):
+            raise PermissionError("read-only")
+        a.results.delete = broken_delete
+        job = await a.submit("openai/voice", speech())
+        await entered.wait()
+        cancelling = asyncio.create_task(a.cancel(job.jobId))
+        proceed.set()
+        cancelled = await cancelling
+        await a.submit("openai/voice", speech())  # admission prunes finished entries
+        return cancelled, await a.status(job.jobId)
+    cancelled, later = run(scenario, settings(tmp_path), mp3)
+    assert (cancelled.status, cancelled.error.code, cancelled.error.retryable) == ("failed", "provider_error", False)
+    assert later == cancelled
+    assert "could not remove its cancelled result: PermissionError" in caplog.text
+
+
+def test_a_failed_write_after_cancel_is_logged(tmp_path, caplog):
+    async def scenario(a):
+        entered, proceed = hold_writes(a, OSError("disk full"))
+        job = await a.submit("openai/voice", speech())
+        await entered.wait()
+        cancelling = asyncio.create_task(a.cancel(job.jobId))
+        proceed.set()
+        return (await cancelling).status
+    assert run(scenario, settings(tmp_path), mp3) == "cancelled"
+    assert "could not write its cancelled result: OSError" in caplog.text
+
+
+def test_unexpected_failures_are_logged_with_a_traceback(tmp_path, caplog):
+    async def scenario(a):
+        async def broken_put(*args, **kwargs):
+            raise RuntimeError("local disk detail")
+        a.results.put_bytes = broken_put
+        return await finished(a)
+    state = run(scenario, settings(tmp_path), mp3)
+    assert (state.status, state.error.code, state.error.message) == (
+        "failed", "provider_error", "The voiceover failed unexpectedly.")
+    record = next(r for r in caplog.records if "failed in store" in r.getMessage())
+    assert record.exc_info and record.exc_info[0] is RuntimeError
 
 
 def test_cancel_after_the_end_returns_the_final_state(tmp_path):
@@ -383,7 +452,8 @@ def test_voiceover_through_the_core_reserves_once_and_serves_the_audio(tmp_path)
     with respx.mock(assert_all_called=False) as router:
         router.get(MODEL).respond(200, json={"id": "gpt-4o-mini-tts"})
         speech_route = router.post(SPEECH).mock(side_effect=gate)
-        adapter = OpenAIAdapter(settings(tmp_path), httpx.AsyncClient())
+        http = httpx.AsyncClient()
+        adapter = OpenAIAdapter(settings(tmp_path), http)
         with TestClient(build_app(adapter, data_dir=tmp_path)) as client:
             first = client.post("/v1/jobs", json=body, headers={**AUTH, "Idempotency-Key": "k"})
             again = client.post("/v1/jobs", json=body, headers={**AUTH, "Idempotency-Key": "k"})
@@ -394,6 +464,7 @@ def test_voiceover_through_the_core_reserves_once_and_serves_the_audio(tmp_path)
             url = state["results"][0]["url"]
             audio = client.get(url, headers=AUTH)
             anonymous = client.get(url)
+            client.portal.call(http.aclose)
     assert first.status_code == again.status_code == 202 and first.json() == again.json()
     assert first.json()["status"] == "queued" and first.json()["jobId"].startswith("openai:speech:")
     assert pending.json()["status"] in ("queued", "running") and pending.headers["retry-after"] == "2"
@@ -409,11 +480,13 @@ def test_cancel_through_the_core(tmp_path):
     with respx.mock(assert_all_called=False) as router:
         router.get(MODEL).respond(200, json={})
         router.post(SPEECH).mock(side_effect=Gate())
-        adapter = OpenAIAdapter(settings(tmp_path), httpx.AsyncClient())
+        http = httpx.AsyncClient()
+        adapter = OpenAIAdapter(settings(tmp_path), http)
         with TestClient(build_app(adapter, data_dir=tmp_path)) as client:
             job_id = client.post("/v1/jobs", json=body, headers={**AUTH, "Idempotency-Key": "c"}).json()["jobId"]
             cancelled = client.delete(f"/v1/jobs/{job_id}", headers=AUTH)
             capabilities = client.get("/v1/capabilities", headers=AUTH).json()
+            client.portal.call(http.aclose)
     assert (cancelled.status_code, cancelled.json()["status"]) == (200, "cancelled")
     assert "retry-after" not in cancelled.headers
     assert next(m for m in capabilities["models"] if m["id"] == "openai/voice")["cancellable"] is True
