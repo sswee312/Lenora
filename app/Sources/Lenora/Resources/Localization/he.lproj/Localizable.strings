@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "לא ניתן היה לייצא את ⁨%@⁩.";
+"%@ credits used · No limit" = "נעשה שימוש ב-%@ קרדיטים · ללא הגבלה";
 "%@ does not accept this media" = "⁨%@⁩ אינו מקבל מדיה זו";
 "%@ does not support this media type." = "⁨%@⁩ אינו תומך בסוג מדיה זה.";
 "%@ exported with %lld warnings." = "⁨%@⁩ יוצא עם ⁨%lld⁩ אזהרות.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "המודל ⁨%@⁩ אינו זמין";
 "%@ must use HTTPS, or HTTP on this Mac only." = "⁨%@⁩ חייב להשתמש ב-HTTPS, או ב-HTTP במחשב Mac זה בלבד.";
 "%@ needs a start frame." = "%@ דורש פריים התחלה.";
+"%@ of %@ credits" = "%@ מתוך %@ קרדיטים";
 "%@ · %@" = "⁨%@⁩ · ⁨%@⁩";
 "%@ · %lld" = "⁨%@⁩ · ⁨%lld⁩";
 "%@, %lld skills" = "⁨%@⁩, ⁨%lld⁩ מיומנויות";
@@ -228,6 +230,7 @@
 "Cut" = "גזור";
 "Cut out the subject as a transparent PNG" = "חתוך את הנושא כ-PNG שקוף";
 "Cut to the beat" = "חתוך לפי הפעימה";
+"Daily budget" = "תקציב יומי";
 "Dark" = "כהה";
 "Dark appearance" = "מראה כהה";
 "Darken" = "הכהה";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "אותיות גדולות";
 "URL" = "URL";
 "Unable to save skill" = "לא ניתן לשמור מיומנות";
+"Unavailable" = "לא זמין";
 "Unchanged" = "ללא שינוי";
 "Underline" = "קו תחתון";
 "Undo" = "בטל";

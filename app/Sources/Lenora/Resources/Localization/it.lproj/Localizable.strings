@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "Impossibile esportare %@.";
+"%@ credits used · No limit" = "%@ crediti usati · Nessun limite";
 "%@ does not accept this media" = "%@ non accetta questi contenuti multimediali";
 "%@ does not support this media type." = "%@ non supporta questo tipo di contenuto multimediale.";
 "%@ exported with %lld warnings." = "%@ esportato con %lld avvisi.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "Modello %@ non disponibile";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ deve usare HTTPS, oppure HTTP solo su questo Mac.";
 "%@ needs a start frame." = "%@ richiede un fotogramma iniziale.";
+"%@ of %@ credits" = "%@ di %@ crediti";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld competenze";
@@ -228,6 +230,7 @@
 "Cut" = "Taglia";
 "Cut out the subject as a transparent PNG" = "Ritaglia il soggetto come PNG trasparente";
 "Cut to the beat" = "Taglia sul beat";
+"Daily budget" = "Budget giornaliero";
 "Dark" = "Scuro";
 "Dark appearance" = "Aspetto scuro";
 "Darken" = "Scurisci";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "MAIUSCOLO";
 "URL" = "URL";
 "Unable to save skill" = "Impossibile salvare la competenza";
+"Unavailable" = "Non disponibile";
 "Unchanged" = "Invariato";
 "Underline" = "Sottolineato";
 "Undo" = "Annulla";

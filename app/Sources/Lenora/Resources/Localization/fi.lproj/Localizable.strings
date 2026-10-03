@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ ei voitu viedä.";
+"%@ credits used · No limit" = "%@ krediittiä käytetty · Ei rajaa";
 "%@ does not accept this media" = "%@ ei hyväksy tätä mediaa";
 "%@ does not support this media type." = "%@ ei tue tätä mediatyyppiä.";
 "%@ exported with %lld warnings." = "%@ vietiin %lld varoituksella.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "Malli %@ ei ole käytettävissä";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@:n on käytettävä HTTPS:ää tai HTTP:tä vain tällä Macilla.";
 "%@ needs a start frame." = "%@ tarvitsee aloituskuvan.";
+"%@ of %@ credits" = "%@ / %@ krediittiä";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld taitoa";
@@ -228,6 +230,7 @@
 "Cut" = "Leikkaa";
 "Cut out the subject as a transparent PNG" = "Rajaa kohde läpinäkyväksi PNG-kuvaksi";
 "Cut to the beat" = "Leikkaa iskuun";
+"Daily budget" = "Päiväbudjetti";
 "Dark" = "Tumma";
 "Dark appearance" = "Tumma ulkoasu";
 "Darken" = "Tummenna";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "VERSAALI";
 "URL" = "URL";
 "Unable to save skill" = "Taitoa ei voi tallentaa";
+"Unavailable" = "Ei saatavilla";
 "Unchanged" = "Ei muutosta";
 "Underline" = "Alleviivaus";
 "Undo" = "Kumoa";

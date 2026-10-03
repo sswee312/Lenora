@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "Không thể xuất %@.";
+"%@ credits used · No limit" = "Đã dùng %@ tín dụng · Không giới hạn";
 "%@ does not accept this media" = "%@ không chấp nhận phương tiện này";
 "%@ does not support this media type." = "%@ không hỗ trợ loại phương tiện này.";
 "%@ exported with %lld warnings." = "Đã xuất %@ với %lld cảnh báo.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "Mô hình %@ không khả dụng";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ phải dùng HTTPS, hoặc HTTP chỉ trên máy Mac này.";
 "%@ needs a start frame." = "%@ cần một khung hình bắt đầu.";
+"%@ of %@ credits" = "%@ trên %@ tín dụng";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld kỹ năng";
@@ -228,6 +230,7 @@
 "Cut" = "Cắt";
 "Cut out the subject as a transparent PNG" = "Tách chủ thể thành PNG trong suốt";
 "Cut to the beat" = "Cắt theo nhịp";
+"Daily budget" = "Ngân sách hằng ngày";
 "Dark" = "Tối";
 "Dark appearance" = "Giao diện tối";
 "Darken" = "Làm tối";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "CHỮ HOA";
 "URL" = "URL";
 "Unable to save skill" = "Không thể lưu kỹ năng";
+"Unavailable" = "Không khả dụng";
 "Unchanged" = "Không đổi";
 "Underline" = "Gạch chân";
 "Undo" = "Hoàn tác";

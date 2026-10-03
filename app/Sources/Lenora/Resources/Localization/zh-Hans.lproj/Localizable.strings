@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "无法导出 %@。";
+"%@ credits used · No limit" = "已使用 %@ 点数 · 无限制";
 "%@ does not accept this media" = "%@ 不接受此媒体";
 "%@ does not support this media type." = "%@ 不支持此媒体类型。";
 "%@ exported with %lld warnings." = "%@ 已导出，有 %lld 条警告。";
@@ -11,6 +12,7 @@
 "%@ model not available" = "%@ 模型不可用";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ 必须使用 HTTPS，或仅在此 Mac 上使用 HTTP。";
 "%@ needs a start frame." = "%@ 需要起始帧。";
+"%@ of %@ credits" = "%@ / %@ 点数";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@，%lld 个技能";
@@ -228,6 +230,7 @@
 "Cut" = "剪切";
 "Cut out the subject as a transparent PNG" = "将主体抠出为透明 PNG";
 "Cut to the beat" = "按节拍剪辑";
+"Daily budget" = "每日预算";
 "Dark" = "深色";
 "Dark appearance" = "深色外观";
 "Darken" = "变暗";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "大写";
 "URL" = "URL";
 "Unable to save skill" = "无法保存技能";
+"Unavailable" = "不可用";
 "Unchanged" = "未更改";
 "Underline" = "下划线";
 "Undo" = "撤销";

@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "ไม่สามารถส่งออก %@ ได้";
+"%@ credits used · No limit" = "ใช้ไปแล้ว %@ เครดิต · ไม่จำกัด";
 "%@ does not accept this media" = "%@ ไม่รับมีเดียนี้";
 "%@ does not support this media type." = "%@ ไม่รองรับประเภทมีเดียนี้";
 "%@ exported with %lld warnings." = "ส่งออก %@ แล้ว มีคำเตือน %lld รายการ";
@@ -11,6 +12,7 @@
 "%@ model not available" = "โมเดล %@ ไม่พร้อมใช้งาน";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ ต้องใช้ HTTPS หรือ HTTP บน Mac เครื่องนี้เท่านั้น";
 "%@ needs a start frame." = "%@ ต้องมีเฟรมเริ่มต้น";
+"%@ of %@ credits" = "%@ จาก %@ เครดิต";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld สกิล";
@@ -228,6 +230,7 @@
 "Cut" = "ตัด";
 "Cut out the subject as a transparent PNG" = "ตัดวัตถุออกมาเป็น PNG โปร่งใส";
 "Cut to the beat" = "ตัดตามจังหวะ";
+"Daily budget" = "งบประมาณรายวัน";
 "Dark" = "มืด";
 "Dark appearance" = "ลักษณะมืด";
 "Darken" = "ทำให้มืด";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "ตัวพิมพ์ใหญ่";
 "URL" = "URL";
 "Unable to save skill" = "ไม่สามารถบันทึกสกิลได้";
+"Unavailable" = "ไม่พร้อมใช้งาน";
 "Unchanged" = "ไม่เปลี่ยนแปลง";
 "Underline" = "ขีดเส้นใต้";
 "Undo" = "เลิกทำ";

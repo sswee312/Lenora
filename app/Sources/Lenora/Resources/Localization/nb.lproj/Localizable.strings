@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ kunne ikke eksporteres.";
+"%@ credits used · No limit" = "%@ kreditter brukt · Ingen grense";
 "%@ does not accept this media" = "%@ godtar ikke dette mediet";
 "%@ does not support this media type." = "%@ støtter ikke denne mediatypen.";
 "%@ exported with %lld warnings." = "%@ eksportert med %lld advarsler.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "%@-modell ikke tilgjengelig";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ må bruke HTTPS, eller HTTP bare på denne Macen.";
 "%@ needs a start frame." = "%@ trenger et startbilde.";
+"%@ of %@ credits" = "%@ av %@ kreditter";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld ferdigheter";
@@ -228,6 +230,7 @@
 "Cut" = "Klipp ut";
 "Cut out the subject as a transparent PNG" = "Frilegg motivet som en gjennomsiktig PNG";
 "Cut to the beat" = "Klipp til takten";
+"Daily budget" = "Daglig budsjett";
 "Dark" = "Mørk";
 "Dark appearance" = "Mørkt utseende";
 "Darken" = "Mørkere";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "STORE BOKSTAVER";
 "URL" = "URL";
 "Unable to save skill" = "Kan ikke arkivere ferdighet";
+"Unavailable" = "Utilgjengelig";
 "Unchanged" = "Uendret";
 "Underline" = "Understreking";
 "Undo" = "Angre";

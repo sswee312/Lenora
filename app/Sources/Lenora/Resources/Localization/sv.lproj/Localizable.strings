@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "Det gick inte att exportera %@.";
+"%@ credits used · No limit" = "%@ krediter använda · Ingen gräns";
 "%@ does not accept this media" = "%@ accepterar inte det här mediet";
 "%@ does not support this media type." = "%@ stöder inte den här mediatypen.";
 "%@ exported with %lld warnings." = "%@ exporterades med %lld varningar.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "Modellen %@ är inte tillgänglig";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ måste använda HTTPS, eller HTTP endast på den här datorn.";
 "%@ needs a start frame." = "%@ behöver en startbildruta.";
+"%@ of %@ credits" = "%@ av %@ krediter";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld färdigheter";
@@ -228,6 +230,7 @@
 "Cut" = "Klipp ut";
 "Cut out the subject as a transparent PNG" = "Frilägg motivet som en genomskinlig PNG";
 "Cut to the beat" = "Klipp till takten";
+"Daily budget" = "Daglig budget";
 "Dark" = "Mörkt";
 "Dark appearance" = "Mörkt utseende";
 "Darken" = "Mörkare";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "VERSALER";
 "URL" = "URL";
 "Unable to save skill" = "Det går inte att spara färdigheten";
+"Unavailable" = "Otillgänglig";
 "Unchanged" = "Oförändrad";
 "Underline" = "Understrykning";
 "Undo" = "Ångra";

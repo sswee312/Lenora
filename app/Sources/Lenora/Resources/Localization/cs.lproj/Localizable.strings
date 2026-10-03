@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ se nepodařilo exportovat.";
+"%@ credits used · No limit" = "%@ kreditů použito · Bez limitu";
 "%@ does not accept this media" = "%@ toto médium nepřijímá";
 "%@ does not support this media type." = "%@ tento typ média nepodporuje.";
 "%@ exported with %lld warnings." = "%@ exportováno s %lld upozorněními.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "Model %@ není k dispozici";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ musí používat HTTPS, nebo HTTP pouze na tomto Macu.";
 "%@ needs a start frame." = "%@ vyžaduje počáteční snímek.";
+"%@ of %@ credits" = "%@ z %@ kreditů";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld dovedností";
@@ -228,6 +230,7 @@
 "Cut" = "Vyjmout";
 "Cut out the subject as a transparent PNG" = "Vyříznout objekt jako průhledné PNG";
 "Cut to the beat" = "Střih na dobu";
+"Daily budget" = "Denní rozpočet";
 "Dark" = "Tmavý";
 "Dark appearance" = "Tmavý vzhled";
 "Darken" = "Ztmavit";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "VELKÁ PÍSMENA";
 "URL" = "URL";
 "Unable to save skill" = "Dovednost se nepodařilo uložit";
+"Unavailable" = "Nedostupné";
 "Unchanged" = "Beze změny";
 "Underline" = "Podtržení";
 "Undo" = "Zpět";

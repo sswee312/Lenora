@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ को एक्सपोर्ट नहीं किया जा सका।";
+"%@ credits used · No limit" = "%@ क्रेडिट उपयोग किए गए · कोई सीमा नहीं";
 "%@ does not accept this media" = "%@ इस मीडिया को स्वीकार नहीं करता";
 "%@ does not support this media type." = "%@ इस मीडिया प्रकार का समर्थन नहीं करता।";
 "%@ exported with %lld warnings." = "%@ को %lld चेतावनियों के साथ एक्सपोर्ट किया गया।";
@@ -11,6 +12,7 @@
 "%@ model not available" = "%@ मॉडल उपलब्ध नहीं है";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ में HTTPS का उपयोग होना चाहिए, या केवल इसी Mac पर HTTP।";
 "%@ needs a start frame." = "%@ के लिए एक प्रारंभिक फ़्रेम आवश्यक है।";
+"%@ of %@ credits" = "%2$@ में से %1$@ क्रेडिट";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld स्किल्स";
@@ -228,6 +230,7 @@
 "Cut" = "कट";
 "Cut out the subject as a transparent PNG" = "सब्जेक्ट को ट्रांसपेरेंट PNG के रूप में काटें";
 "Cut to the beat" = "बीट पर कट करें";
+"Daily budget" = "दैनिक बजट";
 "Dark" = "डार्क";
 "Dark appearance" = "डार्क अपीयरेंस";
 "Darken" = "डार्कन";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "अपरकेस";
 "URL" = "URL";
 "Unable to save skill" = "स्किल सेव नहीं की जा सकी";
+"Unavailable" = "अनुपलब्ध";
 "Unchanged" = "अपरिवर्तित";
 "Underline" = "अंडरलाइन";
 "Undo" = "अनडू";

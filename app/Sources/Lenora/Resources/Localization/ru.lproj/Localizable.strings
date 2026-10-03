@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "Не удалось экспортировать %@.";
+"%@ credits used · No limit" = "Использовано кредитов: %@ · Без лимита";
 "%@ does not accept this media" = "%@ не принимает этот медиафайл";
 "%@ does not support this media type." = "%@ не поддерживает медиафайлы этого типа.";
 "%@ exported with %lld warnings." = "%@ экспортирован с предупреждениями: %lld.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "Модель %@ недоступна";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ должен использовать HTTPS или HTTP только на этом Mac.";
 "%@ needs a start frame." = "Для %@ нужен начальный кадр.";
+"%@ of %@ credits" = "%@ из %@ кредитов";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, навыков: %lld";
@@ -228,6 +230,7 @@
 "Cut" = "Вырезать";
 "Cut out the subject as a transparent PNG" = "Вырезать объект в виде прозрачного PNG";
 "Cut to the beat" = "Резать под бит";
+"Daily budget" = "Дневной бюджет";
 "Dark" = "Тёмное";
 "Dark appearance" = "Тёмное оформление";
 "Darken" = "Затемнение";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "ПРОПИСНЫЕ";
 "URL" = "URL";
 "Unable to save skill" = "Не удалось сохранить навык";
+"Unavailable" = "Недоступно";
 "Unchanged" = "Без изменений";
 "Underline" = "Подчёркивание";
 "Undo" = "Отменить";

@@ -11,9 +11,11 @@ actor FakeProvider: GenerationProvider {
     private(set) var pollers = 0
     private(set) var terminations = 0
     private let hangsOnSubmit: Bool
+    private let submitError: BackendError?
 
-    init(states: [JobState], failure: BackendError? = nil, hangsOnSubmit: Bool = false) {
+    init(states: [JobState] = [], failure: BackendError? = nil, hangsOnSubmit: Bool = false, submitError: BackendError? = nil) {
         self.states = states
+        self.submitError = submitError
         self.failure = failure
         self.hangsOnSubmit = hangsOnSubmit
     }
@@ -30,6 +32,7 @@ actor FakeProvider: GenerationProvider {
 
     func submit(_ job: JobRequest, idempotencyKey: String) async throws -> SubmittedJob {
         submitted.append((job, idempotencyKey))
+        if let submitError { throw submitError }
         if hangsOnSubmit { try await Task.sleep(for: .seconds(3600)) }
         return try BackendCoding.decoder().decode(SubmittedJob.self, from: Data(#"{"jobId":"fake:1","status":"queued"}"#.utf8))
     }
@@ -56,10 +59,11 @@ actor FakeProvider: GenerationProvider {
     func setCancelResult(_ result: Result<JobState, BackendError>) { cancelResult = result }
 }
 
-func jobState(_ status: JobStatus, results: [JobResult]? = nil) -> JobState {
+func jobState(_ status: JobStatus, results: [JobResult]? = nil, error: JobFailure? = nil) -> JobState {
     let resultsJSON = results.map { r in
         "[" + r.map { #"{"url":"\#($0.url.absoluteString)","contentType":"\#($0.contentType)","fileExtension":"\#($0.fileExtension)"}"# }.joined(separator: ",") + "]"
     } ?? "null"
-    let json = #"{"jobId":"fake:1","status":"\#(status.rawValue)","results":\#(resultsJSON)}"#
+    let errorJSON = error.map { #"{"code":"\#($0.code)","message":"\#($0.message)","retryable":\#($0.retryable)}"# } ?? "null"
+    let json = #"{"jobId":"fake:1","status":"\#(status.rawValue)","results":\#(resultsJSON),"error":\#(errorJSON)}"#
     return try! BackendCoding.decoder().decode(JobState.self, from: Data(json.utf8))
 }

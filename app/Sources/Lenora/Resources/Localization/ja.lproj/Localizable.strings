@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@を書き出せませんでした。";
+"%@ credits used · No limit" = "%@ クレジット使用済み · 上限なし";
 "%@ does not accept this media" = "%@ではこのメディアを使用できません";
 "%@ does not support this media type." = "%@はこのメディア形式に対応していません。";
 "%@ exported with %lld warnings." = "%@は%lld件の警告付きで書き出されました。";
@@ -11,6 +12,7 @@
 "%@ model not available" = "%@モデルは利用できません";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@にはHTTPSを使用する必要があります（このMac上に限りHTTPも可）。";
 "%@ needs a start frame." = "%@ には開始フレームが必要です。";
+"%@ of %@ credits" = "%@ / %@ クレジット";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@、%lld個のスキル";
@@ -228,6 +230,7 @@
 "Cut" = "カット";
 "Cut out the subject as a transparent PNG" = "被写体を透明なPNGとして切り抜く";
 "Cut to the beat" = "ビートに合わせてカット";
+"Daily budget" = "1日の予算";
 "Dark" = "ダーク";
 "Dark appearance" = "ダークの外観";
 "Darken" = "比較（暗）";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "大文字";
 "URL" = "URL";
 "Unable to save skill" = "スキルを保存できません";
+"Unavailable" = "利用不可";
 "Unchanged" = "変更なし";
 "Underline" = "下線";
 "Undo" = "取り消す";

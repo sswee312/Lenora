@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@을(를) 내보낼 수 없습니다.";
+"%@ credits used · No limit" = "%@ 크레딧 사용 · 제한 없음";
 "%@ does not accept this media" = "%@은(는) 이 미디어를 사용할 수 없습니다";
 "%@ does not support this media type." = "%@은(는) 이 미디어 유형을 지원하지 않습니다.";
 "%@ exported with %lld warnings." = "%@을(를) %lld개의 경고와 함께 내보냈습니다.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "%@ 모델을 사용할 수 없음";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@은(는) HTTPS를 사용해야 하며, 이 Mac에서만 HTTP를 사용할 수 있습니다.";
 "%@ needs a start frame." = "%@에는 시작 프레임이 필요합니다.";
+"%@ of %@ credits" = "%@ / %@ 크레딧";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, 스킬 %lld개";
@@ -228,6 +230,7 @@
 "Cut" = "오려두기";
 "Cut out the subject as a transparent PNG" = "피사체를 투명한 PNG로 오려내기";
 "Cut to the beat" = "비트에 맞춰 컷";
+"Daily budget" = "일일 예산";
 "Dark" = "다크";
 "Dark appearance" = "다크 모드";
 "Darken" = "어둡게";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "대문자";
 "URL" = "URL";
 "Unable to save skill" = "스킬을 저장할 수 없음";
+"Unavailable" = "사용 불가";
 "Unchanged" = "변경 없음";
 "Underline" = "밑줄";
 "Undo" = "실행 취소";

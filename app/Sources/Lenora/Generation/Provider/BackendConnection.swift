@@ -73,6 +73,17 @@ final class BackendConnection {
         }
     }
 
+    func refreshCapabilities() async {
+        guard let provider, let configuration else { return }
+        do {
+            let capabilities = try await provider.capabilities()
+            guard self.configuration == configuration else { return }
+            ModelCatalog.shared.apply(capabilities)
+        } catch {
+            Log.generation.warning("capability refresh failed: \(error.localizedDescription)")
+        }
+    }
+
     func save(url: String, token: String?) async {
         generation &+= 1
         let current = generation

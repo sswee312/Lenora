@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "Не вдалося експортувати %@.";
+"%@ credits used · No limit" = "Використано кредитів: %@ · Без ліміту";
 "%@ does not accept this media" = "%@ не приймає ці медіа";
 "%@ does not support this media type." = "%@ не підтримує цей тип медіа.";
 "%@ exported with %lld warnings." = "%@ експортовано з попередженнями: %lld.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "Модель %@ недоступна";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ має використовувати HTTPS або HTTP лише на цьому Mac.";
 "%@ needs a start frame." = "Для %@ потрібен початковий кадр.";
+"%@ of %@ credits" = "%@ із %@ кредитів";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, навичок: %lld";
@@ -228,6 +230,7 @@
 "Cut" = "Вирізати";
 "Cut out the subject as a transparent PNG" = "Вирізати об’єкт як прозорий PNG";
 "Cut to the beat" = "Монтувати під біт";
+"Daily budget" = "Денний бюджет";
 "Dark" = "Темна";
 "Dark appearance" = "Темний вигляд";
 "Darken" = "Затемнення";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "ПРОПИСНІ";
 "URL" = "URL";
 "Unable to save skill" = "Не вдалося зберегти навичку";
+"Unavailable" = "Недоступно";
 "Unchanged" = "Без змін";
 "Underline" = "Підкреслення";
 "Undo" = "Відмінити";

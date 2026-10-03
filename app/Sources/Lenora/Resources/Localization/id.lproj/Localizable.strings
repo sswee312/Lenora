@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ tidak dapat diekspor.";
+"%@ credits used · No limit" = "%@ kredit terpakai · Tanpa batas";
 "%@ does not accept this media" = "%@ tidak menerima media ini";
 "%@ does not support this media type." = "%@ tidak mendukung jenis media ini.";
 "%@ exported with %lld warnings." = "%@ diekspor dengan %lld peringatan.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "Model %@ tidak tersedia";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ harus menggunakan HTTPS, atau HTTP hanya di Mac ini.";
 "%@ needs a start frame." = "%@ memerlukan bingkai awal.";
+"%@ of %@ credits" = "%@ dari %@ kredit";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skill";
@@ -228,6 +230,7 @@
 "Cut" = "Potong";
 "Cut out the subject as a transparent PNG" = "Potong subjek sebagai PNG transparan";
 "Cut to the beat" = "Potong mengikuti ketukan";
+"Daily budget" = "Anggaran harian";
 "Dark" = "Gelap";
 "Dark appearance" = "Tampilan gelap";
 "Darken" = "Gelapkan";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "HURUF BESAR";
 "URL" = "URL";
 "Unable to save skill" = "Tidak dapat menyimpan skill";
+"Unavailable" = "Tidak tersedia";
 "Unchanged" = "Tidak berubah";
 "Underline" = "Garis bawah";
 "Undo" = "Urungkan";

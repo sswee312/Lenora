@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "تعذّر تصدير ⁨%@⁩.";
+"%@ credits used · No limit" = "%@ رصيد مستخدم · بلا حد";
 "%@ does not accept this media" = "⁨%@⁩ لا يقبل هذه الوسائط";
 "%@ does not support this media type." = "⁨%@⁩ لا يدعم نوع الوسائط هذا.";
 "%@ exported with %lld warnings." = "تم تصدير ⁨%@⁩ مع ⁨%lld⁩ تحذيرًا.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "نموذج ⁨%@⁩ غير متوفر";
 "%@ must use HTTPS, or HTTP on this Mac only." = "يجب أن يستخدم ⁨%@⁩ بروتوكول HTTPS، أو HTTP على هذا الـ Mac فقط.";
 "%@ needs a start frame." = "يحتاج %@ إلى إطار بداية.";
+"%@ of %@ credits" = "%@ من %@ رصيد";
 "%@ · %@" = "⁨%@⁩ · ⁨%@⁩";
 "%@ · %lld" = "⁨%@⁩ · ⁨%lld⁩";
 "%@, %lld skills" = "⁨%@⁩، ⁨%lld⁩ مهارات";
@@ -228,6 +230,7 @@
 "Cut" = "قص";
 "Cut out the subject as a transparent PNG" = "قص العنصر الرئيسي كصورة PNG شفافة";
 "Cut to the beat" = "القص على الإيقاع";
+"Daily budget" = "الميزانية اليومية";
 "Dark" = "داكن";
 "Dark appearance" = "مظهر داكن";
 "Darken" = "تغميق";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "أحرف كبيرة";
 "URL" = "URL";
 "Unable to save skill" = "تعذّر حفظ المهارة";
+"Unavailable" = "غير متاح";
 "Unchanged" = "دون تغيير";
 "Underline" = "تحته خط";
 "Undo" = "تراجع";

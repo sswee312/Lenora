@@ -1,6 +1,7 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ dışa aktarılamadı.";
+"%@ credits used · No limit" = "%@ kredi kullanıldı · Sınır yok";
 "%@ does not accept this media" = "%@ bu medyayı kabul etmiyor";
 "%@ does not support this media type." = "%@ bu medya türünü desteklemiyor.";
 "%@ exported with %lld warnings." = "%@, %lld uyarıyla dışa aktarıldı.";
@@ -11,6 +12,7 @@
 "%@ model not available" = "%@ modeli kullanılamıyor";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ HTTPS kullanmalı veya yalnızca bu Mac'te HTTP kullanabilir.";
 "%@ needs a start frame." = "%@ bir başlangıç karesi gerektirir.";
+"%@ of %@ credits" = "%@ / %@ kredi";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld beceri";
@@ -228,6 +230,7 @@
 "Cut" = "Kes";
 "Cut out the subject as a transparent PNG" = "Özneyi saydam PNG olarak kes";
 "Cut to the beat" = "Ritme göre kes";
+"Daily budget" = "Günlük bütçe";
 "Dark" = "Koyu";
 "Dark appearance" = "Koyu görünüm";
 "Darken" = "Koyulaştır";
@@ -923,6 +926,7 @@
 "UPPERCASE" = "BÜYÜK HARF";
 "URL" = "URL";
 "Unable to save skill" = "Beceri kaydedilemiyor";
+"Unavailable" = "Kullanılamıyor";
 "Unchanged" = "Değiştirilmedi";
 "Underline" = "Altı Çizili";
 "Undo" = "Geri Al";
