@@ -7,28 +7,30 @@ import math
 import os
 import secrets
 import time
-from collections.abc import Callable
+from collections.abc import Awaitable, Callable
 from pathlib import Path
 from typing import Any, ClassVar
 
 import httpx
+from pydantic import ValidationError
 from pydantic_settings import BaseSettings
 
 from lenora_backend.costs import Budget
-from lenora_backend.errors import ProblemError
+from lenora_backend.errors import ProblemError, RequestNotSent
 from lenora_backend.jobids import sign_job, verify_job
 from lenora_backend.kinds import (
-    Estimate, InputLimits, JobError, JobRequest, JobState, ModelInfo, SpeechParams, SubmittedJob, UploadRequest,
-    UploadTicket,
+    REWRITE_TARGET_PROMPTS, Estimate, InputLimits, JobError, JobRequest, JobState, ModelInfo, RewritePromptParams,
+    SpeechParams, SubmittedJob, UploadRequest, UploadTicket,
 )
 from lenora_backend.results import MAX_BYTES, ResultStore
-from lenora_adapter_openai.api import OpenAIAPI
+from lenora_adapter_openai.api import OpenAIAPI, Refused
 from lenora_adapter_openai.settings import OpenAISettings
 from lenora_adapter_openai.speech_jobs import SpeechJob, SpeechJobs
 
 log = logging.getLogger("lenora.openai")
 
 VOICE = "openai/voice"
+REWRITE = "openai/rewrite"
 UNIT = "usd"
 # ~$0.015 per minute (OpenAI estimate) at the measured 871 characters a minute, rounded up.
 SPEECH_USD_PER_1000_CHARS = 0.0175
@@ -38,7 +40,26 @@ AUDIO_TYPES = {"mp3": "audio/mpeg", "wav": "audio/wav"}
 NO_INPUTS = InputLimits(types=[], maxBytes=1)
 PROBE_TIMEOUT_SECONDS = 5.0
 KEY_FILE = "openai.key"
-JOB_DOMAINS = ("speech",)
+JOB_DOMAINS = ("speech", "rewrite")
+# Task 1 spike: about 2300 output tokens at $4.50/1M, rounded up.
+REWRITE_USD_PER_CALL = 0.0104
+REWRITE_ESTIMATE = Estimate(amount=REWRITE_USD_PER_CALL, unit=UNIT)
+REWRITE_REASONING: dict | None = {"effort": "low"}
+REWRITE_MAX_OUTPUT_TOKENS = 2000
+_REWRITE_COMMON = ("Rewrite the user's prompt so it gets a better result. Keep the user's intent, subject and language. "
+                   "Return only the improved prompt, with no preamble, quotes or notes.")
+REWRITE_INSTRUCTIONS = {
+    "video.generate": _REWRITE_COMMON + " The prompt drives a video generator: make the subject, action, camera, lighting "
+                      "and pacing concrete. At most 1000 characters.",
+    "image.generate": _REWRITE_COMMON + " The prompt drives an image generator: make the subject, composition, lighting "
+                      "and style concrete. At most 1000 characters.",
+    # The script is spoken word for word, so anything added here would be read aloud.
+    "audio.speech": _REWRITE_COMMON + " The text is a voiceover script that is read aloud word for word. Improve its "
+                    "wording, flow and rhythm, and use punctuation for pauses. Never add stage directions, delivery notes, "
+                    "speaker labels or bracketed text. At most 4096 characters.",
+    "image.edit": _REWRITE_COMMON + " The prompt names what an image editor should find or paint. Keep it short and "
+                  "specific. At most 100 characters, using only letters, digits, spaces, periods, apostrophes and hyphens.",
+}
 # retryable: resubmitting can work, and the app reads a non-retryable provider_unavailable as a lost capability.
 UNAVAILABLE = JobError(code="provider_unavailable", retryable=True, message=(
     "This voiceover is not available: the backend restarted before it finished, or it expired. Generate it again."))
@@ -46,6 +67,16 @@ UNAVAILABLE = JobError(code="provider_unavailable", retryable=True, message=(
 
 def speech_estimate(characters: int) -> Estimate:
     return Estimate(amount=round(math.ceil(characters / 1000) * SPEECH_USD_PER_1000_CHARS, 6), unit=UNIT)
+
+
+def output_text(body: object) -> str | None:
+    """The assistant's text from a completed /responses body; None when it is incomplete or empty."""
+    if not isinstance(body, dict) or body.get("status") != "completed":
+        return None
+    parts = [part.get("text") for item in body.get("output") or [] if isinstance(item, dict) and item.get("type") == "message"
+             for part in item.get("content") or [] if isinstance(part, dict) and part.get("type") == "output_text"]
+    text = "".join(p for p in parts if isinstance(p, str)).strip()
+    return text or None
 
 
 def load_signing_key(path: Path) -> str:
@@ -110,6 +141,8 @@ class OpenAIAdapter:
                         "category": "tts", "voices": VOICES, "defaultVoice": DEFAULT_VOICE, "supportsLyrics": False,
                         "supportsInstrumental": False, "supportsStyleInstructions": True, "minPromptLength": 1,
                         "promptLabel": "Script", "inputs": ["text"]}}))
+        models.append(ModelInfo(id=REWRITE, kind="text.rewritePrompt", displayName="Improve Prompt", inputs=NO_INPUTS,
+                                cancellable=False, estimate=REWRITE_ESTIMATE))
         return models
 
     async def create_upload(self, model: str, req: UploadRequest) -> UploadTicket:
@@ -118,14 +151,20 @@ class OpenAIAdapter:
     async def submit(self, model: str, job: JobRequest) -> SubmittedJob:
         if model == VOICE:
             return await self._speech(SpeechParams.model_validate(job.params))
+        if model == REWRITE:
+            return await self._rewrite(RewritePromptParams.model_validate(job.params))
         raise ProblemError("unknown_model", f"No OpenAI model '{model}'.")
 
     async def status(self, job_id: str) -> JobState:
-        _, result_id = await self._verify(job_id)
+        domain, result_id = await self._verify(job_id)
+        if domain == "rewrite":
+            return JobState(jobId=job_id, status="succeeded", text=await self.results.read_text(result_id))
         return await self._speech_state(job_id, result_id)
 
     async def cancel(self, job_id: str) -> JobState:
-        _, result_id = await self._verify(job_id)
+        domain, result_id = await self._verify(job_id)
+        if domain == "rewrite":
+            raise ProblemError("not_cancellable", "Prompt rewrites cannot be cancelled.")
         await self.speech_jobs.cancel(result_id)
         return await self._speech_state(job_id, result_id)
 
@@ -183,6 +222,35 @@ class OpenAIAdapter:
             return JobState(jobId=job_id, status="failed", error=UNAVAILABLE)
         return JobState(jobId=job_id, status="succeeded",
                         results=[ResultStore.result(result_id, stored.content_type, stored.file_extension)])
+
+    async def _rewrite(self, params: RewritePromptParams) -> SubmittedJob:
+        key = await self._key()
+        instructions = REWRITE_INSTRUCTIONS[params.targetKind]
+        if params.guidance:
+            instructions += f"\nThe user also asks: {params.guidance}"
+        body = {"model": self.settings.rewrite_model, "instructions": instructions, "input": params.text,
+                "max_output_tokens": REWRITE_MAX_OUTPUT_TOKENS, "store": False}
+        if REWRITE_REASONING is not None:
+            body["reasoning"] = REWRITE_REASONING
+        text = output_text(await self._charged(REWRITE_ESTIMATE, lambda: self.api.respond(body)))
+        if text is None:
+            raise ProblemError("provider_error", "OpenAI returned no rewritten prompt.", retryable=True)
+        try:
+            text = REWRITE_TARGET_PROMPTS[params.targetKind].validate_python(text)
+        except ValidationError:
+            raise ProblemError("provider_error", "The rewritten prompt does not fit the target's prompt rules.",
+                               retryable=True) from None
+        result_id = await self.results.put_text(text)
+        return SubmittedJob(jobId=sign_job("rewrite", result_id, key), status="succeeded", estimate=REWRITE_ESTIMATE)
+
+    async def _charged[T](self, estimate: Estimate, call: Callable[[], Awaitable[T]]) -> T:
+        """Reserve, call, and refund only when the request provably never reached OpenAI or OpenAI refused it."""
+        self.budget.reserve(estimate)
+        try:
+            return await call()
+        except (RequestNotSent, Refused):
+            self.budget.refund(estimate)
+            raise
 
     async def _verify(self, job_id: str) -> tuple[str, str]:
         domain = job_id.partition(":")[0]

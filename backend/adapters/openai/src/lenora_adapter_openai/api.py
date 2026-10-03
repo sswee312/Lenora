@@ -99,3 +99,15 @@ class OpenAIAPI:
         except httpx.TransportError as error:
             raise unreachable(error) from None
         return response.status_code
+
+    async def respond(self, body: dict) -> object:
+        try:
+            response = await self.http.post(f"{self.base}/responses", json=body, headers=self.headers)
+        except httpx.TransportError as error:
+            raise unreachable(error) from None
+        if response.status_code != 200:
+            raise refusal(response)
+        try:
+            return response.json()
+        except ValueError:
+            raise ProblemError("provider_error", "OpenAI returned an unreadable response.", retryable=True) from None

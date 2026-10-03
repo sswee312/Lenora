@@ -10,7 +10,7 @@ from fastapi.testclient import TestClient
 from pydantic import ValidationError
 
 from fakes import AUTH, build_app
-from oai import AUDIO, DAY, KEY, MODEL, SPEECH, Gate, error, finished, mp3, run, settings, speech
+from oai import AUDIO, DAY, KEY, MODEL, RESPONSES, SPEECH, Gate, answer, error, finished, mp3, rewrite, run, settings, speech
 from lenora_backend.errors import ProblemError
 from lenora_backend.jobids import sign_job
 from lenora_backend.kinds import UploadRequest
@@ -28,25 +28,29 @@ ONE = SPEECH_USD_PER_1000_CHARS
 class TestOpenAIConformance(AdapterConformance):
     adapter_cls = OpenAIAdapter
     settings = settings()
-    adapter_run = {"audio.speech": "background"}
+    adapter_run = {"audio.speech": "background", "text.rewritePrompt": "submit"}
 
     def upload_request(self, model):
         return UploadRequest(model=model.id, contentType="audio/mpeg", byteCount=1, filename="a.mp3")
 
     def job_request(self, model, asset_ref):
-        return speech()
+        return speech() if model.kind == "audio.speech" else rewrite()
 
     def mock_running(self, router):
         router.post(SPEECH).mock(side_effect=Gate())
+        answer(router)
 
     def mock_succeeded(self, router):
         mp3(router)
+        answer(router)
 
     def mock_failed(self, router):
         router.post(SPEECH).mock(return_value=error(500))
+        router.post(RESPONSES).mock(return_value=error(500))
 
     def mock_unreachable(self, router):
         router.post(SPEECH).mock(side_effect=httpx.ConnectError("down"))
+        router.post(RESPONSES).mock(side_effect=httpx.ConnectError("down"))
 
     async def settle(self, adapter):
         await adapter.speech_jobs.join()
@@ -550,7 +554,7 @@ def test_without_a_key_the_adapter_is_disabled_with_its_variable_named(monkeypat
 
 
 @pytest.mark.parametrize("status, models, available", [
-    (200, ["openai/voice"], True), (401, [], False), (403, [], False), (404, [], False),
+    (200, ["openai/voice", "openai/rewrite"], True), (401, [], False), (403, [], False), (404, ["openai/rewrite"], False),
 ])
 def test_start_probe_controls_the_speech_model(tmp_path, status, models, available):
     async def scenario(a):
@@ -566,7 +570,8 @@ def test_unreachable_probe_keeps_the_models(tmp_path):
     async def scenario(a):
         await a.start()
         return [m.id for m in a.models()]
-    assert run(scenario, settings(tmp_path), lambda r: r.get(MODEL).mock(side_effect=httpx.ConnectError("down"))) == ["openai/voice"]
+    assert run(scenario, settings(tmp_path), lambda r: r.get(MODEL).mock(side_effect=httpx.ConnectError("down"))) == [
+        "openai/voice", "openai/rewrite"]
 
 
 def test_recheck_probes_again(tmp_path):
@@ -577,4 +582,4 @@ def test_recheck_probes_again(tmp_path):
         return hidden, [m.id for m in a.models()]
     responses = [httpx.Response(401, json={}), httpx.Response(200, json={})]
     hidden, shown = run(scenario, settings(tmp_path), lambda r: r.get(MODEL).mock(side_effect=responses))
-    assert (hidden, shown) == ([], ["openai/voice"])
+    assert (hidden, shown) == ([], ["openai/voice", "openai/rewrite"])

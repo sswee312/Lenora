@@ -53,6 +53,26 @@ def mp3(router):
     return router.post(SPEECH).respond(200, content=AUDIO, headers={"content-type": "audio/mpeg"})
 
 
+REWRITTEN = "A black cat on a moonlit tin roof, low angle, soft blue rim light."
+
+
+def rewrite(text: str = "a cat on a roof", target: str = "image.generate", **params) -> JobRequest:
+    return JobRequest(kind="text.rewritePrompt", model="openai/rewrite", params={"text": text, "targetKind": target, **params})
+
+
+def completed(text: str = REWRITTEN, status: str = "completed") -> dict:
+    """A /responses body: a reasoning item, then the assistant message."""
+    return {"id": "resp_1", "object": "response", "status": status, "output": [
+        {"type": "reasoning", "id": "rs_1", "summary": []},
+        {"type": "message", "id": "msg_1", "role": "assistant", "status": status,
+         "content": [{"type": "output_text", "text": text, "annotations": []}]},
+    ]}
+
+
+def answer(router, text: str = REWRITTEN, status: str = "completed"):
+    return router.post(RESPONSES).respond(200, json=completed(text, status))
+
+
 def error(status: int, code: str | None = None, message: str = "Something went wrong.", type_: str | None = None,
           headers: dict | None = None) -> httpx.Response:
     return httpx.Response(status, json={"error": {"message": message, "type": type_, "code": code}}, headers=headers)
