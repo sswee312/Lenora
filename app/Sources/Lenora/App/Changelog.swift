@@ -40,8 +40,12 @@ final class ChangelogStore {
         let lastSeen = UserDefaults.standard.string(forKey: lastSeenKey)
         UserDefaults.standard.set(current, forKey: lastSeenKey)
 
-        guard let lastSeen, !lastSeen.isEmpty, lastSeen != current else { return }
-        pending = feed.entries.first { $0.version == current }
+        pending = Self.whatsNew(in: feed, current: current, lastSeen: lastSeen)
+    }
+
+    nonisolated static func whatsNew(in feed: ChangelogFeed, current: String, lastSeen: String?) -> ChangelogEntry? {
+        guard let lastSeen, !lastSeen.isEmpty, lastSeen != current else { return nil }
+        return feed.entries.first { $0.version == current }
     }
 
     func dismiss() {
