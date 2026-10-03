@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld afbeeldingen zijn gereed in Lenora.";
 "%lld items" = "%lld items";
 "%lld media files are missing and will be skipped." = "%lld mediabestanden ontbreken en worden overgeslagen.";
+"%lld seconds" = "%lld seconden";
 "%lld selected" = "%lld geselecteerd";
 "%lld subtitle files are ready in Lenora." = "%lld ondertitelbestanden zijn gereed in Lenora.";
 "%lld text clips are ready in Lenora." = "%lld tekstclips zijn gereed in Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Veilige actiezone";
 "Adapters" = "Adapters";
 "Add Marker (M)" = "Voeg markering toe (M)";
+"Add Outputs" = "Uitvoer toevoegen";
+"Add Outputs…" = "Uitvoer toevoegen…";
 "Add Range to Chat" = "Voeg bereik toe aan chat";
 "Add Text" = "Voeg tekst toe";
 "Add a comment" = "Voeg een opmerking toe";
@@ -74,12 +77,14 @@
 "All" = "Alles";
 "All Statuses" = "Alle statussen";
 "All fonts" = "Alle lettertypen";
+"Always includes a stream, a download link and a poster." = "Bevat altijd een stream, een downloadlink en een poster.";
 "Amount" = "Bedrag";
 "Analyzing media so you can search it." = "Media analyseren zodat u deze kunt zoeken.";
 "Angle" = "Hoek";
 "Animate" = "Animeren";
 "Animation" = "Animatie";
 "Anthropic API Key" = "Anthropic API-sleutel";
+"Anyone with the link can watch." = "Iedereen met de link kan kijken.";
 "Appearance" = "Weergave";
 "Apply" = "Pas toe";
 "Ask anything, or start with:" = "Stel een vraag, of begin met:";
@@ -198,7 +203,12 @@
 "Contrast" = "Contrast";
 "Copied" = "Gekopieerd";
 "Copy" = "Kopieer";
+"Copy Link" = "Link kopiëren";
 "Copy Path" = "Kopieer pad";
+"Copy Poster Link" = "Posterlink kopiëren";
+"Copy Stream Link" = "Streamlink kopiëren";
+"Copy Teaser Link" = "Teaserlink kopiëren";
+"Copy Vertical Cut Link" = "Link van verticale versie kopiëren";
 "Copy message" = "Kopieer bericht";
 "Copy one clip of the same type and try again." = "Kopieer één clip van hetzelfde type en probeer het opnieuw.";
 "Copy prompt" = "Kopieer prompt";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Schakel schermvullend in";
 "Erase an object from the image" = "Een object uit de afbeelding wissen";
 "Every connected agent will need the new token." = "Elke verbonden agent heeft het nieuwe token nodig.";
+"Every link stops working. This can't be undone." = "Alle links werken niet meer. Dit kan niet ongedaan worden gemaakt.";
 "Exclusion" = "Uitsluiting";
 "Expand" = "Klap uit";
 "Export" = "Exporteer";
@@ -339,6 +350,7 @@
 "Fade In" = "Fade-in";
 "Fade Out" = "Fade-out";
 "Failed" = "Mislukt";
+"Failed: %@" = "Mislukt: %@";
 "Feather" = "Doezelen";
 "Featured" = "Uitgelicht";
 "File" = "Archief";
@@ -652,10 +664,16 @@
 "Presence" = "Aanwezigheid";
 "Press M in the timeline to add a marker." = "Druk op M in de Timeline om een markering toe te voegen.";
 "Preview" = "Voorvertoning";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Verwerking wordt gefactureerd door de backend. De schatting verschijnt zodra de verwerking begint.";
+"Processing…" = "Verwerken…";
+"Processing… Estimated %@ %@" = "Verwerken… Geschat: %@ %@";
 "Project" = "Project";
 "Project Settings" = "Projectinstellingen";
 "Projects Couldn’t Be Deleted" = "Projecten konden niet worden verwijderd";
 "Prompt" = "Prompt";
+"Publish" = "Publiceren";
+"Published" = "Gepubliceerd";
+"Publish…" = "Publiceren…";
 "Put the subject on a new background" = "Het onderwerp op een nieuwe achtergrond zetten";
 "Quality" = "Kwaliteit";
 "Queued" = "In wachtrij";
@@ -664,6 +682,8 @@
 "Range" = "Bereik";
 "Razor (C)" = "Mes (C)";
 "Razor Tool" = "Mesgereedschap";
+"Ready" = "Gereed";
+"Ready, %lld failed" = "Gereed, %lld mislukt";
 "Reasoning effort" = "Redeneerinspanning";
 "Recolor" = "Opnieuw kleuren";
 "Redetect Beats" = "Detecteer beats opnieuw";
@@ -854,6 +874,7 @@
 "System appearance" = "Systeemweergave";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Maak een schermafbeelding van de voorvertoning en gebruik die als referentie voor generatie. Vooral nuttig voor AI-overgangen.";
 "Target Language" = "Doeltaal";
+"Teaser" = "Teaser";
 "Teasers aren't available." = "Teasers zijn niet beschikbaar.";
 "Teasers must be %lld–%lld seconds." = "Teasers moeten %lld–%lld seconden duren.";
 "Temperature" = "Temperatuur";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Herstel (⌘Z)";
 "Ungroup Multicam" = "Hef multicam-groep op";
 "Unlink" = "Ontkoppel";
+"Unpublish" = "Publicatie intrekken";
+"Unpublish this video?" = "Publicatie van deze video intrekken?";
+"Unpublished" = "Ingetrokken";
 "Untitled" = "Naamloos";
 "Update" = "Werk bij";
 "Update available" = "Update beschikbaar";
@@ -967,6 +991,7 @@
 "Version" = "Versie";
 "Vertical" = "Verticaal";
 "Vertical aspect %@ isn't supported." = "De verticale beeldverhouding %@ wordt niet ondersteund.";
+"Vertical cut" = "Verticale versie";
 "Vertical workspace layout" = "Verticale werkruimte";
 "Vibrance" = "Levendigheid";
 "Video" = "Video";

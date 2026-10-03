@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "⁨%lld⁩ من الصور جاهزة في Lenora.";
 "%lld items" = "⁨%lld⁩ عنصر";
 "%lld media files are missing and will be skipped." = "هناك ⁨%lld⁩ من ملفات الوسائط مفقودة وسيتم تخطيها.";
+"%lld seconds" = "%lld ثانية";
 "%lld selected" = "تم تحديد ⁨%lld⁩";
 "%lld subtitle files are ready in Lenora." = "⁨%lld⁩ من ملفات الترجمة جاهزة في Lenora.";
 "%lld text clips are ready in Lenora." = "⁨%lld⁩ من مقاطع النص جاهزة في Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "المنطقة الآمنة للحركة";
 "Adapters" = "المحوّلات";
 "Add Marker (M)" = "إضافة علامة ⁨(M)⁩";
+"Add Outputs" = "إضافة مخرجات";
+"Add Outputs…" = "إضافة مخرجات…";
 "Add Range to Chat" = "إضافة النطاق إلى الدردشة";
 "Add Text" = "إضافة نص";
 "Add a comment" = "إضافة تعليق";
@@ -74,12 +77,14 @@
 "All" = "الكل";
 "All Statuses" = "كل الحالات";
 "All fonts" = "كل الخطوط";
+"Always includes a stream, a download link and a poster." = "يتضمن دائمًا بثًا ورابط تنزيل وملصقًا.";
 "Amount" = "المقدار";
 "Analyzing media so you can search it." = "جارٍ تحليل الوسائط لتتمكن من البحث فيها.";
 "Angle" = "الزاوية";
 "Animate" = "تحريك";
 "Animation" = "رسوم متحركة";
 "Anthropic API Key" = "مفتاح واجهة API من Anthropic";
+"Anyone with the link can watch." = "يمكن لأي شخص لديه الرابط المشاهدة.";
 "Appearance" = "المظهر";
 "Apply" = "تطبيق";
 "Ask anything, or start with:" = "اسأل عن أي شيء، أو ابدأ بـ:";
@@ -198,7 +203,12 @@
 "Contrast" = "التباين";
 "Copied" = "تم النسخ";
 "Copy" = "نسخ";
+"Copy Link" = "نسخ الرابط";
 "Copy Path" = "نسخ المسار";
+"Copy Poster Link" = "نسخ رابط الملصق";
+"Copy Stream Link" = "نسخ رابط البث";
+"Copy Teaser Link" = "نسخ رابط المقطع التشويقي";
+"Copy Vertical Cut Link" = "نسخ رابط المقطع العمودي";
 "Copy message" = "نسخ الرسالة";
 "Copy one clip of the same type and try again." = "انسخ مقطعًا واحدًا من النوع نفسه وأعد المحاولة.";
 "Copy prompt" = "نسخ المطالبة";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "الدخول إلى ملء الشاشة";
 "Erase an object from the image" = "مسح عنصر من الصورة";
 "Every connected agent will need the new token." = "سيحتاج كل وكيل متصل إلى الرمز المميز الجديد.";
+"Every link stops working. This can't be undone." = "ستتوقف جميع الروابط عن العمل. لا يمكن التراجع عن هذا الإجراء.";
 "Exclusion" = "استبعاد";
 "Expand" = "توسيع";
 "Export" = "تصدير";
@@ -339,6 +350,7 @@
 "Fade In" = "تلاشي للداخل";
 "Fade Out" = "تلاشي للخارج";
 "Failed" = "فشل";
+"Failed: %@" = "فشل: %@";
 "Feather" = "تنعيم الحواف";
 "Featured" = "مميز";
 "File" = "ملف";
@@ -652,10 +664,16 @@
 "Presence" = "الحضور";
 "Press M in the timeline to add a marker." = "اضغط M في المخطط الزمني لإضافة علامة.";
 "Preview" = "المعاينة";
+"Processing is billed by the backend. The estimate appears once processing starts." = "تتم محاسبة المعالجة من قِبل الخادم. يظهر التقدير عند بدء المعالجة.";
+"Processing…" = "جارٍ المعالجة…";
+"Processing… Estimated %@ %@" = "جارٍ المعالجة… التقدير: %@ %@";
 "Project" = "المشروع";
 "Project Settings" = "إعدادات المشروع";
 "Projects Couldn’t Be Deleted" = "تعذّر حذف المشاريع";
 "Prompt" = "المطالبة";
+"Publish" = "نشر";
+"Published" = "تم النشر";
+"Publish…" = "نشر…";
 "Put the subject on a new background" = "وضع العنصر على خلفية جديدة";
 "Quality" = "الجودة";
 "Queued" = "في قائمة الانتظار";
@@ -664,6 +682,8 @@
 "Range" = "النطاق";
 "Razor (C)" = "الشفرة ⁨(C)⁩";
 "Razor Tool" = "أداة الشفرة";
+"Ready" = "جاهز";
+"Ready, %lld failed" = "جاهز، فشل %lld";
 "Reasoning effort" = "مستوى الاستدلال";
 "Recolor" = "إعادة التلوين";
 "Redetect Beats" = "إعادة اكتشاف الإيقاعات";
@@ -854,6 +874,7 @@
 "System appearance" = "مظهر النظام";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "التقط صورة للمعاينة واستخدمها كمرجع للإنشاء. يفيد ذلك خصوصًا في إنشاء انتقالات بالذكاء الاصطناعي.";
 "Target Language" = "اللغة الهدف";
+"Teaser" = "مقطع تشويقي";
 "Teasers aren't available." = "المقاطع التشويقية غير متاحة.";
 "Teasers must be %lld–%lld seconds." = "يجب أن تكون مدة المقطع التشويقي بين %lld و%lld ثانية.";
 "Temperature" = "حرارة اللون";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "تراجع ⁨(⌘Z)⁩";
 "Ungroup Multicam" = "فك تجميع متعدد الكاميرات";
 "Unlink" = "إلغاء الربط";
+"Unpublish" = "إلغاء النشر";
+"Unpublish this video?" = "هل تريد إلغاء نشر هذا الفيديو؟";
+"Unpublished" = "تم إلغاء النشر";
 "Untitled" = "بلا عنوان";
 "Update" = "تحديث";
 "Update available" = "يتوفر تحديث";
@@ -967,6 +991,7 @@
 "Version" = "الإصدار";
 "Vertical" = "رأسي";
 "Vertical aspect %@ isn't supported." = "نسبة العرض إلى الارتفاع العمودية %@ غير مدعومة.";
+"Vertical cut" = "مقطع عمودي";
 "Vertical workspace layout" = "تخطيط مساحة العمل الرأسي";
 "Vibrance" = "حيوية الألوان";
 "Video" = "الفيديو";

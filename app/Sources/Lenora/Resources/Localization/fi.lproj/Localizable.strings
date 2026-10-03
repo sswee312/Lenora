@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld kuvaa on valmiina Lenora Prossa.";
 "%lld items" = "%lld kohdetta";
 "%lld media files are missing and will be skipped." = "%lld mediatiedostoa puuttuu, ja ne ohitetaan.";
+"%lld seconds" = "%lld sekuntia";
 "%lld selected" = "%lld valittu";
 "%lld subtitle files are ready in Lenora." = "%lld tekstitystiedostoa on valmiina Lenora Prossa.";
 "%lld text clips are ready in Lenora." = "%lld tekstileikettä on valmiina Lenora Prossa.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Toiminta-alue";
 "Adapters" = "Sovittimet";
 "Add Marker (M)" = "Lisää merkki (M)";
+"Add Outputs" = "Lisää tulosteita";
+"Add Outputs…" = "Lisää tulosteita…";
 "Add Range to Chat" = "Lisää alue keskusteluun";
 "Add Text" = "Lisää teksti";
 "Add a comment" = "Lisää kommentti";
@@ -74,12 +77,14 @@
 "All" = "Kaikki";
 "All Statuses" = "Kaikki tilat";
 "All fonts" = "Kaikki fontit";
+"Always includes a stream, a download link and a poster." = "Sisältää aina suoratoiston, latauslinkin ja julisteen.";
 "Amount" = "Summa";
 "Analyzing media so you can search it." = "Analysoidaan mediaa, jotta voit etsiä siitä.";
 "Angle" = "Kulma";
 "Animate" = "Animoi";
 "Animation" = "Animaatio";
 "Anthropic API Key" = "Anthropic API -avain";
+"Anyone with the link can watch." = "Kuka tahansa linkin saanut voi katsoa videon.";
 "Appearance" = "Ulkoasu";
 "Apply" = "Käytä";
 "Ask anything, or start with:" = "Kysy mitä tahansa tai aloita:";
@@ -198,7 +203,12 @@
 "Contrast" = "Kontrasti";
 "Copied" = "Kopioitu";
 "Copy" = "Kopioi";
+"Copy Link" = "Kopioi linkki";
 "Copy Path" = "Kopioi polku";
+"Copy Poster Link" = "Kopioi julistelinkki";
+"Copy Stream Link" = "Kopioi suoratoistolinkki";
+"Copy Teaser Link" = "Kopioi teaserlinkki";
+"Copy Vertical Cut Link" = "Kopioi pystyversion linkki";
 "Copy message" = "Kopioi viesti";
 "Copy one clip of the same type and try again." = "Kopioi yksi saman tyyppinen leike ja yritä uudelleen.";
 "Copy prompt" = "Kopioi kehote";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Siirry koko näytön tilaan";
 "Erase an object from the image" = "Poista kohde kuvasta";
 "Every connected agent will need the new token." = "Jokainen yhdistetty agentti tarvitsee uuden tunnuksen.";
+"Every link stops working. This can't be undone." = "Kaikki linkit lakkaavat toimimasta. Toimintoa ei voi kumota.";
 "Exclusion" = "Poissulkeminen";
 "Expand" = "Laajenna";
 "Export" = "Vie";
@@ -339,6 +350,7 @@
 "Fade In" = "Häivytä sisään";
 "Fade Out" = "Häivytä ulos";
 "Failed" = "Epäonnistui";
+"Failed: %@" = "Epäonnistui: %@";
 "Feather" = "Häivytys";
 "Featured" = "Suositellut";
 "File" = "Tiedosto";
@@ -652,10 +664,16 @@
 "Presence" = "Läsnäolo";
 "Press M in the timeline to add a marker." = "Paina M aikajanalla lisätäksesi merkin.";
 "Preview" = "Esikatselu";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Taustapalvelu laskuttaa käsittelystä. Arvio näkyy, kun käsittely alkaa.";
+"Processing…" = "Käsitellään…";
+"Processing… Estimated %@ %@" = "Käsitellään… Arvio: %@ %@";
 "Project" = "Projekti";
 "Project Settings" = "Projektin asetukset";
 "Projects Couldn’t Be Deleted" = "Projekteja ei voitu poistaa";
 "Prompt" = "Kehote";
+"Publish" = "Julkaise";
+"Published" = "Julkaistu";
+"Publish…" = "Julkaise…";
 "Put the subject on a new background" = "Siirrä kohde uudelle taustalle";
 "Quality" = "Laatu";
 "Queued" = "Jonossa";
@@ -664,6 +682,8 @@
 "Range" = "Alue";
 "Razor (C)" = "Leikkuri (C)";
 "Razor Tool" = "Leikkurityökalu";
+"Ready" = "Valmis";
+"Ready, %lld failed" = "Valmis, %lld epäonnistui";
 "Reasoning effort" = "Päättelyn määrä";
 "Recolor" = "Väritä uudelleen";
 "Redetect Beats" = "Tunnista iskut uudelleen";
@@ -854,6 +874,7 @@
 "System appearance" = "Järjestelmän ulkoasu";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Ota esikatselusta kuvakaappaus ja käytä sitä generoinnin viitteenä. Erityisen hyödyllinen AI-siirtymien luomiseen.";
 "Target Language" = "Kohdekieli";
+"Teaser" = "Teaser";
 "Teasers aren't available." = "Teaserit eivät ole käytettävissä.";
 "Teasers must be %lld–%lld seconds." = "Teaserin on oltava %lld–%lld sekuntia.";
 "Temperature" = "Lämpötila";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Kumoa (⌘Z)";
 "Ungroup Multicam" = "Pura monikamera";
 "Unlink" = "Pura linkitys";
+"Unpublish" = "Peruuta julkaisu";
+"Unpublish this video?" = "Peruutetaanko tämän videon julkaisu?";
+"Unpublished" = "Julkaisu peruutettu";
 "Untitled" = "Nimetön";
 "Update" = "Päivitä";
 "Update available" = "Päivitys saatavilla";
@@ -967,6 +991,7 @@
 "Version" = "Versio";
 "Vertical" = "Pysty";
 "Vertical aspect %@ isn't supported." = "Pystysuuntaista kuvasuhdetta %@ ei tueta.";
+"Vertical cut" = "Pystyversio";
 "Vertical workspace layout" = "Pystysuuntainen työtilan asettelu";
 "Vibrance" = "Eloisuus";
 "Video" = "Video";

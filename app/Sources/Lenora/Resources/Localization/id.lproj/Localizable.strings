@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld gambar siap di Lenora.";
 "%lld items" = "%lld item";
 "%lld media files are missing and will be skipped." = "%lld file media hilang dan akan dilewati.";
+"%lld seconds" = "%lld detik";
 "%lld selected" = "%lld dipilih";
 "%lld subtitle files are ready in Lenora." = "%lld file subtitle siap di Lenora.";
 "%lld text clips are ready in Lenora." = "%lld klip teks siap di Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Zona Aman Aksi";
 "Adapters" = "Adapter";
 "Add Marker (M)" = "Tambahkan Penanda (M)";
+"Add Outputs" = "Tambah keluaran";
+"Add Outputs…" = "Tambah keluaran…";
 "Add Range to Chat" = "Tambahkan Rentang ke Chat";
 "Add Text" = "Tambahkan Teks";
 "Add a comment" = "Tambahkan komentar";
@@ -74,12 +77,14 @@
 "All" = "Semua";
 "All Statuses" = "Semua Status";
 "All fonts" = "Semua font";
+"Always includes a stream, a download link and a poster." = "Selalu menyertakan stream, tautan unduhan, dan poster.";
 "Amount" = "Jumlah";
 "Analyzing media so you can search it." = "Menganalisis media agar Anda dapat mencarinya.";
 "Angle" = "Sudut";
 "Animate" = "Animasikan";
 "Animation" = "Animasi";
 "Anthropic API Key" = "Kunci API Anthropic";
+"Anyone with the link can watch." = "Siapa pun yang memiliki tautan dapat menonton.";
 "Appearance" = "Tampilan";
 "Apply" = "Terapkan";
 "Ask anything, or start with:" = "Ajukan pertanyaan, atau mulai dengan:";
@@ -198,7 +203,12 @@
 "Contrast" = "Kontras";
 "Copied" = "Disalin";
 "Copy" = "Salin";
+"Copy Link" = "Salin tautan";
 "Copy Path" = "Salin Jalur";
+"Copy Poster Link" = "Salin tautan poster";
+"Copy Stream Link" = "Salin tautan stream";
+"Copy Teaser Link" = "Salin tautan teaser";
+"Copy Vertical Cut Link" = "Salin tautan potongan vertikal";
 "Copy message" = "Salin pesan";
 "Copy one clip of the same type and try again." = "Salin satu klip dengan jenis yang sama, lalu coba lagi.";
 "Copy prompt" = "Salin prompt";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Masuk ke Layar Penuh";
 "Erase an object from the image" = "Hapus objek dari gambar";
 "Every connected agent will need the new token." = "Setiap agent yang terhubung memerlukan token baru.";
+"Every link stops working. This can't be undone." = "Semua tautan berhenti berfungsi. Tindakan ini tidak dapat dibatalkan.";
 "Exclusion" = "Exclusion";
 "Expand" = "Perluas";
 "Export" = "Ekspor";
@@ -339,6 +350,7 @@
 "Fade In" = "Pudar Masuk";
 "Fade Out" = "Pudar Keluar";
 "Failed" = "Gagal";
+"Failed: %@" = "Gagal: %@";
 "Feather" = "Feather";
 "Featured" = "Unggulan";
 "File" = "File";
@@ -652,10 +664,16 @@
 "Presence" = "Kehadiran";
 "Press M in the timeline to add a marker." = "Tekan M di linimasa untuk menambahkan penanda.";
 "Preview" = "Pratinjau";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Pemrosesan ditagih oleh backend. Perkiraan muncul setelah pemrosesan dimulai.";
+"Processing…" = "Memproses…";
+"Processing… Estimated %@ %@" = "Memproses… Perkiraan: %@ %@";
 "Project" = "Proyek";
 "Project Settings" = "Pengaturan Proyek";
 "Projects Couldn’t Be Deleted" = "Proyek Tidak Dapat Dihapus";
 "Prompt" = "Prompt";
+"Publish" = "Publikasikan";
+"Published" = "Dipublikasikan";
+"Publish…" = "Publikasikan…";
 "Put the subject on a new background" = "Tempatkan subjek di latar baru";
 "Quality" = "Kualitas";
 "Queued" = "Dalam antrean";
@@ -664,6 +682,8 @@
 "Range" = "Rentang";
 "Razor (C)" = "Pisau (C)";
 "Razor Tool" = "Alat Pisau";
+"Ready" = "Siap";
+"Ready, %lld failed" = "Siap, %lld gagal";
 "Reasoning effort" = "Tingkat penalaran";
 "Recolor" = "Warnai Ulang";
 "Redetect Beats" = "Deteksi Ulang Ketukan";
@@ -854,6 +874,7 @@
 "System appearance" = "Tampilan sistem";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Ambil tangkapan layar pratinjau dan gunakan sebagai referensi untuk generasi. Berguna untuk membuat transisi AI.";
 "Target Language" = "Bahasa Target";
+"Teaser" = "Teaser";
 "Teasers aren't available." = "Teaser tidak tersedia.";
 "Teasers must be %lld–%lld seconds." = "Teaser harus berdurasi %lld–%lld detik.";
 "Temperature" = "Suhu";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Urungkan (⌘Z)";
 "Ungroup Multicam" = "Lepaskan Kelompok Multicam";
 "Unlink" = "Lepaskan tautan";
+"Unpublish" = "Batalkan publikasi";
+"Unpublish this video?" = "Batalkan publikasi video ini?";
+"Unpublished" = "Publikasi dibatalkan";
 "Untitled" = "Tanpa judul";
 "Update" = "Perbarui";
 "Update available" = "Pembaruan tersedia";
@@ -967,6 +991,7 @@
 "Version" = "Versi";
 "Vertical" = "Vertikal";
 "Vertical aspect %@ isn't supported." = "Rasio aspek vertikal %@ tidak didukung.";
+"Vertical cut" = "Potongan vertikal";
 "Vertical workspace layout" = "Tata letak ruang kerja vertikal";
 "Vibrance" = "Vibrance";
 "Video" = "Video";

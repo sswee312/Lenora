@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld images are ready in Lenora.";
 "%lld items" = "%lld items";
 "%lld media files are missing and will be skipped." = "%lld media files are missing and will be skipped.";
+"%lld seconds" = "%lld seconds";
 "%lld selected" = "%lld selected";
 "%lld subtitle files are ready in Lenora." = "%lld subtitle files are ready in Lenora.";
 "%lld text clips are ready in Lenora." = "%lld text clips are ready in Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Action Safe";
 "Adapters" = "Adapters";
 "Add Marker (M)" = "Add Marker (M)";
+"Add Outputs" = "Add Outputs";
+"Add Outputs…" = "Add Outputs…";
 "Add Range to Chat" = "Add Range to Chat";
 "Add Text" = "Add Text";
 "Add a comment" = "Add a comment";
@@ -74,12 +77,14 @@
 "All" = "All";
 "All Statuses" = "All Statuses";
 "All fonts" = "All fonts";
+"Always includes a stream, a download link and a poster." = "Always includes a stream, a download link and a poster.";
 "Amount" = "Amount";
 "Analyzing media so you can search it." = "Analyzing media so you can search it.";
 "Angle" = "Angle";
 "Animate" = "Animate";
 "Animation" = "Animation";
 "Anthropic API Key" = "Anthropic API Key";
+"Anyone with the link can watch." = "Anyone with the link can watch.";
 "Appearance" = "Appearance";
 "Apply" = "Apply";
 "Ask anything, or start with:" = "Ask anything, or start with:";
@@ -198,7 +203,12 @@
 "Contrast" = "Contrast";
 "Copied" = "Copied";
 "Copy" = "Copy";
+"Copy Link" = "Copy Link";
 "Copy Path" = "Copy Path";
+"Copy Poster Link" = "Copy Poster Link";
+"Copy Stream Link" = "Copy Stream Link";
+"Copy Teaser Link" = "Copy Teaser Link";
+"Copy Vertical Cut Link" = "Copy Vertical Cut Link";
 "Copy message" = "Copy message";
 "Copy one clip of the same type and try again." = "Copy one clip of the same type and try again.";
 "Copy prompt" = "Copy prompt";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Enter Full Screen";
 "Erase an object from the image" = "Erase an object from the image";
 "Every connected agent will need the new token." = "Every connected agent will need the new token.";
+"Every link stops working. This can't be undone." = "Every link stops working. This can't be undone.";
 "Exclusion" = "Exclusion";
 "Expand" = "Expand";
 "Export" = "Export";
@@ -339,6 +350,7 @@
 "Fade In" = "Fade In";
 "Fade Out" = "Fade Out";
 "Failed" = "Failed";
+"Failed: %@" = "Failed: %@";
 "Feather" = "Feather";
 "Featured" = "Featured";
 "File" = "File";
@@ -652,10 +664,16 @@
 "Presence" = "Presence";
 "Press M in the timeline to add a marker." = "Press M in the timeline to add a marker.";
 "Preview" = "Preview";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Processing is billed by the backend. The estimate appears once processing starts.";
+"Processing…" = "Processing…";
+"Processing… Estimated %@ %@" = "Processing… Estimated %@ %@";
 "Project" = "Project";
 "Project Settings" = "Project Settings";
 "Projects Couldn’t Be Deleted" = "Projects Couldn’t Be Deleted";
 "Prompt" = "Prompt";
+"Publish" = "Publish";
+"Published" = "Published";
+"Publish…" = "Publish…";
 "Put the subject on a new background" = "Put the subject on a new background";
 "Quality" = "Quality";
 "Queued" = "Queued";
@@ -664,6 +682,8 @@
 "Range" = "Range";
 "Razor (C)" = "Razor (C)";
 "Razor Tool" = "Razor Tool";
+"Ready" = "Ready";
+"Ready, %lld failed" = "Ready, %lld failed";
 "Reasoning effort" = "Reasoning effort";
 "Recolor" = "Recolor";
 "Redetect Beats" = "Redetect Beats";
@@ -854,6 +874,7 @@
 "System appearance" = "System appearance";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions.";
 "Target Language" = "Target Language";
+"Teaser" = "Teaser";
 "Teasers aren't available." = "Teasers aren't available.";
 "Teasers must be %lld–%lld seconds." = "Teasers must be %lld–%lld seconds.";
 "Temperature" = "Temperature";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Undo (⌘Z)";
 "Ungroup Multicam" = "Ungroup Multicam";
 "Unlink" = "Unlink";
+"Unpublish" = "Unpublish";
+"Unpublish this video?" = "Unpublish this video?";
+"Unpublished" = "Unpublished";
 "Untitled" = "Untitled";
 "Update" = "Update";
 "Update available" = "Update available";
@@ -967,6 +991,7 @@
 "Version" = "Version";
 "Vertical" = "Vertical";
 "Vertical aspect %@ isn't supported." = "Vertical aspect %@ isn't supported.";
+"Vertical cut" = "Vertical cut";
 "Vertical workspace layout" = "Vertical workspace layout";
 "Vibrance" = "Vibrance";
 "Video" = "Video";

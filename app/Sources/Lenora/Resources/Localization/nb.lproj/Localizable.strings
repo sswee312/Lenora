@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld bilder er klare i Lenora.";
 "%lld items" = "%lld elementer";
 "%lld media files are missing and will be skipped." = "%lld mediefiler mangler og hoppes over.";
+"%lld seconds" = "%lld sekunder";
 "%lld selected" = "%lld valgt";
 "%lld subtitle files are ready in Lenora." = "%lld undertekstfiler er klare i Lenora.";
 "%lld text clips are ready in Lenora." = "%lld tekstklipp er klare i Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Handlingssikker";
 "Adapters" = "Adaptere";
 "Add Marker (M)" = "Legg til markør (M)";
+"Add Outputs" = "Legg til utdata";
+"Add Outputs…" = "Legg til utdata…";
 "Add Range to Chat" = "Legg område til i chat";
 "Add Text" = "Legg til tekst";
 "Add a comment" = "Legg til en kommentar";
@@ -74,12 +77,14 @@
 "All" = "Alle";
 "All Statuses" = "Alle statuser";
 "All fonts" = "Alle skrifter";
+"Always includes a stream, a download link and a poster." = "Inkluderer alltid en strøm, en nedlastingslenke og en plakat.";
 "Amount" = "Mengde";
 "Analyzing media so you can search it." = "Analyserer media slik at du kan søke i det.";
 "Angle" = "Vinkel";
 "Animate" = "Animer";
 "Animation" = "Animasjon";
 "Anthropic API Key" = "Anthropic API-nøkkel";
+"Anyone with the link can watch." = "Alle med lenken kan se videoen.";
 "Appearance" = "Utseende";
 "Apply" = "Bruk";
 "Ask anything, or start with:" = "Spør om hva som helst, eller start med:";
@@ -198,7 +203,12 @@
 "Contrast" = "Kontrast";
 "Copied" = "Kopiert";
 "Copy" = "Kopier";
+"Copy Link" = "Kopier lenke";
 "Copy Path" = "Kopier bane";
+"Copy Poster Link" = "Kopier plakatlenke";
+"Copy Stream Link" = "Kopier strømlenke";
+"Copy Teaser Link" = "Kopier teaserlenke";
+"Copy Vertical Cut Link" = "Kopier lenke til vertikal versjon";
 "Copy message" = "Kopier melding";
 "Copy one clip of the same type and try again." = "Kopier ett klipp av samme type, og prøv på nytt.";
 "Copy prompt" = "Kopier prompt";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Gå til fullskjerm";
 "Erase an object from the image" = "Slett et objekt fra bildet";
 "Every connected agent will need the new token." = "Alle tilkoblede agenter trenger det nye tokenet.";
+"Every link stops working. This can't be undone." = "Alle lenker slutter å fungere. Dette kan ikke angres.";
 "Exclusion" = "Ekskludering";
 "Expand" = "Utvid";
 "Export" = "Eksporter";
@@ -339,6 +350,7 @@
 "Fade In" = "Inntoning";
 "Fade Out" = "Uttoning";
 "Failed" = "Mislyktes";
+"Failed: %@" = "Mislyktes: %@";
 "Feather" = "Mykgjøring";
 "Featured" = "Utvalgt";
 "File" = "Arkiv";
@@ -652,10 +664,16 @@
 "Presence" = "Tilstedeværelse";
 "Press M in the timeline to add a marker." = "Trykk M i tidslinjen for å legge til en markør.";
 "Preview" = "Forhåndsvisning";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Behandlingen faktureres av backend. Estimatet vises når behandlingen starter.";
+"Processing…" = "Behandler…";
+"Processing… Estimated %@ %@" = "Behandler… Estimert: %@ %@";
 "Project" = "Prosjekt";
 "Project Settings" = "Prosjektinnstillinger";
 "Projects Couldn’t Be Deleted" = "Prosjektene kunne ikke slettes";
 "Prompt" = "Prompt";
+"Publish" = "Publiser";
+"Published" = "Publisert";
+"Publish…" = "Publiser…";
 "Put the subject on a new background" = "Plasser motivet på en ny bakgrunn";
 "Quality" = "Kvalitet";
 "Queued" = "I kø";
@@ -664,6 +682,8 @@
 "Range" = "Område";
 "Razor (C)" = "Barberkniv (C)";
 "Razor Tool" = "Barberknivverktøy";
+"Ready" = "Klar";
+"Ready, %lld failed" = "Klar, %lld mislyktes";
 "Reasoning effort" = "Resonneringsinnsats";
 "Recolor" = "Fargelegg på nytt";
 "Redetect Beats" = "Gjenkjenn takter på nytt";
@@ -854,6 +874,7 @@
 "System appearance" = "Systemutseende";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Ta et skjermbilde av forhåndsvisningen og bruk det som referanse for generering. Særlig nyttig for å lage AI-overganger.";
 "Target Language" = "Målspråk";
+"Teaser" = "Teaser";
 "Teasers aren't available." = "Teasere er ikke tilgjengelige.";
 "Teasers must be %lld–%lld seconds." = "Teasere må være %lld–%lld sekunder.";
 "Temperature" = "Temperatur";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Angre (⌘Z)";
 "Ungroup Multicam" = "Løs opp multicam";
 "Unlink" = "Koble fra";
+"Unpublish" = "Avpubliser";
+"Unpublish this video?" = "Avpubliser denne videoen?";
+"Unpublished" = "Avpublisert";
 "Untitled" = "Uten tittel";
 "Update" = "Oppdater";
 "Update available" = "Oppdatering tilgjengelig";
@@ -967,6 +991,7 @@
 "Version" = "Versjon";
 "Vertical" = "Vertikal";
 "Vertical aspect %@ isn't supported." = "Det vertikale sideforholdet %@ støttes ikke.";
+"Vertical cut" = "Vertikal versjon";
 "Vertical workspace layout" = "Vertikalt arbeidsområdeoppsett";
 "Vibrance" = "Livaktighet";
 "Video" = "Video";

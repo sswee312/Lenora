@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "Изображения готовы в Lenora: %lld.";
 "%lld items" = "Объектов: %lld";
 "%lld media files are missing and will be skipped." = "Отсутствуют медиафайлы: %lld. Они будут пропущены.";
+"%lld seconds" = "%lld с";
 "%lld selected" = "Выбрано: %lld";
 "%lld subtitle files are ready in Lenora." = "%lld файлов субтитров готовы в Lenora.";
 "%lld text clips are ready in Lenora." = "Текстовые клипы готовы в Lenora: %lld.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Безопасная зона действия";
 "Adapters" = "Адаптеры";
 "Add Marker (M)" = "Добавить маркер (M)";
+"Add Outputs" = "Добавить выходы";
+"Add Outputs…" = "Добавить выходы…";
 "Add Range to Chat" = "Добавить диапазон в чат";
 "Add Text" = "Добавить текст";
 "Add a comment" = "Добавить комментарий";
@@ -74,12 +77,14 @@
 "All" = "Все";
 "All Statuses" = "Все статусы";
 "All fonts" = "Все шрифты";
+"Always includes a stream, a download link and a poster." = "Всегда включает поток, ссылку для скачивания и постер.";
 "Amount" = "Величина";
 "Analyzing media so you can search it." = "Анализируем медиафайлы, чтобы по ним можно было выполнять поиск.";
 "Angle" = "Угол";
 "Animate" = "Анимировать";
 "Animation" = "Анимация";
 "Anthropic API Key" = "API-ключ Anthropic";
+"Anyone with the link can watch." = "Любой, у кого есть ссылка, сможет посмотреть видео.";
 "Appearance" = "Оформление";
 "Apply" = "Применить";
 "Ask anything, or start with:" = "Спросите что угодно или начните с:";
@@ -198,7 +203,12 @@
 "Contrast" = "Контраст";
 "Copied" = "Скопировано";
 "Copy" = "Копировать";
+"Copy Link" = "Скопировать ссылку";
 "Copy Path" = "Копировать путь";
+"Copy Poster Link" = "Скопировать ссылку на постер";
+"Copy Stream Link" = "Скопировать ссылку на поток";
+"Copy Teaser Link" = "Скопировать ссылку на тизер";
+"Copy Vertical Cut Link" = "Скопировать ссылку на вертикальную версию";
 "Copy message" = "Копировать сообщение";
 "Copy one clip of the same type and try again." = "Скопируйте один клип того же типа и повторите попытку.";
 "Copy prompt" = "Копировать запрос";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Перейти в полноэкранный режим";
 "Erase an object from the image" = "Стереть объект с изображения";
 "Every connected agent will need the new token." = "Каждому подключённому агенту понадобится новый токен.";
+"Every link stops working. This can't be undone." = "Все ссылки перестанут работать. Это действие нельзя отменить.";
 "Exclusion" = "Исключение";
 "Expand" = "Развернуть";
 "Export" = "Экспорт";
@@ -339,6 +350,7 @@
 "Fade In" = "Появление";
 "Fade Out" = "Затухание";
 "Failed" = "Ошибка";
+"Failed: %@" = "Не удалось: %@";
 "Feather" = "Растушёвка";
 "Featured" = "Рекомендуемые";
 "File" = "Файл";
@@ -652,10 +664,16 @@
 "Presence" = "Присутствие";
 "Press M in the timeline to add a marker." = "Нажмите M на таймлайне, чтобы добавить маркер.";
 "Preview" = "Предпросмотр";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Обработка тарифицируется бэкендом. Оценка появится после начала обработки.";
+"Processing…" = "Обработка…";
+"Processing… Estimated %@ %@" = "Обработка… Оценка: %@ %@";
 "Project" = "Проект";
 "Project Settings" = "Настройки проекта";
 "Projects Couldn’t Be Deleted" = "Не удалось удалить проекты";
 "Prompt" = "Запрос";
+"Publish" = "Опубликовать";
+"Published" = "Опубликовано";
+"Publish…" = "Опубликовать…";
 "Put the subject on a new background" = "Поместить объект на новый фон";
 "Quality" = "Качество";
 "Queued" = "В очереди";
@@ -664,6 +682,8 @@
 "Range" = "Диапазон";
 "Razor (C)" = "Лезвие (C)";
 "Razor Tool" = "Инструмент «Лезвие»";
+"Ready" = "Готово";
+"Ready, %lld failed" = "Готово, не удалось: %lld";
 "Reasoning effort" = "Уровень рассуждений";
 "Recolor" = "Перекрасить";
 "Redetect Beats" = "Повторно определить ритм";
@@ -854,6 +874,7 @@
 "System appearance" = "Системное оформление";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Сделайте снимок предпросмотра и используйте его как референс для генерации. Особенно полезно при создании AI-переходов.";
 "Target Language" = "Целевой язык";
+"Teaser" = "Тизер";
 "Teasers aren't available." = "Тизеры недоступны.";
 "Teasers must be %lld–%lld seconds." = "Длительность тизера: от %lld до %lld секунд.";
 "Temperature" = "Температура";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Отменить (⌘Z)";
 "Ungroup Multicam" = "Разгруппировать мультикам";
 "Unlink" = "Отменить связь";
+"Unpublish" = "Снять с публикации";
+"Unpublish this video?" = "Снять это видео с публикации?";
+"Unpublished" = "Снято с публикации";
 "Untitled" = "Без названия";
 "Update" = "Обновить";
 "Update available" = "Доступно обновление";
@@ -967,6 +991,7 @@
 "Version" = "Версия";
 "Vertical" = "По вертикали";
 "Vertical aspect %@ isn't supported." = "Вертикальное соотношение сторон %@ не поддерживается.";
+"Vertical cut" = "Вертикальная версия";
 "Vertical workspace layout" = "Вертикальное расположение рабочей области";
 "Vibrance" = "Красочность";
 "Video" = "Видео";

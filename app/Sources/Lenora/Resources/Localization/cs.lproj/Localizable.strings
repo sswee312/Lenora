@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "V Lenora je připraveno %lld obrázků.";
 "%lld items" = "%lld položek";
 "%lld media files are missing and will be skipped." = "Chybí %lld mediálních souborů, budou přeskočeny.";
+"%lld seconds" = "%lld s";
 "%lld selected" = "Vybráno: %lld";
 "%lld subtitle files are ready in Lenora." = "V Lenora je připraveno %lld souborů titulků.";
 "%lld text clips are ready in Lenora." = "V Lenora je připraveno %lld textových klipů.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Bezpečná zóna akce";
 "Adapters" = "Adaptéry";
 "Add Marker (M)" = "Přidat značku (M)";
+"Add Outputs" = "Přidat výstupy";
+"Add Outputs…" = "Přidat výstupy…";
 "Add Range to Chat" = "Přidat rozsah do chatu";
 "Add Text" = "Přidat text";
 "Add a comment" = "Přidat komentář";
@@ -74,12 +77,14 @@
 "All" = "Vše";
 "All Statuses" = "Všechny stavy";
 "All fonts" = "Všechna písma";
+"Always includes a stream, a download link and a poster." = "Vždy obsahuje stream, odkaz ke stažení a plakát.";
 "Amount" = "Částka";
 "Analyzing media so you can search it." = "Média se analyzují, abyste v nich mohli hledat.";
 "Angle" = "Úhel";
 "Animate" = "Animovat";
 "Animation" = "Animace";
 "Anthropic API Key" = "API klíč Anthropic";
+"Anyone with the link can watch." = "Video může sledovat každý, kdo má odkaz.";
 "Appearance" = "Vzhled";
 "Apply" = "Použít";
 "Ask anything, or start with:" = "Zeptejte se na cokoli, nebo začněte:";
@@ -198,7 +203,12 @@
 "Contrast" = "Kontrast";
 "Copied" = "Zkopírováno";
 "Copy" = "Kopírovat";
+"Copy Link" = "Kopírovat odkaz";
 "Copy Path" = "Kopírovat cestu";
+"Copy Poster Link" = "Kopírovat odkaz na plakát";
+"Copy Stream Link" = "Kopírovat odkaz na stream";
+"Copy Teaser Link" = "Kopírovat odkaz na upoutávku";
+"Copy Vertical Cut Link" = "Kopírovat odkaz na svislou verzi";
 "Copy message" = "Kopírovat zprávu";
 "Copy one clip of the same type and try again." = "Zkopírujte jeden klip stejného typu a zkuste to znovu.";
 "Copy prompt" = "Kopírovat prompt";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Přejít do režimu na celou obrazovku";
 "Erase an object from the image" = "Vymazat objekt z obrázku";
 "Every connected agent will need the new token." = "Každý připojený agent bude potřebovat nový token.";
+"Every link stops working. This can't be undone." = "Všechny odkazy přestanou fungovat. Tuto akci nelze vrátit zpět.";
 "Exclusion" = "Vyloučení";
 "Expand" = "Rozbalit";
 "Export" = "Exportovat";
@@ -339,6 +350,7 @@
 "Fade In" = "Zesílení";
 "Fade Out" = "Zeslabení";
 "Failed" = "Selhalo";
+"Failed: %@" = "Selhalo: %@";
 "Feather" = "Prolnutí okraje";
 "Featured" = "Doporučené";
 "File" = "Soubor";
@@ -652,10 +664,16 @@
 "Presence" = "Přítomnost";
 "Press M in the timeline to add a marker." = "Stiskněte M na časové ose pro přidání značky.";
 "Preview" = "Náhled";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Zpracování účtuje backend. Odhad se zobrazí po zahájení zpracování.";
+"Processing…" = "Zpracování…";
+"Processing… Estimated %@ %@" = "Zpracování… Odhad: %@ %@";
 "Project" = "Projekt";
 "Project Settings" = "Nastavení projektu";
 "Projects Couldn’t Be Deleted" = "Projekty se nepodařilo smazat";
 "Prompt" = "Prompt";
+"Publish" = "Publikovat";
+"Published" = "Publikováno";
+"Publish…" = "Publikovat…";
 "Put the subject on a new background" = "Umístit objekt na nové pozadí";
 "Quality" = "Kvalita";
 "Queued" = "Ve frontě";
@@ -664,6 +682,8 @@
 "Range" = "Rozsah";
 "Razor (C)" = "Břitva (C)";
 "Razor Tool" = "Nástroj břitva";
+"Ready" = "Připraveno";
+"Ready, %lld failed" = "Připraveno, %lld selhalo";
 "Reasoning effort" = "Úsilí uvažování";
 "Recolor" = "Přebarvit";
 "Redetect Beats" = "Znovu detekovat doby";
@@ -854,6 +874,7 @@
 "System appearance" = "Vzhled systému";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Pořiďte snímek náhledu a použijte ho jako referenci pro generování. Hodí se zejména pro AI přechody.";
 "Target Language" = "Cílový jazyk";
+"Teaser" = "Upoutávka";
 "Teasers aren't available." = "Upoutávky nejsou k dispozici.";
 "Teasers must be %lld–%lld seconds." = "Upoutávka musí trvat %lld–%lld sekund.";
 "Temperature" = "Teplota";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Zpět (⌘Z)";
 "Ungroup Multicam" = "Zrušit seskupení multicam";
 "Unlink" = "Odpojit";
+"Unpublish" = "Zrušit publikování";
+"Unpublish this video?" = "Zrušit publikování tohoto videa?";
+"Unpublished" = "Publikování zrušeno";
 "Untitled" = "Bez názvu";
 "Update" = "Aktualizovat";
 "Update available" = "Aktualizace k dispozici";
@@ -967,6 +991,7 @@
 "Version" = "Verze";
 "Vertical" = "Svisle";
 "Vertical aspect %@ isn't supported." = "Svislý poměr stran %@ není podporován.";
+"Vertical cut" = "Svislá verze";
 "Vertical workspace layout" = "Svislé rozložení pracovního prostoru";
 "Vibrance" = "Živost";
 "Video" = "Video";

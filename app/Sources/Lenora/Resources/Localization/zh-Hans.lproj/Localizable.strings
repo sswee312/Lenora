@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld 张图像已在 Lenora 中准备就绪。";
 "%lld items" = "%lld 个项目";
 "%lld media files are missing and will be skipped." = "%lld 个媒体文件缺失，将被跳过。";
+"%lld seconds" = "%lld 秒";
 "%lld selected" = "已选择 %lld 个";
 "%lld subtitle files are ready in Lenora." = "%lld 个字幕文件已在 Lenora 中准备就绪。";
 "%lld text clips are ready in Lenora." = "%lld 个文本片段已在 Lenora 中准备就绪。";
@@ -44,6 +45,8 @@
 "Action Safe" = "动作安全";
 "Adapters" = "适配器";
 "Add Marker (M)" = "添加标记 (M)";
+"Add Outputs" = "添加输出";
+"Add Outputs…" = "添加输出…";
 "Add Range to Chat" = "将范围添加到对话";
 "Add Text" = "添加文本";
 "Add a comment" = "添加注释";
@@ -74,12 +77,14 @@
 "All" = "全部";
 "All Statuses" = "全部状态";
 "All fonts" = "所有字体";
+"Always includes a stream, a download link and a poster." = "始终包含串流、下载链接和海报。";
 "Amount" = "数量";
 "Analyzing media so you can search it." = "正在分析媒体以供搜索。";
 "Angle" = "角度";
 "Animate" = "动画";
 "Animation" = "动画";
 "Anthropic API Key" = "Anthropic API key";
+"Anyone with the link can watch." = "任何拥有链接的人都可以观看。";
 "Appearance" = "外观";
 "Apply" = "应用";
 "Ask anything, or start with:" = "询问任何问题，或从这里开始：";
@@ -198,7 +203,12 @@
 "Contrast" = "对比度";
 "Copied" = "已复制";
 "Copy" = "复制";
+"Copy Link" = "拷贝链接";
 "Copy Path" = "复制路径";
+"Copy Poster Link" = "拷贝海报链接";
+"Copy Stream Link" = "拷贝串流链接";
+"Copy Teaser Link" = "拷贝预告片链接";
+"Copy Vertical Cut Link" = "拷贝竖版链接";
 "Copy message" = "复制消息";
 "Copy one clip of the same type and try again." = "请复制一个相同类型的片段后重试。";
 "Copy prompt" = "复制提示词";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "进入全屏幕";
 "Erase an object from the image" = "从图像中擦除对象";
 "Every connected agent will need the new token." = "每个已连接的 Agent 都需要新令牌。";
+"Every link stops working. This can't be undone." = "所有链接将失效。此操作无法撤销。";
 "Exclusion" = "排除";
 "Expand" = "展开";
 "Export" = "导出";
@@ -339,6 +350,7 @@
 "Fade In" = "淡入";
 "Fade Out" = "淡出";
 "Failed" = "失败";
+"Failed: %@" = "失败：%@";
 "Feather" = "羽化";
 "Featured" = "精选";
 "File" = "文件";
@@ -652,10 +664,16 @@
 "Presence" = "临场感";
 "Press M in the timeline to add a marker." = "在时间线上按 M 可添加标记。";
 "Preview" = "预览";
+"Processing is billed by the backend. The estimate appears once processing starts." = "处理费用由后端计费。处理开始后会显示预估费用。";
+"Processing…" = "正在处理…";
+"Processing… Estimated %@ %@" = "正在处理… 预估：%@ %@";
 "Project" = "项目";
 "Project Settings" = "项目设置";
 "Projects Couldn’t Be Deleted" = "无法删除项目";
 "Prompt" = "提示词";
+"Publish" = "发布";
+"Published" = "已发布";
+"Publish…" = "发布…";
 "Put the subject on a new background" = "将主体放到新背景上";
 "Quality" = "质量";
 "Queued" = "已排队";
@@ -664,6 +682,8 @@
 "Range" = "范围";
 "Razor (C)" = "剃刀 (C)";
 "Razor Tool" = "剃刀工具";
+"Ready" = "就绪";
+"Ready, %lld failed" = "就绪，%lld 个失败";
 "Reasoning effort" = "推理强度";
 "Recolor" = "重新着色";
 "Redetect Beats" = "重新检测节拍";
@@ -854,6 +874,7 @@
 "System appearance" = "系统外观";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "截取预览画面并将其用作生成参考。这对创建 AI 转场尤其有用。";
 "Target Language" = "目标语言";
+"Teaser" = "预告片";
 "Teasers aren't available." = "预告片不可用。";
 "Teasers must be %lld–%lld seconds." = "预告片须为 %lld–%lld 秒。";
 "Temperature" = "色温";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "撤销 (⌘Z)";
 "Ungroup Multicam" = "取消多机位分组";
 "Unlink" = "取消链接";
+"Unpublish" = "取消发布";
+"Unpublish this video?" = "要取消发布此视频吗？";
+"Unpublished" = "已取消发布";
 "Untitled" = "未命名";
 "Update" = "更新";
 "Update available" = "有可用更新";
@@ -967,6 +991,7 @@
 "Version" = "版本";
 "Vertical" = "垂直";
 "Vertical aspect %@ isn't supported." = "不支持竖屏宽高比 %@。";
+"Vertical cut" = "竖版";
 "Vertical workspace layout" = "垂直工作区布局";
 "Vibrance" = "自然饱和度";
 "Video" = "视频";

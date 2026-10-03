@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "⁨%lld⁩ תמונות מוכנות ב-Lenora.";
 "%lld items" = "⁨%lld⁩ פריטים";
 "%lld media files are missing and will be skipped." = "חסרים ⁨%lld⁩ קובצי מדיה והם ידולגו.";
+"%lld seconds" = "%lld שניות";
 "%lld selected" = "נבחרו ⁨%lld⁩";
 "%lld subtitle files are ready in Lenora." = "⁨%lld⁩ קובצי כתוביות מוכנים ב-Lenora.";
 "%lld text clips are ready in Lenora." = "⁨%lld⁩ קליפי טקסט מוכנים ב-Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "אזור פעולה בטוח";
 "Adapters" = "מתאמים";
 "Add Marker (M)" = "הוסף סמן ⁨(M)⁩";
+"Add Outputs" = "הוספת פלטים";
+"Add Outputs…" = "הוספת פלטים…";
 "Add Range to Chat" = "הוסף טווח לצ'אט";
 "Add Text" = "הוסף טקסט";
 "Add a comment" = "הוסף הערה";
@@ -74,12 +77,14 @@
 "All" = "הכול";
 "All Statuses" = "כל הסטטוסים";
 "All fonts" = "כל הגופנים";
+"Always includes a stream, a download link and a poster." = "תמיד כולל שידור, קישור להורדה ופוסטר.";
 "Amount" = "סכום";
 "Analyzing media so you can search it." = "מנתח מדיה כדי שאפשר יהיה לחפש בה.";
 "Angle" = "זווית";
 "Animate" = "הנפש";
 "Animation" = "אנימציה";
 "Anthropic API Key" = "מפתח API של Anthropic";
+"Anyone with the link can watch." = "כל מי שיש לו את הקישור יכול לצפות.";
 "Appearance" = "מראה";
 "Apply" = "החל";
 "Ask anything, or start with:" = "שאל כל דבר, או התחל ב:";
@@ -198,7 +203,12 @@
 "Contrast" = "ניגודיות";
 "Copied" = "הועתק";
 "Copy" = "העתק";
+"Copy Link" = "העתקת קישור";
 "Copy Path" = "העתק נתיב";
+"Copy Poster Link" = "העתקת קישור לפוסטר";
+"Copy Stream Link" = "העתקת קישור לשידור";
+"Copy Teaser Link" = "העתקת קישור לטיזר";
+"Copy Vertical Cut Link" = "העתקת קישור לגרסה האנכית";
 "Copy message" = "העתק הודעה";
 "Copy one clip of the same type and try again." = "העתק קליפ אחד מאותו סוג ונסה שוב.";
 "Copy prompt" = "העתק הנחיה";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "עבור למסך מלא";
 "Erase an object from the image" = "מחיקת אובייקט מהתמונה";
 "Every connected agent will need the new token." = "כל Agent מחובר יצטרך את הטוקן החדש.";
+"Every link stops working. This can't be undone." = "כל הקישורים יפסיקו לעבוד. אי אפשר לבטל פעולה זו.";
 "Exclusion" = "החרגה";
 "Expand" = "הרחב";
 "Export" = "ייצוא";
@@ -339,6 +350,7 @@
 "Fade In" = "עמעום כניסה";
 "Fade Out" = "עמעום יציאה";
 "Failed" = "נכשל";
+"Failed: %@" = "נכשל: %@";
 "Feather" = "ריכוך";
 "Featured" = "מומלץ";
 "File" = "קובץ";
@@ -652,10 +664,16 @@
 "Presence" = "נוכחות";
 "Press M in the timeline to add a marker." = "לחץ ⁨M⁩ בציר הזמן כדי להוסיף סמן.";
 "Preview" = "תצוגה מקדימה";
+"Processing is billed by the backend. The estimate appears once processing starts." = "העיבוד מחויב על ידי הקצה האחורי. ההערכה מופיעה כשהעיבוד מתחיל.";
+"Processing…" = "מעבד…";
+"Processing… Estimated %@ %@" = "מעבד… הערכה: %@ %@";
 "Project" = "פרויקט";
 "Project Settings" = "הגדרות פרויקט";
 "Projects Couldn’t Be Deleted" = "לא ניתן היה למחוק פרויקטים";
 "Prompt" = "הנחיה";
+"Publish" = "פרסום";
+"Published" = "פורסם";
+"Publish…" = "פרסום…";
 "Put the subject on a new background" = "הצבת הנושא על רקע חדש";
 "Quality" = "איכות";
 "Queued" = "בתור";
@@ -664,6 +682,8 @@
 "Range" = "טווח";
 "Razor (C)" = "סכין ⁨(C)⁩";
 "Razor Tool" = "כלי סכין";
+"Ready" = "מוכן";
+"Ready, %lld failed" = "מוכן, %lld נכשלו";
 "Reasoning effort" = "מאמץ חשיבה";
 "Recolor" = "צביעה מחדש";
 "Redetect Beats" = "זהה פעימות מחדש";
@@ -854,6 +874,7 @@
 "System appearance" = "מראה המערכת";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "צלם את התצוגה המקדימה והשתמש בה כייחוס להפקה. שימושי במיוחד ליצירת מעברי AI.";
 "Target Language" = "שפת יעד";
+"Teaser" = "טיזר";
 "Teasers aren't available." = "טריילרים קצרים אינם זמינים.";
 "Teasers must be %lld–%lld seconds." = "אורך הטריילר חייב להיות %lld–%lld שניות.";
 "Temperature" = "טמפרטורה";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "בטל ⁨(⌘Z)⁩";
 "Ungroup Multicam" = "בטל קיבוץ מולטיקאם";
 "Unlink" = "נתק קישור";
+"Unpublish" = "ביטול פרסום";
+"Unpublish this video?" = "לבטל את הפרסום של הסרטון הזה?";
+"Unpublished" = "הפרסום בוטל";
 "Untitled" = "ללא שם";
 "Update" = "עדכן";
 "Update available" = "עדכון זמין";
@@ -967,6 +991,7 @@
 "Version" = "גרסה";
 "Vertical" = "אנכי";
 "Vertical aspect %@ isn't supported." = "יחס הגובה-רוחב האנכי %@ אינו נתמך.";
+"Vertical cut" = "גרסה אנכית";
 "Vertical workspace layout" = "פריסת סביבת עבודה אנכית";
 "Vibrance" = "חיוניות";
 "Video" = "וידאו";

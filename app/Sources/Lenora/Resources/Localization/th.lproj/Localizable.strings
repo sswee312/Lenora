@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "ภาพ %lld รายการพร้อมใน Lenora แล้ว";
 "%lld items" = "%lld รายการ";
 "%lld media files are missing and will be skipped." = "ไฟล์มีเดีย %lld รายการหายไปและจะถูกข้าม";
+"%lld seconds" = "%lld วินาที";
 "%lld selected" = "เลือกแล้ว %lld รายการ";
 "%lld subtitle files are ready in Lenora." = "ไฟล์คำบรรยาย %lld รายการพร้อมใน Lenora แล้ว";
 "%lld text clips are ready in Lenora." = "คลิปข้อความ %lld รายการพร้อมใน Lenora แล้ว";
@@ -44,6 +45,8 @@
 "Action Safe" = "ขอบปลอดภัยการกระทำ";
 "Adapters" = "อะแดปเตอร์";
 "Add Marker (M)" = "เพิ่มมาร์กเกอร์ (M)";
+"Add Outputs" = "เพิ่มเอาต์พุต";
+"Add Outputs…" = "เพิ่มเอาต์พุต…";
 "Add Range to Chat" = "เพิ่มช่วงไปยังแชท";
 "Add Text" = "เพิ่มข้อความ";
 "Add a comment" = "เพิ่มความคิดเห็น";
@@ -74,12 +77,14 @@
 "All" = "ทั้งหมด";
 "All Statuses" = "สถานะทั้งหมด";
 "All fonts" = "แบบอักษรทั้งหมด";
+"Always includes a stream, a download link and a poster." = "มีสตรีม ลิงก์ดาวน์โหลด และโปสเตอร์เสมอ";
 "Amount" = "จำนวน";
 "Analyzing media so you can search it." = "กำลังวิเคราะห์มีเดียเพื่อให้คุณค้นหาได้";
 "Angle" = "มุมกล้อง";
 "Animate" = "ทำแอนิเมชัน";
 "Animation" = "แอนิเมชัน";
 "Anthropic API Key" = "คีย์ API ของ Anthropic";
+"Anyone with the link can watch." = "ทุกคนที่มีลิงก์สามารถรับชมได้";
 "Appearance" = "ลักษณะ";
 "Apply" = "ปรับใช้";
 "Ask anything, or start with:" = "ถามอะไรก็ได้ หรือเริ่มจาก:";
@@ -198,7 +203,12 @@
 "Contrast" = "คอนทราสต์";
 "Copied" = "คัดลอกแล้ว";
 "Copy" = "คัดลอก";
+"Copy Link" = "คัดลอกลิงก์";
 "Copy Path" = "คัดลอกเส้นทาง";
+"Copy Poster Link" = "คัดลอกลิงก์โปสเตอร์";
+"Copy Stream Link" = "คัดลอกลิงก์สตรีม";
+"Copy Teaser Link" = "คัดลอกลิงก์ทีเซอร์";
+"Copy Vertical Cut Link" = "คัดลอกลิงก์เวอร์ชันแนวตั้ง";
 "Copy message" = "คัดลอกข้อความ";
 "Copy one clip of the same type and try again." = "คัดลอกคลิปประเภทเดียวกันหนึ่งรายการ แล้วลองอีกครั้ง";
 "Copy prompt" = "คัดลอกพรอมต์";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "เข้าสู่เต็มหน้าจอ";
 "Erase an object from the image" = "ลบวัตถุออกจากภาพ";
 "Every connected agent will need the new token." = "Agent ที่เชื่อมต่ออยู่ทุกตัวจะต้องใช้โทเค็นใหม่";
+"Every link stops working. This can't be undone." = "ลิงก์ทั้งหมดจะใช้งานไม่ได้ การดำเนินการนี้ไม่สามารถย้อนกลับได้";
 "Exclusion" = "ยกเว้น";
 "Expand" = "ขยาย";
 "Export" = "ส่งออก";
@@ -339,6 +350,7 @@
 "Fade In" = "จางเข้า";
 "Fade Out" = "จางออก";
 "Failed" = "ล้มเหลว";
+"Failed: %@" = "ล้มเหลว: %@";
 "Feather" = "ความนุ่มขอบ";
 "Featured" = "แนะนำ";
 "File" = "ไฟล์";
@@ -652,10 +664,16 @@
 "Presence" = "ความเด่น";
 "Press M in the timeline to add a marker." = "กด M ในไทม์ไลน์เพื่อเพิ่มมาร์กเกอร์";
 "Preview" = "ตัวอย่าง";
+"Processing is billed by the backend. The estimate appears once processing starts." = "แบ็กเอนด์เป็นผู้เรียกเก็บค่าประมวลผล ค่าประมาณจะแสดงเมื่อเริ่มประมวลผล";
+"Processing…" = "กำลังประมวลผล…";
+"Processing… Estimated %@ %@" = "กำลังประมวลผล… ค่าประมาณ: %@ %@";
 "Project" = "โปรเจ็กต์";
 "Project Settings" = "การตั้งค่าโปรเจ็กต์";
 "Projects Couldn’t Be Deleted" = "ไม่สามารถลบโปรเจ็กต์ได้";
 "Prompt" = "พรอมต์";
+"Publish" = "เผยแพร่";
+"Published" = "เผยแพร่แล้ว";
+"Publish…" = "เผยแพร่…";
 "Put the subject on a new background" = "วางตัวแบบบนพื้นหลังใหม่";
 "Quality" = "คุณภาพ";
 "Queued" = "อยู่ในคิว";
@@ -664,6 +682,8 @@
 "Range" = "ช่วง";
 "Razor (C)" = "มีดตัด (C)";
 "Razor Tool" = "เครื่องมือมีดตัด";
+"Ready" = "พร้อม";
+"Ready, %lld failed" = "พร้อม ล้มเหลว %lld รายการ";
 "Reasoning effort" = "ความพยายามในการให้เหตุผล";
 "Recolor" = "เปลี่ยนสี";
 "Redetect Beats" = "ตรวจจับจังหวะอีกครั้ง";
@@ -854,6 +874,7 @@
 "System appearance" = "ลักษณะของระบบ";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "จับภาพหน้าจอของตัวอย่างแล้วใช้เป็นข้อมูลอ้างอิงในการสร้าง มีประโยชน์อย่างยิ่งสำหรับการสร้างทรานซิชัน AI";
 "Target Language" = "ภาษาปลายทาง";
+"Teaser" = "ทีเซอร์";
 "Teasers aren't available." = "ไม่มีทีเซอร์ให้ใช้งาน";
 "Teasers must be %lld–%lld seconds." = "ทีเซอร์ต้องยาว %lld–%lld วินาที";
 "Temperature" = "อุณหภูมิสี";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "เลิกทำ (⌘Z)";
 "Ungroup Multicam" = "ยกเลิกการจัดกลุ่มมัลติแคม";
 "Unlink" = "ยกเลิกการเชื่อมโยง";
+"Unpublish" = "ยกเลิกการเผยแพร่";
+"Unpublish this video?" = "ยกเลิกการเผยแพร่วิดีโอนี้หรือไม่";
+"Unpublished" = "ยกเลิกการเผยแพร่แล้ว";
 "Untitled" = "ไม่มีชื่อ";
 "Update" = "อัปเดต";
 "Update available" = "มีอัปเดต";
@@ -967,6 +991,7 @@
 "Version" = "เวอร์ชัน";
 "Vertical" = "แนวตั้ง";
 "Vertical aspect %@ isn't supported." = "ไม่รองรับสัดส่วนภาพแนวตั้ง %@";
+"Vertical cut" = "เวอร์ชันแนวตั้ง";
 "Vertical workspace layout" = "เค้าโครงพื้นที่ทำงานแนวตั้ง";
 "Vibrance" = "ความสด";
 "Video" = "วิดีโอ";

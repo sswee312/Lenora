@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld immagini sono pronte in Lenora.";
 "%lld items" = "%lld elementi";
 "%lld media files are missing and will be skipped." = "%lld file multimediali risultano mancanti e verranno ignorati.";
+"%lld seconds" = "%lld secondi";
 "%lld selected" = "%lld selezionati";
 "%lld subtitle files are ready in Lenora." = "%lld file di sottotitoli sono pronti in Lenora.";
 "%lld text clips are ready in Lenora." = "%lld clip di testo sono pronte in Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Area azione";
 "Adapters" = "Adattatori";
 "Add Marker (M)" = "Aggiungi marcatore (M)";
+"Add Outputs" = "Aggiungi output";
+"Add Outputs…" = "Aggiungi output…";
 "Add Range to Chat" = "Aggiungi intervallo alla chat";
 "Add Text" = "Aggiungi testo";
 "Add a comment" = "Aggiungi un commento";
@@ -74,12 +77,14 @@
 "All" = "Tutto";
 "All Statuses" = "Tutti gli stati";
 "All fonts" = "Tutti i font";
+"Always includes a stream, a download link and a poster." = "Include sempre uno stream, un link di download e un poster.";
 "Amount" = "Quantità";
 "Analyzing media so you can search it." = "Analisi dei contenuti multimediali per renderli ricercabili.";
 "Angle" = "Angolo";
 "Animate" = "Anima";
 "Animation" = "Animazione";
 "Anthropic API Key" = "Chiave API Anthropic";
+"Anyone with the link can watch." = "Chiunque abbia il link può guardare il video.";
 "Appearance" = "Aspetto";
 "Apply" = "Applica";
 "Ask anything, or start with:" = "Chiedi qualsiasi cosa o inizia da:";
@@ -198,7 +203,12 @@
 "Contrast" = "Contrasto";
 "Copied" = "Copiato";
 "Copy" = "Copia";
+"Copy Link" = "Copia link";
 "Copy Path" = "Copia percorso";
+"Copy Poster Link" = "Copia link del poster";
+"Copy Stream Link" = "Copia link dello stream";
+"Copy Teaser Link" = "Copia link del teaser";
+"Copy Vertical Cut Link" = "Copia link della versione verticale";
 "Copy message" = "Copia messaggio";
 "Copy one clip of the same type and try again." = "Copia una clip dello stesso tipo e riprova.";
 "Copy prompt" = "Copia prompt";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Attiva modalità a tutto schermo";
 "Erase an object from the image" = "Cancella un oggetto dall’immagine";
 "Every connected agent will need the new token." = "Ogni agente connesso avrà bisogno del nuovo token.";
+"Every link stops working. This can't be undone." = "Tutti i link smettono di funzionare. Questa azione non può essere annullata.";
 "Exclusion" = "Esclusione";
 "Expand" = "Espandi";
 "Export" = "Esporta";
@@ -339,6 +350,7 @@
 "Fade In" = "Dissolvenza in entrata";
 "Fade Out" = "Dissolvenza in uscita";
 "Failed" = "Non riuscito";
+"Failed: %@" = "Non riuscito: %@";
 "Feather" = "Sfumatura";
 "Featured" = "In primo piano";
 "File" = "File";
@@ -652,10 +664,16 @@
 "Presence" = "Presenza";
 "Press M in the timeline to add a marker." = "Premi M nella timeline per aggiungere un marcatore.";
 "Preview" = "Anteprima";
+"Processing is billed by the backend. The estimate appears once processing starts." = "L’elaborazione viene fatturata dal backend. La stima appare quando l’elaborazione inizia.";
+"Processing…" = "Elaborazione…";
+"Processing… Estimated %@ %@" = "Elaborazione… Stima: %@ %@";
 "Project" = "Progetto";
 "Project Settings" = "Impostazioni del progetto";
 "Projects Couldn’t Be Deleted" = "Impossibile eliminare i progetti";
 "Prompt" = "Prompt";
+"Publish" = "Pubblica";
+"Published" = "Pubblicato";
+"Publish…" = "Pubblica…";
 "Put the subject on a new background" = "Metti il soggetto su un nuovo sfondo";
 "Quality" = "Qualità";
 "Queued" = "In coda";
@@ -664,6 +682,8 @@
 "Range" = "Intervallo";
 "Razor (C)" = "Lametta (C)";
 "Razor Tool" = "Strumento lametta";
+"Ready" = "Pronto";
+"Ready, %lld failed" = "Pronto, %lld non riusciti";
 "Reasoning effort" = "Intensità del ragionamento";
 "Recolor" = "Ricolora";
 "Redetect Beats" = "Rileva nuovamente i battiti";
@@ -854,6 +874,7 @@
 "System appearance" = "Aspetto di sistema";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Acquisisci una schermata dell'anteprima e usala come riferimento per la generazione. È particolarmente utile per creare transizioni AI.";
 "Target Language" = "Lingua di destinazione";
+"Teaser" = "Teaser";
 "Teasers aren't available." = "I teaser non sono disponibili.";
 "Teasers must be %lld–%lld seconds." = "I teaser devono durare da %lld a %lld secondi.";
 "Temperature" = "Temperatura";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Annulla (⌘Z)";
 "Ungroup Multicam" = "Separa multicamera";
 "Unlink" = "Scollega";
+"Unpublish" = "Annulla pubblicazione";
+"Unpublish this video?" = "Annullare la pubblicazione di questo video?";
+"Unpublished" = "Pubblicazione annullata";
 "Untitled" = "Senza titolo";
 "Update" = "Aggiorna";
 "Update available" = "Aggiornamento disponibile";
@@ -967,6 +991,7 @@
 "Version" = "Versione";
 "Vertical" = "Verticale";
 "Vertical aspect %@ isn't supported." = "Il formato verticale %@ non è supportato.";
+"Vertical cut" = "Versione verticale";
 "Vertical workspace layout" = "Layout verticale dell’area di lavoro";
 "Vibrance" = "Vividezza";
 "Video" = "Video";

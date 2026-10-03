@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld hình ảnh đã sẵn sàng trong Lenora.";
 "%lld items" = "%lld mục";
 "%lld media files are missing and will be skipped." = "Thiếu %lld tệp phương tiện và các tệp này sẽ bị bỏ qua.";
+"%lld seconds" = "%lld giây";
 "%lld selected" = "Đã chọn %lld";
 "%lld subtitle files are ready in Lenora." = "%lld tệp phụ đề đã sẵn sàng trong Lenora.";
 "%lld text clips are ready in Lenora." = "%lld clip văn bản đã sẵn sàng trong Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Vùng an toàn hành động";
 "Adapters" = "Bộ điều hợp";
 "Add Marker (M)" = "Thêm marker (M)";
+"Add Outputs" = "Thêm đầu ra";
+"Add Outputs…" = "Thêm đầu ra…";
 "Add Range to Chat" = "Thêm vùng vào chat";
 "Add Text" = "Thêm văn bản";
 "Add a comment" = "Thêm bình luận";
@@ -74,12 +77,14 @@
 "All" = "Tất cả";
 "All Statuses" = "Tất cả trạng thái";
 "All fonts" = "Tất cả phông chữ";
+"Always includes a stream, a download link and a poster." = "Luôn bao gồm luồng phát, liên kết tải xuống và áp phích.";
 "Amount" = "Số lượng";
 "Analyzing media so you can search it." = "Đang phân tích phương tiện để bạn có thể tìm kiếm.";
 "Angle" = "Góc";
 "Animate" = "Tạo hoạt ảnh";
 "Animation" = "Hoạt ảnh";
 "Anthropic API Key" = "Khóa API Anthropic";
+"Anyone with the link can watch." = "Bất kỳ ai có liên kết đều có thể xem.";
 "Appearance" = "Giao diện";
 "Apply" = "Áp dụng";
 "Ask anything, or start with:" = "Hỏi bất kỳ điều gì hoặc bắt đầu với:";
@@ -198,7 +203,12 @@
 "Contrast" = "Độ tương phản";
 "Copied" = "Đã sao chép";
 "Copy" = "Sao chép";
+"Copy Link" = "Sao chép liên kết";
 "Copy Path" = "Sao chép đường dẫn";
+"Copy Poster Link" = "Sao chép liên kết áp phích";
+"Copy Stream Link" = "Sao chép liên kết luồng phát";
+"Copy Teaser Link" = "Sao chép liên kết đoạn giới thiệu";
+"Copy Vertical Cut Link" = "Sao chép liên kết bản dọc";
 "Copy message" = "Sao chép tin nhắn";
 "Copy one clip of the same type and try again." = "Sao chép một clip cùng loại rồi thử lại.";
 "Copy prompt" = "Sao chép câu lệnh";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Vào toàn màn hình";
 "Erase an object from the image" = "Xóa một vật thể khỏi hình ảnh";
 "Every connected agent will need the new token." = "Mọi agent đã kết nối sẽ cần token mới.";
+"Every link stops working. This can't be undone." = "Mọi liên kết sẽ ngừng hoạt động. Không thể hoàn tác thao tác này.";
 "Exclusion" = "Loại trừ";
 "Expand" = "Mở rộng";
 "Export" = "Xuất";
@@ -339,6 +350,7 @@
 "Fade In" = "Tăng dần";
 "Fade Out" = "Giảm dần";
 "Failed" = "Không thành công";
+"Failed: %@" = "Thất bại: %@";
 "Feather" = "Độ mềm biên";
 "Featured" = "Nổi bật";
 "File" = "Tệp";
@@ -652,10 +664,16 @@
 "Presence" = "Độ hiện diện";
 "Press M in the timeline to add a marker." = "Nhấn M trên timeline để thêm marker.";
 "Preview" = "Xem trước";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Backend tính phí xử lý. Ước tính xuất hiện khi quá trình xử lý bắt đầu.";
+"Processing…" = "Đang xử lý…";
+"Processing… Estimated %@ %@" = "Đang xử lý… Ước tính: %@ %@";
 "Project" = "Dự án";
 "Project Settings" = "Cài đặt dự án";
 "Projects Couldn’t Be Deleted" = "Không thể xóa dự án";
 "Prompt" = "Câu lệnh";
+"Publish" = "Xuất bản";
+"Published" = "Đã xuất bản";
+"Publish…" = "Xuất bản…";
 "Put the subject on a new background" = "Đặt chủ thể lên nền mới";
 "Quality" = "Chất lượng";
 "Queued" = "Đang chờ";
@@ -664,6 +682,8 @@
 "Range" = "Vùng";
 "Razor (C)" = "Dao cắt (C)";
 "Razor Tool" = "Công cụ Dao cắt";
+"Ready" = "Sẵn sàng";
+"Ready, %lld failed" = "Sẵn sàng, %lld thất bại";
 "Reasoning effort" = "Mức độ lập luận";
 "Recolor" = "Tô màu lại";
 "Redetect Beats" = "Phát hiện lại nhịp";
@@ -854,6 +874,7 @@
 "System appearance" = "Giao diện hệ thống";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Chụp ảnh màn hình phần xem trước và dùng làm tham chiếu để tạo nội dung. Đặc biệt hữu ích khi tạo chuyển cảnh AI.";
 "Target Language" = "Ngôn ngữ đích";
+"Teaser" = "Đoạn giới thiệu";
 "Teasers aren't available." = "Teaser không khả dụng.";
 "Teasers must be %lld–%lld seconds." = "Teaser phải dài %lld–%lld giây.";
 "Temperature" = "Nhiệt độ";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Hoàn tác (⌘Z)";
 "Ungroup Multicam" = "Bỏ nhóm Multicam";
 "Unlink" = "Bỏ liên kết";
+"Unpublish" = "Hủy xuất bản";
+"Unpublish this video?" = "Hủy xuất bản video này?";
+"Unpublished" = "Đã hủy xuất bản";
 "Untitled" = "Không có tiêu đề";
 "Update" = "Cập nhật";
 "Update available" = "Có bản cập nhật";
@@ -967,6 +991,7 @@
 "Version" = "Phiên bản";
 "Vertical" = "Dọc";
 "Vertical aspect %@ isn't supported." = "Tỷ lệ khung hình dọc %@ không được hỗ trợ.";
+"Vertical cut" = "Bản dọc";
 "Vertical workspace layout" = "Bố cục không gian làm việc dọc";
 "Vibrance" = "Độ rực";
 "Video" = "Video";

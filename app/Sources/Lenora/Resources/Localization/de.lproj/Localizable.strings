@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld Bilder sind in Lenora bereit.";
 "%lld items" = "%lld Objekte";
 "%lld media files are missing and will be skipped." = "%lld Mediendateien fehlen und werden übersprungen.";
+"%lld seconds" = "%lld Sekunden";
 "%lld selected" = "%lld ausgewählt";
 "%lld subtitle files are ready in Lenora." = "%lld Untertiteldateien sind in Lenora bereit.";
 "%lld text clips are ready in Lenora." = "%lld Text-Clips sind in Lenora bereit.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Action Safe";
 "Adapters" = "Adapter";
 "Add Marker (M)" = "Markierung hinzufügen (M)";
+"Add Outputs" = "Ausgaben hinzufügen";
+"Add Outputs…" = "Ausgaben hinzufügen…";
 "Add Range to Chat" = "Bereich zum Chat hinzufügen";
 "Add Text" = "Text hinzufügen";
 "Add a comment" = "Kommentar hinzufügen";
@@ -74,12 +77,14 @@
 "All" = "Alle";
 "All Statuses" = "Alle Status";
 "All fonts" = "Alle Schriften";
+"Always includes a stream, a download link and a poster." = "Enthält immer einen Stream, einen Download-Link und ein Posterbild.";
 "Amount" = "Stärke";
 "Analyzing media so you can search it." = "Medien werden analysiert, damit Sie sie durchsuchen können.";
 "Angle" = "Winkel";
 "Animate" = "Animieren";
 "Animation" = "Animation";
 "Anthropic API Key" = "Anthropic-API-Schlüssel";
+"Anyone with the link can watch." = "Jeder mit dem Link kann das Video ansehen.";
 "Appearance" = "Erscheinungsbild";
 "Apply" = "Anwenden";
 "Ask anything, or start with:" = "Stellen Sie eine Frage oder beginnen Sie mit:";
@@ -198,7 +203,12 @@
 "Contrast" = "Kontrast";
 "Copied" = "Kopiert";
 "Copy" = "Kopieren";
+"Copy Link" = "Link kopieren";
 "Copy Path" = "Pfad kopieren";
+"Copy Poster Link" = "Poster-Link kopieren";
+"Copy Stream Link" = "Stream-Link kopieren";
+"Copy Teaser Link" = "Teaser-Link kopieren";
+"Copy Vertical Cut Link" = "Link zum Hochformat kopieren";
 "Copy message" = "Nachricht kopieren";
 "Copy one clip of the same type and try again." = "Kopieren Sie einen Clip desselben Typs und versuchen Sie es erneut.";
 "Copy prompt" = "Prompt kopieren";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Vollbildmodus aktivieren";
 "Erase an object from the image" = "Ein Objekt aus dem Bild entfernen";
 "Every connected agent will need the new token." = "Jeder verbundene Agent benötigt das neue Token.";
+"Every link stops working. This can't be undone." = "Alle Links funktionieren nicht mehr. Das kann nicht rückgängig gemacht werden.";
 "Exclusion" = "Ausschluss";
 "Expand" = "Erweitern";
 "Export" = "Exportieren";
@@ -339,6 +350,7 @@
 "Fade In" = "Einblenden";
 "Fade Out" = "Ausblenden";
 "Failed" = "Fehlgeschlagen";
+"Failed: %@" = "Fehlgeschlagen: %@";
 "Feather" = "Weichzeichnen";
 "Featured" = "Empfohlen";
 "File" = "Ablage";
@@ -652,10 +664,16 @@
 "Presence" = "Präsenz";
 "Press M in the timeline to add a marker." = "Drücken Sie M in der Timeline, um eine Markierung hinzuzufügen.";
 "Preview" = "Vorschau";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Die Verarbeitung wird vom Backend abgerechnet. Die Schätzung erscheint, sobald die Verarbeitung beginnt.";
+"Processing…" = "Wird verarbeitet…";
+"Processing… Estimated %@ %@" = "Wird verarbeitet… Geschätzt: %@ %@";
 "Project" = "Projekt";
 "Project Settings" = "Projekteinstellungen";
 "Projects Couldn’t Be Deleted" = "Projekte konnten nicht gelöscht werden";
 "Prompt" = "Prompt";
+"Publish" = "Veröffentlichen";
+"Published" = "Veröffentlicht";
+"Publish…" = "Veröffentlichen…";
 "Put the subject on a new background" = "Das Motiv vor einen neuen Hintergrund setzen";
 "Quality" = "Qualität";
 "Queued" = "In der Warteschlange";
@@ -664,6 +682,8 @@
 "Range" = "Bereich";
 "Razor (C)" = "Schneiden (C)";
 "Razor Tool" = "Schneidwerkzeug";
+"Ready" = "Bereit";
+"Ready, %lld failed" = "Bereit, %lld fehlgeschlagen";
 "Reasoning effort" = "Begründungsaufwand";
 "Recolor" = "Umfärben";
 "Redetect Beats" = "Beats erneut erkennen";
@@ -854,6 +874,7 @@
 "System appearance" = "Systemerscheinungsbild";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Ein Bildschirmfoto der Vorschau aufnehmen und als Referenz für die Generierung verwenden. Besonders nützlich für KI-Übergänge.";
 "Target Language" = "Zielsprache";
+"Teaser" = "Teaser";
 "Teasers aren't available." = "Teaser sind nicht verfügbar.";
 "Teasers must be %lld–%lld seconds." = "Teaser müssen %lld–%lld Sekunden lang sein.";
 "Temperature" = "Farbtemperatur";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Widerrufen (⌘Z)";
 "Ungroup Multicam" = "Multicam-Gruppe aufheben";
 "Unlink" = "Verknüpfung aufheben";
+"Unpublish" = "Veröffentlichung aufheben";
+"Unpublish this video?" = "Veröffentlichung dieses Videos aufheben?";
+"Unpublished" = "Nicht mehr veröffentlicht";
 "Untitled" = "Unbenannt";
 "Update" = "Aktualisieren";
 "Update available" = "Update verfügbar";
@@ -967,6 +991,7 @@
 "Version" = "Version";
 "Vertical" = "Vertikal";
 "Vertical aspect %@ isn't supported." = "Das vertikale Seitenverhältnis %@ wird nicht unterstützt.";
+"Vertical cut" = "Hochformat";
 "Vertical workspace layout" = "Vertikaler Arbeitsbereich";
 "Vibrance" = "Dynamik";
 "Video" = "Video";

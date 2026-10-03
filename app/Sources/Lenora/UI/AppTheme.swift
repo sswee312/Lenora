@@ -525,6 +525,8 @@ enum AppTheme {
         static let activityDotSize: CGFloat = 6
         static let queueProgressBarWidth: CGFloat = 96
         static let queueProgressWidth: CGFloat = 32
+        static let publishSheetWidth: CGFloat = 380
+        static let publishedMaxHeight: CGFloat = 220
         static let sheetWidthWithLog: CGFloat = sheetWidth + logPaneWidth + BorderWidth.hairline
     }
 

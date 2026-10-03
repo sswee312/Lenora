@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld bilder är klara i Lenora.";
 "%lld items" = "%lld objekt";
 "%lld media files are missing and will be skipped." = "%lld mediafiler saknas och hoppas över.";
+"%lld seconds" = "%lld sekunder";
 "%lld selected" = "%lld markerade";
 "%lld subtitle files are ready in Lenora." = "%lld undertextfiler är klara i Lenora.";
 "%lld text clips are ready in Lenora." = "%lld textklipp är klara i Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Säker åtgärdsyta";
 "Adapters" = "Adaptrar";
 "Add Marker (M)" = "Lägg till markör (M)";
+"Add Outputs" = "Lägg till utdata";
+"Add Outputs…" = "Lägg till utdata…";
 "Add Range to Chat" = "Lägg till område i chatten";
 "Add Text" = "Lägg till text";
 "Add a comment" = "Lägg till en kommentar";
@@ -74,12 +77,14 @@
 "All" = "Alla";
 "All Statuses" = "Alla statusar";
 "All fonts" = "Alla typsnitt";
+"Always includes a stream, a download link and a poster." = "Innehåller alltid en ström, en nedladdningslänk och en affisch.";
 "Amount" = "Belopp";
 "Analyzing media so you can search it." = "Analyserar media så att du kan söka i det.";
 "Angle" = "Vinkel";
 "Animate" = "Animera";
 "Animation" = "Animering";
 "Anthropic API Key" = "Anthropic API-nyckel";
+"Anyone with the link can watch." = "Alla med länken kan titta.";
 "Appearance" = "Utseende";
 "Apply" = "Verkställ";
 "Ask anything, or start with:" = "Fråga vad som helst, eller börja med:";
@@ -198,7 +203,12 @@
 "Contrast" = "Kontrast";
 "Copied" = "Kopierad";
 "Copy" = "Kopiera";
+"Copy Link" = "Kopiera länk";
 "Copy Path" = "Kopiera sökväg";
+"Copy Poster Link" = "Kopiera affischlänk";
+"Copy Stream Link" = "Kopiera strömlänk";
+"Copy Teaser Link" = "Kopiera teaserlänk";
+"Copy Vertical Cut Link" = "Kopiera länk till vertikal version";
 "Copy message" = "Kopiera meddelande";
 "Copy one clip of the same type and try again." = "Kopiera ett klipp av samma typ och försök igen.";
 "Copy prompt" = "Kopiera prompt";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "Gå till helskärm";
 "Erase an object from the image" = "Radera ett objekt från bilden";
 "Every connected agent will need the new token." = "Varje ansluten agent behöver den nya token.";
+"Every link stops working. This can't be undone." = "Alla länkar slutar fungera. Det går inte att ångra.";
 "Exclusion" = "Uteslutning";
 "Expand" = "Expandera";
 "Export" = "Exportera";
@@ -339,6 +350,7 @@
 "Fade In" = "Tona in";
 "Fade Out" = "Tona ut";
 "Failed" = "Misslyckades";
+"Failed: %@" = "Misslyckades: %@";
 "Feather" = "Mjukkant";
 "Featured" = "Utvalda";
 "File" = "Arkiv";
@@ -652,10 +664,16 @@
 "Presence" = "Närvaro";
 "Press M in the timeline to add a marker." = "Tryck på M i tidslinjen för att lägga till en markör.";
 "Preview" = "Förhandsvisning";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Bearbetningen faktureras av backend. Uppskattningen visas när bearbetningen startar.";
+"Processing…" = "Bearbetar…";
+"Processing… Estimated %@ %@" = "Bearbetar… Uppskattat: %@ %@";
 "Project" = "Projekt";
 "Project Settings" = "Projektinställningar";
 "Projects Couldn’t Be Deleted" = "Projekten kunde inte raderas";
 "Prompt" = "Prompt";
+"Publish" = "Publicera";
+"Published" = "Publicerad";
+"Publish…" = "Publicera…";
 "Put the subject on a new background" = "Placera motivet på en ny bakgrund";
 "Quality" = "Kvalitet";
 "Queued" = "I kö";
@@ -664,6 +682,8 @@
 "Range" = "Område";
 "Razor (C)" = "Rakblad (C)";
 "Razor Tool" = "Rakbladsverktyg";
+"Ready" = "Klar";
+"Ready, %lld failed" = "Klar, %lld misslyckades";
 "Reasoning effort" = "Resonemangsinsats";
 "Recolor" = "Färga om";
 "Redetect Beats" = "Identifiera takter igen";
@@ -854,6 +874,7 @@
 "System appearance" = "Systemutseende";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Ta en skärmbild av förhandsvisningen och använd den som referens för generering. Särskilt användbart för att skapa AI-övergångar.";
 "Target Language" = "Målspråk";
+"Teaser" = "Teaser";
 "Teasers aren't available." = "Teasers är inte tillgängliga.";
 "Teasers must be %lld–%lld seconds." = "Teasers måste vara %lld–%lld sekunder.";
 "Temperature" = "Temperatur";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "Ångra (⌘Z)";
 "Ungroup Multicam" = "Dela upp flerkamera";
 "Unlink" = "Ta bort länk";
+"Unpublish" = "Avpublicera";
+"Unpublish this video?" = "Avpublicera den här videon?";
+"Unpublished" = "Avpublicerad";
 "Untitled" = "Namnlös";
 "Update" = "Uppdatera";
 "Update available" = "Uppdatering tillgänglig";
@@ -967,6 +991,7 @@
 "Version" = "Version";
 "Vertical" = "Vertikalt";
 "Vertical aspect %@ isn't supported." = "Det vertikala bildförhållandet %@ stöds inte.";
+"Vertical cut" = "Vertikal version";
 "Vertical workspace layout" = "Vertikal arbetsytelayout";
 "Vibrance" = "Lyster";
 "Video" = "Video";

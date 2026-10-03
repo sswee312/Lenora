@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lldটি ইমেজ Lenora-তে প্রস্তুত।";
 "%lld items" = "%lldটি আইটেম";
 "%lld media files are missing and will be skipped." = "%lldটি মিডিয়া ফাইল নেই এবং সেগুলো এড়িয়ে যাওয়া হবে।";
+"%lld seconds" = "%lld সেকেন্ড";
 "%lld selected" = "%lldটি সিলেক্ট করা হয়েছে";
 "%lld subtitle files are ready in Lenora." = "%lldটি সাবটাইটেল ফাইল Lenora-তে প্রস্তুত।";
 "%lld text clips are ready in Lenora." = "%lldটি টেক্সট ক্লিপ Lenora-তে প্রস্তুত।";
@@ -44,6 +45,8 @@
 "Action Safe" = "অ্যাকশন সেফ";
 "Adapters" = "অ্যাডাপ্টার";
 "Add Marker (M)" = "মার্কার যোগ করুন (M)";
+"Add Outputs" = "আউটপুট যোগ করুন";
+"Add Outputs…" = "আউটপুট যোগ করুন…";
 "Add Range to Chat" = "চ্যাটে রেঞ্জ যোগ করুন";
 "Add Text" = "টেক্সট যোগ করুন";
 "Add a comment" = "কমেন্ট যোগ করুন";
@@ -74,12 +77,14 @@
 "All" = "সব";
 "All Statuses" = "সব স্ট্যাটাস";
 "All fonts" = "সব ফন্ট";
+"Always includes a stream, a download link and a poster." = "সবসময় একটি স্ট্রিম, একটি ডাউনলোড লিংক এবং একটি পোস্টার থাকে।";
 "Amount" = "পরিমাণ";
 "Analyzing media so you can search it." = "সার্চ করার সুবিধার জন্য মিডিয়া বিশ্লেষণ করা হচ্ছে।";
 "Angle" = "অ্যাঙ্গেল";
 "Animate" = "অ্যানিমেট";
 "Animation" = "অ্যানিমেশন";
 "Anthropic API Key" = "Anthropic API কী";
+"Anyone with the link can watch." = "লিংক থাকা যে কেউ দেখতে পারবেন।";
 "Appearance" = "অ্যাপিয়ারেন্স";
 "Apply" = "প্রয়োগ করুন";
 "Ask anything, or start with:" = "যেকোনো কিছু জিজ্ঞাসা করুন অথবা এটি দিয়ে শুরু করুন:";
@@ -198,7 +203,12 @@
 "Contrast" = "কনট্রাস্ট";
 "Copied" = "কপি হয়েছে";
 "Copy" = "কপি করুন";
+"Copy Link" = "লিংক কপি করুন";
 "Copy Path" = "পাথ কপি করুন";
+"Copy Poster Link" = "পোস্টার লিংক কপি করুন";
+"Copy Stream Link" = "স্ট্রিম লিংক কপি করুন";
+"Copy Teaser Link" = "টিজার লিংক কপি করুন";
+"Copy Vertical Cut Link" = "ভার্টিক্যাল কাটের লিংক কপি করুন";
 "Copy message" = "মেসেজ কপি করুন";
 "Copy one clip of the same type and try again." = "একই ধরনের একটি ক্লিপ কপি করে আবার চেষ্টা করুন।";
 "Copy prompt" = "প্রম্পট কপি করুন";
@@ -320,6 +330,7 @@
 "Enter Full Screen" = "ফুল স্ক্রিনে যান";
 "Erase an object from the image" = "ছবি থেকে একটি বস্তু মুছুন";
 "Every connected agent will need the new token." = "সংযুক্ত প্রতিটি এজেন্টের নতুন টোকেন লাগবে।";
+"Every link stops working. This can't be undone." = "সব লিংক কাজ করা বন্ধ করবে। এটি পূর্বাবস্থায় ফেরানো যাবে না।";
 "Exclusion" = "এক্সক্লুশন";
 "Expand" = "প্রসারিত করুন";
 "Export" = "এক্সপোর্ট";
@@ -339,6 +350,7 @@
 "Fade In" = "ফেড ইন";
 "Fade Out" = "ফেড আউট";
 "Failed" = "ব্যর্থ";
+"Failed: %@" = "ব্যর্থ: %@";
 "Feather" = "ফেদার";
 "Featured" = "ফিচার্ড";
 "File" = "ফাইল";
@@ -652,10 +664,16 @@
 "Presence" = "প্রেজেন্স";
 "Press M in the timeline to add a marker." = "টাইমলাইনে মার্কার যোগ করতে M চাপুন।";
 "Preview" = "প্রিভিউ";
+"Processing is billed by the backend. The estimate appears once processing starts." = "প্রসেসিংয়ের বিল ব্যাকএন্ড করে। প্রসেসিং শুরু হলে আনুমানিক খরচ দেখানো হয়।";
+"Processing…" = "প্রসেস হচ্ছে…";
+"Processing… Estimated %@ %@" = "প্রসেস হচ্ছে… আনুমানিক: %@ %@";
 "Project" = "প্রজেক্ট";
 "Project Settings" = "প্রজেক্ট সেটিংস";
 "Projects Couldn’t Be Deleted" = "প্রজেক্ট ডিলিট করা যায়নি";
 "Prompt" = "প্রম্পট";
+"Publish" = "প্রকাশ করুন";
+"Published" = "প্রকাশিত";
+"Publish…" = "প্রকাশ করুন…";
 "Put the subject on a new background" = "বিষয়বস্তুকে নতুন পটভূমিতে রাখুন";
 "Quality" = "কোয়ালিটি";
 "Queued" = "কিউতে আছে";
@@ -664,6 +682,8 @@
 "Range" = "রেঞ্জ";
 "Razor (C)" = "রেজর (C)";
 "Razor Tool" = "রেজর টুল";
+"Ready" = "প্রস্তুত";
+"Ready, %lld failed" = "প্রস্তুত, %lld ব্যর্থ";
 "Reasoning effort" = "রিজনিং এফর্ট";
 "Recolor" = "পুনরায় রং করুন";
 "Redetect Beats" = "বিট আবার শনাক্ত করুন";
@@ -854,6 +874,7 @@
 "System appearance" = "সিস্টেম অ্যাপিয়ারেন্স";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "প্রিভিউয়ের স্ক্রিনশট নিয়ে জেনারেশনের রেফারেন্স হিসেবে ব্যবহার করুন। AI ট্রানজিশন তৈরিতে বিশেষভাবে কাজে লাগে।";
 "Target Language" = "টার্গেট ভাষা";
+"Teaser" = "টিজার";
 "Teasers aren't available." = "টিজার উপলব্ধ নেই।";
 "Teasers must be %lld–%lld seconds." = "টিজার %lld–%lld সেকেন্ডের হতে হবে।";
 "Temperature" = "টেম্পারেচার";
@@ -944,6 +965,9 @@
 "Undo (⌘Z)" = "আনডু (⌘Z)";
 "Ungroup Multicam" = "মাল্টিক্যাম আনগ্রুপ করুন";
 "Unlink" = "আনলিঙ্ক";
+"Unpublish" = "প্রকাশ বাতিল করুন";
+"Unpublish this video?" = "এই ভিডিওর প্রকাশ বাতিল করবেন?";
+"Unpublished" = "প্রকাশ বাতিল হয়েছে";
 "Untitled" = "শিরোনামহীন";
 "Update" = "আপডেট";
 "Update available" = "আপডেট পাওয়া যাচ্ছে";
@@ -967,6 +991,7 @@
 "Version" = "ভার্সন";
 "Vertical" = "ভার্টিক্যাল";
 "Vertical aspect %@ isn't supported." = "উল্লম্ব অনুপাত %@ সমর্থিত নয়।";
+"Vertical cut" = "ভার্টিক্যাল কাট";
 "Vertical workspace layout" = "ভার্টিক্যাল ওয়ার্কস্পেস লেআউট";
 "Vibrance" = "ভাইব্রেন্স";
 "Video" = "ভিডিও";
