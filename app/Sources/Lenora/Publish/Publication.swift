@@ -127,7 +127,7 @@ struct PublishProbe: Sendable, Equatable {
 
     @concurrent
     static func read(_ url: URL) async throws -> PublishProbe {
-        let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
+        guard let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize else { throw PublishRefusal.unreadable }
         let duration = try await AVURLAsset(url: url).load(.duration)
         return PublishProbe(byteCount: Int64(size), durationSeconds: duration.seconds)
     }
@@ -246,5 +246,3 @@ extension ExportJob {
         }
     }
 }
-
-enum PublishService { static let kind = "video.publish" }

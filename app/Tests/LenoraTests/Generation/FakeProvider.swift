@@ -68,6 +68,14 @@ actor FakeProvider: GenerationProvider {
 
     func emit(_ state: JobState) { stream?.yield(state) }
 
+    private var pollerWaiters: [CheckedContinuation<Void, Never>] = []
+
+    /// Returns once a consumer has attached to `jobUpdates`.
+    func waitForPoller() async {
+        if pollers > 0 { return }
+        await withCheckedContinuation { pollerWaiters.append($0) }
+    }
+
     private func noteTermination() { terminations += 1 }
 
     private func attach(_ continuation: AsyncThrowingStream<JobState, Error>.Continuation) {
@@ -76,6 +84,8 @@ actor FakeProvider: GenerationProvider {
         for state in states { continuation.yield(state) }
         if let failure { continuation.finish(throwing: failure) }
         else if states.last?.status.isTerminal == true { continuation.finish() }
+        pollerWaiters.forEach { $0.resume() }
+        pollerWaiters.removeAll()
     }
 
     func setCancelResult(_ result: Result<JobState, BackendError>) { cancelResult = result }

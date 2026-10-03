@@ -407,7 +407,10 @@ class VideoProject: NSDocument {
     // MARK: - Close
 
     override func close() {
-        MainActor.assumeIsolated { editorViewModel.generationService.stopMonitoring() }
+        MainActor.assumeIsolated {
+            editorViewModel.generationService.stopMonitoring()
+            editorViewModel.publishService.stopMonitoring()
+        }
         super.close()
         DispatchQueue.main.async {
             if AppState.shared.activeProject === self {
@@ -427,6 +430,9 @@ class VideoProject: NSDocument {
         editorViewModel.projectURL = fileURL
         editorViewModel.agentService.loadSessions(from: fileURL)
         editorViewModel.agentService.onSessionsChanged = { [weak self] in
+            self?.updateChangeCount(.changeDone)
+        }
+        editorViewModel.publishService.onChange = { [weak self] in
             self?.updateChangeCount(.changeDone)
         }
         editorViewModel.onProjectCheckpointRequired = { [weak self] in

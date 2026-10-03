@@ -112,3 +112,12 @@ struct PublicationTests {
         #expect(decoded.publications == nil)
     }
 }
+
+struct PublishProbeTests {
+    @Test func unknownFileSizeIsUnreadable() async throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: "probe-\(UUID().uuidString)")
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        await #expect(throws: PublishRefusal.unreadable) { try await PublishProbe.read(directory) }
+    }
+}
