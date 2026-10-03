@@ -10,10 +10,10 @@ from pydantic_settings import BaseSettings
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import (
     EDIT_OPS, Estimate, ImageGenerateParams, InputLimits, JobRequest, JobState, ModelInfo, SubmittedJob, Ticket,
-    UploadRequest, UploadTicket,
+    UploadRequest, UploadTicket, VideoGenerateParams,
 )
 from lenora_backend.registry import CancelNotSupported
-from lenora_adapter_cloudinary import costs, deliveries, generation
+from lenora_adapter_cloudinary import costs, deliveries, generation, image_to_video
 from lenora_adapter_cloudinary.addons import IMAGE_GENERATION, IMAGE_TO_VIDEO, Addons
 from lenora_adapter_cloudinary.api import CloudinaryAPI, is_subscription_refusal, parse_ref
 from lenora_adapter_cloudinary.delivery import encode_url_job, sign_upload
@@ -26,6 +26,7 @@ GENERATIVE_EDIT = "cloudinary/generative-edit"
 UPSCALE = "cloudinary/upscale"
 REFRAME = "cloudinary/reframe"
 IMAGE_GENERATION_MODEL = "cloudinary/image-generation"
+IMAGE_TO_VIDEO_MODEL = "cloudinary/image-to-video"
 IMAGE_TYPES = ["image/png", "image/jpeg", "image/webp", "image/heic", "image/tiff"]
 VIDEO_TYPES = ["video/mp4", "video/quicktime", "video/webm"]
 FREE_PLAN_IMAGE_MAX_BYTES = 10 * 1024 * 1024
@@ -74,6 +75,18 @@ class CloudinaryAdapter(CancelNotSupported):
                 estimate=costs.image_generation(self.settings.cost_image_generation, 1), ui={
                     "providerName": "Cloudinary", "allowedEndpoints": [], "responseShape": "images",
                     "uiCapabilities": {"aspectRatios": IMAGE_ASPECTS, "supportsImageReference": True, "maxImages": 4}}))
+        if self.addons.available(IMAGE_TO_VIDEO):
+            models.append(ModelInfo(
+                id=IMAGE_TO_VIDEO_MODEL, kind="video.generate", displayName="Cloudinary Image to Video",
+                inputs=_image_inputs(), cancellable=False, ui={
+                    "providerName": "Cloudinary", "allowedEndpoints": [], "responseShape": "video",
+                    "uiCapabilities": {
+                        "supportsPrompt": True, "durations": [4, 6, 8], "resolutions": ["720p", "1080p"],
+                        "aspectRatios": ["16:9", "9:16"], "supportsFirstFrame": True, "supportsLastFrame": True,
+                        "maxReferenceImages": 2, "maxReferenceVideos": 0, "maxReferenceAudios": 0,
+                        "framesAndReferencesExclusive": False, "referenceTagNoun": "Image",
+                        "requiresSourceVideo": False, "requiresReferenceImage": False,
+                        "requiresFirstFrame": True}}))
         return models
 
     async def create_upload(self, model: str, req: UploadRequest) -> UploadTicket:
@@ -97,6 +110,8 @@ class CloudinaryAdapter(CancelNotSupported):
     async def submit(self, model: str, job: JobRequest) -> SubmittedJob:
         if job.kind == "image.generate":
             return await self._submit_image_generation(job)
+        if job.kind == "video.generate":
+            return await self._submit_image_to_video(job)
         if job.kind == "video.reframe":
             return await self._submit_reframe(job)
         url, estimate = await deliveries.plan(self.api, job)
@@ -109,6 +124,8 @@ class CloudinaryAdapter(CancelNotSupported):
             return await deliveries.status(self.http, self.settings, job_id)
         if prefix == "gen" and local:
             return await self._image_generation_status(job_id, local.split("."))
+        if prefix == "i2v" and local:
+            return await self._image_to_video_status(job_id, local)
         raise ProblemError("not_found", "Unknown job.")
 
     async def health(self, recheck: bool) -> dict[str, Any]:
@@ -140,9 +157,24 @@ class CloudinaryAdapter(CancelNotSupported):
     async def _asset_ids(self, inputs) -> list[str]:
         return [(await self.api.asset(parse_ref(i, "image"))).asset_id for i in inputs]
 
+    async def _charged(self, estimate: Estimate, call):
+        self.budget.reserve(estimate)
+        try:
+            return await call()
+        except BaseException:
+            self.budget.refund(estimate)
+            raise
+
     async def _start_image_task(self, params: ImageGenerateParams, references: list[str]) -> str:
         response = await generation.start_task(self.api, params, references)
         return generation.task_id(self._checked(IMAGE_GENERATION, response))
+
+    async def _start_video_job(self, params: VideoGenerateParams, start: str, end: str | None, refs: list[str]) -> str:
+        response = await image_to_video.start_job(self.api, params, start, end, refs)
+        return image_to_video.job_id(self._checked(IMAGE_TO_VIDEO, response))
+
+    def _video_estimate(self, params: VideoGenerateParams) -> Estimate:
+        return costs.image_to_video(self.settings.cost_image_to_video_per_second, params.duration, params.generateAudio)
 
     # image.generate
 
@@ -174,3 +206,26 @@ class CloudinaryAdapter(CancelNotSupported):
             return JobState(jobId=job_id, status="succeeded", results=generation.results(assets))
         except TaskFailed as error:
             return generation.failed(job_id, str(error))
+
+    # video.generate with a start frame
+
+    async def _submit_image_to_video(self, job: JobRequest) -> SubmittedJob:
+        self._require(IMAGE_TO_VIDEO)
+        params = VideoGenerateParams.model_validate(job.params)
+        by_role = {role: [i for i in job.inputs if i.role == role] for role in ("startFrame", "endFrame", "reference")}
+        start = (await self._asset_ids(by_role["startFrame"]))[0]
+        end = next(iter(await self._asset_ids(by_role["endFrame"])), None)
+        references = await self._asset_ids(by_role["reference"])
+        estimate = self._video_estimate(params)
+        video_job = await self._charged(estimate, lambda: self._start_video_job(params, start, end, references))
+        return SubmittedJob(jobId=f"i2v:{video_job}", status="queued", estimate=estimate)
+
+    async def _image_to_video_status(self, job_id: str, video_job: str) -> JobState:
+        try:
+            state, results = image_to_video.job_outcome(
+                self._checked(IMAGE_TO_VIDEO, await image_to_video.poll_job(self.api, video_job)))
+        except TaskFailed as error:
+            return generation.failed(job_id, str(error))
+        if state == "running":
+            return generation.running(job_id)
+        return JobState(jobId=job_id, status="succeeded", results=results)
