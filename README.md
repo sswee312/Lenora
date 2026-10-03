@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/lenora-logo.jpg" alt="Lenora" width="160"></p>
+<p align="center"><img src="assets/lenora-logo.png" alt="Lenora" width="160"></p>
 
 <h1 align="center">Lenora</h1>
 
@@ -9,7 +9,7 @@ An open-source, agent-native video editor for the Mac. Edit by hand, let the bui
 [![Backend, protocol, skills: Apache-2.0](https://img.shields.io/badge/backend%20%C2%B7%20protocol%20%C2%B7%20skills-Apache--2.0-blue.svg)](backend/LICENSE)
 ![macOS 26, Apple silicon](https://img.shields.io/badge/macOS-26%20%C2%B7%20Apple%20silicon-lightgrey.svg)
 
-[![Watch the Lenora demo](assets/this-is-lenora-poster.jpg)](https://github.com/vermatushar/Lenora/blob/main/assets/this-is-lenora.mp4)
+[![Watch the Lenora demo](assets/this-is-lenora-poster.png)](https://github.com/vermatushar/Lenora/blob/main/assets/this-is-lenora.mp4)
 
 <p align="center"><a href="https://github.com/vermatushar/Lenora/blob/main/assets/this-is-lenora.mp4">▶ Watch the demo (24 s)</a></p>
 
