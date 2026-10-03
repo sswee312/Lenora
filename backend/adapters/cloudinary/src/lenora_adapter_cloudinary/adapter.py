@@ -133,7 +133,7 @@ class CloudinaryAdapter(CancelNotSupported):
         if prefix == "i2v" and local:
             return await self._image_to_video_status(job_id, local)
         if prefix == "eager" and local:
-            return await eager.status(self.api, job_id)
+            return await eager.status(self.api, job_id, self.clock())
         if prefix == "chain" and local:
             return await self._chain_status(job_id, local)
         raise ProblemError("not_found", "Unknown job.")
@@ -145,6 +145,8 @@ class CloudinaryAdapter(CancelNotSupported):
 
     async def _submit_reframe(self, job: JobRequest) -> SubmittedJob:
         ref, asset, transformation, estimate = await deliveries.plan_reframe(self.api, job)
+        if asset.bytes > FREE_PLAN_VIDEO_MAX_BYTES:
+            raise ProblemError("input_too_large", f"Reframe accepts videos up to {FREE_PLAN_VIDEO_MAX_BYTES} bytes; this one is {asset.bytes}.")
         if asset.bytes > self.settings.on_the_fly_video_max_bytes:
             job_id = await self._charged(estimate, lambda: eager.start(self.api, ref, transformation, int(self.clock())))
             return SubmittedJob(jobId=job_id, status="queued", estimate=estimate)

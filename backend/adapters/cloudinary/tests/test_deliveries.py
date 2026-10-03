@@ -1,5 +1,7 @@
 import base64
+import json
 
+import httpx
 import pytest
 
 from cld import ADMIN_IMAGE, ADMIN_VIDEO, SECRET, UUID, VIDEO_REF, admin, job, run, settings
@@ -77,30 +79,84 @@ def test_reframe_above_the_cap_runs_eager_and_polls_derived():
     def mock(r):
         admin(r, bytes_=41943041, duration=60, video=True)
         r.post("https://api.cloudinary.com/v1_1/demo/video/explicit").mock(
-            side_effect=lambda req: sent.append(req.content.decode()) or __import__("httpx").Response(200, json={"batch_id": "b"}))
+            side_effect=lambda req: sent.append(req.content.decode()) or httpx.Response(200, json={"batch_id": "b"}))
 
     async def scenario(a):
         submitted = await a.submit(request.model, request)
         return submitted, await a.status(submitted.jobId)
     submitted, state = run(scenario, mock=mock)
     assert submitted.jobId.startswith("eager:") and "eager_async=true" in sent[0] and "signature=" in sent[0]
+    assert all(f"{k}=" in sent[0] for k in ("public_id", "eager", "timestamp")) and SECRET not in sent[0]
     assert state.status == "running" and state.retryAfter == 30
+
+
+TRANSFORMATION = "ar_9:16,c_fill,g_auto"
+PUBLIC_ID = f"lenora/{UUID}"
+
+
+def raw_id(payload) -> str:
+    return "eager:" + base64.urlsafe_b64encode(json.dumps(payload).encode()).decode().rstrip("=")
 
 
 def test_eager_job_succeeds_once_derived_exists():
     from lenora_adapter_cloudinary import eager
-    job_id = eager.encode(f"lenora/{UUID}", "ar_9:16,c_fill,g_auto")
-    body = {"asset_id": "a", "bytes": 1, "derived": [{"transformation": "ar_9:16,c_fill,g_auto"}]}
+    job_id = eager.encode(PUBLIC_ID, TRANSFORMATION, 1000)
+    body = {"asset_id": "a", "bytes": 1, "derived": [{"transformation": TRANSFORMATION}]}
     state = run(lambda a: a.status(job_id), mock=lambda r: r.get(ADMIN_VIDEO).respond(200, json=body))
     assert state.status == "succeeded"
-    assert str(state.results[0].url) == signed_url("demo", "video", "ar_9:16,c_fill,g_auto", f"lenora/{UUID}.mp4", SECRET)
+    assert str(state.results[0].url) == signed_url("demo", "video", TRANSFORMATION, f"lenora/{UUID}.mp4", SECRET)
 
 
-@pytest.mark.parametrize("job_id", ["eager:%%", "eager:" + base64.urlsafe_b64encode(b'{"p":"other/x","t":"y"}').decode()])
+@pytest.mark.parametrize("now, status", [(1000 + 1800, "running"), (1000 + 1801, "failed")])
+def test_eager_job_fails_after_the_deadline(now, status):
+    from lenora_adapter_cloudinary import eager
+    job_id = eager.encode(PUBLIC_ID, TRANSFORMATION, 1000)
+    state = run(lambda a: a.status(job_id), mock=lambda r: r.get(ADMIN_VIDEO).respond(200, json={"derived": []}), clock=lambda: now)
+    assert state.status == status
+    if status == "failed":
+        assert (state.error.code, state.error.retryable) == ("provider_error", True)
+
+
+@pytest.mark.parametrize("job_id", [
+    "eager:%%",
+    raw_id({"p": "other/x", "t": TRANSFORMATION, "s": 1}),
+    raw_id({"p": "lenora/../..", "t": TRANSFORMATION, "s": 1}),
+    raw_id({"p": "lenora/a?x=1", "t": TRANSFORMATION, "s": 1}),
+    raw_id({"p": "lenora/a#x", "t": TRANSFORMATION, "s": 1}),
+    raw_id({"p": PUBLIC_ID, "t": "ar_2:1,c_fill,g_auto", "s": 1}),
+    raw_id({"p": PUBLIC_ID, "t": "e_gen_restore", "s": 1}),
+    raw_id({"p": PUBLIC_ID, "t": TRANSFORMATION, "s": "1"}),
+    raw_id({"p": PUBLIC_ID, "t": TRANSFORMATION, "s": True}),
+    raw_id({"p": PUBLIC_ID, "t": TRANSFORMATION}),
+    raw_id([PUBLIC_ID, TRANSFORMATION, 1]),
+    raw_id("text"),
+])
 def test_eager_rejects_foreign_ids(job_id):
     with pytest.raises(ProblemError) as info:
         run(lambda a: a.status(job_id))
     assert info.value.code == "not_found"
+
+
+@pytest.mark.parametrize("size, eager_used", [(104857600, True), (104857601, False)])
+def test_reframe_is_capped_at_the_plan_video_limit(size, eager_used):
+    request = job("video.reframe", "cloudinary/reframe", {"aspectRatio": "9:16"}, [AssetInput(assetRef=VIDEO_REF)])
+    calls = []
+
+    def mock(r):
+        admin(r, bytes_=size, duration=60, video=True)
+        r.post("https://api.cloudinary.com/v1_1/demo/video/explicit").mock(
+            side_effect=lambda req: calls.append(req) or httpx.Response(200, json={}))
+
+    async def scenario(a):
+        try:
+            return await a.submit(request.model, request), a.budget.usage()["used"]
+        except ProblemError as error:
+            return error, a.budget.usage()["used"]
+    result, used = run(scenario, mock=mock)
+    if eager_used:
+        assert result.jobId.startswith("eager:") and len(calls) == 1 and used > 0
+    else:
+        assert result.code == "input_too_large" and not calls and used == 0
 
 
 def test_reframe_rejects_image_refs():
