@@ -44,6 +44,18 @@ struct MCPAccessTokenStoreTests {
         }
     }
 
+    @Test func regenerateRecoversFromAnUnreadableItem() async throws {
+        let recorder = Recorder()
+        let store = MCPAccessTokenStore(
+            read: { throw KeychainReadError(status: errSecAuthFailed) },
+            write: { recorder.record($0); return true })
+        await #expect(throws: MCPAccessTokenError.keychainReadFailed) {
+            try await store.loadOrCreate()
+        }
+        let token = try await store.regenerate()
+        #expect(recorder.writes == [token])
+    }
+
     @Test func regenerateReplacesTheToken() async throws {
         let recorder = Recorder()
         let store = MCPAccessTokenStore(read: { "old" }, write: { recorder.record($0); return true })

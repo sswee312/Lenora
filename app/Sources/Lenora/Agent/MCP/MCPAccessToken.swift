@@ -56,6 +56,8 @@ actor MCPAccessTokenStore {
         do {
             existing = try read()
         } catch {
+            let status = (error as? KeychainReadError).map { String($0.status) } ?? "unknown"
+            Log.mcp.error("mcp token keychain read failed status=\(status)")
             throw MCPAccessTokenError.keychainReadFailed
         }
         if let existing { return existing }

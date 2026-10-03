@@ -16,11 +16,35 @@ enum KeychainStore {
             kSecValueData as String: data,
             kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock,
         ]
-        let status = SecItemUpdate(query as CFDictionary, attrs as CFDictionary)
-        guard status == errSecItemNotFound else { return status == errSecSuccess }
         var insert = query
         insert.merge(attrs) { _, new in new }
-        return SecItemAdd(insert as CFDictionary, nil) == errSecSuccess
+        return upsert(
+            update: { SecItemUpdate(query as CFDictionary, attrs as CFDictionary) },
+            add: { SecItemAdd(insert as CFDictionary, nil) },
+            delete: { SecItemDelete(query as CFDictionary) }
+        )
+    }
+
+    /// An item this build may not modify (an ad-hoc rebuild no longer matches its ACL) is
+    /// deleted and added fresh, so saving a new value recovers it.
+    static func upsert(update: () -> OSStatus, add: () -> OSStatus, delete: () -> OSStatus) -> Bool {
+        let status = update()
+        switch status {
+        case errSecSuccess:
+            return true
+        case errSecItemNotFound:
+            return add() == errSecSuccess
+        case errSecInteractionNotAllowed, errSecAuthFailed:
+            let deleted = delete()
+            guard deleted == errSecSuccess || deleted == errSecItemNotFound else {
+                Log.app.error("keychain item could not be replaced update=\(status) delete=\(deleted)")
+                return false
+            }
+            return add() == errSecSuccess
+        default:
+            Log.app.error("keychain update failed status=\(status)")
+            return false
+        }
     }
 
     static func load(account: String) -> String? {

@@ -57,6 +57,10 @@ struct ConnectAgentPane: View {
         }
     }
 
+    private var tokenUnavailable: Bool {
+        tokenFailed || appState.mcpService?.startFailure == .token
+    }
+
     private var failureMessage: String? {
         if tokenFailed { return L10n.string("The MCP token is unavailable. Check Keychain access, then try again.") }
         switch appState.mcpService?.startFailure {
@@ -115,7 +119,7 @@ struct ConnectAgentPane: View {
                 .disabled(token == nil)
             Button(L10n.string("Regenerate token")) { confirmingRegenerate = true }
                 .buttonStyle(.capsule(.secondary, size: .regular))
-                .disabled(token == nil)
+                .disabled(token == nil && !tokenUnavailable)
         }
     }
 
