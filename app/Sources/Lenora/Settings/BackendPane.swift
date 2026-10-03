@@ -108,22 +108,11 @@ struct BackendPane: View {
                 Text(L10n.string("Daily budget"))
                     .foregroundStyle(AppTheme.Text.primaryColor)
                 Spacer(minLength: AppTheme.Spacing.lg)
-                Text(budgetSummary(budget))
+                Text(budget.summary)
                     .foregroundStyle(AppTheme.Text.secondaryColor)
             }
             .font(.system(size: AppTheme.FontSize.xs))
         }
-    }
-
-    private func budgetSummary(_ budget: BudgetStatus) -> String {
-        if budget.unit == "usd" {
-            let used = budget.used.formatted(.currency(code: "USD"))
-            guard let limit = budget.limit else { return L10n.string("\(used) used · No limit") }
-            return L10n.string("\(used) of \(limit.formatted(.currency(code: "USD")))")
-        }
-        let used = budget.used.formatted(.number.precision(.fractionLength(0...3)))
-        guard let limit = budget.limit else { return L10n.string("\(used) credits used · No limit") }
-        return L10n.string("\(used) of \(limit.formatted()) credits")
     }
 
     private var tokenPrompt: String {
@@ -199,5 +188,21 @@ private extension View {
                 RoundedRectangle(cornerRadius: AppTheme.Radius.sm)
                     .strokeBorder(AppTheme.Border.subtleColor, lineWidth: AppTheme.BorderWidth.thin)
             )
+    }
+}
+
+@MainActor
+extension BudgetStatus {
+    private static let usd = FloatingPointFormatStyle<Double>.Currency(code: "USD").precision(.fractionLength(2...4))
+
+    var summary: String {
+        if unit == "usd" {
+            let spent = used.formatted(Self.usd)
+            guard let limit else { return L10n.string("\(spent) used · No limit") }
+            return L10n.string("\(spent) of \(limit.formatted(Self.usd))")
+        }
+        let spent = used.formatted(.number.precision(.fractionLength(0...3)))
+        guard let limit else { return L10n.string("\(spent) credits used · No limit") }
+        return L10n.string("\(spent) of \(limit.formatted()) credits")
     }
 }

@@ -49,4 +49,10 @@ struct OpenAIProtocolTests {
         #expect(voice.voices?.count == 13 && voice.defaultVoice == "alloy" && voice.supportsStyleInstructions)
         #expect(catalog.supports(kind: "text.rewritePrompt") && catalog.byId["openai/rewrite"] == nil)
     }
+
+    @MainActor @Test func smallUSDSpendIsNotRoundedToZero() throws {
+        let json = #"{"limit":5.0,"used":0.003,"day":"2026-10-03","unit":"usd"}"#
+        let budget = try BackendCoding.decoder().decode(BudgetStatus.self, from: Data(json.utf8))
+        #expect(budget.summary.contains("0.003") && budget.summary.contains("5.00"))
+    }
 }
