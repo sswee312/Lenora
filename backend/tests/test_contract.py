@@ -51,6 +51,7 @@ PARAMS_SCHEMAS = {
     "image.analyze": "ImageAnalyzeParams", "image.enhance": "ImageEnhanceParams", "image.crop": "ImageCropParams",
     "video.generate": "VideoGenerateParams", "video.reframe": "VideoReframeParams",
     "video.publish": "VideoPublishParams",
+    "audio.speech": "SpeechParams", "text.rewritePrompt": "RewritePromptParams",
 }
 
 

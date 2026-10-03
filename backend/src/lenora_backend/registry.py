@@ -26,6 +26,8 @@ class Adapter(Protocol):
     async def cancel(self, job_id: str) -> JobState: ...
     # Optional: `async def health(self, recheck: bool) -> dict[str, Any] | None` adds adapter details to /v1/health.
     # Optional: `async def start(self) -> None` runs once after loading, before the first request.
+    # Optional: `async def stop(self) -> None` runs once at shutdown, before the HTTP client closes; it cancels
+    # the adapter's background work and must not commit results after it begins.
     # Optional: `async def delete_asset(self, model: str, asset_ref: str) -> None` for models with `deletable`.
 
 
@@ -45,8 +47,14 @@ class AdapterStatus:
 
 
 def missing_settings_reason(adapter_id: str, error: ValidationError) -> str:
-    names = sorted({f"LENORA_{adapter_id.upper()}_{str(e['loc'][0]).upper()}" for e in error.errors() if e["loc"]})
+    names = sorted({_env_name(adapter_id, str(e["loc"][0])) for e in error.errors() if e["loc"]})
     return "missing or invalid: " + ", ".join(names)
+
+
+def _env_name(adapter_id: str, field: str) -> str:
+    """A field read through an alias reports that alias (already a LENORA_ name); others get the adapter prefix."""
+    name = field.upper()
+    return name if name.startswith("LENORA_") else f"LENORA_{adapter_id.upper()}_{name}"
 
 
 class Registry:
@@ -84,6 +92,14 @@ class Registry:
                     del self.adapters[adapter_id]
                     self.statuses = [replace(s, enabled=False, reason=reason) if s.id == adapter_id else s
                                      for s in self.statuses]
+
+    async def stop(self, timeout: float) -> None:
+        for adapter_id, adapter in self.adapters.items():
+            if stop := getattr(adapter, "stop", None):
+                try:
+                    await asyncio.wait_for(stop(), timeout)
+                except Exception as error:
+                    log.warning("adapter %s failed to stop: %s", adapter_id, type(error).__name__)
 
     # Models are read on every call: an adapter's offer can change at runtime (for example, a lapsed add-on).
     def models(self) -> list[ModelInfo]:

@@ -1065,3 +1065,8 @@
 "result" = "ফলাফল";
 "using Anthropic API key" = "Anthropic API কী ব্যবহার হচ্ছে";
 "using OpenAI API key" = "OpenAI API কী ব্যবহার হচ্ছে";
+"%@ used · No limit" = "%@ ব্যবহৃত · সীমাহীন";
+"%@ of %@" = "%2$@ এর মধ্যে %1$@";
+"Improve Prompt" = "প্রম্পট উন্নত করুন";
+"Couldn't improve the prompt." = "প্রম্পট উন্নত করা যায়নি।";
+"Couldn't improve the prompt: %@" = "প্রম্পট উন্নত করা যায়নি: %@";

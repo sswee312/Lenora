@@ -5,6 +5,7 @@ requires-python = ">=3.12"
 [manifest]
 members = [
     "lenora-adapter-cloudinary",
+    "lenora-adapter-openai",
     "lenora-backend",
 ]
 
@@ -222,6 +223,17 @@ dependencies = [
 requires-dist = [{ name = "lenora-backend", editable = "." }]
 
 [[package]]
+name = "lenora-adapter-openai"
+version = "0.1.0"
+source = { editable = "adapters/openai" }
+dependencies = [
+    { name = "lenora-backend" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "lenora-backend", editable = "." }]
+
+[[package]]
 name = "lenora-backend"
 version = "0.1.0"
 source = { editable = "." }
@@ -244,6 +256,7 @@ testing = [
 dev = [
     { name = "jsonschema" },
     { name = "lenora-adapter-cloudinary" },
+    { name = "lenora-adapter-openai" },
     { name = "pytest" },
     { name = "pyyaml" },
     { name = "respx" },
@@ -266,6 +279,7 @@ provides-extras = ["testing"]
 dev = [
     { name = "jsonschema", specifier = ">=4.23" },
     { name = "lenora-adapter-cloudinary", editable = "adapters/cloudinary" },
+    { name = "lenora-adapter-openai", editable = "adapters/openai" },
     { name = "pytest", specifier = ">=8" },
     { name = "pyyaml", specifier = ">=6" },
     { name = "respx", specifier = ">=0.21" },

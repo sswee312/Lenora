@@ -80,6 +80,18 @@ paths:
       responses:
         "204": { description: Deleted }
         default: { $ref: "#/components/responses/Problem" }
+  /v1/results/{resultId}:
+    parameters:
+      - { name: resultId, in: path, required: true, schema: { type: string, pattern: "^[0-9a-f]{32}$" } }
+    get:
+      operationId: getResult
+      description: >-
+        Streams a result that an adapter stored on the backend because its provider returned bytes or text, not a URL.
+        Job results point here on the backend's own origin. Results expire 24 hours after they are created; an unknown
+        or expired id is 404 not_found. The response carries the stored Content-Type and Cache-Control no-store.
+      responses:
+        "200": { description: The stored result. }
+        default: { $ref: "#/components/responses/Problem" }
 components:
   securitySchemes:
     bearer: { type: http, scheme: bearer }
@@ -124,7 +136,7 @@ components:
       type: object
       required: [types, maxBytes]
       properties:
-        types: { type: array, items: { type: string }, description: Accepted MIME types }
+        types: { type: array, items: { type: string }, description: "Accepted MIME types. Empty for kinds that take no media inputs; creating an upload for such a model is invalid_request." }
         maxBytes: { type: integer, minimum: 1 }
         maxPixels: { type: [integer, "null"], minimum: 1, description: Largest width × height accepted for image inputs. }
     ModelInfo:
@@ -234,6 +246,7 @@ components:
         error: { oneOf: [{ $ref: "#/components/schemas/JobError" }, { type: "null" }] }
         failedOutputs: { type: [array, "null"], items: { $ref: "#/components/schemas/FailedOutput" }, description: "Outputs that failed while the job still succeeded." }
         analysis: { type: [object, "null"], additionalProperties: true, description: "Structured add-on output for image.analyze. Omitted when the job has none." }
+        text: { type: [string, "null"], description: "The result of a text kind such as text.rewritePrompt. Omitted for media kinds." }
     Problem:
       type: object
       required: [type, title, status, code, retryable]
@@ -313,6 +326,25 @@ components:
       required: [aspectRatio]
       properties:
         aspectRatio: { enum: ["9:16", "1:1", "4:5", "16:9"] }
+    SpeechParams:
+      type: object
+      additionalProperties: false
+      required: [prompt]
+      description: "audio.speech. No inputs. The script is spoken word for word. The adapter checks voice against the model's ui.uiCapabilities.voices and uses defaultVoice when it is omitted."
+      properties:
+        prompt: { type: string, minLength: 1, maxLength: 4096 }
+        voice: { type: [string, "null"], minLength: 1, maxLength: 64 }
+        styleInstructions: { type: [string, "null"], maxLength: 1000, description: "Delivery direction, for example warm and slow. Not spoken." }
+        format: { enum: [mp3, wav], default: mp3 }
+    RewritePromptParams:
+      type: object
+      additionalProperties: false
+      required: [text, targetKind]
+      description: "text.rewritePrompt. No inputs. The job succeeds with JobState.text, which fits the target kind's prompt rules."
+      properties:
+        text: { type: string, minLength: 1, maxLength: 4096 }
+        targetKind: { enum: [video.generate, image.generate, audio.speech, image.edit] }
+        guidance: { type: [string, "null"], maxLength: 500 }
     VideoPublishParams:
       type: object
       additionalProperties: false

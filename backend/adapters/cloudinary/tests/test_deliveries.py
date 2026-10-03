@@ -8,7 +8,8 @@ from cld import ADMIN_IMAGE, ADMIN_VIDEO, SECRET, UUID, VIDEO_REF, admin, job, r
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import AssetInput, ImageEditParams
 from lenora_adapter_cloudinary import signed_url
-from lenora_adapter_cloudinary.delivery import edit_transformation, sign_job
+from lenora_adapter_cloudinary.delivery import edit_transformation
+from lenora_backend.jobids import sign_job
 
 
 def url_of(job_id: str) -> str:
@@ -168,13 +169,6 @@ def test_unsigned_or_tampered_eager_ids_are_not_found_without_a_lookup(job_id):
     with pytest.raises(ProblemError) as info:
         run(lambda a: a.status(job_id), mock=mock)
     assert info.value.code == "not_found" and not route["get"].called
-
-
-def test_verify_job_requires_its_domain_prefix():
-    from lenora_adapter_cloudinary.delivery import verify_job
-    signed = sign_job("eager", "{}", SECRET)
-    assert verify_job("eager", signed, SECRET) == "{}"
-    assert verify_job("eager", signed.removeprefix("eager:"), SECRET) is None
 
 
 def test_eager_job_for_a_deleted_video_fails_without_retry():

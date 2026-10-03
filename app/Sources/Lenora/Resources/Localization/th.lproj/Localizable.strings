@@ -1065,3 +1065,8 @@
 "result" = "ผลลัพธ์";
 "using Anthropic API key" = "ใช้คีย์ API ของ Anthropic";
 "using OpenAI API key" = "ใช้คีย์ API ของ OpenAI";
+"%@ used · No limit" = "ใช้ไปแล้ว %@ · ไม่จำกัด";
+"%@ of %@" = "%@ จาก %@";
+"Improve Prompt" = "ปรับปรุงพรอมต์";
+"Couldn't improve the prompt." = "ไม่สามารถปรับปรุงพรอมต์ได้";
+"Couldn't improve the prompt: %@" = "ไม่สามารถปรับปรุงพรอมต์ได้: %@";

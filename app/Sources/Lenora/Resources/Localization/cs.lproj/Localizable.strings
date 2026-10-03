@@ -1065,3 +1065,8 @@
 "result" = "výsledek";
 "using Anthropic API key" = "pomocí API klíče Anthropic";
 "using OpenAI API key" = "pomocí API klíče OpenAI";
+"%@ used · No limit" = "Použito %@ · Bez limitu";
+"%@ of %@" = "%@ z %@";
+"Improve Prompt" = "Vylepšit prompt";
+"Couldn't improve the prompt." = "Prompt se nepodařilo vylepšit.";
+"Couldn't improve the prompt: %@" = "Prompt se nepodařilo vylepšit: %@";

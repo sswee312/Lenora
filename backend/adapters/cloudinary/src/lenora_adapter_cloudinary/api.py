@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 import httpx
 
-from lenora_backend.errors import ProblemError
+from lenora_backend.errors import NOT_SENT, ProblemError, RequestNotSent
 from lenora_backend.kinds import AssetInput, UrlInput
 from lenora_adapter_cloudinary.delivery import PUBLIC_ID_PATTERN, sign_upload
 from lenora_adapter_cloudinary.settings import CloudinarySettings
@@ -11,10 +11,6 @@ from lenora_adapter_cloudinary.settings import CloudinarySettings
 PUBLIC_ID = re.compile(PUBLIC_ID_PATTERN)
 ASSET_REF = re.compile(rf"(image|video)/upload/({PUBLIC_ID_PATTERN})")
 DEFAULT_RATE_LIMIT_RETRY = 30
-
-
-class RequestNotSent(ProblemError):
-    """The request provably never reached Cloudinary (connect or pool failure), so nothing was billed."""
 
 
 class AssetNotFound(ProblemError):
@@ -86,7 +82,7 @@ class CloudinaryAPI:
         try:
             return await self.http.request(method, self.base + path, json=json, data=data, auth=self.auth)
         except httpx.TransportError as error:
-            kind = RequestNotSent if isinstance(error, (httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout)) else ProblemError
+            kind = RequestNotSent if isinstance(error, NOT_SENT) else ProblemError
             raise kind("provider_unavailable", f"Cloudinary is unreachable ({type(error).__name__}).") from None
 
     async def usage(self) -> dict:

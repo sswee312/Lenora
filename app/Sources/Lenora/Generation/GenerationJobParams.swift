@@ -28,7 +28,11 @@ extension GenerationJobParams {
         case .upscale(let p):
             return ([.assetRef(p.sourceURL)], EmptyParams())
         case .audio(let p):
-            return (uploaded.map { .assetRef($0) }, p)
+            guard uploaded.isEmpty, p.videoURL == nil, p.sourceURL == nil, p.referenceImageURL == nil,
+                  p.referenceAudioURLs?.isEmpty ?? true else {
+                throw .unsupportedInputs("audio, video and image inputs")
+            }
+            return ([], SpeechParams(prompt: p.prompt, voice: p.voice.nonEmpty, styleInstructions: p.styleInstructions.nonEmpty))
         case .removeBackground:
             return (uploaded.map { .assetRef($0) }, EmptyParams())
         case .edit(let params):

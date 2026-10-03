@@ -55,3 +55,11 @@ def test_real_environment_wins_over_dotenv(monkeypatch, tmp_path):
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("LENORA_TOKEN", "e" * 43)
     assert load_environment().token.get_secret_value() == "e" * 43
+
+
+def test_data_dir_and_proxy_trust_come_from_the_environment(monkeypatch, tmp_path):
+    monkeypatch.setenv("LENORA_TOKEN", "x" * 43)
+    assert (CoreSettings().data_dir.as_posix(), CoreSettings().forwarded_allow_ips) == (".data", None)
+    monkeypatch.setenv("LENORA_DATA_DIR", str(tmp_path))
+    monkeypatch.setenv("LENORA_FORWARDED_ALLOW_IPS", "10.0.0.1")
+    assert (CoreSettings().data_dir, CoreSettings().forwarded_allow_ips) == (tmp_path, "10.0.0.1")

@@ -74,7 +74,7 @@ struct BackendConnectionTests {
             await first.setCapabilities(try fullCapabilities())
             await first.hold(.capabilities)
             let refresh = Task { await connection.refreshCapabilities() }
-            await first.waitForCalls(.capabilities, count: 2)
+            try await first.waitForCalls(.capabilities, count: 2)
             await connection.reload()
             #expect(connection.state == .unreachable(url))
             await first.release(.capabilities)
@@ -113,7 +113,7 @@ struct BackendConnectionTests {
             await first.setCapabilities(try fullCapabilities())
             await first.hold(.capabilities)
             let refresh = Task { await connection.refreshCapabilities() }
-            await first.waitForCalls(.capabilities, count: 2)
+            try await first.waitForCalls(.capabilities, count: 2)
             await connection.save(url: "https://other.example.com", token: nil)
             #expect(connection.configuration?.baseURL.host() == "other.example.com")
             await first.release(.capabilities)

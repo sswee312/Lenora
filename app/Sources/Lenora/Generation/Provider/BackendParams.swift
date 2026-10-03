@@ -64,3 +64,15 @@ struct VideoPublishParams: Encodable, Sendable, Equatable {
 
     var outputs: Outputs
 }
+
+struct SpeechParams: Encodable, Sendable, Equatable {
+    let prompt: String
+    let voice: String?
+    let styleInstructions: String?
+}
+
+struct RewritePromptParams: Encodable, Sendable, Equatable {
+    let text: String
+    let targetKind: String
+    var guidance: String? = nil
+}

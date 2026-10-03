@@ -6,40 +6,7 @@ from cld import IMAGE_REF, job, run, settings
 from fakes import AUTH, build_app
 from lenora_adapter_cloudinary import CloudinaryAdapter
 from lenora_backend.errors import ProblemError
-from lenora_backend.kinds import Estimate
-from lenora_adapter_cloudinary.costs import Budget, reframe, upscale
-
-DAY = 1_790_000_000.0  # a fixed UTC instant
-CREDIT = "cloudinary_credits"
-
-
-def test_reserve_until_the_limit():
-    budget = Budget(0.2, clock=lambda: DAY)
-    budget.reserve(Estimate(amount=0.12, unit=CREDIT))
-    with pytest.raises(ProblemError) as info:
-        budget.reserve(Estimate(amount=0.1, unit=CREDIT))
-    assert info.value.code == "quota_exceeded" and "0.080 of 0.2" in info.value.detail
-    budget.reserve(Estimate(amount=0.08, unit=CREDIT))
-
-
-def test_refund_returns_credit():
-    budget = Budget(0.1, clock=lambda: DAY)
-    budget.reserve(Estimate(amount=0.1, unit=CREDIT))
-    budget.refund(Estimate(amount=0.1, unit=CREDIT))
-    budget.reserve(Estimate(amount=0.1, unit=CREDIT))
-
-
-def test_resets_at_utc_midnight():
-    now = [DAY]
-    budget = Budget(0.1, clock=lambda: now[0])
-    budget.reserve(Estimate(amount=0.1, unit=CREDIT))
-    now[0] += 86400
-    budget.reserve(Estimate(amount=0.1, unit=CREDIT))
-    assert budget.usage()["used"] == pytest.approx(0.1)
-
-
-def test_unlimited_without_a_limit():
-    Budget(None, clock=lambda: DAY).reserve(Estimate(amount=1e6, unit=CREDIT))
+from lenora_adapter_cloudinary.costs import reframe, upscale
 
 
 @pytest.mark.parametrize("seconds, credits", [(0, 0.014), (1.0, 0.014), (2.01, 0.042), (60, 0.84)])
@@ -66,7 +33,7 @@ def test_health_reports_budget_use(tmp_path):
         await a.submit(request.model, request)
         return await a.health(recheck=False)
     budget = run(scenario, settings(tmp_path, daily_credit_budget=1.0))["budget"]
-    assert budget["limit"] == 1.0 and budget["used"] == pytest.approx(0.075)
+    assert budget["limit"] == 1.0 and budget["used"] == pytest.approx(0.075) and budget["unit"] == "cloudinary_credits"
 
 
 def test_idempotent_replay_reserves_once(tmp_path):

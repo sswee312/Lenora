@@ -1,8 +1,11 @@
 import pytest
 from pydantic import ValidationError
 
+from typing import get_args
+
 from lenora_backend.kinds import (
-    AssetInput, ImageEditParams, ImageGenerateParams, VideoGenerateParams, VideoReframeParams, input_problem,
+    REWRITE_TARGET_PROMPTS, AssetInput, ImageEditParams, ImageGenerateParams, JobState, RewritePromptParams,
+    RewriteTarget, SpeechParams, VideoGenerateParams, VideoReframeParams, input_problem,
 )
 
 REF = "image/upload/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d"
@@ -103,3 +106,65 @@ def test_publish_params(params, ok):
 @pytest.mark.parametrize("count, problem", [(0, True), (1, False), (2, True)])
 def test_publish_takes_exactly_one_input(count, problem):
     assert (input_problem("video.publish", [ref()] * count) is not None) == problem
+
+
+@pytest.mark.parametrize("params, ok", [
+    ({"prompt": "Hello."}, True),
+    ({"prompt": "a" * 4096, "voice": "nova", "styleInstructions": "", "format": "wav"}, True),
+    ({"prompt": ""}, False),
+    ({"prompt": "a" * 4097}, False),
+    ({"prompt": "Hi", "styleInstructions": "a" * 1001}, False),
+    ({"prompt": "Hi", "format": "ogg"}, False),
+    ({"prompt": "Hi", "voice": ""}, False),
+    ({"prompt": "Hi", "speed": 1.2}, False),
+])
+def test_speech_params(params, ok):
+    if ok:
+        assert SpeechParams.model_validate(params).format in ("mp3", "wav")
+    else:
+        with pytest.raises(ValidationError):
+            SpeechParams.model_validate(params)
+
+
+@pytest.mark.parametrize("params, ok", [
+    ({"text": "a cat", "targetKind": "image.generate"}, True),
+    ({"text": "a" * 4096, "targetKind": "audio.speech", "guidance": "shorter"}, True),
+    ({"text": "", "targetKind": "image.generate"}, False),
+    ({"text": "a" * 4097, "targetKind": "audio.speech"}, False),
+    ({"text": "a cat", "targetKind": "audio.music"}, False),
+    ({"text": "a cat", "targetKind": "image.generate", "guidance": "a" * 501}, False),
+])
+def test_rewrite_prompt_params(params, ok):
+    if ok:
+        RewritePromptParams.model_validate(params)
+    else:
+        with pytest.raises(ValidationError):
+            RewritePromptParams.model_validate(params)
+
+
+def test_every_rewrite_target_has_a_prompt_rule():
+    assert set(get_args(RewriteTarget)) == set(REWRITE_TARGET_PROMPTS)
+
+
+@pytest.mark.parametrize("target, text, ok", [
+    ("image.generate", "a" * 1000, True), ("image.generate", "a" * 1001, False), ("video.generate", "a" * 1001, False),
+    ("audio.speech", "a" * 4096, True), ("audio.speech", "a" * 4097, False),
+    ("image.edit", "red car", True), ("image.edit", "red, shiny car", False), ("image.edit", "a" * 101, False),
+])
+def test_rewrite_target_prompt_rules(target, text, ok):
+    if ok:
+        assert REWRITE_TARGET_PROMPTS[target].validate_python(text) == text
+    else:
+        with pytest.raises(ValidationError):
+            REWRITE_TARGET_PROMPTS[target].validate_python(text)
+
+
+@pytest.mark.parametrize("kind", ["audio.speech", "text.rewritePrompt"])
+def test_text_kinds_take_no_inputs(kind):
+    assert input_problem(kind, []) is None
+    assert input_problem(kind, [ref()]) is not None
+
+
+def test_job_state_text_is_omitted_unless_set():
+    assert "text" not in JobState(jobId="j", status="running").model_dump(mode="json")
+    assert JobState(jobId="j", status="succeeded", text="A cat.").model_dump(mode="json")["text"] == "A cat."

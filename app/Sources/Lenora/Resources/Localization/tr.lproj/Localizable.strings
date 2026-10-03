@@ -1065,3 +1065,8 @@
 "result" = "sonuç";
 "using Anthropic API key" = "Anthropic API anahtarı kullanılıyor";
 "using OpenAI API key" = "OpenAI API anahtarı kullanılıyor";
+"%@ used · No limit" = "%@ kullanıldı · Sınır yok";
+"%@ of %@" = "%@ / %@";
+"Improve Prompt" = "İstemi İyileştir";
+"Couldn't improve the prompt." = "İstem iyileştirilemedi.";
+"Couldn't improve the prompt: %@" = "İstem iyileştirilemedi: %@";

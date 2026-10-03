@@ -9,7 +9,8 @@ from cld import ADMIN_VIDEO, API, CLOUD, SECRET, UUID, VIDEO_REF, job, run, sett
 from lenora_backend.errors import ProblemError, provider_call
 from lenora_backend.kinds import AssetInput
 from lenora_adapter_cloudinary import publish
-from lenora_adapter_cloudinary.delivery import sign_job, signed_url
+from lenora_adapter_cloudinary.delivery import signed_url
+from lenora_backend.jobids import sign_job
 
 EXPLICIT = f"{API}/v1_1/{CLOUD}/video/explicit"
 DESTROY = f"{API}/v1_1/{CLOUD}/video/destroy"

@@ -26,13 +26,15 @@ dev = [
   "jsonschema>=4.23",
   "pyyaml>=6",
   "lenora-adapter-cloudinary",
+  "lenora-adapter-openai",
 ]
 
 [tool.uv.workspace]
-members = ["adapters/cloudinary"]
+members = ["adapters/cloudinary", "adapters/openai"]
 
 [tool.uv.sources]
 lenora-adapter-cloudinary = { workspace = true }
+lenora-adapter-openai = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]
@@ -42,7 +44,7 @@ build-backend = "hatchling.build"
 packages = ["src/lenora_backend"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests", "adapters/cloudinary/tests"]
-pythonpath = ["tests", "adapters/cloudinary/tests"]
+testpaths = ["tests", "adapters/cloudinary/tests", "adapters/openai/tests"]
+pythonpath = ["tests", "adapters/cloudinary/tests", "adapters/openai/tests"]
 markers = ["live: hits the real provider; needs keys in the environment"]
 addopts = "-m 'not live'"

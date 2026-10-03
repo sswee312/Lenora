@@ -1,6 +1,6 @@
 import Foundation
 
-struct AudioGenerationParams: Encodable, Sendable {
+struct AudioGenerationParams: Sendable {
     let prompt: String
     let voice: String?
     let lyrics: String?
@@ -13,28 +13,6 @@ struct AudioGenerationParams: Encodable, Sendable {
     var referenceImageURL: String? = nil
     var referenceAudioURLs: [String]? = nil
     var multilingual: Bool? = nil
-
-    enum CodingKeys: String, CodingKey {
-        case kind, prompt, voice, lyrics, styleInstructions, instrumental, durationSeconds
-        case videoURL, sourceURL, targetLanguage, referenceImageURL, referenceAudioURLs, multilingual
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var c = encoder.container(keyedBy: CodingKeys.self)
-        try c.encode("audio", forKey: .kind)
-        try c.encode(prompt, forKey: .prompt)
-        try c.encodeIfPresent(voice, forKey: .voice)
-        try c.encodeIfPresent(lyrics, forKey: .lyrics)
-        try c.encodeIfPresent(styleInstructions, forKey: .styleInstructions)
-        try c.encode(instrumental, forKey: .instrumental)
-        try c.encodeIfPresent(durationSeconds, forKey: .durationSeconds)
-        try c.encodeIfPresent(videoURL, forKey: .videoURL)
-        try c.encodeIfPresent(sourceURL, forKey: .sourceURL)
-        try c.encodeIfPresent(targetLanguage, forKey: .targetLanguage)
-        try c.encodeIfPresent(referenceImageURL, forKey: .referenceImageURL)
-        try c.encodeIfPresent(referenceAudioURLs, forKey: .referenceAudioURLs)
-        try c.encodeIfPresent(multilingual, forKey: .multilingual)
-    }
 }
 
 struct AudioModelConfig: Identifiable, Sendable {

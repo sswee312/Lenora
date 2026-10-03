@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from typing import Literal
 
 from dotenv import find_dotenv, load_dotenv
@@ -14,6 +15,10 @@ class CoreSettings(BaseSettings):
     host: str | None = None
     port: int | None = Field(default=None, validation_alias=AliasChoices("LENORA_PORT", "PORT"))
     provider_timeout_seconds: float = Field(default=60.0, gt=0)
+    # Shared with adapters that read LENORA_DATA_DIR themselves; results live in <data_dir>/results.
+    data_dir: Path = Path(".data")
+    # Proxies whose X-Forwarded-Proto uvicorn trusts in production; result URLs use the client-facing scheme.
+    forwarded_allow_ips: str | None = None
 
     @property
     def bind_host(self) -> str:

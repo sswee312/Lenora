@@ -1,0 +1,37 @@
+{
+  "protocolVersion": "1",
+  "adapters": [{ "id": "openai", "version": "0.1.0" }],
+  "models": [
+    {
+      "id": "openai/voice",
+      "kind": "audio.speech",
+      "displayName": "OpenAI Voice",
+      "inputs": { "types": [], "maxBytes": 1 },
+      "cancellable": true,
+      "estimate": { "amount": 0.0175, "unit": "usd" },
+      "ui": {
+        "providerName": "OpenAI",
+        "providerIconKey": "openai",
+        "uiCapabilities": {
+          "category": "tts",
+          "voices": ["alloy", "ash", "ballad", "coral", "echo", "fable", "nova", "onyx", "sage", "shimmer", "verse", "marin", "cedar"],
+          "defaultVoice": "alloy",
+          "supportsLyrics": false,
+          "supportsInstrumental": false,
+          "supportsStyleInstructions": true,
+          "minPromptLength": 1,
+          "promptLabel": "Script",
+          "inputs": ["text"]
+        }
+      }
+    },
+    {
+      "id": "openai/rewrite",
+      "kind": "text.rewritePrompt",
+      "displayName": "Improve Prompt",
+      "inputs": { "types": [], "maxBytes": 1 },
+      "cancellable": false,
+      "estimate": { "amount": 0.0104, "unit": "usd" }
+    }
+  ]
+}
