@@ -107,6 +107,7 @@ struct VideoModelConfig: Identifiable, Sendable {
     var supportsSourceVideo: Bool { requiresSourceVideo || caps.supportsSourceVideo == true }
     var maxSourceVideoSeconds: Double? { caps.maxSourceVideoSeconds }
     var requiresReferenceImage: Bool { caps.requiresReferenceImage }
+    var requiresFirstFrame: Bool { caps.requiresFirstFrame ?? false }
     var requiresReferenceAudio: Bool { caps.requiresReferenceAudio ?? false }
     var supportsDraft: Bool { caps.supportsDraft == true }
     var supportsAudioToggle: Bool { caps.supportsAudioToggle == true }
@@ -164,7 +165,7 @@ struct VideoModelConfig: Identifiable, Sendable {
     }
 }
 
-struct VideoGenerationParams: Encodable, Sendable {
+struct VideoGenerationParams: Sendable {
     let prompt: String
     let duration: Int
     let sourceVideoDuration: Double?
@@ -199,29 +200,5 @@ struct VideoGenerationParams: Encodable, Sendable {
         self.referenceAudioURLs = referenceAudioURLs
         self.generateAudio = generateAudio
         self.draft = draft
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case kind, prompt, duration, sourceVideoDuration, aspectRatio, resolution, sourceVideoURL
-        case startFrameURL, endFrameURL, referenceImageURLs, referenceVideoURLs
-        case referenceAudioURLs, generateAudio, draft
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var c = encoder.container(keyedBy: CodingKeys.self)
-        try c.encode("video", forKey: .kind)
-        try c.encode(prompt, forKey: .prompt)
-        try c.encode(duration, forKey: .duration)
-        try c.encodeIfPresent(sourceVideoDuration, forKey: .sourceVideoDuration)
-        try c.encode(aspectRatio, forKey: .aspectRatio)
-        try c.encodeIfPresent(resolution, forKey: .resolution)
-        try c.encodeIfPresent(sourceVideoURL, forKey: .sourceVideoURL)
-        try c.encodeIfPresent(startFrameURL, forKey: .startFrameURL)
-        try c.encodeIfPresent(endFrameURL, forKey: .endFrameURL)
-        if !referenceImageURLs.isEmpty { try c.encode(referenceImageURLs, forKey: .referenceImageURLs) }
-        if !referenceVideoURLs.isEmpty { try c.encode(referenceVideoURLs, forKey: .referenceVideoURLs) }
-        if !referenceAudioURLs.isEmpty { try c.encode(referenceAudioURLs, forKey: .referenceAudioURLs) }
-        try c.encode(generateAudio, forKey: .generateAudio)
-        try c.encodeIfPresent(draft, forKey: .draft)
     }
 }

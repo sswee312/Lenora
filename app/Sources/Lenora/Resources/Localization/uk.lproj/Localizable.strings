@@ -10,6 +10,7 @@
 "%@ is ready." = "%@ готово.";
 "%@ model not available" = "Модель %@ недоступна";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ має використовувати HTTPS або HTTP лише на цьому Mac.";
+"%@ needs a start frame." = "Для %@ потрібен початковий кадр.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, навичок: %lld";

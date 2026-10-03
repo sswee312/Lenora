@@ -10,6 +10,7 @@
 "%@ is ready." = "%@ siap.";
 "%@ model not available" = "Model %@ tidak tersedia";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ harus menggunakan HTTPS, atau HTTP hanya di Mac ini.";
+"%@ needs a start frame." = "%@ memerlukan bingkai awal.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skill";

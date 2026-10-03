@@ -10,6 +10,7 @@
 "%@ is ready." = "%@ 已就緒。";
 "%@ model not available" = "%@ 模型不可用";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ 必須使用 HTTPS，或僅在此 Mac 上使用 HTTP。";
+"%@ needs a start frame." = "%@ 需要起始影格。";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@，%lld 個技能";

@@ -1070,7 +1070,7 @@ enum ToolDefinitions {
         ),
         AgentTool(
             name: .generateVideo,
-            description: "Starts an async AI video generation. Returns a placeholder asset ID immediately; generation runs in the background and the asset becomes usable in add_clips once ready. Costs real money and is not undoable.",
+            description: "Starts an async AI video generation. Returns a placeholder asset ID immediately; generation runs in the background and the asset becomes usable in add_clips once ready. Omit startFrameMediaRef to generate from the prompt alone when list_models reports requiresFirstFrame=false; otherwise a start frame is required. Costs real money and is not undoable.",
             inputSchema: objectSchema(
                 properties: [
                     "prompt": ["type": "string", "description": "Text description of the video to generate. Optional for transforms such as lip sync that do not use a prompt."],
@@ -1080,6 +1080,7 @@ enum ToolDefinitions {
                     "aspectRatio": ["type": "string", "description": "Aspect ratio (e.g. '16:9', '9:16', '1:1')"],
                     "resolution": ["type": "string", "description": "Resolution (e.g. '720p', '1080p', '4k')"],
                     "draft": ["type": "boolean", "description": "Generate a lower-cost 720p preview when list_models reports supportsDraft=true."],
+                    "generateAudio": ["type": "boolean", "description": "Generate a soundtrack with the video when the model supports it. Doubles the estimate on some backends. Default false."],
                     "startFrameMediaRef": ["type": "string", "description": "Media asset ID to use as the first frame (image-to-video)"],
                     "endFrameMediaRef": ["type": "string", "description": "Media asset ID to use as the last frame (supported by some models)"],
                     "sourceVideoMediaRef": ["type": "string", "description": "Media asset ID of a source video required by video-to-video models. Pass duration when the selected model lists output durations; otherwise the source duration determines billing."],
@@ -1103,6 +1104,8 @@ enum ToolDefinitions {
                     "resolution": ["type": "string", "description": "Resolution (e.g. '2K', '4K')"],
                     "quality": ["type": "string", "description": "Image quality (e.g. 'low', 'medium', 'high'). Only supported by some models — see list_models."],
                     "referenceMediaRefs": ["type": "array", "items": ["type": "string"], "description": "Media asset IDs to use as reference images"],
+                    "count": ["type": "integer", "minimum": 1, "maximum": 4, "description": "Number of images. See list_models maxImages. Default 1."],
+                    "seed": ["type": "integer", "minimum": 0, "description": "Optional seed for repeatable results."],
                     "folder": ["type": "string", "description": "Optional destination folder path, e.g. 'Hero shots/Takes'. Created if missing. Omit for the project root."],
                 ],
                 required: ["prompt"]

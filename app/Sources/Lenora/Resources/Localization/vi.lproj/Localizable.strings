@@ -10,6 +10,7 @@
 "%@ is ready." = "%@ đã sẵn sàng.";
 "%@ model not available" = "Mô hình %@ không khả dụng";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ phải dùng HTTPS, hoặc HTTP chỉ trên máy Mac này.";
+"%@ needs a start frame." = "%@ cần một khung hình bắt đầu.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld kỹ năng";

@@ -186,6 +186,11 @@ extension ToolExecutor {
             draft: draft
         )
 
+        var generateAudio = false
+        if let raw = args["generateAudio"] {
+            guard let value = exactJSONBool(raw) else { throw ToolError("generateAudio must be a boolean.") }
+            generateAudio = value
+        }
         let folderId = try resolveFolder(
             args, editor: editor, fallbackReferences: inputAssets.textToVideoReferences
         )
@@ -196,7 +201,7 @@ extension ToolExecutor {
             placeholderDuration: Double(max(1, duration)),
             name: args.string("name"),
             folderId: folderId,
-            generateAudio: true
+            generateAudio: generateAudio
         ).submit(
             service: editor.generationService,
             projectURL: editor.projectURL,
@@ -233,9 +238,23 @@ extension ToolExecutor {
         let resolution = args.string("resolution") ?? model.resolutions?.first
         let quality = args.string("quality") ?? model.qualities?.last
         let refIds = args.stringArray("referenceMediaRefs")
+        var count = 1
+        if let raw = args["count"] {
+            guard let value = exactJSONInt(raw), (1...model.maxImages).contains(value) else {
+                throw ToolError("count must be an integer from 1 to \(model.maxImages) for \(model.displayName).")
+            }
+            count = value
+        }
+        var seed: Int?
+        if let raw = args["seed"] {
+            guard let value = exactJSONInt(raw), (0...Int(Int32.max)).contains(value) else {
+                throw ToolError("seed must be an integer from 0 to \(Int32.max).")
+            }
+            seed = value
+        }
         if let err = model.validate(
             aspectRatio: aspectRatio, resolution: resolution, quality: quality,
-            imageRefCount: refIds.count, numImages: 1
+            imageRefCount: refIds.count, numImages: count
         ) {
             throw ToolError(err)
         }
@@ -257,6 +276,8 @@ extension ToolExecutor {
             model: model,
             references: refs,
             name: args.string("name"),
+            numImages: count,
+            seed: seed,
             folderId: folderId
         ).submit(
             service: editor.generationService,
@@ -581,6 +602,7 @@ extension ToolExecutor {
             "id": m.id, "displayName": m.displayName,
             "durations": m.durations, "aspectRatios": m.aspectRatios,
             "supportsFirstFrame": m.supportsFirstFrame,
+            "requiresFirstFrame": m.requiresFirstFrame,
             "supportsLastFrame": m.supportsLastFrame,
             "supportsReferences": m.supportsReferences,
             "supportsPrompt": m.supportsPrompt,

@@ -10,6 +10,7 @@
 "%@ is ready." = "%@이(가) 준비되었습니다.";
 "%@ model not available" = "%@ 모델을 사용할 수 없음";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@은(는) HTTPS를 사용해야 하며, 이 Mac에서만 HTTP를 사용할 수 있습니다.";
+"%@ needs a start frame." = "%@에는 시작 프레임이 필요합니다.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, 스킬 %lld개";

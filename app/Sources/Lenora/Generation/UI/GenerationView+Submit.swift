@@ -22,6 +22,7 @@ extension GenerationView {
             if videoModel.supportsPrompt && !videoModel.supportsReferences && isPromptEmpty { return false }
             return true
         }
+        if selectedType == .video && videoModel.requiresFirstFrame && firstFrame == nil { return false }
         if selectedType == .video && videoModel.framesAndReferencesExclusive
             && videoInputMode == .references && refImages.isEmpty
             && refVideos.isEmpty && refAudios.isEmpty {

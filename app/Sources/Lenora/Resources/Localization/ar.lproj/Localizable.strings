@@ -10,6 +10,7 @@
 "%@ is ready." = "اكتمل إعداد ⁨%@⁩.";
 "%@ model not available" = "نموذج ⁨%@⁩ غير متوفر";
 "%@ must use HTTPS, or HTTP on this Mac only." = "يجب أن يستخدم ⁨%@⁩ بروتوكول HTTPS، أو HTTP على هذا الـ Mac فقط.";
+"%@ needs a start frame." = "يحتاج %@ إلى إطار بداية.";
 "%@ · %@" = "⁨%@⁩ · ⁨%@⁩";
 "%@ · %lld" = "⁨%@⁩ · ⁨%lld⁩";
 "%@, %lld skills" = "⁨%@⁩، ⁨%lld⁩ مهارات";

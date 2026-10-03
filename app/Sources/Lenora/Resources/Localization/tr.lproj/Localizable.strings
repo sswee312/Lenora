@@ -10,6 +10,7 @@
 "%@ is ready." = "%@ hazır.";
 "%@ model not available" = "%@ modeli kullanılamıyor";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ HTTPS kullanmalı veya yalnızca bu Mac'te HTTP kullanabilir.";
+"%@ needs a start frame." = "%@ bir başlangıç karesi gerektirir.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld beceri";

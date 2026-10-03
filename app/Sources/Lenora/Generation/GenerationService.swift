@@ -15,11 +15,13 @@ final class FirstOnlyFlag {
 enum GenerationError: Error, LocalizedError, Equatable {
     case modelUnavailable(String)
     case backendUnavailable
+    case unsupportedInputs(String)
 
     var errorDescription: String? {
         switch self {
         case .modelUnavailable(let id): "\(id) is not available from the connected backend."
         case .backendUnavailable: "No backend is connected. Open Settings → Backend."
+        case .unsupportedInputs(let what): "This model can't use \(what)."
         }
     }
 }
@@ -151,10 +153,8 @@ final class GenerationService {
                 if finalGenInput.createdAt == nil {
                     finalGenInput.createdAt = Date()
                 }
-                let job = JobRequest(
-                    kind: model.kind, model: model.id,
-                    inputs: uploaded.map { .assetRef($0) }, params: buildParams(uploaded)
-                )
+                let parts = try buildParams(uploaded).jobParts(uploaded: uploaded)
+                let job = JobRequest(kind: model.kind, model: model.id, inputs: parts.inputs, params: parts.params)
                 finalGenInput.idempotencyKey = idempotencyKey
                 finalGenInput.submission = try PendingSubmission(job)
                 for (outputIndex, placeholder) in placeholders.enumerated() {

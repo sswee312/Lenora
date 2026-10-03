@@ -10,6 +10,7 @@
 "%@ is ready." = "%@ on valmis.";
 "%@ model not available" = "Malli %@ ei ole käytettävissä";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@:n on käytettävä HTTPS:ää tai HTTP:tä vain tällä Macilla.";
+"%@ needs a start frame." = "%@ tarvitsee aloituskuvan.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld taitoa";

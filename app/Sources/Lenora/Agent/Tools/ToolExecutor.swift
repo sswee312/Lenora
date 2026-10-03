@@ -403,6 +403,11 @@ func exactJSONInt(_ raw: Any?) -> Int? {
     return Int(exactly: value)
 }
 
+func exactJSONBool(_ raw: Any?) -> Bool? {
+    guard let raw, isJSONBoolean(raw) else { return nil }
+    return (raw as? NSNumber)?.boolValue ?? (raw as? Bool)
+}
+
 // Clamp before converting so the Int(...) can't overflow.
 func clampInt(_ d: Double, min lo: Int, max hi: Int) -> Int {
     if d.isNaN || d <= Double(lo) { return lo }

@@ -10,6 +10,7 @@
 "%@ is ready." = "%@ ist bereit.";
 "%@ model not available" = "Modell %@ nicht verfügbar";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ muss HTTPS verwenden, oder HTTP nur auf diesem Mac.";
+"%@ needs a start frame." = "%@ benötigt ein Startbild.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld Skills";

@@ -10,6 +10,7 @@
 "%@ is ready." = "%@ พร้อมแล้ว";
 "%@ model not available" = "โมเดล %@ ไม่พร้อมใช้งาน";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ ต้องใช้ HTTPS หรือ HTTP บน Mac เครื่องนี้เท่านั้น";
+"%@ needs a start frame." = "%@ ต้องมีเฟรมเริ่มต้น";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld สกิล";

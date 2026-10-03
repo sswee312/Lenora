@@ -6,28 +6,13 @@ struct UpscaleSettings: Codable, Sendable, Equatable {
     var toggles: [String: Bool] = [:]
 }
 
-struct UpscaleGenerationParams: Encodable, Sendable {
+struct UpscaleGenerationParams: Sendable {
     let sourceURL: String
     let durationSeconds: Int
     let sourceWidth: Int?
     let sourceHeight: Int?
     let sourceFPS: Double?
     let settings: UpscaleSettings
-
-    enum CodingKeys: String, CodingKey {
-        case kind, sourceURL, durationSeconds, sourceWidth, sourceHeight, sourceFPS, settings
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var c = encoder.container(keyedBy: CodingKeys.self)
-        try c.encode("upscale", forKey: .kind)
-        try c.encode(sourceURL, forKey: .sourceURL)
-        try c.encode(durationSeconds, forKey: .durationSeconds)
-        try c.encodeIfPresent(sourceWidth, forKey: .sourceWidth)
-        try c.encodeIfPresent(sourceHeight, forKey: .sourceHeight)
-        try c.encodeIfPresent(sourceFPS, forKey: .sourceFPS)
-        try c.encode(settings, forKey: .settings)
-    }
 }
 
 struct UpscaleSelectOption: Decodable, Sendable, Hashable {

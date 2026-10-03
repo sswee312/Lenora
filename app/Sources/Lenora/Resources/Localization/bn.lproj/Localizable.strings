@@ -10,6 +10,7 @@
 "%@ is ready." = "%@ প্রস্তুত।";
 "%@ model not available" = "%@ মডেল পাওয়া যাচ্ছে না";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ অবশ্যই HTTPS ব্যবহার করতে হবে, অথবা শুধু এই Mac-এ HTTP ব্যবহার করা যাবে।";
+"%@ needs a start frame." = "%@-এর জন্য একটি শুরুর ফ্রেম প্রয়োজন।";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lldটি স্কিল";

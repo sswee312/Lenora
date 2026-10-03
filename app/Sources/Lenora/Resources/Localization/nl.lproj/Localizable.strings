@@ -10,6 +10,7 @@
 "%@ is ready." = "%@ is gereed.";
 "%@ model not available" = "Model %@ niet beschikbaar";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ moet HTTPS gebruiken, of alleen op deze Mac HTTP.";
+"%@ needs a start frame." = "%@ heeft een beginframe nodig.";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skills";

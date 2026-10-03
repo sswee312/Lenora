@@ -232,6 +232,7 @@ struct VideoCaps: Decodable, Sendable {
     let supportsDraft: Bool?
     let supportsAudioToggle: Bool?
     let supportsSourceVideo: Bool?
+    let requiresFirstFrame: Bool?
 }
 
 enum SourceVideoResolution: String, Decodable, Sendable {
