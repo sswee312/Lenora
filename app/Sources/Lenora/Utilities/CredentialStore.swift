@@ -9,6 +9,7 @@ struct CredentialStore: Sendable {
     let environment: [String: String]
     let isLoginKeychain: Bool
 
+    /// Process-wide; tests inject their own `memory()` store instead of writing through this.
     static var current: CredentialStore { installed.withLock { $0 } }
 
     static func useLoginKeychain() {
