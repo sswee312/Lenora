@@ -19,6 +19,8 @@ STATUS: dict[str, int] = {
     "provider_error": 502, "not_found": 404, "not_cancellable": 409,
 }
 RETRYABLE = {"rate_limited", "provider_unavailable"}
+# Transport failures that prove the request never left: nothing reached the provider, so nothing was billed.
+NOT_SENT = (httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout)
 T = TypeVar("T")
 log = logging.getLogger("lenora.errors")
 
@@ -32,6 +34,10 @@ class ProblemError(Exception):
         self.status = status or STATUS[code]
         self.retryable = code in RETRYABLE if retryable is None else retryable
         self.headers = headers or {}
+
+
+class RequestNotSent(ProblemError):
+    """The request provably never reached the provider (connect or pool failure), so nothing was billed."""
 
 
 def problem_response(err: ProblemError) -> JSONResponse:

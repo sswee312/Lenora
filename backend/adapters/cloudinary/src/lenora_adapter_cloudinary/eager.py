@@ -3,9 +3,10 @@ import json
 import re
 
 from lenora_backend.errors import ProblemError
+from lenora_backend.jobids import sign_job, verify_job
 from lenora_backend.kinds import JobError, JobResult, JobState
 from lenora_adapter_cloudinary.api import PUBLIC_ID, AssetNotFound, AssetRef, CloudinaryAPI, problem
-from lenora_adapter_cloudinary.delivery import sign_job, sign_upload, signed_url, verify_job
+from lenora_adapter_cloudinary.delivery import sign_upload, signed_url
 
 # Admin API calls are rate limited (500/hour on Free); poll slowly.
 EAGER_RETRY_AFTER = 30

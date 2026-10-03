@@ -7,6 +7,7 @@ from typing import Any, ClassVar
 import httpx
 from pydantic_settings import BaseSettings
 
+from lenora_backend.costs import Budget
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import (
     EDIT_OPS, AssetInput, Estimate, ImageGenerateParams, InputLimits, JobError, JobRequest, JobState, ModelInfo, SubmittedJob, Ticket,
@@ -56,7 +57,7 @@ class CloudinaryAdapter(CancelNotSupported):
         self.account = AccountAddons()
         # ponytail: in-process claim set; a shared store needs a row claim instead.
         self._handing_off: set[str] = set()
-        self.budget = costs.Budget(settings.daily_credit_budget, clock)
+        self.budget = Budget(settings.daily_credit_budget, clock, provider="Cloudinary", unit=costs.UNIT, label="credits")
         self.publish_max_bytes = publish.MAX_BYTES
 
     async def start(self) -> None:
