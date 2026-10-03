@@ -16,6 +16,12 @@ paths:
       operationId: getHealth
       security: [{}, { bearer: [] }]
       description: Without a valid token only status and protocolVersion are returned.
+      parameters:
+        - name: recheck
+          in: query
+          required: false
+          description: "`addons` asks adapters to forget learned add-on unavailability before answering. Ignored without a valid token."
+          schema: { enum: [addons] }
       responses:
         "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/Health" } } } }
   /v1/capabilities:
@@ -95,6 +101,7 @@ components:
         id: { type: string }
         enabled: { type: boolean }
         reason: { type: [string, "null"] }
+        details: { type: [object, "null"], description: "Adapter-specific state, for example add-on availability and budget use." }
     Health:
       type: object
       required: [status, protocolVersion]
@@ -109,6 +116,7 @@ components:
       properties:
         types: { type: array, items: { type: string }, description: Accepted MIME types }
         maxBytes: { type: integer, minimum: 1 }
+        maxPixels: { type: [integer, "null"], minimum: 1, description: Largest width × height accepted for image inputs. }
     ModelInfo:
       type: object
       required: [id, kind, displayName, inputs, cancellable]
@@ -120,6 +128,7 @@ components:
         cancellable: { type: boolean }
         estimate: { oneOf: [{ $ref: "#/components/schemas/Estimate" }, { type: "null" }] }
         ui: { type: [object, "null"], description: Optional editor hints (durations, aspects, settings) for generation kinds. }
+        operations: { type: [array, "null"], items: { type: string }, description: "For image.edit: the ops this model performs." }
     AdapterVersion:
       type: object
       required: [id, version]
@@ -157,18 +166,21 @@ components:
       properties:
         assetRef: { type: string }
         ticket: { $ref: "#/components/schemas/Ticket" }
+    InputRole:
+      enum: [startFrame, endFrame, reference, null]
+      description: "video.generate labels every input; image.generate inputs are references; other kinds leave it null."
     JobInput:
       oneOf:
-        - { type: object, required: [assetRef], properties: { assetRef: { type: string } }, additionalProperties: false }
-        - { type: object, required: [url], properties: { url: { type: string, format: uri } }, additionalProperties: false }
+        - { type: object, required: [assetRef], properties: { assetRef: { type: string }, role: { $ref: "#/components/schemas/InputRole" } }, additionalProperties: false }
+        - { type: object, required: [url], properties: { url: { type: string, format: uri }, role: { $ref: "#/components/schemas/InputRole" } }, additionalProperties: false }
     JobRequest:
       type: object
-      required: [kind, model, inputs]
+      required: [kind, model]
       properties:
         kind: { $ref: "#/components/schemas/Kind" }
         model: { type: string }
-        inputs: { type: array, minItems: 1, items: { $ref: "#/components/schemas/JobInput" } }
-        params: { type: object, default: {} }
+        inputs: { type: array, maxItems: 8, default: [], items: { $ref: "#/components/schemas/JobInput" } }
+        params: { type: object, default: {}, description: "Shape depends on kind; see the *Params schemas." }
     SubmittedJob:
       type: object
       required: [jobId, status]
@@ -208,3 +220,49 @@ components:
         detail: { type: [string, "null"] }
         code: { $ref: "#/components/schemas/ErrorCode" }
         retryable: { type: boolean }
+    UrlPrompt:
+      type: string
+      pattern: "^[A-Za-z0-9 .'-]{1,100}$"
+      description: Text placed inside a transformation URL.
+    ImageAspect:
+      enum: ["1:1", "16:9", "9:16", "4:3", "3:4"]
+    RemoveBackgroundParams:
+      type: object
+      additionalProperties: false
+    ImageUpscaleParams:
+      type: object
+      additionalProperties: false
+    ImageGenerateParams:
+      type: object
+      additionalProperties: false
+      required: [prompt]
+      properties:
+        prompt: { type: string, minLength: 1, maxLength: 1000 }
+        aspectRatio: { $ref: "#/components/schemas/ImageAspect", default: "1:1" }
+        count: { type: integer, minimum: 1, maximum: 4, default: 1 }
+        seed: { type: [integer, "null"], minimum: 0, maximum: 2147483647 }
+    ImageEditParams:
+      oneOf:
+        - { type: object, additionalProperties: false, required: [op, aspectRatio], properties: { op: { const: fill }, aspectRatio: { $ref: "#/components/schemas/ImageAspect" } } }
+        - { type: object, additionalProperties: false, required: [op, from, to], properties: { op: { const: replace }, from: { $ref: "#/components/schemas/UrlPrompt" }, to: { $ref: "#/components/schemas/UrlPrompt" } } }
+        - { type: object, additionalProperties: false, required: [op, prompt], properties: { op: { const: remove }, prompt: { $ref: "#/components/schemas/UrlPrompt" } } }
+        - { type: object, additionalProperties: false, required: [op, prompt, color], properties: { op: { const: recolor }, prompt: { $ref: "#/components/schemas/UrlPrompt" }, color: { type: string, pattern: "^#[0-9A-Fa-f]{6}$" } } }
+        - { type: object, additionalProperties: false, required: [op], properties: { op: { const: backgroundReplace }, prompt: { oneOf: [{ $ref: "#/components/schemas/UrlPrompt" }, { type: "null" }] } } }
+        - { type: object, additionalProperties: false, required: [op], properties: { op: { const: restore } } }
+    VideoGenerateParams:
+      type: object
+      additionalProperties: false
+      required: [prompt, duration]
+      description: "1080p requires duration 8. Inputs: startFrame ≤1, endFrame ≤1 (only with startFrame), reference ≤2. With no startFrame the adapter may generate the first frame itself."
+      properties:
+        prompt: { type: string, minLength: 1, maxLength: 1000 }
+        duration: { enum: [4, 6, 8] }
+        resolution: { enum: ["720p", "1080p"], default: "720p" }
+        aspectRatio: { enum: ["16:9", "9:16"], default: "16:9" }
+        generateAudio: { type: boolean, default: false }
+    VideoReframeParams:
+      type: object
+      additionalProperties: false
+      required: [aspectRatio]
+      properties:
+        aspectRatio: { enum: ["9:16", "1:1", "4:5", "16:9"] }

@@ -12,9 +12,11 @@ router = APIRouter()
 async def health(request: Request) -> JSONResponse:
     if not is_authorized(request.headers.get("authorization"), request.app.state.settings.token):
         return JSONResponse({"status": "ok", "protocolVersion": "1"})
-    statuses = request.app.state.registry.statuses
+    registry = request.app.state.registry
+    details = await registry.health_details(recheck=request.query_params.get("recheck") == "addons")
     body = Health(
         backendVersion=__version__,
-        adapters=[AdapterHealth(id=s.id, enabled=s.enabled, reason=s.reason) for s in statuses],
+        adapters=[AdapterHealth(id=s.id, enabled=s.enabled, reason=s.reason, details=details.get(s.id))
+                  for s in registry.statuses],
     )
     return JSONResponse(body.model_dump(mode="json"))

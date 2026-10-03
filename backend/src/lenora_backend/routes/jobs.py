@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from pydantic import ValidationError
 
 from lenora_backend.errors import ProblemError, provider_call
-from lenora_backend.kinds import INPUT_COUNT, PARAMS, TERMINAL, JobRequest, JobState
+from lenora_backend.kinds import PARAMS, TERMINAL, JobRequest, JobState, input_problem
 
 router = APIRouter()
 DEFAULT_RETRY_AFTER = 2
@@ -28,10 +28,10 @@ async def submit_job(
     try:
         PARAMS[body.kind].model_validate(body.params)
     except ValidationError as error:
-        raise ProblemError("invalid_request", f"Invalid params for {body.kind}: {error.error_count()} error(s).") from None
-    low, high = INPUT_COUNT[body.kind]
-    if not low <= len(body.inputs) <= high:
-        raise ProblemError("invalid_request", f"{body.kind} takes {low}–{high} input(s); got {len(body.inputs)}.")
+        fields = "; ".join(f"{'.'.join(str(p) for p in e['loc'])}: {e['msg']}" for e in error.errors())
+        raise ProblemError("invalid_request", f"Invalid params for {body.kind}: {fields}") from None
+    if problem := input_problem(body.kind, body.inputs):
+        raise ProblemError("invalid_request", problem)
 
     timeout = request.app.state.settings.provider_timeout_seconds
 

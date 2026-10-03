@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Any, Literal
+from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, RootModel, model_validator
 
 Kind = Literal[
     "image.removeBackground", "image.generate", "image.edit", "image.upscale",
@@ -20,6 +20,7 @@ class Estimate(BaseModel):
 class InputLimits(BaseModel):
     types: list[str]
     maxBytes: int = Field(gt=0)
+    maxPixels: int | None = Field(default=None, gt=0)
 
 
 class ModelInfo(BaseModel):
@@ -30,12 +31,14 @@ class ModelInfo(BaseModel):
     cancellable: bool
     estimate: Estimate | None = None
     ui: dict[str, Any] | None = None
+    operations: list[str] | None = None
 
 
 class AdapterHealth(BaseModel):
     id: str
     enabled: bool
     reason: str | None = None
+    details: dict[str, Any] | None = None
 
 
 class Health(BaseModel):
@@ -77,20 +80,25 @@ class UploadTicket(BaseModel):
     ticket: Ticket
 
 
+InputRole = Literal["startFrame", "endFrame", "reference"]
+
+
 class AssetInput(BaseModel):
     model_config = ConfigDict(extra="forbid")
     assetRef: str = Field(min_length=1)
+    role: InputRole | None = None
 
 
 class UrlInput(BaseModel):
     model_config = ConfigDict(extra="forbid")
     url: HttpUrl
+    role: InputRole | None = None
 
 
 class JobRequest(BaseModel):
     kind: Kind
     model: str
-    inputs: list[AssetInput | UrlInput] = Field(min_length=1)
+    inputs: list[AssetInput | UrlInput] = Field(default_factory=list, max_length=8)
     params: dict[str, Any] = Field(default_factory=dict)
 
 
@@ -129,10 +137,121 @@ class Problem(BaseModel):
     retryable: bool
 
 
-class RemoveBackgroundParams(BaseModel):
+class StrictParams(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
+# Text that ends up inside a Cloudinary transformation URL; no URL or transformation syntax allowed.
+UrlPrompt = Annotated[str, Field(pattern=r"^[A-Za-z0-9 .'-]{1,100}$")]
+ImageAspect = Literal["1:1", "16:9", "9:16", "4:3", "3:4"]
+
+
+class RemoveBackgroundParams(StrictParams):
+    pass
+
+
+class ImageUpscaleParams(StrictParams):
+    pass
+
+
+class ImageGenerateParams(StrictParams):
+    prompt: str = Field(min_length=1, max_length=1000)
+    aspectRatio: ImageAspect = "1:1"
+    count: int = Field(default=1, ge=1, le=4)
+    seed: int | None = Field(default=None, ge=0, le=2**31 - 1)
+
+
+class FillOp(StrictParams):
+    op: Literal["fill"]
+    aspectRatio: ImageAspect
+
+
+class ReplaceOp(StrictParams):
+    model_config = ConfigDict(extra="forbid", populate_by_name=True)
+    op: Literal["replace"]
+    from_: UrlPrompt = Field(alias="from")
+    to: UrlPrompt
+
+
+class RemoveOp(StrictParams):
+    op: Literal["remove"]
+    prompt: UrlPrompt
+
+
+class RecolorOp(StrictParams):
+    op: Literal["recolor"]
+    prompt: UrlPrompt
+    color: str = Field(pattern=r"^#[0-9A-Fa-f]{6}$")
+
+
+class BackgroundReplaceOp(StrictParams):
+    op: Literal["backgroundReplace"]
+    prompt: UrlPrompt | None = None
+
+
+class RestoreOp(StrictParams):
+    op: Literal["restore"]
+
+
+EditOp = Annotated[FillOp | ReplaceOp | RemoveOp | RecolorOp | BackgroundReplaceOp | RestoreOp, Field(discriminator="op")]
+EDIT_OPS = ("fill", "replace", "remove", "recolor", "backgroundReplace", "restore")
+
+
+class ImageEditParams(RootModel[EditOp]):
+    pass
+
+
+class VideoGenerateParams(StrictParams):
+    prompt: str = Field(min_length=1, max_length=1000)
+    duration: Literal[4, 6, 8]
+    resolution: Literal["720p", "1080p"] = "720p"
+    aspectRatio: Literal["16:9", "9:16"] = "16:9"
+    generateAudio: bool = False
+
+    @model_validator(mode="after")
+    def _full_hd_needs_eight_seconds(self):
+        if self.resolution == "1080p" and self.duration != 8:
+            raise ValueError("1080p requires duration 8")
+        return self
+
+
+class VideoReframeParams(StrictParams):
+    aspectRatio: Literal["9:16", "1:1", "4:5", "16:9"]
+
+
 # Kinds the core can validate. A kind is accepted only once its params schema lands here.
-PARAMS: dict[str, type[BaseModel]] = {"image.removeBackground": RemoveBackgroundParams}
-INPUT_COUNT: dict[str, tuple[int, int]] = {"image.removeBackground": (1, 1)}
+PARAMS: dict[str, type[BaseModel]] = {
+    "image.removeBackground": RemoveBackgroundParams,
+    "image.generate": ImageGenerateParams,
+    "image.edit": ImageEditParams,
+    "image.upscale": ImageUpscaleParams,
+    "video.generate": VideoGenerateParams,
+    "video.reframe": VideoReframeParams,
+}
+# Per kind: the most inputs allowed for each role; None is the role of an unlabelled input.
+INPUT_ROLES: dict[str, dict[str | None, int]] = {
+    "image.removeBackground": {None: 1},
+    "image.generate": {"reference": 4},
+    "image.edit": {None: 1},
+    "image.upscale": {None: 1},
+    "video.generate": {"startFrame": 1, "endFrame": 1, "reference": 2},
+    "video.reframe": {None: 1},
+}
+REQUIRED_INPUTS: dict[str, int] = {"image.removeBackground": 1, "image.edit": 1, "image.upscale": 1, "video.reframe": 1}
+
+
+def input_problem(kind: str, inputs: list[AssetInput | UrlInput]) -> str | None:
+    """Why `inputs` does not fit `kind`, or None when they do."""
+    allowed = INPUT_ROLES[kind]
+    counts: dict[str | None, int] = {}
+    for item in inputs:
+        counts[item.role] = counts.get(item.role, 0) + 1
+    for role, count in counts.items():
+        if count > allowed.get(role, 0):
+            label = role or "unlabelled"
+            return f"{kind} takes at most {allowed.get(role, 0)} {label} input(s); got {count}."
+    if len(inputs) < REQUIRED_INPUTS.get(kind, 0):
+        return f"{kind} needs {REQUIRED_INPUTS[kind]} input(s); got {len(inputs)}."
+    if counts.get("endFrame") and not counts.get("startFrame"):
+        return "An endFrame input needs a startFrame input."
+    return None

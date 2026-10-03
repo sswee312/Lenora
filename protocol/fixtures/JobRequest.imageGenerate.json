@@ -1,0 +1,6 @@
+{
+  "kind": "image.generate",
+  "model": "cloudinary/image-generation",
+  "inputs": [{ "assetRef": "image/upload/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d", "role": "reference" }],
+  "params": { "prompt": "A lighthouse at dusk, film grain", "aspectRatio": "16:9", "count": 2, "seed": 42 }
+}

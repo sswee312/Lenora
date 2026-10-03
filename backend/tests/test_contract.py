@@ -43,3 +43,23 @@ def test_error_codes_match_openapi():
 def test_kinds_match_openapi_examples():
     from typing import get_args
     assert sorted(get_args(kinds.Kind)) == sorted(SPEC["components"]["schemas"]["Kind"]["examples"])
+
+
+PARAMS_SCHEMAS = {
+    "image.removeBackground": "RemoveBackgroundParams", "image.generate": "ImageGenerateParams",
+    "image.edit": "ImageEditParams", "image.upscale": "ImageUpscaleParams",
+    "video.generate": "VideoGenerateParams", "video.reframe": "VideoReframeParams",
+}
+
+
+def test_every_validated_kind_has_a_params_schema():
+    assert sorted(PARAMS_SCHEMAS) == sorted(kinds.PARAMS)
+
+
+@pytest.mark.parametrize("path", sorted((PROTOCOL / "fixtures").glob("JobRequest.*.json")), ids=lambda p: p.name)
+def test_request_fixture_params_match_both_schemas(path):
+    request = json.loads(path.read_text())
+    validator(PARAMS_SCHEMAS[request["kind"]]).validate(request["params"])
+    kinds.PARAMS[request["kind"]].model_validate(request["params"])
+    job = kinds.JobRequest.model_validate(request)
+    assert kinds.input_problem(job.kind, job.inputs) is None
