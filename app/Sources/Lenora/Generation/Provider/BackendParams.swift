@@ -55,3 +55,12 @@ struct VideoGenerateParams: Encodable, Sendable, Equatable {
 struct VideoReframeParams: Encodable, Sendable, Equatable {
     let aspectRatio: String
 }
+
+struct VideoPublishParams: Encodable, Sendable, Equatable {
+    struct Outputs: Encodable, Sendable, Equatable {
+        var vertical: String?
+        var teaserSeconds: Int?
+    }
+
+    var outputs: Outputs
+}

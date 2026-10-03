@@ -8,6 +8,8 @@ actor FakeProvider: GenerationProvider {
     private var states: [JobState]
     private let failure: BackendError?
     private var stream: AsyncThrowingStream<JobState, Error>.Continuation?
+    private(set) var deletedAssets: [String] = []
+    private var deleteResult: Result<Void, BackendError> = .success(())
     private(set) var pollers = 0
     private(set) var terminations = 0
     private let hangsOnSubmit: Bool
@@ -56,6 +58,15 @@ actor FakeProvider: GenerationProvider {
     }
 
     func cancel(jobId: String) async throws -> JobState { try cancelResult.get() }
+
+    func deleteAsset(model: String, assetRef: String) async throws {
+        deletedAssets.append(assetRef)
+        try deleteResult.get()
+    }
+
+    func setDeleteResult(_ result: Result<Void, BackendError>) { deleteResult = result }
+
+    func emit(_ state: JobState) { stream?.yield(state) }
 
     private func noteTermination() { terminations += 1 }
 
