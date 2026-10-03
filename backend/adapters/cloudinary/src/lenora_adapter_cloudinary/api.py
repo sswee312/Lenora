@@ -60,6 +60,11 @@ def problem(response: httpx.Response) -> ProblemError:
     return ProblemError("provider_error", message, retryable=True)
 
 
+def is_subscription_refusal(response: httpx.Response) -> bool:
+    # The spike (plan Task 1) pins the exact refusal; update this one rule if it differs.
+    return response.status_code in (401, 403)
+
+
 class CloudinaryAPI:
     def __init__(self, settings: CloudinarySettings, http: httpx.AsyncClient):
         self.settings = settings
