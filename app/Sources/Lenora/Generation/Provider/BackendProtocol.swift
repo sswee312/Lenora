@@ -28,6 +28,12 @@ struct BackendModel: Decodable, Sendable {
     let ui: Value?
     let operations: [String]?
     var deletable: Bool? = nil
+
+    /// `prompt`, `tags`, or `questions` when the analysis model cannot run on the image alone.
+    var analysisRequires: String? {
+        guard case .object(let fields)? = ui, case .string(let value)? = fields["requires"] else { return nil }
+        return value
+    }
 }
 
 struct AdapterVersion: Decodable, Sendable, Equatable {
@@ -131,6 +137,26 @@ struct JobInput: Codable, Sendable, Equatable {
 
 struct EmptyParams: Encodable, Sendable {}
 
+struct AnalyzeTag: Encodable, Sendable, Equatable {
+    var name: String
+    var description: String
+}
+
+struct AnalyzeJobParams: Encodable, Sendable {
+    var prompt: String?
+    var tags: [AnalyzeTag]?
+    var questions: [String]?
+
+    private enum CodingKeys: String, CodingKey { case prompt, tags, questions }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(prompt, forKey: .prompt)
+        try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(questions, forKey: .questions)
+    }
+}
+
 struct JobRequest: Encodable, Sendable {
     let kind: String
     let model: String
@@ -173,12 +199,43 @@ struct JobFailure: Decodable, Sendable, Equatable {
     let retryable: Bool
 }
 
+enum JSONValue: Decodable, Sendable, Equatable {
+    case object([String: JSONValue])
+    case array([JSONValue])
+    case string(String)
+    case number(Double)
+    case bool(Bool)
+    case null
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if container.decodeNil() { self = .null; return }
+        if let value = try? container.decode(Bool.self) { self = .bool(value); return }
+        if let value = try? container.decode(Double.self) { self = .number(value); return }
+        if let value = try? container.decode(String.self) { self = .string(value); return }
+        if let value = try? container.decode([JSONValue].self) { self = .array(value); return }
+        self = .object(try container.decode([String: JSONValue].self))
+    }
+
+    var anyValue: Any {
+        switch self {
+        case .object(let object): return object.mapValues { $0.anyValue }
+        case .array(let array): return array.map(\.anyValue)
+        case .string(let value): return value
+        case .number(let value): return value
+        case .bool(let value): return value
+        case .null: return NSNull()
+        }
+    }
+}
+
 struct JobState: Decodable, Sendable {
     let jobId: String
     let status: JobStatus
     let results: [JobResult]?
     let error: JobFailure?
     var failedOutputs: [FailedOutput]? = nil
+    var analysis: JSONValue? = nil
 }
 
 struct BackendProblem: Decodable, Sendable, Equatable, Error {

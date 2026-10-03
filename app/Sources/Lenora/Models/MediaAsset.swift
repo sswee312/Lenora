@@ -24,6 +24,7 @@ final class MediaAsset: Identifiable {
     var hasAudio: Bool = false
     var generationInput: GenerationInput?
     var importInput: MediaImportInput?
+    var analysis: MediaAnalysis?
     var generationStatus: GenerationStatus = .none
     var folderId: String?
     var pendingDownloadURL: URL?
@@ -120,6 +121,7 @@ final class MediaAsset: Identifiable {
         self.hasAudio = entry.hasAudio ?? false
         self.folderId = entry.folderId
         self.importInput = entry.importInput
+        self.analysis = entry.analysis
         let restoredStatus = GenerationStatus(serialized: entry.generationStatus)
         self.generationStatus = restoredStatus == .preparing && !canResumeGeneration ? .none : restoredStatus
     }
@@ -140,6 +142,7 @@ final class MediaAsset: Identifiable {
             hasAudio: hasAudio, folderId: folderId,
             generationStatus: generationStatus.manifestValue ?? (generationStatus == .preparing && canResumeGeneration ? generationStatus.serialized : nil),
             importInput: importInput,
+            analysis: analysis,
         )
     }
 

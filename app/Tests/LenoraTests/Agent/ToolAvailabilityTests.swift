@@ -18,7 +18,7 @@ struct ToolAvailabilityTests {
 
     @Test func disconnectedBackendHidesEveryBackendTool() {
         let listed = names(in: ModelCatalog())
-        let backendTools: Set<ToolName> = [.transformMedia, .generateVideo, .generateImage, .generateAudio, .upscaleMedia]
+        let backendTools: Set<ToolName> = [.transformMedia, .analyzeMedia, .generateVideo, .generateImage, .generateAudio, .upscaleMedia]
         #expect(listed.isDisjoint(with: backendTools))
     }
 

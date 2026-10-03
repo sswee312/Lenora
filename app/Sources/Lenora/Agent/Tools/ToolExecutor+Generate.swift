@@ -593,6 +593,9 @@ extension ToolExecutor {
             out += ToolDefinitions.transformKinds.flatMap { ModelCatalog.shared.models(ofKind: $0) }
                 .map { Self.transformModelInfo($0) }
         }
+        if filter == nil || filter == "analyze" {
+            out += editor.generationService.catalog.models(ofKind: "image.analyze").map(Self.analyzeModelInfo)
+        }
         if filter == nil || filter == "publish", let model = editor.publishService.model, let limits = editor.publishService.limits {
             out.append(Self.publishModelInfo(model, limits: limits))
         }
@@ -604,6 +607,15 @@ extension ToolExecutor {
             return .error("Failed to encode model list")
         }
         return .ok(json)
+    }
+
+    nonisolated static func analyzeModelInfo(_ model: BackendModel) -> [String: Any] {
+        var info: [String: Any] = [
+            "id": model.id, "type": "analyze", "displayName": model.displayName, "kind": model.kind,
+            "inputs": ["types": model.inputs.types, "maxBytes": model.inputs.maxBytes],
+        ]
+        if let requires = model.analysisRequires { info["requires"] = requires }
+        return info
     }
 
     nonisolated static func videoModelInfo(_ m: VideoModelConfig, includeType: Bool = false) -> [String: Any] {

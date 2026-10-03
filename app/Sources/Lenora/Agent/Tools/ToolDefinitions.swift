@@ -71,6 +71,7 @@ enum ToolName: String, CaseIterable, Sendable {
     case generateAudio = "generate_audio"
     case upscaleMedia = "upscale_media"
     case transformMedia = "transform_media"
+    case analyzeMedia = "analyze_media"
 
     // Meta
     case readSkill = "read_skill"
@@ -210,7 +211,7 @@ enum ToolDefinitions {
         ),
         AgentTool(
             name: .getMedia,
-            description: "The library inventory: media assets, folders, and timelines. Call before referencing any asset — every mediaRef in other tools comes from the asset ids returned here. Assets report name, type, durationSeconds, width/height/fps, hasAudio, folder path, and (for AI-generated assets) the generation prompt as a content hint. generationStatus appears only while an async generation/import is unresolved (preparing | generating | downloading | failed) — its absence means the asset is ready. Once the backend accepts a generation, unresolved assets also report its jobId and estimate {amount, unit}.\n\nFilters: ids (poll specific placeholders cheaply), folder (a path; includes subfolders), pending:true (only unresolved generations/imports). Filtered reads return just the matching assets; unfiltered reads also include folders (as paths) and timelines.",
+            description: "The library inventory: media assets, folders, and timelines. Call before referencing any asset — every mediaRef in other tools comes from the asset ids returned here. Assets report name, type, durationSeconds, width/height/fps, hasAudio, folder path, and (for AI-generated assets) the generation prompt as a content hint. An image that analyze_media has tagged also reports tags, caption, and analysisModel. generationStatus appears only while an async generation/import is unresolved (preparing | generating | downloading | failed) — its absence means the asset is ready. Once the backend accepts a generation, unresolved assets also report its jobId and estimate {amount, unit}.\n\nFilters: ids (poll specific placeholders cheaply), folder (a path; includes subfolders), pending:true (only unresolved generations/imports). Filtered reads return just the matching assets; unfiltered reads also include folders (as paths) and timelines.",
             inputSchema: objectSchema(
                 properties: [
                     "ids": [
@@ -1088,10 +1089,10 @@ enum ToolDefinitions {
         ),
         AgentTool(
             name: .listModels,
-            description: "Lists AI models with their capabilities (durations, aspect ratios, resolutions, draft mode, first/last frame support, reference support, voices/category for audio, configurable settings for upscalers, accepted input types and size limits for transforms, and the publish model with its size limit, allowed vertical aspects and teaser length range). Always call before generate_video, generate_image, generate_audio, upscale_media, or transform_media (type='transform') so the model you pick actually supports the constraints you need. Returns { models, loaded } — loaded=false means the catalog hasn't finished its first sync, so retry shortly; an empty models array with loaded=true means the connected backend doesn't offer that type yet (with no type filter: no backend is connected or no adapter is enabled) — tell the user Settings → Backend shows which adapters are enabled.",
+            description: "Lists AI models with their capabilities (durations, aspect ratios, resolutions, draft mode, first/last frame support, reference support, voices/category for audio, configurable settings for upscalers, accepted input types and size limits for transforms, analysis models for analyze_media, and the publish model with its size limit, allowed vertical aspects and teaser length range). Always call before generate_video, generate_image, generate_audio, upscale_media, transform_media (type='transform'), or analyze_media (type='analyze') so the model you pick actually supports the constraints you need. An analysis model may list requires as prompt, tags, or questions. Returns { models, loaded } — loaded=false means the catalog hasn't finished its first sync, so retry shortly; an empty models array with loaded=true means the connected backend doesn't offer that type yet (with no type filter: no backend is connected or no adapter is enabled) — tell the user Settings → Backend shows which adapters are enabled.",
             inputSchema: objectSchema(
                 properties: [
-                    "type": ["type": "string", "enum": ["video", "image", "audio", "upscale", "transform", "publish"], "description": "Filter by type. Omit to list all models."],
+                    "type": ["type": "string", "enum": ["video", "image", "audio", "upscale", "transform", "publish", "analyze"], "description": "Filter by type. Omit to list all models."],
                 ]
             )
         ),
@@ -1194,6 +1195,20 @@ enum ToolDefinitions {
                     "color": ["type": "string", "description": "recolor: target colour as #RRGGBB."],
                 ],
                 required: ["mediaRef", "operation"]
+            )
+        ),
+        AgentTool(
+            name: .analyzeMedia,
+            description: "Runs a backend image-analysis model on an existing image and stores the tags on that same asset. It does not create a new image. Use it for Cloudinary tagging, captioning, logo detection, object detection, and AI Vision. Call list_models with type='analyze' first. Omit model to use the first model that needs only the image (Google Auto Tagging when the account has it). Pass prompt, tags, or questions when the chosen model lists requires. tags is a list of {name, description} (AI Vision tagging). questions is a list of strings (AI Vision moderation). Returns {mediaRef, model, tags, caption?, analysis} when the provider finishes. Errors are {error: {code, message, field?}}.",
+            inputSchema: objectSchema(
+                properties: [
+                    "mediaRef": ["type": "string", "description": "ID of the image asset to analyze."],
+                    "model": ["type": "string", "description": "Analysis model ID from list_models type='analyze'. Defaults to the first model that needs only the image."],
+                    "prompt": ["type": "string", "description": "Required when the model lists requires='prompt'. One question or instruction about the image."],
+                    "tags": ["type": "array", "description": "Required when the model lists requires='tags'. Each item is {name, description}."],
+                    "questions": ["type": "array", "items": ["type": "string"], "description": "Required when the model lists requires='questions'. Yes/no moderation questions."],
+                ],
+                required: ["mediaRef"]
             )
         ),
     ]
@@ -1476,6 +1491,7 @@ extension ToolName {
         case .generateImage: ClipType.image.generationKinds
         case .generateAudio: ClipType.audio.generationKinds
         case .upscaleMedia: ["image.upscale", "video.upscale"]
+        case .analyzeMedia: ["image.analyze"]
         case .publishExport, .managePublications: [PublishService.kind]
         default: nil
         }
@@ -1485,7 +1501,11 @@ extension ToolName {
 extension ToolDefinitions {
     @MainActor static func available(_ tools: [AgentTool], catalog: ModelCatalog) -> [AgentTool] {
         tools.filter { tool in tool.name.requiredKinds.map(catalog.supportsAny(of:)) ?? true }
-            .map { $0.name == .transformMedia ? $0.withTransformOperations(transformOperations(catalog: catalog)) : $0 }
+            .map { tool in
+                if tool.name == .transformMedia { return tool.withTransformOperations(transformOperations(catalog: catalog)) }
+                if tool.name == .analyzeMedia { return tool.withAnalyzeModels(catalog.models(ofKind: "image.analyze")) }
+                return tool
+            }
     }
 
     static let transformOperationKinds: [(operation: String, kind: String, op: String?)] = [
@@ -1516,6 +1536,16 @@ private extension AgentTool {
         var operation = properties["operation"] as? [String: Any] ?? [:]
         operation["enum"] = operations
         properties["operation"] = operation
+        schema["properties"] = properties
+        return AgentTool(name: name, description: description, inputSchema: schema)
+    }
+
+    func withAnalyzeModels(_ models: [BackendModel]) -> AgentTool {
+        var schema = inputSchema
+        var properties = schema["properties"] as? [String: Any] ?? [:]
+        var model = properties["model"] as? [String: Any] ?? [:]
+        model["enum"] = models.map(\.id)
+        properties["model"] = model
         schema["properties"] = properties
         return AgentTool(name: name, description: description, inputSchema: schema)
     }

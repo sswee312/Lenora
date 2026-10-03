@@ -50,6 +50,11 @@ extension ToolExecutor {
             }
             if entry.generationInput?.draft == true { a["draft"] = true }
             if let prompt = Self.truncatedPrompt(entry.generationInput?.prompt) { a["prompt"] = prompt }
+            if let analysis = editor.mediaAssetsById[entry.id]?.analysis ?? entry.analysis {
+                a["analysisModel"] = analysis.model
+                if !analysis.tags.isEmpty { a["tags"] = analysis.tags }
+                if let caption = analysis.caption { a["caption"] = caption }
+            }
             assets.append(a)
         }
 

@@ -31,6 +31,13 @@ struct MediaManifestEntry: Codable, Sendable, Equatable, Identifiable {
     var folderId: String?
     var generationStatus: String?
     var importInput: MediaImportInput?
+    var analysis: MediaAnalysis? = nil
+}
+
+struct MediaAnalysis: Codable, Sendable, Equatable {
+    var model: String
+    var tags: [String]
+    var caption: String?
 }
 
 struct MediaImportInput: Codable, Sendable, Equatable {

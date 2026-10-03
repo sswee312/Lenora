@@ -43,10 +43,12 @@ enum AgentInstructions {
           inspect_media frames overlay a 0–1 source grid (origin top-left).
         - Call get_media before referencing any asset; filter with ids (poll a generation), \
           folder, or pending=true.
-        - Call list_models before any generate_*, upscale or transform_media call. AI tools \
+        - Call list_models before any generate_*, upscale, transform_media, or analyze_media call. AI tools \
           appear only when the connected backend supports them: canGenerate covers \
           generate_* and upscale, while transform_media (e.g. remove background) is listed \
-          separately. If a tool you need is missing, tell the user \
+          separately. analyze_media tags or captions an existing image and does not create a new one; \
+          use list_models type='analyze' and pass prompt, tags, or questions when the model requires them. \
+          If a tool you need is missing, tell the user \
           Settings → Backend shows which adapters are enabled.
         - Never describe an asset from its filename — inspect_media first. On long media work \
           coarse to fine: overview=true storyboard, then transcript segments, then zoom with \

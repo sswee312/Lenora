@@ -16,12 +16,14 @@ enum GenerationError: Error, LocalizedError, Equatable {
     case modelUnavailable(String)
     case backendUnavailable
     case unsupportedInputs(String)
+    case analysisFailed(String)
 
     var errorDescription: String? {
         switch self {
         case .modelUnavailable(let id): "\(id) is not available from the connected backend."
         case .backendUnavailable: "No backend is connected. Open Settings → Backend."
         case .unsupportedInputs(let what): "This model can't use \(what)."
+        case .analysisFailed(let message): message
         }
     }
 }
@@ -439,6 +441,34 @@ final class GenerationService {
             for try await r in group { results.append(r) }
             return results.sorted(by: { $0.0 < $1.0 }).map(\.1)
         }
+    }
+
+    /// Uploads one image, runs an `image.analyze` model, and returns the provider's analysis object.
+    func analyzeImage(fileURL: URL, modelId: String, params: AnalyzeJobParams) async throws -> JSONValue {
+        let (provider, model) = try backend(for: modelId)
+        guard model.kind == "image.analyze" else { throw GenerationError.modelUnavailable(modelId) }
+        let refs = try await uploadReferences(at: [fileURL], types: [.image], provider: provider, model: modelId)
+        guard let assetRef = refs.first else { throw GenerationError.backendUnavailable }
+        let submitted = try await provider.submit(
+            JobRequest(kind: model.kind, model: modelId, inputs: [.assetRef(assetRef)], params: params),
+            idempotencyKey: UUID().uuidString
+        )
+        for try await state in provider.jobUpdates(jobId: submitted.jobId) {
+            switch state.status {
+            case .queued, .running:
+                continue
+            case .succeeded:
+                guard let analysis = state.analysis else {
+                    throw GenerationError.analysisFailed("The analysis finished without a result.")
+                }
+                return analysis
+            case .failed:
+                throw GenerationError.analysisFailed(state.error?.message ?? "The analysis failed.")
+            case .cancelled:
+                throw GenerationError.analysisFailed("The analysis was cancelled.")
+            }
+        }
+        throw GenerationError.analysisFailed("The analysis ended without a result.")
     }
 
     func uploadReference(fileURL: URL, contentType: String, model: String) async throws -> String {

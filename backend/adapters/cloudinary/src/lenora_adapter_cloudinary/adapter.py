@@ -180,12 +180,15 @@ class CloudinaryAdapter(CancelNotSupported):
 
     def _account_models(self) -> list[ModelInfo]:
         enabled = self.account.enabled
-        models = [
-            ModelInfo(id=spec.id, kind="image.analyze", displayName=spec.display_name, inputs=_image_inputs(),
-                      cancellable=False, estimate=analysis.ADDON_ESTIMATE,
-                      ui={"providerName": "Cloudinary", "responseShape": "analysis"})
-            for spec in ANALYSIS_MODELS if spec.addon in enabled
-        ]
+        models = []
+        for spec in ANALYSIS_MODELS:
+            if spec.addon not in enabled:
+                continue
+            ui: dict[str, Any] = {"providerName": "Cloudinary", "responseShape": "analysis"}
+            if spec.requires:
+                ui["requires"] = spec.requires
+            models.append(ModelInfo(id=spec.id, kind="image.analyze", displayName=spec.display_name,
+                                    inputs=_image_inputs(), cancellable=False, estimate=analysis.ADDON_ESTIMATE, ui=ui))
         models.extend(
             ModelInfo(id=spec.id, kind=spec.kind, displayName=spec.display_name, inputs=_image_inputs(),
                       cancellable=False, estimate=analysis.ADDON_ESTIMATE,

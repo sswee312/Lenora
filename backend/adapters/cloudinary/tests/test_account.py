@@ -36,10 +36,14 @@ def test_usage_report_lists_subscribed_addons_and_skips_product_counters(tmp_pat
     rows = {row["id"]: row for row in adapter.account.details()}
     assert rows["google_tagging"] == {"id": "google_tagging", "mode": "account", "available": True, "reason": "0 of 50 used"}
     assert rows["url2png"]["available"] and "image_generation" not in rows and "bandwidth" not in rows
-    ids = {model.id for model in adapter.models()}
-    assert "cloudinary/google-tagging" in ids and "cloudinary/captioning" in ids
-    assert "cloudinary/ai-vision" in ids and "cloudinary/viesus-correct" in ids and "cloudinary/imagga-crop" in ids
-    assert "cloudinary/url2png" not in ids
+    by_id = {model.id: model for model in adapter.models()}
+    assert "cloudinary/google-tagging" in by_id and "cloudinary/captioning" in by_id
+    assert "cloudinary/ai-vision" in by_id and "cloudinary/viesus-correct" in by_id and "cloudinary/imagga-crop" in by_id
+    assert "cloudinary/url2png" not in by_id
+    assert by_id["cloudinary/ai-vision"].ui["requires"] == "prompt"
+    assert by_id["cloudinary/ai-vision-tagging"].ui["requires"] == "tags"
+    assert by_id["cloudinary/ai-vision-moderation"].ui["requires"] == "questions"
+    assert "requires" not in by_id["cloudinary/google-tagging"].ui
 
 
 def test_models_stay_hidden_until_the_usage_report_loads(tmp_path):
