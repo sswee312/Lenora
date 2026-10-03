@@ -10,7 +10,7 @@ from pydantic_settings import BaseSettings
 
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import (
-    EDIT_OPS, Estimate, ImageGenerateParams, InputLimits, JobRequest, JobState, ModelInfo, SubmittedJob, Ticket,
+    EDIT_OPS, Estimate, ImageGenerateParams, InputLimits, JobError, JobRequest, JobState, ModelInfo, SubmittedJob, Ticket,
     UploadRequest, UploadTicket, VideoGenerateParams,
 )
 from lenora_backend.registry import CancelNotSupported
@@ -128,14 +128,20 @@ class CloudinaryAdapter(CancelNotSupported):
         prefix, _, local = job_id.partition(":")
         if prefix == "url":
             return await deliveries.status(self.http, self.settings, job_id)
-        if prefix == "gen" and local:
-            return await self._image_generation_status(job_id, local.split("."))
-        if prefix == "i2v" and local:
-            return await self._image_to_video_status(job_id, local)
+        try:
+            if prefix == "gen" and local:
+                return await self._image_generation_status(job_id, local.split("."))
+            if prefix == "i2v" and local:
+                return await self._image_to_video_status(job_id, local)
+            if prefix == "chain" and local:
+                return await self._chain_status(job_id, local)
+        except ProblemError as error:
+            if error.code != "provider_unavailable" or error.retryable:
+                raise
+            return JobState(jobId=job_id, status="failed",
+                            error=JobError(code="provider_unavailable", message=error.detail, retryable=False))
         if prefix == "eager" and local:
             return await eager.status(self.api, job_id, self.clock())
-        if prefix == "chain" and local:
-            return await self._chain_status(job_id, local)
         raise ProblemError("not_found", "Unknown job.")
 
     async def health(self, recheck: bool) -> dict[str, Any]:
@@ -276,6 +282,7 @@ class CloudinaryAdapter(CancelNotSupported):
                     start = (assets[0].get("storage") or {}).get("asset_id")
                     if not isinstance(start, str):
                         return generation.failed(job_id, "First frame: generated image has no asset_id.")
+                    self._require(IMAGE_TO_VIDEO)
                     params = VideoGenerateParams.model_validate(chain.params)
                     self.store.advance_chain(chain_id, await self._start_video_job(params, start, None, []))
             return generation.running(job_id)

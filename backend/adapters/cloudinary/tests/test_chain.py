@@ -100,3 +100,23 @@ def test_unknown_chain_is_not_found(tmp_path):
     with pytest.raises(ProblemError) as info:
         run(lambda a: a.status("chain:6f1c2b9e-0000-4000-8000-000000000000"), settings(tmp_path, **ON))
     assert info.value.code == "not_found"
+
+
+@pytest.mark.parametrize("status", [401, 403])
+def test_refused_hand_off_fails_the_job_hides_the_model_and_is_not_retried(status, tmp_path):
+    s = settings(tmp_path)
+    posts = []
+
+    def mock(r):
+        r.post(f"{GEN}/text_to_image").respond(202, json={"data": {"task_id": "t1"}})
+        r.get(f"{GEN}/tasks/t1").respond(200, json=gen_task("completed", asset_id="frame-asset"))
+        r.post(I2V).mock(side_effect=lambda req: posts.append(req) or httpx.Response(status, json={"error": {"message": "no"}}))
+
+    async def scenario(a):
+        job_id = (await a.submit("cloudinary/image-to-video", chain_request())).jobId
+        first, second = await a.status(job_id), await a.status(job_id)
+        return first, second, [m.id for m in a.models()]
+    first, second, ids = run(scenario, s, mock)
+    assert first.status == second.status == "failed" and first.error.code == "provider_unavailable"
+    assert not first.error.retryable and len(posts) == 1
+    assert "cloudinary/image-to-video" not in ids

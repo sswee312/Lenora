@@ -98,15 +98,15 @@ def test_auto_learns_a_refusal_and_keeps_it_after_restart(status, tmp_path):
     assert MODEL not in ids and MODEL not in listed(s)
 
 
-def test_a_refusal_while_polling_is_learned_too(tmp_path):
+def test_a_refusal_while_polling_fails_the_job_and_is_learned(tmp_path):
     s = settings(tmp_path)
 
     async def scenario(a):
-        with pytest.raises(ProblemError) as info:
-            await a.status("gen:t1")
-        return info.value.code, model_ids(a)
-    code, ids = run(scenario, s, lambda r: r.get(f"{GEN}/tasks/t1").respond(403))
-    assert code == "provider_unavailable" and MODEL not in ids
+        state = await a.status("gen:t1")
+        return state, model_ids(a)
+    state, ids = run(scenario, s, lambda r: r.get(f"{GEN}/tasks/t1").respond(403))
+    assert state.status == "failed" and state.error.code == "provider_unavailable" and not state.error.retryable
+    assert "Image Generation" in state.error.message and MODEL not in ids
 
 
 @pytest.mark.parametrize("status, code", [(500, "provider_error"), (502, "provider_error"), (429, "rate_limited")])
