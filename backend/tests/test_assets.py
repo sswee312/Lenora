@@ -87,3 +87,17 @@ def test_a_hanging_start_times_out_and_startup_continues(make_client, caplog):
         client = make_client(Hangs(), provider_timeout_seconds=0.05)
     assert client.get("/v1/capabilities", headers=AUTH).status_code == 200
     assert "TimeoutError" in caplog.text
+
+
+@pytest.mark.parametrize("start, reason", [
+    (RuntimeError("x"), "start failed: RuntimeError"), (None, "start timed out")])
+def test_an_adapter_that_fails_to_start_is_disabled_with_a_reason(start, reason, make_client):
+    class Broken(PublishingAdapter):
+        async def start(self):
+            if start is None:
+                await asyncio.Event().wait()
+            raise start
+    client = make_client(Broken(), provider_timeout_seconds=0.05)
+    assert client.get("/v1/capabilities", headers=AUTH).json()["adapters"] == []
+    health = client.get("/v1/health", headers=AUTH).json()
+    assert [(a["enabled"], a["reason"]) for a in health["adapters"]] == [(False, reason)]
