@@ -1,4 +1,6 @@
-# Lenora
+<p align="center"><img src="assets/lenora-logo.jpg" alt="Lenora" width="160"></p>
+
+<h1 align="center">Lenora</h1>
 
 An open-source, agent-native video editor for the Mac. Edit by hand, let the built-in agent edit with you, or let Claude Code, Cursor, Codex or Claude Desktop drive the timeline over MCP. Generative features run through a self-hosted, provider-neutral backend.
 
@@ -7,7 +9,9 @@ An open-source, agent-native video editor for the Mac. Edit by hand, let the bui
 [![Backend, protocol, skills: Apache-2.0](https://img.shields.io/badge/backend%20%C2%B7%20protocol%20%C2%B7%20skills-Apache--2.0-blue.svg)](backend/LICENSE)
 ![macOS 26, Apple silicon](https://img.shields.io/badge/macOS-26%20%C2%B7%20Apple%20silicon-lightgrey.svg)
 
-![Lenora](assets/lenora-ui.png)
+[![Watch the Lenora demo](assets/this-is-lenora-poster.jpg)](https://github.com/vermatushar/Lenora/blob/main/assets/this-is-lenora.mp4)
+
+<p align="center"><a href="https://github.com/vermatushar/Lenora/blob/main/assets/this-is-lenora.mp4">▶ Watch the demo (24 s)</a></p>
 
 ## What Lenora is
 
@@ -168,7 +172,7 @@ CI runs the backend tests, script tests and rebrand check on every pull request.
 | [`skills/`](app/Sources/Lenora/Resources/Skills/) | Bundled agent skills (symlink to `app/Sources/Lenora/Resources/Skills`) | Apache-2.0 |
 | [`mcpb/`](mcpb/) | Claude Desktop extension: a stdio-to-HTTP bridge to the app's MCP server | |
 | [`scripts/`](scripts/) | `bootstrap`, `dev`, `bundle.sh`, `rebrand.py`, localization tools | |
-| [`assets/`](assets/) | README images | |
+| [`assets/`](assets/) | README logo and demo video | |
 
 ## Localization
 
@@ -190,8 +194,8 @@ Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md). Do 
 
 Lenora uses two licenses; see [NOTICE](NOTICE).
 
-- The editor in `app/` is a derivative of Palmier Pro, built from its GPLv3 source tagged `last-gpl-source` (commit 8805801), and is distributed under the [GNU General Public License v3.0](LICENSE). <!-- rebrand:allow -->
-- [`backend/`](backend/LICENSE), [`protocol/`](protocol/LICENSE) and [`skills/`](app/Sources/Lenora/Resources/Skills/LICENSE) are licensed under the Apache License 2.0. The skills are forked from [palmier-skills](https://github.com/palmier-io/palmier-skills). <!-- rebrand:allow -->
+- The editor in `app/` is distributed under the [GNU General Public License v3.0](LICENSE). Upstream copyright and modification notices are in [NOTICE](NOTICE).
+- [`backend/`](backend/LICENSE), [`protocol/`](protocol/LICENSE) and [`skills/`](app/Sources/Lenora/Resources/Skills/LICENSE) are licensed under the Apache License 2.0.
 - The footage search model is converted from [google/siglip2-base-patch16-256](https://huggingface.co/google/siglip2-base-patch16-256) (Apache-2.0).
 - The beat-tracking model is converted from [Beat This](https://github.com/CPJKU/beat_this) (MIT, © 2024 Institute of Computational Perception, JKU Linz).
 
@@ -199,4 +203,4 @@ Cloudinary, OpenAI, Anthropic, Claude, Cursor, Codex and other product names and
 
 ## Acknowledgements
 
-Lenora exists because Palmier, Inc. released Palmier Pro under the GPL. It also builds on the [MCP Swift SDK](https://github.com/modelcontextprotocol/swift-sdk), [swift-transformers](https://github.com/huggingface/swift-transformers), [MLX Swift](https://github.com/ml-explore/mlx-swift), [Lottie](https://github.com/airbnb/lottie-ios) and [speech-swift](https://github.com/soniqo/speech-swift). <!-- rebrand:allow -->
+Lenora builds on the [MCP Swift SDK](https://github.com/modelcontextprotocol/swift-sdk), [swift-transformers](https://github.com/huggingface/swift-transformers), [MLX Swift](https://github.com/ml-explore/mlx-swift), [Lottie](https://github.com/airbnb/lottie-ios) and [speech-swift](https://github.com/soniqo/speech-swift).
