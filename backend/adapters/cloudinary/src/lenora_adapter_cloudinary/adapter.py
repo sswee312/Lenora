@@ -1,3 +1,4 @@
+import asyncio
 import time
 import uuid
 from collections.abc import Callable
@@ -50,6 +51,8 @@ class CloudinaryAdapter(CancelNotSupported):
         self.store = Store(settings.data_dir / "cloudinary.sqlite3", now=clock())
         self.addons = Addons({IMAGE_GENERATION: settings.image_generation, IMAGE_TO_VIDEO: settings.image_to_video},
                              self.store)
+        # ponytail: one lock serializes chain hand-offs in this process; a shared store needs a row lock instead.
+        self._chain_lock = asyncio.Lock()
         self.budget = costs.Budget(settings.daily_credit_budget, clock)
 
     def models(self) -> list[ModelInfo]:
@@ -86,7 +89,7 @@ class CloudinaryAdapter(CancelNotSupported):
                         "maxReferenceImages": 2, "maxReferenceVideos": 0, "maxReferenceAudios": 0,
                         "framesAndReferencesExclusive": False, "referenceTagNoun": "Image",
                         "requiresSourceVideo": False, "requiresReferenceImage": False,
-                        "requiresFirstFrame": True}}))
+                        "requiresFirstFrame": not self.addons.available(IMAGE_GENERATION)}}))
         return models
 
     async def create_upload(self, model: str, req: UploadRequest) -> UploadTicket:
@@ -111,7 +114,9 @@ class CloudinaryAdapter(CancelNotSupported):
         if job.kind == "image.generate":
             return await self._submit_image_generation(job)
         if job.kind == "video.generate":
-            return await self._submit_image_to_video(job)
+            if any(i.role == "startFrame" for i in job.inputs):
+                return await self._submit_image_to_video(job)
+            return await self._submit_chain(job)
         if job.kind == "video.reframe":
             return await self._submit_reframe(job)
         url, estimate = await deliveries.plan(self.api, job)
@@ -126,6 +131,8 @@ class CloudinaryAdapter(CancelNotSupported):
             return await self._image_generation_status(job_id, local.split("."))
         if prefix == "i2v" and local:
             return await self._image_to_video_status(job_id, local)
+        if prefix == "chain" and local:
+            return await self._chain_status(job_id, local)
         raise ProblemError("not_found", "Unknown job.")
 
     async def health(self, recheck: bool) -> dict[str, Any]:
@@ -229,3 +236,42 @@ class CloudinaryAdapter(CancelNotSupported):
         if state == "running":
             return generation.running(job_id)
         return JobState(jobId=job_id, status="succeeded", results=results)
+
+    # video.generate from a prompt alone: text-to-image, then image-to-video
+
+    async def _submit_chain(self, job: JobRequest) -> SubmittedJob:
+        self._require(IMAGE_GENERATION, IMAGE_TO_VIDEO)
+        params = VideoGenerateParams.model_validate(job.params)
+        if job.inputs:
+            raise ProblemError("invalid_request", "Without a startFrame, video.generate takes no other inputs.")
+        image = costs.image_generation(self.settings.cost_image_generation, 1)
+        video = self._video_estimate(params)
+        estimate = Estimate(amount=image.amount + video.amount, unit=image.unit)
+        frame = ImageGenerateParams(prompt=params.prompt, aspectRatio=params.aspectRatio)
+        task = await self._charged(estimate, lambda: self._start_image_task(frame, []))
+        chain_id = str(uuid.uuid4())
+        self.store.insert_chain(chain_id, task, params.model_dump(), self.clock())
+        return SubmittedJob(jobId=f"chain:{chain_id}", status="queued", estimate=estimate)
+
+    async def _chain_status(self, job_id: str, chain_id: str) -> JobState:
+        chain = self.store.chain(chain_id)
+        if chain is None:
+            raise ProblemError("not_found", "Unknown job.")
+        if chain.stage == "image":
+            try:
+                state, assets = generation.task_outcome(
+                    self._checked(IMAGE_GENERATION, await generation.poll_task(self.api, chain.gen_task_id)))
+            except TaskFailed as error:
+                return generation.failed(job_id, f"First frame: {error}")
+            if state == "running":
+                return generation.running(job_id)
+            async with self._chain_lock:
+                chain = self.store.chain(chain_id)
+                if chain.stage == "image":
+                    start = (assets[0].get("storage") or {}).get("asset_id")
+                    if not isinstance(start, str):
+                        return generation.failed(job_id, "First frame: generated image has no asset_id.")
+                    params = VideoGenerateParams.model_validate(chain.params)
+                    self.store.advance_chain(chain_id, await self._start_video_job(params, start, None, []))
+            return generation.running(job_id)
+        return await self._image_to_video_status(job_id, chain.i2v_id)

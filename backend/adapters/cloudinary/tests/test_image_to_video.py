@@ -74,9 +74,3 @@ def test_refusal_is_learned_and_refunded(tmp_path):
     code, ids, used = run(scenario, s, mock)
     assert code == "provider_unavailable" and MODEL not in ids and used == 0
     assert MODEL not in run(lambda a: asyncio.sleep(0, model_ids(a)), s)
-
-
-def test_start_frame_is_required_until_chaining_exists(tmp_path):
-    models = run(lambda a: asyncio.sleep(0, a.models()), settings(tmp_path))
-    caps = next(m for m in models if m.id == MODEL).ui["uiCapabilities"]
-    assert caps["requiresFirstFrame"] is True and caps["aspectRatios"] == ["16:9", "9:16"]
