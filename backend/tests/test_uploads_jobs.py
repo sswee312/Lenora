@@ -99,3 +99,20 @@ def test_job_routes_require_token(make_client):
     client = make_client(FakeAdapter())
     assert client.post("/v1/jobs", json=JOB, headers={"Idempotency-Key": "k"}).status_code == 401
     assert client.get("/v1/jobs/fake:job1").status_code == 401
+
+
+def test_submit_unknown_kind_is_unsupported(make_client):
+    response = make_client(FakeAdapter()).post("/v1/jobs", headers=headers(), json={**JOB, "kind": "audio.dub"})
+    assert (response.status_code, response.json()["code"]) == (422, "unsupported_kind")
+
+
+class CrashingAdapter(FakeAdapter):
+    async def status(self, job_id):
+        raise RuntimeError("adapter bug with a secret-ish detail")
+
+
+def test_unexpected_adapter_error_is_problem_json(make_client):
+    response = make_client(CrashingAdapter()).get("/v1/jobs/fake:job1", headers=AUTH)
+    assert response.headers["content-type"] == "application/problem+json"
+    assert (response.json()["code"], response.json()["retryable"]) == ("provider_error", False)
+    assert "secret-ish" not in response.text

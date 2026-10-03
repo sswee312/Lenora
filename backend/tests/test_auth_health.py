@@ -20,9 +20,34 @@ def test_authorized_health_lists_adapters(make_client):
     body = make_client(FakeAdapter(), statuses=statuses).get("/v1/health", headers=AUTH).json()
     assert body["backendVersion"] == "0.1.0"
     assert body["adapters"] == [
-        {"id": "fake", "enabled": True, "reason": None},
-        {"id": "off", "enabled": False, "reason": "missing or invalid: LENORA_OFF_KEY"},
+        {"id": "fake", "enabled": True, "reason": None, "details": None},
+        {"id": "off", "enabled": False, "reason": "missing or invalid: LENORA_OFF_KEY", "details": None},
     ]
+
+
+class DetailedAdapter(FakeAdapter):
+    rechecks: list[bool]
+
+    async def health(self, recheck: bool):
+        self.rechecks = [*getattr(self, "rechecks", []), recheck]
+        return {"addons": []}
+
+
+def test_health_details_and_recheck_reach_the_adapter(make_client):
+    adapter = DetailedAdapter()
+    client = make_client(adapter)
+    assert client.get("/v1/health", headers=AUTH).json()["adapters"][0]["details"] == {"addons": []}
+    client.get("/v1/health?recheck=addons", headers=AUTH)
+    client.get("/v1/health?recheck=addons")
+    assert adapter.rechecks == [False, True]
+
+
+def test_models_are_read_per_request(make_client):
+    adapter = FakeAdapter()
+    client = make_client(adapter)
+    assert len(client.get("/v1/capabilities", headers=AUTH).json()["models"]) == 1
+    adapter.models = lambda: []
+    assert client.get("/v1/capabilities", headers=AUTH).json()["models"] == []
 
 
 def test_capabilities_requires_token(make_client):

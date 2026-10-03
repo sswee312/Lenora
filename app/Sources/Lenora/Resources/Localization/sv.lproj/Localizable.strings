@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "Det gick inte att exportera %@.";
+"%@ credits used · No limit" = "%@ krediter använda · Ingen gräns";
 "%@ does not accept this media" = "%@ accepterar inte det här mediet";
 "%@ does not support this media type." = "%@ stöder inte den här mediatypen.";
 "%@ exported with %lld warnings." = "%@ exporterades med %lld varningar.";
 "%@ exported with 1 warning." = "%@ exporterades med 1 varning.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-bilder stöds inte. Använd PNG, JPEG, WebP, HEIC eller TIFF.";
+"%@ files aren't supported by this edit." = "%@-filer stöds inte av den här redigeringen.";
 "%@ is not a valid URL." = "%@ är inte en giltig URL.";
 "%@ is ready." = "%@ är klar.";
 "%@ model not available" = "Modellen %@ är inte tillgänglig";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ måste använda HTTPS, eller HTTP endast på den här datorn.";
+"%@ needs a start frame." = "%@ behöver en startbildruta.";
+"%@ of %@ credits" = "%@ av %@ krediter";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld färdigheter";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "Fångade %@. Målmappen togs bort, så bildrutan sparades högst upp i Media.";
 "Censor profanity" = "Censurera svordomar";
 "Center" = "Centrera";
-"Change aspect ratio and extend the frame with AI" = "Ändra bildförhållande och utöka bilden med AI";
+"Change the color of an object" = "Ändra färgen på ett objekt";
 "Change to Match" = "Ändra så att det matchar";
 "Changes take effect after restarting Lenora." = "Ändringarna börjar gälla efter omstart av Lenora.";
 "Changing the ratio preserves the shorter edge." = "När förhållandet ändras behålls den kortare kanten.";
@@ -220,12 +223,14 @@
 "Creating…" = "Skapar…";
 "Crop" = "Beskär";
 "Crop applies to one clip at a time" = "Beskärning gäller ett klipp i taget";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Beskär till ett nytt bildförhållande och behåll motivet i bild";
 "Curves" = "Kurvor";
 "Custom Aspect Ratio" = "Anpassat bildförhållande";
 "Custom…" = "Anpassat…";
 "Cut" = "Klipp ut";
 "Cut out the subject as a transparent PNG" = "Frilägg motivet som en genomskinlig PNG";
 "Cut to the beat" = "Klipp till takten";
+"Daily budget" = "Daglig budget";
 "Dark" = "Mörkt";
 "Dark appearance" = "Mörkt utseende";
 "Darken" = "Mörkare";
@@ -312,6 +317,7 @@
 "Enhance" = "Förbättra";
 "Enhance resolution or frame rate with AI" = "Förbättra upplösning eller bildfrekvens med AI";
 "Enter Full Screen" = "Gå till helskärm";
+"Erase an object from the image" = "Radera ett objekt från bilden";
 "Every connected agent will need the new token." = "Varje ansluten agent behöver den nya token.";
 "Exclusion" = "Uteslutning";
 "Expand" = "Expandera";
@@ -324,6 +330,7 @@
 "Exporting…" = "Exporterar…";
 "Export…" = "Exportera…";
 "Exposure" = "Exponering";
+"Extend the image to a new aspect ratio" = "Utöka bilden till ett nytt bildformat";
 "Extend" = "Utöka";
 "Extends captions across short gaps and holds the final caption." = "Förlänger undertexter över korta luckor och håller den sista undertexten.";
 "Extra Large" = "Extra stor";
@@ -385,6 +392,7 @@
 "Generation in progress" = "Generering pågår";
 "Generation panel" = "Genereringspanel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Genereringen körs på din Lenora-backend. Token lagras i macOS-nyckelringen.";
+"Generative Fill" = "Generativ fyllning";
 "Get Anthropic API key" = "Hämta Anthropic API-nyckel";
 "Get OpenAI API key" = "Hämta OpenAI API-nyckel";
 "Get Started" = "Kom igång";
@@ -541,6 +549,7 @@
 "My Projects" = "Mina projekt";
 "Name" = "Namn";
 "Nest settings discarded. Undo to restore." = "Inställningarna för inbäddning kastades. Ångra för att återställa.";
+"New background (optional)" = "Ny bakgrund (valfritt)";
 "New" = "Nytt";
 "New Folder" = "Ny mapp";
 "New Project" = "Nytt projekt";
@@ -558,7 +567,6 @@
 "No audio" = "Inget ljud";
 "No audio selected." = "Inget ljud markerat.";
 "No beats detected." = "Inga takter identifierades.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Ingen ansluten backend kan ta bort bakgrunder. Öppna Inställningar → Backend.";
 "No conversations yet" = "Inga konversationer än";
 "No exports yet" = "Inga exporter än";
 "No images" = "Inga bilder";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "Inte synkad — kan inte användas som vinkel.";
 "Notifications" = "Aviseringar";
 "OK" = "OK";
+"Object to recolor" = "Objekt att färga om";
+"Object to remove" = "Objekt att ta bort";
 "Off" = "Av";
 "Offset" = "Förskjutning";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Äldre utbytesformat, bäst när Premiere Pro är målet. Stödjer grundläggande redigering och nyckelbilder, men inte text, färg, effekter, kantmjukhet eller kantavrundning.";
@@ -643,6 +653,7 @@
 "Project Settings" = "Projektinställningar";
 "Projects Couldn’t Be Deleted" = "Projekten kunde inte raderas";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Placera motivet på en ny bakgrund";
 "Quality" = "Kvalitet";
 "Queued" = "I kö";
 "Quit Lenora" = "Avsluta Lenora";
@@ -651,6 +662,7 @@
 "Razor (C)" = "Rakblad (C)";
 "Razor Tool" = "Rakbladsverktyg";
 "Reasoning effort" = "Resonemangsinsats";
+"Recolor" = "Färga om";
 "Redetect Beats" = "Identifiera takter igen";
 "Redo" = "Gör om";
 "Redo (⇧⌘Z)" = "Gör om (⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "Byt namn på spår";
 "Rendering" = "Renderar";
 "Rendering…" = "Renderar…";
+"Repair noise, blur and compression damage" = "Reparera brus, oskärpa och komprimeringsskador";
+"Replace Background" = "Ersätt bakgrund";
 "Replace clip source" = "Ersätt klippets källa";
+"Replace" = "Ersätt";
 "Replacement Audio" = "Ersättningsljud";
 "Rerun" = "Kör igen";
 "Reset All" = "Återställ allt";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Upplösningen får inte överstiga 8192 pixlar på någon kant.";
 "Resolved" = "Löst";
 "Restart Lenora" = "Starta om Lenora";
+"Restore" = "Återställ";
 "Retry" = "Försök igen";
 "Retry Download" = "Försök hämta igen";
 "Reveal in Finder" = "Visa i Finder";
@@ -820,6 +836,7 @@
 "Subtitle" = "Undertext";
 "Subtitle file is unavailable." = "Undertextfilen är inte tillgänglig.";
 "Swap Media" = "Byt media";
+"Swap one object for another" = "Byt ut ett objekt mot ett annat";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Byt klippets media när genereringen är klar. Hastighet, volym, trimning och transformering behålls.";
 "Switch Angle" = "Byt vinkel";
 "Switch Angle in Range" = "Byt vinkel i området";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "MCP-servern kunde inte startas. Kontrollera porten och försök igen.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-token är inte tillgänglig. Kontrollera åtkomsten till nyckelringen och försök igen.";
 "The clip you're adding has different settings than the current project." = "Klippet du lägger till har andra inställningar än det aktuella projektet.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Den anslutna backenden erbjuder inte den här redigeringen. Öppna Inställningar → Backend.";
 "The export" = "Exporten";
-"The image is larger than %@." = "Bilden är större än %@.";
+"The file is larger than %@." = "Filen är större än %@.";
+"The image is larger than %lld pixels in total." = "Bilden är större än %lld pixlar totalt.";
+"The image size isn't known yet. Try again in a moment." = "Bildstorleken är inte känd än. Försök igen om en stund.";
 "The job already finished." = "Jobbet är redan klart.";
 "The job finished without a result." = "Jobbet avslutades utan resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markörkommentaren ändrades medan du redigerade. Granska den och försök igen.";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeinställningarna ändrades. Stäng det här bladet och försök igen.";
 "Theme" = "Tema";
 "This build includes no skills." = "Den här versionen innehåller inga färdigheter.";
+"This edit works on images only." = "Den här redigeringen fungerar bara på bilder.";
+"This edit works on videos only." = "Den här redigeringen fungerar bara på videor.";
 "This is where all your footage and assets live." = "Här ligger allt ditt material och alla tillgångar.";
 "This is your preview panel to play a selected media or the whole timeline." = "Det här är förhandsvisningspanelen där du spelar upp valt media eller hela tidslinjen.";
 "This job can't be cancelled. It will finish on its own." = "Det här jobbet kan inte avbrytas. Det slutförs av sig självt.";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "VERSALER";
 "URL" = "URL";
 "Unable to save skill" = "Det går inte att spara färdigheten";
+"Unavailable" = "Otillgänglig";
 "Unchanged" = "Oförändrad";
 "Underline" = "Understrykning";
 "Undo" = "Ångra";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "Hela tidslinjen · %@";
 "Wide (1.85:1)" = "Wide (1.85:1)";
 "Width" = "Bredd";
+"With" = "Mot";
 "Word Reveal" = "Ordvisning";
 "Word Slide" = "Ordglidning";
 "Working on %@" = "Arbetar med %@";

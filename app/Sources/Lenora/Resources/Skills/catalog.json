@@ -38,7 +38,7 @@
     "id": "lenora-ai-tools",
     "name": "lenora-ai-tools",
     "description": "Use Lenora's backend-powered AI tools (transform_media and generation tools) correctly, including capability checks, cost and polling.",
-    "sha": "ed04329f7787",
+    "sha": "c576ddf4636a",
     "path": "lenora-ai-tools/SKILL.md"
   },
   {

@@ -34,16 +34,18 @@ extension EditorViewModel {
         )
     }
 
-    func beginAIReframe(clipId: String) {
-        guard let (clip, asset) = aiEditClipAsset(clipId), clip.mediaType == .video else { return }
-        let trim = aiEditTrimmedSource(clipId: clipId)
-        guard let stored = EditSubmitter.reframeSeed(for: asset, trimmedSource: trim) else { return }
-        seedGenerationPanel(
-            asset: asset,
-            stored: stored,
-            replacementClipId: clipId,
-            trimmedSource: trim
-        )
+    func beginAIMediaEdit(clipId: String, action: EditAction) {
+        guard let (_, asset) = aiEditClipAsset(clipId) else { return }
+        beginMediaEdit(action, of: asset)
+    }
+
+    /// Restore needs no input and submits at once; the other AI edits and Reframe open the edit sheet.
+    func beginMediaEdit(_ action: EditAction, of asset: MediaAsset) {
+        if action == .restore {
+            submitMediaEdit(.edit(.restore), of: asset)
+        } else {
+            pendingMediaEdit = PendingMediaEdit(asset: asset, action: action)
+        }
     }
 
     func beginAILipSync(clipId: String) {
@@ -77,8 +79,12 @@ extension EditorViewModel {
     }
 
     func removeBackground(of asset: MediaAsset) {
+        submitMediaEdit(.removeBackground, of: asset)
+    }
+
+    private func submitMediaEdit(_ request: MediaEditRequest, of asset: MediaAsset) {
         Task {
-            if case .refused(let refusal) = await EditSubmitter.submitRemoveBackground(asset: asset, editor: self) {
+            if case .refused(let refusal) = await EditSubmitter.submitEdit(request, asset: asset, editor: self) {
                 mediaPanelToast = MediaPanelToast(message: refusal.userMessage, kind: .warning)
             }
         }
@@ -91,7 +97,7 @@ extension EditorViewModel {
         guard placeholder.pendingDownloadURL == nil else { return nil }
         guard case .failed = placeholder.generationStatus,
               let input = placeholder.generationInput,
-              generationService.catalog.backendModel(id: input.model)?.kind == EditSubmitter.removeBackgroundKind,
+              generationService.catalog.backendModel(id: input.model)?.kind == MediaEditRequest.removeBackground.kind,
               let sourceId = input.imageURLAssetIds?.first,
               let source = mediaAssetsById[sourceId] else { return nil }
         return source
@@ -99,9 +105,9 @@ extension EditorViewModel {
 
     /// Resubmits from the source; the failed placeholder is dropped only once the new job starts.
     @discardableResult
-    func retryRemoveBackground(_ placeholder: MediaAsset) async -> RemoveBackgroundOutcome? {
+    func retryRemoveBackground(_ placeholder: MediaAsset) async -> MediaEditOutcome? {
         guard let source = removeBackgroundRetrySource(for: placeholder) else { return nil }
-        let outcome = await EditSubmitter.submitRemoveBackground(asset: source, editor: self)
+        let outcome = await EditSubmitter.submitEdit(.removeBackground, asset: source, editor: self)
         switch outcome {
         case .started:
             removeGenerationPlaceholders([placeholder])

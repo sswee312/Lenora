@@ -385,6 +385,7 @@ final class EditorViewModel {
 
     /// Set when an imported clip's settings differ from the timeline's — drives the dialog.
     var pendingSettingsMismatch: SettingsMismatch?
+    var pendingMediaEdit: PendingMediaEdit?
     /// Deferred clip-addition, executed after the user resolves the mismatch.
     var pendingSettingsContinuation: (@MainActor () -> Void)?
 

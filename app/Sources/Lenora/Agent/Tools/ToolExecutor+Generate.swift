@@ -186,6 +186,11 @@ extension ToolExecutor {
             draft: draft
         )
 
+        var generateAudio = false
+        if let raw = args["generateAudio"] {
+            guard let value = exactJSONBool(raw) else { throw ToolError("generateAudio must be a boolean.") }
+            generateAudio = value
+        }
         let folderId = try resolveFolder(
             args, editor: editor, fallbackReferences: inputAssets.textToVideoReferences
         )
@@ -196,7 +201,7 @@ extension ToolExecutor {
             placeholderDuration: Double(max(1, duration)),
             name: args.string("name"),
             folderId: folderId,
-            generateAudio: true
+            generateAudio: generateAudio
         ).submit(
             service: editor.generationService,
             projectURL: editor.projectURL,
@@ -233,9 +238,23 @@ extension ToolExecutor {
         let resolution = args.string("resolution") ?? model.resolutions?.first
         let quality = args.string("quality") ?? model.qualities?.last
         let refIds = args.stringArray("referenceMediaRefs")
+        var count = 1
+        if let raw = args["count"] {
+            guard let value = exactJSONInt(raw), (1...model.maxImages).contains(value) else {
+                throw ToolError("count must be an integer from 1 to \(model.maxImages) for \(model.displayName).")
+            }
+            count = value
+        }
+        var seed: Int?
+        if let raw = args["seed"] {
+            guard let value = exactJSONInt(raw), (0...Int(Int32.max)).contains(value) else {
+                throw ToolError("seed must be an integer from 0 to \(Int32.max).")
+            }
+            seed = value
+        }
         if let err = model.validate(
             aspectRatio: aspectRatio, resolution: resolution, quality: quality,
-            imageRefCount: refIds.count, numImages: 1
+            imageRefCount: refIds.count, numImages: count
         ) {
             throw ToolError(err)
         }
@@ -257,6 +276,8 @@ extension ToolExecutor {
             model: model,
             references: refs,
             name: args.string("name"),
+            numImages: count,
+            seed: seed,
             folderId: folderId
         ).submit(
             service: editor.generationService,
@@ -436,7 +457,7 @@ extension ToolExecutor {
         return .ok("Generation started. Placeholder asset ID: \(placeholderId). Model: \(model.displayName), \(model.category.label)\(sourceNote). Place it with add_clips.")
     }
 
-    func upscaleMedia(_ editor: EditorViewModel, _ args: [String: Any]) throws -> ToolResult {
+    func upscaleMedia(_ editor: EditorViewModel, _ args: [String: Any]) async throws -> ToolResult {
         let mediaRef = try args.requireString("mediaRef")
         let asset = try asset(mediaRef, editor: editor)
         guard asset.type == .video || asset.type == .image else {
@@ -449,7 +470,7 @@ extension ToolExecutor {
             throw ToolError("Source FPS is not available yet. Poll get_media until the asset is ready.")
         }
 
-        let available = UpscaleModelConfig.models(for: asset.type)
+        let available = UpscaleModelConfig.models(for: asset.type, in: editor.generationService.catalog)
         let model: UpscaleModelConfig
         if let requested = args.string("model") {
             guard let match = available.first(where: { $0.id == requested }) else {
@@ -469,6 +490,12 @@ extension ToolExecutor {
 
         let settings = try resolvedUpscaleSettings(args["settings"], model: model, source: asset)
         let trimmed = try trimmedSource(args, editor: editor, source: asset)
+        if let refusal = await EditSubmitter.upscaleRefusal(asset: asset, modelId: model.id, editor: editor) {
+            return Self.transformError(code: refusal.code, message: refusal.toolMessage, field: nil)
+        }
+        guard editor.mediaAssetsById[asset.id] === asset else {
+            return Self.transformError(code: MediaEditRefusal.sourceMissing.code, message: MediaEditRefusal.sourceMissing.toolMessage, field: nil)
+        }
         guard let placeholderId = EditSubmitter.submitUpscale(
             asset: asset, model: model, editor: editor, settings: settings, trimmedSource: trimmed
         ) else {
@@ -563,7 +590,7 @@ extension ToolExecutor {
                 .map { Self.upscaleModelInfo($0) }
         }
         if filter == nil || filter == "transform" {
-            out += ModelCatalog.shared.models(ofKind: EditSubmitter.removeBackgroundKind)
+            out += ToolDefinitions.transformKinds.flatMap { ModelCatalog.shared.models(ofKind: $0) }
                 .map { Self.transformModelInfo($0) }
         }
         let body: [String: Any] = [
@@ -581,6 +608,7 @@ extension ToolExecutor {
             "id": m.id, "displayName": m.displayName,
             "durations": m.durations, "aspectRatios": m.aspectRatios,
             "supportsFirstFrame": m.supportsFirstFrame,
+            "requiresFirstFrame": m.requiresFirstFrame,
             "supportsLastFrame": m.supportsLastFrame,
             "supportsReferences": m.supportsReferences,
             "supportsPrompt": m.supportsPrompt,
@@ -665,7 +693,7 @@ extension ToolExecutor {
         var info: [String: Any] = [
             "id": m.id, "displayName": m.displayName,
             "type": "transform",
-            "operation": "removeBackground",
+            "operations": ToolDefinitions.transformOperations(of: m),
             "acceptedTypes": m.inputs.types,
             "maxBytes": m.inputs.maxBytes,
         ]

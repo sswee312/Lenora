@@ -13,6 +13,7 @@ struct ToolAvailabilityTests {
         #expect(connected.contains(.transformMedia))
         #expect(!connected.contains(.generateVideo) && !connected.contains(.upscaleMedia))
         #expect(connected.contains(.getTimeline))
+        #expect(names(in: try EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")).contains(.upscaleMedia))
     }
 
     @Test func disconnectedBackendHidesEveryBackendTool() {

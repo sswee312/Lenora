@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "ไม่สามารถส่งออก %@ ได้";
+"%@ credits used · No limit" = "ใช้ไปแล้ว %@ เครดิต · ไม่จำกัด";
 "%@ does not accept this media" = "%@ ไม่รับมีเดียนี้";
 "%@ does not support this media type." = "%@ ไม่รองรับประเภทมีเดียนี้";
 "%@ exported with %lld warnings." = "ส่งออก %@ แล้ว มีคำเตือน %lld รายการ";
 "%@ exported with 1 warning." = "ส่งออก %@ แล้ว มีคำเตือน 1 รายการ";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "ไม่รองรับรูปภาพ %@ ใช้ PNG, JPEG, WebP, HEIC หรือ TIFF";
+"%@ files aren't supported by this edit." = "การแก้ไขนี้ไม่รองรับไฟล์ %@";
 "%@ is not a valid URL." = "%@ ไม่ใช่ URL ที่ถูกต้อง";
 "%@ is ready." = "%@ พร้อมแล้ว";
 "%@ model not available" = "โมเดล %@ ไม่พร้อมใช้งาน";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ ต้องใช้ HTTPS หรือ HTTP บน Mac เครื่องนี้เท่านั้น";
+"%@ needs a start frame." = "%@ ต้องมีเฟรมเริ่มต้น";
+"%@ of %@ credits" = "%@ จาก %@ เครดิต";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld สกิล";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "จับ %@ แล้ว โฟลเดอร์ปลายทางถูกลบ จึงบันทึกเฟรมไว้ที่ระดับบนสุดของมีเดีย";
 "Censor profanity" = "เซ็นเซอร์คำหยาบ";
 "Center" = "กึ่งกลาง";
-"Change aspect ratio and extend the frame with AI" = "เปลี่ยนอัตราส่วนภาพและขยายเฟรมด้วย AI";
+"Change the color of an object" = "เปลี่ยนสีของวัตถุ";
 "Change to Match" = "เปลี่ยนให้ตรงกัน";
 "Changes take effect after restarting Lenora." = "การเปลี่ยนแปลงมีผลหลังจากเริ่มต้น Lenora ใหม่";
 "Changing the ratio preserves the shorter edge." = "การเปลี่ยนอัตราส่วนจะคงขอบที่สั้นกว่าไว้";
@@ -220,12 +223,14 @@
 "Creating…" = "กำลังสร้าง…";
 "Crop" = "ครอป";
 "Crop applies to one clip at a time" = "ครอปใช้ได้ทีละคลิป";
+"Crop to a new aspect ratio, keeping the subject in frame" = "ครอบตัดเป็นอัตราส่วนภาพใหม่ โดยคงตัวแบบไว้ในเฟรม";
 "Curves" = "เส้นโค้ง";
 "Custom Aspect Ratio" = "อัตราส่วนภาพกำหนดเอง";
 "Custom…" = "กำหนดเอง…";
 "Cut" = "ตัด";
 "Cut out the subject as a transparent PNG" = "ตัดวัตถุออกมาเป็น PNG โปร่งใส";
 "Cut to the beat" = "ตัดตามจังหวะ";
+"Daily budget" = "งบประมาณรายวัน";
 "Dark" = "มืด";
 "Dark appearance" = "ลักษณะมืด";
 "Darken" = "ทำให้มืด";
@@ -312,6 +317,7 @@
 "Enhance" = "ปรับปรุง";
 "Enhance resolution or frame rate with AI" = "ปรับปรุงความละเอียดหรืออัตราเฟรมด้วย AI";
 "Enter Full Screen" = "เข้าสู่เต็มหน้าจอ";
+"Erase an object from the image" = "ลบวัตถุออกจากภาพ";
 "Every connected agent will need the new token." = "Agent ที่เชื่อมต่ออยู่ทุกตัวจะต้องใช้โทเค็นใหม่";
 "Exclusion" = "ยกเว้น";
 "Expand" = "ขยาย";
@@ -324,6 +330,7 @@
 "Exporting…" = "กำลังส่งออก…";
 "Export…" = "ส่งออก…";
 "Exposure" = "การรับแสง";
+"Extend the image to a new aspect ratio" = "ขยายภาพเป็นอัตราส่วนภาพใหม่";
 "Extend" = "ขยาย";
 "Extends captions across short gaps and holds the final caption." = "ขยายคำบรรยายข้ามช่องว่างสั้นๆ และคงคำบรรยายสุดท้ายไว้";
 "Extra Large" = "ใหญ่พิเศษ";
@@ -385,6 +392,7 @@
 "Generation in progress" = "กำลังสร้าง";
 "Generation panel" = "แผงการสร้าง";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "การสร้างทำงานบนแบ็กเอนด์ Lenora ของคุณ โทเค็นจะเก็บไว้ในพวงกุญแจของ macOS";
+"Generative Fill" = "เติมแบบสร้างสรรค์";
 "Get Anthropic API key" = "รับคีย์ API ของ Anthropic";
 "Get OpenAI API key" = "รับคีย์ API ของ OpenAI";
 "Get Started" = "เริ่มต้นใช้งาน";
@@ -541,6 +549,7 @@
 "My Projects" = "โปรเจ็กต์ของฉัน";
 "Name" = "ชื่อ";
 "Nest settings discarded. Undo to restore." = "ละทิ้งการตั้งค่าการซ้อนแล้ว เลิกทำเพื่อคืนค่า";
+"New background (optional)" = "พื้นหลังใหม่ (ไม่บังคับ)";
 "New" = "ใหม่";
 "New Folder" = "โฟลเดอร์ใหม่";
 "New Project" = "โปรเจ็กต์ใหม่";
@@ -558,7 +567,6 @@
 "No audio" = "ไม่มีเสียง";
 "No audio selected." = "ยังไม่ได้เลือกเสียง";
 "No beats detected." = "ไม่พบจังหวะ";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "ไม่มีแบ็กเอนด์ที่เชื่อมต่อซึ่งลบพื้นหลังได้ เปิด การตั้งค่า → แบ็กเอนด์";
 "No conversations yet" = "ยังไม่มีการสนทนา";
 "No exports yet" = "ยังไม่มีการส่งออก";
 "No images" = "ไม่มีภาพ";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "ยังไม่ซิงค์ — ใช้เป็นมุมกล้องไม่ได้";
 "Notifications" = "การแจ้งเตือน";
 "OK" = "ตกลง";
+"Object to recolor" = "วัตถุที่จะเปลี่ยนสี";
+"Object to remove" = "วัตถุที่จะลบ";
 "Off" = "ปิด";
 "Offset" = "ออฟเซ็ต";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "รูปแบบแลกเปลี่ยนรุ่นเก่า เหมาะเมื่อปลายทางคือ Premiere Pro รองรับการตัดต่อพื้นฐานและคีย์เฟรม แต่ไม่รองรับข้อความ สี เอฟเฟกต์ ความนุ่มขอบ หรือความโค้งขอบ";
@@ -643,6 +653,7 @@
 "Project Settings" = "การตั้งค่าโปรเจ็กต์";
 "Projects Couldn’t Be Deleted" = "ไม่สามารถลบโปรเจ็กต์ได้";
 "Prompt" = "พรอมต์";
+"Put the subject on a new background" = "วางตัวแบบบนพื้นหลังใหม่";
 "Quality" = "คุณภาพ";
 "Queued" = "อยู่ในคิว";
 "Quit Lenora" = "ออกจาก Lenora";
@@ -651,6 +662,7 @@
 "Razor (C)" = "มีดตัด (C)";
 "Razor Tool" = "เครื่องมือมีดตัด";
 "Reasoning effort" = "ความพยายามในการให้เหตุผล";
+"Recolor" = "เปลี่ยนสี";
 "Redetect Beats" = "ตรวจจับจังหวะอีกครั้ง";
 "Redo" = "ทำอีกครั้ง";
 "Redo (⇧⌘Z)" = "ทำอีกครั้ง (⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "เปลี่ยนชื่อแทร็ก";
 "Rendering" = "กำลังเรนเดอร์";
 "Rendering…" = "กำลังเรนเดอร์…";
+"Repair noise, blur and compression damage" = "ซ่อมแซมสัญญาณรบกวน ความเบลอ และความเสียหายจากการบีบอัด";
+"Replace Background" = "แทนที่พื้นหลัง";
 "Replace clip source" = "แทนที่ต้นทางคลิป";
+"Replace" = "แทนที่";
 "Replacement Audio" = "เสียงแทนที่";
 "Rerun" = "เรียกใช้อีกครั้ง";
 "Reset All" = "รีเซ็ตทั้งหมด";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "ความละเอียดต้องไม่เกิน 8192 พิกเซลในแต่ละด้าน";
 "Resolved" = "แก้ไขแล้ว";
 "Restart Lenora" = "เริ่มต้น Lenora ใหม่";
+"Restore" = "กู้คืน";
 "Retry" = "ลองอีกครั้ง";
 "Retry Download" = "ดาวน์โหลดอีกครั้ง";
 "Reveal in Finder" = "แสดงใน Finder";
@@ -820,6 +836,7 @@
 "Subtitle" = "คำบรรยาย";
 "Subtitle file is unavailable." = "ไฟล์คำบรรยายไม่พร้อมใช้งาน";
 "Swap Media" = "สลับมีเดีย";
+"Swap one object for another" = "สลับวัตถุหนึ่งเป็นอีกวัตถุหนึ่ง";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "สลับมีเดียของคลิปเมื่อการสร้างเสร็จ ความเร็ว ระดับเสียง การตัดแต่ง และการแปลงจะคงไว้";
 "Switch Angle" = "สลับมุมกล้อง";
 "Switch Angle in Range" = "สลับมุมกล้องในช่วง";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "เริ่มเซิร์ฟเวอร์ MCP ไม่ได้ ตรวจสอบพอร์ตแล้วลองอีกครั้ง";
 "The MCP token is unavailable. Check Keychain access, then try again." = "ไม่สามารถใช้โทเค็น MCP ได้ ตรวจสอบสิทธิ์เข้าถึงพวงกุญแจ แล้วลองอีกครั้ง";
 "The clip you're adding has different settings than the current project." = "คลิปที่คุณกำลังเพิ่มมีการตั้งค่าต่างจากโปรเจ็กต์ปัจจุบัน";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "แบ็กเอนด์ที่เชื่อมต่อไม่มีการแก้ไขนี้ เปิดการตั้งค่า → แบ็กเอนด์";
 "The export" = "รายการส่งออก";
-"The image is larger than %@." = "รูปภาพมีขนาดใหญ่กว่า %@";
+"The file is larger than %@." = "ไฟล์มีขนาดใหญ่กว่า %@";
+"The image is larger than %lld pixels in total." = "ภาพมีจำนวนพิกเซลรวมมากกว่า %lld";
+"The image size isn't known yet. Try again in a moment." = "ยังไม่ทราบขนาดภาพ ลองอีกครั้งในอีกสักครู่";
 "The job already finished." = "งานเสร็จสิ้นแล้ว";
 "The job finished without a result." = "งานสิ้นสุดโดยไม่มีผลลัพธ์";
 "The marker comment changed while you were editing. Review it and try again." = "ความคิดเห็นของมาร์กเกอร์เปลี่ยนระหว่างที่คุณแก้ไข ตรวจทานแล้วลองอีกครั้ง";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "การตั้งค่าไทม์ไลน์เปลี่ยนไป ปิดชีตนี้แล้วลองอีกครั้ง";
 "Theme" = "ธีม";
 "This build includes no skills." = "บิลด์นี้ไม่มีสกิล";
+"This edit works on images only." = "การแก้ไขนี้ใช้ได้กับภาพเท่านั้น";
+"This edit works on videos only." = "การแก้ไขนี้ใช้ได้กับวิดีโอเท่านั้น";
 "This is where all your footage and assets live." = "ที่นี่คือที่เก็บฟุตเทจและแอสเซ็ตทั้งหมดของคุณ";
 "This is your preview panel to play a selected media or the whole timeline." = "นี่คือแผงตัวอย่างสำหรับเล่นมีเดียที่เลือกหรือทั้งไทม์ไลน์";
 "This job can't be cancelled. It will finish on its own." = "ไม่สามารถยกเลิกงานนี้ได้ งานจะเสร็จสิ้นเอง";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "ตัวพิมพ์ใหญ่";
 "URL" = "URL";
 "Unable to save skill" = "ไม่สามารถบันทึกสกิลได้";
+"Unavailable" = "ไม่พร้อมใช้งาน";
 "Unchanged" = "ไม่เปลี่ยนแปลง";
 "Underline" = "ขีดเส้นใต้";
 "Undo" = "เลิกทำ";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "ทั้งไทม์ไลน์ · %@";
 "Wide (1.85:1)" = "กว้าง (1.85:1)";
 "Width" = "ความกว้าง";
+"With" = "เป็น";
 "Word Reveal" = "เปิดเผยคำ";
 "Word Slide" = "สไลด์คำ";
 "Working on %@" = "กำลังทำงานกับ %@";

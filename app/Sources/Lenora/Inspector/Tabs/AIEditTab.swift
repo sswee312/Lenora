@@ -106,6 +106,14 @@ struct AIEditTab: View {
                     title: L10n.string("Remove Background"),
                     description: L10n.string("Cut out the subject as a transparent PNG")
                 )
+                ForEach(EditAction.allAIEdits, id: \.self) { action in
+                    actionTile(
+                        action: action,
+                        icon: action.aiEditSymbol,
+                        title: action.aiEditTitle,
+                        description: action.aiEditDescription
+                    )
+                }
             }
             actionTile(
                 action: .edit,
@@ -132,7 +140,7 @@ struct AIEditTab: View {
                     action: .reframe,
                     icon: "aspectratio",
                     title: L10n.string("Reframe"),
-                    description: L10n.string("Change aspect ratio and extend the frame with AI")
+                    description: EditAction.reframe.aiEditDescription
                 )
             }
             if asset.type == .image {
@@ -279,8 +287,8 @@ struct AIEditTab: View {
                     createVideoOptions
                 }
             }
-        case .upscale, .removeBackground, .lipSync, .reframe, .edit,
-             .generateMusic, .generateSFX, .rerun:
+        case .upscale, .removeBackground, .generativeFill, .replace, .remove, .recolor, .replaceBackground, .restore,
+             .lipSync, .reframe, .edit, .generateMusic, .generateSFX, .rerun:
             actionTileSurface(
                 description: description,
                 isEnabled: isEnabled,
@@ -439,10 +447,8 @@ struct AIEditTab: View {
             )
         case .removeBackground:
             editor.removeBackground(of: asset)
-        case .reframe:
-            let trim = trimmedSourceIfEnabled()
-            guard let stored = EditSubmitter.reframeSeed(for: asset, trimmedSource: trim) else { return }
-            seedPanel(stored: stored, trimmed: trim)
+        case .reframe, .generativeFill, .replace, .remove, .recolor, .replaceBackground, .restore:
+            editor.beginMediaEdit(action, of: asset)
         case .lipSync:
             guard let model = VideoModelConfig.lipSync,
                   let stored = EditSubmitter.lipSyncSeed(for: asset, model: model) else { return }

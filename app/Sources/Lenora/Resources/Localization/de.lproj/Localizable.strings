@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ konnte nicht exportiert werden.";
+"%@ credits used · No limit" = "%@ Credits verbraucht · Kein Limit";
 "%@ does not accept this media" = "%@ akzeptiert dieses Medium nicht";
 "%@ does not support this media type." = "%@ unterstützt diesen Medientyp nicht.";
 "%@ exported with %lld warnings." = "%@ exportiert mit %lld Warnungen.";
 "%@ exported with 1 warning." = "%@ exportiert mit 1 Warnung.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-Bilder werden nicht unterstützt. Verwenden Sie PNG, JPEG, WebP, HEIC oder TIFF.";
+"%@ files aren't supported by this edit." = "%@-Dateien werden von dieser Bearbeitung nicht unterstützt.";
 "%@ is not a valid URL." = "%@ ist keine gültige URL.";
 "%@ is ready." = "%@ ist bereit.";
 "%@ model not available" = "Modell %@ nicht verfügbar";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ muss HTTPS verwenden, oder HTTP nur auf diesem Mac.";
+"%@ needs a start frame." = "%@ benötigt ein Startbild.";
+"%@ of %@ credits" = "%@ von %@ Credits";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld Skills";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "%@ gesichert. Der Zielordner wurde entfernt, daher wurde das Bild auf der obersten Ebene von Medien gesichert.";
 "Censor profanity" = "Kraftausdrücke zensieren";
 "Center" = "Mitte";
-"Change aspect ratio and extend the frame with AI" = "Seitenverhältnis ändern und den Rahmen mit KI erweitern";
+"Change the color of an object" = "Die Farbe eines Objekts ändern";
 "Change to Match" = "Anpassen";
 "Changes take effect after restarting Lenora." = "Änderungen werden nach dem Neustart von Lenora wirksam.";
 "Changing the ratio preserves the shorter edge." = "Beim Ändern des Verhältnisses bleibt die kürzere Kante erhalten.";
@@ -220,12 +223,14 @@
 "Creating…" = "Wird erstellt…";
 "Crop" = "Zuschneiden";
 "Crop applies to one clip at a time" = "Zuschneiden gilt jeweils für einen Clip";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Auf ein neues Seitenverhältnis zuschneiden und das Motiv im Bild halten";
 "Curves" = "Kurven";
 "Custom Aspect Ratio" = "Eigenes Seitenverhältnis";
 "Custom…" = "Eigene…";
 "Cut" = "Ausschneiden";
 "Cut out the subject as a transparent PNG" = "Motiv als transparentes PNG freistellen";
 "Cut to the beat" = "Zum Beat schneiden";
+"Daily budget" = "Tagesbudget";
 "Dark" = "Dunkel";
 "Dark appearance" = "Dunkles Erscheinungsbild";
 "Darken" = "Abdunkeln";
@@ -312,6 +317,7 @@
 "Enhance" = "Verbessern";
 "Enhance resolution or frame rate with AI" = "Auflösung oder Bildrate mit KI verbessern";
 "Enter Full Screen" = "Vollbildmodus aktivieren";
+"Erase an object from the image" = "Ein Objekt aus dem Bild entfernen";
 "Every connected agent will need the new token." = "Jeder verbundene Agent benötigt das neue Token.";
 "Exclusion" = "Ausschluss";
 "Expand" = "Erweitern";
@@ -324,6 +330,7 @@
 "Exporting…" = "Wird exportiert…";
 "Export…" = "Exportieren…";
 "Exposure" = "Belichtung";
+"Extend the image to a new aspect ratio" = "Das Bild auf ein neues Seitenverhältnis erweitern";
 "Extend" = "Verlängern";
 "Extends captions across short gaps and holds the final caption." = "Verlängert Untertitel über kurze Lücken und hält den letzten Untertitel.";
 "Extra Large" = "Extra groß";
@@ -385,6 +392,7 @@
 "Generation in progress" = "Generierung läuft";
 "Generation panel" = "Generierungsbereich";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Die Generierung läuft auf Ihrem Lenora-Backend. Das Token wird im macOS-Schlüsselbund gespeichert.";
+"Generative Fill" = "Generatives Füllen";
 "Get Anthropic API key" = "Anthropic-API-Schlüssel holen";
 "Get OpenAI API key" = "OpenAI-API-Schlüssel holen";
 "Get Started" = "Los geht's";
@@ -541,6 +549,7 @@
 "My Projects" = "Meine Projekte";
 "Name" = "Name";
 "Nest settings discarded. Undo to restore." = "Verschachtelungseinstellungen verworfen. Widerrufen zum Wiederherstellen.";
+"New background (optional)" = "Neuer Hintergrund (optional)";
 "New" = "Neu";
 "New Folder" = "Neuer Ordner";
 "New Project" = "Neues Projekt";
@@ -558,7 +567,6 @@
 "No audio" = "Kein Audio";
 "No audio selected." = "Kein Audio ausgewählt.";
 "No beats detected." = "Keine Beats erkannt.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Kein verbundenes Backend kann Hintergründe entfernen. Öffnen Sie Einstellungen → Backend.";
 "No conversations yet" = "Noch keine Unterhaltungen";
 "No exports yet" = "Noch keine Exporte";
 "No images" = "Keine Bilder";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "Nicht synchronisiert — als Winkel nicht verwendbar.";
 "Notifications" = "Mitteilungen";
 "OK" = "OK";
+"Object to recolor" = "Umzufärbendes Objekt";
+"Object to remove" = "Zu entfernendes Objekt";
 "Off" = "Aus";
 "Offset" = "Versatz";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Älteres Austauschformat, am besten wenn Adobe Premiere Pro das Ziel ist. Unterstützt grundlegende Schnitte und Schlüsselbilder, aber nicht Text, Farbe, Effekte, Kantenweichheit oder Kantenrundung.";
@@ -643,6 +653,7 @@
 "Project Settings" = "Projekteinstellungen";
 "Projects Couldn’t Be Deleted" = "Projekte konnten nicht gelöscht werden";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Das Motiv vor einen neuen Hintergrund setzen";
 "Quality" = "Qualität";
 "Queued" = "In der Warteschlange";
 "Quit Lenora" = "Lenora beenden";
@@ -651,6 +662,7 @@
 "Razor (C)" = "Schneiden (C)";
 "Razor Tool" = "Schneidwerkzeug";
 "Reasoning effort" = "Begründungsaufwand";
+"Recolor" = "Umfärben";
 "Redetect Beats" = "Beats erneut erkennen";
 "Redo" = "Wiederholen";
 "Redo (⇧⌘Z)" = "Wiederholen (⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "Spur umbenennen";
 "Rendering" = "Rendern";
 "Rendering…" = "Wird gerendert…";
+"Repair noise, blur and compression damage" = "Rauschen, Unschärfe und Kompressionsschäden beheben";
+"Replace Background" = "Hintergrund ersetzen";
 "Replace clip source" = "Clip-Quelle ersetzen";
+"Replace" = "Ersetzen";
 "Replacement Audio" = "Ersatz-Audio";
 "Rerun" = "Erneut ausführen";
 "Reset All" = "Alles zurücksetzen";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Die Auflösung darf auf keiner Kante 8192 Pixel überschreiten.";
 "Resolved" = "Erledigt";
 "Restart Lenora" = "Lenora neu starten";
+"Restore" = "Wiederherstellen";
 "Retry" = "Erneut versuchen";
 "Retry Download" = "Download erneut versuchen";
 "Reveal in Finder" = "Im Finder zeigen";
@@ -820,6 +836,7 @@
 "Subtitle" = "Untertitel";
 "Subtitle file is unavailable." = "Untertiteldatei ist nicht verfügbar.";
 "Swap Media" = "Medien tauschen";
+"Swap one object for another" = "Ein Objekt durch ein anderes ersetzen";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Tauscht die Medien des Clips, wenn die Generierung abgeschlossen ist. Tempo, Lautstärke, Schnitt und Transformation bleiben erhalten.";
 "Switch Angle" = "Winkel wechseln";
 "Switch Angle in Range" = "Winkel im Bereich wechseln";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "Der MCP-Server konnte nicht gestartet werden. Prüfen Sie den Port und versuchen Sie es erneut.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Das MCP-Token ist nicht verfügbar. Prüfen Sie den Zugriff auf den Schlüsselbund und versuchen Sie es erneut.";
 "The clip you're adding has different settings than the current project." = "Der Clip, den Sie hinzufügen, hat andere Einstellungen als das aktuelle Projekt.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Das verbundene Backend bietet diese Bearbeitung nicht an. Öffne Einstellungen → Backend.";
 "The export" = "Der Export";
-"The image is larger than %@." = "Das Bild ist größer als %@.";
+"The file is larger than %@." = "Die Datei ist größer als %@.";
+"The image is larger than %lld pixels in total." = "Das Bild hat insgesamt mehr als %lld Pixel.";
+"The image size isn't known yet. Try again in a moment." = "Die Bildgröße ist noch nicht bekannt. Versuche es gleich noch einmal.";
 "The job already finished." = "Der Auftrag ist bereits abgeschlossen.";
 "The job finished without a result." = "Der Auftrag wurde ohne Ergebnis beendet.";
 "The marker comment changed while you were editing. Review it and try again." = "Der Kommentar der Markierung hat sich während der Bearbeitung geändert. Prüfen Sie ihn und versuchen Sie es erneut.";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Die Timeline-Einstellungen haben sich geändert. Schließen Sie dieses Blatt und versuchen Sie es erneut.";
 "Theme" = "Thema";
 "This build includes no skills." = "Dieser Build enthält keine Skills.";
+"This edit works on images only." = "Diese Bearbeitung funktioniert nur mit Bildern.";
+"This edit works on videos only." = "Diese Bearbeitung funktioniert nur mit Videos.";
 "This is where all your footage and assets live." = "Hier liegen Ihr gesamtes Material und Ihre Medien.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dies ist Ihre Vorschau, um ein ausgewähltes Medium oder die gesamte Timeline wiederzugeben.";
 "This job can't be cancelled. It will finish on its own." = "Dieser Auftrag kann nicht abgebrochen werden. Er wird von selbst abgeschlossen.";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "GROSSBUCHSTABEN";
 "URL" = "URL";
 "Unable to save skill" = "Skill kann nicht gesichert werden";
+"Unavailable" = "Nicht verfügbar";
 "Unchanged" = "Unverändert";
 "Underline" = "Unterstreichen";
 "Undo" = "Widerrufen";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "Gesamte Timeline · %@";
 "Wide (1.85:1)" = "Wide (1.85:1)";
 "Width" = "Breite";
+"With" = "Durch";
 "Word Reveal" = "Wortweise einblenden";
 "Word Slide" = "Wortweise schieben";
 "Working on %@" = "%@ in Bearbeitung";

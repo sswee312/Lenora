@@ -1,0 +1,6 @@
+{
+  "kind": "video.generate",
+  "model": "cloudinary/image-to-video",
+  "inputs": [{ "assetRef": "image/upload/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d", "role": "startFrame" }],
+  "params": { "prompt": "Slow push-in, waves rolling", "duration": 8, "resolution": "1080p", "aspectRatio": "16:9", "generateAudio": false }
+}

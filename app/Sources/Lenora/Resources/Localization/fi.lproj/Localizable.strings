@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ ei voitu viedä.";
+"%@ credits used · No limit" = "%@ krediittiä käytetty · Ei rajaa";
 "%@ does not accept this media" = "%@ ei hyväksy tätä mediaa";
 "%@ does not support this media type." = "%@ ei tue tätä mediatyyppiä.";
 "%@ exported with %lld warnings." = "%@ vietiin %lld varoituksella.";
 "%@ exported with 1 warning." = "%@ vietiin yhdellä varoituksella.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-kuvia ei tueta. Käytä PNG-, JPEG-, WebP-, HEIC- tai TIFF-muotoa.";
+"%@ files aren't supported by this edit." = "Tämä muokkaus ei tue %@-tiedostoja.";
 "%@ is not a valid URL." = "%@ ei ole kelvollinen URL-osoite.";
 "%@ is ready." = "%@ on valmis.";
 "%@ model not available" = "Malli %@ ei ole käytettävissä";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@:n on käytettävä HTTPS:ää tai HTTP:tä vain tällä Macilla.";
+"%@ needs a start frame." = "%@ tarvitsee aloituskuvan.";
+"%@ of %@ credits" = "%@ / %@ krediittiä";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld taitoa";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "Tallennettiin %@. Kohdekansio poistettiin, joten ruutu tallennettiin Median juureen.";
 "Censor profanity" = "Sensuroi kirosanat";
 "Center" = "Keskitä";
-"Change aspect ratio and extend the frame with AI" = "Vaihda kuvasuhdetta ja laajenna ruutua tekoälyllä";
+"Change the color of an object" = "Vaihda kohteen väri";
 "Change to Match" = "Muuta vastaamaan";
 "Changes take effect after restarting Lenora." = "Muutokset tulevat voimaan, kun käynnistät Lenora Pron uudelleen.";
 "Changing the ratio preserves the shorter edge." = "Suhteen vaihtaminen säilyttää lyhyemmän reunan.";
@@ -220,12 +223,14 @@
 "Creating…" = "Luodaan…";
 "Crop" = "Rajaa";
 "Crop applies to one clip at a time" = "Rajaus koskee yhtä leikettä kerrallaan";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Rajaa uuteen kuvasuhteeseen ja pidä kohde kuvassa";
 "Curves" = "Käyrät";
 "Custom Aspect Ratio" = "Oma kuvasuhde";
 "Custom…" = "Oma…";
 "Cut" = "Leikkaa";
 "Cut out the subject as a transparent PNG" = "Rajaa kohde läpinäkyväksi PNG-kuvaksi";
 "Cut to the beat" = "Leikkaa iskuun";
+"Daily budget" = "Päiväbudjetti";
 "Dark" = "Tumma";
 "Dark appearance" = "Tumma ulkoasu";
 "Darken" = "Tummenna";
@@ -312,6 +317,7 @@
 "Enhance" = "Paranna";
 "Enhance resolution or frame rate with AI" = "Paranna resoluutiota tai kuvataajuutta tekoälyllä";
 "Enter Full Screen" = "Siirry koko näytön tilaan";
+"Erase an object from the image" = "Poista kohde kuvasta";
 "Every connected agent will need the new token." = "Jokainen yhdistetty agentti tarvitsee uuden tunnuksen.";
 "Exclusion" = "Poissulkeminen";
 "Expand" = "Laajenna";
@@ -324,6 +330,7 @@
 "Exporting…" = "Viedään…";
 "Export…" = "Vie…";
 "Exposure" = "Valotus";
+"Extend the image to a new aspect ratio" = "Laajenna kuva uuteen kuvasuhteeseen";
 "Extend" = "Pidennä";
 "Extends captions across short gaps and holds the final caption." = "Jatkaa tekstityksiä lyhyiden aukkojen yli ja pitää viimeisen tekstityksen.";
 "Extra Large" = "Erittäin suuri";
@@ -385,6 +392,7 @@
 "Generation in progress" = "Generointi käynnissä";
 "Generation panel" = "Generointipaneeli";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Luonti suoritetaan Lenora-taustapalvelimellasi. Tunnus tallennetaan macOS:n avainnippuun.";
+"Generative Fill" = "Generatiivinen täyttö";
 "Get Anthropic API key" = "Hanki Anthropic API -avain";
 "Get OpenAI API key" = "Hanki OpenAI API -avain";
 "Get Started" = "Aloita";
@@ -541,6 +549,7 @@
 "My Projects" = "Omat projektit";
 "Name" = "Nimi";
 "Nest settings discarded. Undo to restore." = "Sisäkkäisasetukset hylättiin. Kumoa palauttaaksesi.";
+"New background (optional)" = "Uusi tausta (valinnainen)";
 "New" = "Uusi";
 "New Folder" = "Uusi kansio";
 "New Project" = "Uusi projekti";
@@ -558,7 +567,6 @@
 "No audio" = "Ei ääntä";
 "No audio selected." = "Ääntä ei ole valittu.";
 "No beats detected." = "Iskuja ei tunnistettu.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Mikään yhdistetty taustajärjestelmä ei voi poistaa taustoja. Avaa Asetukset → Taustapalvelin.";
 "No conversations yet" = "Ei keskusteluja vielä";
 "No exports yet" = "Ei vientejä vielä";
 "No images" = "Ei kuvia";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "Ei synkronoitu — käyttökelvoton kulmana.";
 "Notifications" = "Ilmoitukset";
 "OK" = "OK";
+"Object to recolor" = "Uudelleen väritettävä kohde";
+"Object to remove" = "Poistettava kohde";
 "Off" = "Pois";
 "Offset" = "Siirtymä";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Vanhempi vaihtoformaatti, paras kun kohde on Premiere Pro. Tukee perusmuokkauksia ja avainkuvia, mutta ei tekstiä, väriä, tehosteita, reunojen pehmeyttä eikä reunojen pyöristystä.";
@@ -643,6 +653,7 @@
 "Project Settings" = "Projektin asetukset";
 "Projects Couldn’t Be Deleted" = "Projekteja ei voitu poistaa";
 "Prompt" = "Kehote";
+"Put the subject on a new background" = "Siirrä kohde uudelle taustalle";
 "Quality" = "Laatu";
 "Queued" = "Jonossa";
 "Quit Lenora" = "Lopeta Lenora";
@@ -651,6 +662,7 @@
 "Razor (C)" = "Leikkuri (C)";
 "Razor Tool" = "Leikkurityökalu";
 "Reasoning effort" = "Päättelyn määrä";
+"Recolor" = "Väritä uudelleen";
 "Redetect Beats" = "Tunnista iskut uudelleen";
 "Redo" = "Tee uudelleen";
 "Redo (⇧⌘Z)" = "Tee uudelleen (⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "Nimeä raita uudelleen";
 "Rendering" = "Renderöidään";
 "Rendering…" = "Renderöidään…";
+"Repair noise, blur and compression damage" = "Korjaa kohina, epätarkkuus ja pakkausvirheet";
+"Replace Background" = "Korvaa tausta";
 "Replace clip source" = "Korvaa leikkeen lähde";
+"Replace" = "Korvaa";
 "Replacement Audio" = "Korvaava ääni";
 "Rerun" = "Suorita uudelleen";
 "Reset All" = "Palauta kaikki";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Resoluutio ei saa ylittää 8192 pikseliä kummallakaan reunalla.";
 "Resolved" = "Ratkaistu";
 "Restart Lenora" = "Käynnistä Lenora uudelleen";
+"Restore" = "Palauta";
 "Retry" = "Yritä uudelleen";
 "Retry Download" = "Yritä latausta uudelleen";
 "Reveal in Finder" = "Näytä Finderissa";
@@ -820,6 +836,7 @@
 "Subtitle" = "Tekstitys";
 "Subtitle file is unavailable." = "Tekstitystiedosto ei ole käytettävissä.";
 "Swap Media" = "Vaihda media";
+"Swap one object for another" = "Vaihda kohde toiseen";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Vaihda leikkeen media, kun generointi valmistuu. Nopeus, äänenvoimakkuus, rajaus ja muunnos säilyvät.";
 "Switch Angle" = "Vaihda kulmaa";
 "Switch Angle in Range" = "Vaihda kulmaa alueella";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "MCP-palvelinta ei voitu käynnistää. Tarkista portti ja yritä uudelleen.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-tunnus ei ole käytettävissä. Tarkista avainnipun käyttöoikeus ja yritä uudelleen.";
 "The clip you're adding has different settings than the current project." = "Lisättävän leikkeen asetukset poikkeavat nykyisestä projektista.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Yhdistetty taustapalvelu ei tarjoa tätä muokkausta. Avaa Asetukset → Taustapalvelu.";
 "The export" = "Vienti";
-"The image is larger than %@." = "Kuva on suurempi kuin %@.";
+"The file is larger than %@." = "Tiedosto on suurempi kuin %@.";
+"The image is larger than %lld pixels in total." = "Kuvassa on yhteensä yli %lld pikseliä.";
+"The image size isn't known yet. Try again in a moment." = "Kuvan kokoa ei vielä tiedetä. Yritä hetken kuluttua uudelleen.";
 "The job already finished." = "Työ on jo valmis.";
 "The job finished without a result." = "Työ päättyi ilman tulosta.";
 "The marker comment changed while you were editing. Review it and try again." = "Merkin kommentti muuttui muokkauksen aikana. Tarkista se ja yritä uudelleen.";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Aikajanan asetukset muuttuivat. Sulje tämä arkki ja yritä uudelleen.";
 "Theme" = "Teema";
 "This build includes no skills." = "Tämä versio ei sisällä taitoja.";
+"This edit works on images only." = "Tämä muokkaus toimii vain kuville.";
+"This edit works on videos only." = "Tämä muokkaus toimii vain videoille.";
 "This is where all your footage and assets live." = "Tässä on kaikki kuvamateriaali ja aineistot.";
 "This is your preview panel to play a selected media or the whole timeline." = "Tämä on esikatselupaneeli valitun median tai koko aikajanan toistoon.";
 "This job can't be cancelled. It will finish on its own." = "Tätä työtä ei voi peruuttaa. Se valmistuu itsestään.";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "VERSAALI";
 "URL" = "URL";
 "Unable to save skill" = "Taitoa ei voi tallentaa";
+"Unavailable" = "Ei saatavilla";
 "Unchanged" = "Ei muutosta";
 "Underline" = "Alleviivaus";
 "Undo" = "Kumoa";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "Koko aikajana · %@";
 "Wide (1.85:1)" = "Wide (1.85:1)";
 "Width" = "Leveys";
+"With" = "Tilalle";
 "Word Reveal" = "Sanan paljastus";
 "Word Slide" = "Sanan liuku";
 "Working on %@" = "Käsitellään %@";

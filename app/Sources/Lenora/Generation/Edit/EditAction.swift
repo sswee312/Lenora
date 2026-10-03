@@ -1,8 +1,9 @@
 import Foundation
 
-enum EditAction {
+enum EditAction: String {
     case upscale
     case removeBackground
+    case generativeFill, replace, remove, recolor, replaceBackground, restore
     case edit
     case rerun
     case lipSync
@@ -12,13 +13,65 @@ enum EditAction {
     case createVideo
 
     static let editMaxDurationSeconds: Double = 10.0
+    static let allAIEdits: [EditAction] = [.generativeFill, .replace, .remove, .recolor, .replaceBackground, .restore]
+
+    /// The image.edit op this action performs.
+    var editOp: String? {
+        switch self {
+        case .generativeFill: "fill"
+        case .replace: "replace"
+        case .remove: "remove"
+        case .recolor: "recolor"
+        case .replaceBackground: "backgroundReplace"
+        case .restore: "restore"
+        default: nil
+        }
+    }
+
+    @MainActor var aiEditTitle: String {
+        switch self {
+        case .generativeFill: L10n.string("Generative Fill")
+        case .replace: L10n.string("Replace")
+        case .remove: L10n.string("Remove")
+        case .recolor: L10n.string("Recolor")
+        case .replaceBackground: L10n.string("Replace Background")
+        case .restore: L10n.string("Restore")
+        default: L10n.string("Reframe")
+        }
+    }
+
+    @MainActor var aiEditDescription: String {
+        switch self {
+        case .generativeFill: L10n.string("Extend the image to a new aspect ratio")
+        case .replace: L10n.string("Swap one object for another")
+        case .remove: L10n.string("Erase an object from the image")
+        case .recolor: L10n.string("Change the color of an object")
+        case .replaceBackground: L10n.string("Put the subject on a new background")
+        case .restore: L10n.string("Repair noise, blur and compression damage")
+        default: L10n.string("Crop to a new aspect ratio, keeping the subject in frame")
+        }
+    }
+
+    var aiEditSymbol: String {
+        switch self {
+        case .generativeFill: "rectangle.expand.vertical"
+        case .replace: "arrow.left.arrow.right"
+        case .remove: "eraser"
+        case .recolor: "paintpalette"
+        case .replaceBackground: "photo.on.rectangle"
+        case .restore: "wand.and.stars"
+        default: "aspectratio"
+        }
+    }
 
     func kinds(for mediaType: ClipType) -> [String] {
         switch (self, mediaType) {
         case (.upscale, .image): ["image.upscale"]
         case (.upscale, .video): ["video.upscale"]
         case (.removeBackground, .image): ["image.removeBackground"]
-        case (.edit, .image): ["image.edit"]
+        case (.generativeFill, .image), (.replace, .image), (.remove, .image),
+             (.recolor, .image), (.replaceBackground, .image), (.restore, .image): ["image.edit"]
+        case (.edit, .image): ["image.generate"]
         case (.edit, .video): ["video.edit"]
         case (.rerun, .image): ["image.generate", "image.edit", "image.upscale"]
         case (.rerun, .video): ClipType.video.generationKinds + ["video.upscale"]
@@ -33,7 +86,8 @@ enum EditAction {
     }
 
     @MainActor func isAvailable(for mediaType: ClipType, in catalog: ModelCatalog = .shared) -> Bool {
-        catalog.supportsAny(of: kinds(for: mediaType))
+        guard let op = editOp else { return catalog.supportsAny(of: kinds(for: mediaType)) }
+        return mediaType == .image && catalog.models(ofKind: "image.edit").contains { $0.operations?.contains(op) == true }
     }
 
     func group(for mediaType: ClipType) -> AIEditActionGroup {
@@ -42,7 +96,8 @@ enum EditAction {
             .audio
         case .rerun where mediaType == .audio:
             .audio
-        case .upscale, .removeBackground, .edit, .rerun, .lipSync, .reframe, .createVideo:
+        case .upscale, .removeBackground, .generativeFill, .replace, .remove, .recolor, .replaceBackground, .restore,
+             .edit, .rerun, .lipSync, .reframe, .createVideo:
             .enhance
         }
     }
@@ -51,7 +106,7 @@ enum EditAction {
     static func available(for asset: MediaAsset, effectiveDurationOverride: Double? = nil) -> [EditAction] {
         let candidates: [EditAction]
         switch asset.type {
-        case .image: candidates = [.upscale, .removeBackground, .edit, .rerun, .createVideo]
+        case .image: candidates = [.upscale, .removeBackground] + allAIEdits + [.edit, .rerun, .createVideo]
         case .video:
             candidates = [
                 .upscale, .edit, .rerun, .lipSync, .reframe,
@@ -102,12 +157,17 @@ enum EditAction {
             if asset.isGenerating {
                 return .disabled(reason: L10n.string("Generation in progress"))
             }
-            guard let model = VideoModelConfig.reframe else {
-                return .disabled(reason: L10n.string("Reframe model not available"))
+            return .available
+
+        case .generativeFill, .replace, .remove, .recolor, .replaceBackground, .restore:
+            guard asset.type == .image else {
+                return .disabled(reason: L10n.string("This edit works on images only."))
             }
-            let duration = effectiveDurationOverride ?? asset.resolvedDuration
-            if let error = model.validateReframeDuration(duration) {
-                return .disabled(reason: error)
+            guard isAvailable(for: asset.type) else {
+                return .disabled(reason: L10n.string("The connected backend doesn't offer this edit. Open Settings → Backend."))
+            }
+            if asset.isGenerating {
+                return .disabled(reason: L10n.string("Generation in progress"))
             }
             return .available
 

@@ -15,11 +15,13 @@ final class FirstOnlyFlag {
 enum GenerationError: Error, LocalizedError, Equatable {
     case modelUnavailable(String)
     case backendUnavailable
+    case unsupportedInputs(String)
 
     var errorDescription: String? {
         switch self {
         case .modelUnavailable(let id): "\(id) is not available from the connected backend."
         case .backendUnavailable: "No backend is connected. Open Settings → Backend."
+        case .unsupportedInputs(let what): "This model can't use \(what)."
         }
     }
 }
@@ -34,6 +36,7 @@ final class GenerationService {
     private var tasks: [UUID: Task<Void, Never>] = [:]
     private(set) var monitoredJobIds: Set<String> = []
     private var submittingKeys: Set<String> = []
+    var onCapabilityRefusal: @MainActor () -> Void = { Task { await BackendConnection.shared.refreshCapabilities() } }
 
     init(provider: @escaping @MainActor () -> (any GenerationProvider)?, catalog: ModelCatalog = .shared) {
         self.provider = provider
@@ -45,6 +48,14 @@ final class GenerationService {
         tasks.removeAll()
         monitoredJobIds.removeAll()
         submittingKeys.removeAll()
+    }
+
+    func waitForIdle() async {
+        while let task = tasks.values.first { await task.value }
+    }
+
+    static func isCapabilityRefusal(code: String, retryable: Bool) -> Bool {
+        code == "provider_unavailable" && !retryable
     }
 
     private func own(_ operation: @escaping @MainActor () async -> Void) {
@@ -151,10 +162,8 @@ final class GenerationService {
                 if finalGenInput.createdAt == nil {
                     finalGenInput.createdAt = Date()
                 }
-                let job = JobRequest(
-                    kind: model.kind, model: model.id,
-                    inputs: uploaded.map(JobInput.assetRef), params: buildParams(uploaded)
-                )
+                let parts = try buildParams(uploaded).jobParts(uploaded: uploaded)
+                let job = JobRequest(kind: model.kind, model: model.id, inputs: parts.inputs, params: parts.params)
                 finalGenInput.idempotencyKey = idempotencyKey
                 finalGenInput.submission = try PendingSubmission(job)
                 for (outputIndex, placeholder) in placeholders.enumerated() {
@@ -479,6 +488,7 @@ final class GenerationService {
         } catch {
             if case BackendError.problem(let problem) = error {
                 Log.generation.warning("submit failed model=\(genInput.model) code=\(problem.code)")
+                if Self.isCapabilityRefusal(code: problem.code, retryable: problem.retryable) { onCapabilityRefusal() }
             } else {
                 Log.generation.error("submit failed model=\(genInput.model) error=\(error.localizedDescription)")
             }
@@ -535,6 +545,7 @@ final class GenerationService {
                 case .failed:
                     let message = state.error?.message ?? L10n.string("Generation failed.")
                     Log.generation.error("job \(jobId) failed code=\(state.error?.code ?? "unknown")")
+                    if let failure = state.error, Self.isCapabilityRefusal(code: failure.code, retryable: failure.retryable) { onCapabilityRefusal() }
                     placeholders.forEach { updateGenerationMetadata($0, editor: editor, status: .failed(message)) }
                     editor.onProjectCheckpointRequired?()
                     onFailure?()

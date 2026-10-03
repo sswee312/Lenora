@@ -9,3 +9,4 @@ __pycache__/
 .DS_Store
 mcpb/server/node_modules/
 mcpb/server/package-lock.json
+.data/

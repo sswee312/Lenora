@@ -1,48 +1,11 @@
 import Foundation
 
 extension EditSubmitter {
-    static let reframePrompt =
-        "The exact same video as @Video1 but fill in to match the output aspect ratio. Keep movement, details, and audio the same as the original audio"
-
     static let transitionPrompt = """
         Create a seamless transition between the first frame and the last frame, one continuous \
         take. No weird movements, effects, or artifacts. Natural and consistent motion that makes \
         sense. No music, just appropriate SFX.
         """
-
-    static func reframeSeed(
-        for asset: MediaAsset,
-        trimmedSource: TrimmedSource? = nil
-    ) -> GenerationInput? {
-        guard let model = VideoModelConfig.reframe else { return nil }
-        return reframeSeed(for: asset, model: model, trimmedSource: trimmedSource)
-    }
-
-    static func reframeSeed(
-        for asset: MediaAsset,
-        model: VideoModelConfig,
-        trimmedSource: TrimmedSource? = nil
-    ) -> GenerationInput? {
-        guard asset.type == .video else { return nil }
-        let isPortrait: Bool
-        if let width = asset.sourceWidth, let height = asset.sourceHeight {
-            isPortrait = height > width
-        } else {
-            isPortrait = false
-        }
-        let sourceSeconds = trimmedSource?.hasTrim == true
-            ? trimmedSource?.durationSeconds ?? asset.resolvedDuration
-            : asset.resolvedDuration
-        var stored = GenerationInput(
-            prompt: reframePrompt,
-            model: model.id,
-            duration: model.supportedDuration(covering: sourceSeconds),
-            aspectRatio: isPortrait ? "16:9" : "9:16",
-            resolution: model.preferredHighResolution
-        )
-        stored.referenceVideoAssetIds = [asset.id]
-        return stored
-    }
 
     static func transitionSeed(
         model: VideoModelConfig,

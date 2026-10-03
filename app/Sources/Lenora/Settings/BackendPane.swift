@@ -83,8 +83,42 @@ struct BackendPane: View {
                     }
                 }
                 .font(.system(size: AppTheme.FontSize.sm))
+                if let details = adapter.details {
+                    detailRows(details)
+                }
             }
         }
+    }
+
+    @ViewBuilder private func detailRows(_ details: AdapterHealthDetails) -> some View {
+        ForEach(details.addons ?? []) { addon in
+            HStack(alignment: .firstTextBaseline, spacing: AppTheme.Spacing.sm) {
+                Text(verbatim: addon.id)
+                    .foregroundStyle(AppTheme.Text.primaryColor)
+                Text(verbatim: addon.reason ?? addon.mode)
+                    .foregroundStyle(AppTheme.Text.tertiaryColor)
+                Spacer(minLength: AppTheme.Spacing.lg)
+                Text(addon.available ? L10n.string("Available") : L10n.string("Unavailable"))
+                    .foregroundStyle(addon.available ? AppTheme.Text.primaryColor : AppTheme.Text.secondaryColor)
+            }
+            .font(.system(size: AppTheme.FontSize.xs))
+        }
+        if let budget = details.budget {
+            HStack(alignment: .firstTextBaseline, spacing: AppTheme.Spacing.sm) {
+                Text(L10n.string("Daily budget"))
+                    .foregroundStyle(AppTheme.Text.primaryColor)
+                Spacer(minLength: AppTheme.Spacing.lg)
+                Text(budgetSummary(budget))
+                    .foregroundStyle(AppTheme.Text.secondaryColor)
+            }
+            .font(.system(size: AppTheme.FontSize.xs))
+        }
+    }
+
+    private func budgetSummary(_ budget: BudgetStatus) -> String {
+        let used = budget.used.formatted(.number.precision(.fractionLength(0...3)))
+        guard let limit = budget.limit else { return L10n.string("\(used) credits used · No limit") }
+        return L10n.string("\(used) of \(limit.formatted()) credits")
     }
 
     private var tokenPrompt: String {

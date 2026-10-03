@@ -1,4 +1,5 @@
 import asyncio
+import logging
 from collections.abc import Awaitable
 from typing import Literal, TypeVar
 
@@ -19,6 +20,7 @@ STATUS: dict[str, int] = {
 }
 RETRYABLE = {"rate_limited", "provider_unavailable"}
 T = TypeVar("T")
+log = logging.getLogger("lenora.errors")
 
 
 class ProblemError(Exception):
@@ -45,7 +47,7 @@ def problem_response(err: ProblemError) -> JSONResponse:
 
 
 async def provider_call(awaitable: Awaitable[T], timeout: float) -> T:
-    """Bound one adapter call and map transport failures to provider_unavailable."""
+    """Bound one adapter call; every failure leaves as a ProblemError."""
     try:
         async with asyncio.timeout(timeout):
             return await awaitable
@@ -53,6 +55,11 @@ async def provider_call(awaitable: Awaitable[T], timeout: float) -> T:
         raise ProblemError("provider_unavailable", "The provider did not answer in time.") from None
     except httpx.TransportError as exc:
         raise ProblemError("provider_unavailable", f"Could not reach the provider ({type(exc).__name__}).") from None
+    except ProblemError:
+        raise
+    except Exception:
+        log.exception("adapter call failed")
+        raise ProblemError("provider_error", "The provider adapter failed unexpectedly.", retryable=False) from None
 
 
 def install_error_handlers(app: FastAPI) -> None:

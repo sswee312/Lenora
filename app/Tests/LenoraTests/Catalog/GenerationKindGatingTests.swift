@@ -50,7 +50,7 @@ struct GenerationKindGatingTests {
     }
 
     @Test(arguments: [
-        (EditAction.edit, ClipType.image, "image.edit", true),
+        (EditAction.edit, ClipType.image, "image.generate", true),
         (.edit, .image, "video.edit", false),
         (.edit, .video, "video.edit", true),
         (.edit, .video, "image.edit", false),

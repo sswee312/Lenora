@@ -22,6 +22,7 @@ extension GenerationView {
             if videoModel.supportsPrompt && !videoModel.supportsReferences && isPromptEmpty { return false }
             return true
         }
+        if selectedType == .video && videoModel.requiresFirstFrame && firstFrame == nil { return false }
         if selectedType == .video && videoModel.framesAndReferencesExclusive
             && videoInputMode == .references && refImages.isEmpty
             && refVideos.isEmpty && refAudios.isEmpty {
@@ -356,16 +357,25 @@ extension GenerationView {
                       pending.sourceURL == source.url else { return nil }
                 return pending
             }()
-            let assetId = EditSubmitter.submitUpscale(
-                asset: source,
-                model: upscaleModel,
-                editor: editor,
-                settings: upscaleSettings,
-                trimmedSource: trim,
-                onComplete: makeOnComplete(trim?.hasTrim == true),
-                onFailure: onFailure
-            )
-            if let assetId { autoOpenPreview(assetId) }
+            let model = upscaleModel
+            let settings = upscaleSettings
+            let onComplete = makeOnComplete(trim?.hasTrim == true)
+            Task {
+                if let refusal = await EditSubmitter.upscaleRefusal(asset: source, modelId: model.id, editor: editor) {
+                    editor.mediaPanelToast = MediaPanelToast(message: refusal.userMessage, kind: .warning)
+                    return
+                }
+                let assetId = EditSubmitter.submitUpscale(
+                    asset: source,
+                    model: model,
+                    editor: editor,
+                    settings: settings,
+                    trimmedSource: trim,
+                    onComplete: onComplete,
+                    onFailure: onFailure
+                )
+                if let assetId { autoOpenPreview(assetId) }
+            }
         }
         editor.clearPendingGenerationPanelState()
         lyrics = ""

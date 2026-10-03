@@ -19,7 +19,7 @@ struct RemoveBackgroundRetryTests {
     ) async throws -> (EditorTestFixture, MediaAsset) {
         let editor = EditorViewModel(generationProvider: { box.current }, modelCatalog: catalog)
         let fixture = try await EditorTestFixture.withImage(editor: editor, catalog: catalog)
-        guard case .started(let id, _) = await EditSubmitter.submitRemoveBackground(asset: fixture.image, editor: editor) else {
+        guard case .started(let id, _) = await EditSubmitter.submitEdit(.removeBackground, asset: fixture.image, editor: editor) else {
             throw EditorTestFixture.Timeout()
         }
         let placeholder = try #require(editor.mediaAssets.first { $0.id == id })
@@ -92,7 +92,7 @@ struct RemoveBackgroundRetryTests {
         let provider = FakeProvider(states: [], hangsOnUpload: true)
         let fixture = try await EditorTestFixture.withImage(provider: provider, catalog: EditorTestFixture.connectedCatalog())
         defer { fixture.cleanup() }
-        guard case .started(let id, _) = await EditSubmitter.submitRemoveBackground(asset: fixture.image, editor: fixture.editor) else {
+        guard case .started(let id, _) = await EditSubmitter.submitEdit(.removeBackground, asset: fixture.image, editor: fixture.editor) else {
             Issue.record("expected the job to start"); return
         }
         let placeholder = try #require(fixture.editor.mediaAssets.first { $0.id == id })

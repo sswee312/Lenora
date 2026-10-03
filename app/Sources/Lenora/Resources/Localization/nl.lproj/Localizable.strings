@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ kon niet worden geëxporteerd.";
+"%@ credits used · No limit" = "%@ credits gebruikt · Geen limiet";
 "%@ does not accept this media" = "%@ accepteert deze media niet";
 "%@ does not support this media type." = "%@ ondersteunt dit mediatype niet.";
 "%@ exported with %lld warnings." = "%@ geëxporteerd met %lld waarschuwingen.";
 "%@ exported with 1 warning." = "%@ geëxporteerd met 1 waarschuwing.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@-afbeeldingen worden niet ondersteund. Gebruik PNG, JPEG, WebP, HEIC of TIFF.";
+"%@ files aren't supported by this edit." = "%@-bestanden worden niet ondersteund door deze bewerking.";
 "%@ is not a valid URL." = "%@ is geen geldige URL.";
 "%@ is ready." = "%@ is gereed.";
 "%@ model not available" = "Model %@ niet beschikbaar";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ moet HTTPS gebruiken, of alleen op deze Mac HTTP.";
+"%@ needs a start frame." = "%@ heeft een beginframe nodig.";
+"%@ of %@ credits" = "%@ van %@ credits";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skills";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "%@ vastgelegd. De doelmap is verwijderd, dus het frame is bewaard op het hoogste niveau van Media.";
 "Censor profanity" = "Censureer grof taalgebruik";
 "Center" = "Midden";
-"Change aspect ratio and extend the frame with AI" = "Wijzig de beeldverhouding en breid het frame uit met AI";
+"Change the color of an object" = "De kleur van een object wijzigen";
 "Change to Match" = "Pas aan";
 "Changes take effect after restarting Lenora." = "Wijzigingen gaan in na het herstarten van Lenora.";
 "Changing the ratio preserves the shorter edge." = "Bij een wijziging van de verhouding blijft de korte zijde behouden.";
@@ -220,12 +223,14 @@
 "Creating…" = "Maken…";
 "Crop" = "Uitsnede";
 "Crop applies to one clip at a time" = "Uitsnede geldt voor één clip tegelijk";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Snijd bij naar een nieuwe beeldverhouding en houd het onderwerp in beeld";
 "Curves" = "Curven";
 "Custom Aspect Ratio" = "Aangepaste beeldverhouding";
 "Custom…" = "Aangepast…";
 "Cut" = "Knip";
 "Cut out the subject as a transparent PNG" = "Het onderwerp uitknippen als transparante PNG";
 "Cut to the beat" = "Knip op de beat";
+"Daily budget" = "Dagbudget";
 "Dark" = "Donker";
 "Dark appearance" = "Donkere weergave";
 "Darken" = "Donkerder";
@@ -312,6 +317,7 @@
 "Enhance" = "Verbeter";
 "Enhance resolution or frame rate with AI" = "Verbeter resolutie of beeldsnelheid met AI";
 "Enter Full Screen" = "Schakel schermvullend in";
+"Erase an object from the image" = "Een object uit de afbeelding wissen";
 "Every connected agent will need the new token." = "Elke verbonden agent heeft het nieuwe token nodig.";
 "Exclusion" = "Uitsluiting";
 "Expand" = "Klap uit";
@@ -324,6 +330,7 @@
 "Exporting…" = "Exporteren…";
 "Export…" = "Exporteer…";
 "Exposure" = "Belichting";
+"Extend the image to a new aspect ratio" = "De afbeelding uitbreiden naar een nieuwe beeldverhouding";
 "Extend" = "Verleng";
 "Extends captions across short gaps and holds the final caption." = "Verlengt ondertitels over korte gaten en houdt de laatste ondertitel vast.";
 "Extra Large" = "Extra groot";
@@ -385,6 +392,7 @@
 "Generation in progress" = "Generatie bezig";
 "Generation panel" = "Generatiepaneel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generatie draait op uw Lenora-backend. Het token wordt bewaard in de macOS-sleutelhanger.";
+"Generative Fill" = "Generatieve opvulling";
 "Get Anthropic API key" = "Haal Anthropic API-sleutel op";
 "Get OpenAI API key" = "Haal OpenAI API-sleutel op";
 "Get Started" = "Aan de slag";
@@ -541,6 +549,7 @@
 "My Projects" = "Mijn projecten";
 "Name" = "Naam";
 "Nest settings discarded. Undo to restore." = "Nestinstellingen verworpen. Gebruik Herstel om terug te zetten.";
+"New background (optional)" = "Nieuwe achtergrond (optioneel)";
 "New" = "Nieuw";
 "New Folder" = "Nieuwe map";
 "New Project" = "Nieuw project";
@@ -558,7 +567,6 @@
 "No audio" = "Geen audio";
 "No audio selected." = "Geen audio geselecteerd.";
 "No beats detected." = "Geen beats gedetecteerd.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Geen verbonden backend kan achtergronden verwijderen. Open Instellingen → Backend.";
 "No conversations yet" = "Nog geen gesprekken";
 "No exports yet" = "Nog geen exports";
 "No images" = "Geen afbeeldingen";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "Niet gesynchroniseerd — onbruikbaar als hoek.";
 "Notifications" = "Meldingen";
 "OK" = "OK";
+"Object to recolor" = "Object om opnieuw te kleuren";
+"Object to remove" = "Object om te verwijderen";
 "Off" = "Uit";
 "Offset" = "Offset";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Ouder uitwisselingsformaat, het meest geschikt als Premiere Pro de bestemming is. Ondersteunt basisbewerkingen en keyframes, maar geen tekst, kleur, effecten, randzachtheid of hoekafronding.";
@@ -643,6 +653,7 @@
 "Project Settings" = "Projectinstellingen";
 "Projects Couldn’t Be Deleted" = "Projecten konden niet worden verwijderd";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Het onderwerp op een nieuwe achtergrond zetten";
 "Quality" = "Kwaliteit";
 "Queued" = "In wachtrij";
 "Quit Lenora" = "Stop Lenora";
@@ -651,6 +662,7 @@
 "Razor (C)" = "Mes (C)";
 "Razor Tool" = "Mesgereedschap";
 "Reasoning effort" = "Redeneerinspanning";
+"Recolor" = "Opnieuw kleuren";
 "Redetect Beats" = "Detecteer beats opnieuw";
 "Redo" = "Opnieuw";
 "Redo (⇧⌘Z)" = "Opnieuw (⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "Wijzig Tracknaam";
 "Rendering" = "Renderen";
 "Rendering…" = "Renderen…";
+"Repair noise, blur and compression damage" = "Ruis, onscherpte en compressieschade herstellen";
+"Replace Background" = "Achtergrond vervangen";
 "Replace clip source" = "Vervang clipbron";
+"Replace" = "Vervangen";
 "Replacement Audio" = "Vervangende audio";
 "Rerun" = "Voer opnieuw uit";
 "Reset All" = "Zet alles terug";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Resolutie mag aan geen enkele zijde groter zijn dan 8192 pixels.";
 "Resolved" = "Opgelost";
 "Restart Lenora" = "Herstart Lenora";
+"Restore" = "Herstellen";
 "Retry" = "Probeer opnieuw";
 "Retry Download" = "Download opnieuw";
 "Reveal in Finder" = "Toon in Finder";
@@ -820,6 +836,7 @@
 "Subtitle" = "Ondertitel";
 "Subtitle file is unavailable." = "Ondertitelbestand is niet beschikbaar.";
 "Swap Media" = "Verwissel media";
+"Swap one object for another" = "Het ene object door een ander vervangen";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Verwissel de media van de clip wanneer de generatie is voltooid. Snelheid, volume, trim en transformatie blijven behouden.";
 "Switch Angle" = "Wissel hoek";
 "Switch Angle in Range" = "Wissel hoek in bereik";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "De MCP-server kan niet worden gestart. Controleer de poort en probeer het opnieuw.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Het MCP-token is niet beschikbaar. Controleer de toegang tot de sleutelhanger en probeer het opnieuw.";
 "The clip you're adding has different settings than the current project." = "De clip die u toevoegt heeft andere instellingen dan het huidige project.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "De verbonden backend biedt deze bewerking niet aan. Open Instellingen → Backend.";
 "The export" = "De export";
-"The image is larger than %@." = "De afbeelding is groter dan %@.";
+"The file is larger than %@." = "Het bestand is groter dan %@.";
+"The image is larger than %lld pixels in total." = "De afbeelding is in totaal groter dan %lld pixels.";
+"The image size isn't known yet. Try again in a moment." = "De afbeeldingsgrootte is nog niet bekend. Probeer het zo opnieuw.";
 "The job already finished." = "De taak is al voltooid.";
 "The job finished without a result." = "De taak is beëindigd zonder resultaat.";
 "The marker comment changed while you were editing. Review it and try again." = "De opmerking bij de markering is gewijzigd tijdens het bewerken. Beoordeel deze en probeer het opnieuw.";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "De Timeline-instellingen zijn gewijzigd. Sluit dit venster en probeer het opnieuw.";
 "Theme" = "Thema";
 "This build includes no skills." = "Deze build bevat geen skills.";
+"This edit works on images only." = "Deze bewerking werkt alleen op afbeeldingen.";
+"This edit works on videos only." = "Deze bewerking werkt alleen op video’s.";
 "This is where all your footage and assets live." = "Hier staan al uw beeldmateriaal en assets.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dit is uw voorvertoningspaneel om geselecteerde media of de hele Timeline af te spelen.";
 "This job can't be cancelled. It will finish on its own." = "Deze taak kan niet worden geannuleerd. Hij wordt vanzelf voltooid.";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "HOOFDLETTERS";
 "URL" = "URL";
 "Unable to save skill" = "Skill bewaren mislukt";
+"Unavailable" = "Niet beschikbaar";
 "Unchanged" = "Ongewijzigd";
 "Underline" = "Onderstrepen";
 "Undo" = "Herstel";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "Hele Timeline · %@";
 "Wide (1.85:1)" = "Breed (1.85:1)";
 "Width" = "Breedte";
+"With" = "Door";
 "Word Reveal" = "Woord onthullen";
 "Word Slide" = "Woord schuiven";
 "Working on %@" = "Bezig met %@";

@@ -23,10 +23,11 @@ extension TimelineView {
                 item.target = self
                 item.representedObject = clipId
                 submenu.addItem(item)
-            case .reframe:
-                let item = NSMenuItem(title: L10n.string("Reframe…"), action: #selector(self.performAIEditReframe(_:)), keyEquivalent: "")
+            case .reframe, .generativeFill, .replace, .remove, .recolor, .replaceBackground, .restore:
+                let title = action == .restore ? action.aiEditTitle : action.aiEditTitle + "…"
+                let item = NSMenuItem(title: title, action: #selector(self.performAIMediaEdit(_:)), keyEquivalent: "")
                 item.target = self
-                item.representedObject = clipId
+                item.representedObject = ["clipId": clipId, "action": action.rawValue]
                 submenu.addItem(item)
             case .lipSync:
                 let item = NSMenuItem(title: L10n.string("Lip Sync…"), action: #selector(self.performAIEditLipSync(_:)), keyEquivalent: "")
@@ -97,9 +98,11 @@ extension TimelineView {
         editor.beginAIEdit(clipId: clipId)
     }
 
-    @objc private func performAIEditReframe(_ sender: Any?) {
-        guard let clipId = (sender as? NSMenuItem)?.representedObject as? String else { return }
-        editor.beginAIReframe(clipId: clipId)
+    @objc private func performAIMediaEdit(_ sender: Any?) {
+        guard let info = (sender as? NSMenuItem)?.representedObject as? [String: String],
+              let clipId = info["clipId"],
+              let action = info["action"].flatMap(EditAction.init(rawValue:)) else { return }
+        editor.beginAIMediaEdit(clipId: clipId, action: action)
     }
 
     @objc private func performAIEditLipSync(_ sender: Any?) {

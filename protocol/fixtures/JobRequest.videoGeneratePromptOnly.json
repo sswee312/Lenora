@@ -1,0 +1,6 @@
+{
+  "kind": "video.generate",
+  "model": "cloudinary/image-to-video",
+  "inputs": [],
+  "params": { "prompt": "A paper boat drifting down a rainy street", "duration": 4 }
+}

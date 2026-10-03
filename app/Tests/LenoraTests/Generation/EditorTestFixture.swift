@@ -17,9 +17,9 @@ struct EditorTestFixture {
 
     var servedImageURL: URL { Self.servedImageURL }
 
-    static func connectedCatalog() throws -> ModelCatalog {
+    static func connectedCatalog(_ fixture: String = "Capabilities.cloudinary") throws -> ModelCatalog {
         let catalog = ModelCatalog()
-        catalog.apply(try BackendCoding.decoder().decode(BackendCapabilities.self, from: ProtocolFixtures.data("Capabilities.cloudinary")))
+        catalog.apply(try BackendCoding.decoder().decode(BackendCapabilities.self, from: ProtocolFixtures.data(fixture)))
         return catalog
     }
 
@@ -27,22 +27,29 @@ struct EditorTestFixture {
         editor: EditorViewModel? = nil,
         byteCount: Int? = nil,
         fileExtension: String = "png",
+        width: Int = 4,
+        height: Int = 4,
         provider: (any GenerationProvider)? = nil,
         catalog: ModelCatalog = ModelCatalog()
     ) async throws -> EditorTestFixture {
         let editor = editor ?? EditorViewModel(generationProvider: { provider }, modelCatalog: catalog)
-        return try make(editor: editor, byteCount: byteCount, fileExtension: fileExtension, includesVideo: false)
+        let fixture = try make(editor: editor, byteCount: byteCount, fileExtension: fileExtension, width: width, height: height, includesVideo: false)
+        fixture.image.sourceWidth = width
+        fixture.image.sourceHeight = height
+        return fixture
     }
 
-    static func withVideo(catalog: ModelCatalog = ModelCatalog()) async throws -> EditorTestFixture {
-        let editor = EditorViewModel(generationProvider: { nil }, modelCatalog: catalog)
-        return try make(editor: editor, byteCount: nil, fileExtension: "png", includesVideo: true)
+    static func withVideo(provider: (any GenerationProvider)? = nil, catalog: ModelCatalog = ModelCatalog()) async throws -> EditorTestFixture {
+        let editor = EditorViewModel(generationProvider: { provider }, modelCatalog: catalog)
+        return try make(editor: editor, byteCount: nil, fileExtension: "png", width: 4, height: 4, includesVideo: true)
     }
 
     private static func make(
         editor: EditorViewModel,
         byteCount: Int?,
         fileExtension: String,
+        width: Int,
+        height: Int,
         includesVideo: Bool
     ) throws -> EditorTestFixture {
         let root = FileManager.default.temporaryDirectory.appending(path: "generation-\(UUID().uuidString)")
@@ -50,7 +57,7 @@ struct EditorTestFixture {
         let media = project.appending(path: Project.mediaDirectoryName)
         try FileManager.default.createDirectory(at: media, withIntermediateDirectories: true)
         let png = imageData(fileExtension: "png")
-        var sourceData = imageData(fileExtension: fileExtension)
+        var sourceData = imageData(fileExtension: fileExtension, width: width, height: height)
         if let byteCount, sourceData.count < byteCount {
             sourceData.append(Data(count: byteCount - sourceData.count))
         }
@@ -106,9 +113,9 @@ struct EditorTestFixture {
         !asset.isGenerating && asset.generationStatus == .none && FileManager.default.fileExists(atPath: asset.url.path)
     }
 
-    private static func imageData(fileExtension: String) -> Data {
+    private static func imageData(fileExtension: String, width: Int = 4, height: Int = 4) -> Data {
         let rep = NSBitmapImageRep(
-            bitmapDataPlanes: nil, pixelsWide: 4, pixelsHigh: 4, bitsPerSample: 8,
+            bitmapDataPlanes: nil, pixelsWide: width, pixelsHigh: height, bitsPerSample: 8,
             samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
             colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0
         )!

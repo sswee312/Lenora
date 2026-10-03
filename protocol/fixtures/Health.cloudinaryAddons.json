@@ -1,0 +1,19 @@
+{
+  "status": "ok",
+  "protocolVersion": "1",
+  "backendVersion": "0.1.0",
+  "adapters": [
+    {
+      "id": "cloudinary",
+      "enabled": true,
+      "reason": null,
+      "details": {
+        "addons": [
+          { "id": "imageGeneration", "mode": "auto", "available": false, "reason": "refused by Cloudinary (403); use Test Connection after enabling it" },
+          { "id": "imageToVideo", "mode": "off", "available": false, "reason": "turned off in settings" }
+        ],
+        "budget": { "limit": 5.0, "used": 0.125, "day": "2026-10-03" }
+      }
+    }
+  ]
+}

@@ -223,7 +223,7 @@ final class ToolExecutor {
         case .generateVideo: return try generate(editor, args, type: .video)
         case .generateImage: return try generate(editor, args, type: .image)
         case .generateAudio: return try await generateAudio(editor, args)
-        case .upscaleMedia:  return try upscaleMedia(editor, args)
+        case .upscaleMedia:  return try await upscaleMedia(editor, args)
         case .transformMedia: return try await transformMedia(editor, args)
         case .importMedia:   return try await importMedia(editor, args)
         case .listModels:    return listModels(args)
@@ -401,6 +401,11 @@ func exactJSONInt(_ raw: Any?) -> Int? {
     if let value = raw as? Int { return value }
     guard let value = (raw as? NSNumber)?.doubleValue else { return nil }
     return Int(exactly: value)
+}
+
+func exactJSONBool(_ raw: Any?) -> Bool? {
+    guard let raw, isJSONBoolean(raw) else { return nil }
+    return (raw as? NSNumber)?.boolValue ?? (raw as? Bool)
 }
 
 // Clamp before converting so the Int(...) can't overflow.

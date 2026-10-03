@@ -2,63 +2,9 @@ import Foundation
 import Testing
 @testable import Lenora
 
-@Suite("Reframe seed")
+@Suite("Video reference validation")
 @MainActor
-struct ReframeSeedTests {
-    @Test("Seeds MiniMax H3 with video reference and fill prompt")
-    func seedsVideoReferenceAndPrompt() throws {
-        let model = try Self.minimaxH3()
-        let asset = MediaAsset(
-            id: "clip-1",
-            url: URL(fileURLWithPath: "/tmp/wide.mp4"),
-            type: .video,
-            name: "Wide",
-            duration: 8.2
-        )
-        asset.sourceWidth = 1920
-        asset.sourceHeight = 1080
-
-        let seed = try #require(EditSubmitter.reframeSeed(for: asset, model: model))
-
-        #expect(seed.model == "minimax-h3")
-        #expect(seed.prompt == EditSubmitter.reframePrompt)
-        #expect(seed.prompt.contains("@Video1"))
-        #expect(seed.aspectRatio == "9:16")
-        #expect(seed.resolution == "2K")
-        #expect(seed.duration == 9)
-        #expect(seed.referenceVideoAssetIds == ["clip-1"])
-        #expect(seed.imageURLAssetIds == nil)
-    }
-
-    @Test("Portrait sources reframe to landscape")
-    func flipsPortraitToLandscape() throws {
-        let model = try Self.minimaxH3()
-        let asset = MediaAsset(
-            id: "clip-2",
-            url: URL(fileURLWithPath: "/tmp/tall.mp4"),
-            type: .video,
-            name: "Tall",
-            duration: 5
-        )
-        asset.sourceWidth = 1080
-        asset.sourceHeight = 1920
-
-        let seed = try #require(EditSubmitter.reframeSeed(for: asset, model: model))
-        #expect(seed.aspectRatio == "16:9")
-    }
-
-    @Test("Duration covers the source span so the replaced clip never outlives the media")
-    func durationCoversSourceSpan() throws {
-        let model = try Self.minimaxH3()
-        #expect(model.supportedDuration(covering: 7.6) == 8)
-        #expect(model.supportedDuration(covering: 8.5) == 9)
-        #expect(model.supportedDuration(covering: 4.1) == 5)
-        #expect(model.supportedDuration(covering: 10) == 10)
-        #expect(model.supportedDuration(covering: 20) == 15)
-        #expect(model.validateReframeDuration(16) != nil)
-        #expect(model.validateReframeDuration(10) == nil)
-    }
-
+struct VideoReferenceValidationTests {
     @Test("Validates combined video-ref duration against the trimmed span")
     func validateUsesTrimmedVideoRefDuration() throws {
         let model = try Self.minimaxH3()

@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ se nepodařilo exportovat.";
+"%@ credits used · No limit" = "%@ kreditů použito · Bez limitu";
 "%@ does not accept this media" = "%@ toto médium nepřijímá";
 "%@ does not support this media type." = "%@ tento typ média nepodporuje.";
 "%@ exported with %lld warnings." = "%@ exportováno s %lld upozorněními.";
 "%@ exported with 1 warning." = "%@ exportováno s 1 upozorněním.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Obrázky %@ nejsou podporovány. Použijte PNG, JPEG, WebP, HEIC nebo TIFF.";
+"%@ files aren't supported by this edit." = "Soubory %@ tato úprava nepodporuje.";
 "%@ is not a valid URL." = "%@ není platná adresa URL.";
 "%@ is ready." = "%@ je připraveno.";
 "%@ model not available" = "Model %@ není k dispozici";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ musí používat HTTPS, nebo HTTP pouze na tomto Macu.";
+"%@ needs a start frame." = "%@ vyžaduje počáteční snímek.";
+"%@ of %@ credits" = "%@ z %@ kreditů";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld dovedností";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "Zachyceno %@. Cílová složka byla odstraněna, snímek se proto uložil na nejvyšší úroveň Média.";
 "Censor profanity" = "Cenzurovat vulgarity";
 "Center" = "Na střed";
-"Change aspect ratio and extend the frame with AI" = "Změnit poměr stran a rozšířit rámeček pomocí AI";
+"Change the color of an object" = "Změnit barvu objektu";
 "Change to Match" = "Změnit podle projektu";
 "Changes take effect after restarting Lenora." = "Změny se projeví po restartu Lenora.";
 "Changing the ratio preserves the shorter edge." = "Změna poměru zachová kratší stranu.";
@@ -220,12 +223,14 @@
 "Creating…" = "Vytváření…";
 "Crop" = "Oříznutí";
 "Crop applies to one clip at a time" = "Oříznutí platí vždy jen pro jeden klip";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Oříznout na nový poměr stran a ponechat objekt v záběru";
 "Curves" = "Křivky";
 "Custom Aspect Ratio" = "Vlastní poměr stran";
 "Custom…" = "Vlastní…";
 "Cut" = "Vyjmout";
 "Cut out the subject as a transparent PNG" = "Vyříznout objekt jako průhledné PNG";
 "Cut to the beat" = "Střih na dobu";
+"Daily budget" = "Denní rozpočet";
 "Dark" = "Tmavý";
 "Dark appearance" = "Tmavý vzhled";
 "Darken" = "Ztmavit";
@@ -312,6 +317,7 @@
 "Enhance" = "Vylepšit";
 "Enhance resolution or frame rate with AI" = "Vylepšit rozlišení nebo snímkovou frekvenci pomocí AI";
 "Enter Full Screen" = "Přejít do režimu na celou obrazovku";
+"Erase an object from the image" = "Vymazat objekt z obrázku";
 "Every connected agent will need the new token." = "Každý připojený agent bude potřebovat nový token.";
 "Exclusion" = "Vyloučení";
 "Expand" = "Rozbalit";
@@ -324,6 +330,7 @@
 "Exporting…" = "Exportování…";
 "Export…" = "Exportovat…";
 "Exposure" = "Expozice";
+"Extend the image to a new aspect ratio" = "Rozšířit obrázek na nový poměr stran";
 "Extend" = "Prodloužit";
 "Extends captions across short gaps and holds the final caption." = "Prodlouží titulky přes krátké mezery a podrží poslední titulek.";
 "Extra Large" = "Extra velké";
@@ -385,6 +392,7 @@
 "Generation in progress" = "Generování probíhá";
 "Generation panel" = "Panel generování";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generování běží na vašem backendu Lenora. Token se ukládá do Klíčenky macOS.";
+"Generative Fill" = "Generativní výplň";
 "Get Anthropic API key" = "Získat API klíč Anthropic";
 "Get OpenAI API key" = "Získat API klíč OpenAI";
 "Get Started" = "Začínáme";
@@ -541,6 +549,7 @@
 "My Projects" = "Moje projekty";
 "Name" = "Název";
 "Nest settings discarded. Undo to restore." = "Nastavení vnoření zahozeno. Zpět je obnoví.";
+"New background (optional)" = "Nové pozadí (volitelné)";
 "New" = "Nový";
 "New Folder" = "Nová složka";
 "New Project" = "Nový projekt";
@@ -558,7 +567,6 @@
 "No audio" = "Žádné audio";
 "No audio selected." = "Není vybráno žádné audio.";
 "No beats detected." = "Nebyly zjištěny žádné doby.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Žádný připojený backend nedokáže odstraňovat pozadí. Otevřete Nastavení → Backend.";
 "No conversations yet" = "Zatím žádné konverzace";
 "No exports yet" = "Zatím žádné exporty";
 "No images" = "Žádné obrázky";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "Nesynchronizováno — nelze použít jako úhel.";
 "Notifications" = "Oznámení";
 "OK" = "OK";
+"Object to recolor" = "Objekt k přebarvení";
+"Object to remove" = "Objekt k odstranění";
 "Off" = "Vypnuto";
 "Offset" = "Posun";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Starší výměnný formát, vhodný jako cíl pro Premiere Pro. Podporuje základní střihy a klíčové snímky, ale ne text, barvu, efekty, měkkost okraje ani zaoblení okraje.";
@@ -643,6 +653,7 @@
 "Project Settings" = "Nastavení projektu";
 "Projects Couldn’t Be Deleted" = "Projekty se nepodařilo smazat";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Umístit objekt na nové pozadí";
 "Quality" = "Kvalita";
 "Queued" = "Ve frontě";
 "Quit Lenora" = "Ukončit Lenora";
@@ -651,6 +662,7 @@
 "Razor (C)" = "Břitva (C)";
 "Razor Tool" = "Nástroj břitva";
 "Reasoning effort" = "Úsilí uvažování";
+"Recolor" = "Přebarvit";
 "Redetect Beats" = "Znovu detekovat doby";
 "Redo" = "Znovu";
 "Redo (⇧⌘Z)" = "Znovu (⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "Přejmenovat stopu";
 "Rendering" = "Vykreslování";
 "Rendering…" = "Vykreslování…";
+"Repair noise, blur and compression damage" = "Opravit šum, rozmazání a kompresní vady";
+"Replace Background" = "Nahradit pozadí";
 "Replace clip source" = "Nahradit zdroj klipu";
+"Replace" = "Nahradit";
 "Replacement Audio" = "Náhradní audio";
 "Rerun" = "Spustit znovu";
 "Reset All" = "Resetovat vše";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Rozlišení nesmí na žádné straně přesáhnout 8192 pixelů.";
 "Resolved" = "Vyřešeno";
 "Restart Lenora" = "Restartovat Lenora";
+"Restore" = "Obnovit";
 "Retry" = "Zkusit znovu";
 "Retry Download" = "Znovu stáhnout";
 "Reveal in Finder" = "Zobrazit ve Finderu";
@@ -820,6 +836,7 @@
 "Subtitle" = "Titulek";
 "Subtitle file is unavailable." = "Soubor titulků není k dispozici.";
 "Swap Media" = "Zaměnit média";
+"Swap one object for another" = "Zaměnit jeden objekt za jiný";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Po dokončení generování zaměnit média klipu. Rychlost, hlasitost, ořez a transformace zůstanou zachovány.";
 "Switch Angle" = "Přepnout úhel";
 "Switch Angle in Range" = "Přepnout úhel v rozsahu";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "Server MCP se nepodařilo spustit. Zkontrolujte port a zkuste to znovu.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP není k dispozici. Zkontrolujte přístup ke Klíčence a zkuste to znovu.";
 "The clip you're adding has different settings than the current project." = "Klip, který přidáváte, má jiné nastavení než aktuální projekt.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Připojený backend tuto úpravu nenabízí. Otevřete Nastavení → Backend.";
 "The export" = "Export";
-"The image is larger than %@." = "Obrázek je větší než %@.";
+"The file is larger than %@." = "Soubor je větší než %@.";
+"The image is larger than %lld pixels in total." = "Obrázek má celkem více než %lld pixelů.";
+"The image size isn't known yet. Try again in a moment." = "Velikost obrázku zatím není známa. Zkuste to za chvíli znovu.";
 "The job already finished." = "Úloha už skončila.";
 "The job finished without a result." = "Úloha skončila bez výsledku.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentář značky se během úprav změnil. Zkontrolujte ho a zkuste to znovu.";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Nastavení časové osy se změnilo. Zavřete tento list a zkuste to znovu.";
 "Theme" = "Motiv";
 "This build includes no skills." = "Toto sestavení neobsahuje žádné dovednosti.";
+"This edit works on images only." = "Tato úprava funguje jen u obrázků.";
+"This edit works on videos only." = "Tato úprava funguje jen u videí.";
 "This is where all your footage and assets live." = "Tady jsou všechny záběry a materiály.";
 "This is your preview panel to play a selected media or the whole timeline." = "Náhledový panel pro přehrání vybraného média nebo celé časové osy.";
 "This job can't be cancelled. It will finish on its own." = "Tuto úlohu nelze zrušit. Dokončí se sama.";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "VELKÁ PÍSMENA";
 "URL" = "URL";
 "Unable to save skill" = "Dovednost se nepodařilo uložit";
+"Unavailable" = "Nedostupné";
 "Unchanged" = "Beze změny";
 "Underline" = "Podtržení";
 "Undo" = "Zpět";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "Celá časová osa · %@";
 "Wide (1.85:1)" = "Širokoúhlý (1.85:1)";
 "Width" = "Šířka";
+"With" = "Za";
 "Word Reveal" = "Odhalení slov";
 "Word Slide" = "Posun slov";
 "Working on %@" = "Zpracovává se %@";

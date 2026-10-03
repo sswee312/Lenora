@@ -41,6 +41,7 @@ struct ImageGenerationSubmission {
         references: [MediaAsset],
         name: String? = nil,
         numImages: Int = 1,
+        seed: Int? = nil,
         folderId: String? = nil
     ) -> ImageGenerationSubmission {
         var genInput = baseInput
@@ -58,7 +59,8 @@ struct ImageGenerationSubmission {
                     resolution: genInput.resolution,
                     quality: genInput.quality,
                     imageURLs: uploaded,
-                    numImages: numImages
+                    numImages: numImages,
+                    seed: seed
                 ))
             }
         )

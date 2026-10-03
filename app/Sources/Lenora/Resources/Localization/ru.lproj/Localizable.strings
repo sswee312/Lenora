@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "Не удалось экспортировать %@.";
+"%@ credits used · No limit" = "Использовано кредитов: %@ · Без лимита";
 "%@ does not accept this media" = "%@ не принимает этот медиафайл";
 "%@ does not support this media type." = "%@ не поддерживает медиафайлы этого типа.";
 "%@ exported with %lld warnings." = "%@ экспортирован с предупреждениями: %lld.";
 "%@ exported with 1 warning." = "%@ экспортирован с 1 предупреждением.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Изображения %@ не поддерживаются. Используйте PNG, JPEG, WebP, HEIC или TIFF.";
+"%@ files aren't supported by this edit." = "Эта правка не поддерживает файлы %@.";
 "%@ is not a valid URL." = "%@ — недопустимый URL.";
 "%@ is ready." = "%@ готов.";
 "%@ model not available" = "Модель %@ недоступна";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ должен использовать HTTPS или HTTP только на этом Mac.";
+"%@ needs a start frame." = "Для %@ нужен начальный кадр.";
+"%@ of %@ credits" = "%@ из %@ кредитов";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, навыков: %lld";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "Сохранено: %@. Папка назначения была удалена, поэтому кадр сохранён на верхнем уровне раздела «Медиафайлы».";
 "Censor profanity" = "Скрывать ненормативную лексику";
 "Center" = "По центру";
-"Change aspect ratio and extend the frame with AI" = "Изменить соотношение сторон и расширить кадр с помощью AI";
+"Change the color of an object" = "Изменить цвет объекта";
 "Change to Match" = "Изменить под клип";
 "Changes take effect after restarting Lenora." = "Изменения вступят в силу после перезапуска Lenora.";
 "Changing the ratio preserves the shorter edge." = "При изменении соотношения сохраняется более короткая сторона.";
@@ -220,12 +223,14 @@
 "Creating…" = "Создание…";
 "Crop" = "Кадрирование";
 "Crop applies to one clip at a time" = "Кадрирование применяется к одному клипу за раз";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Обрезать до нового соотношения сторон, сохраняя объект в кадре";
 "Curves" = "Кривые";
 "Custom Aspect Ratio" = "Пользовательское соотношение сторон";
 "Custom…" = "Другое…";
 "Cut" = "Вырезать";
 "Cut out the subject as a transparent PNG" = "Вырезать объект в виде прозрачного PNG";
 "Cut to the beat" = "Резать под бит";
+"Daily budget" = "Дневной бюджет";
 "Dark" = "Тёмное";
 "Dark appearance" = "Тёмное оформление";
 "Darken" = "Затемнение";
@@ -312,6 +317,7 @@
 "Enhance" = "Улучшить";
 "Enhance resolution or frame rate with AI" = "Улучшить разрешение или частоту кадров с помощью AI";
 "Enter Full Screen" = "Перейти в полноэкранный режим";
+"Erase an object from the image" = "Стереть объект с изображения";
 "Every connected agent will need the new token." = "Каждому подключённому агенту понадобится новый токен.";
 "Exclusion" = "Исключение";
 "Expand" = "Развернуть";
@@ -324,6 +330,7 @@
 "Exporting…" = "Экспорт…";
 "Export…" = "Экспортировать…";
 "Exposure" = "Экспозиция";
+"Extend the image to a new aspect ratio" = "Расширить изображение до нового соотношения сторон";
 "Extend" = "Продлить";
 "Extends captions across short gaps and holds the final caption." = "Продлевает субтитры через короткие разрывы и удерживает последний субтитр.";
 "Extra Large" = "Очень большой";
@@ -385,6 +392,7 @@
 "Generation in progress" = "Идёт генерация";
 "Generation panel" = "Панель генерации";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Генерация выполняется на вашем бэкенде Lenora. Токен хранится в Связке ключей macOS.";
+"Generative Fill" = "Генеративная заливка";
 "Get Anthropic API key" = "Получить API-ключ Anthropic";
 "Get OpenAI API key" = "Получить API-ключ OpenAI";
 "Get Started" = "Начать";
@@ -541,6 +549,7 @@
 "My Projects" = "Мои проекты";
 "Name" = "Название";
 "Nest settings discarded. Undo to restore." = "Настройки вложения сброшены. Отмените действие, чтобы восстановить их.";
+"New background (optional)" = "Новый фон (необязательно)";
 "New" = "Новый";
 "New Folder" = "Новая папка";
 "New Project" = "Новый проект";
@@ -558,7 +567,6 @@
 "No audio" = "Нет аудио";
 "No audio selected." = "Аудио не выбрано.";
 "No beats detected." = "Доли не обнаружены.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Ни один подключённый бэкенд не может удалять фон. Откройте Настройки → Бэкенд.";
 "No conversations yet" = "Пока нет бесед";
 "No exports yet" = "Пока нет экспортов";
 "No images" = "Нет изображений";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "Не синхронизировано — нельзя использовать как ракурс.";
 "Notifications" = "Уведомления";
 "OK" = "ОК";
+"Object to recolor" = "Объект для перекрашивания";
+"Object to remove" = "Объект для удаления";
 "Off" = "Выкл.";
 "Offset" = "Смещение";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Старый формат обмена, наиболее подходящий для Premiere Pro. Поддерживает базовый монтаж и ключевые кадры, но не текст, цвет, эффекты, мягкость и скругление краёв.";
@@ -643,6 +653,7 @@
 "Project Settings" = "Настройки проекта";
 "Projects Couldn’t Be Deleted" = "Не удалось удалить проекты";
 "Prompt" = "Запрос";
+"Put the subject on a new background" = "Поместить объект на новый фон";
 "Quality" = "Качество";
 "Queued" = "В очереди";
 "Quit Lenora" = "Завершить Lenora";
@@ -651,6 +662,7 @@
 "Razor (C)" = "Лезвие (C)";
 "Razor Tool" = "Инструмент «Лезвие»";
 "Reasoning effort" = "Уровень рассуждений";
+"Recolor" = "Перекрасить";
 "Redetect Beats" = "Повторно определить ритм";
 "Redo" = "Повторить";
 "Redo (⇧⌘Z)" = "Повторить (⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "Переименовать дорожку";
 "Rendering" = "Рендеринг";
 "Rendering…" = "Рендеринг…";
+"Repair noise, blur and compression damage" = "Исправить шум, размытие и артефакты сжатия";
+"Replace Background" = "Заменить фон";
 "Replace clip source" = "Заменить источник клипа";
+"Replace" = "Заменить";
 "Replacement Audio" = "Аудио для замены";
 "Rerun" = "Запустить снова";
 "Reset All" = "Сбросить все";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Разрешение не должно превышать 8192 пикселя по любой стороне.";
 "Resolved" = "Решено";
 "Restart Lenora" = "Перезапустить Lenora";
+"Restore" = "Восстановить";
 "Retry" = "Повторить";
 "Retry Download" = "Повторить загрузку";
 "Reveal in Finder" = "Показать в Finder";
@@ -820,6 +836,7 @@
 "Subtitle" = "Субтитры";
 "Subtitle file is unavailable." = "Файл субтитров недоступен.";
 "Swap Media" = "Заменить медиафайл";
+"Swap one object for another" = "Заменить один объект другим";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Заменить медиафайл клипа после завершения генерации. Скорость, громкость, обрезка и трансформация сохраняются.";
 "Switch Angle" = "Переключить ракурс";
 "Switch Angle in Range" = "Переключить ракурс в диапазоне";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "Не удалось запустить сервер MCP. Проверьте порт и повторите попытку.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Токен MCP недоступен. Проверьте доступ к Связке ключей и повторите попытку.";
 "The clip you're adding has different settings than the current project." = "У добавляемого клипа настройки отличаются от текущего проекта.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Подключённый бэкенд не предлагает эту правку. Откройте Настройки → Бэкенд.";
 "The export" = "задачу экспорта";
-"The image is larger than %@." = "Изображение больше %@.";
+"The file is larger than %@." = "Файл больше %@.";
+"The image is larger than %lld pixels in total." = "Изображение больше %lld пикселей в сумме.";
+"The image size isn't known yet. Try again in a moment." = "Размер изображения пока неизвестен. Повторите попытку через мгновение.";
 "The job already finished." = "Задача уже завершена.";
 "The job finished without a result." = "Задача завершилась без результата.";
 "The marker comment changed while you were editing. Review it and try again." = "Комментарий маркера изменился, пока вы его редактировали. Проверьте его и повторите попытку.";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Настройки таймлайна изменились. Закройте это окно и повторите попытку.";
 "Theme" = "Тема";
 "This build includes no skills." = "В этой сборке нет навыков.";
+"This edit works on images only." = "Эта правка работает только с изображениями.";
+"This edit works on videos only." = "Эта правка работает только с видео.";
 "This is where all your footage and assets live." = "Здесь хранятся все ваши материалы и ресурсы.";
 "This is your preview panel to play a selected media or the whole timeline." = "Это панель предпросмотра для воспроизведения выбранного медиафайла или всего таймлайна.";
 "This job can't be cancelled. It will finish on its own." = "Эту задачу нельзя отменить. Она завершится сама.";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "ПРОПИСНЫЕ";
 "URL" = "URL";
 "Unable to save skill" = "Не удалось сохранить навык";
+"Unavailable" = "Недоступно";
 "Unchanged" = "Без изменений";
 "Underline" = "Подчёркивание";
 "Undo" = "Отменить";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "Весь таймлайн · %@";
 "Wide (1.85:1)" = "Широкий (1.85:1)";
 "Width" = "Ширина";
+"With" = "На";
 "Word Reveal" = "Проявление слов";
 "Word Slide" = "Сдвиг слов";
 "Working on %@" = "Выполняется: %@";

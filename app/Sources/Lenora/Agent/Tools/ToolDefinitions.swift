@@ -1070,7 +1070,7 @@ enum ToolDefinitions {
         ),
         AgentTool(
             name: .generateVideo,
-            description: "Starts an async AI video generation. Returns a placeholder asset ID immediately; generation runs in the background and the asset becomes usable in add_clips once ready. Costs real money and is not undoable.",
+            description: "Starts an async AI video generation. Returns a placeholder asset ID immediately; generation runs in the background and the asset becomes usable in add_clips once ready. Omit startFrameMediaRef to generate from the prompt alone when list_models reports requiresFirstFrame=false; otherwise a start frame is required. Costs real money and is not undoable.",
             inputSchema: objectSchema(
                 properties: [
                     "prompt": ["type": "string", "description": "Text description of the video to generate. Optional for transforms such as lip sync that do not use a prompt."],
@@ -1080,6 +1080,7 @@ enum ToolDefinitions {
                     "aspectRatio": ["type": "string", "description": "Aspect ratio (e.g. '16:9', '9:16', '1:1')"],
                     "resolution": ["type": "string", "description": "Resolution (e.g. '720p', '1080p', '4k')"],
                     "draft": ["type": "boolean", "description": "Generate a lower-cost 720p preview when list_models reports supportsDraft=true."],
+                    "generateAudio": ["type": "boolean", "description": "Generate a soundtrack with the video when the model supports it. Doubles the estimate on some backends. Default false."],
                     "startFrameMediaRef": ["type": "string", "description": "Media asset ID to use as the first frame (image-to-video)"],
                     "endFrameMediaRef": ["type": "string", "description": "Media asset ID to use as the last frame (supported by some models)"],
                     "sourceVideoMediaRef": ["type": "string", "description": "Media asset ID of a source video required by video-to-video models. Pass duration when the selected model lists output durations; otherwise the source duration determines billing."],
@@ -1103,6 +1104,8 @@ enum ToolDefinitions {
                     "resolution": ["type": "string", "description": "Resolution (e.g. '2K', '4K')"],
                     "quality": ["type": "string", "description": "Image quality (e.g. 'low', 'medium', 'high'). Only supported by some models — see list_models."],
                     "referenceMediaRefs": ["type": "array", "items": ["type": "string"], "description": "Media asset IDs to use as reference images"],
+                    "count": ["type": "integer", "minimum": 1, "maximum": 4, "description": "Number of images. See list_models maxImages. Default 1."],
+                    "seed": ["type": "integer", "minimum": 0, "description": "Optional seed for repeatable results."],
                     "folder": ["type": "string", "description": "Optional destination folder path, e.g. 'Hero shots/Takes'. Created if missing. Omit for the project root."],
                 ],
                 required: ["prompt"]
@@ -1136,7 +1139,7 @@ enum ToolDefinitions {
         ),
         AgentTool(
             name: .upscaleMedia,
-            description: "Enhances an existing video or image with an AI upscaler. It can change resolution, interpolate video frame rate, or apply model-specific restoration settings. Returns a placeholder asset ID immediately; the result appears in get_media once ready. Call list_models with type='upscale' first and use its exact setting IDs and values. Costs real money and is not undoable.",
+            description: "Enhances an existing video or image with an AI upscaler. It can change resolution, interpolate video frame rate, or apply model-specific restoration settings. Returns a placeholder asset ID immediately; the result appears in get_media once ready. Call list_models with type='upscale' first and use its exact setting IDs and values. Refused inputs return {error: {code, message}} with code unsupported_kind, invalid_request or input_too_large. Costs real money; the finished import is one undo step, but the spend is not refundable.",
             inputSchema: objectSchema(
                 properties: [
                     "mediaRef": ["type": "string", "description": "ID of the video or image asset to upscale"],
@@ -1152,11 +1155,16 @@ enum ToolDefinitions {
         ),
         AgentTool(
             name: .transformMedia,
-            description: "Applies an AI transform to an existing image asset and imports the result as a new asset next to it. Operation removeBackground cuts out the subject and returns a transparent PNG. Accepts PNG, JPEG, WebP, HEIC or TIFF up to the limit list_models reports (10 MB on Cloudinary's free plan). Costs provider credits (about 0.075 Cloudinary credits per image); the receipt's estimate is informational. Returns {mediaRef, status: \"generating\", estimate} immediately — poll get_media until mediaRef is ready, then place it with add_clips. The finished import is one undo step. Listed only while the connected backend supports the operation.",
+            description: "Applies a direct AI edit to an existing asset and imports the result as a new asset next to it. Image operations: removeBackground (transparent PNG), generativeFill (extend the canvas to aspectRatio), replace (from → to), remove (prompt), recolor (prompt to color), backgroundReplace (optional prompt), restore (repair compression and noise). Video operation: reframe (smart crop to aspectRatio, keeping the subject in frame). Text fields allow only letters, digits, spaces and . ' - (up to 100 characters); describe objects plainly (\"the red car\"). Inputs must fit the limits list_models reports (bytes, pixels, types). Costs provider credits; the receipt's estimate is informational and the backend may refuse with quota_exceeded when its daily budget is spent. Returns {mediaRef, status: \"generating\", operation, estimate} at once — poll get_media until mediaRef is ready. Errors returned at once are {error: {code, message, field?}} with code unsupported_kind, invalid_request or input_too_large. A quota_exceeded or provider_unavailable failure arrives later: the placeholder fails, visible via get_media. The finished import is one undo step. For upscaling use upscale_media. Only operations the connected backend supports are listed.",
             inputSchema: objectSchema(
                 properties: [
-                    "mediaRef": ["type": "string", "description": "ID of the image asset to transform"],
-                    "operation": ["type": "string", "enum": ["removeBackground"], "description": "The transform to apply"],
+                    "mediaRef": ["type": "string", "description": "ID of the image or video asset to edit"],
+                    "operation": ["type": "string", "enum": transformOperationKinds.map(\.operation), "description": "The edit to apply"],
+                    "aspectRatio": ["type": "string", "description": "generativeFill: 1:1, 16:9, 9:16, 4:3 or 3:4. reframe: 9:16, 1:1, 4:5 or 16:9."],
+                    "from": ["type": "string", "description": "replace: what to replace. 1–100 letters, digits, spaces or . ' -"],
+                    "to": ["type": "string", "description": "replace: what to put there. Same character rules as from."],
+                    "prompt": ["type": "string", "description": "remove, recolor: the object. backgroundReplace: optional new background. Same character rules as from."],
+                    "color": ["type": "string", "description": "recolor: target colour as #RRGGBB."],
                 ],
                 required: ["mediaRef", "operation"]
             )
@@ -1436,7 +1444,7 @@ extension ToolName {
     /// Backend model kinds the tool needs; nil means it never depends on the backend.
     var requiredKinds: [String]? {
         switch self {
-        case .transformMedia: ["image.removeBackground"]
+        case .transformMedia: ToolDefinitions.transformKinds
         case .generateVideo: ClipType.video.generationKinds
         case .generateImage: ClipType.image.generationKinds
         case .generateAudio: ClipType.audio.generationKinds
@@ -1449,5 +1457,38 @@ extension ToolName {
 extension ToolDefinitions {
     @MainActor static func available(_ tools: [AgentTool], catalog: ModelCatalog) -> [AgentTool] {
         tools.filter { tool in tool.name.requiredKinds.map(catalog.supportsAny(of:)) ?? true }
+            .map { $0.name == .transformMedia ? $0.withTransformOperations(transformOperations(catalog: catalog)) : $0 }
+    }
+
+    static let transformOperationKinds: [(operation: String, kind: String, op: String?)] = [
+        ("removeBackground", "image.removeBackground", nil),
+        ("generativeFill", "image.edit", "fill"), ("replace", "image.edit", "replace"), ("remove", "image.edit", "remove"),
+        ("recolor", "image.edit", "recolor"), ("backgroundReplace", "image.edit", "backgroundReplace"),
+        ("restore", "image.edit", "restore"), ("reframe", "video.reframe", nil),
+    ]
+
+    static let transformKinds = ["image.removeBackground", "image.edit", "video.reframe"]
+
+    static func transformOperations(of model: BackendModel) -> [String] {
+        transformOperationKinds.filter { entry in
+            entry.kind == model.kind && (entry.op.map { model.operations?.contains($0) == true } ?? true)
+        }.map(\.operation)
+    }
+
+    @MainActor static func transformOperations(catalog: ModelCatalog) -> [String] {
+        let supported = Set(transformKinds.flatMap { catalog.models(ofKind: $0) }.flatMap(transformOperations(of:)))
+        return transformOperationKinds.map(\.operation).filter(supported.contains)
+    }
+}
+
+private extension AgentTool {
+    func withTransformOperations(_ operations: [String]) -> AgentTool {
+        var schema = inputSchema
+        var properties = schema["properties"] as? [String: Any] ?? [:]
+        var operation = properties["operation"] as? [String: Any] ?? [:]
+        operation["enum"] = operations
+        properties["operation"] = operation
+        schema["properties"] = properties
+        return AgentTool(name: name, description: description, inputSchema: schema)
     }
 }

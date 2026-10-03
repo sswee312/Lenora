@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ को एक्सपोर्ट नहीं किया जा सका।";
+"%@ credits used · No limit" = "%@ क्रेडिट उपयोग किए गए · कोई सीमा नहीं";
 "%@ does not accept this media" = "%@ इस मीडिया को स्वीकार नहीं करता";
 "%@ does not support this media type." = "%@ इस मीडिया प्रकार का समर्थन नहीं करता।";
 "%@ exported with %lld warnings." = "%@ को %lld चेतावनियों के साथ एक्सपोर्ट किया गया।";
 "%@ exported with 1 warning." = "%@ को 1 चेतावनी के साथ एक्सपोर्ट किया गया।";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ इमेज समर्थित नहीं हैं। PNG, JPEG, WebP, HEIC या TIFF इस्तेमाल करें।";
+"%@ files aren't supported by this edit." = "यह संपादन %@ फ़ाइलों का समर्थन नहीं करता।";
 "%@ is not a valid URL." = "%@ मान्य URL नहीं है।";
 "%@ is ready." = "%@ तैयार है।";
 "%@ model not available" = "%@ मॉडल उपलब्ध नहीं है";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ में HTTPS का उपयोग होना चाहिए, या केवल इसी Mac पर HTTP।";
+"%@ needs a start frame." = "%@ के लिए एक प्रारंभिक फ़्रेम आवश्यक है।";
+"%@ of %@ credits" = "%2$@ में से %1$@ क्रेडिट";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld स्किल्स";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "%@ कैप्चर किया गया। डेस्टिनेशन फ़ोल्डर हटा दिया गया था, इसलिए फ़्रेम को मीडिया के टॉप लेवल पर सेव किया गया।";
 "Censor profanity" = "अपशब्द सेंसर करें";
 "Center" = "मध्य";
-"Change aspect ratio and extend the frame with AI" = "आस्पेक्ट रेशियो बदलें और AI से फ़्रेम बढ़ाएँ";
+"Change the color of an object" = "किसी वस्तु का रंग बदलें";
 "Change to Match" = "मैच करने के लिए बदलें";
 "Changes take effect after restarting Lenora." = "बदलाव Lenora को रीस्टार्ट करने के बाद लागू होंगे।";
 "Changing the ratio preserves the shorter edge." = "रेशियो बदलने पर छोटी किनारी बनी रहती है।";
@@ -220,12 +223,14 @@
 "Creating…" = "बनाया जा रहा है…";
 "Crop" = "क्रॉप";
 "Crop applies to one clip at a time" = "क्रॉप एक समय में एक क्लिप पर लागू होता है";
+"Crop to a new aspect ratio, keeping the subject in frame" = "नए आस्पेक्ट रेशियो में क्रॉप करें, विषय को फ़्रेम में रखते हुए";
 "Curves" = "कर्व्स";
 "Custom Aspect Ratio" = "कस्टम आस्पेक्ट रेशियो";
 "Custom…" = "कस्टम…";
 "Cut" = "कट";
 "Cut out the subject as a transparent PNG" = "सब्जेक्ट को ट्रांसपेरेंट PNG के रूप में काटें";
 "Cut to the beat" = "बीट पर कट करें";
+"Daily budget" = "दैनिक बजट";
 "Dark" = "डार्क";
 "Dark appearance" = "डार्क अपीयरेंस";
 "Darken" = "डार्कन";
@@ -312,6 +317,7 @@
 "Enhance" = "एन्हांस";
 "Enhance resolution or frame rate with AI" = "AI से रेज़ोल्यूशन या फ़्रेम रेट बेहतर करें";
 "Enter Full Screen" = "फ़ुल स्क्रीन में जाएँ";
+"Erase an object from the image" = "छवि से कोई वस्तु मिटाएँ";
 "Every connected agent will need the new token." = "जुड़े हर एजेंट को नया टोकन चाहिए होगा।";
 "Exclusion" = "एक्सक्लूज़न";
 "Expand" = "फैलाएँ";
@@ -324,6 +330,7 @@
 "Exporting…" = "एक्सपोर्ट हो रहा है…";
 "Export…" = "एक्सपोर्ट करें…";
 "Exposure" = "एक्सपोज़र";
+"Extend the image to a new aspect ratio" = "छवि को नए आस्पेक्ट रेशियो तक बढ़ाएँ";
 "Extend" = "बढ़ाएँ";
 "Extends captions across short gaps and holds the final caption." = "छोटे गैप पर कैप्शन बढ़ाता है और अंतिम कैप्शन होल्ड करता है।";
 "Extra Large" = "बहुत बड़ा";
@@ -385,6 +392,7 @@
 "Generation in progress" = "जेनरेशन जारी है";
 "Generation panel" = "जेनरेशन पैनल";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "जनरेशन आपके Lenora बैकएंड पर चलता है। टोकन macOS Keychain में स्टोर होता है।";
+"Generative Fill" = "जनरेटिव फ़िल";
 "Get Anthropic API key" = "Anthropic API कुंजी पाएँ";
 "Get OpenAI API key" = "OpenAI API कुंजी पाएँ";
 "Get Started" = "शुरू करें";
@@ -541,6 +549,7 @@
 "My Projects" = "मेरे प्रोजेक्ट";
 "Name" = "नाम";
 "Nest settings discarded. Undo to restore." = "नेस्ट सेटिंग्स छोड़ दी गईं। वापस लाने के लिए अनडू करें।";
+"New background (optional)" = "नई पृष्ठभूमि (वैकल्पिक)";
 "New" = "नया";
 "New Folder" = "नया फ़ोल्डर";
 "New Project" = "नया प्रोजेक्ट";
@@ -558,7 +567,6 @@
 "No audio" = "कोई ऑडियो नहीं";
 "No audio selected." = "कोई ऑडियो चयनित नहीं।";
 "No beats detected." = "कोई बीट नहीं पहचानी गई।";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "कोई कनेक्टेड बैकएंड बैकग्राउंड नहीं हटा सकता। सेटिंग्स → बैकएंड खोलें।";
 "No conversations yet" = "अभी कोई बातचीत नहीं";
 "No exports yet" = "अभी कोई एक्सपोर्ट नहीं";
 "No images" = "कोई इमेज नहीं";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "सिंक नहीं — एंगल के रूप में उपयोग नहीं किया जा सकता।";
 "Notifications" = "सूचनाएँ";
 "OK" = "ठीक है";
+"Object to recolor" = "फिर से रंगने वाली वस्तु";
+"Object to remove" = "हटाने वाली वस्तु";
 "Off" = "बंद";
 "Offset" = "ऑफ़सेट";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "पुराना इंटरचेंज फ़ॉर्मैट, Premiere Pro को डेस्टिनेशन बनाने के लिए सबसे अच्छा। बेसिक एडिट और कीफ़्रेम समर्थित हैं, लेकिन टेक्स्ट, कलर, इफ़ेक्ट, एज सॉफ़्टनेस या एज राउंडिंग नहीं।";
@@ -643,6 +653,7 @@
 "Project Settings" = "प्रोजेक्ट सेटिंग्स";
 "Projects Couldn’t Be Deleted" = "प्रोजेक्ट हटाए नहीं जा सके";
 "Prompt" = "प्रॉम्प्ट";
+"Put the subject on a new background" = "विषय को नई पृष्ठभूमि पर रखें";
 "Quality" = "क्वालिटी";
 "Queued" = "क्यू में";
 "Quit Lenora" = "Lenora छोड़ें";
@@ -651,6 +662,7 @@
 "Razor (C)" = "रेज़र (C)";
 "Razor Tool" = "रेज़र टूल";
 "Reasoning effort" = "रीज़निंग एफ़र्ट";
+"Recolor" = "फिर से रंगें";
 "Redetect Beats" = "बीट्स दोबारा पहचानें";
 "Redo" = "रीडू";
 "Redo (⇧⌘Z)" = "रीडू (⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "ट्रैक का नाम बदलें";
 "Rendering" = "रेंडरिंग";
 "Rendering…" = "रेंडरिंग…";
+"Repair noise, blur and compression damage" = "नॉइज़, धुंधलापन और कम्प्रेशन की क्षति ठीक करें";
+"Replace Background" = "पृष्ठभूमि बदलें";
 "Replace clip source" = "क्लिप सोर्स बदलें";
+"Replace" = "बदलें";
 "Replacement Audio" = "रिप्लेसमेंट ऑडियो";
 "Rerun" = "फिर चलाएँ";
 "Reset All" = "सभी रीसेट करें";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "किसी भी किनारे पर रेज़ोल्यूशन 8192 पिक्सेल से अधिक नहीं होना चाहिए।";
 "Resolved" = "हल";
 "Restart Lenora" = "Lenora रीस्टार्ट करें";
+"Restore" = "पुनर्स्थापित करें";
 "Retry" = "फिर कोशिश करें";
 "Retry Download" = "डाउनलोड दोबारा करें";
 "Reveal in Finder" = "Finder में दिखाएँ";
@@ -820,6 +836,7 @@
 "Subtitle" = "सबटाइटल";
 "Subtitle file is unavailable." = "सबटाइटल फ़ाइल उपलब्ध नहीं है।";
 "Swap Media" = "मीडिया स्वैप करें";
+"Swap one object for another" = "एक वस्तु को दूसरी से बदलें";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "जेनरेशन पूर्ण होने पर क्लिप का मीडिया स्वैप करें। स्पीड, वॉल्यूम, ट्रिम और ट्रांसफ़ॉर्म बने रहते हैं।";
 "Switch Angle" = "एंगल बदलें";
 "Switch Angle in Range" = "रेंज में एंगल बदलें";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "MCP सर्वर शुरू नहीं हो सका। पोर्ट जाँचें, फिर दोबारा कोशिश करें।";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP टोकन उपलब्ध नहीं है। Keychain एक्सेस जाँचें, फिर दोबारा कोशिश करें।";
 "The clip you're adding has different settings than the current project." = "आप जो क्लिप जोड़ रहे हैं उसकी सेटिंग्स मौजूदा प्रोजेक्ट से अलग हैं।";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "कनेक्ट किया गया बैकएंड यह संपादन उपलब्ध नहीं कराता। सेटिंग्स → बैकएंड खोलें।";
 "The export" = "एक्सपोर्ट";
-"The image is larger than %@." = "इमेज %@ से बड़ी है।";
+"The file is larger than %@." = "फ़ाइल %@ से बड़ी है।";
+"The image is larger than %lld pixels in total." = "छवि कुल %lld पिक्सेल से बड़ी है।";
+"The image size isn't known yet. Try again in a moment." = "छवि का आकार अभी पता नहीं है। थोड़ी देर में फिर कोशिश करें।";
 "The job already finished." = "जॉब पहले ही पूरा हो चुका है।";
 "The job finished without a result." = "जॉब बिना परिणाम के समाप्त हुआ।";
 "The marker comment changed while you were editing. Review it and try again." = "एडिट करते समय मार्कर कमेंट बदल गया। जाँचें और फिर कोशिश करें।";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "टाइमलाइन सेटिंग्स बदल गई हैं। यह शीट बंद करके फिर कोशिश करें।";
 "Theme" = "थीम";
 "This build includes no skills." = "इस बिल्ड में कोई स्किल शामिल नहीं है।";
+"This edit works on images only." = "यह संपादन केवल छवियों पर काम करता है।";
+"This edit works on videos only." = "यह संपादन केवल वीडियो पर काम करता है।";
 "This is where all your footage and assets live." = "आपका सारा फ़ुटेज और सभी एसेट यहाँ रहते हैं।";
 "This is your preview panel to play a selected media or the whole timeline." = "यह चयनित मीडिया या पूरी टाइमलाइन चलाने का प्रीव्यू पैनल है।";
 "This job can't be cancelled. It will finish on its own." = "इस जॉब को रद्द नहीं किया जा सकता। यह अपने आप पूरा हो जाएगा।";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "अपरकेस";
 "URL" = "URL";
 "Unable to save skill" = "स्किल सेव नहीं की जा सकी";
+"Unavailable" = "अनुपलब्ध";
 "Unchanged" = "अपरिवर्तित";
 "Underline" = "अंडरलाइन";
 "Undo" = "अनडू";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "पूरी टाइमलाइन · %@";
 "Wide (1.85:1)" = "वाइड (1.85:1)";
 "Width" = "चौड़ाई";
+"With" = "से";
 "Word Reveal" = "वर्ड रिवील";
 "Word Slide" = "वर्ड स्लाइड";
 "Working on %@" = "%@ पर काम हो रहा है";

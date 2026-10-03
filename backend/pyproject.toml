@@ -43,6 +43,6 @@ packages = ["src/lenora_backend"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests", "adapters/cloudinary/tests"]
-pythonpath = ["tests"]
+pythonpath = ["tests", "adapters/cloudinary/tests"]
 markers = ["live: hits the real provider; needs keys in the environment"]
 addopts = "-m 'not live'"

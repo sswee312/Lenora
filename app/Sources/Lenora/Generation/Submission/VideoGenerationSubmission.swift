@@ -265,6 +265,9 @@ struct VideoGenerationSubmission {
             if frames.count > 1, !model.supportsLastFrame {
                 return "\(model.displayName) does not accept a last frame"
             }
+            if model.requiresFirstFrame, frames.isEmpty {
+                return L10n.string("\(model.displayName) needs a start frame.")
+            }
             if model.framesAndReferencesExclusive, !frames.isEmpty, !allRefs.isEmpty {
                 return "\(model.displayName) uses frames OR references, not both. Clear one side."
             }

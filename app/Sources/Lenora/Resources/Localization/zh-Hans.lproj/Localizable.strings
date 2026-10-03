@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "无法导出 %@。";
+"%@ credits used · No limit" = "已使用 %@ 点数 · 无限制";
 "%@ does not accept this media" = "%@ 不接受此媒体";
 "%@ does not support this media type." = "%@ 不支持此媒体类型。";
 "%@ exported with %lld warnings." = "%@ 已导出，有 %lld 条警告。";
 "%@ exported with 1 warning." = "%@ 已导出，有 1 条警告。";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "不支持 %@ 图像。请使用 PNG、JPEG、WebP、HEIC 或 TIFF。";
+"%@ files aren't supported by this edit." = "此编辑不支持 %@ 文件。";
 "%@ is not a valid URL." = "%@ 不是有效的 URL。";
 "%@ is ready." = "%@ 已就绪。";
 "%@ model not available" = "%@ 模型不可用";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ 必须使用 HTTPS，或仅在此 Mac 上使用 HTTP。";
+"%@ needs a start frame." = "%@ 需要起始帧。";
+"%@ of %@ credits" = "%@ / %@ 点数";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@，%lld 个技能";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "已截取 %@。目标文件夹已被移除，因此该帧已保存到“媒体”的顶层。";
 "Censor profanity" = "屏蔽不雅用语";
 "Center" = "居中";
-"Change aspect ratio and extend the frame with AI" = "使用 AI 更改宽高比并扩展画面";
+"Change the color of an object" = "更改对象的颜色";
 "Change to Match" = "更改以匹配";
 "Changes take effect after restarting Lenora." = "更改将在重新启动 Lenora 后生效。";
 "Changing the ratio preserves the shorter edge." = "更改比例时会保留较短边。";
@@ -220,12 +223,14 @@
 "Creating…" = "正在创建…";
 "Crop" = "裁剪";
 "Crop applies to one clip at a time" = "每次只能裁剪一个片段";
+"Crop to a new aspect ratio, keeping the subject in frame" = "裁剪为新的宽高比，并将主体保持在画面内";
 "Curves" = "曲线";
 "Custom Aspect Ratio" = "自定义宽高比";
 "Custom…" = "自定义…";
 "Cut" = "剪切";
 "Cut out the subject as a transparent PNG" = "将主体抠出为透明 PNG";
 "Cut to the beat" = "按节拍剪辑";
+"Daily budget" = "每日预算";
 "Dark" = "深色";
 "Dark appearance" = "深色外观";
 "Darken" = "变暗";
@@ -312,6 +317,7 @@
 "Enhance" = "增强";
 "Enhance resolution or frame rate with AI" = "使用 AI 提升分辨率或帧率";
 "Enter Full Screen" = "进入全屏幕";
+"Erase an object from the image" = "从图像中擦除对象";
 "Every connected agent will need the new token." = "每个已连接的 Agent 都需要新令牌。";
 "Exclusion" = "排除";
 "Expand" = "展开";
@@ -324,6 +330,7 @@
 "Exporting…" = "正在导出…";
 "Export…" = "导出…";
 "Exposure" = "曝光";
+"Extend the image to a new aspect ratio" = "将图像扩展到新的宽高比";
 "Extend" = "延长";
 "Extends captions across short gaps and holds the final caption." = "将字幕延长以覆盖短间隙，并保持最后一条字幕。";
 "Extra Large" = "特大";
@@ -385,6 +392,7 @@
 "Generation in progress" = "正在生成";
 "Generation panel" = "生成面板";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "生成在你的 Lenora 后端上运行。令牌保存在 macOS 钥匙串中。";
+"Generative Fill" = "生成式填充";
 "Get Anthropic API key" = "获取 Anthropic API key";
 "Get OpenAI API key" = "获取 OpenAI API key";
 "Get Started" = "开始使用";
@@ -541,6 +549,7 @@
 "My Projects" = "我的项目";
 "Name" = "名称";
 "Nest settings discarded. Undo to restore." = "嵌套设置已丢弃。撤销可恢复。";
+"New background (optional)" = "新背景(可选)";
 "New" = "新建";
 "New Folder" = "新建文件夹";
 "New Project" = "新建项目";
@@ -558,7 +567,6 @@
 "No audio" = "没有音频";
 "No audio selected." = "未选择音频。";
 "No beats detected." = "未检测到节拍。";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "没有已连接的后端可以移除背景。请打开设置 → 后端。";
 "No conversations yet" = "尚无对话";
 "No exports yet" = "尚无导出任务";
 "No images" = "没有图像";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "未同步，无法用作机位。";
 "Notifications" = "通知";
 "OK" = "好";
+"Object to recolor" = "要重新着色的对象";
+"Object to remove" = "要移除的对象";
 "Off" = "关闭";
 "Offset" = "偏移";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "较旧的交换格式，最适合导入 Premiere Pro。支持基本编辑和关键帧，但不支持文本、颜色、效果、边缘柔化或边缘圆角。";
@@ -643,6 +653,7 @@
 "Project Settings" = "项目设置";
 "Projects Couldn’t Be Deleted" = "无法删除项目";
 "Prompt" = "提示词";
+"Put the subject on a new background" = "将主体放到新背景上";
 "Quality" = "质量";
 "Queued" = "已排队";
 "Quit Lenora" = "退出 Lenora";
@@ -651,6 +662,7 @@
 "Razor (C)" = "剃刀 (C)";
 "Razor Tool" = "剃刀工具";
 "Reasoning effort" = "推理强度";
+"Recolor" = "重新着色";
 "Redetect Beats" = "重新检测节拍";
 "Redo" = "重做";
 "Redo (⇧⌘Z)" = "重做 (⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "重新命名轨道";
 "Rendering" = "正在渲染";
 "Rendering…" = "正在渲染…";
+"Repair noise, blur and compression damage" = "修复噪点、模糊和压缩损伤";
+"Replace Background" = "替换背景";
 "Replace clip source" = "替换片段源媒体";
+"Replace" = "替换";
 "Replacement Audio" = "替换音频";
 "Rerun" = "重新运行";
 "Reset All" = "全部还原";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "任一边的分辨率不得超过 8192 像素。";
 "Resolved" = "已解决";
 "Restart Lenora" = "重新启动 Lenora";
+"Restore" = "修复";
 "Retry" = "重试";
 "Retry Download" = "重试下载";
 "Reveal in Finder" = "在访达中显示";
@@ -820,6 +836,7 @@
 "Subtitle" = "字幕";
 "Subtitle file is unavailable." = "字幕文件不可用。";
 "Swap Media" = "替换媒体";
+"Swap one object for another" = "将一个对象换成另一个";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "生成完成后替换片段的媒体。速度、音量、修剪和变换将保留。";
 "Switch Angle" = "切换机位";
 "Switch Angle in Range" = "在范围内切换机位";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "无法启动 MCP 服务器。请检查端口，然后重试。";
 "The MCP token is unavailable. Check Keychain access, then try again." = "无法使用 MCP 令牌。请检查钥匙串访问权限，然后重试。";
 "The clip you're adding has different settings than the current project." = "要添加的片段与当前项目的设置不同。";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "已连接的后端不提供此编辑。请打开“设置 → 后端”。";
 "The export" = "导出任务";
-"The image is larger than %@." = "图像大于 %@。";
+"The file is larger than %@." = "文件大于 %@。";
+"The image is larger than %lld pixels in total." = "图像总像素数超过 %lld。";
+"The image size isn't known yet. Try again in a moment." = "尚不知道图像尺寸。请稍后再试。";
 "The job already finished." = "任务已完成。";
 "The job finished without a result." = "任务已结束，但没有结果。";
 "The marker comment changed while you were editing. Review it and try again." = "你编辑时标记注释已更改。请查看后重试。";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "时间线设置已更改。请关闭此表单后重试。";
 "Theme" = "主题";
 "This build includes no skills." = "此版本不包含任何技能。";
+"This edit works on images only." = "此编辑仅适用于图像。";
+"This edit works on videos only." = "此编辑仅适用于视频。";
 "This is where all your footage and assets live." = "你的所有素材和资源都位于此处。";
 "This is your preview panel to play a selected media or the whole timeline." = "这是预览面板，用于播放所选媒体或整个时间线。";
 "This job can't be cancelled. It will finish on its own." = "无法取消此任务。它将自行完成。";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "大写";
 "URL" = "URL";
 "Unable to save skill" = "无法保存技能";
+"Unavailable" = "不可用";
 "Unchanged" = "未更改";
 "Underline" = "下划线";
 "Undo" = "撤销";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "整个时间线 · %@";
 "Wide (1.85:1)" = "宽银幕 (1.85:1)";
 "Width" = "宽度";
+"With" = "替换为";
 "Word Reveal" = "字词显现";
 "Word Slide" = "字词滑入";
 "Working on %@" = "正在处理 %@";

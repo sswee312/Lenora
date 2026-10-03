@@ -452,6 +452,10 @@ class VideoProject: NSDocument {
                 ProjectSettingsMismatchView(mismatch: mismatch)
                     .environment(editorViewModel)
             }
+            .sheet(item: Bindable(editorViewModel).pendingMediaEdit) { [editorViewModel] pending in
+                MediaEditSheet(asset: pending.asset, action: pending.action)
+                    .environment(editorViewModel)
+            }
             .overlay {
                 TourOverlay()
                     .environment(editorViewModel)

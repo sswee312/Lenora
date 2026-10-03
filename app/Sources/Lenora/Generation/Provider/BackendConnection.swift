@@ -24,7 +24,7 @@ final class BackendConnection {
 
     private init() {}
 
-    func reload() async {
+    func reload(recheckAddons: Bool = false) async {
         generation &+= 1
         let current = generation
         state = .connecting
@@ -54,7 +54,7 @@ final class BackendConnection {
         configuration = resolved.configuration
         provider = client
         do {
-            let health = try await client.health()
+            let health = try await client.health(recheckAddons: recheckAddons)
             let capabilities = try await client.capabilities()
             guard current == generation else { return }
             self.health = health
@@ -70,6 +70,20 @@ final class BackendConnection {
             default: state = .failed(error.localizedDescription)
             }
             Log.generation.warning("backend connection failed: \(error.localizedDescription)")
+        }
+    }
+
+    func refreshCapabilities() async {
+        guard let provider, let configuration else { return }
+        let current = generation
+        do {
+            let health = try await provider.health(recheckAddons: false)
+            let capabilities = try await provider.capabilities()
+            guard self.configuration == configuration, current == generation else { return }
+            self.health = health
+            ModelCatalog.shared.apply(capabilities)
+        } catch {
+            Log.generation.warning("capability refresh failed: \(error.localizedDescription)")
         }
     }
 
@@ -89,7 +103,7 @@ final class BackendConnection {
             return
         }
         guard current == generation else { return }
-        await reload()
+        await reload(recheckAddons: true)
     }
 
     private func clear() {

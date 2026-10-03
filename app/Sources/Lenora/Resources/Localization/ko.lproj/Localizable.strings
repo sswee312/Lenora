@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@을(를) 내보낼 수 없습니다.";
+"%@ credits used · No limit" = "%@ 크레딧 사용 · 제한 없음";
 "%@ does not accept this media" = "%@은(는) 이 미디어를 사용할 수 없습니다";
 "%@ does not support this media type." = "%@은(는) 이 미디어 유형을 지원하지 않습니다.";
 "%@ exported with %lld warnings." = "%@을(를) %lld개의 경고와 함께 내보냈습니다.";
 "%@ exported with 1 warning." = "%@을(를) 경고 1개와 함께 내보냈습니다.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "%@ 이미지는 지원되지 않습니다. PNG, JPEG, WebP, HEIC 또는 TIFF를 사용하세요.";
+"%@ files aren't supported by this edit." = "이 편집은 %@ 파일을 지원하지 않습니다.";
 "%@ is not a valid URL." = "%@은(는) 올바른 URL이 아닙니다.";
 "%@ is ready." = "%@이(가) 준비되었습니다.";
 "%@ model not available" = "%@ 모델을 사용할 수 없음";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@은(는) HTTPS를 사용해야 하며, 이 Mac에서만 HTTP를 사용할 수 있습니다.";
+"%@ needs a start frame." = "%@에는 시작 프레임이 필요합니다.";
+"%@ of %@ credits" = "%@ / %@ 크레딧";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, 스킬 %lld개";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "%@을(를) 캡처했습니다. 대상 폴더가 제거되어 프레임을 미디어의 최상위 수준에 저장했습니다.";
 "Censor profanity" = "비속어 검열";
 "Center" = "가운데";
-"Change aspect ratio and extend the frame with AI" = "AI로 화면비를 변경하고 프레임 확장";
+"Change the color of an object" = "개체의 색상 변경";
 "Change to Match" = "일치하도록 변경";
 "Changes take effect after restarting Lenora." = "변경 사항은 Lenora를 재시동한 후 적용됩니다.";
 "Changing the ratio preserves the shorter edge." = "화면비를 변경해도 짧은 쪽은 유지됩니다.";
@@ -220,12 +223,14 @@
 "Creating…" = "생성하는 중…";
 "Crop" = "자르기";
 "Crop applies to one clip at a time" = "자르기는 한 번에 하나의 클립에 적용됩니다";
+"Crop to a new aspect ratio, keeping the subject in frame" = "새 화면비로 자르고 피사체를 프레임 안에 유지합니다";
 "Curves" = "곡선";
 "Custom Aspect Ratio" = "사용자 설정 화면비";
 "Custom…" = "사용자 설정…";
 "Cut" = "오려두기";
 "Cut out the subject as a transparent PNG" = "피사체를 투명한 PNG로 오려내기";
 "Cut to the beat" = "비트에 맞춰 컷";
+"Daily budget" = "일일 예산";
 "Dark" = "다크";
 "Dark appearance" = "다크 모드";
 "Darken" = "어둡게";
@@ -312,6 +317,7 @@
 "Enhance" = "향상";
 "Enhance resolution or frame rate with AI" = "AI로 해상도 또는 프레임률 향상";
 "Enter Full Screen" = "전체 화면 시작";
+"Erase an object from the image" = "이미지에서 개체 지우기";
 "Every connected agent will need the new token." = "연결된 모든 에이전트에 새 토큰이 필요합니다.";
 "Exclusion" = "제외";
 "Expand" = "확장";
@@ -324,6 +330,7 @@
 "Exporting…" = "내보내는 중…";
 "Export…" = "내보내기…";
 "Exposure" = "노출";
+"Extend the image to a new aspect ratio" = "이미지를 새 화면비로 확장";
 "Extend" = "연장";
 "Extends captions across short gaps and holds the final caption." = "짧은 간격에 캡션을 연장하고 마지막 캡션을 유지합니다.";
 "Extra Large" = "매우 크게";
@@ -385,6 +392,7 @@
 "Generation in progress" = "생성 진행 중";
 "Generation panel" = "생성 패널";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "생성은 Lenora 백엔드에서 실행됩니다. 토큰은 macOS 키체인에 저장됩니다.";
+"Generative Fill" = "생성형 채우기";
 "Get Anthropic API key" = "Anthropic API 키 받기";
 "Get OpenAI API key" = "OpenAI API 키 받기";
 "Get Started" = "시작하기";
@@ -541,6 +549,7 @@
 "My Projects" = "나의 프로젝트";
 "Name" = "이름";
 "Nest settings discarded. Undo to restore." = "중첩 설정이 폐기되었습니다. 복원하려면 실행 취소하세요.";
+"New background (optional)" = "새 배경(선택 사항)";
 "New" = "신규";
 "New Folder" = "새 폴더";
 "New Project" = "새 프로젝트";
@@ -558,7 +567,6 @@
 "No audio" = "오디오 없음";
 "No audio selected." = "선택한 오디오가 없습니다.";
 "No beats detected." = "감지된 비트가 없습니다.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "배경을 제거할 수 있는 연결된 백엔드가 없습니다. 설정 → 백엔드을(를) 여세요.";
 "No conversations yet" = "아직 대화 없음";
 "No exports yet" = "아직 내보내기 없음";
 "No images" = "이미지 없음";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "동기화되지 않음 — 앵글로 사용할 수 없습니다.";
 "Notifications" = "알림";
 "OK" = "확인";
+"Object to recolor" = "색상을 바꿀 개체";
+"Object to remove" = "제거할 개체";
 "Off" = "끔";
 "Offset" = "오프셋";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Premiere Pro로 보낼 때 적합한 이전 교환 포맷입니다. 기본 편집과 키프레임을 지원하지만 텍스트, 색상, 효과, 가장자리 부드러움 또는 가장자리 둥글기는 지원하지 않습니다.";
@@ -643,6 +653,7 @@
 "Project Settings" = "프로젝트 설정";
 "Projects Couldn’t Be Deleted" = "프로젝트를 삭제할 수 없음";
 "Prompt" = "프롬프트";
+"Put the subject on a new background" = "피사체를 새 배경에 배치";
 "Quality" = "품질";
 "Queued" = "대기 중";
 "Quit Lenora" = "Lenora 종료";
@@ -651,6 +662,7 @@
 "Razor (C)" = "면도날(C)";
 "Razor Tool" = "면도날 도구";
 "Reasoning effort" = "추론 강도";
+"Recolor" = "색상 변경";
 "Redetect Beats" = "비트 다시 감지";
 "Redo" = "다시 실행";
 "Redo (⇧⌘Z)" = "다시 실행(⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "트랙 이름 변경";
 "Rendering" = "렌더링 중";
 "Rendering…" = "렌더링하는 중…";
+"Repair noise, blur and compression damage" = "노이즈, 흐림, 압축 손상 복구";
+"Replace Background" = "배경 바꾸기";
 "Replace clip source" = "클립 소스 대체";
+"Replace" = "바꾸기";
 "Replacement Audio" = "대체 오디오";
 "Rerun" = "다시 실행";
 "Reset All" = "모두 재설정";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "어느 쪽도 해상도가 8192픽셀을 초과할 수 없습니다.";
 "Resolved" = "해결됨";
 "Restart Lenora" = "Lenora 재시동";
+"Restore" = "복원";
 "Retry" = "재시도";
 "Retry Download" = "다운로드 재시도";
 "Reveal in Finder" = "Finder에서 보기";
@@ -820,6 +836,7 @@
 "Subtitle" = "자막";
 "Subtitle file is unavailable." = "자막 파일을 사용할 수 없습니다.";
 "Swap Media" = "미디어 교체";
+"Swap one object for another" = "한 개체를 다른 개체로 바꾸기";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "생성이 완료되면 클립의 미디어를 교체합니다. 속도, 음량, 트리밍 및 변형은 유지됩니다.";
 "Switch Angle" = "앵글 전환";
 "Switch Angle in Range" = "범위에서 앵글 전환";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "MCP 서버를 시작할 수 없습니다. 포트를 확인한 다음 다시 시도하세요.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP 토큰을 사용할 수 없습니다. 키체인 접근 권한을 확인한 다음 다시 시도하세요.";
 "The clip you're adding has different settings than the current project." = "추가하려는 클립의 설정이 현재 프로젝트와 다릅니다.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "연결된 백엔드가 이 편집을 제공하지 않습니다. 설정 → 백엔드를 여세요.";
 "The export" = "내보내기";
-"The image is larger than %@." = "이미지가 %@보다 큽니다.";
+"The file is larger than %@." = "파일이 %@보다 큽니다.";
+"The image is larger than %lld pixels in total." = "이미지의 총 픽셀 수가 %lld를 초과합니다.";
+"The image size isn't known yet. Try again in a moment." = "아직 이미지 크기를 알 수 없습니다. 잠시 후 다시 시도하세요.";
 "The job already finished." = "작업이 이미 완료되었습니다.";
 "The job finished without a result." = "작업이 결과 없이 종료되었습니다.";
 "The marker comment changed while you were editing. Review it and try again." = "편집하는 동안 마커 코멘트가 변경되었습니다. 확인한 후 다시 시도하세요.";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "타임라인 설정이 변경되었습니다. 이 시트를 닫고 다시 시도하세요.";
 "Theme" = "테마";
 "This build includes no skills." = "이 빌드에는 스킬이 포함되어 있지 않습니다.";
+"This edit works on images only." = "이 편집은 이미지에서만 작동합니다.";
+"This edit works on videos only." = "이 편집은 비디오에서만 작동합니다.";
 "This is where all your footage and assets live." = "모든 푸티지와 에셋이 보관되는 곳입니다.";
 "This is your preview panel to play a selected media or the whole timeline." = "선택한 미디어 또는 전체 타임라인을 재생하는 미리보기 패널입니다.";
 "This job can't be cancelled. It will finish on its own." = "이 작업은 취소할 수 없습니다. 자동으로 완료됩니다.";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "대문자";
 "URL" = "URL";
 "Unable to save skill" = "스킬을 저장할 수 없음";
+"Unavailable" = "사용 불가";
 "Unchanged" = "변경 없음";
 "Underline" = "밑줄";
 "Undo" = "실행 취소";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "전체 타임라인 · %@";
 "Wide (1.85:1)" = "와이드 (1.85:1)";
 "Width" = "너비";
+"With" = "바꿀 대상";
 "Word Reveal" = "단어 나타내기";
 "Word Slide" = "단어 슬라이드";
 "Working on %@" = "%@ 작업 중";

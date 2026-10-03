@@ -1,0 +1,6 @@
+{
+  "kind": "video.reframe",
+  "model": "cloudinary/reframe",
+  "inputs": [{ "assetRef": "video/upload/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d" }],
+  "params": { "aspectRatio": "9:16" }
+}

@@ -15,6 +15,7 @@ struct BackendEstimate: Codable, Sendable, Equatable {
 struct BackendInputLimits: Decodable, Sendable, Equatable {
     let types: [String]
     let maxBytes: Int64
+    let maxPixels: Int64?
 }
 
 struct BackendModel: Decodable, Sendable {
@@ -25,6 +26,7 @@ struct BackendModel: Decodable, Sendable {
     let cancellable: Bool
     let estimate: BackendEstimate?
     let ui: Value?
+    let operations: [String]?
 }
 
 struct AdapterVersion: Decodable, Sendable, Equatable {
@@ -44,6 +46,25 @@ struct AdapterHealth: Decodable, Sendable, Equatable {
     let id: String
     let enabled: Bool
     let reason: String?
+    let details: AdapterHealthDetails?
+}
+
+struct AdapterHealthDetails: Decodable, Sendable, Equatable {
+    let addons: [AddonStatus]?
+    let budget: BudgetStatus?
+}
+
+struct AddonStatus: Decodable, Sendable, Equatable, Identifiable {
+    let id: String
+    let mode: String
+    let available: Bool
+    let reason: String?
+}
+
+struct BudgetStatus: Decodable, Sendable, Equatable {
+    let limit: Double?
+    let used: Double
+    let day: String
 }
 
 struct BackendHealth: Decodable, Sendable {
@@ -67,27 +88,43 @@ struct UploadTicket: Decodable, Sendable {
     let ticket: Ticket
 }
 
-enum JobInput: Codable, Sendable, Equatable {
-    case assetRef(String)
-    case url(URL)
+enum InputRole: String, Codable, Sendable {
+    case startFrame, endFrame, reference
+}
 
-    private enum CodingKeys: String, CodingKey { case assetRef, url }
+struct JobInput: Codable, Sendable, Equatable {
+    enum Source: Equatable, Sendable { case assetRef(String), url(URL) }
+
+    let source: Source
+    let role: InputRole?
+
+    static func assetRef(_ ref: String, role: InputRole? = nil) -> JobInput { JobInput(source: .assetRef(ref), role: role) }
+    static func url(_ url: URL, role: InputRole? = nil) -> JobInput { JobInput(source: .url(url), role: role) }
+
+    private init(source: Source, role: InputRole?) {
+        self.source = source
+        self.role = role
+    }
+
+    private enum CodingKeys: String, CodingKey { case assetRef, url, role }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let ref = try container.decodeIfPresent(String.self, forKey: .assetRef) {
-            self = .assetRef(ref)
+            source = .assetRef(ref)
         } else {
-            self = .url(try container.decode(URL.self, forKey: .url))
+            source = .url(try container.decode(URL.self, forKey: .url))
         }
+        role = try container.decodeIfPresent(InputRole.self, forKey: .role)
     }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        switch self {
+        switch source {
         case .assetRef(let ref): try container.encode(ref, forKey: .assetRef)
         case .url(let url): try container.encode(url, forKey: .url)
         }
+        try container.encodeIfPresent(role, forKey: .role)
     }
 }
 

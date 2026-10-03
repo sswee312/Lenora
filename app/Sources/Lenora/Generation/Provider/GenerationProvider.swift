@@ -1,7 +1,7 @@
 import Foundation
 
 protocol GenerationProvider: Sendable {
-    func health() async throws -> BackendHealth
+    func health(recheckAddons: Bool) async throws -> BackendHealth
     func capabilities() async throws -> BackendCapabilities
     func createUpload(model: String, contentType: String, byteCount: Int64, filename: String) async throws -> UploadTicket
     func upload(_ fileURL: URL, ticket: UploadTicket) async throws

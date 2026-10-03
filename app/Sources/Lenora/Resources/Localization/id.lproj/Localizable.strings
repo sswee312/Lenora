@@ -1,15 +1,18 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
 "%@ could not be exported." = "%@ tidak dapat diekspor.";
+"%@ credits used · No limit" = "%@ kredit terpakai · Tanpa batas";
 "%@ does not accept this media" = "%@ tidak menerima media ini";
 "%@ does not support this media type." = "%@ tidak mendukung jenis media ini.";
 "%@ exported with %lld warnings." = "%@ diekspor dengan %lld peringatan.";
 "%@ exported with 1 warning." = "%@ diekspor dengan 1 peringatan.";
-"%@ images aren't supported. Use PNG, JPEG, WebP, HEIC or TIFF." = "Gambar %@ tidak didukung. Gunakan PNG, JPEG, WebP, HEIC, atau TIFF.";
+"%@ files aren't supported by this edit." = "File %@ tidak didukung oleh pengeditan ini.";
 "%@ is not a valid URL." = "%@ bukan URL yang valid.";
 "%@ is ready." = "%@ siap.";
 "%@ model not available" = "Model %@ tidak tersedia";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ harus menggunakan HTTPS, atau HTTP hanya di Mac ini.";
+"%@ needs a start frame." = "%@ memerlukan bingkai awal.";
+"%@ of %@ credits" = "%@ dari %@ kredit";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skill";
@@ -135,7 +138,7 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "%@ ditangkap. Folder tujuan dihapus, sehingga frame disimpan di tingkat atas Media.";
 "Censor profanity" = "Sensor kata kasar";
 "Center" = "Tengah";
-"Change aspect ratio and extend the frame with AI" = "Ubah rasio aspek dan perluas frame dengan AI";
+"Change the color of an object" = "Ubah warna objek";
 "Change to Match" = "Ubah Agar Cocok";
 "Changes take effect after restarting Lenora." = "Perubahan berlaku setelah Lenora dimulai ulang.";
 "Changing the ratio preserves the shorter edge." = "Mengubah rasio mempertahankan sisi yang lebih pendek.";
@@ -220,12 +223,14 @@
 "Creating…" = "Membuat…";
 "Crop" = "Potong";
 "Crop applies to one clip at a time" = "Potong berlaku untuk satu klip pada satu waktu";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Pangkas ke rasio aspek baru dengan subjek tetap dalam bingkai";
 "Curves" = "Kurva";
 "Custom Aspect Ratio" = "Rasio Aspek Kustom";
 "Custom…" = "Kustom…";
 "Cut" = "Potong";
 "Cut out the subject as a transparent PNG" = "Potong subjek sebagai PNG transparan";
 "Cut to the beat" = "Potong mengikuti ketukan";
+"Daily budget" = "Anggaran harian";
 "Dark" = "Gelap";
 "Dark appearance" = "Tampilan gelap";
 "Darken" = "Gelapkan";
@@ -312,6 +317,7 @@
 "Enhance" = "Tingkatkan";
 "Enhance resolution or frame rate with AI" = "Tingkatkan resolusi atau kecepatan frame dengan AI";
 "Enter Full Screen" = "Masuk ke Layar Penuh";
+"Erase an object from the image" = "Hapus objek dari gambar";
 "Every connected agent will need the new token." = "Setiap agent yang terhubung memerlukan token baru.";
 "Exclusion" = "Exclusion";
 "Expand" = "Perluas";
@@ -324,6 +330,7 @@
 "Exporting…" = "Mengekspor…";
 "Export…" = "Ekspor…";
 "Exposure" = "Eksposur";
+"Extend the image to a new aspect ratio" = "Perluas gambar ke rasio aspek baru";
 "Extend" = "Perpanjang";
 "Extends captions across short gaps and holds the final caption." = "Memperpanjang teks terjemahan di celah pendek dan menahan teks terjemahan terakhir.";
 "Extra Large" = "Sangat Besar";
@@ -385,6 +392,7 @@
 "Generation in progress" = "Generasi sedang berlangsung";
 "Generation panel" = "Panel generasi";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Pembuatan berjalan di backend Lenora Anda. Token disimpan di Rantai Kunci macOS.";
+"Generative Fill" = "Isian Generatif";
 "Get Anthropic API key" = "Dapatkan kunci API Anthropic";
 "Get OpenAI API key" = "Dapatkan kunci API OpenAI";
 "Get Started" = "Mulai";
@@ -541,6 +549,7 @@
 "My Projects" = "Proyek Saya";
 "Name" = "Nama";
 "Nest settings discarded. Undo to restore." = "Pengaturan linimasa tersarang dibuang. Urungkan untuk memulihkan.";
+"New background (optional)" = "Latar baru (opsional)";
 "New" = "Baru";
 "New Folder" = "Folder Baru";
 "New Project" = "Proyek Baru";
@@ -558,7 +567,6 @@
 "No audio" = "Tidak ada audio";
 "No audio selected." = "Tidak ada audio yang dipilih.";
 "No beats detected." = "Tidak ada ketukan terdeteksi.";
-"No connected backend can remove backgrounds. Open Settings → Backend." = "Tidak ada backend terhubung yang dapat menghapus latar belakang. Buka Pengaturan → Backend.";
 "No conversations yet" = "Belum ada percakapan";
 "No exports yet" = "Belum ada ekspor";
 "No images" = "Tidak ada gambar";
@@ -585,6 +593,8 @@
 "Not synced — unusable as an angle." = "Tidak tersinkronisasi — tidak dapat digunakan sebagai sudut.";
 "Notifications" = "Pemberitahuan";
 "OK" = "OK";
+"Object to recolor" = "Objek yang diwarnai ulang";
+"Object to remove" = "Objek yang dihapus";
 "Off" = "Nonaktif";
 "Offset" = "Ofset";
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Format pertukaran yang lebih lama, paling sesuai jika Premiere Pro adalah tujuan. Mendukung edit dasar dan keyframe, tetapi tidak teks, warna, efek, kelembutan tepi, atau pembulatan tepi.";
@@ -643,6 +653,7 @@
 "Project Settings" = "Pengaturan Proyek";
 "Projects Couldn’t Be Deleted" = "Proyek Tidak Dapat Dihapus";
 "Prompt" = "Prompt";
+"Put the subject on a new background" = "Tempatkan subjek di latar baru";
 "Quality" = "Kualitas";
 "Queued" = "Dalam antrean";
 "Quit Lenora" = "Keluar dari Lenora";
@@ -651,6 +662,7 @@
 "Razor (C)" = "Pisau (C)";
 "Razor Tool" = "Alat Pisau";
 "Reasoning effort" = "Tingkat penalaran";
+"Recolor" = "Warnai Ulang";
 "Redetect Beats" = "Deteksi Ulang Ketukan";
 "Redo" = "Ulangi";
 "Redo (⇧⌘Z)" = "Ulangi (⇧⌘Z)";
@@ -689,7 +701,10 @@
 "Rename Track" = "Ganti Nama Trek";
 "Rendering" = "Merender";
 "Rendering…" = "Merender…";
+"Repair noise, blur and compression damage" = "Perbaiki noise, blur, dan kerusakan kompresi";
+"Replace Background" = "Ganti Latar";
 "Replace clip source" = "Ganti sumber klip";
+"Replace" = "Ganti";
 "Replacement Audio" = "Audio Pengganti";
 "Rerun" = "Jalankan ulang";
 "Reset All" = "Atur Ulang Semua";
@@ -700,6 +715,7 @@
 "Resolution must not exceed 8192 pixels on either edge." = "Resolusi tidak boleh melebihi 8192 piksel pada salah satu sisi.";
 "Resolved" = "Selesai";
 "Restart Lenora" = "Mulai Ulang Lenora";
+"Restore" = "Pulihkan";
 "Retry" = "Coba Lagi";
 "Retry Download" = "Coba Unduh Lagi";
 "Reveal in Finder" = "Tampilkan di Finder";
@@ -820,6 +836,7 @@
 "Subtitle" = "Subtitle";
 "Subtitle file is unavailable." = "File subtitle tidak tersedia.";
 "Swap Media" = "Tukar Media";
+"Swap one object for another" = "Tukar satu objek dengan yang lain";
 "Swap the clip's media when generation completes. Speed, volume, trim, and transform are preserved." = "Tukar media klip saat generasi selesai. Kecepatan, volume, pangkasan, dan transformasi dipertahankan.";
 "Switch Angle" = "Ganti Sudut";
 "Switch Angle in Range" = "Ganti Sudut dalam Rentang";
@@ -844,8 +861,11 @@
 "The MCP server could not start. Check the port, then try again." = "Server MCP tidak dapat dimulai. Periksa port, lalu coba lagi.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP tidak tersedia. Periksa akses Rantai Kunci, lalu coba lagi.";
 "The clip you're adding has different settings than the current project." = "Klip yang Anda tambahkan memiliki pengaturan berbeda dari proyek saat ini.";
+"The connected backend doesn't offer this edit. Open Settings → Backend." = "Backend yang terhubung tidak menyediakan pengeditan ini. Buka Pengaturan → Backend.";
 "The export" = "Ekspor";
-"The image is larger than %@." = "Gambar lebih besar dari %@.";
+"The file is larger than %@." = "File lebih besar dari %@.";
+"The image is larger than %lld pixels in total." = "Gambar melebihi total %lld piksel.";
+"The image size isn't known yet. Try again in a moment." = "Ukuran gambar belum diketahui. Coba lagi sebentar lagi.";
 "The job already finished." = "Tugas sudah selesai.";
 "The job finished without a result." = "Tugas selesai tanpa hasil.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentar penanda berubah saat Anda mengedit. Tinjau dan coba lagi.";
@@ -856,6 +876,8 @@
 "The timeline settings changed. Close this sheet and try again." = "Pengaturan linimasa berubah. Tutup lembar ini dan coba lagi.";
 "Theme" = "Tema";
 "This build includes no skills." = "Build ini tidak menyertakan skill.";
+"This edit works on images only." = "Pengeditan ini hanya untuk gambar.";
+"This edit works on videos only." = "Pengeditan ini hanya untuk video.";
 "This is where all your footage and assets live." = "Di sinilah semua rekaman dan aset Anda.";
 "This is your preview panel to play a selected media or the whole timeline." = "Panel pratinjau untuk memutar media yang dipilih atau seluruh linimasa.";
 "This job can't be cancelled. It will finish on its own." = "Tugas ini tidak dapat dibatalkan. Tugas akan selesai dengan sendirinya.";
@@ -904,6 +926,7 @@
 "UPPERCASE" = "HURUF BESAR";
 "URL" = "URL";
 "Unable to save skill" = "Tidak dapat menyimpan skill";
+"Unavailable" = "Tidak tersedia";
 "Unchanged" = "Tidak berubah";
 "Underline" = "Garis bawah";
 "Undo" = "Urungkan";
@@ -957,6 +980,7 @@
 "Whole timeline · %@" = "Seluruh linimasa · %@";
 "Wide (1.85:1)" = "Lebar (1.85:1)";
 "Width" = "Lebar";
+"With" = "Dengan";
 "Word Reveal" = "Ungkap Kata";
 "Word Slide" = "Geser Kata";
 "Working on %@" = "Mengerjakan %@";

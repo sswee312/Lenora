@@ -1,27 +1,13 @@
 import Foundation
 
-struct ImageGenerationParams: Encodable, Sendable {
+struct ImageGenerationParams: Sendable {
     let prompt: String
     let aspectRatio: String
     let resolution: String?
     let quality: String?
     let imageURLs: [String]
     let numImages: Int
-
-    enum CodingKeys: String, CodingKey {
-        case kind, prompt, aspectRatio, resolution, quality, imageURLs, numImages
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var c = encoder.container(keyedBy: CodingKeys.self)
-        try c.encode("image", forKey: .kind)
-        try c.encode(prompt, forKey: .prompt)
-        try c.encode(aspectRatio, forKey: .aspectRatio)
-        try c.encodeIfPresent(resolution, forKey: .resolution)
-        try c.encodeIfPresent(quality, forKey: .quality)
-        if !imageURLs.isEmpty { try c.encode(imageURLs, forKey: .imageURLs) }
-        try c.encode(numImages, forKey: .numImages)
-    }
+    let seed: Int?
 }
 
 struct ImageModelConfig: Identifiable, Sendable {
@@ -30,8 +16,7 @@ struct ImageModelConfig: Identifiable, Sendable {
 
     @MainActor
     static var edit: ImageModelConfig? {
-        guard case .image(let config)? = ModelCatalog.shared.firstConfig(ofKind: "image.edit") else { return nil }
-        return config
+        allModels.first(where: \.supportsImageReference)
     }
 
     let entry: CatalogEntry

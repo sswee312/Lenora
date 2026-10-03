@@ -16,12 +16,6 @@ struct VideoModelConfig: Identifiable, Sendable {
     }
 
     @MainActor
-    static var reframe: VideoModelConfig? {
-        guard case .video(let config)? = ModelCatalog.shared.firstConfig(ofKind: "video.reframe") else { return nil }
-        return config
-    }
-
-    @MainActor
     static var firstAndLastFrame: VideoModelConfig? {
         allModels.first { !$0.requiresSourceVideo && $0.supportsFirstFrame && $0.supportsLastFrame }
     }
@@ -47,26 +41,6 @@ struct VideoModelConfig: Identifiable, Sendable {
         if let resolutions, resolutions.contains("2K") { return "2K" }
         if let resolutions, resolutions.contains("1080p") { return "1080p" }
         return resolutions?.first
-    }
-
-    var reframeDurationLimitLabel: String? {
-        if let maximum = maxCombinedVideoRefSeconds,
-           maximum.isFinite, maximum > 0,
-           let seconds = Int(exactly: maximum.rounded()) {
-            return Self.durationLimitLabel(seconds: seconds)
-        }
-        return durations.max().map(Self.durationLimitLabel)
-    }
-
-    func validateReframeDuration(_ duration: Double) -> String? {
-        guard duration.isFinite, duration > 0 else {
-            return "Loading video metadata…"
-        }
-        let maximum = maxCombinedVideoRefSeconds
-            ?? durations.max().map(Double.init)
-        guard let maximum, duration > maximum,
-              let limit = reframeDurationLimitLabel else { return nil }
-        return "\(displayName) supports source videos up to \(limit). Trim the clip to continue."
     }
 
     private static func durationLimitLabel(seconds: Int) -> String {
@@ -107,6 +81,7 @@ struct VideoModelConfig: Identifiable, Sendable {
     var supportsSourceVideo: Bool { requiresSourceVideo || caps.supportsSourceVideo == true }
     var maxSourceVideoSeconds: Double? { caps.maxSourceVideoSeconds }
     var requiresReferenceImage: Bool { caps.requiresReferenceImage }
+    var requiresFirstFrame: Bool { caps.requiresFirstFrame ?? false }
     var requiresReferenceAudio: Bool { caps.requiresReferenceAudio ?? false }
     var supportsDraft: Bool { caps.supportsDraft == true }
     var supportsAudioToggle: Bool { caps.supportsAudioToggle == true }
@@ -164,7 +139,7 @@ struct VideoModelConfig: Identifiable, Sendable {
     }
 }
 
-struct VideoGenerationParams: Encodable, Sendable {
+struct VideoGenerationParams: Sendable {
     let prompt: String
     let duration: Int
     let sourceVideoDuration: Double?
@@ -199,29 +174,5 @@ struct VideoGenerationParams: Encodable, Sendable {
         self.referenceAudioURLs = referenceAudioURLs
         self.generateAudio = generateAudio
         self.draft = draft
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case kind, prompt, duration, sourceVideoDuration, aspectRatio, resolution, sourceVideoURL
-        case startFrameURL, endFrameURL, referenceImageURLs, referenceVideoURLs
-        case referenceAudioURLs, generateAudio, draft
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var c = encoder.container(keyedBy: CodingKeys.self)
-        try c.encode("video", forKey: .kind)
-        try c.encode(prompt, forKey: .prompt)
-        try c.encode(duration, forKey: .duration)
-        try c.encodeIfPresent(sourceVideoDuration, forKey: .sourceVideoDuration)
-        try c.encode(aspectRatio, forKey: .aspectRatio)
-        try c.encodeIfPresent(resolution, forKey: .resolution)
-        try c.encodeIfPresent(sourceVideoURL, forKey: .sourceVideoURL)
-        try c.encodeIfPresent(startFrameURL, forKey: .startFrameURL)
-        try c.encodeIfPresent(endFrameURL, forKey: .endFrameURL)
-        if !referenceImageURLs.isEmpty { try c.encode(referenceImageURLs, forKey: .referenceImageURLs) }
-        if !referenceVideoURLs.isEmpty { try c.encode(referenceVideoURLs, forKey: .referenceVideoURLs) }
-        if !referenceAudioURLs.isEmpty { try c.encode(referenceAudioURLs, forKey: .referenceAudioURLs) }
-        try c.encode(generateAudio, forKey: .generateAudio)
-        try c.encodeIfPresent(draft, forKey: .draft)
     }
 }

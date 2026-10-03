@@ -1,0 +1,202 @@
+{
+  "protocolVersion": "1",
+  "adapters": [
+    {
+      "id": "cloudinary",
+      "version": "0.1.0"
+    }
+  ],
+  "models": [
+    {
+      "id": "cloudinary/background-removal",
+      "kind": "image.removeBackground",
+      "displayName": "Cloudinary Background Removal",
+      "inputs": {
+        "types": [
+          "image/png",
+          "image/jpeg",
+          "image/webp",
+          "image/heic",
+          "image/tiff"
+        ],
+        "maxBytes": 10485760,
+        "maxPixels": null
+      },
+      "cancellable": false,
+      "estimate": {
+        "amount": 0.075,
+        "unit": "cloudinary_credits"
+      },
+      "ui": null,
+      "operations": null
+    },
+    {
+      "id": "cloudinary/generative-edit",
+      "kind": "image.edit",
+      "displayName": "Cloudinary Generative Edit",
+      "inputs": {
+        "types": [
+          "image/png",
+          "image/jpeg",
+          "image/webp",
+          "image/heic",
+          "image/tiff"
+        ],
+        "maxBytes": 10485760,
+        "maxPixels": null
+      },
+      "cancellable": false,
+      "estimate": null,
+      "ui": null,
+      "operations": [
+        "fill",
+        "replace",
+        "remove",
+        "recolor",
+        "backgroundReplace",
+        "restore"
+      ]
+    },
+    {
+      "id": "cloudinary/upscale",
+      "kind": "image.upscale",
+      "displayName": "Cloudinary Upscale",
+      "inputs": {
+        "types": [
+          "image/png",
+          "image/jpeg",
+          "image/webp",
+          "image/heic",
+          "image/tiff"
+        ],
+        "maxBytes": 10485760,
+        "maxPixels": 4194304
+      },
+      "cancellable": false,
+      "estimate": {
+        "amount": 0.1,
+        "unit": "cloudinary_credits"
+      },
+      "ui": {
+        "providerName": "Cloudinary",
+        "allowedEndpoints": [],
+        "responseShape": "upscaledImage",
+        "uiCapabilities": {
+          "speed": "Fast",
+          "p75DurationSeconds": 15,
+          "maximumUpscaleFactor": 4,
+          "supportedTypes": [
+            "image"
+          ]
+        }
+      },
+      "operations": null
+    },
+    {
+      "id": "cloudinary/reframe",
+      "kind": "video.reframe",
+      "displayName": "Cloudinary Smart Reframe",
+      "inputs": {
+        "types": [
+          "video/mp4",
+          "video/quicktime",
+          "video/webm"
+        ],
+        "maxBytes": 104857600,
+        "maxPixels": null
+      },
+      "cancellable": false,
+      "estimate": null,
+      "ui": null,
+      "operations": null
+    },
+    {
+      "id": "cloudinary/image-generation",
+      "kind": "image.generate",
+      "displayName": "Cloudinary Image Generation",
+      "inputs": {
+        "types": [
+          "image/png",
+          "image/jpeg",
+          "image/webp",
+          "image/heic",
+          "image/tiff"
+        ],
+        "maxBytes": 10485760,
+        "maxPixels": null
+      },
+      "cancellable": false,
+      "estimate": {
+        "amount": 1.0,
+        "unit": "cloudinary_credits"
+      },
+      "ui": {
+        "providerName": "Cloudinary",
+        "allowedEndpoints": [],
+        "responseShape": "images",
+        "uiCapabilities": {
+          "aspectRatios": [
+            "1:1",
+            "16:9",
+            "9:16",
+            "4:3",
+            "3:4"
+          ],
+          "supportsImageReference": true,
+          "maxImages": 4
+        }
+      },
+      "operations": null
+    },
+    {
+      "id": "cloudinary/image-to-video",
+      "kind": "video.generate",
+      "displayName": "Cloudinary Image to Video",
+      "inputs": {
+        "types": [
+          "image/png",
+          "image/jpeg",
+          "image/webp",
+          "image/heic",
+          "image/tiff"
+        ],
+        "maxBytes": 10485760,
+        "maxPixels": null
+      },
+      "cancellable": false,
+      "estimate": null,
+      "ui": {
+        "providerName": "Cloudinary",
+        "allowedEndpoints": [],
+        "responseShape": "video",
+        "uiCapabilities": {
+          "supportsPrompt": true,
+          "durations": [
+            4,
+            6,
+            8
+          ],
+          "resolutions": [
+            "720p",
+            "1080p"
+          ],
+          "aspectRatios": [
+            "16:9",
+            "9:16"
+          ],
+          "supportsFirstFrame": true,
+          "supportsLastFrame": true,
+          "maxReferenceImages": 2,
+          "maxReferenceVideos": 0,
+          "maxReferenceAudios": 0,
+          "framesAndReferencesExclusive": false,
+          "referenceTagNoun": "Image",
+          "requiresSourceVideo": false,
+          "requiresReferenceImage": false,
+          "requiresFirstFrame": false
+        }
+      },
+      "operations": null
+    }
+  ]
+}
