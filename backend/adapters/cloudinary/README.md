@@ -7,7 +7,7 @@ Cloudinary adapter for lenora-backend. Every result is a signed delivery URL (`s
 | `cloudinary/background-removal` | `image.removeBackground` | 75 transformations |
 | `cloudinary/generative-edit` | `image.edit` | ops `fill`, `replace`, `remove`, `recolor`, `backgroundReplace`, `restore` |
 | `cloudinary/upscale` | `image.upscale` | 4×; inputs up to 2048 × 2048 |
-| `cloudinary/reframe` | `video.reframe` | `ar_<W:H>,c_fill,g_auto`; on the fly up to `LENORA_CLOUDINARY_ON_THE_FLY_VIDEO_MAX_BYTES` |
+| `cloudinary/reframe` | `video.reframe` | `ar_<W:H>,c_fill,g_auto`; on the fly up to `LENORA_CLOUDINARY_ON_THE_FLY_VIDEO_MAX_BYTES`, larger videos (up to 100 MB) through `eager_async` |
 | `cloudinary/image-generation` | `image.generate` | needs the Image Generation add-on |
 | `cloudinary/image-to-video` | `video.generate` | needs the Image to Video add-on; prompt-only requests chain through image generation |
 

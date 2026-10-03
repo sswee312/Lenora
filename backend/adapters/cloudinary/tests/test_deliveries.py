@@ -63,18 +63,44 @@ def test_missing_asset_is_invalid_request():
     assert info.value.code == "invalid_request"
 
 
-@pytest.mark.parametrize("size, ok", [(41943040, True), (41943041, False)])
-def test_reframe_stays_within_the_on_the_fly_cap(size, ok):
+def test_reframe_at_the_cap_is_an_on_the_fly_url():
     request = job("video.reframe", "cloudinary/reframe", {"aspectRatio": "9:16"}, [AssetInput(assetRef=VIDEO_REF)])
-    mock = lambda r: admin(r, bytes_=size, duration=2.4, video=True)
-    if ok:
-        submitted = run(lambda a: a.submit(request.model, request), mock=mock)
-        assert url_of(submitted.jobId) == signed_url("demo", "video", "ar_9:16,c_fill,g_auto", f"lenora/{UUID}.mp4", SECRET)
-        assert submitted.estimate.amount == pytest.approx(0.042)
-    else:
-        with pytest.raises(ProblemError) as info:
-            run(lambda a: a.submit(request.model, request), mock=mock)
-        assert info.value.code == "input_too_large"
+    submitted = run(lambda a: a.submit(request.model, request), mock=lambda r: admin(r, bytes_=41943040, duration=2.4, video=True))
+    assert url_of(submitted.jobId) == signed_url("demo", "video", "ar_9:16,c_fill,g_auto", f"lenora/{UUID}.mp4", SECRET)
+    assert submitted.estimate.amount == pytest.approx(0.042)
+
+
+def test_reframe_above_the_cap_runs_eager_and_polls_derived():
+    request = job("video.reframe", "cloudinary/reframe", {"aspectRatio": "9:16"}, [AssetInput(assetRef=VIDEO_REF)])
+    sent = []
+
+    def mock(r):
+        admin(r, bytes_=41943041, duration=60, video=True)
+        r.post("https://api.cloudinary.com/v1_1/demo/video/explicit").mock(
+            side_effect=lambda req: sent.append(req.content.decode()) or __import__("httpx").Response(200, json={"batch_id": "b"}))
+
+    async def scenario(a):
+        submitted = await a.submit(request.model, request)
+        return submitted, await a.status(submitted.jobId)
+    submitted, state = run(scenario, mock=mock)
+    assert submitted.jobId.startswith("eager:") and "eager_async=true" in sent[0] and "signature=" in sent[0]
+    assert state.status == "running" and state.retryAfter == 30
+
+
+def test_eager_job_succeeds_once_derived_exists():
+    from lenora_adapter_cloudinary import eager
+    job_id = eager.encode(f"lenora/{UUID}", "ar_9:16,c_fill,g_auto")
+    body = {"asset_id": "a", "bytes": 1, "derived": [{"transformation": "ar_9:16,c_fill,g_auto"}]}
+    state = run(lambda a: a.status(job_id), mock=lambda r: r.get(ADMIN_VIDEO).respond(200, json=body))
+    assert state.status == "succeeded"
+    assert str(state.results[0].url) == signed_url("demo", "video", "ar_9:16,c_fill,g_auto", f"lenora/{UUID}.mp4", SECRET)
+
+
+@pytest.mark.parametrize("job_id", ["eager:%%", "eager:" + base64.urlsafe_b64encode(b'{"p":"other/x","t":"y"}').decode()])
+def test_eager_rejects_foreign_ids(job_id):
+    with pytest.raises(ProblemError) as info:
+        run(lambda a: a.status(job_id))
+    assert info.value.code == "not_found"
 
 
 def test_reframe_rejects_image_refs():

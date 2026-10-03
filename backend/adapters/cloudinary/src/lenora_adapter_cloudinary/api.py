@@ -72,9 +72,9 @@ class CloudinaryAPI:
         self.auth = (settings.api_key, settings.api_secret.get_secret_value())
         self.base = "https://api.cloudinary.com"
 
-    async def request(self, method: str, path: str, json: dict | None = None) -> httpx.Response:
+    async def request(self, method: str, path: str, json: dict | None = None, data: dict | None = None) -> httpx.Response:
         try:
-            return await self.http.request(method, self.base + path, json=json, auth=self.auth)
+            return await self.http.request(method, self.base + path, json=json, data=data, auth=self.auth)
         except httpx.TransportError as error:
             raise ProblemError("provider_unavailable", f"Cloudinary is unreachable ({type(error).__name__}).") from None
 

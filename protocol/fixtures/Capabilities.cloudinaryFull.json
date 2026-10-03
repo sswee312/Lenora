@@ -102,7 +102,7 @@
           "video/quicktime",
           "video/webm"
         ],
-        "maxBytes": 41943040,
+        "maxBytes": 104857600,
         "maxPixels": null
       },
       "cancellable": false,

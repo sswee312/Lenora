@@ -14,7 +14,7 @@ from lenora_backend.kinds import (
     UploadRequest, UploadTicket, VideoGenerateParams,
 )
 from lenora_backend.registry import CancelNotSupported
-from lenora_adapter_cloudinary import costs, deliveries, generation, image_to_video
+from lenora_adapter_cloudinary import costs, deliveries, eager, generation, image_to_video
 from lenora_adapter_cloudinary.addons import IMAGE_GENERATION, IMAGE_TO_VIDEO, Addons
 from lenora_adapter_cloudinary.api import CloudinaryAPI, is_subscription_refusal, parse_ref
 from lenora_adapter_cloudinary.delivery import encode_url_job, sign_upload
@@ -28,6 +28,7 @@ UPSCALE = "cloudinary/upscale"
 REFRAME = "cloudinary/reframe"
 IMAGE_GENERATION_MODEL = "cloudinary/image-generation"
 IMAGE_TO_VIDEO_MODEL = "cloudinary/image-to-video"
+FREE_PLAN_VIDEO_MAX_BYTES = 100 * 1024 * 1024
 IMAGE_TYPES = ["image/png", "image/jpeg", "image/webp", "image/heic", "image/tiff"]
 VIDEO_TYPES = ["video/mp4", "video/quicktime", "video/webm"]
 FREE_PLAN_IMAGE_MAX_BYTES = 10 * 1024 * 1024
@@ -68,7 +69,7 @@ class CloudinaryAdapter(CancelNotSupported):
                           "uiCapabilities": {"speed": "Fast", "p75DurationSeconds": 15, "maximumUpscaleFactor": 4,
                                              "supportedTypes": ["image"]}}),
             ModelInfo(id=REFRAME, kind="video.reframe", displayName="Cloudinary Smart Reframe",
-                      inputs=InputLimits(types=VIDEO_TYPES, maxBytes=self.settings.on_the_fly_video_max_bytes),
+                      inputs=InputLimits(types=VIDEO_TYPES, maxBytes=FREE_PLAN_VIDEO_MAX_BYTES),
                       cancellable=False),
         ]
         if self.addons.available(IMAGE_GENERATION):
@@ -131,6 +132,8 @@ class CloudinaryAdapter(CancelNotSupported):
             return await self._image_generation_status(job_id, local.split("."))
         if prefix == "i2v" and local:
             return await self._image_to_video_status(job_id, local)
+        if prefix == "eager" and local:
+            return await eager.status(self.api, job_id)
         if prefix == "chain" and local:
             return await self._chain_status(job_id, local)
         raise ProblemError("not_found", "Unknown job.")
@@ -142,9 +145,9 @@ class CloudinaryAdapter(CancelNotSupported):
 
     async def _submit_reframe(self, job: JobRequest) -> SubmittedJob:
         ref, asset, transformation, estimate = await deliveries.plan_reframe(self.api, job)
-        cap = self.settings.on_the_fly_video_max_bytes
-        if asset.bytes > cap:
-            raise ProblemError("input_too_large", f"Reframe accepts videos up to {cap} bytes; this one is {asset.bytes}.")
+        if asset.bytes > self.settings.on_the_fly_video_max_bytes:
+            job_id = await self._charged(estimate, lambda: eager.start(self.api, ref, transformation, int(self.clock())))
+            return SubmittedJob(jobId=job_id, status="queued", estimate=estimate)
         self.budget.reserve(estimate)
         url = deliveries.reframe_url(self.api, ref, transformation)
         return SubmittedJob(jobId=encode_url_job(url), status="queued", estimate=estimate)
