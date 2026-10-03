@@ -1067,3 +1067,6 @@
 "using OpenAI API key" = "via OpenAI API-nøgle";
 "%@ used · No limit" = "%@ brugt · Ingen grænse";
 "%@ of %@" = "%@ af %@";
+"Improve Prompt" = "Forbedr prompt";
+"Couldn't improve the prompt." = "Prompten kunne ikke forbedres.";
+"Couldn't improve the prompt: %@" = "Prompten kunne ikke forbedres: %@";

@@ -1067,3 +1067,6 @@
 "using OpenAI API key" = "OpenAI API कुंजी उपयोग हो रही है";
 "%@ used · No limit" = "%@ उपयोग किए गए · कोई सीमा नहीं";
 "%@ of %@" = "%2$@ में से %1$@";
+"Improve Prompt" = "प्रॉम्प्ट सुधारें";
+"Couldn't improve the prompt." = "प्रॉम्प्ट सुधारा नहीं जा सका।";
+"Couldn't improve the prompt: %@" = "प्रॉम्प्ट सुधारा नहीं जा सका: %@";

@@ -1067,3 +1067,6 @@
 "using OpenAI API key" = "باستخدام مفتاح واجهة API من OpenAI";
 "%@ used · No limit" = "تم استخدام %@ · بلا حد";
 "%@ of %@" = "%@ من %@";
+"Improve Prompt" = "تحسين المطالبة";
+"Couldn't improve the prompt." = "تعذّر تحسين المطالبة.";
+"Couldn't improve the prompt: %@" = "تعذّر تحسين المطالبة: %@";

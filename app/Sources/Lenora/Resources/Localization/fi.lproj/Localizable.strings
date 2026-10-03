@@ -1067,3 +1067,6 @@
 "using OpenAI API key" = "käytetään OpenAI API -avainta";
 "%@ used · No limit" = "%@ käytetty · Ei rajaa";
 "%@ of %@" = "%@ / %@";
+"Improve Prompt" = "Paranna kehotetta";
+"Couldn't improve the prompt." = "Kehotetta ei voitu parantaa.";
+"Couldn't improve the prompt: %@" = "Kehotetta ei voitu parantaa: %@";

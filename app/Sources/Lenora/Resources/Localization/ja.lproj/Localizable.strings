@@ -1067,3 +1067,6 @@
 "using OpenAI API key" = "OpenAI APIキーを使用中";
 "%@ used · No limit" = "%@ 使用済み · 上限なし";
 "%@ of %@" = "%@ / %@";
+"Improve Prompt" = "プロンプトを改善";
+"Couldn't improve the prompt." = "プロンプトを改善できませんでした。";
+"Couldn't improve the prompt: %@" = "プロンプトを改善できませんでした: %@";

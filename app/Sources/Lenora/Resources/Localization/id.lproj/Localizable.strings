@@ -1067,3 +1067,6 @@
 "using OpenAI API key" = "menggunakan kunci API OpenAI";
 "%@ used · No limit" = "%@ terpakai · Tanpa batas";
 "%@ of %@" = "%@ dari %@";
+"Improve Prompt" = "Tingkatkan Prompt";
+"Couldn't improve the prompt." = "Tidak dapat meningkatkan prompt.";
+"Couldn't improve the prompt: %@" = "Tidak dapat meningkatkan prompt: %@";

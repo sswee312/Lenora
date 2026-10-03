@@ -194,11 +194,12 @@ actor FakeProvider: GenerationProvider {
     func setCancelResult(_ result: Result<JobState, BackendError>) { cancelResult = result }
 }
 
-func jobState(_ status: JobStatus, results: [JobResult]? = nil, error: JobFailure? = nil) -> JobState {
+func jobState(_ status: JobStatus, results: [JobResult]? = nil, error: JobFailure? = nil, text: String? = nil) -> JobState {
     let resultsJSON = results.map { r in
         "[" + r.map { #"{"url":"\#($0.url.absoluteString)","contentType":"\#($0.contentType)","fileExtension":"\#($0.fileExtension)"}"# }.joined(separator: ",") + "]"
     } ?? "null"
     let errorJSON = error.map { #"{"code":"\#($0.code)","message":"\#($0.message)","retryable":\#($0.retryable)}"# } ?? "null"
-    let json = #"{"jobId":"fake:1","status":"\#(status.rawValue)","results":\#(resultsJSON),"error":\#(errorJSON)}"#
+    let textJSON = text.map { String(decoding: try! JSONEncoder().encode($0), as: UTF8.self) } ?? "null"
+    let json = #"{"jobId":"fake:1","status":"\#(status.rawValue)","results":\#(resultsJSON),"error":\#(errorJSON),"text":\#(textJSON)}"#
     return try! BackendCoding.decoder().decode(JobState.self, from: Data(json.utf8))
 }

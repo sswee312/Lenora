@@ -223,6 +223,8 @@
 "Couldn't align %lld clips." = "Couldn't align %lld clips.";
 "Couldn't change marker." = "Couldn't change marker.";
 "Couldn't delete marker." = "Couldn't delete marker.";
+"Couldn't improve the prompt." = "Couldn't improve the prompt.";
+"Couldn't improve the prompt: %@" = "Couldn't improve the prompt: %@";
 "Couldn't reach the provider to upload the file." = "Couldn't reach the provider to upload the file.";
 "Couldn't save the token to the Keychain." = "Couldn't save the token to the Keychain.";
 "Couldn't switch angle." = "Couldn't switch angle.";
@@ -448,6 +450,7 @@
 "Import Media…" = "Import Media…";
 "Import footage" = "Import footage";
 "Import your footage here, or drag and drop, or copy-paste, into the media panel." = "Import your footage here, or drag and drop, or copy-paste, into the media panel.";
+"Improve Prompt" = "Improve Prompt";
 "Index" = "Index";
 "Indexes imported media for on-device search." = "Indexes imported media for on-device search.";
 "Indexing %lld/%lld" = "Indexing %lld/%lld";

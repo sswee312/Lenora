@@ -1067,3 +1067,6 @@
 "using OpenAI API key" = "via OpenAI API-sleutel";
 "%@ used · No limit" = "%@ gebruikt · Geen limiet";
 "%@ of %@" = "%@ van %@";
+"Improve Prompt" = "Prompt verbeteren";
+"Couldn't improve the prompt." = "Kan de prompt niet verbeteren.";
+"Couldn't improve the prompt: %@" = "Kan de prompt niet verbeteren: %@";

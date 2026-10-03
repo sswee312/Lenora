@@ -1067,3 +1067,6 @@
 "using OpenAI API key" = "используется API-ключ OpenAI";
 "%@ used · No limit" = "Использовано: %@ · Без лимита";
 "%@ of %@" = "%@ из %@";
+"Improve Prompt" = "Улучшить запрос";
+"Couldn't improve the prompt." = "Не удалось улучшить запрос.";
+"Couldn't improve the prompt: %@" = "Не удалось улучшить запрос: %@";

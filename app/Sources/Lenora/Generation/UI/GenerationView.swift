@@ -261,6 +261,8 @@ struct GenerationView: View {
                         .allowsHitTesting(false)
                 }
                 .animation(.easeOut(duration: AppTheme.Anim.hover), value: isPromptFocused)
+
+                promptRewriteError
             }
             .padding(.horizontal, AppTheme.Spacing.md)
             .padding(.bottom, AppTheme.Spacing.md)
@@ -275,12 +277,14 @@ struct GenerationView: View {
             // A seeded edit may reuse a now-disabled model; keep its selection.
             if !hadSeed { normalizeModelSelection() }
         }
+        .onDisappear { cancelPromptRewrite() }
         .onChange(of: editor.pendingPanelSeed?.asset.id) { _, _ in consumePendingPanelSeed() }
         .onChange(of: ModelPreferences.shared.disabledIds) { _, _ in
             guard !isPopulatingPanel else { return }
             normalizeModelSelection()
         }
         .onChange(of: selectedType) { _, newValue in
+            cancelPromptRewrite()
             guard !isPopulatingPanel else { return }
             normalizeModelSelection()
             resetSettings()
@@ -393,8 +397,16 @@ struct GenerationView: View {
                 .padding(.top, AppTheme.Spacing.sm)
                 .padding(.bottom, AppTheme.Spacing.xs)
                 .focused($isPromptFocused)
-                .onChange(of: prompt) { _, new in updateRefMentionQuery(from: new) }
+                .onChange(of: prompt) { _, new in
+                    updateRefMentionQuery(from: new)
+                    editor.promptRewriter.fieldDidChange(new)
+                }
                 .onKeyPress(phases: [.down, .repeat]) { press in handleMentionKey(press) }
+                .onKeyPress(.escape) {
+                    guard editor.promptRewriter.phase == .rewriting else { return .ignored }
+                    cancelPromptRewrite()
+                    return .handled
+                }
                 .popover(isPresented: Binding(
                     get: { showMentionPicker },
                     set: { if !$0 { refMentionQuery = nil } }
@@ -410,6 +422,9 @@ struct GenerationView: View {
                     .padding(.top, AppTheme.Spacing.md)
                     .allowsHitTesting(false)
             }
+        }
+        .overlay(alignment: .bottomTrailing) {
+            improvePromptButton.padding(AppTheme.Spacing.xs)
         }
         .frame(height: promptHeight)
         .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { measuredPromptHeight = $0 }

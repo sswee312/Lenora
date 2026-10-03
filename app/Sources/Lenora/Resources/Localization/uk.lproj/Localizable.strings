@@ -1067,3 +1067,6 @@
 "using OpenAI API key" = "з API-ключем OpenAI";
 "%@ used · No limit" = "Використано: %@ · Без ліміту";
 "%@ of %@" = "%@ із %@";
+"Improve Prompt" = "Покращити промпт";
+"Couldn't improve the prompt." = "Не вдалося покращити промпт.";
+"Couldn't improve the prompt: %@" = "Не вдалося покращити промпт: %@";

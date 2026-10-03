@@ -1067,3 +1067,6 @@
 "using OpenAI API key" = "使用 OpenAI API key";
 "%@ used · No limit" = "已使用 %@ · 无限制";
 "%@ of %@" = "%@ / %@";
+"Improve Prompt" = "改进提示词";
+"Couldn't improve the prompt." = "无法改进提示词。";
+"Couldn't improve the prompt: %@" = "无法改进提示词：%@";

@@ -228,6 +228,7 @@ final class EditorViewModel {
 
     @ObservationIgnored var generationService: GenerationService
     let publishService: PublishService
+    let promptRewriter: PromptRewriter
     @ObservationIgnored var remoteDownloadFetch: RemoteMediaDownloader.Fetch?
     @ObservationIgnored var backendConfiguration: @MainActor () -> LenoraBackendConfiguration? = { BackendConnection.shared.configuration }
     let agentService = AgentService()
@@ -328,6 +329,7 @@ final class EditorViewModel {
     ) {
         generationService = GenerationService(provider: generationProvider, catalog: modelCatalog)
         publishService = PublishService(provider: generationProvider, catalog: modelCatalog)
+        promptRewriter = PromptRewriter(provider: generationProvider, catalog: modelCatalog)
         let first = Timeline()
         timelines = [first]
         activeTimelineId = first.id
