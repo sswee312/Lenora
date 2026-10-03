@@ -1,6 +1,7 @@
 import Foundation
 import MCP
 import Network
+import os
 
 /// HTTP server for MCP. Each client session gets its own `Server` + stateful transport
 actor MCPHTTPServer {
@@ -32,25 +33,62 @@ actor MCPHTTPServer {
         self.makeServer = makeServer
     }
 
-    func start() throws {
+    func start() async throws {
         Log.mcp.info("listener start port=\(self.port)")
         guard let endpointPort = NWEndpoint.Port(rawValue: port) else {
             Log.mcp.fault("invalid port \(self.port)")
-            throw NSError(domain: "MCPHTTPServer", code: 1, userInfo: [NSLocalizedDescriptionKey: "invalid port \(port)"])
+            throw MCPHTTPServerError.invalidPort(port)
         }
         let params = NWParameters.tcp
         params.allowLocalEndpointReuse = true
         // Bind to IPv4 loopback only so the server is never reachable from the LAN.
         params.requiredLocalEndpoint = .hostPort(host: "127.0.0.1", port: endpointPort)
-        listener = try NWListener(using: params)
+        let listener = try NWListener(using: params)
 
-        listener?.newConnectionHandler = { [weak self] connection in
+        listener.newConnectionHandler = { [weak self] connection in
             guard let self else { return }
             connection.start(queue: .global(qos: .userInitiated))
             Task { await self.receive(on: connection) }
         }
 
-        listener?.start(queue: .global(qos: .userInitiated))
+        self.listener = listener
+        do {
+            try await Self.waitUntilReady(listener, port: port)
+        } catch {
+            listener.cancel()
+            if self.listener === listener { self.listener = nil }
+            throw error
+        }
+    }
+
+    // Resolves on the first terminal state, so a bind failure is never silent.
+    private static func waitUntilReady(_ listener: NWListener, port: UInt16) async throws {
+        let settled = OSAllocatedUnfairLock(initialState: false)
+        try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                listener.stateUpdateHandler = { state in
+                    let outcome: Result<Void, Error>
+                    switch state {
+                    case .ready:
+                        outcome = .success(())
+                    case .failed(let error):
+                        outcome = .failure(MCPHTTPServerError(listenerError: error, port: port))
+                    case .cancelled:
+                        outcome = .failure(CancellationError())
+                    default:
+                        return
+                    }
+                    guard settled.withLock({ let first = !$0; $0 = true; return first }) else {
+                        if case .failed(let error) = state { Log.mcp.error("listener failed: \(error.localizedDescription)") }
+                        return
+                    }
+                    continuation.resume(with: outcome)
+                }
+                listener.start(queue: .global(qos: .userInitiated))
+            }
+        } onCancel: {
+            listener.cancel()
+        }
     }
 
     func stop() {
@@ -131,7 +169,7 @@ actor MCPHTTPServer {
         }
 
         guard MCPAccessToken.isAuthorized(header: request.header("Authorization"), token: token) else {
-            Log.mcp.warning("rejected request without a valid bearer token")
+            Log.mcp.debug("rejected request without a valid bearer token")
             sendRaw("HTTP/1.1 401 Unauthorized\r\nWWW-Authenticate: Bearer\r\nContent-Length: 0\r\nConnection: close\r\n\r\n",
                     on: connection, keepAlive: false)
             return
@@ -307,6 +345,28 @@ actor MCPHTTPServer {
         case 404: "Not Found"; case 405: "Method Not Allowed"; case 409: "Conflict"
         case 500: "Internal Server Error"
         default: "Unknown"
+        }
+    }
+}
+
+enum MCPHTTPServerError: LocalizedError, Equatable {
+    case invalidPort(UInt16)
+    case portInUse(UInt16)
+    case listenerFailed(String)
+
+    init(listenerError: NWError, port: UInt16) {
+        if case .posix(.EADDRINUSE) = listenerError {
+            self = .portInUse(port)
+        } else {
+            self = .listenerFailed(listenerError.localizedDescription)
+        }
+    }
+
+    var errorDescription: String? {
+        switch self {
+        case .invalidPort(let port): "invalid port \(port)"
+        case .portInUse(let port): "port \(port) is already in use"
+        case .listenerFailed(let detail): "listener failed: \(detail)"
         }
     }
 }

@@ -28,37 +28,56 @@ enum MCPAccessToken {
     }
 
     @concurrent static func loadOrCreate() async throws -> String {
-        try await storage.loadOrCreate()
+        try await store.loadOrCreate()
     }
 
     @concurrent static func regenerate() async throws -> String {
-        try await storage.regenerate()
+        try await store.regenerate()
     }
 
-    private static let storage = Storage()
+    private static let store = MCPAccessTokenStore(
+        read: { try KeychainStore.read(account: account) },
+        write: { KeychainStore.save($0, account: account) }
+    )
+}
 
-    // One actor serializes Keychain access so concurrent callers never mint two tokens.
-    private actor Storage {
-        func loadOrCreate() throws -> String {
-            if let existing = KeychainStore.load(account: MCPAccessToken.account) { return existing }
-            return try regenerate()
-        }
+// One actor serializes Keychain access so concurrent callers never mint two tokens.
+actor MCPAccessTokenStore {
+    private let read: @Sendable () throws -> String?
+    private let write: @Sendable (String) -> Bool
 
-        func regenerate() throws -> String {
-            let token = MCPAccessToken.generate()
-            guard KeychainStore.save(token, account: MCPAccessToken.account) else {
-                throw MCPAccessTokenError.keychainWriteFailed
-            }
-            return token
+    init(read: @escaping @Sendable () throws -> String?, write: @escaping @Sendable (String) -> Bool) {
+        self.read = read
+        self.write = write
+    }
+
+    func loadOrCreate() throws -> String {
+        let existing: String?
+        do {
+            existing = try read()
+        } catch {
+            throw MCPAccessTokenError.keychainReadFailed
         }
+        if let existing { return existing }
+        return try regenerate()
+    }
+
+    func regenerate() throws -> String {
+        let token = MCPAccessToken.generate()
+        guard write(token) else { throw MCPAccessTokenError.keychainWriteFailed }
+        return token
     }
 }
 
-enum MCPAccessTokenError: LocalizedError {
+enum MCPAccessTokenError: LocalizedError, Equatable {
+    case keychainReadFailed
     case keychainWriteFailed
 
     var errorDescription: String? {
-        "The MCP access token could not be saved to the Keychain."
+        switch self {
+        case .keychainReadFailed: "The MCP access token could not be read from the Keychain."
+        case .keychainWriteFailed: "The MCP access token could not be saved to the Keychain."
+        }
     }
 }
 

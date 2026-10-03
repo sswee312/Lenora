@@ -628,6 +628,7 @@
 "Pointer (V)" = "Aanwijzer (V)";
 "Pop In" = "Pop-in";
 "Port" = "Poort";
+"Port %@ is already in use. Choose another port." = "Poort %@ is al in gebruik. Kies een andere poort.";
 "Portrait (9:16)" = "Staand (9:16)";
 "Position" = "Positie";
 "Preparing" = "Voorbereiden";
@@ -834,6 +835,7 @@
 "Text to Music" = "Tekst naar muziek";
 "Text to speak" = "Voor te lezen tekst";
 "Text to speak (minimum %lld characters)" = "Voor te lezen tekst (minimaal %lld tekens)";
+"The MCP server could not start. Check the port, then try again." = "De MCP-server kan niet worden gestart. Controleer de poort en probeer het opnieuw.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Het MCP-token is niet beschikbaar. Controleer de toegang tot de sleutelhanger en probeer het opnieuw.";
 "The clip you're adding has different settings than the current project." = "De clip die u toevoegt heeft andere instellingen dan het huidige project.";
 "The export" = "De export";

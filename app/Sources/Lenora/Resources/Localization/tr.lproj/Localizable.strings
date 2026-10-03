@@ -628,6 +628,7 @@
 "Pointer (V)" = "İşaretçi (V)";
 "Pop In" = "Belirme";
 "Port" = "Bağlantı noktası";
+"Port %@ is already in use. Choose another port." = "%@ bağlantı noktası zaten kullanımda. Başka bir bağlantı noktası seçin.";
 "Portrait (9:16)" = "Dikey (9:16)";
 "Position" = "Konum";
 "Preparing" = "Hazırlanıyor";
@@ -834,6 +835,7 @@
 "Text to Music" = "Metinden Müziğe";
 "Text to speak" = "Seslendirilecek metin";
 "Text to speak (minimum %lld characters)" = "Seslendirilecek metin (en az %lld karakter)";
+"The MCP server could not start. Check the port, then try again." = "MCP sunucusu başlatılamadı. Bağlantı noktasını kontrol edip tekrar deneyin.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP belirteci kullanılamıyor. Anahtar Zinciri erişimini kontrol edip tekrar deneyin.";
 "The clip you're adding has different settings than the current project." = "Eklediğiniz klibin ayarları geçerli projeden farklı.";
 "The export" = "Dışa aktarma";

@@ -628,6 +628,7 @@
 "Pointer (V)" = "Osoitin (V)";
 "Pop In" = "Ponnahtaa sisään";
 "Port" = "Portti";
+"Port %@ is already in use. Choose another port." = "Portti %@ on jo käytössä. Valitse toinen portti.";
 "Portrait (9:16)" = "Pysty (9:16)";
 "Position" = "Sijainti";
 "Preparing" = "Valmistellaan";
@@ -834,6 +835,7 @@
 "Text to Music" = "Tekstistä musiikiksi";
 "Text to speak" = "Luettava teksti";
 "Text to speak (minimum %lld characters)" = "Luettava teksti (vähintään %lld merkkiä)";
+"The MCP server could not start. Check the port, then try again." = "MCP-palvelinta ei voitu käynnistää. Tarkista portti ja yritä uudelleen.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-tunnus ei ole käytettävissä. Tarkista avainnipun käyttöoikeus ja yritä uudelleen.";
 "The clip you're adding has different settings than the current project." = "Lisättävän leikkeen asetukset poikkeavat nykyisestä projektista.";
 "The export" = "Vienti";

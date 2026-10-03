@@ -12,6 +12,7 @@ struct ConnectAgentPane: View {
     @State private var portDraft = String(MCPPort.current)
     @State private var portInvalid = false
     @State private var confirmingRegenerate = false
+    @FocusState private var portFocused: Bool
     @State private var extensionURL: URL?
 
     var body: some View {
@@ -23,7 +24,7 @@ struct ConnectAgentPane: View {
 
             portRow
             tokenRow
-            if tokenFailed || appState.mcpService?.startError != nil {
+            if let failureMessage {
                 Text(failureMessage)
                     .font(.system(size: AppTheme.FontSize.sm))
                     .foregroundStyle(AppTheme.Status.errorColor)
@@ -56,9 +57,14 @@ struct ConnectAgentPane: View {
         }
     }
 
-    private var failureMessage: String {
+    private var failureMessage: String? {
         if tokenFailed { return L10n.string("The MCP token is unavailable. Check Keychain access, then try again.") }
-        return appState.mcpService?.startError ?? ""
+        switch appState.mcpService?.startFailure {
+        case .token: return L10n.string("The MCP token is unavailable. Check Keychain access, then try again.")
+        case .portInUse(let port): return L10n.string("Port \(String(port)) is already in use. Choose another port.")
+        case .listener: return L10n.string("The MCP server could not start. Check the port, then try again.")
+        case nil: return nil
+        }
     }
 
     // MARK: - Port and token
@@ -70,7 +76,11 @@ struct ConnectAgentPane: View {
                 .textFieldStyle(.plain)
                 .font(.system(size: AppTheme.FontSize.sm, design: .monospaced))
                 .foregroundStyle(AppTheme.Text.primaryColor)
+                .focused($portFocused)
                 .onSubmit(applyPort)
+                .onChange(of: portFocused) { _, focused in
+                    if !focused { applyPort() }
+                }
                 .frame(width: AppTheme.Settings.portInputWidth)
                 .padding(.horizontal, AppTheme.Spacing.md)
                 .padding(.vertical, AppTheme.Spacing.sm)

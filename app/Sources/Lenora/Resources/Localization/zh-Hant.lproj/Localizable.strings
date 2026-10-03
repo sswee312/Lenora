@@ -628,6 +628,7 @@
 "Pointer (V)" = "指針 (V)";
 "Pop In" = "彈入";
 "Port" = "連接埠";
+"Port %@ is already in use. Choose another port." = "連接埠 %@ 已被使用。請選擇其他連接埠。";
 "Portrait (9:16)" = "直向 (9:16)";
 "Position" = "位置";
 "Preparing" = "正在準備";
@@ -834,6 +835,7 @@
 "Text to Music" = "文字產生音樂";
 "Text to speak" = "要朗讀的文字";
 "Text to speak (minimum %lld characters)" = "要朗讀的文字（至少 %lld 個字元）";
+"The MCP server could not start. Check the port, then try again." = "無法啟動 MCP 伺服器。請檢查連接埠，然後重試。";
 "The MCP token is unavailable. Check Keychain access, then try again." = "無法使用 MCP 權杖。請檢查鑰匙圈存取權限，然後重試。";
 "The clip you're adding has different settings than the current project." = "要加入的片段與目前專案的設定不同。";
 "The export" = "匯出任務";

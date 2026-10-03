@@ -628,6 +628,7 @@
 "Pointer (V)" = "指针 (V)";
 "Pop In" = "弹入";
 "Port" = "端口";
+"Port %@ is already in use. Choose another port." = "端口 %@ 已被占用。请选择其他端口。";
 "Portrait (9:16)" = "竖屏 (9:16)";
 "Position" = "位置";
 "Preparing" = "正在准备";
@@ -834,6 +835,7 @@
 "Text to Music" = "文本生成音乐";
 "Text to speak" = "要朗读的文本";
 "Text to speak (minimum %lld characters)" = "要朗读的文本（至少 %lld 个字符）";
+"The MCP server could not start. Check the port, then try again." = "无法启动 MCP 服务器。请检查端口，然后重试。";
 "The MCP token is unavailable. Check Keychain access, then try again." = "无法使用 MCP 令牌。请检查钥匙串访问权限，然后重试。";
 "The clip you're adding has different settings than the current project." = "要添加的片段与当前项目的设置不同。";
 "The export" = "导出任务";

@@ -24,6 +24,11 @@ enum KeychainStore {
     }
 
     static func load(account: String) -> String? {
+        (try? read(account: account)) ?? nil
+    }
+
+    /// Returns nil only when no usable item exists; any other Keychain failure throws.
+    static func read(account: String) throws -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
@@ -32,8 +37,10 @@ enum KeychainStore {
             kSecMatchLimit as String: kSecMatchLimitOne,
         ]
         var item: CFTypeRef?
-        guard SecItemCopyMatching(query as CFDictionary, &item) == errSecSuccess,
-              let data = item as? Data,
+        let status = SecItemCopyMatching(query as CFDictionary, &item)
+        if status == errSecItemNotFound { return nil }
+        guard status == errSecSuccess else { throw KeychainReadError(status: status) }
+        guard let data = item as? Data,
               let value = String(data: data, encoding: .utf8)?
                 .trimmingCharacters(in: .whitespacesAndNewlines),
               !value.isEmpty
@@ -49,4 +56,8 @@ enum KeychainStore {
         ]
         SecItemDelete(query as CFDictionary)
     }
+}
+
+struct KeychainReadError: Error {
+    let status: OSStatus
 }

@@ -628,6 +628,7 @@
 "Pointer (V)" = "पॉइंटर (V)";
 "Pop In" = "पॉप इन";
 "Port" = "पोर्ट";
+"Port %@ is already in use. Choose another port." = "पोर्ट %@ पहले से उपयोग में है। कोई दूसरा पोर्ट चुनें।";
 "Portrait (9:16)" = "पोर्ट्रेट (9:16)";
 "Position" = "पोज़िशन";
 "Preparing" = "तैयार हो रहा है";
@@ -834,6 +835,7 @@
 "Text to Music" = "टेक्स्ट से संगीत";
 "Text to speak" = "बोला जाने वाला टेक्स्ट";
 "Text to speak (minimum %lld characters)" = "बोला जाने वाला टेक्स्ट (कम से कम %lld अक्षर)";
+"The MCP server could not start. Check the port, then try again." = "MCP सर्वर शुरू नहीं हो सका। पोर्ट जाँचें, फिर दोबारा कोशिश करें।";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP टोकन उपलब्ध नहीं है। Keychain एक्सेस जाँचें, फिर दोबारा कोशिश करें।";
 "The clip you're adding has different settings than the current project." = "आप जो क्लिप जोड़ रहे हैं उसकी सेटिंग्स मौजूदा प्रोजेक्ट से अलग हैं।";
 "The export" = "एक्सपोर्ट";

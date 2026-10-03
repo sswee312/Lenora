@@ -628,6 +628,7 @@
 "Pointer (V)" = "Penunjuk (V)";
 "Pop In" = "Muncul";
 "Port" = "Port";
+"Port %@ is already in use. Choose another port." = "Port %@ sudah digunakan. Pilih port lain.";
 "Portrait (9:16)" = "Potret (9:16)";
 "Position" = "Posisi";
 "Preparing" = "Menyiapkan";
@@ -834,6 +835,7 @@
 "Text to Music" = "Teks ke Musik";
 "Text to speak" = "Teks untuk diucapkan";
 "Text to speak (minimum %lld characters)" = "Teks untuk diucapkan (minimum %lld karakter)";
+"The MCP server could not start. Check the port, then try again." = "Server MCP tidak dapat dimulai. Periksa port, lalu coba lagi.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP tidak tersedia. Periksa akses Rantai Kunci, lalu coba lagi.";
 "The clip you're adding has different settings than the current project." = "Klip yang Anda tambahkan memiliki pengaturan berbeda dari proyek saat ini.";
 "The export" = "Ekspor";

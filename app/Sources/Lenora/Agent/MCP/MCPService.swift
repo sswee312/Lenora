@@ -1,12 +1,18 @@
 import Foundation
 import MCP
 
+enum MCPStartFailure: Equatable {
+    case token
+    case portInUse(UInt16)
+    case listener
+}
+
 /// HTTP adapter. Tool handling lives in `ToolExecutor`.
 @Observable
 @MainActor
 final class MCPService {
 
-    var port: UInt16 { MCPPort.current }
+    var port: UInt16 { portProvider() }
 
     private static let enabledKey = "xyz.agentage.lenora.mcp.enabled"
 
@@ -22,7 +28,7 @@ final class MCPService {
     }
 
     private(set) var isRunning: Bool = false
-    private(set) var startError: String?
+    private(set) var startFailure: MCPStartFailure?
 
     @ObservationIgnored
     private var generation = 0
@@ -32,25 +38,40 @@ final class MCPService {
     @ObservationIgnored
     private var httpServer: MCPHTTPServer?
 
-    init(projectProvider: @escaping () -> VideoProject?) {
+    @ObservationIgnored
+    private let portProvider: () -> UInt16
+    @ObservationIgnored
+    private let loadToken: @Sendable () async throws -> String
+
+    init(
+        projectProvider: @escaping () -> VideoProject?,
+        port: @escaping () -> UInt16 = { MCPPort.current },
+        loadToken: @escaping @Sendable () async throws -> String = { try await MCPAccessToken.loadOrCreate() }
+    ) {
         self.projectProvider = projectProvider
+        self.portProvider = port
+        self.loadToken = loadToken
     }
 
     func start() async {
         generation += 1
         let attempt = generation
-        startError = nil
+        startFailure = nil
         let port = port
         let token: String
         do {
-            token = try await MCPAccessToken.loadOrCreate()
+            token = try await loadToken()
         } catch {
             guard attempt == generation else { return }
             Log.mcp.error("http server not started: \(error.localizedDescription)")
-            startError = error.localizedDescription
+            startFailure = .token
             isRunning = false
             return
         }
+        guard attempt == generation else { return }
+        let previous = httpServer
+        httpServer = nil
+        await previous?.stop()
         guard attempt == generation else { return }
         let httpServer = MCPHTTPServer(port: port, token: token) { [self] in
             let toolExecutor = await makeSessionToolExecutor()
@@ -76,7 +97,12 @@ final class MCPService {
         } catch {
             guard attempt == generation else { return }
             Log.mcp.error("http server failed to start: \(error.localizedDescription)")
-            startError = error.localizedDescription
+            self.httpServer = nil
+            if case MCPHTTPServerError.portInUse = error {
+                startFailure = .portInUse(port)
+            } else {
+                startFailure = .listener
+            }
             isRunning = false
         }
     }

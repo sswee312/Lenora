@@ -628,6 +628,7 @@
 "Pointer (V)" = "ตัวชี้ (V)";
 "Pop In" = "โผล่เข้า";
 "Port" = "พอร์ต";
+"Port %@ is already in use. Choose another port." = "พอร์ต %@ ถูกใช้งานอยู่แล้ว เลือกพอร์ตอื่น";
 "Portrait (9:16)" = "แนวตั้ง (9:16)";
 "Position" = "ตำแหน่ง";
 "Preparing" = "กำลังเตรียม";
@@ -834,6 +835,7 @@
 "Text to Music" = "ข้อความเป็นเพลง";
 "Text to speak" = "ข้อความที่จะพูด";
 "Text to speak (minimum %lld characters)" = "ข้อความที่จะพูด (อย่างน้อย %lld อักขระ)";
+"The MCP server could not start. Check the port, then try again." = "เริ่มเซิร์ฟเวอร์ MCP ไม่ได้ ตรวจสอบพอร์ตแล้วลองอีกครั้ง";
 "The MCP token is unavailable. Check Keychain access, then try again." = "ไม่สามารถใช้โทเค็น MCP ได้ ตรวจสอบสิทธิ์เข้าถึงพวงกุญแจ แล้วลองอีกครั้ง";
 "The clip you're adding has different settings than the current project." = "คลิปที่คุณกำลังเพิ่มมีการตั้งค่าต่างจากโปรเจ็กต์ปัจจุบัน";
 "The export" = "รายการส่งออก";

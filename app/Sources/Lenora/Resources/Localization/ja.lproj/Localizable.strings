@@ -628,6 +628,7 @@
 "Pointer (V)" = "ポインタ（V）";
 "Pop In" = "ポップイン";
 "Port" = "ポート";
+"Port %@ is already in use. Choose another port." = "ポート%@はすでに使用されています。別のポートを選択してください。";
 "Portrait (9:16)" = "縦向き（9:16）";
 "Position" = "位置";
 "Preparing" = "準備中";
@@ -834,6 +835,7 @@
 "Text to Music" = "テキストから音楽";
 "Text to speak" = "読み上げるテキスト";
 "Text to speak (minimum %lld characters)" = "読み上げるテキスト（%lld文字以上）";
+"The MCP server could not start. Check the port, then try again." = "MCPサーバを起動できませんでした。ポートを確認して、もう一度お試しください。";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCPトークンを利用できません。キーチェーンへのアクセスを確認して、もう一度お試しください。";
 "The clip you're adding has different settings than the current project." = "追加しようとしているクリップの設定が現在のプロジェクトと異なります。";
 "The export" = "書き出し";

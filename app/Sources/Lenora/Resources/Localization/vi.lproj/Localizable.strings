@@ -628,6 +628,7 @@
 "Pointer (V)" = "Con trỏ (V)";
 "Pop In" = "Hiện bật";
 "Port" = "Cổng";
+"Port %@ is already in use. Choose another port." = "Cổng %@ đã được sử dụng. Hãy chọn cổng khác.";
 "Portrait (9:16)" = "Dọc (9:16)";
 "Position" = "Vị trí";
 "Preparing" = "Đang chuẩn bị";
@@ -834,6 +835,7 @@
 "Text to Music" = "Văn bản thành nhạc";
 "Text to speak" = "Văn bản cần đọc";
 "Text to speak (minimum %lld characters)" = "Văn bản cần đọc (tối thiểu %lld ký tự)";
+"The MCP server could not start. Check the port, then try again." = "Không thể khởi động máy chủ MCP. Hãy kiểm tra cổng rồi thử lại.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Không thể dùng token MCP. Hãy kiểm tra quyền truy cập Chuỗi khóa rồi thử lại.";
 "The clip you're adding has different settings than the current project." = "Clip bạn đang thêm có cài đặt khác với dự án hiện tại.";
 "The export" = "Bản xuất";

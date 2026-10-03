@@ -628,6 +628,7 @@
 "Pointer (V)" = "מצביע ⁨(V)⁩";
 "Pop In" = "הופעה";
 "Port" = "פורט";
+"Port %@ is already in use. Choose another port." = "הפורט %@ כבר בשימוש. בחר פורט אחר.";
 "Portrait (9:16)" = "אנכי (9:16)";
 "Position" = "מיקום";
 "Preparing" = "מכין";
@@ -834,6 +835,7 @@
 "Text to Music" = "טקסט למוזיקה";
 "Text to speak" = "טקסט להקראה";
 "Text to speak (minimum %lld characters)" = "טקסט להקראה (לפחות ⁨%lld⁩ תווים)";
+"The MCP server could not start. Check the port, then try again." = "לא ניתן היה להפעיל את שרת ה-MCP. בדוק את הפורט ונסה שוב.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "טוקן ה-MCP אינו זמין. בדוק את הגישה לצרור המפתחות ונסה שוב.";
 "The clip you're adding has different settings than the current project." = "לקליפ שאתה מוסיף יש הגדרות שונות מאלה של הפרויקט הנוכחי.";
 "The export" = "הייצוא";

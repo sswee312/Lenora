@@ -628,6 +628,7 @@
 "Pointer (V)" = "Pekare (V)";
 "Pop In" = "Poppa in";
 "Port" = "Port";
+"Port %@ is already in use. Choose another port." = "Port %@ används redan. Välj en annan port.";
 "Portrait (9:16)" = "Stående (9:16)";
 "Position" = "Position";
 "Preparing" = "Förbereder";
@@ -834,6 +835,7 @@
 "Text to Music" = "Text till musik";
 "Text to speak" = "Text att tala";
 "Text to speak (minimum %lld characters)" = "Text att tala (minst %lld tecken)";
+"The MCP server could not start. Check the port, then try again." = "MCP-servern kunde inte startas. Kontrollera porten och försök igen.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-token är inte tillgänglig. Kontrollera åtkomsten till nyckelringen och försök igen.";
 "The clip you're adding has different settings than the current project." = "Klippet du lägger till har andra inställningar än det aktuella projektet.";
 "The export" = "Exporten";

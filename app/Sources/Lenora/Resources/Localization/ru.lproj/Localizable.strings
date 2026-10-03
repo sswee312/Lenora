@@ -628,6 +628,7 @@
 "Pointer (V)" = "Указатель (V)";
 "Pop In" = "Появление";
 "Port" = "Порт";
+"Port %@ is already in use. Choose another port." = "Порт %@ уже используется. Выберите другой порт.";
 "Portrait (9:16)" = "Портрет (9:16)";
 "Position" = "Позиция";
 "Preparing" = "Подготовка";
@@ -834,6 +835,7 @@
 "Text to Music" = "Текст в музыку";
 "Text to speak" = "Текст для озвучивания";
 "Text to speak (minimum %lld characters)" = "Текст для озвучивания (минимум символов: %lld)";
+"The MCP server could not start. Check the port, then try again." = "Не удалось запустить сервер MCP. Проверьте порт и повторите попытку.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Токен MCP недоступен. Проверьте доступ к Связке ключей и повторите попытку.";
 "The clip you're adding has different settings than the current project." = "У добавляемого клипа настройки отличаются от текущего проекта.";
 "The export" = "задачу экспорта";

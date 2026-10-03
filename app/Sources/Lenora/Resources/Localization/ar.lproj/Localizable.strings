@@ -628,6 +628,7 @@
 "Pointer (V)" = "المؤشر ⁨(V)⁩";
 "Pop In" = "ظهور منبثق";
 "Port" = "المنفذ";
+"Port %@ is already in use. Choose another port." = "المنفذ %@ قيد الاستخدام بالفعل. اختر منفذًا آخر.";
 "Portrait (9:16)" = "عمودي (9:16)";
 "Position" = "الموضع";
 "Preparing" = "جارٍ الإعداد";
@@ -834,6 +835,7 @@
 "Text to Music" = "تحويل النص إلى موسيقى";
 "Text to speak" = "النص المطلوب نطقه";
 "Text to speak (minimum %lld characters)" = "النص المطلوب نطقه (⁨%lld⁩ حرفًا على الأقل)";
+"The MCP server could not start. Check the port, then try again." = "تعذّر بدء خادم MCP. تحقق من المنفذ ثم حاول مرة أخرى.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "رمز MCP المميز غير متاح. تحقق من الوصول إلى سلسلة المفاتيح ثم حاول مرة أخرى.";
 "The clip you're adding has different settings than the current project." = "للمقطع الذي تضيفه إعدادات مختلفة عن المشروع الحالي.";
 "The export" = "الملف";

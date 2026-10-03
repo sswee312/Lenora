@@ -628,6 +628,7 @@
 "Pointer (V)" = "Pointeur (V)";
 "Pop In" = "Apparition";
 "Port" = "Port";
+"Port %@ is already in use. Choose another port." = "Le port %@ est déjà utilisé. Choisissez un autre port.";
 "Portrait (9:16)" = "Portrait (9:16)";
 "Position" = "Position";
 "Preparing" = "Préparation";
@@ -834,6 +835,7 @@
 "Text to Music" = "Texte en musique";
 "Text to speak" = "Texte à prononcer";
 "Text to speak (minimum %lld characters)" = "Texte à prononcer (%lld caractères minimum)";
+"The MCP server could not start. Check the port, then try again." = "Impossible de démarrer le serveur MCP. Vérifiez le port, puis réessayez.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Le jeton MCP est indisponible. Vérifiez l’accès au Trousseau, puis réessayez.";
 "The clip you're adding has different settings than the current project." = "Le clip que vous ajoutez possède des réglages différents de ceux du projet actuel.";
 "The export" = "L’exportation";

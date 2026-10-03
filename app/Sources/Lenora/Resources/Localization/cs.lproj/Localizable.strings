@@ -628,6 +628,7 @@
 "Pointer (V)" = "Výběr (V)";
 "Pop In" = "Vyskočení";
 "Port" = "Port";
+"Port %@ is already in use. Choose another port." = "Port %@ se již používá. Zvolte jiný port.";
 "Portrait (9:16)" = "Na výšku (9:16)";
 "Position" = "Pozice";
 "Preparing" = "Příprava";
@@ -834,6 +835,7 @@
 "Text to Music" = "Text na hudbu";
 "Text to speak" = "Text k mluvení";
 "Text to speak (minimum %lld characters)" = "Text k mluvení (minimálně %lld znaků)";
+"The MCP server could not start. Check the port, then try again." = "Server MCP se nepodařilo spustit. Zkontrolujte port a zkuste to znovu.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP není k dispozici. Zkontrolujte přístup ke Klíčence a zkuste to znovu.";
 "The clip you're adding has different settings than the current project." = "Klip, který přidáváte, má jiné nastavení než aktuální projekt.";
 "The export" = "Export";
