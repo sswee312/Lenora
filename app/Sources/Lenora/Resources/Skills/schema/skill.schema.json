@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/vermatushar/lenora-skills/blob/main/schema/skill.schema.json",
+  "$id": "https://github.com/vermatushar/Lenora/blob/main/skills/schema/skill.schema.json",
   "title": "Lenora skill frontmatter",
   "description": "The YAML frontmatter at the top of a SKILL.md file.",
   "type": "object",

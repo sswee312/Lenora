@@ -9,7 +9,7 @@ set -euo pipefail
 #   scripts/bundle.sh release --sign            # build + Developer ID codesign
 #   scripts/bundle.sh release --dist            # build + sign + notarize + staple + DMG
 #
-# SIGNING_IDENTITY defaults to "-" (ad-hoc). --sign and --dist require a Developer ID identity.
+# SIGNING_IDENTITY defaults to "-" (ad-hoc). --sign and --dist require a Developer ID identity and TEAM_ID.
 
 CONFIG="release"
 MODE="dev"
@@ -53,7 +53,7 @@ fi
 SIGNING_IDENTITY="${SIGNING_IDENTITY:--}"   # "-" = ad-hoc; set a Developer ID to sign for distribution
 NOTARY_PROFILE="${NOTARY_PROFILE:-lenora-notary}"
 PROVISION_PROFILE="${PROVISION_PROFILE:-$ROOT/scripts/Lenora_Developer_ID.provisionprofile}"
-ENTITLEMENTS="$ROOT/scripts/Lenora.entitlements"
+ENTITLEMENTS="$PKG/.build/Lenora.entitlements"
 RESOURCES="$PKG/Sources/Lenora/Resources"
 APP="$PKG/.build/Lenora.app"
 ZIP="$PKG/.build/Lenora.zip"
@@ -193,6 +193,12 @@ if [ "$SIGNING_IDENTITY" = "-" ]; then
   echo "!! --$MODE needs SIGNING_IDENTITY set to a Developer ID Application identity (ad-hoc is only for dev and --fast builds)" >&2
   exit 1
 fi
+
+if [ -z "${TEAM_ID:-}" ]; then
+  echo "!! --$MODE needs TEAM_ID set to your Apple Developer team ID" >&2
+  exit 1
+fi
+sed "s/TEAM_ID/$TEAM_ID/g" "$ROOT/scripts/Lenora.entitlements" > "$ENTITLEMENTS"
 
 echo "==> Embedding provisioning profile"
 if [ ! -f "$PROVISION_PROFILE" ]; then

@@ -9,7 +9,7 @@ struct TourOverlay: View {
     private let bookendWidth: CGFloat = 600
     private let margin: CGFloat = AppTheme.Spacing.xlXxl
 
-    private static let docsURL = URL(string: "https://github.com/vermatushar/lenora#readme")!
+    private static let docsURL = URL(string: "https://github.com/vermatushar/Lenora#readme")!
 
     var body: some View {
         if let step = tour.currentStep {
@@ -269,7 +269,7 @@ private final class TourAnchorNSView: NSView {
 
 /// Loads bundled tour images from the main bundle
 private enum TourAssets {
-    static let hero: NSImage? = load("tour-hero", ext: "jpg")
+    static let hero: NSImage? = load("welcome-hero", ext: "jpg")
 
     private static func load(_ name: String, ext: String) -> NSImage? {
         guard let root = Bundle.main.resourceURL else { return nil }
