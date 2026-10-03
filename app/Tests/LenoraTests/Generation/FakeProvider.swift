@@ -136,10 +136,19 @@ actor FakeProvider: GenerationProvider {
         }
     }
 
-    /// Returns once a parked `call` has been cancelled by its caller.
+    /// Returns once a parked `call` has been cancelled by its caller, or when the waiting test is cancelled.
     func waitForCancellation(_ call: Call) async {
         if cancelledCalls.contains(call) { return }
-        await withCheckedContinuation { cancellationWaiters.append((call, $0)) }
+        await withTaskCancellationHandler {
+            await withCheckedContinuation { cancellationWaiters.append((call, $0)) }
+        } onCancel: {
+            Task { await self.resumeCancellationWaiters() }
+        }
+    }
+
+    private func resumeCancellationWaiters() {
+        cancellationWaiters.forEach { $0.continuation.resume() }
+        cancellationWaiters.removeAll()
     }
 
     private func noteCancelled(_ call: Call) {
@@ -148,10 +157,19 @@ actor FakeProvider: GenerationProvider {
         cancellationWaiters.removeAll { $0.call == call }
     }
 
-    /// Returns once a consumer has attached to `jobUpdates`.
+    /// Returns once a consumer has attached to `jobUpdates`, or when the waiting test is cancelled.
     func waitForPoller() async {
         if pollers > 0 { return }
-        await withCheckedContinuation { pollerWaiters.append($0) }
+        await withTaskCancellationHandler {
+            await withCheckedContinuation { pollerWaiters.append($0) }
+        } onCancel: {
+            Task { await self.resumePollerWaiters() }
+        }
+    }
+
+    private func resumePollerWaiters() {
+        pollerWaiters.forEach { $0.resume() }
+        pollerWaiters.removeAll()
     }
 
     private func noteTermination() { terminations += 1 }
@@ -162,8 +180,7 @@ actor FakeProvider: GenerationProvider {
         for state in states { continuation.yield(state) }
         if let failure { continuation.finish(throwing: failure) }
         else if states.last?.status.isTerminal == true { continuation.finish() }
-        pollerWaiters.forEach { $0.resume() }
-        pollerWaiters.removeAll()
+        resumePollerWaiters()
     }
 
     func setCancelResult(_ result: Result<JobState, BackendError>) { cancelResult = result }

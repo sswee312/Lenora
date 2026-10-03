@@ -24,14 +24,31 @@ struct PublishServiceTests {
         return service
     }
 
-    /// Resumes when `condition` holds after a change; never sleeps.
+    @MainActor private final class ChangeWaiter {
+        var continuation: CheckedContinuation<Void, Never>?
+        func resume() {
+            continuation?.resume()
+            continuation = nil
+        }
+    }
+
+    /// Resumes when `condition` holds after a change, or when the test is cancelled; never sleeps.
     private func waitFor(_ service: PublishService, _ condition: @escaping @MainActor () -> Bool) async {
         if condition() { return }
-        await withCheckedContinuation { continuation in
-            service.onChange = {
-                guard condition() else { return }
+        let waiter = ChangeWaiter()
+        await withTaskCancellationHandler {
+            await withCheckedContinuation { continuation in
+                waiter.continuation = continuation
+                service.onChange = {
+                    guard condition() else { return }
+                    service.onChange = {}
+                    waiter.resume()
+                }
+            }
+        } onCancel: {
+            Task { @MainActor in
                 service.onChange = {}
-                continuation.resume()
+                waiter.resume()
             }
         }
     }
@@ -72,7 +89,7 @@ struct PublishServiceTests {
             expected = .tooLarge(byteCount: 104_857_601, maxBytes: 104_857_600)
         case .teaserTooLong:
             probe = PublishProbe(byteCount: 1, durationSeconds: 5); options.teaserSeconds = 5
-            expected = .teaserTooLong(5, durationSeconds: 5)
+            expected = .teaserTooLong(5, longest: nil)
         case .badAspect: options.vertical = "16:9"; expected = .unsupportedAspect("16:9", allowed: ["9:16", "1:1", "4:5"])
         case .unavailable: expected = .unavailable
         case .unreadable: probe = PublishProbe(byteCount: 1, durationSeconds: .nan); expected = .unreadable
@@ -142,6 +159,28 @@ struct PublishServiceTests {
         for await delay in delays { recorded.append(delay) }
         #expect(recorded == [.seconds(2)])
         #expect(await provider.pollers == 2)
+    }
+
+    @MainActor private final class ProviderSlot {
+        var current: FakeProvider?
+        init(_ provider: FakeProvider) { current = provider }
+    }
+
+    @Test func backoffPollsTheProviderConnectedAfterTheWait() async throws {
+        let first = FakeProvider(states: [PublishFixtures.state(.running)], failure: Self.rateLimited)
+        let second = FakeProvider(states: [PublishFixtures.state(.succeeded, roles: PublishOptions().roles)])
+        let slot = ProviderSlot(first)
+        let catalog = try EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")
+        let probe = twentySeconds
+        let service = PublishService(provider: { slot.current }, catalog: catalog, probe: { _ in probe }, sleep: { _ in
+            await MainActor.run { slot.current = second }
+        })
+        let jobs = [export()]
+        service.exportJobs = { jobs }
+        _ = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await waitFor(service) { service.publications.first?.status == .ready }
+        #expect(await first.pollers == 1)
+        #expect(await second.pollers == 1)
     }
 
     @Test(arguments: [(1, 2), (2, 4), (5, 32), (6, 60), (40, 60)])

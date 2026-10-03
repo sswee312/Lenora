@@ -227,6 +227,7 @@ final class PublishService {
     }
 
     private func monitor(_ id: UUID, jobId: String, provider: any GenerationProvider, token: UUID) async {
+        var provider = provider
         var retries = 0
         while true {
             do {
@@ -239,6 +240,9 @@ final class PublishService {
                 retries += 1
                 do { try await sleep(Self.pollRetryDelay(after: retries)) } catch { return }
                 guard runs[id]?.token == token else { return }
+                // A reconnect or backend switch during the wait replaces the provider; without one, resumeMonitoring takes over.
+                guard let current = self.provider() else { return }
+                provider = current
             } catch {
                 return fail(id, token: token, PublishFailure(error))
             }

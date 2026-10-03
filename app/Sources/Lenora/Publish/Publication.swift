@@ -68,7 +68,7 @@ struct PublishFailure: Codable, Sendable, Equatable {
         case "invalid_response": L10n.string("The backend returned an unexpected response.")
         case "upload_unreachable": L10n.string("Couldn't reach the provider to upload the file.")
         case "upload_failed": L10n.string("The upload to the provider failed.")
-        default: message
+        default: message == code ? L10n.string("Publishing failed.") : message
         }
     }
 }
@@ -174,7 +174,12 @@ struct PublishProbe: Sendable, Equatable {
     static func read(_ url: URL) async throws -> PublishProbe {
         guard let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize else { throw PublishRefusal.unreadable }
         let duration = try await AVURLAsset(url: url).load(.duration)
-        return PublishProbe(byteCount: Int64(size), durationSeconds: duration.seconds)
+        return PublishProbe(byteCount: Int64(size), durationSeconds: try seconds(of: duration))
+    }
+
+    static func seconds(of duration: CMTime) throws -> Double {
+        guard duration.isNumeric, duration.seconds.isFinite, duration.seconds > 0 else { throw PublishRefusal.unreadable }
+        return duration.seconds
     }
 }
 
@@ -211,9 +216,17 @@ struct PublishLimits: Decodable, Sendable, Equatable {
         if let seconds = options.teaserSeconds {
             guard let range = teaserSeconds else { return .teaserUnsupported }
             guard (range.min...range.max).contains(seconds) else { return .teaserOutOfRange(seconds, min: range.min, max: range.max) }
-            guard Double(seconds) < probe.durationSeconds else { return .teaserTooLong(seconds, durationSeconds: probe.durationSeconds) }
+            let longest = longestTeaser(for: probe.durationSeconds)
+            guard let longest, seconds <= longest else { return .teaserTooLong(seconds, longest: longest) }
         }
         return nil
+    }
+
+    // A teaser must be shorter than the video; nil when even the shortest allowed teaser doesn't fit.
+    func longestTeaser(for durationSeconds: Double) -> Int? {
+        guard let range = teaserSeconds, durationSeconds.isFinite, durationSeconds > 0 else { return nil }
+        let longest = durationSeconds > Double(range.max) ? range.max : Int(durationSeconds.rounded(.up)) - 1
+        return longest >= range.min ? longest : nil
     }
 }
 
@@ -226,7 +239,7 @@ enum PublishRefusal: Error, Equatable {
     case unsupportedAspect(String, allowed: [String])
     case teaserUnsupported
     case teaserOutOfRange(Int, min: Int, max: Int)
-    case teaserTooLong(Int, durationSeconds: Double)
+    case teaserTooLong(Int, longest: Int?)
     case notFound
     case busy
     case notUploaded
@@ -251,7 +264,8 @@ enum PublishRefusal: Error, Equatable {
         case .unsupportedAspect(let aspect, let allowed): "Vertical aspect \(aspect) isn't supported. Allowed: \(allowed.joined(separator: ", "))."
         case .teaserUnsupported: "The backend can't make teasers."
         case .teaserOutOfRange(let seconds, let min, let max): "Teaser length \(seconds) s is outside \(min)–\(max) s."
-        case .teaserTooLong(let seconds, let duration): "A \(seconds) s teaser must be shorter than the \(Int(duration)) s video."
+        case .teaserTooLong(let seconds, let longest?): "A \(seconds) s teaser doesn't fit this video; the longest allowed is \(longest) s."
+        case .teaserTooLong: "This video is too short for a teaser."
         case .notFound: "No publication with that ID in this project."
         case .busy: "This publication is still uploading or processing."
         case .notUploaded: "This publication never finished uploading; publish the export again."
@@ -272,8 +286,9 @@ enum PublishRefusal: Error, Equatable {
             L10n.string("Vertical aspect \(aspect) isn't supported. Use \(allowed.formatted(.list(type: .or).locale(AppLocalization.shared.activeLocale))).")
         case .teaserUnsupported: L10n.string("Teasers aren't available.")
         case .teaserOutOfRange(_, let min, let max): L10n.string("Teasers must be \(min)–\(max) seconds.")
-        case .teaserTooLong(_, let duration):
-            L10n.string("This video allows teasers up to \((Int(duration.rounded(.up)) - 1).secondsText(locale: AppLocalization.shared.activeLocale)).")
+        case .teaserTooLong(_, let longest?):
+            L10n.string("This video allows teasers up to \(longest.secondsText(locale: AppLocalization.shared.activeLocale)).")
+        case .teaserTooLong: L10n.string("This video is too short for a teaser.")
         case .notFound: L10n.string("The publication no longer exists.")
         case .busy: L10n.string("Wait for the current upload or processing to finish.")
         case .notUploaded: L10n.string("The upload didn't finish. Publish the export again.")

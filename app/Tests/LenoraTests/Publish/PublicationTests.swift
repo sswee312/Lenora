@@ -1,3 +1,4 @@
+import AVFoundation
 import Foundation
 import Testing
 @testable import Lenora
@@ -41,7 +42,9 @@ struct PublicationTests {
         (PublishOptions(vertical: "9:16"), tenSeconds, nil),
         (PublishOptions(teaserSeconds: 4), tenSeconds, .teaserOutOfRange(4, min: 5, max: 30)),
         (PublishOptions(teaserSeconds: 31), PublishProbe(byteCount: 1, durationSeconds: 60), .teaserOutOfRange(31, min: 5, max: 30)),
-        (PublishOptions(teaserSeconds: 10), tenSeconds, .teaserTooLong(10, durationSeconds: 10)),
+        (PublishOptions(teaserSeconds: 10), tenSeconds, .teaserTooLong(10, longest: 9)),
+        (PublishOptions(teaserSeconds: 5), PublishProbe(byteCount: 1, durationSeconds: 5), .teaserTooLong(5, longest: nil)),
+        (PublishOptions(teaserSeconds: 10), PublishProbe(byteCount: 1, durationSeconds: 10.5), nil),
         (PublishOptions(teaserSeconds: 9), tenSeconds, nil),
     ] as [(PublishOptions, PublishProbe, PublishRefusal?)])
     func limitsRefuseImpossibleRequests(options: PublishOptions, probe: PublishProbe, expected: PublishRefusal?) {
@@ -144,6 +147,10 @@ struct PublishFailureTests {
         #expect(PublishFailure(code: "backend_unreachable", message: "stored").userMessage == L10n.string("Can't reach the backend."))
     }
 
+    @Test func aBareCodeShowsTheGenericFailure() {
+        #expect(PublishFailure(code: "rate_limited", message: "rate_limited").userMessage == L10n.string("Publishing failed."))
+    }
+
     @Test func unknownCodesShowTheBackendTextVerbatim() {
         #expect(PublishFailure(code: "rate_limited", message: "Slow down.").userMessage == "Slow down.")
     }
@@ -160,7 +167,7 @@ struct PublishRefusalTests {
         (.unsupportedAspect("16:9", allowed: ["9:16"]), "invalid_request"),
         (.teaserUnsupported, "invalid_request"),
         (.teaserOutOfRange(4, min: 5, max: 30), "invalid_request"),
-        (.teaserTooLong(10, durationSeconds: 10), "invalid_request"),
+        (.teaserTooLong(10, longest: 9), "invalid_request"),
         (.notFound, "not_found"),
         (.busy, "invalid_request"),
         (.notUploaded, "invalid_request"),
@@ -181,10 +188,18 @@ struct PublishRefusalTests {
         #expect(text.contains("16:9") && text.contains("9:16") && text.contains("1:1"))
     }
 
-    @Test(arguments: [(10.0, 9), (10.5, 10)])
-    func teaserTooLongNamesTheLongestAllowedTeaser(durationSeconds: Double, longest: Int) {
-        let text = PublishRefusal.teaserTooLong(longest + 1, durationSeconds: durationSeconds).userMessage
-        #expect(text.contains(longest.secondsText(locale: AppLocalization.shared.activeLocale)))
+    @Test(arguments: [(10.0, 9), (10.5, 10), (5.0, nil), (1e300, 30)] as [(Double, Int?)])
+    func longestTeaserFitsInsideTheVideoAndRange(durationSeconds: Double, longest: Int?) {
+        #expect(PublicationTests.limits.longestTeaser(for: durationSeconds) == longest)
+    }
+
+    @Test func teaserTooLongNamesTheLongestAllowedTeaser() {
+        let text = PublishRefusal.teaserTooLong(10, longest: 9).userMessage
+        #expect(text.contains(9.secondsText(locale: AppLocalization.shared.activeLocale)))
+    }
+
+    @Test func teaserTooLongSaysWhenNoTeaserFits() {
+        #expect(PublishRefusal.teaserTooLong(5, longest: nil).userMessage == L10n.string("This video is too short for a teaser."))
     }
 
     @Test(arguments: [(1, "1 second"), (15, "15 seconds")])
@@ -194,6 +209,15 @@ struct PublishRefusalTests {
 }
 
 struct PublishProbeTests {
+    @Test(arguments: [CMTime.invalid, .indefinite, .positiveInfinity, .zero, CMTime(value: -1, timescale: 1)])
+    func unusableDurationsAreUnreadable(_ duration: CMTime) {
+        #expect(throws: PublishRefusal.unreadable) { try PublishProbe.seconds(of: duration) }
+    }
+
+    @Test func numericDurationIsInSeconds() throws {
+        #expect(try PublishProbe.seconds(of: CMTime(value: 5, timescale: 2)) == 2.5)
+    }
+
     @Test func readsSizeAndDurationOfARealVideo() async throws {
         let url = try await FixtureVideo.write(scenes: [.init(rgb: (0, 0, 0), seconds: 2)])
         defer { try? FileManager.default.removeItem(at: url) }
