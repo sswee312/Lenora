@@ -1,0 +1,106 @@
+import base64
+
+import pytest
+
+from cld import ADMIN_IMAGE, ADMIN_VIDEO, SECRET, UUID, VIDEO_REF, admin, job, run, settings
+from lenora_backend.errors import ProblemError
+from lenora_backend.kinds import AssetInput, ImageEditParams
+from lenora_adapter_cloudinary import signed_url
+from lenora_adapter_cloudinary.delivery import edit_transformation
+
+
+def url_of(job_id: str) -> str:
+    encoded = job_id.removeprefix("url:")
+    return base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4)).decode()
+
+
+@pytest.mark.parametrize("params, transformation", [
+    ({"op": "fill", "aspectRatio": "16:9"}, "ar_16:9,b_gen_fill,c_pad"),
+    ({"op": "replace", "from": "the cat", "to": "a dog"}, "e_gen_replace:from_the%20cat;to_a%20dog"),
+    ({"op": "remove", "prompt": "the cup"}, "e_gen_remove:prompt_the%20cup"),
+    ({"op": "recolor", "prompt": "car", "color": "#1E90FF"}, "e_gen_recolor:prompt_car;to-color_1e90ff"),
+    ({"op": "backgroundReplace"}, "e_gen_background_replace"),
+    ({"op": "backgroundReplace", "prompt": "a beach"}, "e_gen_background_replace:prompt_a%20beach"),
+    ({"op": "restore"}, "e_gen_restore"),
+    ({"op": "remove", "prompt": "it's"}, "e_gen_remove:prompt_it%27s"),
+])
+def test_edit_transformations(params, transformation):
+    assert edit_transformation(ImageEditParams.model_validate(params).root) == transformation
+
+
+@pytest.mark.parametrize("op, credits", [
+    ({"op": "fill", "aspectRatio": "1:1"}, 0.05), ({"op": "replace", "from": "a", "to": "b"}, 0.12),
+    ({"op": "remove", "prompt": "a"}, 0.05), ({"op": "recolor", "prompt": "a", "color": "#000000"}, 0.05),
+    ({"op": "backgroundReplace"}, 0.23), ({"op": "restore"}, 0.1),
+])
+def test_edit_submit_signs_url_and_estimates(op, credits):
+    submitted = run(lambda a: a.submit("cloudinary/generative-edit", job("image.edit", "cloudinary/generative-edit", op)))
+    expected = signed_url("demo", "image", edit_transformation(ImageEditParams.model_validate(op).root), f"lenora/{UUID}.png", SECRET)
+    assert url_of(submitted.jobId) == expected
+    assert submitted.estimate.amount == pytest.approx(credits)
+
+
+@pytest.mark.parametrize("width, height, ok, credits", [
+    (2048, 2048, True, 0.1), (2049, 2048, False, None), (499, 500, True, 0.01), (500, 500, True, 0.1),
+])
+def test_upscale_pixel_limit_and_estimate(width, height, ok, credits):
+    request = job("image.upscale", "cloudinary/upscale")
+    mock = lambda r: admin(r, width=width, height=height)
+    if ok:
+        submitted = run(lambda a: a.submit(request.model, request), mock=mock)
+        assert "/e_upscale/" in url_of(submitted.jobId)
+        assert submitted.estimate.amount == pytest.approx(credits)
+    else:
+        with pytest.raises(ProblemError) as info:
+            run(lambda a: a.submit(request.model, request), mock=mock)
+        assert info.value.code == "input_too_large"
+
+
+def test_missing_asset_is_invalid_request():
+    request = job("image.upscale", "cloudinary/upscale")
+    with pytest.raises(ProblemError) as info:
+        run(lambda a: a.submit(request.model, request), mock=lambda r: r.get(ADMIN_IMAGE).respond(404))
+    assert info.value.code == "invalid_request"
+
+
+@pytest.mark.parametrize("size, ok", [(41943040, True), (41943041, False)])
+def test_reframe_stays_within_the_on_the_fly_cap(size, ok):
+    request = job("video.reframe", "cloudinary/reframe", {"aspectRatio": "9:16"}, [AssetInput(assetRef=VIDEO_REF)])
+    mock = lambda r: admin(r, bytes_=size, duration=2.4, video=True)
+    if ok:
+        submitted = run(lambda a: a.submit(request.model, request), mock=mock)
+        assert url_of(submitted.jobId) == signed_url("demo", "video", "ar_9:16,c_fill,g_auto", f"lenora/{UUID}.mp4", SECRET)
+        assert submitted.estimate.amount == pytest.approx(0.042)
+    else:
+        with pytest.raises(ProblemError) as info:
+            run(lambda a: a.submit(request.model, request), mock=mock)
+        assert info.value.code == "input_too_large"
+
+
+def test_reframe_rejects_image_refs():
+    request = job("video.reframe", "cloudinary/reframe", {"aspectRatio": "9:16"})
+    with pytest.raises(ProblemError) as info:
+        run(lambda a: a.submit(request.model, request))
+    assert info.value.code == "invalid_request"
+
+
+def test_reframe_result_is_mp4():
+    request = job("video.reframe", "cloudinary/reframe", {"aspectRatio": "1:1"}, [AssetInput(assetRef=VIDEO_REF)])
+
+    async def scenario(a):
+        return await a.status((await a.submit(request.model, request)).jobId)
+
+    def mock(r):
+        admin(r, duration=1.0, video=True)
+        r.get(url__startswith="https://res.cloudinary.com/demo/video/").respond(206)
+    state = run(scenario, mock=mock)
+    assert state.results[0].contentType == "video/mp4" and state.results[0].fileExtension == "mp4"
+
+
+def test_rate_limited_delivery_keeps_running():
+    request = job("image.edit", "cloudinary/generative-edit", {"op": "restore"})
+
+    async def scenario(a):
+        return await a.status((await a.submit(request.model, request)).jobId)
+    state = run(scenario, mock=lambda r: r.get(url__startswith="https://res.cloudinary.com/").respond(420))
+    assert state.status == "running" and state.retryAfter == 30
