@@ -246,6 +246,8 @@ private struct CopyTextButton: View {
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
         pasteboard.setString(value, forType: .string)
+        // Every value copied here carries the MCP token; clipboard managers skip concealed items.
+        pasteboard.setString("", forType: NSPasteboard.PasteboardType("org.nspasteboard.ConcealedType"))
         copied = true
         Task {
             try? await Task.sleep(for: Self.feedbackDuration)
