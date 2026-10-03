@@ -13,6 +13,12 @@ struct LenoraBackendClientTests {
         .init(status: 200, body: #"{"jobId":"cloudinary:x","status":"\#(status)"}"#, headers: ["Retry-After": "7"])
     }
 
+    @Test func recheckAddsTheQuery() async throws {
+        let transport = StubTransport([.success(.init(status: 200, body: #"{"status":"ok","protocolVersion":"1"}"#))])
+        _ = try await client(transport).health(recheckAddons: true)
+        #expect(await transport.requests.first?.url?.query == "recheck=addons")
+    }
+
     @Test func sendsBearerToken() async throws {
         let transport = StubTransport([.success(.init(status: 200, body: #"{"protocolVersion":"1","adapters":[],"models":[]}"#))])
         _ = try await client(transport).capabilities()

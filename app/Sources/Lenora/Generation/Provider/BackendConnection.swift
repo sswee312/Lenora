@@ -24,7 +24,7 @@ final class BackendConnection {
 
     private init() {}
 
-    func reload() async {
+    func reload(recheckAddons: Bool = false) async {
         generation &+= 1
         let current = generation
         state = .connecting
@@ -54,7 +54,7 @@ final class BackendConnection {
         configuration = resolved.configuration
         provider = client
         do {
-            let health = try await client.health()
+            let health = try await client.health(recheckAddons: recheckAddons)
             let capabilities = try await client.capabilities()
             guard current == generation else { return }
             self.health = health
@@ -89,7 +89,7 @@ final class BackendConnection {
             return
         }
         guard current == generation else { return }
-        await reload()
+        await reload(recheckAddons: true)
     }
 
     private func clear() {

@@ -18,7 +18,7 @@ actor FakeProvider: GenerationProvider {
         self.hangsOnSubmit = hangsOnSubmit
     }
 
-    nonisolated func health() async throws -> BackendHealth { BackendHealth(status: "ok", protocolVersion: "1", backendVersion: "t", adapters: []) }
+    nonisolated func health(recheckAddons: Bool) async throws -> BackendHealth { BackendHealth(status: "ok", protocolVersion: "1", backendVersion: "t", adapters: []) }
     nonisolated func capabilities() async throws -> BackendCapabilities { .empty }
 
     func createUpload(model: String, contentType: String, byteCount: Int64, filename: String) async throws -> UploadTicket {

@@ -153,7 +153,7 @@ final class GenerationService {
                 }
                 let job = JobRequest(
                     kind: model.kind, model: model.id,
-                    inputs: uploaded.map(JobInput.assetRef), params: buildParams(uploaded)
+                    inputs: uploaded.map { .assetRef($0) }, params: buildParams(uploaded)
                 )
                 finalGenInput.idempotencyKey = idempotencyKey
                 finalGenInput.submission = try PendingSubmission(job)

@@ -29,8 +29,10 @@ struct LenoraBackendClient: GenerationProvider {
     }
 
     @concurrent
-    func health() async throws -> BackendHealth {
-        try await decode(BackendHealth.self, request("GET", "v1", "health")).0
+    func health(recheckAddons: Bool) async throws -> BackendHealth {
+        var health = try request("GET", "v1", "health")
+        if recheckAddons { health.url?.append(queryItems: [URLQueryItem(name: "recheck", value: "addons")]) }
+        return try await decode(BackendHealth.self, health).0
     }
 
     @concurrent
