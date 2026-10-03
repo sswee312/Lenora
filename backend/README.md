@@ -22,12 +22,15 @@ uv run lenora-backend          # reads ../.env in development
 | `LENORA_CLOUDINARY_CLOUD_NAME`, `_API_KEY`, `_API_SECRET` | to enable Cloudinary | — |
 | `LENORA_CLOUDINARY_ON_THE_FLY_VIDEO_MAX_BYTES` | no | 41943040 |
 | `LENORA_CLOUDINARY_IMAGE_GENERATION`, `_IMAGE_TO_VIDEO` | no | `auto` |
+| `LENORA_DATA_DIR` | no | `.data` |
+| `LENORA_CLOUDINARY_DAILY_CREDIT_BUDGET` | no | unlimited |
+| `LENORA_CLOUDINARY_COST_IMAGE_GENERATION`, `_COST_IMAGE_TO_VIDEO_PER_SECOND` | no | `1.0` |
 
 An adapter with missing settings is disabled. `GET /v1/health` (with the token) shows why.
 
 ## Deploy
 
-`docker build -t lenora-backend backend` and run it with `LENORA_TOKEN` and the adapter keys in the platform's environment. Idempotency keys live in memory, so run a single instance.
+`docker build -t lenora-backend backend` and run it with `LENORA_TOKEN` and the adapter keys in the platform's environment. Idempotency keys live in memory, so run a single instance. Mount a volume at `/data` to keep chain jobs and learned add-on state across restarts.
 
 ## Write an adapter
 

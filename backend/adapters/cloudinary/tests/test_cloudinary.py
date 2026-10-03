@@ -1,4 +1,7 @@
+import asyncio
 import base64
+import json
+from pathlib import Path
 
 import httpx
 import pytest
@@ -156,3 +159,9 @@ class TestCloudinaryConformance(AdapterConformance):
         router.get(url__startswith=DELIVERY).mock(side_effect=httpx.ConnectError("down"))
         router.get(url__startswith=f"{GEN}/tasks/").mock(side_effect=httpx.ConnectError("down"))
         router.get(url__startswith=f"{I2V}/").mock(side_effect=httpx.ConnectError("down"))
+
+
+def test_full_capabilities_fixture_matches_the_adapter(tmp_path):
+    fixture = json.loads((Path(__file__).resolve().parents[4] / "protocol/fixtures/Capabilities.cloudinaryFull.json").read_text())
+    models = run(lambda a: asyncio.sleep(0, a.models()), settings(tmp_path, image_generation="on", image_to_video="on"))
+    assert fixture["models"] == [m.model_dump(mode="json") for m in models]

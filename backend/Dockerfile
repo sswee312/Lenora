@@ -10,4 +10,6 @@ RUN useradd --system --uid 10001 lenora
 USER lenora
 EXPOSE 8080
 ENV PORT=8080
+ENV LENORA_DATA_DIR=/data
+VOLUME ["/data"]
 CMD ["/srv/.venv/bin/lenora-backend"]
