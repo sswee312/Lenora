@@ -33,9 +33,13 @@ NOISE = [{"transformation": "sp_auto:maxres_1080p/mpd", "format": "mpd"},
 
 
 def video(router, *, duration=20.0, bytes_=1000, derived=(), fmt="mp4", extra=()):
-    return router.get(ADMIN_VIDEO).respond(200, json={
-        "asset_id": "a1", "bytes": bytes_, "duration": duration, "format": fmt,
-        "derived": [shaped(t) for t in derived] + list(extra)})
+    body = {"asset_id": "a1", "bytes": bytes_, "format": fmt, "derived": [shaped(t) for t in derived] + list(extra)}
+
+    def lookup(request):
+        # Cloudinary reports duration only when media_metadata=true is requested.
+        with_metadata = request.url.params.get("media_metadata") == "true"
+        return httpx.Response(200, json={**body, "duration": duration} if with_metadata else body)
+    return router.get(ADMIN_VIDEO).mock(side_effect=lookup)
 
 
 def form(route) -> dict[str, str]:

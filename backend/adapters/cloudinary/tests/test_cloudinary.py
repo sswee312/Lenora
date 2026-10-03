@@ -140,6 +140,8 @@ class TestCloudinaryConformance(AdapterConformance):
             if video_gone_after_submit and "/video/" in request.url.path and request.url.path in seen:
                 return httpx.Response(404)
             seen.add(request.url.path)
+            if request.url.params.get("media_metadata") != "true":
+                return httpx.Response(200, json={k: v for k, v in body.items() if k != "duration"})
             return httpx.Response(200, json=body)
         router.get(url__regex=r"https://api\.cloudinary\.com/v1_1/demo/resources/.*").mock(side_effect=resource)
         router.post(f"{API}/v1_1/demo/video/explicit").respond(200, json={})

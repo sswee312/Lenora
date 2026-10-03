@@ -82,6 +82,8 @@ class CloudinaryAPI:
 
     async def asset(self, ref: AssetRef) -> Asset:
         path = f"/v1_1/{self.settings.cloud_name}/resources/{ref.resource_type}/upload/{ref.public_id}"
+        if ref.resource_type == "video":
+            path += "?media_metadata=true"  # without it the lookup omits duration
         response = await self.request("GET", path)
         if response.status_code == 404:
             raise ProblemError("invalid_request", "The input asset was not found; upload it before submitting.")
