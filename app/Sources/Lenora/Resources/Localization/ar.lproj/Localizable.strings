@@ -188,6 +188,7 @@
 "Comments" = "التعليقات";
 "Compatibility: %@" = "التوافق: ⁨%@⁩";
 "Completed" = "مكتمل";
+"Confirm that anyone with the link can watch." = "أكّد أن أي شخص لديه الرابط يمكنه مشاهدة الفيديو.";
 "Connect an agent" = "ربط وكيل";
 "Connect an external agent to inspect and edit the open Lenora project." = "اربط وكيلاً خارجيًا لفحص مشروع Lenora المفتوح وتحريره.";
 "Connected" = "متصل";
@@ -567,6 +568,7 @@
 "No audio" = "لا يوجد صوت";
 "No audio selected." = "لم يتم تحديد صوت.";
 "No beats detected." = "لم يتم اكتشاف إيقاعات.";
+"No connected backend can publish video." = "لا يوجد خادم متصل يمكنه نشر الفيديو.";
 "No conversations yet" = "لا توجد محادثات بعد";
 "No exports yet" = "لا توجد عمليات تصدير بعد";
 "No images" = "لا توجد صور";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "تنسيق تبادل أقدم، وهو الأنسب عندما تكون الوجهة Premiere Pro. يدعم عمليات التحرير الأساسية والإطارات الرئيسية، لكنه لا يدعم النص أو اللون أو التأثيرات أو نعومة الحواف أو استدارتها.";
 "On-device transcription is not available for %@." = "التفريغ النصي على الجهاز غير متاح لـ ⁨%@⁩.";
 "Only available for AI-generated media" = "متاح فقط للوسائط المُنشأة بالذكاء الاصطناعي";
+"Only completed MP4 or MOV exports can be published." = "يمكن نشر عمليات التصدير المكتملة بصيغة MP4 أو MOV فقط.";
 "Opacity" = "التعتيم";
 "Open" = "فتح";
 "Open %@" = "فتح ⁨%@⁩";
@@ -851,6 +854,8 @@
 "System appearance" = "مظهر النظام";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "التقط صورة للمعاينة واستخدمها كمرجع للإنشاء. يفيد ذلك خصوصًا في إنشاء انتقالات بالذكاء الاصطناعي.";
 "Target Language" = "اللغة الهدف";
+"Teasers aren't available." = "المقاطع التشويقية غير متاحة.";
+"Teasers must be %lld–%lld seconds." = "يجب أن تكون مدة المقطع التشويقي بين %lld و%lld ثانية.";
 "Temperature" = "حرارة اللون";
 "Temporary files" = "الملفات المؤقتة";
 "Test Connection" = "اختبار الاتصال";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "للمقطع الذي تضيفه إعدادات مختلفة عن المشروع الحالي.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "الخادم المتصل لا يوفر هذا التعديل. افتح الإعدادات ← الخادم.";
 "The export" = "الملف";
+"The export file can't be read." = "تعذّرت قراءة ملف التصدير.";
+"The export is %@; publishing accepts up to %@." = "حجم التصدير %@؛ الحد الأقصى المقبول للنشر هو %@.";
 "The file is larger than %@." = "حجم الملف أكبر من %@.";
 "The image is larger than %lld pixels in total." = "الصورة أكبر من %lld بكسل إجمالًا.";
 "The image size isn't known yet. Try again in a moment." = "حجم الصورة غير معروف بعد. حاول مرة أخرى بعد لحظة.";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "انتهت المهمة بدون نتيجة.";
 "The marker comment changed while you were editing. Review it and try again." = "تغيّر تعليق العلامة أثناء تحريرك له. راجعه وأعد المحاولة.";
 "The project will be moved to the Trash." = "سيتم نقل المشروع إلى سلة المهملات.";
+"The publication no longer exists." = "لم يعد هذا المنشور موجودًا.";
 "The selected model refused this request. Revise the prompt and try again." = "رفض النموذج المحدد هذا الطلب. راجع المطالبة وأعد المحاولة.";
 "The selected projects will be moved to the Trash." = "سيتم نقل المشاريع المحددة إلى سلة المهملات.";
 "The source file is missing." = "ملف المصدر مفقود.";
+"The teaser must be shorter than the video." = "يجب أن يكون المقطع التشويقي أقصر من الفيديو.";
 "The timeline settings changed. Close this sheet and try again." = "تغيرت إعدادات المخطط الزمني. أغلق هذه اللوحة وأعد المحاولة.";
+"The upload didn't finish. Publish the export again." = "لم يكتمل الرفع. انشر التصدير مرة أخرى.";
 "Theme" = "السمة";
 "This build includes no skills." = "لا يتضمن هذا الإصدار أي مهارات.";
 "This edit works on images only." = "هذا التعديل يعمل على الصور فقط.";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "لا يمكن لهذا النموذج تحديد سقف الإخراج عند ⁨60 FPS⁩.";
 "This permanently removes %@." = "يؤدي هذا إلى إزالة ⁨%@⁩ نهائيًا.";
 "This source can’t replace the clip." = "لا يمكن لهذا المصدر استبدال المقطع.";
+"This video was unpublished." = "أُلغي نشر هذا الفيديو.";
 "Three-Stack" = "تكديس ثلاثي";
 "Three-Up" = "عرض ثلاثي";
 "Threshold" = "الحد";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "يستخدم المخطط الزمني كاملاً افتراضيًا. حدّد نطاقًا على المخطط لإنشاء موسيقى لذلك الجزء فقط.";
 "Version" = "الإصدار";
 "Vertical" = "رأسي";
+"Vertical aspect %@ isn't supported." = "نسبة العرض إلى الارتفاع العمودية %@ غير مدعومة.";
 "Vertical workspace layout" = "تخطيط مساحة العمل الرأسي";
 "Vibrance" = "حيوية الألوان";
 "Video" = "الفيديو";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "نموذج تنقية الصوت غير متاح";
 "Voice Cleanup requires audio or video" = "تتطلب تنقية الصوت صوتًا أو فيديو";
 "Volume" = "مستوى الصوت";
+"Wait for the current upload or processing to finish." = "انتظر حتى ينتهي الرفع أو المعالجة الحاليان.";
 "Warmth" = "دفء اللون";
 "Welcome to Lenora" = "مرحبًا بك في Lenora";
 "What's New in v%@" = "الجديد في الإصدار ⁨v%@⁩";

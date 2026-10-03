@@ -188,6 +188,7 @@
 "Comments" = "Kommentarer";
 "Compatibility: %@" = "Kompatibilitet: %@";
 "Completed" = "Slutförd";
+"Confirm that anyone with the link can watch." = "Bekräfta att alla med länken kan titta.";
 "Connect an agent" = "Anslut en Agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "Anslut en extern Agent för att inspektera och redigera det öppna Lenora-projektet.";
 "Connected" = "Ansluten";
@@ -567,6 +568,7 @@
 "No audio" = "Inget ljud";
 "No audio selected." = "Inget ljud markerat.";
 "No beats detected." = "Inga takter identifierades.";
+"No connected backend can publish video." = "Ingen ansluten backend kan publicera video.";
 "No conversations yet" = "Inga konversationer än";
 "No exports yet" = "Inga exporter än";
 "No images" = "Inga bilder";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Äldre utbytesformat, bäst när Premiere Pro är målet. Stödjer grundläggande redigering och nyckelbilder, men inte text, färg, effekter, kantmjukhet eller kantavrundning.";
 "On-device transcription is not available for %@." = "Transkription på enheten är inte tillgänglig för %@.";
 "Only available for AI-generated media" = "Bara tillgängligt för AI-genererat media";
+"Only completed MP4 or MOV exports can be published." = "Bara slutförda MP4- eller MOV-exporter kan publiceras.";
 "Opacity" = "Opacitet";
 "Open" = "Öppna";
 "Open %@" = "Öppna %@";
@@ -851,6 +854,8 @@
 "System appearance" = "Systemutseende";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Ta en skärmbild av förhandsvisningen och använd den som referens för generering. Särskilt användbart för att skapa AI-övergångar.";
 "Target Language" = "Målspråk";
+"Teasers aren't available." = "Teasers är inte tillgängliga.";
+"Teasers must be %lld–%lld seconds." = "Teasers måste vara %lld–%lld sekunder.";
 "Temperature" = "Temperatur";
 "Temporary files" = "Tillfälliga filer";
 "Test Connection" = "Testa anslutning";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "Klippet du lägger till har andra inställningar än det aktuella projektet.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Den anslutna backenden erbjuder inte den här redigeringen. Öppna Inställningar → Backend.";
 "The export" = "Exporten";
+"The export file can't be read." = "Exportfilen kan inte läsas.";
+"The export is %@; publishing accepts up to %@." = "Exporten är %@; publicering accepterar upp till %@.";
 "The file is larger than %@." = "Filen är större än %@.";
 "The image is larger than %lld pixels in total." = "Bilden är större än %lld pixlar totalt.";
 "The image size isn't known yet. Try again in a moment." = "Bildstorleken är inte känd än. Försök igen om en stund.";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "Jobbet avslutades utan resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markörkommentaren ändrades medan du redigerade. Granska den och försök igen.";
 "The project will be moved to the Trash." = "Projektet flyttas till Papperskorgen.";
+"The publication no longer exists." = "Publiceringen finns inte längre.";
 "The selected model refused this request. Revise the prompt and try again." = "Den valda modellen avvisade den här begäran. Ändra prompten och försök igen.";
 "The selected projects will be moved to the Trash." = "De markerade projekten flyttas till Papperskorgen.";
 "The source file is missing." = "Källfilen saknas.";
+"The teaser must be shorter than the video." = "Teasern måste vara kortare än videon.";
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeinställningarna ändrades. Stäng det här bladet och försök igen.";
+"The upload didn't finish. Publish the export again." = "Uppladdningen slutfördes inte. Publicera exporten igen.";
 "Theme" = "Tema";
 "This build includes no skills." = "Den här versionen innehåller inga färdigheter.";
 "This edit works on images only." = "Den här redigeringen fungerar bara på bilder.";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "Den här modellen kan inte begränsa utdata till 60 FPS.";
 "This permanently removes %@." = "Det här tar bort %@ permanent.";
 "This source can’t replace the clip." = "Den här källan kan inte ersätta klippet.";
+"This video was unpublished." = "Den här videon har avpublicerats.";
 "Three-Stack" = "Trestapel";
 "Three-Up" = "Tre bredvid";
 "Threshold" = "Tröskel";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Använder hela tidslinjen som standard. Markera ett område på tidslinjen för att bara tonsätta det avsnittet.";
 "Version" = "Version";
 "Vertical" = "Vertikalt";
+"Vertical aspect %@ isn't supported." = "Det vertikala bildförhållandet %@ stöds inte.";
 "Vertical workspace layout" = "Vertikal arbetsytelayout";
 "Vibrance" = "Lyster";
 "Video" = "Video";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "Röstrensningsmodellen är inte tillgänglig";
 "Voice Cleanup requires audio or video" = "Röstrensning kräver ljud eller video";
 "Volume" = "Volym";
+"Wait for the current upload or processing to finish." = "Vänta tills den pågående uppladdningen eller bearbetningen är klar.";
 "Warmth" = "Värme";
 "Welcome to Lenora" = "Välkommen till Lenora";
 "What's New in v%@" = "Nyheter i v%@";

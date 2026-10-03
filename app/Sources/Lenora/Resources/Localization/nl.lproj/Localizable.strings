@@ -188,6 +188,7 @@
 "Comments" = "Opmerkingen";
 "Compatibility: %@" = "Compatibiliteit: %@";
 "Completed" = "Voltooid";
+"Confirm that anyone with the link can watch." = "Bevestig dat iedereen met de link de video kan bekijken.";
 "Connect an agent" = "Verbind een Agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "Verbind een externe Agent om het geopende Lenora-project te inspecteren en te bewerken.";
 "Connected" = "Verbonden";
@@ -567,6 +568,7 @@
 "No audio" = "Geen audio";
 "No audio selected." = "Geen audio geselecteerd.";
 "No beats detected." = "Geen beats gedetecteerd.";
+"No connected backend can publish video." = "Geen enkele verbonden backend kan video publiceren.";
 "No conversations yet" = "Nog geen gesprekken";
 "No exports yet" = "Nog geen exports";
 "No images" = "Geen afbeeldingen";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Ouder uitwisselingsformaat, het meest geschikt als Premiere Pro de bestemming is. Ondersteunt basisbewerkingen en keyframes, maar geen tekst, kleur, effecten, randzachtheid of hoekafronding.";
 "On-device transcription is not available for %@." = "Transcriptie op het apparaat is niet beschikbaar voor %@.";
 "Only available for AI-generated media" = "Alleen beschikbaar voor AI-gegenereerde media";
+"Only completed MP4 or MOV exports can be published." = "Alleen voltooide MP4- of MOV-exports kunnen worden gepubliceerd.";
 "Opacity" = "Dekking";
 "Open" = "Open";
 "Open %@" = "Open %@";
@@ -851,6 +854,8 @@
 "System appearance" = "Systeemweergave";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Maak een schermafbeelding van de voorvertoning en gebruik die als referentie voor generatie. Vooral nuttig voor AI-overgangen.";
 "Target Language" = "Doeltaal";
+"Teasers aren't available." = "Teasers zijn niet beschikbaar.";
+"Teasers must be %lld–%lld seconds." = "Teasers moeten %lld–%lld seconden duren.";
 "Temperature" = "Temperatuur";
 "Temporary files" = "Tijdelijke bestanden";
 "Test Connection" = "Verbinding testen";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "De clip die u toevoegt heeft andere instellingen dan het huidige project.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "De verbonden backend biedt deze bewerking niet aan. Open Instellingen → Backend.";
 "The export" = "De export";
+"The export file can't be read." = "Het exportbestand kan niet worden gelezen.";
+"The export is %@; publishing accepts up to %@." = "De export is %@; publiceren accepteert maximaal %@.";
 "The file is larger than %@." = "Het bestand is groter dan %@.";
 "The image is larger than %lld pixels in total." = "De afbeelding is in totaal groter dan %lld pixels.";
 "The image size isn't known yet. Try again in a moment." = "De afbeeldingsgrootte is nog niet bekend. Probeer het zo opnieuw.";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "De taak is beëindigd zonder resultaat.";
 "The marker comment changed while you were editing. Review it and try again." = "De opmerking bij de markering is gewijzigd tijdens het bewerken. Beoordeel deze en probeer het opnieuw.";
 "The project will be moved to the Trash." = "Het project wordt naar de Prullenmand verplaatst.";
+"The publication no longer exists." = "De publicatie bestaat niet meer.";
 "The selected model refused this request. Revise the prompt and try again." = "Het geselecteerde model heeft dit verzoek geweigerd. Pas de prompt aan en probeer het opnieuw.";
 "The selected projects will be moved to the Trash." = "De geselecteerde projecten worden naar de Prullenmand verplaatst.";
 "The source file is missing." = "Het bronbestand ontbreekt.";
+"The teaser must be shorter than the video." = "De teaser moet korter zijn dan de video.";
 "The timeline settings changed. Close this sheet and try again." = "De Timeline-instellingen zijn gewijzigd. Sluit dit venster en probeer het opnieuw.";
+"The upload didn't finish. Publish the export again." = "De upload is niet voltooid. Publiceer de export opnieuw.";
 "Theme" = "Thema";
 "This build includes no skills." = "Deze build bevat geen skills.";
 "This edit works on images only." = "Deze bewerking werkt alleen op afbeeldingen.";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "Dit model kan de uitvoer niet begrenzen op 60 FPS.";
 "This permanently removes %@." = "Hiermee wordt %@ definitief verwijderd.";
 "This source can’t replace the clip." = "Deze bron kan de clip niet vervangen.";
+"This video was unpublished." = "Deze video is niet meer gepubliceerd.";
 "Three-Stack" = "Drie gestapeld";
 "Three-Up" = "Drie naast elkaar";
 "Threshold" = "Drempel";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Gebruikt standaard de hele Timeline. Markeer een bereik op de Timeline om alleen dat deel van muziek te voorzien.";
 "Version" = "Versie";
 "Vertical" = "Verticaal";
+"Vertical aspect %@ isn't supported." = "De verticale beeldverhouding %@ wordt niet ondersteund.";
 "Vertical workspace layout" = "Verticale werkruimte";
 "Vibrance" = "Levendigheid";
 "Video" = "Video";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "Stem opschonen-model niet beschikbaar";
 "Voice Cleanup requires audio or video" = "Stem opschonen vereist audio of video";
 "Volume" = "Volume";
+"Wait for the current upload or processing to finish." = "Wacht tot de huidige upload of verwerking klaar is.";
 "Warmth" = "Warmte";
 "Welcome to Lenora" = "Welkom bij Lenora";
 "What's New in v%@" = "Nieuw in v%@";

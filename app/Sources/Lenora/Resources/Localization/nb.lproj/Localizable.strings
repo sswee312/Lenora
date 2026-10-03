@@ -188,6 +188,7 @@
 "Comments" = "Kommentarer";
 "Compatibility: %@" = "Kompatibilitet: %@";
 "Completed" = "Fullført";
+"Confirm that anyone with the link can watch." = "Bekreft at alle med lenken kan se videoen.";
 "Connect an agent" = "Koble til en Agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "Koble til en ekstern agent for å inspisere og redigere det åpne Lenora-prosjektet.";
 "Connected" = "Tilkoblet";
@@ -567,6 +568,7 @@
 "No audio" = "Ingen lyd";
 "No audio selected." = "Ingen lyd valgt.";
 "No beats detected." = "Ingen takter gjenkjent.";
+"No connected backend can publish video." = "Ingen tilkoblet backend kan publisere video.";
 "No conversations yet" = "Ingen samtaler ennå";
 "No exports yet" = "Ingen eksporter ennå";
 "No images" = "Ingen bilder";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Eldre utvekslingsformat, best når Premiere Pro er målet. Støtter grunnleggende redigering og nøkkelbilder, men ikke tekst, farge, effekter, kantmykhet eller kantavrunding.";
 "On-device transcription is not available for %@." = "Transkripsjon på enheten er ikke tilgjengelig for %@.";
 "Only available for AI-generated media" = "Bare tilgjengelig for AI-generert media";
+"Only completed MP4 or MOV exports can be published." = "Bare fullførte MP4- eller MOV-eksporter kan publiseres.";
 "Opacity" = "Dekkevne";
 "Open" = "Åpne";
 "Open %@" = "Åpne %@";
@@ -851,6 +854,8 @@
 "System appearance" = "Systemutseende";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Ta et skjermbilde av forhåndsvisningen og bruk det som referanse for generering. Særlig nyttig for å lage AI-overganger.";
 "Target Language" = "Målspråk";
+"Teasers aren't available." = "Teasere er ikke tilgjengelige.";
+"Teasers must be %lld–%lld seconds." = "Teasere må være %lld–%lld sekunder.";
 "Temperature" = "Temperatur";
 "Temporary files" = "Midlertidige filer";
 "Test Connection" = "Test tilkobling";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "Klippet du legger til har andre innstillinger enn det gjeldende prosjektet.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Den tilkoblede backenden tilbyr ikke denne redigeringen. Åpne Innstillinger → Backend.";
 "The export" = "Eksporten";
+"The export file can't be read." = "Eksportfilen kan ikke leses.";
+"The export is %@; publishing accepts up to %@." = "Eksporten er %@; publisering godtar opptil %@.";
 "The file is larger than %@." = "Filen er større enn %@.";
 "The image is larger than %lld pixels in total." = "Bildet er større enn %lld piksler totalt.";
 "The image size isn't known yet. Try again in a moment." = "Bildestørrelsen er ikke kjent ennå. Prøv igjen om et øyeblikk.";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "Jobben ble avsluttet uten resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markørkommentaren ble endret mens du redigerte. Se gjennom den, og prøv på nytt.";
 "The project will be moved to the Trash." = "Prosjektet flyttes til papirkurven.";
+"The publication no longer exists." = "Publiseringen finnes ikke lenger.";
 "The selected model refused this request. Revise the prompt and try again." = "Den valgte modellen avviste denne forespørselen. Endre prompten, og prøv på nytt.";
 "The selected projects will be moved to the Trash." = "De valgte prosjektene flyttes til papirkurven.";
 "The source file is missing." = "Kildefilen mangler.";
+"The teaser must be shorter than the video." = "Teaseren må være kortere enn videoen.";
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeinnstillingene ble endret. Lukk dette arket, og prøv på nytt.";
+"The upload didn't finish. Publish the export again." = "Opplastingen ble ikke fullført. Publiser eksporten på nytt.";
 "Theme" = "Tema";
 "This build includes no skills." = "Denne versjonen inneholder ingen ferdigheter.";
 "This edit works on images only." = "Denne redigeringen fungerer bare på bilder.";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "Denne modellen kan ikke begrense utdataene til 60 FPS.";
 "This permanently removes %@." = "Dette fjerner %@ permanent.";
 "This source can’t replace the clip." = "Denne kilden kan ikke erstatte klippet.";
+"This video was unpublished." = "Denne videoen er avpublisert.";
 "Three-Stack" = "Tre stablet";
 "Three-Up" = "Tre ved siden av";
 "Threshold" = "Terskel";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Bruker hele tidslinjen som standard. Merk et område på tidslinjen for å komponere bare det intervallet.";
 "Version" = "Versjon";
 "Vertical" = "Vertikal";
+"Vertical aspect %@ isn't supported." = "Det vertikale sideforholdet %@ støttes ikke.";
 "Vertical workspace layout" = "Vertikalt arbeidsområdeoppsett";
 "Vibrance" = "Livaktighet";
 "Video" = "Video";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "Stemmerensingsmodell ikke tilgjengelig";
 "Voice Cleanup requires audio or video" = "Stemmerensing krever lyd eller video";
 "Volume" = "Volum";
+"Wait for the current upload or processing to finish." = "Vent til den pågående opplastingen eller behandlingen er ferdig.";
 "Warmth" = "Varme";
 "Welcome to Lenora" = "Velkommen til Lenora";
 "What's New in v%@" = "Nyheter i v%@";

@@ -188,6 +188,7 @@
 "Comments" = "コメント";
 "Compatibility: %@" = "互換性：%@";
 "Completed" = "完了";
+"Confirm that anyone with the link can watch." = "リンクを知っている全員が視聴できることを確認してください。";
 "Connect an agent" = "エージェントを接続";
 "Connect an external agent to inspect and edit the open Lenora project." = "外部エージェントを接続して、開いているLenoraプロジェクトの確認や編集を行います。";
 "Connected" = "接続済み";
@@ -567,6 +568,7 @@
 "No audio" = "オーディオなし";
 "No audio selected." = "オーディオが選択されていません。";
 "No beats detected." = "ビートが検出されませんでした。";
+"No connected backend can publish video." = "動画を公開できる接続済みのバックエンドがありません。";
 "No conversations yet" = "チャットはまだありません";
 "No exports yet" = "書き出しはまだありません";
 "No images" = "画像がありません";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Premiere Proを書き出し先とする場合に適した旧形式の交換フォーマットです。基本的な編集とキーフレームに対応していますが、テキスト、カラー、エフェクト、エッジの柔らかさ、エッジの丸みには対応していません。";
 "On-device transcription is not available for %@." = "%@ではオンデバイス文字起こしを利用できません。";
 "Only available for AI-generated media" = "AI生成メディアでのみ利用できます";
+"Only completed MP4 or MOV exports can be published." = "公開できるのは、完了済みの MP4 または MOV の書き出しのみです。";
 "Opacity" = "不透明度";
 "Open" = "開く";
 "Open %@" = "%@を開く";
@@ -851,6 +854,8 @@
 "System appearance" = "システムの外観";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "プレビューのスクリーンショットを撮り、生成の参照として使用します。AIトランジションの作成に特に便利です。";
 "Target Language" = "対象言語";
+"Teasers aren't available." = "ティーザーは利用できません。";
+"Teasers must be %lld–%lld seconds." = "ティーザーは %lld〜%lld 秒にしてください。";
 "Temperature" = "温度";
 "Temporary files" = "一時ファイル";
 "Test Connection" = "接続をテスト";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "追加しようとしているクリップの設定が現在のプロジェクトと異なります。";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "接続中のバックエンドはこの編集を提供していません。設定 → バックエンドを開いてください。";
 "The export" = "書き出し";
+"The export file can't be read." = "書き出しファイルを読み込めません。";
+"The export is %@; publishing accepts up to %@." = "書き出しのサイズは %@ です。公開できるのは最大 %@ までです。";
 "The file is larger than %@." = "ファイルが %@ を超えています。";
 "The image is larger than %lld pixels in total." = "画像の総ピクセル数が %lld を超えています。";
 "The image size isn't known yet. Try again in a moment." = "画像サイズがまだ不明です。少し待ってからもう一度お試しください。";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "ジョブは結果なしで終了しました。";
 "The marker comment changed while you were editing. Review it and try again." = "編集中にマーカーのコメントが変更されました。内容を確認してもう一度お試しください。";
 "The project will be moved to the Trash." = "プロジェクトはゴミ箱に移動されます。";
+"The publication no longer exists." = "この公開は存在しません。";
 "The selected model refused this request. Revise the prompt and try again." = "選択したモデルがこのリクエストを拒否しました。プロンプトを見直してもう一度お試しください。";
 "The selected projects will be moved to the Trash." = "選択したプロジェクトはゴミ箱に移動されます。";
 "The source file is missing." = "ソースファイルが見つかりません。";
+"The teaser must be shorter than the video." = "ティーザーは動画より短くしてください。";
 "The timeline settings changed. Close this sheet and try again." = "タイムライン設定が変更されました。このシートを閉じてもう一度お試しください。";
+"The upload didn't finish. Publish the export again." = "アップロードが完了しませんでした。書き出しをもう一度公開してください。";
 "Theme" = "テーマ";
 "This build includes no skills." = "このビルドにはスキルが含まれていません。";
 "This edit works on images only." = "この編集は画像専用です。";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "このモデルでは出力を60 FPSに制限できません。";
 "This permanently removes %@." = "%@を完全に削除します。";
 "This source can’t replace the clip." = "このソースではクリップを差し替えられません。";
+"This video was unpublished." = "この動画の公開は取り消されました。";
 "Three-Stack" = "3スタック";
 "Three-Up" = "3分割";
 "Threshold" = "しきい値";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "デフォルトではタイムライン全体を使用します。その区間だけに音楽を付けるには、タイムライン上で範囲をマークしてください。";
 "Version" = "バージョン";
 "Vertical" = "縦";
+"Vertical aspect %@ isn't supported." = "縦長のアスペクト比 %@ はサポートされていません。";
 "Vertical workspace layout" = "縦型のワークスペースレイアウト";
 "Vibrance" = "自然な彩度";
 "Video" = "ビデオ";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "音声クリーンアップモデルを利用できません";
 "Voice Cleanup requires audio or video" = "音声クリーンアップにはオーディオまたはビデオが必要です";
 "Volume" = "音量";
+"Wait for the current upload or processing to finish." = "現在のアップロードまたは処理が完了するまでお待ちください。";
 "Warmth" = "暖かみ";
 "Welcome to Lenora" = "Lenoraへようこそ";
 "What's New in v%@" = "バージョン%@の新機能";

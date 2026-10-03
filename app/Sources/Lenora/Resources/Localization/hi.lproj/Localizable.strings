@@ -188,6 +188,7 @@
 "Comments" = "कमेंट";
 "Compatibility: %@" = "कम्पैटिबिलिटी: %@";
 "Completed" = "पूर्ण";
+"Confirm that anyone with the link can watch." = "पुष्टि करें कि लिंक वाला कोई भी व्यक्ति वीडियो देख सकता है।";
 "Connect an agent" = "एजेंट कनेक्ट करें";
 "Connect an external agent to inspect and edit the open Lenora project." = "खुले Lenora प्रोजेक्ट को देखने और एडिट करने के लिए बाहरी एजेंट कनेक्ट करें।";
 "Connected" = "कनेक्टेड";
@@ -567,6 +568,7 @@
 "No audio" = "कोई ऑडियो नहीं";
 "No audio selected." = "कोई ऑडियो चयनित नहीं।";
 "No beats detected." = "कोई बीट नहीं पहचानी गई।";
+"No connected backend can publish video." = "कोई कनेक्टेड बैकएंड वीडियो प्रकाशित नहीं कर सकता।";
 "No conversations yet" = "अभी कोई बातचीत नहीं";
 "No exports yet" = "अभी कोई एक्सपोर्ट नहीं";
 "No images" = "कोई इमेज नहीं";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "पुराना इंटरचेंज फ़ॉर्मैट, Premiere Pro को डेस्टिनेशन बनाने के लिए सबसे अच्छा। बेसिक एडिट और कीफ़्रेम समर्थित हैं, लेकिन टेक्स्ट, कलर, इफ़ेक्ट, एज सॉफ़्टनेस या एज राउंडिंग नहीं।";
 "On-device transcription is not available for %@." = "%@ के लिए ऑन-डिवाइस ट्रांसक्रिप्शन उपलब्ध नहीं है।";
 "Only available for AI-generated media" = "केवल AI द्वारा जेनरेट किए गए मीडिया के लिए उपलब्ध";
+"Only completed MP4 or MOV exports can be published." = "केवल पूरे हुए MP4 या MOV एक्सपोर्ट प्रकाशित किए जा सकते हैं।";
 "Opacity" = "ओपेसिटी";
 "Open" = "खोलें";
 "Open %@" = "%@ खोलें";
@@ -851,6 +854,8 @@
 "System appearance" = "सिस्टम अपीयरेंस";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "प्रीव्यू का स्क्रीनशॉट लेकर जेनरेशन के रेफ़रेंस के रूप में उपयोग करें। AI ट्रांज़िशन बनाने के लिए विशेष रूप से उपयोगी।";
 "Target Language" = "टार्गेट भाषा";
+"Teasers aren't available." = "टीज़र उपलब्ध नहीं हैं।";
+"Teasers must be %lld–%lld seconds." = "टीज़र %lld–%lld सेकंड का होना चाहिए।";
 "Temperature" = "टेम्परेचर";
 "Temporary files" = "अस्थायी फ़ाइलें";
 "Test Connection" = "कनेक्शन टेस्ट करें";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "आप जो क्लिप जोड़ रहे हैं उसकी सेटिंग्स मौजूदा प्रोजेक्ट से अलग हैं।";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "कनेक्ट किया गया बैकएंड यह संपादन उपलब्ध नहीं कराता। सेटिंग्स → बैकएंड खोलें।";
 "The export" = "एक्सपोर्ट";
+"The export file can't be read." = "एक्सपोर्ट फ़ाइल पढ़ी नहीं जा सकती।";
+"The export is %@; publishing accepts up to %@." = "एक्सपोर्ट %@ का है; प्रकाशन अधिकतम %@ स्वीकार करता है।";
 "The file is larger than %@." = "फ़ाइल %@ से बड़ी है।";
 "The image is larger than %lld pixels in total." = "छवि कुल %lld पिक्सेल से बड़ी है।";
 "The image size isn't known yet. Try again in a moment." = "छवि का आकार अभी पता नहीं है। थोड़ी देर में फिर कोशिश करें।";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "जॉब बिना परिणाम के समाप्त हुआ।";
 "The marker comment changed while you were editing. Review it and try again." = "एडिट करते समय मार्कर कमेंट बदल गया। जाँचें और फिर कोशिश करें।";
 "The project will be moved to the Trash." = "प्रोजेक्ट ट्रैश में ले जाया जाएगा।";
+"The publication no longer exists." = "यह प्रकाशन अब मौजूद नहीं है।";
 "The selected model refused this request. Revise the prompt and try again." = "चयनित मॉडल ने यह अनुरोध अस्वीकार कर दिया। प्रॉम्प्ट संशोधित करें और फिर कोशिश करें।";
 "The selected projects will be moved to the Trash." = "चयनित प्रोजेक्ट ट्रैश में भेज दिए जाएँगे।";
 "The source file is missing." = "सोर्स फ़ाइल नहीं मिली।";
+"The teaser must be shorter than the video." = "टीज़र वीडियो से छोटा होना चाहिए।";
 "The timeline settings changed. Close this sheet and try again." = "टाइमलाइन सेटिंग्स बदल गई हैं। यह शीट बंद करके फिर कोशिश करें।";
+"The upload didn't finish. Publish the export again." = "अपलोड पूरा नहीं हुआ। एक्सपोर्ट को फिर से प्रकाशित करें।";
 "Theme" = "थीम";
 "This build includes no skills." = "इस बिल्ड में कोई स्किल शामिल नहीं है।";
 "This edit works on images only." = "यह संपादन केवल छवियों पर काम करता है।";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "यह मॉडल आउटपुट को 60 FPS पर सीमित नहीं कर सकता।";
 "This permanently removes %@." = "यह %@ को स्थायी रूप से हटाता है।";
 "This source can’t replace the clip." = "यह सोर्स क्लिप को नहीं बदल सकता।";
+"This video was unpublished." = "इस वीडियो का प्रकाशन हटा दिया गया है।";
 "Three-Stack" = "तीन-स्टैक";
 "Three-Up" = "तीन पैनल";
 "Threshold" = "थ्रेशोल्ड";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "डिफ़ॉल्ट रूप से पूरी टाइमलाइन उपयोग करता है। केवल किसी हिस्से को स्कोर करने के लिए टाइमलाइन पर रेंज मार्क करें।";
 "Version" = "वर्ज़न";
 "Vertical" = "वर्टिकल";
+"Vertical aspect %@ isn't supported." = "वर्टिकल आस्पेक्ट %@ समर्थित नहीं है।";
 "Vertical workspace layout" = "वर्टिकल वर्कस्पेस लेआउट";
 "Vibrance" = "वाइब्रेंस";
 "Video" = "वीडियो";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "वॉइस क्लीनअप मॉडल उपलब्ध नहीं है";
 "Voice Cleanup requires audio or video" = "वॉइस क्लीनअप के लिए ऑडियो या वीडियो चाहिए";
 "Volume" = "वॉल्यूम";
+"Wait for the current upload or processing to finish." = "मौजूदा अपलोड या प्रोसेसिंग पूरी होने तक प्रतीक्षा करें।";
 "Warmth" = "वॉर्म्थ";
 "Welcome to Lenora" = "Lenora में आपका स्वागत है";
 "What's New in v%@" = "v%@ में नया क्या है";

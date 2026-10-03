@@ -188,6 +188,7 @@
 "Comments" = "코멘트";
 "Compatibility: %@" = "호환성: %@";
 "Completed" = "완료됨";
+"Confirm that anyone with the link can watch." = "링크가 있는 누구나 시청할 수 있음을 확인하세요.";
 "Connect an agent" = "에이전트 연결";
 "Connect an external agent to inspect and edit the open Lenora project." = "외부 에이전트를 연결하여 열려 있는 Lenora 프로젝트를 검사하고 편집합니다.";
 "Connected" = "연결됨";
@@ -567,6 +568,7 @@
 "No audio" = "오디오 없음";
 "No audio selected." = "선택한 오디오가 없습니다.";
 "No beats detected." = "감지된 비트가 없습니다.";
+"No connected backend can publish video." = "동영상을 게시할 수 있는 연결된 백엔드가 없습니다.";
 "No conversations yet" = "아직 대화 없음";
 "No exports yet" = "아직 내보내기 없음";
 "No images" = "이미지 없음";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Premiere Pro로 보낼 때 적합한 이전 교환 포맷입니다. 기본 편집과 키프레임을 지원하지만 텍스트, 색상, 효과, 가장자리 부드러움 또는 가장자리 둥글기는 지원하지 않습니다.";
 "On-device transcription is not available for %@." = "%@에는 온디바이스 트랜스크립션을 사용할 수 없습니다.";
 "Only available for AI-generated media" = "AI로 생성한 미디어에서만 사용할 수 있습니다";
+"Only completed MP4 or MOV exports can be published." = "완료된 MP4 또는 MOV 내보내기만 게시할 수 있습니다.";
 "Opacity" = "불투명도";
 "Open" = "열기";
 "Open %@" = "%@ 열기";
@@ -851,6 +854,8 @@
 "System appearance" = "시스템 모드";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "미리보기의 스크린샷을 찍어 생성 참조로 사용합니다. 특히 AI 전환을 만들 때 유용합니다.";
 "Target Language" = "대상 언어";
+"Teasers aren't available." = "티저를 사용할 수 없습니다.";
+"Teasers must be %lld–%lld seconds." = "티저는 %lld–%lld초여야 합니다.";
 "Temperature" = "온도";
 "Temporary files" = "임시 파일";
 "Test Connection" = "연결 테스트";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "추가하려는 클립의 설정이 현재 프로젝트와 다릅니다.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "연결된 백엔드가 이 편집을 제공하지 않습니다. 설정 → 백엔드를 여세요.";
 "The export" = "내보내기";
+"The export file can't be read." = "내보내기 파일을 읽을 수 없습니다.";
+"The export is %@; publishing accepts up to %@." = "내보내기 크기는 %@이며, 게시는 최대 %@까지 허용합니다.";
 "The file is larger than %@." = "파일이 %@보다 큽니다.";
 "The image is larger than %lld pixels in total." = "이미지의 총 픽셀 수가 %lld를 초과합니다.";
 "The image size isn't known yet. Try again in a moment." = "아직 이미지 크기를 알 수 없습니다. 잠시 후 다시 시도하세요.";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "작업이 결과 없이 종료되었습니다.";
 "The marker comment changed while you were editing. Review it and try again." = "편집하는 동안 마커 코멘트가 변경되었습니다. 확인한 후 다시 시도하세요.";
 "The project will be moved to the Trash." = "프로젝트가 휴지통으로 이동됩니다.";
+"The publication no longer exists." = "이 게시물은 더 이상 존재하지 않습니다.";
 "The selected model refused this request. Revise the prompt and try again." = "선택한 모델이 이 요청을 거부했습니다. 프롬프트를 수정한 후 다시 시도하세요.";
 "The selected projects will be moved to the Trash." = "선택한 프로젝트가 휴지통으로 이동됩니다.";
 "The source file is missing." = "소스 파일이 없습니다.";
+"The teaser must be shorter than the video." = "티저는 동영상보다 짧아야 합니다.";
 "The timeline settings changed. Close this sheet and try again." = "타임라인 설정이 변경되었습니다. 이 시트를 닫고 다시 시도하세요.";
+"The upload didn't finish. Publish the export again." = "업로드가 완료되지 않았습니다. 내보내기를 다시 게시하세요.";
 "Theme" = "테마";
 "This build includes no skills." = "이 빌드에는 스킬이 포함되어 있지 않습니다.";
 "This edit works on images only." = "이 편집은 이미지에서만 작동합니다.";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "이 모델은 출력을 60 FPS로 제한할 수 없습니다.";
 "This permanently removes %@." = "%@이(가) 영구적으로 제거됩니다.";
 "This source can’t replace the clip." = "이 소스로는 클립을 대체할 수 없습니다.";
+"This video was unpublished." = "이 동영상의 게시가 취소되었습니다.";
 "Three-Stack" = "3스택";
 "Three-Up" = "3분할";
 "Threshold" = "임계값";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "기본적으로 전체 타임라인을 사용합니다. 해당 구간에만 음악을 만들려면 타임라인에 범위를 표시하세요.";
 "Version" = "버전";
 "Vertical" = "세로";
+"Vertical aspect %@ isn't supported." = "세로 화면 비율 %@은(는) 지원되지 않습니다.";
 "Vertical workspace layout" = "세로 작업 공간 레이아웃";
 "Vibrance" = "생동감";
 "Video" = "비디오";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "음성 정리 모델을 사용할 수 없습니다";
 "Voice Cleanup requires audio or video" = "음성 정리에는 오디오 또는 비디오가 필요합니다";
 "Volume" = "음량";
+"Wait for the current upload or processing to finish." = "현재 업로드 또는 처리가 끝날 때까지 기다리세요.";
 "Warmth" = "따뜻함";
 "Welcome to Lenora" = "Lenora에 오신 것을 환영합니다";
 "What's New in v%@" = "v%@의 새로운 기능";

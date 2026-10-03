@@ -188,6 +188,7 @@
 "Comments" = "Comentários";
 "Compatibility: %@" = "Compatibilidade: %@";
 "Completed" = "Concluído";
+"Confirm that anyone with the link can watch." = "Confirme que qualquer pessoa com a ligação pode ver o vídeo.";
 "Connect an agent" = "Ligar um agente";
 "Connect an external agent to inspect and edit the open Lenora project." = "Liga um agente externo para inspecionar e editar o projeto Lenora aberto.";
 "Connected" = "Ligado";
@@ -567,6 +568,7 @@
 "No audio" = "Sem áudio";
 "No audio selected." = "Nenhum áudio selecionado.";
 "No beats detected." = "Nenhuma batida detetada.";
+"No connected backend can publish video." = "Nenhum backend ligado pode publicar vídeo.";
 "No conversations yet" = "Ainda sem conversas";
 "No exports yet" = "Ainda sem exportações";
 "No images" = "Sem imagens";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Formato de intercâmbio mais antigo, preferível quando o destino é o Premiere Pro. Suporta edições básicas e keyframes, mas não texto, cor, efeitos, suavidade das extremidades nem arredondamento das extremidades.";
 "On-device transcription is not available for %@." = "A transcrição no dispositivo não está disponível para %@.";
 "Only available for AI-generated media" = "Disponível apenas para média gerada por AI";
+"Only completed MP4 or MOV exports can be published." = "Só é possível publicar exportações MP4 ou MOV concluídas.";
 "Opacity" = "Opacidade";
 "Open" = "Abrir";
 "Open %@" = "Abrir %@";
@@ -851,6 +854,8 @@
 "System appearance" = "Aspeto do sistema";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Captura um fotograma da pré-visualização e usa-o como referência para a geração. É especialmente útil para criar transições com AI.";
 "Target Language" = "Idioma de destino";
+"Teasers aren't available." = "Os teasers não estão disponíveis.";
+"Teasers must be %lld–%lld seconds." = "Os teasers devem ter entre %lld e %lld segundos.";
 "Temperature" = "Temperatura";
 "Temporary files" = "Ficheiros temporários";
 "Test Connection" = "Testar ligação";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "O clip que estás a adicionar tem definições diferentes das do projeto atual.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "O backend ligado não oferece esta edição. Abra Definições → Backend.";
 "The export" = "A exportação";
+"The export file can't be read." = "Não é possível ler o ficheiro exportado.";
+"The export is %@; publishing accepts up to %@." = "A exportação tem %@; a publicação aceita até %@.";
 "The file is larger than %@." = "O ficheiro é maior do que %@.";
 "The image is larger than %lld pixels in total." = "A imagem tem mais de %lld píxeis no total.";
 "The image size isn't known yet. Try again in a moment." = "O tamanho da imagem ainda não é conhecido. Tente novamente dentro de momentos.";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "O trabalho terminou sem resultado.";
 "The marker comment changed while you were editing. Review it and try again." = "O comentário do marcador mudou enquanto editavas. Revê-o e tenta novamente.";
 "The project will be moved to the Trash." = "O projeto será movido para o Lixo.";
+"The publication no longer exists." = "A publicação já não existe.";
 "The selected model refused this request. Revise the prompt and try again." = "O modelo selecionado recusou este pedido. Revê o prompt e tenta novamente.";
 "The selected projects will be moved to the Trash." = "Os projetos selecionados serão movidos para o Lixo.";
 "The source file is missing." = "O ficheiro de origem não existe.";
+"The teaser must be shorter than the video." = "O teaser tem de ser mais curto do que o vídeo.";
 "The timeline settings changed. Close this sheet and try again." = "As definições da timeline mudaram. Fecha esta folha e tenta novamente.";
+"The upload didn't finish. Publish the export again." = "O carregamento não terminou. Publique a exportação novamente.";
 "Theme" = "Tema";
 "This build includes no skills." = "Esta versão não inclui skills.";
 "This edit works on images only." = "Esta edição funciona apenas com imagens.";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "Este modelo não consegue limitar a saída a 60 FPS.";
 "This permanently removes %@." = "Isto remove %@ de forma permanente.";
 "This source can’t replace the clip." = "Esta origem não pode substituir o clip.";
+"This video was unpublished." = "A publicação deste vídeo foi anulada.";
 "Three-Stack" = "Três em pilha";
 "Three-Up" = "Três em linha";
 "Threshold" = "Limiar";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Usa a timeline completa por predefinição. Marca um intervalo na timeline para criar banda sonora só nesse período.";
 "Version" = "Versão";
 "Vertical" = "Vertical";
+"Vertical aspect %@ isn't supported." = "O formato vertical %@ não é suportado.";
 "Vertical workspace layout" = "Disposição vertical do espaço de trabalho";
 "Vibrance" = "Vibração";
 "Video" = "Vídeo";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "Modelo de limpeza de voz indisponível";
 "Voice Cleanup requires audio or video" = "A limpeza de voz requer áudio ou vídeo";
 "Volume" = "Volume";
+"Wait for the current upload or processing to finish." = "Aguarde que o carregamento ou o processamento atual termine.";
 "Warmth" = "Calor";
 "Welcome to Lenora" = "Bem-vindo ao Lenora";
 "What's New in v%@" = "Novidades da v%@";

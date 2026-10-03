@@ -188,6 +188,7 @@
 "Comments" = "Comments";
 "Compatibility: %@" = "Compatibility: %@";
 "Completed" = "Completed";
+"Confirm that anyone with the link can watch." = "Confirm that anyone with the link can watch.";
 "Connect an agent" = "Connect an agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "Connect an external agent to inspect and edit the open Lenora project.";
 "Connected" = "Connected";
@@ -567,6 +568,7 @@
 "No audio" = "No audio";
 "No audio selected." = "No audio selected.";
 "No beats detected." = "No beats detected.";
+"No connected backend can publish video." = "No connected backend can publish video.";
 "No conversations yet" = "No conversations yet";
 "No exports yet" = "No exports yet";
 "No images" = "No images";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding.";
 "On-device transcription is not available for %@." = "On-device transcription is not available for %@.";
 "Only available for AI-generated media" = "Only available for AI-generated media";
+"Only completed MP4 or MOV exports can be published." = "Only completed MP4 or MOV exports can be published.";
 "Opacity" = "Opacity";
 "Open" = "Open";
 "Open %@" = "Open %@";
@@ -851,6 +854,8 @@
 "System appearance" = "System appearance";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions.";
 "Target Language" = "Target Language";
+"Teasers aren't available." = "Teasers aren't available.";
+"Teasers must be %lld–%lld seconds." = "Teasers must be %lld–%lld seconds.";
 "Temperature" = "Temperature";
 "Temporary files" = "Temporary files";
 "Test Connection" = "Test Connection";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "The clip you're adding has different settings than the current project.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "The connected backend doesn't offer this edit. Open Settings → Backend.";
 "The export" = "The export";
+"The export file can't be read." = "The export file can't be read.";
+"The export is %@; publishing accepts up to %@." = "The export is %@; publishing accepts up to %@.";
 "The file is larger than %@." = "The file is larger than %@.";
 "The image is larger than %lld pixels in total." = "The image is larger than %lld pixels in total.";
 "The image size isn't known yet. Try again in a moment." = "The image size isn't known yet. Try again in a moment.";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "The job finished without a result.";
 "The marker comment changed while you were editing. Review it and try again." = "The marker comment changed while you were editing. Review it and try again.";
 "The project will be moved to the Trash." = "The project will be moved to the Trash.";
+"The publication no longer exists." = "The publication no longer exists.";
 "The selected model refused this request. Revise the prompt and try again." = "The selected model refused this request. Revise the prompt and try again.";
 "The selected projects will be moved to the Trash." = "The selected projects will be moved to the Trash.";
 "The source file is missing." = "The source file is missing.";
+"The teaser must be shorter than the video." = "The teaser must be shorter than the video.";
 "The timeline settings changed. Close this sheet and try again." = "The timeline settings changed. Close this sheet and try again.";
+"The upload didn't finish. Publish the export again." = "The upload didn't finish. Publish the export again.";
 "Theme" = "Theme";
 "This build includes no skills." = "This build includes no skills.";
 "This edit works on images only." = "This edit works on images only.";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "This model cannot cap the output at 60 FPS.";
 "This permanently removes %@." = "This permanently removes %@.";
 "This source can’t replace the clip." = "This source can’t replace the clip.";
+"This video was unpublished." = "This video was unpublished.";
 "Three-Stack" = "Three-Stack";
 "Three-Up" = "Three-Up";
 "Threshold" = "Threshold";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Uses the whole timeline by default. Mark a range on the timeline to score only that span.";
 "Version" = "Version";
 "Vertical" = "Vertical";
+"Vertical aspect %@ isn't supported." = "Vertical aspect %@ isn't supported.";
 "Vertical workspace layout" = "Vertical workspace layout";
 "Vibrance" = "Vibrance";
 "Video" = "Video";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "Voice Cleanup model not available";
 "Voice Cleanup requires audio or video" = "Voice Cleanup requires audio or video";
 "Volume" = "Volume";
+"Wait for the current upload or processing to finish." = "Wait for the current upload or processing to finish.";
 "Warmth" = "Warmth";
 "Welcome to Lenora" = "Welcome to Lenora";
 "What's New in v%@" = "What's New in v%@";

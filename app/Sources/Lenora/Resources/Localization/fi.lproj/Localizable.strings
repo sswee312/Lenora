@@ -188,6 +188,7 @@
 "Comments" = "Kommentit";
 "Compatibility: %@" = "Yhteensopivuus: %@";
 "Completed" = "Valmis";
+"Confirm that anyone with the link can watch." = "Vahvista, että kaikki linkin saaneet voivat katsoa videon.";
 "Connect an agent" = "Yhdistä Agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "Yhdistä ulkoinen Agent avoimen Lenora -projektin tarkasteluun ja muokkaukseen.";
 "Connected" = "Yhdistetty";
@@ -567,6 +568,7 @@
 "No audio" = "Ei ääntä";
 "No audio selected." = "Ääntä ei ole valittu.";
 "No beats detected." = "Iskuja ei tunnistettu.";
+"No connected backend can publish video." = "Mikään yhdistetty backend ei voi julkaista videota.";
 "No conversations yet" = "Ei keskusteluja vielä";
 "No exports yet" = "Ei vientejä vielä";
 "No images" = "Ei kuvia";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Vanhempi vaihtoformaatti, paras kun kohde on Premiere Pro. Tukee perusmuokkauksia ja avainkuvia, mutta ei tekstiä, väriä, tehosteita, reunojen pehmeyttä eikä reunojen pyöristystä.";
 "On-device transcription is not available for %@." = "Laitteessa tapahtuva litterointi ei ole käytettävissä kielelle %@.";
 "Only available for AI-generated media" = "Vain AI-generoidulle medialle";
+"Only completed MP4 or MOV exports can be published." = "Vain valmiita MP4- tai MOV-vientejä voi julkaista.";
 "Opacity" = "Peittävyys";
 "Open" = "Avaa";
 "Open %@" = "Avaa %@";
@@ -851,6 +854,8 @@
 "System appearance" = "Järjestelmän ulkoasu";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Ota esikatselusta kuvakaappaus ja käytä sitä generoinnin viitteenä. Erityisen hyödyllinen AI-siirtymien luomiseen.";
 "Target Language" = "Kohdekieli";
+"Teasers aren't available." = "Teaserit eivät ole käytettävissä.";
+"Teasers must be %lld–%lld seconds." = "Teaserin on oltava %lld–%lld sekuntia.";
 "Temperature" = "Lämpötila";
 "Temporary files" = "Tilapäistiedostot";
 "Test Connection" = "Testaa yhteys";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "Lisättävän leikkeen asetukset poikkeavat nykyisestä projektista.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Yhdistetty taustapalvelu ei tarjoa tätä muokkausta. Avaa Asetukset → Taustapalvelu.";
 "The export" = "Vienti";
+"The export file can't be read." = "Vientitiedostoa ei voi lukea.";
+"The export is %@; publishing accepts up to %@." = "Vienti on %@; julkaisu hyväksyy enintään %@.";
 "The file is larger than %@." = "Tiedosto on suurempi kuin %@.";
 "The image is larger than %lld pixels in total." = "Kuvassa on yhteensä yli %lld pikseliä.";
 "The image size isn't known yet. Try again in a moment." = "Kuvan kokoa ei vielä tiedetä. Yritä hetken kuluttua uudelleen.";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "Työ päättyi ilman tulosta.";
 "The marker comment changed while you were editing. Review it and try again." = "Merkin kommentti muuttui muokkauksen aikana. Tarkista se ja yritä uudelleen.";
 "The project will be moved to the Trash." = "Projekti siirretään roskakoriin.";
+"The publication no longer exists." = "Julkaisua ei ole enää olemassa.";
 "The selected model refused this request. Revise the prompt and try again." = "Valittu malli hylkäsi tämän pyynnön. Muokkaa kehotetta ja yritä uudelleen.";
 "The selected projects will be moved to the Trash." = "Valitut projektit siirretään roskakoriin.";
 "The source file is missing." = "Lähdetiedosto puuttuu.";
+"The teaser must be shorter than the video." = "Teaserin on oltava videota lyhyempi.";
 "The timeline settings changed. Close this sheet and try again." = "Aikajanan asetukset muuttuivat. Sulje tämä arkki ja yritä uudelleen.";
+"The upload didn't finish. Publish the export again." = "Lataus ei valmistunut. Julkaise vienti uudelleen.";
 "Theme" = "Teema";
 "This build includes no skills." = "Tämä versio ei sisällä taitoja.";
 "This edit works on images only." = "Tämä muokkaus toimii vain kuville.";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "Tämä malli ei voi rajoittaa tulosta 60 FPS:ään.";
 "This permanently removes %@." = "Tämä poistaa kohteen %@ pysyvästi.";
 "This source can’t replace the clip." = "Tämä lähde ei voi korvata leikettä.";
+"This video was unpublished." = "Tämän videon julkaisu on peruttu.";
 "Three-Stack" = "Kolmipino";
 "Three-Up" = "Kolme rinnakkain";
 "Threshold" = "Kynnys";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Käyttää oletuksena koko aikajanaa. Merkitse alue aikajanalla säveltääksesi vain sen jakson.";
 "Version" = "Versio";
 "Vertical" = "Pysty";
+"Vertical aspect %@ isn't supported." = "Pystysuuntaista kuvasuhdetta %@ ei tueta.";
 "Vertical workspace layout" = "Pystysuuntainen työtilan asettelu";
 "Vibrance" = "Eloisuus";
 "Video" = "Video";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "Äänen puhdistuksen malli ei ole käytettävissä";
 "Voice Cleanup requires audio or video" = "Äänen puhdistus edellyttää ääntä tai videota";
 "Volume" = "Äänenvoimakkuus";
+"Wait for the current upload or processing to finish." = "Odota, kunnes meneillään oleva lataus tai käsittely on valmis.";
 "Warmth" = "Lämpö";
 "Welcome to Lenora" = "Tervetuloa Lenora Prohon";
 "What's New in v%@" = "Uutta versiossa v%@";

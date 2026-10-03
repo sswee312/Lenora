@@ -188,6 +188,7 @@
 "Comments" = "Bình luận";
 "Compatibility: %@" = "Tương thích: %@";
 "Completed" = "Hoàn tất";
+"Confirm that anyone with the link can watch." = "Xác nhận rằng bất kỳ ai có liên kết đều có thể xem video.";
 "Connect an agent" = "Kết nối agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "Kết nối agent bên ngoài để kiểm tra và chỉnh sửa dự án Lenora đang mở.";
 "Connected" = "Đã kết nối";
@@ -567,6 +568,7 @@
 "No audio" = "Không có âm thanh";
 "No audio selected." = "Chưa chọn âm thanh.";
 "No beats detected." = "Không phát hiện nhịp.";
+"No connected backend can publish video." = "Không có backend nào đang kết nối có thể xuất bản video.";
 "No conversations yet" = "Chưa có cuộc trò chuyện";
 "No exports yet" = "Chưa có bản xuất";
 "No images" = "Không có hình ảnh";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Định dạng trao đổi cũ hơn, phù hợp nhất khi đích là Premiere Pro. Hỗ trợ chỉnh sửa cơ bản và khung hình chính, nhưng không hỗ trợ văn bản, màu, hiệu ứng, độ mềm cạnh hoặc độ bo cạnh.";
 "On-device transcription is not available for %@." = "Tính năng chép lời trên thiết bị không khả dụng cho %@.";
 "Only available for AI-generated media" = "Chỉ khả dụng với phương tiện do AI tạo";
+"Only completed MP4 or MOV exports can be published." = "Chỉ có thể xuất bản các bản xuất MP4 hoặc MOV đã hoàn tất.";
 "Opacity" = "Độ mờ";
 "Open" = "Mở";
 "Open %@" = "Mở %@";
@@ -851,6 +854,8 @@
 "System appearance" = "Giao diện hệ thống";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Chụp ảnh màn hình phần xem trước và dùng làm tham chiếu để tạo nội dung. Đặc biệt hữu ích khi tạo chuyển cảnh AI.";
 "Target Language" = "Ngôn ngữ đích";
+"Teasers aren't available." = "Teaser không khả dụng.";
+"Teasers must be %lld–%lld seconds." = "Teaser phải dài %lld–%lld giây.";
 "Temperature" = "Nhiệt độ";
 "Temporary files" = "Tệp tạm thời";
 "Test Connection" = "Kiểm tra kết nối";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "Clip bạn đang thêm có cài đặt khác với dự án hiện tại.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Backend đã kết nối không cung cấp bản chỉnh sửa này. Mở Cài đặt → Backend.";
 "The export" = "Bản xuất";
+"The export file can't be read." = "Không thể đọc tệp xuất.";
+"The export is %@; publishing accepts up to %@." = "Bản xuất có dung lượng %@; xuất bản chấp nhận tối đa %@.";
 "The file is larger than %@." = "Tệp lớn hơn %@.";
 "The image is larger than %lld pixels in total." = "Hình ảnh lớn hơn tổng cộng %lld điểm ảnh.";
 "The image size isn't known yet. Try again in a moment." = "Chưa biết kích thước hình ảnh. Hãy thử lại sau giây lát.";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "Tác vụ kết thúc mà không có kết quả.";
 "The marker comment changed while you were editing. Review it and try again." = "Bình luận của marker đã đổi trong lúc bạn chỉnh. Xem lại và thử lại.";
 "The project will be moved to the Trash." = "Dự án sẽ được chuyển vào Thùng rác.";
+"The publication no longer exists." = "Bản xuất bản này không còn tồn tại.";
 "The selected model refused this request. Revise the prompt and try again." = "Mô hình đã chọn từ chối yêu cầu này. Chỉnh lại prompt và thử lại.";
 "The selected projects will be moved to the Trash." = "Các dự án đã chọn sẽ được chuyển vào Thùng rác.";
 "The source file is missing." = "Không tìm thấy tệp nguồn.";
+"The teaser must be shorter than the video." = "Teaser phải ngắn hơn video.";
 "The timeline settings changed. Close this sheet and try again." = "Cài đặt timeline đã thay đổi. Đóng bảng này và thử lại.";
+"The upload didn't finish. Publish the export again." = "Tải lên chưa hoàn tất. Hãy xuất bản lại bản xuất.";
 "Theme" = "Chủ đề";
 "This build includes no skills." = "Bản dựng này không có kỹ năng nào.";
 "This edit works on images only." = "Bản chỉnh sửa này chỉ dùng cho hình ảnh.";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "Mô hình này không thể giới hạn đầu ra ở 60 FPS.";
 "This permanently removes %@." = "Thao tác này sẽ xóa vĩnh viễn %@.";
 "This source can’t replace the clip." = "Nguồn này không thể thay clip.";
+"This video was unpublished." = "Video này đã được hủy xuất bản.";
 "Three-Stack" = "Ba tầng";
 "Three-Up" = "Ba khung";
 "Threshold" = "Ngưỡng";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Mặc định dùng toàn bộ timeline. Đánh dấu một vùng trên timeline để chỉ tạo nhạc nền cho đoạn đó.";
 "Version" = "Phiên bản";
 "Vertical" = "Dọc";
+"Vertical aspect %@ isn't supported." = "Tỷ lệ khung hình dọc %@ không được hỗ trợ.";
 "Vertical workspace layout" = "Bố cục không gian làm việc dọc";
 "Vibrance" = "Độ rực";
 "Video" = "Video";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "Mô hình làm sạch giọng nói không khả dụng";
 "Voice Cleanup requires audio or video" = "Làm sạch giọng nói cần âm thanh hoặc video";
 "Volume" = "Âm lượng";
+"Wait for the current upload or processing to finish." = "Hãy chờ quá trình tải lên hoặc xử lý hiện tại hoàn tất.";
 "Warmth" = "Độ ấm";
 "Welcome to Lenora" = "Chào mừng bạn đến với Lenora";
 "What's New in v%@" = "Có gì mới trong v%@";

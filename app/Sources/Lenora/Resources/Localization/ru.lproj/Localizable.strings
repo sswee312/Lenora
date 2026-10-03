@@ -188,6 +188,7 @@
 "Comments" = "Комментарии";
 "Compatibility: %@" = "Совместимость: %@";
 "Completed" = "Завершено";
+"Confirm that anyone with the link can watch." = "Подтвердите, что видео сможет смотреть любой, у кого есть ссылка.";
 "Connect an agent" = "Подключить агент";
 "Connect an external agent to inspect and edit the open Lenora project." = "Подключите внешний агент для просмотра и редактирования открытого проекта Lenora.";
 "Connected" = "Подключено";
@@ -567,6 +568,7 @@
 "No audio" = "Нет аудио";
 "No audio selected." = "Аудио не выбрано.";
 "No beats detected." = "Доли не обнаружены.";
+"No connected backend can publish video." = "Ни один подключённый бэкенд не может публиковать видео.";
 "No conversations yet" = "Пока нет бесед";
 "No exports yet" = "Пока нет экспортов";
 "No images" = "Нет изображений";
@@ -600,6 +602,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Старый формат обмена, наиболее подходящий для Premiere Pro. Поддерживает базовый монтаж и ключевые кадры, но не текст, цвет, эффекты, мягкость и скругление краёв.";
 "On-device transcription is not available for %@." = "Локальная расшифровка недоступна для %@.";
 "Only available for AI-generated media" = "Доступно только для материалов, созданных ИИ";
+"Only completed MP4 or MOV exports can be published." = "Публиковать можно только завершённые экспорты MP4 или MOV.";
 "Opacity" = "Непрозрачность";
 "Open" = "Открыть";
 "Open %@" = "Открыть %@";
@@ -851,6 +854,8 @@
 "System appearance" = "Системное оформление";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Сделайте снимок предпросмотра и используйте его как референс для генерации. Особенно полезно при создании AI-переходов.";
 "Target Language" = "Целевой язык";
+"Teasers aren't available." = "Тизеры недоступны.";
+"Teasers must be %lld–%lld seconds." = "Длительность тизера: от %lld до %lld секунд.";
 "Temperature" = "Температура";
 "Temporary files" = "Временные файлы";
 "Test Connection" = "Проверить подключение";
@@ -863,6 +868,8 @@
 "The clip you're adding has different settings than the current project." = "У добавляемого клипа настройки отличаются от текущего проекта.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Подключённый бэкенд не предлагает эту правку. Откройте Настройки → Бэкенд.";
 "The export" = "задачу экспорта";
+"The export file can't be read." = "Не удаётся прочитать файл экспорта.";
+"The export is %@; publishing accepts up to %@." = "Размер экспорта: %@; для публикации допускается не более %@.";
 "The file is larger than %@." = "Файл больше %@.";
 "The image is larger than %lld pixels in total." = "Изображение больше %lld пикселей в сумме.";
 "The image size isn't known yet. Try again in a moment." = "Размер изображения пока неизвестен. Повторите попытку через мгновение.";
@@ -870,10 +877,13 @@
 "The job finished without a result." = "Задача завершилась без результата.";
 "The marker comment changed while you were editing. Review it and try again." = "Комментарий маркера изменился, пока вы его редактировали. Проверьте его и повторите попытку.";
 "The project will be moved to the Trash." = "Проект будет перемещён в Корзину.";
+"The publication no longer exists." = "Публикация больше не существует.";
 "The selected model refused this request. Revise the prompt and try again." = "Выбранная модель отклонила этот запрос. Измените запрос и повторите попытку.";
 "The selected projects will be moved to the Trash." = "Выбранные проекты будут перемещены в Корзину.";
 "The source file is missing." = "Исходный файл отсутствует.";
+"The teaser must be shorter than the video." = "Тизер должен быть короче видео.";
 "The timeline settings changed. Close this sheet and try again." = "Настройки таймлайна изменились. Закройте это окно и повторите попытку.";
+"The upload didn't finish. Publish the export again." = "Загрузка не завершена. Опубликуйте экспорт ещё раз.";
 "Theme" = "Тема";
 "This build includes no skills." = "В этой сборке нет навыков.";
 "This edit works on images only." = "Эта правка работает только с изображениями.";
@@ -884,6 +894,7 @@
 "This model cannot cap the output at 60 FPS." = "Эта модель не может ограничить результат частотой 60 FPS.";
 "This permanently removes %@." = "Это безвозвратно удалит %@.";
 "This source can’t replace the clip." = "Этот источник не может заменить клип.";
+"This video was unpublished." = "Публикация этого видео снята.";
 "Three-Stack" = "Три панели";
 "Three-Up" = "Три окна";
 "Threshold" = "Порог";
@@ -955,6 +966,7 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "По умолчанию используется весь таймлайн. Отметьте диапазон на таймлайне, чтобы создать музыку только для этого фрагмента.";
 "Version" = "Версия";
 "Vertical" = "По вертикали";
+"Vertical aspect %@ isn't supported." = "Вертикальное соотношение сторон %@ не поддерживается.";
 "Vertical workspace layout" = "Вертикальное расположение рабочей области";
 "Vibrance" = "Красочность";
 "Video" = "Видео";
@@ -972,6 +984,7 @@
 "Voice Cleanup model not available" = "Модель очистки голоса недоступна";
 "Voice Cleanup requires audio or video" = "Для очистки голоса требуется аудио или видео";
 "Volume" = "Громкость";
+"Wait for the current upload or processing to finish." = "Дождитесь завершения текущей загрузки или обработки.";
 "Warmth" = "Теплота";
 "Welcome to Lenora" = "Добро пожаловать в Lenora";
 "What's New in v%@" = "Что нового в v%@";
