@@ -40,6 +40,7 @@ struct MediaEditSheet: View {
         .padding(AppTheme.Spacing.lg)
         .frame(width: AppTheme.ComponentSize.mediaEditSheetWidth)
         .onAppear { aspectRatio = aspectChoices.first ?? "" }
+        .onChange(of: request) { refusal = nil }
     }
 
     private var message: String? {
