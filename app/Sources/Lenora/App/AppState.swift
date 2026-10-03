@@ -38,8 +38,11 @@ final class AppState {
     }
 
     private(set) var mcpService: MCPService?
+    @ObservationIgnored
+    private let makeMCPService: (@escaping () -> VideoProject?) -> MCPService
 
-    private init() {
+    init(makeMCPService: @escaping (@escaping () -> VideoProject?) -> MCPService = { MCPService(projectProvider: $0) }) {
+        self.makeMCPService = makeMCPService
         NotificationCenter.default.addObserver(forName: ModelCatalog.didChange, object: nil, queue: .main) { [weak self] _ in
             MainActor.assumeIsolated { self?.resumePendingGenerations() }
         }
@@ -52,14 +55,18 @@ final class AppState {
     }
 
     func startMCPService() {
-        guard mcpService == nil else { return }
         guard MCPService.isEnabledPreference else {
             Log.mcp.notice("mcp disabled in settings; not starting")
             return
         }
-        let service = MCPService(projectProvider: { [weak self] in
+        if let mcpService {
+            guard !mcpService.isRunning else { return }
+            Task { await mcpService.start() }
+            return
+        }
+        let service = makeMCPService { [weak self] in
             self?.activeProject
-        })
+        }
         mcpService = service
         Task { await service.start() }
     }
