@@ -35,6 +35,44 @@ struct PublishedOutput: Codable, Sendable, Equatable {
     var message: String? = nil
 }
 
+struct PublishFailure: Codable, Sendable, Equatable {
+    let code: String
+    let message: String
+
+    static let uploadInterrupted = PublishFailure(code: "upload_interrupted", message: "Upload interrupted.")
+    static let submitInterrupted = PublishFailure(code: "submit_interrupted", message: "Processing request interrupted.")
+    static let backendUnavailable = PublishFailure(code: "backend_unavailable", message: "No backend is connected.")
+    static let publishFailed = PublishFailure(code: "publish_failed", message: "Publishing failed.")
+    static let missingResult = PublishFailure(code: "missing_result", message: "The backend returned no result for this output.")
+
+    init(code: String, message: String) {
+        self.code = code
+        self.message = message
+    }
+
+    init(_ error: any Error) {
+        code = (error as? BackendError)?.code ?? "internal_error"
+        message = error.localizedDescription
+    }
+
+    // Backend problem codes carry provider text, so unknown codes show the stored message.
+    @MainActor var userMessage: String {
+        switch code {
+        case Self.uploadInterrupted.code: L10n.string("Upload interrupted.")
+        case Self.submitInterrupted.code: L10n.string("Processing request interrupted.")
+        case Self.backendUnavailable.code: L10n.string("No backend is connected.")
+        case Self.publishFailed.code: L10n.string("Publishing failed.")
+        case Self.missingResult.code: L10n.string("The backend returned no result for this output.")
+        case "backend_unreachable": L10n.string("Can't reach the backend.")
+        case "unauthorized": L10n.string("The backend rejected the token.")
+        case "invalid_response": L10n.string("The backend returned an unexpected response.")
+        case "upload_unreachable": L10n.string("Couldn't reach the provider to upload the file.")
+        case "upload_failed": L10n.string("The upload to the provider failed.")
+        default: message
+        }
+    }
+}
+
 struct Publication: Codable, Sendable, Equatable, Identifiable {
     enum Status: String, Codable, Sendable { case uploading, processing, ready, partial, failed, unpublished }
 
@@ -49,7 +87,7 @@ struct Publication: Codable, Sendable, Equatable, Identifiable {
     var status: Status
     var outputs: [PublishedOutput]
     var estimate: BackendEstimate? = nil
-    var message: String? = nil
+    var failure: PublishFailure? = nil
 
     /// A ready output proves the upload and first job finished, so more outputs can be requested.
     var canAddOutputs: Bool {
@@ -73,7 +111,7 @@ struct Publication: Codable, Sendable, Equatable, Identifiable {
     mutating func request(_ roles: [PublishRole], options: PublishOptions) {
         self.options = options
         for role in roles { set(PublishedOutput(role: role, status: .pending)) }
-        message = nil
+        failure = nil
     }
 
     mutating func apply(_ state: JobState) {
@@ -89,25 +127,24 @@ struct Publication: Codable, Sendable, Equatable, Identifiable {
         case .queued, .running:
             status = .processing
         case .succeeded:
-            failPending(code: "provider_error", message: "The backend returned no result for this output.")
+            failPending(.missingResult)
             status = outputs.allSatisfy { $0.status == .ready } ? .ready : .partial
         case .failed, .cancelled:
-            failPendingOutputs(code: state.error?.code ?? "provider_error", message: state.error?.message ?? "Publishing failed.")
+            failPendingOutputs(state.error.map { PublishFailure(code: $0.code, message: $0.message) } ?? .publishFailed)
         }
     }
 
-    /// Fails the outputs still pending; outputs already ready stay published.
-    mutating func failPendingOutputs(code: String = "provider_error", message: String) {
-        failPending(code: code, message: message)
+    mutating func failPendingOutputs(_ failure: PublishFailure) {
+        failPending(failure)
         if !outputs.contains(where: { $0.status == .ready }) { status = .failed }
         else { status = outputs.allSatisfy { $0.status == .ready } ? .ready : .partial }
-        self.message = message
+        self.failure = failure
     }
 
-    mutating func markFailed(message: String) {
-        failPending(code: "provider_error", message: message)
+    mutating func markFailed(_ failure: PublishFailure) {
+        failPending(failure)
         status = .failed
-        self.message = message
+        self.failure = failure
     }
 
     mutating func markUnpublished() {
@@ -115,11 +152,11 @@ struct Publication: Codable, Sendable, Equatable, Identifiable {
         for index in outputs.indices { outputs[index].url = nil }
     }
 
-    private mutating func failPending(code: String, message: String) {
+    private mutating func failPending(_ failure: PublishFailure) {
         for index in outputs.indices where outputs[index].status == .pending {
             outputs[index].status = .failed
-            outputs[index].errorCode = code
-            outputs[index].message = message
+            outputs[index].errorCode = failure.code
+            outputs[index].message = failure.message
         }
     }
 

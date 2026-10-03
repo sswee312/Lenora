@@ -117,6 +117,14 @@ struct PublishServiceTests {
         #expect(await provider.deletedAssets == ["ref-cut.mp4"])
     }
 
+    @Test func uploadFailureRecordsItsCode() async throws {
+        let service = try makeService(FakeProvider(states: [], uploadFailure: .uploadFailed(status: 500)))
+        _ = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await waitFor(service) { service.publications.first?.status == .failed }
+        #expect(service.publications.first?.failure?.code == "upload_failed")
+        #expect(service.publications.first?.outputs.allSatisfy { $0.errorCode == "upload_failed" } == true)
+    }
+
     @Test func lateResultAfterCloseIsNotCommitted() async throws {
         let provider = FakeProvider(states: [PublishFixtures.state(.running)])
         let service = try makeService(provider)
@@ -162,7 +170,7 @@ struct PublishServiceTests {
         record.status = .uploading
         service.restore([record])
         #expect(service.publications.first?.status == .failed)
-        #expect(service.publications.first?.message == "Upload interrupted.")
+        #expect(service.publications.first?.failure == .uploadInterrupted)
         #expect(service.publications.first?.assetRef == "a")
         #expect(try await service.unpublish(record.id) == false)
         #expect(service.publications.first?.status == .unpublished)
@@ -327,7 +335,7 @@ struct PublishServiceTests {
         record.jobId = nil
         service.restore([record])
         let restored = try #require(service.publications.first)
-        #expect(restored.status == .partial && restored.message == "Submit interrupted.")
+        #expect(restored.status == .partial && restored.failure == .submitInterrupted)
         #expect(restored.outputs.first { $0.role == .vertical }?.status == .failed)
         #expect(restored.outputs.filter { $0.status == .ready }.count == 3)
         #expect(await provider.pollers == 0)

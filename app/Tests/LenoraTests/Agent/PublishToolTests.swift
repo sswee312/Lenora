@@ -116,7 +116,7 @@ struct PublishToolTests {
         var record = Publication(id: UUID(), exportFilename: "cut.mp4", createdAt: Date(), model: "cloudinary/publish",
                                  durationSeconds: 20, options: PublishOptions(), status: .failed, outputs: [])
         record.request(PublishOptions().roles, options: PublishOptions())
-        record.markFailed(message: "x")
+        record.markFailed(.uploadInterrupted)
         fixture.editor.publishService.restore([record])
         let result = try refusal(await run(fixture, "publish_export", ["publicationId": record.id.uuidString, "confirmPublic": true, "vertical": "9:16"]))
         #expect(result.code == "invalid_request" && result.field == "publicationId")

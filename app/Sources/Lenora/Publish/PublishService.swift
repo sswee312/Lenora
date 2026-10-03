@@ -134,9 +134,9 @@ final class PublishService {
     private static func settledAfterInterruption(_ record: Publication) -> Publication {
         var settled = record
         if record.status == .uploading {
-            settled.markFailed(message: "Upload interrupted.")
+            settled.markFailed(.uploadInterrupted)
         } else if record.status == .processing, record.jobId == nil {
-            settled.failPendingOutputs(message: "Submit interrupted.")
+            settled.failPendingOutputs(.submitInterrupted)
         }
         return settled
     }
@@ -168,7 +168,7 @@ final class PublishService {
 
     private func upload(_ id: UUID, file: URL, contentType: String, byteCount: Int64, token: UUID) async {
         guard let provider = provider(), let model = publication(id)?.model else {
-            return fail(id, token: token, message: "No backend is connected.")
+            return fail(id, token: token, .backendUnavailable)
         }
         do {
             let ticket = try await provider.createUpload(
@@ -181,7 +181,7 @@ final class PublishService {
             try await provider.upload(file, ticket: ticket)
             await submit(id, provider: provider, token: token)
         } catch {
-            fail(id, token: token, message: error.localizedDescription)
+            fail(id, token: token, PublishFailure(error))
         }
     }
 
@@ -202,7 +202,7 @@ final class PublishService {
             }) else { return }
             await monitor(id, jobId: submitted.jobId, provider: provider, token: token)
         } catch {
-            fail(id, token: token, message: error.localizedDescription)
+            fail(id, token: token, PublishFailure(error))
         }
     }
 
@@ -214,7 +214,7 @@ final class PublishService {
         } catch let error as BackendError where error.isTransient {
             // Stays processing; resumeMonitoring picks it up after the backend reconnects.
         } catch {
-            fail(id, token: token, message: error.localizedDescription)
+            fail(id, token: token, PublishFailure(error))
         }
     }
 
@@ -238,8 +238,8 @@ final class PublishService {
         return true
     }
 
-    private func fail(_ id: UUID, token: UUID, message: String) {
-        commit(id, token: token) { $0.failPendingOutputs(message: message) }
+    private func fail(_ id: UUID, token: UUID, _ failure: PublishFailure) {
+        commit(id, token: token) { $0.failPendingOutputs(failure) }
     }
 
     /// Best effort: deletes an asset whose run went stale, outside the cancelled run.

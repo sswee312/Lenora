@@ -92,7 +92,7 @@ struct PublishedSection: View {
             record.estimate.map { L10n.string("Processing… Estimated \($0.amount.formatted()) \($0.unit)") } ?? L10n.string("Processing…")
         case .ready: L10n.string("Ready")
         case .partial: L10n.string("Ready, \(record.outputs.count { $0.status == .failed }) failed")
-        case .failed: record.message.map { L10n.string("Failed: \($0)") } ?? L10n.string("Failed")
+        case .failed: record.failure.map { L10n.string("Failed: \($0.userMessage)") } ?? L10n.string("Failed")
         case .unpublished: L10n.string("Unpublished")
         }
     }

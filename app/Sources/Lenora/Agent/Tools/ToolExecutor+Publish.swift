@@ -115,7 +115,10 @@ private extension Publication {
             },
         ]
         if let estimate { payload["estimate"] = ["amount": estimate.amount, "unit": estimate.unit] }
-        if let message { payload["message"] = message }
+        if let failure {
+            payload["errorCode"] = failure.code
+            payload["message"] = failure.message
+        }
         if let noop { payload["noop"] = noop }
         return payload
     }

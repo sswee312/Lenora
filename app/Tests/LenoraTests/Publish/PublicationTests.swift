@@ -74,7 +74,7 @@ struct PublicationTests {
     @Test func failedJobFailsEveryPendingOutput() throws {
         var record = Self.record()
         record.apply(try Self.state(#"{"jobId":"j","status":"failed","error":{"code":"provider_error","message":"Stream failed.","retryable":false}}"#))
-        #expect(record.status == .failed && record.message == "Stream failed.")
+        #expect(record.status == .failed && record.failure == PublishFailure(code: "provider_error", message: "Stream failed."))
         #expect(record.outputs.allSatisfy { $0.status == .failed && $0.errorCode == "provider_error" })
     }
 
@@ -118,6 +118,34 @@ struct PublicationTests {
     @Test func projectFileWithoutPublicationsStillDecodes() throws {
         let decoded = try ProjectFile.decode(JSONEncoder().encode(ProjectFile(timelines: [Timeline()])))
         #expect(decoded.publications == nil)
+    }
+}
+
+@MainActor
+struct PublishFailureTests {
+    @Test(arguments: [
+        (BackendError.unreachable(URL(string: "http://127.0.0.1:1")!), "backend_unreachable"),
+        (.unauthorized, "unauthorized"),
+        (.problem(BackendProblem(code: "rate_limited", detail: "Slow down.", status: 429, retryable: true)), "rate_limited"),
+        (.invalidResponse(status: 502), "invalid_response"),
+        (.uploadFailed(status: 500), "upload_failed"),
+        (.uploadUnreachable, "upload_unreachable"),
+    ])
+    func backendErrorsKeepAStableCode(error: BackendError, code: String) {
+        #expect(PublishFailure(error).code == code)
+    }
+
+    @Test func otherErrorsAreInternal() {
+        #expect(PublishFailure(CocoaError(.fileReadUnknown)).code == "internal_error")
+    }
+
+    @Test func knownCodesRenderLocalizedCopyNotTheStoredText() {
+        #expect(PublishFailure(code: "upload_interrupted", message: "stored").userMessage == L10n.string("Upload interrupted."))
+        #expect(PublishFailure(code: "backend_unreachable", message: "stored").userMessage == L10n.string("Can't reach the backend."))
+    }
+
+    @Test func unknownCodesShowTheBackendTextVerbatim() {
+        #expect(PublishFailure(code: "rate_limited", message: "Slow down.").userMessage == "Slow down.")
     }
 }
 
