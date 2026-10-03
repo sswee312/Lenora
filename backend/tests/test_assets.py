@@ -1,3 +1,6 @@
+import asyncio
+import logging
+
 import pytest
 
 from fakes import AUTH, FakeAdapter
@@ -57,3 +60,30 @@ def test_a_failing_start_does_not_stop_the_backend(make_client):
         async def start(self):
             raise RuntimeError("usage lookup failed")
     assert make_client(Broken()).get("/v1/capabilities", headers=AUTH).status_code == 200
+
+
+def test_delete_on_an_adapter_without_delete_asset_is_invalid_request(make_client):
+    class NoDelete(PublishingAdapter):
+        delete_asset = None
+    response = make_client(NoDelete()).delete("/v1/assets/fake/asset", params={"model": "fake/publish"}, headers=AUTH)
+    assert (response.status_code, response.json()["code"]) == (400, "invalid_request")
+
+
+def test_a_failing_start_logs_only_the_adapter_and_exception_type(make_client, caplog):
+    class Broken(PublishingAdapter):
+        async def start(self):
+            raise RuntimeError("provider said sk-secret")
+    with caplog.at_level(logging.WARNING, logger="lenora.registry"):
+        make_client(Broken())
+    text = caplog.text
+    assert "fake" in text and "RuntimeError" in text and "sk-secret" not in text
+
+
+def test_a_hanging_start_times_out_and_startup_continues(make_client, caplog):
+    class Hangs(PublishingAdapter):
+        async def start(self):
+            await asyncio.Event().wait()
+    with caplog.at_level(logging.WARNING, logger="lenora.registry"):
+        client = make_client(Hangs(), provider_timeout_seconds=0.05)
+    assert client.get("/v1/capabilities", headers=AUTH).status_code == 200
+    assert "TimeoutError" in caplog.text

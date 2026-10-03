@@ -1,3 +1,4 @@
+import asyncio
 import logging
 from dataclasses import dataclass
 from importlib.metadata import entry_points
@@ -71,13 +72,13 @@ class Registry:
             statuses.append(AdapterStatus(adapter_cls.id, True, None, version))
         return cls(adapters, statuses)
 
-    async def start(self) -> None:
+    async def start(self, timeout: float) -> None:
         for adapter_id, adapter in self.adapters.items():
             if start := getattr(adapter, "start", None):
                 try:
-                    await start()
-                except Exception:
-                    log.exception("adapter %s failed to start", adapter_id)
+                    await asyncio.wait_for(start(), timeout)
+                except Exception as error:
+                    log.warning("adapter %s failed to start: %s", adapter_id, type(error).__name__)
 
     # Models are read on every call: an adapter's offer can change at runtime (for example, a lapsed add-on).
     def models(self) -> list[ModelInfo]:
