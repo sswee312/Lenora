@@ -1065,3 +1065,5 @@
 "result" = "hasil";
 "using Anthropic API key" = "menggunakan kunci API Anthropic";
 "using OpenAI API key" = "menggunakan kunci API OpenAI";
+"%@ used · No limit" = "%@ terpakai · Tanpa batas";
+"%@ of %@" = "%@ dari %@";

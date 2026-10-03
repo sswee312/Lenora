@@ -1065,3 +1065,5 @@
 "result" = "результат";
 "using Anthropic API key" = "используется API-ключ Anthropic";
 "using OpenAI API key" = "используется API-ключ OpenAI";
+"%@ used · No limit" = "Использовано: %@ · Без лимита";
+"%@ of %@" = "%@ из %@";

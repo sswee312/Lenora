@@ -1065,3 +1065,5 @@
 "result" = "tulos";
 "using Anthropic API key" = "käytetään Anthropic API -avainta";
 "using OpenAI API key" = "käytetään OpenAI API -avainta";
+"%@ used · No limit" = "%@ käytetty · Ei rajaa";
+"%@ of %@" = "%@ / %@";

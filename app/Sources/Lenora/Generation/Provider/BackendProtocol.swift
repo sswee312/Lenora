@@ -66,6 +66,7 @@ struct BudgetStatus: Decodable, Sendable, Equatable {
     let limit: Double?
     let used: Double
     let day: String
+    var unit: String? = nil
 }
 
 struct BackendHealth: Decodable, Sendable {
@@ -179,6 +180,7 @@ struct JobState: Decodable, Sendable {
     let results: [JobResult]?
     let error: JobFailure?
     var failedOutputs: [FailedOutput]? = nil
+    var text: String? = nil
 }
 
 struct BackendProblem: Decodable, Sendable, Equatable, Error {

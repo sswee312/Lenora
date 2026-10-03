@@ -1065,3 +1065,5 @@
 "result" = "परिणाम";
 "using Anthropic API key" = "Anthropic API कुंजी उपयोग हो रही है";
 "using OpenAI API key" = "OpenAI API कुंजी उपयोग हो रही है";
+"%@ used · No limit" = "%@ उपयोग किए गए · कोई सीमा नहीं";
+"%@ of %@" = "%2$@ में से %1$@";

@@ -1065,3 +1065,5 @@
 "result" = "결과";
 "using Anthropic API key" = "Anthropic API 키 사용 중";
 "using OpenAI API key" = "OpenAI API 키 사용 중";
+"%@ used · No limit" = "%@ 사용 · 제한 없음";
+"%@ of %@" = "%@ / %@";

@@ -229,6 +229,7 @@ final class EditorViewModel {
     @ObservationIgnored var generationService: GenerationService
     let publishService: PublishService
     @ObservationIgnored var remoteDownloadFetch: RemoteMediaDownloader.Fetch?
+    @ObservationIgnored var backendConfiguration: @MainActor () -> LenoraBackendConfiguration? = { BackendConnection.shared.configuration }
     let agentService = AgentService()
 
     var agentPanelVisible: Bool = {

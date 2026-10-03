@@ -12,7 +12,9 @@
 "%@ model not available" = "%@ model not available";
 "%@ must use HTTPS, or HTTP on this Mac only." = "%@ must use HTTPS, or HTTP on this Mac only.";
 "%@ needs a start frame." = "%@ needs a start frame.";
+"%@ of %@" = "%@ of %@";
 "%@ of %@ credits" = "%@ of %@ credits";
+"%@ used · No limit" = "%@ used · No limit";
 "%@ · %@" = "%@ · %@";
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skills";

@@ -1065,3 +1065,5 @@
 "result" = "resultaat";
 "using Anthropic API key" = "via Anthropic API-sleutel";
 "using OpenAI API key" = "via OpenAI API-sleutel";
+"%@ used · No limit" = "%@ gebruikt · Geen limiet";
+"%@ of %@" = "%@ van %@";

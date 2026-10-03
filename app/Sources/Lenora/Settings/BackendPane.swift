@@ -116,6 +116,11 @@ struct BackendPane: View {
     }
 
     private func budgetSummary(_ budget: BudgetStatus) -> String {
+        if budget.unit == "usd" {
+            let used = budget.used.formatted(.currency(code: "USD"))
+            guard let limit = budget.limit else { return L10n.string("\(used) used · No limit") }
+            return L10n.string("\(used) of \(limit.formatted(.currency(code: "USD")))")
+        }
         let used = budget.used.formatted(.number.precision(.fractionLength(0...3)))
         guard let limit = budget.limit else { return L10n.string("\(used) credits used · No limit") }
         return L10n.string("\(used) of \(limit.formatted()) credits")

@@ -1065,3 +1065,5 @@
 "result" = "výsledek";
 "using Anthropic API key" = "pomocí API klíče Anthropic";
 "using OpenAI API key" = "pomocí API klíče OpenAI";
+"%@ used · No limit" = "Použito %@ · Bez limitu";
+"%@ of %@" = "%@ z %@";
