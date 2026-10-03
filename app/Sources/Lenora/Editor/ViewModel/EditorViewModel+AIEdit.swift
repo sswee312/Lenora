@@ -87,6 +87,8 @@ extension EditorViewModel {
     /// The source a failed Remove Background placeholder can be retried from, while the source
     /// still exists and the connected backend still offers the transform.
     func removeBackgroundRetrySource(for placeholder: MediaAsset) -> MediaAsset? {
+        // A stored result URL means the job already succeeded; retry the download, not the job.
+        guard placeholder.pendingDownloadURL == nil else { return nil }
         guard case .failed = placeholder.generationStatus,
               let input = placeholder.generationInput,
               generationService.catalog.backendModel(id: input.model)?.kind == EditSubmitter.removeBackgroundKind,

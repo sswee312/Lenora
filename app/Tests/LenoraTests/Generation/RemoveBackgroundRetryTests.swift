@@ -57,6 +57,18 @@ struct RemoveBackgroundRetryTests {
         #expect(!fixture.undoManager.canUndo)
     }
 
+    @Test func failedDownloadDoesNotStartAnotherJob() async throws {
+        let box = ProviderBox(FakeProvider(states: [], uploadFailure: Self.unavailable))
+        let (fixture, placeholder) = try await failedRemoval(box: box, catalog: EditorTestFixture.connectedCatalog())
+        defer { fixture.cleanup() }
+        let uploadsBefore = await box.current.uploads.count
+        placeholder.pendingDownloadURL = EditorTestFixture.servedImageURL
+        #expect(fixture.editor.removeBackgroundRetrySource(for: placeholder) == nil)
+        #expect(await fixture.editor.retryRemoveBackground(placeholder) == nil)
+        #expect(await box.current.uploads.count == uploadsBefore)
+        #expect(fixture.editor.mediaAssetsById[placeholder.id] === placeholder)
+    }
+
     @Test func noRetryOnceTheSourceIsGone() async throws {
         let box = ProviderBox(FakeProvider(states: [], uploadFailure: Self.unavailable))
         let (fixture, placeholder) = try await failedRemoval(box: box, catalog: EditorTestFixture.connectedCatalog())

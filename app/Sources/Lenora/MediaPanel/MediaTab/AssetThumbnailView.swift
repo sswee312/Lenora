@@ -91,7 +91,11 @@ struct AssetThumbnailView: View {
             if asset.generationStatus == .generating, asset.generationInput?.jobId != nil {
                 Button(L10n.string("Cancel Generation")) { cancelGeneration() }
             }
-            if editor.removeBackgroundRetrySource(for: asset) != nil {
+            if asset.pendingDownloadURL != nil {
+                Button(L10n.string("Retry Download")) {
+                    editor.generationService.retryDownload(asset: asset, editor: editor)
+                }
+            } else if editor.removeBackgroundRetrySource(for: asset) != nil {
                 Button(L10n.string("Retry")) {
                     Task { await editor.retryRemoveBackground(asset) }
                 }
