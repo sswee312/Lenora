@@ -407,6 +407,7 @@ class VideoProject: NSDocument {
     // MARK: - Close
 
     override func close() {
+        MainActor.assumeIsolated { editorViewModel.generationService.stopMonitoring() }
         super.close()
         DispatchQueue.main.async {
             if AppState.shared.activeProject === self {

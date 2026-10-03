@@ -216,6 +216,8 @@ extension ToolExecutor {
             asset.importInput = nil
             editor.updateManifestMetadata(for: [asset])
             editor.onProjectCheckpointRequired?()
+        } catch is CancellationError {
+            return
         } catch {
             let message = (error as? ToolError)?.message ?? error.localizedDescription
             Log.project.error("import_media download failed url=\(remoteURL.absoluteString) error=\(message)")

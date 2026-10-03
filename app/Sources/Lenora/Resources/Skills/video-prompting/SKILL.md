@@ -84,13 +84,13 @@ Confirm ids/caps via `list_models` before firing. Default stack for these skills
 | Stage | Prefer | How |
 |-------|--------|-----|
 | **Iterate** | `seedance-2-mini`, MiniMax H3 (`hailuo-03`), or Flux 3 **draft** | Mini / H3 as normal generates. Flux 3: `draft: true` (720p preview; `supportsDraft` must be true). |
-| **Final** | `seedance-2`, MiniMax H3 (`hailuo-03`), or **FLUX Enhance** | Seedance / H3: full-quality generate (ask before Seedance 1080p/4K). Flux 3 finals are **not** `upscale_media` — only enhance a completed draft. |
+| **Final** | `seedance-2` or MiniMax H3 (`hailuo-03`) | Full-quality generate (ask before Seedance 1080p/4K). A draft is a preview only: re-generate the approved prompt as a final; there is no enhance step. |
 
-**Flux 3 draft → enhance (not upscale)**
+**Flux 3 draft → final**
 
-1. Iterate: `generate_video({ model: "flux-3", draft: true, … })`
-2. When `get_media` shows the draft ready and `canEnhanceDraft: true`, final: `generate_video({ enhanceDraftMediaRef: "<draftId>" })` alone — no prompt/model/inputs. Keeps motion; renders FLUX.3 at 1080p.
-3. Do **not** use `upscale_media` for this path. Enhance only works on Flux 3 drafts (`canEnhanceDraft`); other models have no enhance step.
+1. Iterate: `generate_video({ model: "flux-3", draft: true, … })` (only when `list_models` reports `supportsDraft`).
+2. When `get_media` shows the draft ready and the user approves it, generate the final with the same prompt on `seedance-2` or `hailuo-03`, without `draft`.
+3. Do **not** use `upscale_media` to turn a draft into a final.
 
 | Other goals | Prefer | Notes |
 |-------------|--------|-------|

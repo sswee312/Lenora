@@ -33,13 +33,37 @@ extension EditorViewModel {
             fetch: remoteDownloadFetch
         )
         let file = try await downloader.download(remoteURL)
+        guard mediaAssetsById[asset.id] === asset else {
+            await Self.removeFile(file)
+            throw CancellationError()
+        }
         let ext = (fileExtension ?? remoteURL.pathExtension).lowercased()
         if !ext.isEmpty, ext != asset.url.pathExtension.lowercased(), ClipType(fileExtension: ext) != nil {
             asset.url = asset.url.deletingPathExtension().appendingPathExtension(ext)
         }
         asset.url = try await commitStagedProjectMedia(file, filename: asset.url.lastPathComponent, maxBytes: ToolExecutor.remoteImportMaxBytes)
+        guard mediaAssetsById[asset.id] === asset else {
+            await Self.removeFile(asset.url)
+            throw CancellationError()
+        }
         asset.pendingDownloadURL = nil
         importMediaAsset(asset, skipAppend: true)
-        guard await finalizeImportedAsset(asset) else { throw RemoteDownloadError.unreadableMedia }
+        let finalized = await finalizeImportedAsset(asset)
+        guard mediaAssetsById[asset.id] === asset else {
+            mediaManifest.entries.removeAll { $0.id == asset.id }
+            await Self.removeFile(asset.url)
+            throw CancellationError()
+        }
+        guard finalized else { throw RemoteDownloadError.unreadableMedia }
+    }
+
+    private static func removeFile(_ url: URL) async {
+        await Task.detached(priority: .utility) {
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch {
+                Log.project.warning("remote download cleanup failed file=\(url.lastPathComponent) error=\(error.localizedDescription)")
+            }
+        }.value
     }
 }

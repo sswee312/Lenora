@@ -67,11 +67,20 @@ struct UploadTicket: Decodable, Sendable {
     let ticket: Ticket
 }
 
-enum JobInput: Encodable, Sendable, Equatable {
+enum JobInput: Codable, Sendable, Equatable {
     case assetRef(String)
     case url(URL)
 
     private enum CodingKeys: String, CodingKey { case assetRef, url }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let ref = try container.decodeIfPresent(String.self, forKey: .assetRef) {
+            self = .assetRef(ref)
+        } else {
+            self = .url(try container.decode(URL.self, forKey: .url))
+        }
+    }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)

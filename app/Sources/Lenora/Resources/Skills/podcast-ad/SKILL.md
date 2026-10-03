@@ -124,7 +124,7 @@ Negatives: `no second person, no OTS, no interviewer, no looking into lens, no s
 1. `get_timeline` — set delivery aspect (often `9:16`) via `set_project_settings` **before** placing if needed.
 2. `list_models({ type: "video" })`.
 3. **Prefer Flux 3** `draft: true` for dialogue naturalism (validated bakeoff). Also fine: `seedance-2-mini`, MiniMax H3 (`hailuo-03`). Lip-sync misses: Kling V3/O3 or Grok.
-4. **Final:** Flux draft → `generate_video({ enhanceDraftMediaRef })` only (**FLUX Enhance**; not `upscale_media`; needs `canEnhanceDraft`). Else re-gen on `seedance-2` / H3.
+4. **Final:** re-generate the approved beat on `seedance-2` / H3 without `draft` (not `upscale_media` on a draft).
 5. Propose beats; wait for confirmation.
 6. `startFrameMediaRef` = that speaker’s still. Seedance: `framesAndReferencesExclusive` — don’t combine first frame with reference image pools.
 

@@ -33,6 +33,7 @@ final class GenerationService {
     private let catalog: ModelCatalog
     private var tasks: [UUID: Task<Void, Never>] = [:]
     private(set) var monitoredJobIds: Set<String> = []
+    private var submittingKeys: Set<String> = []
 
     init(provider: @escaping @MainActor () -> (any GenerationProvider)?, catalog: ModelCatalog = .shared) {
         self.provider = provider
@@ -43,6 +44,7 @@ final class GenerationService {
         tasks.values.forEach { $0.cancel() }
         tasks.removeAll()
         monitoredJobIds.removeAll()
+        submittingKeys.removeAll()
     }
 
     private func own(_ operation: @escaping @MainActor () async -> Void) {
@@ -65,7 +67,6 @@ final class GenerationService {
         placeholderDuration: Double,
         references: [MediaAsset] = [],
         trimmedSourceOverride: TrimmedSource? = nil,
-        preUploadedURLs: [String]? = nil,
         name: String? = nil,
         numImages: Int = 1,
         folderId: String? = nil,
@@ -107,7 +108,9 @@ final class GenerationService {
         let primaryId = placeholders[0].id
 
         let idempotencyKey = UUID().uuidString
+        submittingKeys.insert(idempotencyKey)
         own {
+            defer { self.submittingKeys.remove(idempotencyKey) }
             @MainActor func fail(_ message: String) {
                 for placeholder in placeholders {
                     self.updateGenerationMetadata(placeholder, editor: editor, status: .failed(message))
@@ -130,7 +133,6 @@ final class GenerationService {
                 let prepared = try await self.prepareReferences(
                     references: references,
                     trimmedSourceOverride: trimmedSourceOverride,
-                    preUploadedURLs: preUploadedURLs,
                     preprocessRef: preprocessRef,
                     preprocessSourceVideo: preprocessSourceVideo,
                     provider: provider,
@@ -149,6 +151,12 @@ final class GenerationService {
                 if finalGenInput.createdAt == nil {
                     finalGenInput.createdAt = Date()
                 }
+                let job = JobRequest(
+                    kind: model.kind, model: model.id,
+                    inputs: uploaded.map(JobInput.assetRef), params: buildParams(uploaded)
+                )
+                finalGenInput.idempotencyKey = idempotencyKey
+                finalGenInput.submission = try PendingSubmission(job)
                 for (outputIndex, placeholder) in placeholders.enumerated() {
                     var storedInput = finalGenInput
                     storedInput.outputIndex = outputIndex
@@ -156,8 +164,7 @@ final class GenerationService {
                         input = storedInput
                     }
                 }
-
-                let params = buildParams(uploaded)
+                editor.onProjectCheckpointRequired?()
 
                 await self.runJob(
                     placeholders: placeholders,
@@ -165,13 +172,7 @@ final class GenerationService {
                     editor: editor,
                     onComplete: onComplete,
                     onFailure: onFailure,
-                    submit: {
-                        let job = JobRequest(
-                            kind: model.kind, model: model.id,
-                            inputs: uploaded.map(JobInput.assetRef), params: params
-                        )
-                        return try await provider.submit(job, idempotencyKey: idempotencyKey)
-                    }
+                    submit: { try await provider.submit(job, idempotencyKey: idempotencyKey) }
                 )
             } catch is CancellationError {
                 return
@@ -188,16 +189,11 @@ final class GenerationService {
     private func prepareReferences(
         references: [MediaAsset],
         trimmedSourceOverride: TrimmedSource?,
-        preUploadedURLs: [String]?,
         preprocessRef: (@Sendable (Int, MediaAsset, URL) async throws -> URL?)?,
         preprocessSourceVideo: (@Sendable (URL) async throws -> URL?)?,
         provider: any GenerationProvider,
         model: String
     ) async throws -> PreparedReferences {
-        if let preUploadedURLs, !preUploadedURLs.isEmpty {
-            return PreparedReferences(uploaded: preUploadedURLs, tempFiles: [])
-        }
-
         var tempFiles: [URL] = []
         do {
             var urlsToUpload = references.map(\.url)
@@ -331,6 +327,22 @@ final class GenerationService {
                 }
             }
         }
+
+        let unsubmitted = Dictionary(grouping: pending.filter { $0.generationInput?.canResubmit == true }) {
+            $0.generationInput?.idempotencyKey ?? ""
+        }
+        for (key, group) in unsubmitted where !submittingKeys.contains(key) {
+            guard let provider = provider(), let input = group.first?.generationInput, let submission = input.submission else { continue }
+            let placeholders = group.sorted { ($0.generationInput?.outputIndex ?? 0) < ($1.generationInput?.outputIndex ?? 0) }
+            submittingKeys.insert(key)
+            own {
+                defer { self.submittingKeys.remove(key) }
+                await self.runJob(
+                    placeholders: placeholders, genInput: input, editor: editor, onComplete: nil, onFailure: nil,
+                    submit: { try await provider.submit(submission.request, idempotencyKey: key) }
+                )
+            }
+        }
     }
 
     func cancelGeneration(_ asset: MediaAsset, editor: EditorViewModel) async -> GenerationCancelOutcome {
@@ -361,6 +373,7 @@ final class GenerationService {
         status: MediaAsset.GenerationStatus? = nil,
         mutateInput: ((inout GenerationInput) -> Void)? = nil
     ) {
+        guard editor.mediaAssetsById[asset.id] === asset else { return }
         if let status {
             asset.generationStatus = status
         }
@@ -470,8 +483,11 @@ final class GenerationService {
                 Log.generation.error("submit failed model=\(genInput.model) error=\(error.localizedDescription)")
             }
             for placeholder in placeholders {
-                updateGenerationMetadata(placeholder, editor: editor, status: .failed(error.localizedDescription))
+                updateGenerationMetadata(placeholder, editor: editor, status: .failed(error.localizedDescription)) { input in
+                    input.submission = nil
+                }
             }
+            editor.onProjectCheckpointRequired?()
             onFailure?()
             return
         }
@@ -480,6 +496,7 @@ final class GenerationService {
             updateGenerationMetadata(placeholder, editor: editor, status: .generating) { input in
                 input.jobId = submitted.jobId
                 input.estimate = submitted.estimate
+                input.submission = nil
             }
         }
         editor.onProjectCheckpointRequired?()
@@ -505,7 +522,7 @@ final class GenerationService {
         defer { monitoredJobIds.remove(jobId) }
         do {
             for try await state in provider.jobUpdates(jobId: jobId) {
-                guard placeholders.contains(where: { asset in editor.mediaAssets.contains { $0 === asset } }) else { return }
+                guard placeholders.contains(where: { editor.mediaAssetsById[$0.id] === $0 }) else { return }
                 switch state.status {
                 case .queued, .running:
                     continue
@@ -529,7 +546,7 @@ final class GenerationService {
             }
         } catch is CancellationError {
             return
-        } catch let error as BackendError where error.isTransient {
+        } catch let error as BackendError where error.isTransient || error == .unauthorized {
             Log.generation.warning("job \(jobId) polling paused: \(error.localizedDescription)")
         } catch {
             Log.generation.error("job \(jobId) polling failed: \(error.localizedDescription)")
@@ -541,6 +558,7 @@ final class GenerationService {
 
     @discardableResult
     private func land(_ asset: MediaAsset, from remoteURL: URL, fileExtension: String?, editor: EditorViewModel) async -> Bool {
+        guard editor.mediaAssetsById[asset.id] === asset else { return false }
         if asset.generationStatus != .downloading {
             updateGenerationMetadata(asset, editor: editor, status: .downloading)
         }
@@ -579,7 +597,7 @@ final class GenerationService {
 
         var finalized: [MediaAsset] = []
         for (i, placeholder) in placeholders.enumerated() {
-            guard editor.mediaAssets.contains(where: { $0 === placeholder }) else { continue }
+            guard editor.mediaAssetsById[placeholder.id] === placeholder else { continue }
             let outputIndex = placeholder.generationInput?.outputIndex ?? i
             guard results.indices.contains(outputIndex) else {
                 updateGenerationMetadata(placeholder, editor: editor, status: .failed(noResult))
@@ -606,7 +624,7 @@ final class GenerationService {
                 assetType: first.type,
                 count: finalized.count
             )
-        } else {
+        } else if placeholders.contains(where: { editor.mediaAssetsById[$0.id] === $0 }) {
             onFailure?()
         }
     }

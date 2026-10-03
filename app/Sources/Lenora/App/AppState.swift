@@ -132,7 +132,6 @@ final class AppState {
         if let url = project.fileURL { ProjectRegistry.shared.register(url) }
         try await project.saveBeforeClosing()
         let wasActive = activeProject === project
-        project.editorViewModel.generationService.stopMonitoring()
         project.close()
         if wasActive {
             activeProject = nil

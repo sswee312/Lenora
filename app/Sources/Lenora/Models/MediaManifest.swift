@@ -76,6 +76,8 @@ struct GenerationInput: Codable, Sendable, Equatable {
     var referenceAudioAssetIds: [String]?
     var createdAt: Date?
     var jobId: String?
+    var idempotencyKey: String?
+    var submission: PendingSubmission?
     var outputIndex: Int?
     var results: [JobResult]?
     var estimate: BackendEstimate?

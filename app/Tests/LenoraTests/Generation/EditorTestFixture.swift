@@ -14,7 +14,7 @@ struct EditorTestFixture {
 
     var servedImageURL: URL { Self.servedImageURL }
 
-    static func withImage() async throws -> EditorTestFixture {
+    static func withImage(editor: EditorViewModel = EditorViewModel()) async throws -> EditorTestFixture {
         let root = FileManager.default.temporaryDirectory.appending(path: "generation-\(UUID().uuidString)")
         let project = root.appending(path: "P.lenora")
         let media = project.appending(path: Project.mediaDirectoryName)
@@ -23,7 +23,6 @@ struct EditorTestFixture {
         let sourceURL = media.appending(path: "source.png")
         try png.write(to: sourceURL)
 
-        let editor = EditorViewModel()
         editor.projectURL = project
         editor.remoteDownloadFetch = { request in
             let file = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
@@ -37,9 +36,9 @@ struct EditorTestFixture {
 
     func cleanup() { try? FileManager.default.removeItem(at: root) }
 
-    func waitUntil(timeout: Duration = .seconds(5), _ condition: @MainActor () -> Bool) async throws {
+    func waitUntil(timeout: Duration = .seconds(5), _ condition: @MainActor () async -> Bool) async throws {
         let deadline = ContinuousClock.now + timeout
-        while !condition() {
+        while await !condition() {
             guard ContinuousClock.now < deadline else { throw Timeout() }
             await Task.yield()
         }

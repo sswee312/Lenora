@@ -33,7 +33,7 @@ A/B on the same start frame:
 ```
 list_models({ type: "video" })
 # Iterate: flux-3 draft:true | seedance-2-mini | hailuo-03
-# Final: seedance-2 | hailuo-03 | Flux enhanceDraftMediaRef (not upscale_media)
+# Final: seedance-2 | hailuo-03 (not upscale_media on a draft)
 
 generate_video({
   model: "flux-3",
@@ -96,7 +96,7 @@ Signature options (pick one): weight shift, hand to pocket/hair, chin toward lig
 - Half the clip reserved for LOW settle / breath hold
 - Subject and camera both idle
 - Ending on a different face than the start frame
-- `upscale_media` instead of `enhanceDraftMediaRef` for Flux drafts
+- `upscale_media` on a Flux draft instead of re-generating the final
 
 ## Mini template
 

@@ -9,10 +9,13 @@ actor FakeProvider: GenerationProvider {
     private let failure: BackendError?
     private var stream: AsyncThrowingStream<JobState, Error>.Continuation?
     private(set) var pollers = 0
+    private(set) var terminations = 0
+    private let hangsOnSubmit: Bool
 
-    init(states: [JobState], failure: BackendError? = nil) {
+    init(states: [JobState], failure: BackendError? = nil, hangsOnSubmit: Bool = false) {
         self.states = states
         self.failure = failure
+        self.hangsOnSubmit = hangsOnSubmit
     }
 
     nonisolated func health() async throws -> BackendHealth { BackendHealth(status: "ok", protocolVersion: "1", backendVersion: "t", adapters: []) }
@@ -27,16 +30,20 @@ actor FakeProvider: GenerationProvider {
 
     func submit(_ job: JobRequest, idempotencyKey: String) async throws -> SubmittedJob {
         submitted.append((job, idempotencyKey))
+        if hangsOnSubmit { try await Task.sleep(for: .seconds(3600)) }
         return try BackendCoding.decoder().decode(SubmittedJob.self, from: Data(#"{"jobId":"fake:1","status":"queued"}"#.utf8))
     }
 
     nonisolated func jobUpdates(jobId: String) -> AsyncThrowingStream<JobState, Error> {
         AsyncThrowingStream { continuation in
+            continuation.onTermination = { _ in Task { await self.noteTermination() } }
             Task { await self.attach(continuation) }
         }
     }
 
     func cancel(jobId: String) async throws -> JobState { try cancelResult.get() }
+
+    private func noteTermination() { terminations += 1 }
 
     private func attach(_ continuation: AsyncThrowingStream<JobState, Error>.Continuation) {
         pollers += 1

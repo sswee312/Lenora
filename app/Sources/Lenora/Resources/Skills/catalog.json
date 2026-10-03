@@ -17,7 +17,7 @@
     "id": "cinematic-motion",
     "name": "cinematic-motion",
     "description": "Writes Lenora generate_video motion prompts so clips feel captured — one readable camera move plus imperfect handheld texture, not a timid micro-settle. Use for photoreal editorial motion, unstable handheld, beauty/product, or dialogue-to-camera. Bakeoff note: naive \"slow cinematic push-in\" can beat an over-soft effects score; always lead with visible motion.",
-    "sha": "10a93491d706",
+    "sha": "634c392018e1",
     "path": "cinematic-motion/SKILL.md"
   },
   {
@@ -59,7 +59,7 @@
     "id": "podcast-ad",
     "name": "podcast-ad",
     "description": "Builds converting podcast-style ads in Lenora as an overheard two-person conversation — sceptic arc, believer mechanism, opposed reverse-shot stills, locked voice + eyeline, exact off-screen backchannels, Flux-first beats, assemble + silence trim. Use for podcast ads, UGC conversation ads, sceptic-to-believer product spots — not for single-hook talking-head ads (use ugc-video-prompts).",
-    "sha": "e0623cacbd64",
+    "sha": "66cc86658d07",
     "path": "podcast-ad/SKILL.md"
   },
   {
@@ -94,7 +94,7 @@
     "id": "video-prompting",
     "name": "video-prompting",
     "description": "Base craft for AI video prompts inside Lenora across Seedance, Kling, MiniMax H3/Hailuo, Grok, and Veo. Assigns @Image/@Video/@Audio authority, locks identity and screen geography, then stages timed shots. Use for generate_video multimodal prompts, precise video edits, or cinematic AI video beyond simple UGC talking-head beats. For UGC selfie-then-animate prefer ugc-photo-prompts then ugc-video-prompts. Specialized siblings: character-pipeline, cinematic-motion, motion-graphics, podcast-ad.",
-    "sha": "6243a7e453ab",
+    "sha": "ead1f5234f00",
     "path": "video-prompting/SKILL.md"
   }
 ]

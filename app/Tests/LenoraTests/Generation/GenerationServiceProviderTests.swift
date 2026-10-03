@@ -128,10 +128,105 @@ struct GenerationServiceProviderTests {
         let fixture = try await EditorTestFixture.withImage()
         defer { fixture.cleanup() }
         let catalog = try cloudinaryCatalog()
+        let provider = FakeProvider(states: [], failure: .invalidResponse(status: 404))
+        let service = GenerationService(provider: { provider }, catalog: catalog)
+        let placeholder = try placeholder(start(service, editor: fixture.editor, source: fixture.image), in: fixture.editor)
+        try await fixture.waitUntil { placeholder.generationStatus == .failed(BackendError.invalidResponse(status: 404).localizedDescription) }
+    }
+
+    @Test func unauthorizedPollingPausesAndResumesWhenReconnected() async throws {
+        let fixture = try await EditorTestFixture.withImage()
+        defer { fixture.cleanup() }
+        let catalog = try cloudinaryCatalog()
         let provider = FakeProvider(states: [], failure: .unauthorized)
         let service = GenerationService(provider: { provider }, catalog: catalog)
         let placeholder = try placeholder(start(service, editor: fixture.editor, source: fixture.image), in: fixture.editor)
-        try await fixture.waitUntil { placeholder.generationStatus == .failed(BackendError.unauthorized.localizedDescription) }
+        try await fixture.waitUntil { placeholder.generationInput?.jobId != nil }
+        try await fixture.waitUntil { service.monitoredJobIds.isEmpty }
+        #expect(placeholder.generationStatus == .generating)
+        #expect(placeholder.isRecoveringGeneration)
+
+        let result = JobResult(url: fixture.servedImageURL, contentType: "image/png", fileExtension: "png")
+        let reconnected = GenerationService(provider: { FakeProvider(states: [jobState(.succeeded, results: [result])]) }, catalog: catalog)
+        reconnected.resumePendingGenerations(editor: fixture.editor)
+        try await fixture.waitUntil { fixture.isFinalized(placeholder) }
+    }
+
+    @Test func submitPersistsKeyAndRequestBeforeSubmitting() async throws {
+        let fixture = try await EditorTestFixture.withImage()
+        defer { fixture.cleanup() }
+        let provider = FakeProvider(states: [], hangsOnSubmit: true)
+        let service = GenerationService(provider: { provider }, catalog: try cloudinaryCatalog())
+        let placeholder = try placeholder(start(service, editor: fixture.editor, source: fixture.image), in: fixture.editor)
+        try await fixture.waitUntil { await !provider.submitted.isEmpty }
+        let (job, key) = try #require(await provider.submitted.first)
+        let input = try #require(placeholder.generationInput)
+        #expect(input.idempotencyKey == key)
+        #expect(input.jobId == nil)
+        #expect(input.submission?.kind == job.kind)
+        #expect(input.submission?.inputs == job.inputs)
+        let entry = try #require(fixture.editor.mediaManifest.entries.first { $0.id == placeholder.id })
+        #expect(entry.generationStatus == "preparing")
+        #expect(entry.generationInput?.idempotencyKey == key)
+        service.stopMonitoring()
+        #expect(placeholder.generationStatus == .preparing)
+    }
+
+    @Test func restoredPreparingPlaceholderResubmitsWithSameKey() async throws {
+        let fixture = try await EditorTestFixture.withImage()
+        defer { fixture.cleanup() }
+        let catalog = try cloudinaryCatalog()
+        let hanging = FakeProvider(states: [], hangsOnSubmit: true)
+        let first = GenerationService(provider: { hanging }, catalog: catalog)
+        let original = try placeholder(start(first, editor: fixture.editor, source: fixture.image), in: fixture.editor)
+        try await fixture.waitUntil { await !hanging.submitted.isEmpty }
+        let (firstJob, key) = try #require(await hanging.submitted.first)
+        first.stopMonitoring()
+
+        let data = try JSONEncoder().encode(original.toManifestEntry(projectURL: fixture.editor.projectURL))
+        let restored = MediaAsset(entry: try JSONDecoder().decode(MediaManifestEntry.self, from: data), resolvedURL: original.url)
+        #expect(restored.generationStatus == .preparing)
+        fixture.editor.removeGenerationPlaceholders([original])
+        fixture.editor.mediaAssets.append(restored)
+
+        let provider = FakeProvider(states: [jobState(.running)])
+        let second = GenerationService(provider: { provider }, catalog: catalog)
+        second.resumePendingGenerations(editor: fixture.editor)
+        try await fixture.waitUntil { restored.generationInput?.jobId == "fake:1" }
+        let (job, resubmittedKey) = try #require(await provider.submitted.first)
+        #expect(resubmittedKey == key)
+        #expect(job.kind == firstJob.kind && job.model == firstJob.model && job.inputs == firstJob.inputs)
+        #expect(try BackendCoding.encoder().encode(job) == BackendCoding.encoder().encode(firstJob))
+        #expect(restored.generationInput?.submission == nil)
+        second.stopMonitoring()
+    }
+
+    @Test func deletingPlaceholderDuringDownloadLeavesNoFileOrManifestEntry() async throws {
+        let fixture = try await EditorTestFixture.withImage()
+        defer { fixture.cleanup() }
+        let gate = Gate()
+        let png = try Data(contentsOf: fixture.image.url)
+        fixture.editor.remoteDownloadFetch = { request in
+            await gate.arrive()
+            let file = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+            try png.write(to: file)
+            return (file, HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: ["Content-Type": "image/png"])!)
+        }
+        let result = JobResult(url: fixture.servedImageURL, contentType: "image/png", fileExtension: "png")
+        let service = GenerationService(
+            provider: { FakeProvider(states: [jobState(.succeeded, results: [result])]) }, catalog: try cloudinaryCatalog()
+        )
+        let placeholder = try placeholder(start(service, editor: fixture.editor, source: fixture.image), in: fixture.editor)
+        try await fixture.waitUntil { await gate.hasArrived }
+        fixture.editor.deleteMediaAssets(ids: [placeholder.id])
+        await gate.open()
+        try await fixture.waitUntil { service.monitoredJobIds.isEmpty }
+
+        let media = fixture.editor.projectURL!.appending(path: Project.mediaDirectoryName)
+        let files = try FileManager.default.contentsOfDirectory(atPath: media.path)
+        #expect(files == ["source.png"])
+        #expect(!fixture.editor.mediaManifest.entries.contains { $0.id == placeholder.id })
+        #expect(!fixture.editor.mediaAssets.contains { $0.id == placeholder.id })
     }
 
     @Test func notCancellableKeepsPlaceholder() async throws {
@@ -198,6 +293,46 @@ struct GenerationCancellationTests {
         #expect(placeholder.generationStatus == .generating)
         #expect(placeholder.generationInput?.jobId == "fake:1")
     }
+
+    @Test func stopMonitoringEndsPolling() async throws {
+        let fixture = try await EditorTestFixture.withImage()
+        defer { fixture.cleanup() }
+        let provider = FakeProvider(states: [jobState(.running)])
+        let service = GenerationService(provider: { provider }, catalog: try cloudinaryCatalog())
+        var input = GenerationInput(prompt: "", model: "cloudinary/background-removal", duration: 0, aspectRatio: "")
+        input.createdAt = Date()
+        let id = service.generate(
+            genInput: input, assetType: .image, placeholderDuration: 0, references: [fixture.image],
+            name: "Remove Background", buildParams: { _ in .removeBackground },
+            fileExtension: "png", projectURL: fixture.editor.projectURL, editor: fixture.editor
+        )
+        let placeholder = try #require(fixture.editor.mediaAssets.first { $0.id == id })
+        try await fixture.waitUntil { await provider.pollers == 1 }
+        service.stopMonitoring()
+        try await fixture.waitUntil { await provider.terminations == 1 }
+        #expect(service.monitoredJobIds.isEmpty)
+        #expect(placeholder.generationStatus == .generating)
+    }
+
+    @Test func closingProjectEndsPolling() async throws {
+        let document = VideoProject()
+        let provider = FakeProvider(states: [jobState(.running)])
+        let service = GenerationService(provider: { provider }, catalog: try cloudinaryCatalog())
+        document.editorViewModel.generationService = service
+        let fixture = try await EditorTestFixture.withImage(editor: document.editorViewModel)
+        defer { fixture.cleanup() }
+        var input = GenerationInput(prompt: "", model: "cloudinary/background-removal", duration: 0, aspectRatio: "")
+        input.createdAt = Date()
+        service.generate(
+            genInput: input, assetType: .image, placeholderDuration: 0, references: [fixture.image],
+            name: "Remove Background", buildParams: { _ in .removeBackground },
+            fileExtension: "png", projectURL: fixture.editor.projectURL, editor: fixture.editor
+        )
+        try await fixture.waitUntil { await provider.pollers == 1 }
+        document.close()
+        try await fixture.waitUntil { await provider.terminations == 1 }
+        #expect(service.monitoredJobIds.isEmpty)
+    }
 }
 
 @MainActor
@@ -237,5 +372,25 @@ struct GenerationResumeTests {
         service.resumePendingGenerations(editor: fixture.editor)
         #expect(service.monitoredJobIds.isEmpty)
         #expect(placeholder.generationStatus == .generating)
+    }
+}
+
+private actor Gate {
+    private var arrived = false
+    private var waiter: CheckedContinuation<Void, Never>?
+    private var opened = false
+
+    var hasArrived: Bool { arrived }
+
+    func arrive() async {
+        arrived = true
+        guard !opened else { return }
+        await withCheckedContinuation { waiter = $0 }
+    }
+
+    func open() {
+        opened = true
+        waiter?.resume()
+        waiter = nil
     }
 }

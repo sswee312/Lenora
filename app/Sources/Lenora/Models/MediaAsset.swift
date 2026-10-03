@@ -78,7 +78,7 @@ final class MediaAsset: Identifiable {
     }
     var canResumeGeneration: Bool {
         guard let generationInput else { return false }
-        return generationInput.jobId?.isEmpty == false
+        return generationInput.jobId?.isEmpty == false || generationInput.canResubmit
     }
     var isGenerating: Bool {
         generationStatus == .preparing || generationStatus == .generating || generationStatus == .downloading || generationStatus == .rendering
@@ -138,7 +138,7 @@ final class MediaAsset: Identifiable {
             generationInput: generationInput,
             sourceWidth: sourceWidth, sourceHeight: sourceHeight, sourceFPS: sourceFPS,
             hasAudio: hasAudio, folderId: folderId,
-            generationStatus: generationStatus.manifestValue,
+            generationStatus: generationStatus.manifestValue ?? (generationStatus == .preparing && canResumeGeneration ? generationStatus.serialized : nil),
             importInput: importInput,
         )
     }
