@@ -13,6 +13,8 @@ An open-source, agent-native video editor for the Mac. Edit by hand, let the bui
 
 <p align="center"><a href="https://github.com/vermatushar/Lenora/blob/main/assets/this-is-lenora.mp4">▶ Watch the demo (24 s)</a></p>
 
+**Cloudinary, Track 3:** [the product, the problem, and how to test it](CLOUDINARY.md).
+
 ## What Lenora is
 
 Lenora is a native macOS editor written in Swift 6.2 with SwiftUI, AppKit, AVFoundation and Metal. Editing, playback, transcription, beat detection and footage search run on your Mac. No account is needed. Network services are used only by the features listed under [What leaves your Mac](#what-leaves-your-mac).
@@ -46,7 +48,7 @@ Generation features appear only when the connected backend advertises a model fo
 
 | Adapter | What it adds |
 |---|---|
-| [Cloudinary](backend/adapters/cloudinary/README.md) | Background removal, generative edit (fill, replace, remove, recolor, background replace, restore), 4× upscale, video reframe, image generation and image-to-video (with those add-ons), image analysis, enhancement and smart crop from subscribed add-ons, and **Publish**: an HLS stream, download, poster, optional vertical cut (9:16, 1:1, 4:5) and 5–30 s teaser from one export, as signed, unlisted links. |
+| [Cloudinary](CLOUDINARY.md) ([adapter](backend/adapters/cloudinary/README.md)) | Background removal, generative edit (fill, replace, remove, recolor, background replace, restore), 4× upscale, video reframe, image generation and image-to-video (with those add-ons), image analysis, enhancement and smart crop from subscribed add-ons, and **Publish**: an HLS stream, download, poster, optional vertical cut (9:16, 1:1, 4:5) and 5–30 s teaser from one export, as signed, unlisted links. |
 | [OpenAI](backend/adapters/openai/README.md) | Voiceover (`gpt-4o-mini-tts`, run as a background job) and **Improve Prompt**, which rewrites a prompt for video, image, speech or edit generation. |
 
 Both adapters report an estimate per request, and each has an optional daily budget (Cloudinary credits, OpenAI USD) that refuses new jobs once the UTC day's estimates reach it. Settings → Backend shows which adapters are enabled, why a disabled one is off, and spend against each budget.

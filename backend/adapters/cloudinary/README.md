@@ -1,6 +1,6 @@
 # lenora-adapter-cloudinary
 
-Cloudinary adapter for lenora-backend. Every result is a signed delivery URL (`s--<8>--`), so the account can keep strict transformations on.
+Cloudinary adapter for lenora-backend. Every result is a signed delivery URL (`s--<8>--`), so the account can keep strict transformations on. The product write-up for Track 3 is [CLOUDINARY.md](../../../CLOUDINARY.md).
 
 | Model | Kind | Notes |
 |---|---|---|
