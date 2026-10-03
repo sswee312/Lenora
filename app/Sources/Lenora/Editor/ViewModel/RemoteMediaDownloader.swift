@@ -24,11 +24,13 @@ struct RemoteMediaDownloader: Sendable {
 
     let maxBytes: Int64
     let timeout: TimeInterval
+    let backend: LenoraBackendConfiguration?
     private let fetch: Fetch
 
-    init(maxBytes: Int64, timeout: TimeInterval, fetch: Fetch? = nil) {
+    init(maxBytes: Int64, timeout: TimeInterval, backend: LenoraBackendConfiguration? = nil, fetch: Fetch? = nil) {
         self.maxBytes = maxBytes
         self.timeout = timeout
+        self.backend = backend
         self.fetch = fetch ?? { request in
             let delegate = ImportDownloadDelegate(maxBytes: maxBytes)
             let (file, response) = try await URLSession.shared.download(for: request, delegate: delegate)
@@ -53,10 +55,18 @@ struct RemoteMediaDownloader: Sendable {
         url.scheme?.lowercased() == "https"
     }
 
+    func request(for url: URL) -> URLRequest {
+        var request = URLRequest(url: url, timeoutInterval: timeout)
+        if let backend, let token = backend.token, backend.isSameOrigin(url) {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        return request
+    }
+
     @concurrent
     func download(_ url: URL) async throws -> URL {
         guard Self.isAllowed(url) else { throw RemoteDownloadError.disallowedURL(url.absoluteString) }
-        let (file, response) = try await fetch(URLRequest(url: url, timeoutInterval: timeout))
+        let (file, response) = try await fetch(request(for: url))
         do {
             if let final = response.url, !(final == url ? Self.isAllowed(final) : Self.isAllowedRedirect(final)) {
                 throw RemoteDownloadError.disallowedURL(final.absoluteString)
@@ -96,7 +106,10 @@ final class ImportDownloadDelegate: NSObject, URLSessionDownloadDelegate, @unche
             completionHandler(nil)
             return
         }
-        completionHandler(request)
+        // The backend token is for the backend's own origin; a redirect never carries it.
+        var redirected = request
+        redirected.setValue(nil, forHTTPHeaderField: "Authorization")
+        completionHandler(redirected)
     }
 
     func urlSession(

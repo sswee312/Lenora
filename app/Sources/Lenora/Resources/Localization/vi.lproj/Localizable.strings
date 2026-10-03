@@ -1065,3 +1065,8 @@
 "result" = "kết quả";
 "using Anthropic API key" = "đang dùng khóa API Anthropic";
 "using OpenAI API key" = "đang dùng khóa API OpenAI";
+"%@ used · No limit" = "Đã dùng %@ · Không giới hạn";
+"%@ of %@" = "%@ trên %@";
+"Improve Prompt" = "Cải thiện câu lệnh";
+"Couldn't improve the prompt." = "Không thể cải thiện câu lệnh.";
+"Couldn't improve the prompt: %@" = "Không thể cải thiện câu lệnh: %@";

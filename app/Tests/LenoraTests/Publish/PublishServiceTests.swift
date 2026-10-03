@@ -216,7 +216,7 @@ struct PublishServiceTests {
         let provider = FakeProvider(states: [PublishFixtures.state(.running)])
         let service = try makeService(provider)
         _ = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
-        await provider.waitForPoller()
+        try await provider.waitForPoller()
         service.stopMonitoring()
         var changes = 0
         service.onChange = { changes += 1 }
@@ -363,10 +363,10 @@ struct PublishServiceTests {
         await provider.hold(.createUpload)
         let service = try makeService(provider)
         let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
-        await provider.waitForCalls(.createUpload)
+        try await provider.waitForCalls(.createUpload)
         #expect(try await service.unpublish(record.id) == false)
         await provider.release(.createUpload)
-        await provider.waitForCalls(.deleteAsset)
+        try await provider.waitForCalls(.deleteAsset)
         let unpublished = try #require(service.publications.first)
         #expect(unpublished.status == .unpublished && unpublished.assetRef == nil)
         #expect(await provider.deletedAssets == ["ref-cut.mp4"])
@@ -380,11 +380,11 @@ struct PublishServiceTests {
         await provider.hold(.deleteAsset)
         let service = try makeService(provider)
         let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
-        await provider.waitForCalls(.upload)
+        try await provider.waitForCalls(.upload)
         let unpublishing = Task { try await service.unpublish(record.id) }
         await provider.waitForCancellation(.upload)
         await provider.release(.upload)
-        await provider.waitForCalls(.deleteAsset)
+        try await provider.waitForCalls(.deleteAsset)
         await provider.release(.deleteAsset)
         #expect(try await unpublishing.value == false)
         #expect(await provider.submitted.isEmpty)
@@ -398,7 +398,7 @@ struct PublishServiceTests {
         await provider.setDeleteResult(.failure(.problem(BackendProblem(code: "provider_error", detail: nil, status: 502, retryable: false))))
         let service = try makeService(provider)
         let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
-        await provider.waitForCalls(.upload)
+        try await provider.waitForCalls(.upload)
         let unpublishing = Task { try await service.unpublish(record.id) }
         await provider.waitForCancellation(.upload)
         await provider.release(.upload)
@@ -459,7 +459,7 @@ struct PublishServiceTests {
         await provider.hold(.upload)
         let service = try makeService(provider)
         let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
-        await provider.waitForCalls(.upload)
+        try await provider.waitForCalls(.upload)
         service.stopMonitoring()
         var changes = 0
         service.onChange = { changes += 1 }
@@ -516,7 +516,7 @@ struct PublishServiceTests {
         service.onChange = { changes += 1 }
         let first = Task { try await service.unpublish(record.id) }
         let second = Task { try await service.unpublish(record.id) }
-        await provider.waitForCalls(.deleteAsset, count: 2)
+        try await provider.waitForCalls(.deleteAsset, count: 2)
         await provider.release(.deleteAsset)
         let results = [try await first.value, try await second.value]
         #expect(results.sorted { !$0 && $1 } == [false, true])
@@ -531,7 +531,7 @@ struct PublishServiceTests {
         let record = PublishFixtures.readyRecord()
         service.restore([record])
         let unpublishing = Task { try await service.unpublish(record.id) }
-        await provider.waitForCalls(.deleteAsset)
+        try await provider.waitForCalls(.deleteAsset)
         #expect(throws: PublishRefusal.busy) {
             try service.addOutputs(to: record.id, options: PublishOptions(vertical: "9:16"), confirmPublic: true)
         }
@@ -547,12 +547,12 @@ struct PublishServiceTests {
         await provider.setDeleteResult(.failure(.problem(BackendProblem(code: "provider_error", detail: nil, status: 502, retryable: false))))
         let service = try makeService(provider)
         let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
-        await provider.waitForCalls(.upload)
+        try await provider.waitForCalls(.upload)
         await provider.hold(.deleteAsset)
         let unpublishing = Task { try await service.unpublish(record.id) }
         await provider.waitForCancellation(.upload)
         await provider.release(.upload)
-        await provider.waitForCalls(.deleteAsset)
+        try await provider.waitForCalls(.deleteAsset)
         let before = service.publications
         service.stopMonitoring()
         var changes = 0

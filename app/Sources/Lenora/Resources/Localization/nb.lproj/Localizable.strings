@@ -1065,3 +1065,8 @@
 "result" = "resultat";
 "using Anthropic API key" = "med Anthropic API-nøkkel";
 "using OpenAI API key" = "med OpenAI API-nøkkel";
+"%@ used · No limit" = "%@ brukt · Ingen grense";
+"%@ of %@" = "%@ av %@";
+"Improve Prompt" = "Forbedre prompt";
+"Couldn't improve the prompt." = "Kunne ikke forbedre prompten.";
+"Couldn't improve the prompt: %@" = "Kunne ikke forbedre prompten: %@";

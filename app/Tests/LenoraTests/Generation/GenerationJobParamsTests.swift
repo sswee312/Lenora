@@ -41,4 +41,33 @@ struct GenerationJobParamsTests {
         guard case .video(let videoCaps) = entry.uiCapabilities else { Issue.record("expected video caps"); return }
         #expect(videoCaps.requiresFirstFrame == false)
     }
+
+    private func speech(voice: String? = "nova", style: String? = "Warm.", videoURL: String? = nil, sourceURL: String? = nil,
+                        referenceImageURL: String? = nil, referenceAudioURLs: [String]? = nil) -> GenerationJobParams {
+        .audio(AudioGenerationParams(prompt: "Hello.", voice: voice, lyrics: nil, styleInstructions: style, instrumental: false,
+                                     durationSeconds: nil, videoURL: videoURL, sourceURL: sourceURL,
+                                     referenceImageURL: referenceImageURL, referenceAudioURLs: referenceAudioURLs))
+    }
+
+    @Test func speechCarriesOnlyScriptVoiceAndStyle() throws {
+        let parts = try speech().jobParts(uploaded: [])
+        #expect(parts.inputs.isEmpty)
+        #expect(parts.params as? SpeechParams == SpeechParams(prompt: "Hello.", voice: "nova", styleInstructions: "Warm."))
+    }
+
+    @Test func emptySpeechOptionsAreOmitted() throws {
+        let parts = try speech(voice: "", style: "").jobParts(uploaded: [])
+        let data = try BackendCoding.encoder().encode(try #require(parts.params as? SpeechParams))
+        #expect(String(decoding: data, as: UTF8.self) == #"{"prompt":"Hello."}"#)
+    }
+
+    @Test func speechRefusesMediaInputs() {
+        let refused: [(GenerationJobParams, [String])] = [
+            (speech(), ["ref"]), (speech(videoURL: "v"), []), (speech(sourceURL: "s"), []),
+            (speech(referenceImageURL: "i"), []), (speech(referenceAudioURLs: ["a"]), []),
+        ]
+        for (params, uploaded) in refused {
+            #expect(throws: GenerationError.self) { try params.jobParts(uploaded: uploaded) }
+        }
+    }
 }

@@ -3,6 +3,18 @@ import Foundation
 struct LenoraBackendConfiguration: Sendable, Equatable {
     let baseURL: URL
     let token: String?
+
+    /// Same scheme, host and port as the backend, with default ports and letter case normalized.
+    func isSameOrigin(_ url: URL) -> Bool {
+        guard let origin = Self.origin(of: url) else { return false }
+        return origin == Self.origin(of: baseURL)
+    }
+
+    private static func origin(of url: URL) -> String? {
+        guard let scheme = url.scheme?.lowercased(), scheme == "http" || scheme == "https",
+              let host = url.host(percentEncoded: false)?.lowercased(), !host.isEmpty else { return nil }
+        return "\(scheme)://\(host):\(url.port ?? (scheme == "https" ? 443 : 80))"
+    }
 }
 
 enum BackendConfigurationError: Error, Equatable, Sendable {

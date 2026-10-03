@@ -281,7 +281,7 @@ struct CompositionBuildVideoSourceTimingTests {
 struct CompositionBuildAudioTrackTests {
 
     @Test func normalAudioClipsShareCompositionTrack() async throws {
-        let audioURL = try makeSilentWav(durationSeconds: 3)
+        let audioURL = try TestAudio.silentWav(durationSeconds: 3)
         defer { try? FileManager.default.removeItem(at: audioURL) }
 
         let first = Fixtures.clip(id: "a1", mediaRef: "audio", mediaType: .audio, start: 0, duration: 24)
@@ -302,7 +302,7 @@ struct CompositionBuildAudioTrackTests {
     }
 
     @Test func mutedAudioTrackIsExcludedFromComposition() async throws {
-        let audioURL = try makeSilentWav(durationSeconds: 1)
+        let audioURL = try TestAudio.silentWav(durationSeconds: 1)
         defer { try? FileManager.default.removeItem(at: audioURL) }
 
         let clip = Fixtures.clip(
@@ -324,7 +324,7 @@ struct CompositionBuildAudioTrackTests {
     }
 
     @Test func unityAudioClipResetsVolumeAfterMutedClipOnSharedCompositionTrack() async throws {
-        let audioURL = try makeSilentWav(durationSeconds: 3)
+        let audioURL = try TestAudio.silentWav(durationSeconds: 3)
         defer { try? FileManager.default.removeItem(at: audioURL) }
 
         let muted = Fixtures.clip(
@@ -372,7 +372,7 @@ struct CompositionBuildAudioTrackTests {
         // One audio queue per composition track: retimed clips must not fan out
         // into dedicated tracks. insertClip scales each clip immediately after
         // inserting it, so mixed speeds are safe on a shared track.
-        let audioURL = try makeSilentWav(durationSeconds: 4)
+        let audioURL = try TestAudio.silentWav(durationSeconds: 4)
         defer { try? FileManager.default.removeItem(at: audioURL) }
 
         let first = Fixtures.clip(id: "a1", mediaRef: "audio", mediaType: .audio, start: 0, duration: 24)
@@ -404,7 +404,7 @@ struct CompositionBuildAudioTrackTests {
     }
 
     @Test func fractionalSpeedAudioUsesTruncatedSourceFramesForCompositionInsertion() async throws {
-        let audioURL = try makeSilentWav(durationSeconds: 4)
+        let audioURL = try TestAudio.silentWav(durationSeconds: 4)
         defer { try? FileManager.default.removeItem(at: audioURL) }
         let sourceAsset = AVURLAsset(url: audioURL)
         let sourceTrack = try #require(try await sourceAsset.loadTracks(withMediaType: .audio).first)
@@ -458,39 +458,6 @@ struct CompositionBuildAudioTrackTests {
             timeRange: &range
         )
         return found ? (start, end, range) : nil
-    }
-
-    private func makeSilentWav(durationSeconds: Double) throws -> URL {
-        let sampleRate = 44_100
-        let channels = 1
-        let bitsPerSample = 16
-        let sampleCount = Int(durationSeconds * Double(sampleRate))
-        let dataSize = sampleCount * channels * bitsPerSample / 8
-
-        var data = Data()
-        data.append(contentsOf: "RIFF".utf8)
-        appendLE(UInt32(36 + dataSize), to: &data)
-        data.append(contentsOf: "WAVEfmt ".utf8)
-        appendLE(UInt32(16), to: &data)
-        appendLE(UInt16(1), to: &data)
-        appendLE(UInt16(channels), to: &data)
-        appendLE(UInt32(sampleRate), to: &data)
-        appendLE(UInt32(sampleRate * channels * bitsPerSample / 8), to: &data)
-        appendLE(UInt16(channels * bitsPerSample / 8), to: &data)
-        appendLE(UInt16(bitsPerSample), to: &data)
-        data.append(contentsOf: "data".utf8)
-        appendLE(UInt32(dataSize), to: &data)
-        data.append(Data(repeating: 0, count: dataSize))
-
-        let url = FileManager.default.temporaryDirectory
-            .appendingPathComponent("silent-\(UUID().uuidString).wav")
-        try data.write(to: url)
-        return url
-    }
-
-    private func appendLE<T: FixedWidthInteger>(_ value: T, to data: inout Data) {
-        var little = value.littleEndian
-        withUnsafeBytes(of: &little) { data.append(contentsOf: $0) }
     }
 }
 

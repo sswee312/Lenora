@@ -1065,3 +1065,8 @@
 "result" = "Ergebnis";
 "using Anthropic API key" = "mit Anthropic-API-Schlüssel";
 "using OpenAI API key" = "mit OpenAI-API-Schlüssel";
+"%@ used · No limit" = "%@ verbraucht · Kein Limit";
+"%@ of %@" = "%@ von %@";
+"Improve Prompt" = "Prompt verbessern";
+"Couldn't improve the prompt." = "Der Prompt konnte nicht verbessert werden.";
+"Couldn't improve the prompt: %@" = "Der Prompt konnte nicht verbessert werden: %@";

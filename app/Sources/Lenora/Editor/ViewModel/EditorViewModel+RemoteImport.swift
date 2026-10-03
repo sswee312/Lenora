@@ -31,6 +31,7 @@ extension EditorViewModel {
         let downloader = downloader ?? RemoteMediaDownloader(
             maxBytes: ToolExecutor.remoteImportMaxBytes,
             timeout: ToolExecutor.remoteImportRequestTimeout,
+            backend: backendConfiguration(),
             fetch: remoteDownloadFetch
         )
         let file = try await downloader.download(remoteURL)

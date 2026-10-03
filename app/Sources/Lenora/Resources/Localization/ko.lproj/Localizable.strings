@@ -1065,3 +1065,8 @@
 "result" = "결과";
 "using Anthropic API key" = "Anthropic API 키 사용 중";
 "using OpenAI API key" = "OpenAI API 키 사용 중";
+"%@ used · No limit" = "%@ 사용 · 제한 없음";
+"%@ of %@" = "%@ / %@";
+"Improve Prompt" = "프롬프트 개선";
+"Couldn't improve the prompt." = "프롬프트를 개선할 수 없습니다.";
+"Couldn't improve the prompt: %@" = "프롬프트를 개선할 수 없습니다: %@";

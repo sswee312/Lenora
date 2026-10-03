@@ -1065,3 +1065,8 @@
 "result" = "結果";
 "using Anthropic API key" = "使用 Anthropic API key";
 "using OpenAI API key" = "使用 OpenAI API key";
+"%@ used · No limit" = "已使用 %@ · 無限制";
+"%@ of %@" = "%@ / %@";
+"Improve Prompt" = "改善提示詞";
+"Couldn't improve the prompt." = "無法改善提示詞。";
+"Couldn't improve the prompt: %@" = "無法改善提示詞：%@";
