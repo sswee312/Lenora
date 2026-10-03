@@ -37,15 +37,23 @@ final class PromptRewriter {
     var isAvailable: Bool { model != nil }
 
     func canRewrite(_ text: String) -> Bool {
-        !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && text.count <= Self.maxTextLength
+        !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && text.unicodeScalars.count <= Self.maxTextLength
     }
 
-    /// One undo step on the text view's undo manager.
-    static func replaceText(in view: NSTextView, with text: String) {
+    /// The focused prompt editor, or nil when the rewrite must not touch any text view.
+    static func promptTextView(promptFocused: Bool, firstResponder: NSResponder?, sentText: String) -> NSTextView? {
+        guard promptFocused, let view = firstResponder as? NSTextView, view.string == sentText else { return nil }
+        return view
+    }
+
+    /// One undo step on the text view's undo manager. False if the view refused the change.
+    @discardableResult
+    static func replaceText(in view: NSTextView, with text: String) -> Bool {
         let range = NSRange(location: 0, length: (view.string as NSString).length)
-        guard view.shouldChangeText(in: range, replacementString: text) else { return }
+        guard view.shouldChangeText(in: range, replacementString: text) else { return false }
         view.textStorage?.replaceCharacters(in: range, with: text)
         view.didChangeText()
+        return true
     }
 
     private var model: BackendModel? { catalog.models(ofKind: Self.kind).first }

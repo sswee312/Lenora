@@ -28,7 +28,8 @@ struct GenerationView: View {
     @State var videoDraft = false
     @State var upscaleSettings = UpscaleSettings()
     @State var showSettingsPopover = false
-    @FocusState private var isPromptFocused: Bool
+    @FocusState var isPromptFocused: Bool
+    @State var promptWindow = HostWindow()
 
     // Video frame references
     @State var firstFrame: MediaAsset?
@@ -426,6 +427,7 @@ struct GenerationView: View {
         .overlay(alignment: .bottomTrailing) {
             improvePromptButton.padding(AppTheme.Spacing.xs)
         }
+        .background(HostWindowReader(host: promptWindow))
         .frame(height: promptHeight)
         .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { measuredPromptHeight = $0 }
     }

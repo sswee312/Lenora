@@ -96,6 +96,39 @@ struct PromptRewriterTests {
         #expect(start(rewriter, Box(String(repeating: "a", count: PromptRewriter.maxTextLength + 1))) == nil)
     }
 
+    @Test func scalarCountDecidesTheLimit() throws {
+        let rewriter = try rewriter(FakeProvider())
+        let family = "\u{1F468}\u{200D}\u{1F469}\u{200D}\u{1F467}"
+        let text = String(repeating: family, count: PromptRewriter.maxTextLength / 5 + 1)
+        #expect(text.count <= PromptRewriter.maxTextLength && text.unicodeScalars.count > PromptRewriter.maxTextLength)
+        #expect(!rewriter.canRewrite(text))
+    }
+
+    @Test func maxTextLengthMatchesTheProtocolSchema() async throws {
+        let url = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
+            .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+            .appending(path: "protocol/openapi.yaml")
+        let yaml = try await Task.detached { try String(contentsOf: url, encoding: .utf8) }.value
+        let schema = try #require(yaml.components(separatedBy: "    RewritePromptParams:").last)
+        let line = try #require(schema.split(separator: "\n").first { $0.contains("text: {") })
+        #expect(line.contains("maxLength: \(PromptRewriter.maxTextLength) "))
+    }
+
+    @Test func onlyTheFocusedPromptEditorReceivesTheRewrite() {
+        let prompt = NSTextView()
+        prompt.string = "a cat"
+        let other = NSTextView()
+        other.string = "a cat"
+        let pick = { (focused: Bool, responder: NSResponder?, sent: String) in
+            PromptRewriter.promptTextView(promptFocused: focused, firstResponder: responder, sentText: sent)
+        }
+        #expect(pick(true, prompt, "a cat") === prompt)
+        #expect(pick(false, other, "a cat") == nil)
+        #expect(pick(true, prompt, "a dog") == nil)
+        #expect(pick(true, NSView(), "a cat") == nil)
+        #expect(pick(true, nil, "a cat") == nil)
+    }
+
     @Test func textViewReplacementUndoesInOneStep() {
         let undo = UndoManager()
         let delegate = UndoDelegate(undo)

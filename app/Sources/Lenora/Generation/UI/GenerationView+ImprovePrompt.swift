@@ -48,12 +48,29 @@ extension GenerationView {
     }
 
     func applyRewrite(_ rewritten: String) {
-        if let view = NSApp.keyWindow?.firstResponder as? NSTextView, view.string == prompt {
-            PromptRewriter.replaceText(in: view, with: rewritten)
-        } else {
-            prompt = rewritten
-        }
+        let responder = promptWindow.window?.firstResponder
+        if let view = PromptRewriter.promptTextView(promptFocused: isPromptFocused, firstResponder: responder, sentText: prompt),
+           PromptRewriter.replaceText(in: view, with: rewritten) { return }
+        prompt = rewritten
     }
 
     func cancelPromptRewrite() { editor.promptRewriter.cancel() }
+}
+
+final class HostWindow {
+    weak var window: NSWindow?
+}
+
+struct HostWindowReader: NSViewRepresentable {
+    let host: HostWindow
+
+    func makeNSView(context: Context) -> NSView { Reader(host: host) }
+    func updateNSView(_ nsView: NSView, context: Context) {}
+
+    private final class Reader: NSView {
+        let host: HostWindow
+        init(host: HostWindow) { self.host = host; super.init(frame: .zero) }
+        required init?(coder: NSCoder) { fatalError() }
+        override func viewDidMoveToWindow() { host.window = window }
+    }
 }
