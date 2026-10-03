@@ -83,3 +83,23 @@ def test_image_generate_bounds():
 def test_input_roles(kind, inputs, problem):
     found = input_problem(kind, inputs)
     assert (found is None) if problem is None else (problem in found)
+
+
+@pytest.mark.parametrize("params, ok", [
+    ({}, True), ({"outputs": {}}, True), ({"outputs": {"vertical": "9:16", "teaserSeconds": 15}}, True),
+    ({"outputs": {"teaserSeconds": 5}}, True), ({"outputs": {"teaserSeconds": 30}}, True),
+    ({"outputs": {"teaserSeconds": 4}}, False), ({"outputs": {"teaserSeconds": 31}}, False),
+    ({"outputs": {"vertical": "16:9"}}, False), ({"outputs": {"poster": False}}, False), ({"extra": 1}, False),
+])
+def test_publish_params(params, ok):
+    from lenora_backend.kinds import VideoPublishParams
+    if ok:
+        VideoPublishParams.model_validate(params)
+    else:
+        with pytest.raises(ValidationError):
+            VideoPublishParams.model_validate(params)
+
+
+@pytest.mark.parametrize("count, problem", [(0, True), (1, False), (2, True)])
+def test_publish_takes_exactly_one_input(count, problem):
+    assert (input_problem("video.publish", [ref()] * count) is not None) == problem

@@ -70,6 +70,16 @@ paths:
       responses:
         "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/JobState" } } } }
         default: { $ref: "#/components/responses/Problem" }
+  /v1/assets/{assetRef}:
+    parameters:
+      - { name: assetRef, in: path, required: true, schema: { type: string } }
+      - { name: model, in: query, required: true, schema: { type: string }, description: The model whose upload created the asset. }
+    delete:
+      operationId: deleteAsset
+      description: Deletes an uploaded asset and everything derived from it. Only for models with deletable true. 404 when unknown or already deleted.
+      responses:
+        "204": { description: Deleted }
+        default: { $ref: "#/components/responses/Problem" }
 components:
   securitySchemes:
     bearer: { type: http, scheme: bearer }
@@ -81,7 +91,7 @@ components:
     Kind:
       type: string
       description: Operation kind. Clients ignore kinds they do not recognise.
-      examples: [image.removeBackground, image.generate, image.edit, image.upscale, video.generate, video.reframe, video.edit, video.lipSync, video.upscale, audio.speech, audio.music, audio.sfx, text.rewritePrompt]
+      examples: [image.removeBackground, image.generate, image.edit, image.upscale, video.generate, video.reframe, video.publish, video.edit, video.lipSync, video.upscale, audio.speech, audio.music, audio.sfx, text.rewritePrompt]
     JobStatus:
       type: string
       enum: [queued, running, succeeded, failed, cancelled]
@@ -128,6 +138,7 @@ components:
         cancellable: { type: boolean }
         estimate: { oneOf: [{ $ref: "#/components/schemas/Estimate" }, { type: "null" }] }
         ui: { type: [object, "null"], description: Optional editor hints (durations, aspects, settings) for generation kinds. }
+        deletable: { type: [boolean, "null"], description: "True when DELETE /v1/assets accepts this model's uploads." }
         operations: { type: [array, "null"], items: { type: string }, description: "For image.edit: the ops this model performs." }
     AdapterVersion:
       type: object
@@ -195,6 +206,16 @@ components:
         url: { type: string, format: uri }
         contentType: { type: string }
         fileExtension: { type: string, pattern: "^[a-z0-9]+$" }
+        role: { oneOf: [{ $ref: "#/components/schemas/ResultRole" }, { type: "null" }], description: "What the result is, for kinds with several outputs." }
+    ResultRole:
+      enum: [stream, download, poster, vertical, teaser]
+    FailedOutput:
+      type: object
+      required: [role, code, message]
+      properties:
+        role: { $ref: "#/components/schemas/ResultRole" }
+        code: { $ref: "#/components/schemas/ErrorCode" }
+        message: { type: string }
     JobError:
       type: object
       required: [code, message, retryable]
@@ -210,6 +231,7 @@ components:
         status: { $ref: "#/components/schemas/JobStatus" }
         results: { type: [array, "null"], items: { $ref: "#/components/schemas/JobResult" } }
         error: { oneOf: [{ $ref: "#/components/schemas/JobError" }, { type: "null" }] }
+        failedOutputs: { type: [array, "null"], items: { $ref: "#/components/schemas/FailedOutput" }, description: "Outputs that failed while the job still succeeded." }
     Problem:
       type: object
       required: [type, title, status, code, retryable]
@@ -266,3 +288,14 @@ components:
       required: [aspectRatio]
       properties:
         aspectRatio: { enum: ["9:16", "1:1", "4:5", "16:9"] }
+    VideoPublishParams:
+      type: object
+      additionalProperties: false
+      description: "One video input. Stream, download and poster are always produced; results carry a role. A running job may already list finished results."
+      properties:
+        outputs:
+          type: object
+          additionalProperties: false
+          properties:
+            vertical: { oneOf: [{ enum: ["9:16", "1:1", "4:5"] }, { type: "null" }] }
+            teaserSeconds: { type: [integer, "null"], minimum: 5, maximum: 30 }

@@ -5,7 +5,7 @@ from pydantic import BaseModel, ConfigDict, Field, HttpUrl, RootModel, model_val
 
 Kind = Literal[
     "image.removeBackground", "image.generate", "image.edit", "image.upscale",
-    "video.generate", "video.reframe", "video.edit", "video.lipSync", "video.upscale",
+    "video.generate", "video.reframe", "video.publish", "video.edit", "video.lipSync", "video.upscale",
     "audio.speech", "audio.music", "audio.sfx", "text.rewritePrompt",
 ]
 JobStatus = Literal["queued", "running", "succeeded", "failed", "cancelled"]
@@ -32,6 +32,7 @@ class ModelInfo(BaseModel):
     estimate: Estimate | None = None
     ui: dict[str, Any] | None = None
     operations: list[str] | None = None
+    deletable: bool | None = None
 
 
 class AdapterHealth(BaseModel):
@@ -108,10 +109,14 @@ class SubmittedJob(BaseModel):
     estimate: Estimate | None = None
 
 
+ResultRole = Literal["stream", "download", "poster", "vertical", "teaser"]
+
+
 class JobResult(BaseModel):
     url: HttpUrl
     contentType: str
     fileExtension: str = Field(pattern=r"^[a-z0-9]+$")
+    role: ResultRole | None = None
 
 
 class JobError(BaseModel):
@@ -120,11 +125,18 @@ class JobError(BaseModel):
     retryable: bool
 
 
+class FailedOutput(BaseModel):
+    role: ResultRole
+    code: str
+    message: str
+
+
 class JobState(BaseModel):
     jobId: str
     status: JobStatus
     results: list[JobResult] | None = None
     error: JobError | None = None
+    failedOutputs: list[FailedOutput] | None = None
     retryAfter: int | None = Field(default=None, exclude=True)
 
 
@@ -219,6 +231,18 @@ class VideoReframeParams(StrictParams):
     aspectRatio: Literal["9:16", "1:1", "4:5", "16:9"]
 
 
+PublishAspect = Literal["9:16", "1:1", "4:5"]
+
+
+class PublishOutputs(StrictParams):
+    vertical: PublishAspect | None = None
+    teaserSeconds: int | None = Field(default=None, ge=5, le=30)
+
+
+class VideoPublishParams(StrictParams):
+    outputs: PublishOutputs = Field(default_factory=PublishOutputs)
+
+
 # Kinds the core can validate. A kind is accepted only once its params schema lands here.
 PARAMS: dict[str, type[BaseModel]] = {
     "image.removeBackground": RemoveBackgroundParams,
@@ -227,6 +251,7 @@ PARAMS: dict[str, type[BaseModel]] = {
     "image.upscale": ImageUpscaleParams,
     "video.generate": VideoGenerateParams,
     "video.reframe": VideoReframeParams,
+    "video.publish": VideoPublishParams,
 }
 # Per kind: the most inputs allowed for each role; None is the role of an unlabelled input.
 INPUT_ROLES: dict[str, dict[str | None, int]] = {
@@ -236,8 +261,9 @@ INPUT_ROLES: dict[str, dict[str | None, int]] = {
     "image.upscale": {None: 1},
     "video.generate": {"startFrame": 1, "endFrame": 1, "reference": 2},
     "video.reframe": {None: 1},
+    "video.publish": {None: 1},
 }
-REQUIRED_INPUTS: dict[str, int] = {"image.removeBackground": 1, "image.edit": 1, "image.upscale": 1, "video.reframe": 1}
+REQUIRED_INPUTS: dict[str, int] = {"image.removeBackground": 1, "image.edit": 1, "image.upscale": 1, "video.reframe": 1, "video.publish": 1}
 
 
 def input_problem(kind: str, inputs: list[AssetInput | UrlInput]) -> str | None:

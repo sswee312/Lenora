@@ -9,7 +9,7 @@ from lenora_backend.auth import require_token
 from lenora_backend.errors import install_error_handlers
 from lenora_backend.idempotency import IdempotencyStore
 from lenora_backend.registry import Registry
-from lenora_backend.routes import capabilities, health, jobs, uploads
+from lenora_backend.routes import assets, capabilities, health, jobs, uploads
 from lenora_backend.settings import CoreSettings
 
 HTTP_TIMEOUT = httpx.Timeout(connect=5.0, read=30.0, write=30.0, pool=5.0)
@@ -20,6 +20,7 @@ def create_app(settings: CoreSettings, load_registry: Callable[[httpx.AsyncClien
     async def lifespan(app: FastAPI):
         async with httpx.AsyncClient(timeout=HTTP_TIMEOUT, follow_redirects=False) as http:
             app.state.registry = load_registry(http)
+            await app.state.registry.start()
             yield
 
     docs = "/docs" if settings.docs_enabled else None
@@ -33,4 +34,5 @@ def create_app(settings: CoreSettings, load_registry: Callable[[httpx.AsyncClien
     app.state.idempotency = IdempotencyStore()
     app.include_router(uploads.router, prefix="/v1", dependencies=protected)
     app.include_router(jobs.router, prefix="/v1", dependencies=protected)
+    app.include_router(assets.router, prefix="/v1", dependencies=protected)
     return app

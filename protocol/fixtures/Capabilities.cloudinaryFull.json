@@ -28,7 +28,8 @@
         "unit": "cloudinary_credits"
       },
       "ui": null,
-      "operations": null
+      "operations": null,
+      "deletable": null
     },
     {
       "id": "cloudinary/generative-edit",
@@ -55,7 +56,8 @@
         "recolor",
         "backgroundReplace",
         "restore"
-      ]
+      ],
+      "deletable": null
     },
     {
       "id": "cloudinary/upscale",
@@ -90,7 +92,8 @@
           ]
         }
       },
-      "operations": null
+      "operations": null,
+      "deletable": null
     },
     {
       "id": "cloudinary/reframe",
@@ -108,7 +111,8 @@
       "cancellable": false,
       "estimate": null,
       "ui": null,
-      "operations": null
+      "operations": null,
+      "deletable": null
     },
     {
       "id": "cloudinary/image-generation",
@@ -146,7 +150,8 @@
           "maxImages": 4
         }
       },
-      "operations": null
+      "operations": null,
+      "deletable": null
     },
     {
       "id": "cloudinary/image-to-video",
@@ -196,7 +201,8 @@
           "requiresFirstFrame": false
         }
       },
-      "operations": null
+      "operations": null,
+      "deletable": null
     }
   ]
 }
