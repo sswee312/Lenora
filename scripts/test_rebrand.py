@@ -19,6 +19,8 @@ import rebrand  # noqa: E402
         ("import PalmierPro", "import Lenora"),
         ("palmier-pro.mcpb", "lenora.mcpb"),
         ("https://palmier.pro/docs", "https://lenora/docs"),
+        ("https://palmier.io/docs", "https://github.com/vermatushar/lenora#readme"),
+        ("[Palmier](https://palmier.io)", "[Lenora](https://github.com/vermatushar/lenora)"),
         ("PalmierProjectExporter", "LenoraProjectExporter"),
         ("PALMIER_TOKEN", "LENORA_TOKEN"),
         ("Palmier and palmier", "Lenora and lenora"),

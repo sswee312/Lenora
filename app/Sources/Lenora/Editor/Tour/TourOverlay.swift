@@ -9,7 +9,7 @@ struct TourOverlay: View {
     private let bookendWidth: CGFloat = 600
     private let margin: CGFloat = AppTheme.Spacing.xlXxl
 
-    private static let docsURL = URL(string: "https://lenora.io/docs")!
+    private static let docsURL = URL(string: "https://github.com/vermatushar/lenora#readme")!
 
     var body: some View {
         if let step = tour.currentStep {

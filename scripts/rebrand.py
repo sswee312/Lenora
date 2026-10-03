@@ -9,6 +9,8 @@ MAPPING = [
     (re.escape("io.palmier.project"), "xyz.agentage.lenora.project"),
     (re.escape("io.palmier.pro"), "xyz.agentage.lenora"),
     (re.escape("palmier://"), "lenora://"),
+    (re.escape("palmier.io/docs"), "github.com/vermatushar/lenora#readme"),
+    (re.escape("palmier.io"), "github.com/vermatushar/lenora"),
     (re.escape("palmier-io/palmier-skills"), "vermatushar/lenora-skills"),
     (re.escape("palmier-io/"), "vermatushar/"),
     (r"PalmierPro(?![a-z])", "Lenora"),
