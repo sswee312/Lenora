@@ -7,7 +7,7 @@ struct OnboardingWelcomeStep: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.smMd) {
-            OnboardingTitle(L10n.string("Welcome to Lenora Pro"))
+            OnboardingTitle(L10n.string("Welcome to Lenora"))
             heroImage
             OnboardingDetail(L10n.string("A video editor built for AI. Generate, and edit all in one place."))
         }

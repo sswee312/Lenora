@@ -13,18 +13,18 @@
 "%@ · %lld" = "⁨%@⁩ · ⁨%lld⁩";
 "%@, %lld skills" = "⁨%@⁩، ⁨%lld⁩ مهارات";
 "%@: %@." = "⁨%@⁩: ⁨%@⁩.";
-"%lld Lottie animations are ready in Lenora Pro." = "⁨%lld⁩ من رسوم Lottie المتحركة جاهزة في Lenora Pro.";
-"%lld audio clips are ready in Lenora Pro." = "⁨%lld⁩ من مقاطع الصوت جاهزة في Lenora Pro.";
+"%lld Lottie animations are ready in Lenora." = "⁨%lld⁩ من رسوم Lottie المتحركة جاهزة في Lenora.";
+"%lld audio clips are ready in Lenora." = "⁨%lld⁩ من مقاطع الصوت جاهزة في Lenora.";
 "%lld by timecode, %lld by audio" = "⁨%lld⁩ حسب الرمز الزمني، و⁨%lld⁩ حسب الصوت";
 "%lld clips" = "⁨%lld⁩ مقطع";
 "%lld couldn't align" = "تعذّرت محاذاة ⁨%lld⁩";
-"%lld images are ready in Lenora Pro." = "⁨%lld⁩ من الصور جاهزة في Lenora Pro.";
+"%lld images are ready in Lenora." = "⁨%lld⁩ من الصور جاهزة في Lenora.";
 "%lld items" = "⁨%lld⁩ عنصر";
 "%lld media files are missing and will be skipped." = "هناك ⁨%lld⁩ من ملفات الوسائط مفقودة وسيتم تخطيها.";
 "%lld selected" = "تم تحديد ⁨%lld⁩";
-"%lld subtitle files are ready in Lenora Pro." = "⁨%lld⁩ من ملفات الترجمة جاهزة في Lenora Pro.";
-"%lld text clips are ready in Lenora Pro." = "⁨%lld⁩ من مقاطع النص جاهزة في Lenora Pro.";
-"%lld videos are ready in Lenora Pro." = "⁨%lld⁩ من مقاطع الفيديو جاهزة في Lenora Pro.";
+"%lld subtitle files are ready in Lenora." = "⁨%lld⁩ من ملفات الترجمة جاهزة في Lenora.";
+"%lld text clips are ready in Lenora." = "⁨%lld⁩ من مقاطع النص جاهزة في Lenora.";
+"%lld videos are ready in Lenora." = "⁨%lld⁩ من مقاطع الفيديو جاهزة في Lenora.";
 "(image payload)" = "(حمولة الصورة)";
 "1 clip" = "مقطع واحد";
 "1 item" = "عنصر واحد";
@@ -36,7 +36,7 @@
 "AI Enhance" = "تحسين بالذكاء الاصطناعي";
 "AI Generated" = "مُنشأ بالذكاء الاصطناعي";
 "AI agent" = "وكيل الذكاء الاصطناعي";
-"About Lenora Pro" = "حول Lenora Pro";
+"About Lenora" = "حول Lenora";
 "Action Safe" = "المنطقة الآمنة للحركة";
 "Adapters" = "المحوّلات";
 "Add Marker (M)" = "إضافة علامة ⁨(M)⁩";
@@ -136,7 +136,7 @@
 "Center" = "الوسط";
 "Change aspect ratio and extend the frame with AI" = "تغيير نسبة العرض إلى الارتفاع وتوسيع الإطار بالذكاء الاصطناعي";
 "Change to Match" = "التغيير للمطابقة";
-"Changes take effect after restarting Lenora Pro." = "تسري التغييرات بعد إعادة تشغيل Lenora Pro.";
+"Changes take effect after restarting Lenora." = "تسري التغييرات بعد إعادة تشغيل Lenora.";
 "Changing the ratio preserves the shorter edge." = "يحافظ تغيير النسبة على الحافة الأقصر.";
 "Chat history" = "سجل الدردشة";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "تحدث مع وكيلك. يمكنه إنشاء المحتوى وتحرير المقاطع وتنظيم أصولك وغير ذلك. ابدأ بإضافة مفتاح واجهة API الخاص بك من Anthropic في الإعدادات.";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "التوافق: ⁨%@⁩";
 "Completed" = "مكتمل";
 "Connect an agent" = "ربط وكيل";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "اربط وكيلاً خارجيًا لفحص مشروع Lenora Pro المفتوح وتحريره.";
+"Connect an external agent to inspect and edit the open Lenora project." = "اربط وكيلاً خارجيًا لفحص مشروع Lenora المفتوح وتحريره.";
 "Connected" = "متصل";
 "Connection failed: %@" = "فشل الاتصال: ⁨%@⁩";
 "Content" = "المحتوى";
@@ -642,7 +642,7 @@
 "Prompt" = "المطالبة";
 "Quality" = "الجودة";
 "Queued" = "في قائمة الانتظار";
-"Quit Lenora Pro" = "إنهاء Lenora Pro";
+"Quit Lenora" = "إنهاء Lenora";
 "Radius" = "نصف القطر";
 "Range" = "النطاق";
 "Razor (C)" = "الشفرة ⁨(C)⁩";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "يجب ألا تقل الدقة عن ⁨2 × 2⁩ بكسل.";
 "Resolution must not exceed 8192 pixels on either edge." = "يجب ألا تتجاوز الدقة 8192 بكسل على أي من الحافتين.";
 "Resolved" = "تم الحل";
-"Restart Lenora Pro" = "إعادة تشغيل Lenora Pro";
+"Restart Lenora" = "إعادة تشغيل Lenora";
 "Retry" = "إعادة المحاولة";
 "Retry Download" = "إعادة محاولة التنزيل";
 "Reveal in Finder" = "إظهار في Finder";
@@ -795,7 +795,7 @@
 "Spoken" = "المحتوى المنطوق";
 "Square (1:1)" = "مربع (1:1)";
 "Start creating" = "ابدأ الإنشاء";
-"Start creating, or explore these to get the most out of Lenora Pro." = "ابدأ الإنشاء، أو استكشف هذه الخيارات للاستفادة القصوى من Lenora Pro.";
+"Start creating, or explore these to get the most out of Lenora." = "ابدأ الإنشاء، أو استكشف هذه الخيارات للاستفادة القصوى من Lenora.";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "يبدأ بعد ⁨%@⁩ ثانية من توقيت المجموعة؛ تمت مطابقته مع المسار الرئيسي بدرجة ثقة ⁨%@%%⁩.";
 "Status Filter" = "عامل تصفية الحالة";
 "Status: %@" = "الحالة: ⁨%@⁩";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "تتطلب تنقية الصوت صوتًا أو فيديو";
 "Volume" = "مستوى الصوت";
 "Warmth" = "دفء اللون";
-"Welcome to Lenora Pro" = "مرحبًا بك في Lenora Pro";
+"Welcome to Lenora" = "مرحبًا بك في Lenora";
 "What's New in v%@" = "الجديد في الإصدار ⁨v%@⁩";
 "White Balance" = "توازن اللون الأبيض";
 "Whites" = "درجات الأبيض";

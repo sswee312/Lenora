@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld dovedností";
 "%@: %@." = "%@: %@.";
-"%lld Lottie animations are ready in Lenora Pro." = "V Lenora Pro je připraveno %lld animací Lottie.";
-"%lld audio clips are ready in Lenora Pro." = "V Lenora Pro je připraveno %lld audio klipů.";
+"%lld Lottie animations are ready in Lenora." = "V Lenora je připraveno %lld animací Lottie.";
+"%lld audio clips are ready in Lenora." = "V Lenora je připraveno %lld audio klipů.";
 "%lld by timecode, %lld by audio" = "%lld podle timecodu, %lld podle audia";
 "%lld clips" = "%lld klipů";
 "%lld couldn't align" = "%lld se nepodařilo zarovnat";
-"%lld images are ready in Lenora Pro." = "V Lenora Pro je připraveno %lld obrázků.";
+"%lld images are ready in Lenora." = "V Lenora je připraveno %lld obrázků.";
 "%lld items" = "%lld položek";
 "%lld media files are missing and will be skipped." = "Chybí %lld mediálních souborů, budou přeskočeny.";
 "%lld selected" = "Vybráno: %lld";
-"%lld subtitle files are ready in Lenora Pro." = "V Lenora Pro je připraveno %lld souborů titulků.";
-"%lld text clips are ready in Lenora Pro." = "V Lenora Pro je připraveno %lld textových klipů.";
-"%lld videos are ready in Lenora Pro." = "V Lenora Pro je připraveno %lld videí.";
+"%lld subtitle files are ready in Lenora." = "V Lenora je připraveno %lld souborů titulků.";
+"%lld text clips are ready in Lenora." = "V Lenora je připraveno %lld textových klipů.";
+"%lld videos are ready in Lenora." = "V Lenora je připraveno %lld videí.";
 "(image payload)" = "(data obrázku)";
 "1 clip" = "1 klip";
 "1 item" = "1 položka";
@@ -36,7 +36,7 @@
 "AI Enhance" = "AI vylepšení";
 "AI Generated" = "Vygenerováno AI";
 "AI agent" = "AI Agent";
-"About Lenora Pro" = "O aplikaci Lenora Pro";
+"About Lenora" = "O aplikaci Lenora";
 "Action Safe" = "Bezpečná zóna akce";
 "Adapters" = "Adaptéry";
 "Add Marker (M)" = "Přidat značku (M)";
@@ -136,7 +136,7 @@
 "Center" = "Na střed";
 "Change aspect ratio and extend the frame with AI" = "Změnit poměr stran a rozšířit rámeček pomocí AI";
 "Change to Match" = "Změnit podle projektu";
-"Changes take effect after restarting Lenora Pro." = "Změny se projeví po restartu Lenora Pro.";
+"Changes take effect after restarting Lenora." = "Změny se projeví po restartu Lenora.";
 "Changing the ratio preserves the shorter edge." = "Změna poměru zachová kratší stranu.";
 "Chat history" = "Historie chatu";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Pište Agentovi. Umí generovat obsah, upravovat klipy, organizovat materiály a další. Začněte přidáním vlastního API klíče Anthropic v Nastavení.";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "Kompatibilita: %@";
 "Completed" = "Dokončeno";
 "Connect an agent" = "Připojit Agent";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "Připojte externího Agenta pro prohlížení a úpravy otevřeného projektu Lenora Pro.";
+"Connect an external agent to inspect and edit the open Lenora project." = "Připojte externího Agenta pro prohlížení a úpravy otevřeného projektu Lenora.";
 "Connected" = "Připojeno";
 "Connection failed: %@" = "Připojení se nezdařilo: %@";
 "Content" = "Obsah";
@@ -642,7 +642,7 @@
 "Prompt" = "Prompt";
 "Quality" = "Kvalita";
 "Queued" = "Ve frontě";
-"Quit Lenora Pro" = "Ukončit Lenora Pro";
+"Quit Lenora" = "Ukončit Lenora";
 "Radius" = "Poloměr";
 "Range" = "Rozsah";
 "Razor (C)" = "Břitva (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "Rozlišení musí být alespoň 2 × 2 pixely.";
 "Resolution must not exceed 8192 pixels on either edge." = "Rozlišení nesmí na žádné straně přesáhnout 8192 pixelů.";
 "Resolved" = "Vyřešeno";
-"Restart Lenora Pro" = "Restartovat Lenora Pro";
+"Restart Lenora" = "Restartovat Lenora";
 "Retry" = "Zkusit znovu";
 "Retry Download" = "Znovu stáhnout";
 "Reveal in Finder" = "Zobrazit ve Finderu";
@@ -795,7 +795,7 @@
 "Spoken" = "Mluvené";
 "Square (1:1)" = "Čtverec (1:1)";
 "Start creating" = "Začít tvořit";
-"Start creating, or explore these to get the most out of Lenora Pro." = "Začněte tvořit, nebo si prohlédněte tyto možnosti a využijte Lenora Pro naplno.";
+"Start creating, or explore these to get the most out of Lenora." = "Začněte tvořit, nebo si prohlédněte tyto možnosti a využijte Lenora naplno.";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "Začíná %@s v hodinách skupiny; shoda s masterem s jistotou %@%%.";
 "Status Filter" = "Filtr stavu";
 "Status: %@" = "Stav: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "Čištění hlasu vyžaduje audio nebo video";
 "Volume" = "Hlasitost";
 "Warmth" = "Teplo";
-"Welcome to Lenora Pro" = "Vítejte v Lenora Pro";
+"Welcome to Lenora" = "Vítejte v Lenora";
 "What's New in v%@" = "Novinky ve verzi %@";
 "White Balance" = "Vyvážení bílé";
 "Whites" = "Bílé";

@@ -52,7 +52,7 @@ struct HomeView: View {
 
     private var header: some View {
         HStack(spacing: AppTheme.Spacing.md) {
-            Text(L10n.string("Welcome to Lenora Pro"))
+            Text(L10n.string("Welcome to Lenora"))
                 .font(.system(size: AppTheme.FontSize.title2, weight: .light))
                 .tracking(AppTheme.Tracking.tight)
                 .foregroundStyle(AppTheme.Text.primaryColor)

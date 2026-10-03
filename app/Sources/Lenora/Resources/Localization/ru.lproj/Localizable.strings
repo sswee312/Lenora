@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, навыков: %lld";
 "%@: %@." = "%@: %@.";
-"%lld Lottie animations are ready in Lenora Pro." = "Анимации Lottie готовы в Lenora Pro: %lld.";
-"%lld audio clips are ready in Lenora Pro." = "Аудиоклипы готовы в Lenora Pro: %lld.";
+"%lld Lottie animations are ready in Lenora." = "Анимации Lottie готовы в Lenora: %lld.";
+"%lld audio clips are ready in Lenora." = "Аудиоклипы готовы в Lenora: %lld.";
 "%lld by timecode, %lld by audio" = "По таймкоду: %lld, по аудио: %lld";
 "%lld clips" = "Клипов: %lld";
 "%lld couldn't align" = "Не удалось синхронизировать: %lld";
-"%lld images are ready in Lenora Pro." = "Изображения готовы в Lenora Pro: %lld.";
+"%lld images are ready in Lenora." = "Изображения готовы в Lenora: %lld.";
 "%lld items" = "Объектов: %lld";
 "%lld media files are missing and will be skipped." = "Отсутствуют медиафайлы: %lld. Они будут пропущены.";
 "%lld selected" = "Выбрано: %lld";
-"%lld subtitle files are ready in Lenora Pro." = "%lld файлов субтитров готовы в Lenora Pro.";
-"%lld text clips are ready in Lenora Pro." = "Текстовые клипы готовы в Lenora Pro: %lld.";
-"%lld videos are ready in Lenora Pro." = "Видео готовы в Lenora Pro: %lld.";
+"%lld subtitle files are ready in Lenora." = "%lld файлов субтитров готовы в Lenora.";
+"%lld text clips are ready in Lenora." = "Текстовые клипы готовы в Lenora: %lld.";
+"%lld videos are ready in Lenora." = "Видео готовы в Lenora: %lld.";
 "(image payload)" = "(данные изображения)";
 "1 clip" = "1 клип";
 "1 item" = "1 объект";
@@ -36,7 +36,7 @@
 "AI Enhance" = "AI-улучшение";
 "AI Generated" = "Создано AI";
 "AI agent" = "AI-агент";
-"About Lenora Pro" = "О Lenora Pro";
+"About Lenora" = "О Lenora";
 "Action Safe" = "Безопасная зона действия";
 "Adapters" = "Адаптеры";
 "Add Marker (M)" = "Добавить маркер (M)";
@@ -136,7 +136,7 @@
 "Center" = "По центру";
 "Change aspect ratio and extend the frame with AI" = "Изменить соотношение сторон и расширить кадр с помощью AI";
 "Change to Match" = "Изменить под клип";
-"Changes take effect after restarting Lenora Pro." = "Изменения вступят в силу после перезапуска Lenora Pro.";
+"Changes take effect after restarting Lenora." = "Изменения вступят в силу после перезапуска Lenora.";
 "Changing the ratio preserves the shorter edge." = "При изменении соотношения сохраняется более короткая сторона.";
 "Chat history" = "История чата";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Общайтесь со своим агентом. Он может создавать контент, монтировать клипы, упорядочивать материалы и многое другое. Для начала добавьте свой API-ключ Anthropic в разделе «Настройки».";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "Совместимость: %@";
 "Completed" = "Завершено";
 "Connect an agent" = "Подключить агент";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "Подключите внешний агент для просмотра и редактирования открытого проекта Lenora Pro.";
+"Connect an external agent to inspect and edit the open Lenora project." = "Подключите внешний агент для просмотра и редактирования открытого проекта Lenora.";
 "Connected" = "Подключено";
 "Connection failed: %@" = "Не удалось подключиться: %@";
 "Content" = "Содержимое";
@@ -642,7 +642,7 @@
 "Prompt" = "Запрос";
 "Quality" = "Качество";
 "Queued" = "В очереди";
-"Quit Lenora Pro" = "Завершить Lenora Pro";
+"Quit Lenora" = "Завершить Lenora";
 "Radius" = "Радиус";
 "Range" = "Диапазон";
 "Razor (C)" = "Лезвие (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "Разрешение должно быть не менее 2 × 2 пикселей.";
 "Resolution must not exceed 8192 pixels on either edge." = "Разрешение не должно превышать 8192 пикселя по любой стороне.";
 "Resolved" = "Решено";
-"Restart Lenora Pro" = "Перезапустить Lenora Pro";
+"Restart Lenora" = "Перезапустить Lenora";
 "Retry" = "Повторить";
 "Retry Download" = "Повторить загрузку";
 "Reveal in Finder" = "Показать в Finder";
@@ -795,7 +795,7 @@
 "Spoken" = "Речь";
 "Square (1:1)" = "Квадрат (1:1)";
 "Start creating" = "Начать работу";
-"Start creating, or explore these to get the most out of Lenora Pro." = "Начните работу или изучите эти возможности Lenora Pro.";
+"Start creating, or explore these to get the most out of Lenora." = "Начните работу или изучите эти возможности Lenora.";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "Начало через %@ с по времени группы; совпадение с мастером — %@%%.";
 "Status Filter" = "Фильтр по статусу";
 "Status: %@" = "Статус: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "Для очистки голоса требуется аудио или видео";
 "Volume" = "Громкость";
 "Warmth" = "Теплота";
-"Welcome to Lenora Pro" = "Добро пожаловать в Lenora Pro";
+"Welcome to Lenora" = "Добро пожаловать в Lenora";
 "What's New in v%@" = "Что нового в v%@";
 "White Balance" = "Баланс белого";
 "Whites" = "Белые";

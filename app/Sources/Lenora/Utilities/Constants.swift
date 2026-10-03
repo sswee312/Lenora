@@ -96,7 +96,7 @@ enum Project {
 
     static var storageDirectory: URL {
         FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Documents/Lenora Pro", isDirectory: true)
+            .appendingPathComponent("Documents/Lenora", isDirectory: true)
     }
 
     nonisolated static func ensureStorageDirectory() {

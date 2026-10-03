@@ -37,14 +37,14 @@ struct GeneralPane: View {
 
                 if localization.requiresRestart {
                     HStack(alignment: .center, spacing: AppTheme.Spacing.lg) {
-                        Text(L10n.string("Changes take effect after restarting Lenora Pro."))
+                        Text(L10n.string("Changes take effect after restarting Lenora."))
                             .font(.system(size: AppTheme.FontSize.sm))
                             .foregroundStyle(AppTheme.Text.secondaryColor)
                             .fixedSize(horizontal: false, vertical: true)
 
                         Spacer(minLength: AppTheme.Spacing.lg)
 
-                        Button(L10n.string("Restart Lenora Pro")) {
+                        Button(L10n.string("Restart Lenora")) {
                             AppDelegate.shared.restart()
                         }
                         .buttonStyle(.capsule(.secondary))

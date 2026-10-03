@@ -47,7 +47,7 @@ Use `swift build --traits BundledSpeech` for changes that touch MLX, speech anal
 - Prefer precise names, small types, and extracted operations over explanatory comments.
 - Complex logic must have a single source of truth. Never copy a calculation or business rule into another file or surface.
 - Remove dead code, unused state, obsolete compatibility paths, and temporary diagnostics before finishing.
-- Do not add compatibility code for OS versions or architectures Lenora Pro does not support.
+- Do not add compatibility code for OS versions or architectures Lenora does not support.
 
 ## Concurrency and the main actor
 
@@ -128,7 +128,7 @@ Use `swift build --traits BundledSpeech` for changes that touch MLX, speech anal
 - Design tools from user intent, not from internal APIs, database operations, view models, or service method boundaries.
 - Start with representative user requests and define the desired outcome, success criteria, warnings, failure behavior, cancellation behavior, retry behavior, idempotency, and undo semantics before defining the schema.
 - A tool should perform one coherent filmmaker action. One call should normally complete one atomic, understandable, and undoable workflow.
-- Do not force the Agent to reproduce application orchestration by chaining low-level tools when Lenora Pro can safely perform the workflow itself.
+- Do not force the Agent to reproduce application orchestration by chaining low-level tools when Lenora can safely perform the workflow itself.
 - Do not create a broad “god tool” with unrelated modes. Group operations only when they share one user goal, validation model, and result shape.
 - Express parameters in filmmaking and user-facing domain concepts. Hide storage layout, framework objects, UI state, and incidental implementation details.
 - Use stable entity IDs for automation. Positional indexes and display labels may be returned for context but must not be the only durable identity after edits.
@@ -293,7 +293,7 @@ Rule: **any drop target that spans an area containing other drop targets must us
 
 ## Voice
 
-Lenora Pro speaks like a quietly capable native Mac app for filmmakers: direct, technical, calm, and confident. Prefer Apple HIG-style terseness over warmth. Never chatty or cute. Never marketing. When the product needs to ask for action, lead with the action verb; when it reports state, name the thing.
+Lenora speaks like a quietly capable native Mac app for filmmakers: direct, technical, calm, and confident. Prefer Apple HIG-style terseness over warmth. Never chatty or cute. Never marketing. When the product needs to ask for action, lead with the action verb; when it reports state, name the thing.
 
 ## Primary references
 

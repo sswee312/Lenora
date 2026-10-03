@@ -52,7 +52,7 @@ fi
 
 SIGNING_IDENTITY="${SIGNING_IDENTITY:--}"   # "-" = ad-hoc; set a Developer ID to sign for distribution
 NOTARY_PROFILE="${NOTARY_PROFILE:-lenora-notary}"
-PROVISION_PROFILE="${PROVISION_PROFILE:-$ROOT/scripts/Lenora_Pro_Developer_ID.provisionprofile}"
+PROVISION_PROFILE="${PROVISION_PROFILE:-$ROOT/scripts/Lenora_Developer_ID.provisionprofile}"
 ENTITLEMENTS="$ROOT/scripts/Lenora.entitlements"
 RESOURCES="$PKG/Sources/Lenora/Resources"
 APP="$PKG/.build/Lenora.app"

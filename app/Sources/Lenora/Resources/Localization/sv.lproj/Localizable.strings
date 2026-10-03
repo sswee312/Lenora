@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld färdigheter";
 "%@: %@." = "%@: %@.";
-"%lld Lottie animations are ready in Lenora Pro." = "%lld Lottie-animeringar är klara i Lenora Pro.";
-"%lld audio clips are ready in Lenora Pro." = "%lld ljudklipp är klara i Lenora Pro.";
+"%lld Lottie animations are ready in Lenora." = "%lld Lottie-animeringar är klara i Lenora.";
+"%lld audio clips are ready in Lenora." = "%lld ljudklipp är klara i Lenora.";
 "%lld by timecode, %lld by audio" = "%lld via tidskod, %lld via ljud";
 "%lld clips" = "%lld klipp";
 "%lld couldn't align" = "%lld gick inte att justera";
-"%lld images are ready in Lenora Pro." = "%lld bilder är klara i Lenora Pro.";
+"%lld images are ready in Lenora." = "%lld bilder är klara i Lenora.";
 "%lld items" = "%lld objekt";
 "%lld media files are missing and will be skipped." = "%lld mediafiler saknas och hoppas över.";
 "%lld selected" = "%lld markerade";
-"%lld subtitle files are ready in Lenora Pro." = "%lld undertextfiler är klara i Lenora Pro.";
-"%lld text clips are ready in Lenora Pro." = "%lld textklipp är klara i Lenora Pro.";
-"%lld videos are ready in Lenora Pro." = "%lld videor är klara i Lenora Pro.";
+"%lld subtitle files are ready in Lenora." = "%lld undertextfiler är klara i Lenora.";
+"%lld text clips are ready in Lenora." = "%lld textklipp är klara i Lenora.";
+"%lld videos are ready in Lenora." = "%lld videor är klara i Lenora.";
 "(image payload)" = "(bilddata)";
 "1 clip" = "1 klipp";
 "1 item" = "1 objekt";
@@ -36,7 +36,7 @@
 "AI Enhance" = "AI-förbättring";
 "AI Generated" = "AI-genererad";
 "AI agent" = "AI Agent";
-"About Lenora Pro" = "Om Lenora Pro";
+"About Lenora" = "Om Lenora";
 "Action Safe" = "Säker åtgärdsyta";
 "Adapters" = "Adaptrar";
 "Add Marker (M)" = "Lägg till markör (M)";
@@ -136,7 +136,7 @@
 "Center" = "Centrera";
 "Change aspect ratio and extend the frame with AI" = "Ändra bildförhållande och utöka bilden med AI";
 "Change to Match" = "Ändra så att det matchar";
-"Changes take effect after restarting Lenora Pro." = "Ändringarna börjar gälla efter omstart av Lenora Pro.";
+"Changes take effect after restarting Lenora." = "Ändringarna börjar gälla efter omstart av Lenora.";
 "Changing the ratio preserves the shorter edge." = "När förhållandet ändras behålls den kortare kanten.";
 "Chat history" = "Chatthistorik";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Chatta med din Agent. Den kan generera innehåll, redigera klipp, organisera dina tillgångar och mycket mer. Börja med att lägga till din Anthropic API-nyckel i Inställningar.";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "Kompatibilitet: %@";
 "Completed" = "Slutförd";
 "Connect an agent" = "Anslut en Agent";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "Anslut en extern Agent för att inspektera och redigera det öppna Lenora Pro-projektet.";
+"Connect an external agent to inspect and edit the open Lenora project." = "Anslut en extern Agent för att inspektera och redigera det öppna Lenora-projektet.";
 "Connected" = "Ansluten";
 "Connection failed: %@" = "Anslutningen misslyckades: %@";
 "Content" = "Innehåll";
@@ -642,7 +642,7 @@
 "Prompt" = "Prompt";
 "Quality" = "Kvalitet";
 "Queued" = "I kö";
-"Quit Lenora Pro" = "Avsluta Lenora Pro";
+"Quit Lenora" = "Avsluta Lenora";
 "Radius" = "Radie";
 "Range" = "Område";
 "Razor (C)" = "Rakblad (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "Upplösningen måste vara minst 2 × 2 pixlar.";
 "Resolution must not exceed 8192 pixels on either edge." = "Upplösningen får inte överstiga 8192 pixlar på någon kant.";
 "Resolved" = "Löst";
-"Restart Lenora Pro" = "Starta om Lenora Pro";
+"Restart Lenora" = "Starta om Lenora";
 "Retry" = "Försök igen";
 "Retry Download" = "Försök hämta igen";
 "Reveal in Finder" = "Visa i Finder";
@@ -795,7 +795,7 @@
 "Spoken" = "Talad";
 "Square (1:1)" = "Kvadrat (1:1)";
 "Start creating" = "Börja skapa";
-"Start creating, or explore these to get the most out of Lenora Pro." = "Börja skapa, eller utforska det här för att få ut mer av Lenora Pro.";
+"Start creating, or explore these to get the most out of Lenora." = "Börja skapa, eller utforska det här för att få ut mer av Lenora.";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "Börjar %@s in i gruppens klocka; matchade mastern med %@%% säkerhet.";
 "Status Filter" = "Statusfilter";
 "Status: %@" = "Status: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "Röstrensning kräver ljud eller video";
 "Volume" = "Volym";
 "Warmth" = "Värme";
-"Welcome to Lenora Pro" = "Välkommen till Lenora Pro";
+"Welcome to Lenora" = "Välkommen till Lenora";
 "What's New in v%@" = "Nyheter i v%@";
 "White Balance" = "Vitbalans";
 "Whites" = "Vitt";

@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skills";
 "%@: %@." = "%@: %@.";
-"%lld Lottie animations are ready in Lenora Pro." = "%lld Lottie-animaties zijn gereed in Lenora Pro.";
-"%lld audio clips are ready in Lenora Pro." = "%lld audioclips zijn gereed in Lenora Pro.";
+"%lld Lottie animations are ready in Lenora." = "%lld Lottie-animaties zijn gereed in Lenora.";
+"%lld audio clips are ready in Lenora." = "%lld audioclips zijn gereed in Lenora.";
 "%lld by timecode, %lld by audio" = "%lld op timecode, %lld op audio";
 "%lld clips" = "%lld clips";
 "%lld couldn't align" = "%lld konden niet worden uitgelijnd";
-"%lld images are ready in Lenora Pro." = "%lld afbeeldingen zijn gereed in Lenora Pro.";
+"%lld images are ready in Lenora." = "%lld afbeeldingen zijn gereed in Lenora.";
 "%lld items" = "%lld items";
 "%lld media files are missing and will be skipped." = "%lld mediabestanden ontbreken en worden overgeslagen.";
 "%lld selected" = "%lld geselecteerd";
-"%lld subtitle files are ready in Lenora Pro." = "%lld ondertitelbestanden zijn gereed in Lenora Pro.";
-"%lld text clips are ready in Lenora Pro." = "%lld tekstclips zijn gereed in Lenora Pro.";
-"%lld videos are ready in Lenora Pro." = "%lld video's zijn gereed in Lenora Pro.";
+"%lld subtitle files are ready in Lenora." = "%lld ondertitelbestanden zijn gereed in Lenora.";
+"%lld text clips are ready in Lenora." = "%lld tekstclips zijn gereed in Lenora.";
+"%lld videos are ready in Lenora." = "%lld video's zijn gereed in Lenora.";
 "(image payload)" = "(afbeeldingspayload)";
 "1 clip" = "1 clip";
 "1 item" = "1 item";
@@ -36,7 +36,7 @@
 "AI Enhance" = "AI-verbetering";
 "AI Generated" = "AI-gegenereerd";
 "AI agent" = "AI-agent";
-"About Lenora Pro" = "Over Lenora Pro";
+"About Lenora" = "Over Lenora";
 "Action Safe" = "Veilige actiezone";
 "Adapters" = "Adapters";
 "Add Marker (M)" = "Voeg markering toe (M)";
@@ -136,7 +136,7 @@
 "Center" = "Midden";
 "Change aspect ratio and extend the frame with AI" = "Wijzig de beeldverhouding en breid het frame uit met AI";
 "Change to Match" = "Pas aan";
-"Changes take effect after restarting Lenora Pro." = "Wijzigingen gaan in na het herstarten van Lenora Pro.";
+"Changes take effect after restarting Lenora." = "Wijzigingen gaan in na het herstarten van Lenora.";
 "Changing the ratio preserves the shorter edge." = "Bij een wijziging van de verhouding blijft de korte zijde behouden.";
 "Chat history" = "Chatgeschiedenis";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Chat met uw Agent. Deze kan content genereren, clips bewerken, uw assets organiseren en meer. Voeg om te beginnen uw Anthropic API-sleutel toe in Instellingen.";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "Compatibiliteit: %@";
 "Completed" = "Voltooid";
 "Connect an agent" = "Verbind een Agent";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "Verbind een externe Agent om het geopende Lenora Pro-project te inspecteren en te bewerken.";
+"Connect an external agent to inspect and edit the open Lenora project." = "Verbind een externe Agent om het geopende Lenora-project te inspecteren en te bewerken.";
 "Connected" = "Verbonden";
 "Connection failed: %@" = "Verbinding mislukt: %@";
 "Content" = "Content";
@@ -642,7 +642,7 @@
 "Prompt" = "Prompt";
 "Quality" = "Kwaliteit";
 "Queued" = "In wachtrij";
-"Quit Lenora Pro" = "Stop Lenora Pro";
+"Quit Lenora" = "Stop Lenora";
 "Radius" = "Radius";
 "Range" = "Bereik";
 "Razor (C)" = "Mes (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "Resolutie moet minstens 2 × 2 pixels zijn.";
 "Resolution must not exceed 8192 pixels on either edge." = "Resolutie mag aan geen enkele zijde groter zijn dan 8192 pixels.";
 "Resolved" = "Opgelost";
-"Restart Lenora Pro" = "Herstart Lenora Pro";
+"Restart Lenora" = "Herstart Lenora";
 "Retry" = "Probeer opnieuw";
 "Retry Download" = "Download opnieuw";
 "Reveal in Finder" = "Toon in Finder";
@@ -795,7 +795,7 @@
 "Spoken" = "Gesproken";
 "Square (1:1)" = "Vierkant (1:1)";
 "Start creating" = "Begin met maken";
-"Start creating, or explore these to get the most out of Lenora Pro." = "Begin met maken, of bekijk deze om meer uit Lenora Pro te halen.";
+"Start creating, or explore these to get the most out of Lenora." = "Begin met maken, of bekijk deze om meer uit Lenora te halen.";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "Begint %@s in de klok van de groep; kwam overeen met de master met %@%% zekerheid.";
 "Status Filter" = "Statusfilter";
 "Status: %@" = "Status: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "Stem opschonen vereist audio of video";
 "Volume" = "Volume";
 "Warmth" = "Warmte";
-"Welcome to Lenora Pro" = "Welkom bij Lenora Pro";
+"Welcome to Lenora" = "Welkom bij Lenora";
 "What's New in v%@" = "Nieuw in v%@";
 "White Balance" = "Witbalans";
 "Whites" = "Wit";

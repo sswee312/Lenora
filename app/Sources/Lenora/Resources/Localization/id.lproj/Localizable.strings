@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skill";
 "%@: %@." = "%@: %@.";
-"%lld Lottie animations are ready in Lenora Pro." = "%lld animasi Lottie siap di Lenora Pro.";
-"%lld audio clips are ready in Lenora Pro." = "%lld klip audio siap di Lenora Pro.";
+"%lld Lottie animations are ready in Lenora." = "%lld animasi Lottie siap di Lenora.";
+"%lld audio clips are ready in Lenora." = "%lld klip audio siap di Lenora.";
 "%lld by timecode, %lld by audio" = "%lld berdasarkan kode waktu, %lld berdasarkan audio";
 "%lld clips" = "%lld klip";
 "%lld couldn't align" = "%lld tidak dapat disejajarkan";
-"%lld images are ready in Lenora Pro." = "%lld gambar siap di Lenora Pro.";
+"%lld images are ready in Lenora." = "%lld gambar siap di Lenora.";
 "%lld items" = "%lld item";
 "%lld media files are missing and will be skipped." = "%lld file media hilang dan akan dilewati.";
 "%lld selected" = "%lld dipilih";
-"%lld subtitle files are ready in Lenora Pro." = "%lld file subtitle siap di Lenora Pro.";
-"%lld text clips are ready in Lenora Pro." = "%lld klip teks siap di Lenora Pro.";
-"%lld videos are ready in Lenora Pro." = "%lld video siap di Lenora Pro.";
+"%lld subtitle files are ready in Lenora." = "%lld file subtitle siap di Lenora.";
+"%lld text clips are ready in Lenora." = "%lld klip teks siap di Lenora.";
+"%lld videos are ready in Lenora." = "%lld video siap di Lenora.";
 "(image payload)" = "(muatan gambar)";
 "1 clip" = "1 klip";
 "1 item" = "1 item";
@@ -36,7 +36,7 @@
 "AI Enhance" = "Peningkatan AI";
 "AI Generated" = "Dihasilkan AI";
 "AI agent" = "Agent AI";
-"About Lenora Pro" = "Tentang Lenora Pro";
+"About Lenora" = "Tentang Lenora";
 "Action Safe" = "Zona Aman Aksi";
 "Adapters" = "Adapter";
 "Add Marker (M)" = "Tambahkan Penanda (M)";
@@ -136,7 +136,7 @@
 "Center" = "Tengah";
 "Change aspect ratio and extend the frame with AI" = "Ubah rasio aspek dan perluas frame dengan AI";
 "Change to Match" = "Ubah Agar Cocok";
-"Changes take effect after restarting Lenora Pro." = "Perubahan berlaku setelah Lenora Pro dimulai ulang.";
+"Changes take effect after restarting Lenora." = "Perubahan berlaku setelah Lenora dimulai ulang.";
 "Changing the ratio preserves the shorter edge." = "Mengubah rasio mempertahankan sisi yang lebih pendek.";
 "Chat history" = "Riwayat chat";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Chat dengan Agent Anda. Agent dapat menghasilkan konten, mengedit klip, mengatur aset, dan lainnya. Tambahkan kunci API Anthropic Anda di Pengaturan untuk memulai.";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "Kompatibilitas: %@";
 "Completed" = "Selesai";
 "Connect an agent" = "Hubungkan Agent";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "Hubungkan Agent eksternal untuk memeriksa dan mengedit proyek Lenora Pro yang terbuka.";
+"Connect an external agent to inspect and edit the open Lenora project." = "Hubungkan Agent eksternal untuk memeriksa dan mengedit proyek Lenora yang terbuka.";
 "Connected" = "Terhubung";
 "Connection failed: %@" = "Koneksi gagal: %@";
 "Content" = "Konten";
@@ -642,7 +642,7 @@
 "Prompt" = "Prompt";
 "Quality" = "Kualitas";
 "Queued" = "Dalam antrean";
-"Quit Lenora Pro" = "Keluar dari Lenora Pro";
+"Quit Lenora" = "Keluar dari Lenora";
 "Radius" = "Radius";
 "Range" = "Rentang";
 "Razor (C)" = "Pisau (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "Resolusi harus minimal 2 × 2 piksel.";
 "Resolution must not exceed 8192 pixels on either edge." = "Resolusi tidak boleh melebihi 8192 piksel pada salah satu sisi.";
 "Resolved" = "Selesai";
-"Restart Lenora Pro" = "Mulai Ulang Lenora Pro";
+"Restart Lenora" = "Mulai Ulang Lenora";
 "Retry" = "Coba Lagi";
 "Retry Download" = "Coba Unduh Lagi";
 "Reveal in Finder" = "Tampilkan di Finder";
@@ -795,7 +795,7 @@
 "Spoken" = "Diucapkan";
 "Square (1:1)" = "Persegi (1:1)";
 "Start creating" = "Mulai membuat";
-"Start creating, or explore these to get the most out of Lenora Pro." = "Mulai membuat, atau jelajahi ini untuk memanfaatkan Lenora Pro secara maksimal.";
+"Start creating, or explore these to get the most out of Lenora." = "Mulai membuat, atau jelajahi ini untuk memanfaatkan Lenora secara maksimal.";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "Dimulai %@s ke dalam jam grup; cocok dengan master dengan keyakinan %@%%.";
 "Status Filter" = "Filter Status";
 "Status: %@" = "Status: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "Pembersihan Suara memerlukan audio atau video";
 "Volume" = "Volume";
 "Warmth" = "Kehangatan";
-"Welcome to Lenora Pro" = "Selamat datang di Lenora Pro";
+"Welcome to Lenora" = "Selamat datang di Lenora";
 "What's New in v%@" = "Yang Baru di v%@";
 "White Balance" = "Keseimbangan Putih";
 "Whites" = "Putih";

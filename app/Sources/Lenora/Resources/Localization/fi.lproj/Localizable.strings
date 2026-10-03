@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld taitoa";
 "%@: %@." = "%@: %@.";
-"%lld Lottie animations are ready in Lenora Pro." = "%lld Lottie-animaatiota on valmiina Lenora Prossa.";
-"%lld audio clips are ready in Lenora Pro." = "%lld äänileikettä on valmiina Lenora Prossa.";
+"%lld Lottie animations are ready in Lenora." = "%lld Lottie-animaatiota on valmiina Lenora Prossa.";
+"%lld audio clips are ready in Lenora." = "%lld äänileikettä on valmiina Lenora Prossa.";
 "%lld by timecode, %lld by audio" = "%lld aikakoodin, %lld äänen perusteella";
 "%lld clips" = "%lld leikettä";
 "%lld couldn't align" = "%lld ei voitu kohdistaa";
-"%lld images are ready in Lenora Pro." = "%lld kuvaa on valmiina Lenora Prossa.";
+"%lld images are ready in Lenora." = "%lld kuvaa on valmiina Lenora Prossa.";
 "%lld items" = "%lld kohdetta";
 "%lld media files are missing and will be skipped." = "%lld mediatiedostoa puuttuu, ja ne ohitetaan.";
 "%lld selected" = "%lld valittu";
-"%lld subtitle files are ready in Lenora Pro." = "%lld tekstitystiedostoa on valmiina Lenora Prossa.";
-"%lld text clips are ready in Lenora Pro." = "%lld tekstileikettä on valmiina Lenora Prossa.";
-"%lld videos are ready in Lenora Pro." = "%lld videota on valmiina Lenora Prossa.";
+"%lld subtitle files are ready in Lenora." = "%lld tekstitystiedostoa on valmiina Lenora Prossa.";
+"%lld text clips are ready in Lenora." = "%lld tekstileikettä on valmiina Lenora Prossa.";
+"%lld videos are ready in Lenora." = "%lld videota on valmiina Lenora Prossa.";
 "(image payload)" = "(kuvadata)";
 "1 clip" = "1 leike";
 "1 item" = "1 kohde";
@@ -36,7 +36,7 @@
 "AI Enhance" = "AI-parannus";
 "AI Generated" = "AI-generoitu";
 "AI agent" = "AI Agent";
-"About Lenora Pro" = "Tietoja Lenora Prosta";
+"About Lenora" = "Tietoja Lenora Prosta";
 "Action Safe" = "Toiminta-alue";
 "Adapters" = "Sovittimet";
 "Add Marker (M)" = "Lisää merkki (M)";
@@ -136,7 +136,7 @@
 "Center" = "Keskitä";
 "Change aspect ratio and extend the frame with AI" = "Vaihda kuvasuhdetta ja laajenna ruutua tekoälyllä";
 "Change to Match" = "Muuta vastaamaan";
-"Changes take effect after restarting Lenora Pro." = "Muutokset tulevat voimaan, kun käynnistät Lenora Pron uudelleen.";
+"Changes take effect after restarting Lenora." = "Muutokset tulevat voimaan, kun käynnistät Lenora Pron uudelleen.";
 "Changing the ratio preserves the shorter edge." = "Suhteen vaihtaminen säilyttää lyhyemmän reunan.";
 "Chat history" = "Keskusteluhistoria";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Keskustele Agentin kanssa. Se voi generoida sisältöä, muokata leikkeitä, järjestää aineistoja ja paljon muuta. Aloita lisäämällä Anthropic API -avaimesi kohdassa Asetukset.";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "Yhteensopivuus: %@";
 "Completed" = "Valmis";
 "Connect an agent" = "Yhdistä Agent";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "Yhdistä ulkoinen Agent avoimen Lenora Pro -projektin tarkasteluun ja muokkaukseen.";
+"Connect an external agent to inspect and edit the open Lenora project." = "Yhdistä ulkoinen Agent avoimen Lenora -projektin tarkasteluun ja muokkaukseen.";
 "Connected" = "Yhdistetty";
 "Connection failed: %@" = "Yhteys epäonnistui: %@";
 "Content" = "Sisältö";
@@ -642,7 +642,7 @@
 "Prompt" = "Kehote";
 "Quality" = "Laatu";
 "Queued" = "Jonossa";
-"Quit Lenora Pro" = "Lopeta Lenora Pro";
+"Quit Lenora" = "Lopeta Lenora";
 "Radius" = "Säde";
 "Range" = "Alue";
 "Razor (C)" = "Leikkuri (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "Resoluution on oltava vähintään 2 × 2 pikseliä.";
 "Resolution must not exceed 8192 pixels on either edge." = "Resoluutio ei saa ylittää 8192 pikseliä kummallakaan reunalla.";
 "Resolved" = "Ratkaistu";
-"Restart Lenora Pro" = "Käynnistä Lenora Pro uudelleen";
+"Restart Lenora" = "Käynnistä Lenora uudelleen";
 "Retry" = "Yritä uudelleen";
 "Retry Download" = "Yritä latausta uudelleen";
 "Reveal in Finder" = "Näytä Finderissa";
@@ -795,7 +795,7 @@
 "Spoken" = "Puhuttu";
 "Square (1:1)" = "Neliö (1:1)";
 "Start creating" = "Aloita luominen";
-"Start creating, or explore these to get the most out of Lenora Pro." = "Aloita luominen tai tutustu näihin saadaksesi enemmän irti Lenora Prosta.";
+"Start creating, or explore these to get the most out of Lenora." = "Aloita luominen tai tutustu näihin saadaksesi enemmän irti Lenora Prosta.";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "Alkaa %@ s ryhmän kellosta; täsmäsi masteriin %@%% varmuudella.";
 "Status Filter" = "Tilasuodatin";
 "Status: %@" = "Tila: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "Äänen puhdistus edellyttää ääntä tai videota";
 "Volume" = "Äänenvoimakkuus";
 "Warmth" = "Lämpö";
-"Welcome to Lenora Pro" = "Tervetuloa Lenora Prohon";
+"Welcome to Lenora" = "Tervetuloa Lenora Prohon";
 "What's New in v%@" = "Uutta versiossa v%@";
 "White Balance" = "Valkotasapaino";
 "Whites" = "Valkoiset";

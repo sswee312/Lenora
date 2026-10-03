@@ -20,11 +20,11 @@ enum MainMenuBuilder {
     private static func appMenu() -> NSMenuItem {
         let item = NSMenuItem()
         let menu = NSMenu(title: AppIdentity.name)
-        menu.addItem(withTitle: L10n.string("About Lenora Pro"), action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: "")
+        menu.addItem(withTitle: L10n.string("About Lenora"), action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: "")
         menu.addItem(.separator())
         menu.addItem(withTitle: L10n.string("Settings…"), action: #selector(AppDelegate.showSettings(_:)), keyEquivalent: ",")
         menu.addItem(.separator())
-        menu.addItem(withTitle: L10n.string("Quit Lenora Pro"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        menu.addItem(withTitle: L10n.string("Quit Lenora"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         item.submenu = menu
         return item
     }

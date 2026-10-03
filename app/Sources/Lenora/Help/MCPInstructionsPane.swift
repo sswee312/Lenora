@@ -4,7 +4,7 @@ struct MCPInstructionsPane: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppTheme.Spacing.xxl) {
-                Text(L10n.string("Connect an external agent to inspect and edit the open Lenora Pro project."))
+                Text(L10n.string("Connect an external agent to inspect and edit the open Lenora project."))
                     .font(.system(size: AppTheme.FontSize.smMd, weight: AppTheme.FontWeight.regular))
                     .foregroundStyle(AppTheme.Text.secondaryColor)
                     .fixedSize(horizontal: false, vertical: true)

@@ -5,12 +5,12 @@ import Testing
 @MainActor
 struct AppNotificationsTests {
     @Test(arguments: [
-        (ClipType.video, "2 videos are ready in Lenora Pro."),
-        (.audio, "2 audio clips are ready in Lenora Pro."),
-        (.image, "2 images are ready in Lenora Pro."),
-        (.text, "2 text clips are ready in Lenora Pro."),
-        (.lottie, "2 Lottie animations are ready in Lenora Pro."),
-        (.sequence, "2 videos are ready in Lenora Pro."),
+        (ClipType.video, "2 videos are ready in Lenora."),
+        (.audio, "2 audio clips are ready in Lenora."),
+        (.image, "2 images are ready in Lenora."),
+        (.text, "2 text clips are ready in Lenora."),
+        (.lottie, "2 Lottie animations are ready in Lenora."),
+        (.sequence, "2 videos are ready in Lenora."),
     ])
     func generatedAssetCountsUseCompleteMessages(type: ClipType, expected: String) {
         #expect(AppNotifications.generationBody(assetName: "", assetType: type, count: 2) == expected)

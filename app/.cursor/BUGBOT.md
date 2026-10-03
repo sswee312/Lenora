@@ -1,4 +1,4 @@
-# Lenora Pro review policy
+# Lenora review policy
 
 Use the root `AGENTS.md` as the canonical engineering guide. Review for actionable regressions introduced by the PR or made reachable or more severe by it.
 

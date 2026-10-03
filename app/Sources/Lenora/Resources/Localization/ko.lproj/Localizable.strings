@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, 스킬 %lld개";
 "%@: %@." = "%@: %@.";
-"%lld Lottie animations are ready in Lenora Pro." = "Lottie 애니메이션 %lld개가 Lenora Pro에 준비되었습니다.";
-"%lld audio clips are ready in Lenora Pro." = "오디오 클립 %lld개가 Lenora Pro에 준비되었습니다.";
+"%lld Lottie animations are ready in Lenora." = "Lottie 애니메이션 %lld개가 Lenora에 준비되었습니다.";
+"%lld audio clips are ready in Lenora." = "오디오 클립 %lld개가 Lenora에 준비되었습니다.";
 "%lld by timecode, %lld by audio" = "타임코드 기준 %lld개, 오디오 기준 %lld개";
 "%lld clips" = "클립 %lld개";
 "%lld couldn't align" = "%lld개를 정렬할 수 없음";
-"%lld images are ready in Lenora Pro." = "이미지 %lld개가 Lenora Pro에 준비되었습니다.";
+"%lld images are ready in Lenora." = "이미지 %lld개가 Lenora에 준비되었습니다.";
 "%lld items" = "항목 %lld개";
 "%lld media files are missing and will be skipped." = "미디어 파일 %lld개가 유실되어 건너뜁니다.";
 "%lld selected" = "%lld개 선택됨";
-"%lld subtitle files are ready in Lenora Pro." = "자막 파일 %lld개가 Lenora Pro에 준비되었습니다.";
-"%lld text clips are ready in Lenora Pro." = "텍스트 클립 %lld개가 Lenora Pro에 준비되었습니다.";
-"%lld videos are ready in Lenora Pro." = "비디오 %lld개가 Lenora Pro에 준비되었습니다.";
+"%lld subtitle files are ready in Lenora." = "자막 파일 %lld개가 Lenora에 준비되었습니다.";
+"%lld text clips are ready in Lenora." = "텍스트 클립 %lld개가 Lenora에 준비되었습니다.";
+"%lld videos are ready in Lenora." = "비디오 %lld개가 Lenora에 준비되었습니다.";
 "(image payload)" = "(이미지 페이로드)";
 "1 clip" = "클립 1개";
 "1 item" = "항목 1개";
@@ -36,7 +36,7 @@
 "AI Enhance" = "AI 향상";
 "AI Generated" = "AI 생성";
 "AI agent" = "AI 에이전트";
-"About Lenora Pro" = "Lenora Pro에 관하여";
+"About Lenora" = "Lenora에 관하여";
 "Action Safe" = "액션 세이프";
 "Adapters" = "어댑터";
 "Add Marker (M)" = "마커 추가 (M)";
@@ -136,7 +136,7 @@
 "Center" = "가운데";
 "Change aspect ratio and extend the frame with AI" = "AI로 화면비를 변경하고 프레임 확장";
 "Change to Match" = "일치하도록 변경";
-"Changes take effect after restarting Lenora Pro." = "변경 사항은 Lenora Pro를 재시동한 후 적용됩니다.";
+"Changes take effect after restarting Lenora." = "변경 사항은 Lenora를 재시동한 후 적용됩니다.";
 "Changing the ratio preserves the shorter edge." = "화면비를 변경해도 짧은 쪽은 유지됩니다.";
 "Chat history" = "채팅 기록";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "에이전트와 채팅하세요. 콘텐츠 생성, 클립 편집, 에셋 정리 등을 할 수 있습니다. 설정에서 Anthropic API 키를 추가해 시작하세요.";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "호환성: %@";
 "Completed" = "완료됨";
 "Connect an agent" = "에이전트 연결";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "외부 에이전트를 연결하여 열려 있는 Lenora Pro 프로젝트를 검사하고 편집합니다.";
+"Connect an external agent to inspect and edit the open Lenora project." = "외부 에이전트를 연결하여 열려 있는 Lenora 프로젝트를 검사하고 편집합니다.";
 "Connected" = "연결됨";
 "Connection failed: %@" = "연결 실패: %@";
 "Content" = "콘텐츠";
@@ -642,7 +642,7 @@
 "Prompt" = "프롬프트";
 "Quality" = "품질";
 "Queued" = "대기 중";
-"Quit Lenora Pro" = "Lenora Pro 종료";
+"Quit Lenora" = "Lenora 종료";
 "Radius" = "반경";
 "Range" = "범위";
 "Razor (C)" = "면도날(C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "해상도는 2 × 2픽셀 이상이어야 합니다.";
 "Resolution must not exceed 8192 pixels on either edge." = "어느 쪽도 해상도가 8192픽셀을 초과할 수 없습니다.";
 "Resolved" = "해결됨";
-"Restart Lenora Pro" = "Lenora Pro 재시동";
+"Restart Lenora" = "Lenora 재시동";
 "Retry" = "재시도";
 "Retry Download" = "다운로드 재시도";
 "Reveal in Finder" = "Finder에서 보기";
@@ -795,7 +795,7 @@
 "Spoken" = "음성";
 "Square (1:1)" = "정사각형 (1:1)";
 "Start creating" = "생성 시작";
-"Start creating, or explore these to get the most out of Lenora Pro." = "생성을 시작하거나 다음 항목을 둘러보며 Lenora Pro를 최대한 활용해 보세요.";
+"Start creating, or explore these to get the most out of Lenora." = "생성을 시작하거나 다음 항목을 둘러보며 Lenora를 최대한 활용해 보세요.";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "그룹 클록의 %@초 지점에서 시작하며 %@%% 신뢰도로 마스터와 일치합니다.";
 "Status Filter" = "상태 필터";
 "Status: %@" = "상태: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "음성 정리에는 오디오 또는 비디오가 필요합니다";
 "Volume" = "음량";
 "Warmth" = "따뜻함";
-"Welcome to Lenora Pro" = "Lenora Pro에 오신 것을 환영합니다";
+"Welcome to Lenora" = "Lenora에 오신 것을 환영합니다";
 "What's New in v%@" = "v%@의 새로운 기능";
 "White Balance" = "화이트 밸런스";
 "Whites" = "화이트";

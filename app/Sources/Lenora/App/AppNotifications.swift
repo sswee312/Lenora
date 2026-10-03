@@ -133,12 +133,12 @@ enum AppNotifications {
     static func generationBody(assetName: String, assetType: ClipType, count: Int) -> String {
         if count > 1 {
             switch assetType {
-            case .video, .sequence: return L10n.string("\(count) videos are ready in Lenora Pro.")
-            case .audio: return L10n.string("\(count) audio clips are ready in Lenora Pro.")
-            case .image: return L10n.string("\(count) images are ready in Lenora Pro.")
-            case .text: return L10n.string("\(count) text clips are ready in Lenora Pro.")
-            case .lottie: return L10n.string("\(count) Lottie animations are ready in Lenora Pro.")
-            case .subtitle: return L10n.string("\(count) subtitle files are ready in Lenora Pro.")
+            case .video, .sequence: return L10n.string("\(count) videos are ready in Lenora.")
+            case .audio: return L10n.string("\(count) audio clips are ready in Lenora.")
+            case .image: return L10n.string("\(count) images are ready in Lenora.")
+            case .text: return L10n.string("\(count) text clips are ready in Lenora.")
+            case .lottie: return L10n.string("\(count) Lottie animations are ready in Lenora.")
+            case .subtitle: return L10n.string("\(count) subtitle files are ready in Lenora.")
             }
         }
         let name = assetName.trimmingCharacters(in: .whitespacesAndNewlines)

@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@、%lld個のスキル";
 "%@: %@." = "%@: %@。";
-"%lld Lottie animations are ready in Lenora Pro." = "%lld個のLottieアニメーションをLenora Proで使用できます。";
-"%lld audio clips are ready in Lenora Pro." = "%lld個のオーディオクリップをLenora Proで使用できます。";
+"%lld Lottie animations are ready in Lenora." = "%lld個のLottieアニメーションをLenoraで使用できます。";
+"%lld audio clips are ready in Lenora." = "%lld個のオーディオクリップをLenoraで使用できます。";
 "%lld by timecode, %lld by audio" = "タイムコードで%lld個、オーディオで%lld個";
 "%lld clips" = "%lld個のクリップ";
 "%lld couldn't align" = "%lld個を同期できませんでした";
-"%lld images are ready in Lenora Pro." = "%lld枚の画像をLenora Proで使用できます。";
+"%lld images are ready in Lenora." = "%lld枚の画像をLenoraで使用できます。";
 "%lld items" = "%lld項目";
 "%lld media files are missing and will be skipped." = "%lld個のメディアファイルが見つからないためスキップされます。";
 "%lld selected" = "%lld件選択中";
-"%lld subtitle files are ready in Lenora Pro." = "%lld個の字幕ファイルをLenora Proで使用できます。";
-"%lld text clips are ready in Lenora Pro." = "%lld個のテキストクリップをLenora Proで使用できます。";
-"%lld videos are ready in Lenora Pro." = "%lld本のビデオをLenora Proで使用できます。";
+"%lld subtitle files are ready in Lenora." = "%lld個の字幕ファイルをLenoraで使用できます。";
+"%lld text clips are ready in Lenora." = "%lld個のテキストクリップをLenoraで使用できます。";
+"%lld videos are ready in Lenora." = "%lld本のビデオをLenoraで使用できます。";
 "(image payload)" = "（画像ペイロード）";
 "1 clip" = "1個のクリップ";
 "1 item" = "1項目";
@@ -36,7 +36,7 @@
 "AI Enhance" = "AI補正";
 "AI Generated" = "AI生成";
 "AI agent" = "AIエージェント";
-"About Lenora Pro" = "Lenora Proについて";
+"About Lenora" = "Lenoraについて";
 "Action Safe" = "アクションセーフ";
 "Adapters" = "アダプター";
 "Add Marker (M)" = "マーカーを追加（M）";
@@ -136,7 +136,7 @@
 "Center" = "中央";
 "Change aspect ratio and extend the frame with AI" = "アスペクト比を変更し、AIでフレームを拡張";
 "Change to Match" = "設定を一致させる";
-"Changes take effect after restarting Lenora Pro." = "変更はLenora Proの再起動後に反映されます。";
+"Changes take effect after restarting Lenora." = "変更はLenoraの再起動後に反映されます。";
 "Changing the ratio preserves the shorter edge." = "比率を変更しても短い辺の長さは維持されます。";
 "Chat history" = "チャット履歴";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "エージェントとチャットできます。コンテンツの生成、クリップの編集、アセットの整理などが可能です。まず設定でご自身のAnthropic APIキーを追加してください。";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "互換性：%@";
 "Completed" = "完了";
 "Connect an agent" = "エージェントを接続";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "外部エージェントを接続して、開いているLenora Proプロジェクトの確認や編集を行います。";
+"Connect an external agent to inspect and edit the open Lenora project." = "外部エージェントを接続して、開いているLenoraプロジェクトの確認や編集を行います。";
 "Connected" = "接続済み";
 "Connection failed: %@" = "接続に失敗しました: %@";
 "Content" = "コンテンツ";
@@ -642,7 +642,7 @@
 "Prompt" = "プロンプト";
 "Quality" = "品質";
 "Queued" = "待機中";
-"Quit Lenora Pro" = "Lenora Proを終了";
+"Quit Lenora" = "Lenoraを終了";
 "Radius" = "半径";
 "Range" = "範囲";
 "Razor (C)" = "レーザー（C）";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "解像度は2 × 2ピクセル以上にする必要があります。";
 "Resolution must not exceed 8192 pixels on either edge." = "解像度はどちらの辺も8192ピクセル以下にする必要があります。";
 "Resolved" = "解決済み";
-"Restart Lenora Pro" = "Lenora Proを再起動";
+"Restart Lenora" = "Lenoraを再起動";
 "Retry" = "再試行";
 "Retry Download" = "ダウンロードを再試行";
 "Reveal in Finder" = "Finderに表示";
@@ -795,7 +795,7 @@
 "Spoken" = "発話";
 "Square (1:1)" = "正方形（1:1）";
 "Start creating" = "作成を開始";
-"Start creating, or explore these to get the most out of Lenora Pro." = "作成を開始するか、Lenora Proを最大限に活用するために以下をご覧ください。";
+"Start creating, or explore these to get the most out of Lenora." = "作成を開始するか、Lenoraを最大限に活用するために以下をご覧ください。";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "グループのクロック開始から%@秒の位置です。%@%%の信頼度でマスターと一致しました。";
 "Status Filter" = "ステータスフィルタ";
 "Status: %@" = "ステータス：%@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "音声クリーンアップにはオーディオまたはビデオが必要です";
 "Volume" = "音量";
 "Warmth" = "暖かみ";
-"Welcome to Lenora Pro" = "Lenora Proへようこそ";
+"Welcome to Lenora" = "Lenoraへようこそ";
 "What's New in v%@" = "バージョン%@の新機能";
 "White Balance" = "ホワイトバランス";
 "Whites" = "ホワイト";

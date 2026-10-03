@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@，%lld 个技能";
 "%@: %@." = "%@：%@。";
-"%lld Lottie animations are ready in Lenora Pro." = "%lld 个 Lottie 动画已在 Lenora Pro 中准备就绪。";
-"%lld audio clips are ready in Lenora Pro." = "%lld 个音频片段已在 Lenora Pro 中准备就绪。";
+"%lld Lottie animations are ready in Lenora." = "%lld 个 Lottie 动画已在 Lenora 中准备就绪。";
+"%lld audio clips are ready in Lenora." = "%lld 个音频片段已在 Lenora 中准备就绪。";
 "%lld by timecode, %lld by audio" = "%lld 个按时间码，%lld 个按音频";
 "%lld clips" = "%lld 个片段";
 "%lld couldn't align" = "%lld 个无法对齐";
-"%lld images are ready in Lenora Pro." = "%lld 张图像已在 Lenora Pro 中准备就绪。";
+"%lld images are ready in Lenora." = "%lld 张图像已在 Lenora 中准备就绪。";
 "%lld items" = "%lld 个项目";
 "%lld media files are missing and will be skipped." = "%lld 个媒体文件缺失，将被跳过。";
 "%lld selected" = "已选择 %lld 个";
-"%lld subtitle files are ready in Lenora Pro." = "%lld 个字幕文件已在 Lenora Pro 中准备就绪。";
-"%lld text clips are ready in Lenora Pro." = "%lld 个文本片段已在 Lenora Pro 中准备就绪。";
-"%lld videos are ready in Lenora Pro." = "%lld 个视频已在 Lenora Pro 中准备就绪。";
+"%lld subtitle files are ready in Lenora." = "%lld 个字幕文件已在 Lenora 中准备就绪。";
+"%lld text clips are ready in Lenora." = "%lld 个文本片段已在 Lenora 中准备就绪。";
+"%lld videos are ready in Lenora." = "%lld 个视频已在 Lenora 中准备就绪。";
 "(image payload)" = "（图像载荷）";
 "1 clip" = "1 个片段";
 "1 item" = "1 个项目";
@@ -36,7 +36,7 @@
 "AI Enhance" = "AI 增强";
 "AI Generated" = "AI 生成";
 "AI agent" = "AI Agent";
-"About Lenora Pro" = "关于 Lenora Pro";
+"About Lenora" = "关于 Lenora";
 "Action Safe" = "动作安全";
 "Adapters" = "适配器";
 "Add Marker (M)" = "添加标记 (M)";
@@ -136,7 +136,7 @@
 "Center" = "居中";
 "Change aspect ratio and extend the frame with AI" = "使用 AI 更改宽高比并扩展画面";
 "Change to Match" = "更改以匹配";
-"Changes take effect after restarting Lenora Pro." = "更改将在重新启动 Lenora Pro 后生效。";
+"Changes take effect after restarting Lenora." = "更改将在重新启动 Lenora 后生效。";
 "Changing the ratio preserves the shorter edge." = "更改比例时会保留较短边。";
 "Chat history" = "对话历史";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "与 Agent 对话。它可以生成内容、编辑片段、整理素材等。在设置中添加你的 Anthropic API key 即可开始。";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "兼容性：%@";
 "Completed" = "已完成";
 "Connect an agent" = "连接 Agent";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "连接外部 Agent，以检查和编辑已打开的 Lenora Pro 项目。";
+"Connect an external agent to inspect and edit the open Lenora project." = "连接外部 Agent，以检查和编辑已打开的 Lenora 项目。";
 "Connected" = "已连接";
 "Connection failed: %@" = "连接失败：%@";
 "Content" = "内容";
@@ -642,7 +642,7 @@
 "Prompt" = "提示词";
 "Quality" = "质量";
 "Queued" = "已排队";
-"Quit Lenora Pro" = "退出 Lenora Pro";
+"Quit Lenora" = "退出 Lenora";
 "Radius" = "半径";
 "Range" = "范围";
 "Razor (C)" = "剃刀 (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "分辨率必须至少为 2 × 2 像素。";
 "Resolution must not exceed 8192 pixels on either edge." = "任一边的分辨率不得超过 8192 像素。";
 "Resolved" = "已解决";
-"Restart Lenora Pro" = "重新启动 Lenora Pro";
+"Restart Lenora" = "重新启动 Lenora";
 "Retry" = "重试";
 "Retry Download" = "重试下载";
 "Reveal in Finder" = "在访达中显示";
@@ -795,7 +795,7 @@
 "Spoken" = "语音";
 "Square (1:1)" = "方形 (1:1)";
 "Start creating" = "开始创作";
-"Start creating, or explore these to get the most out of Lenora Pro." = "开始创作，或浏览以下内容以充分利用 Lenora Pro。";
+"Start creating, or explore these to get the most out of Lenora." = "开始创作，或浏览以下内容以充分利用 Lenora。";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "在组时钟的第 %@ 秒开始；与主机位匹配的置信度为 %@%%。";
 "Status Filter" = "状态筛选";
 "Status: %@" = "状态：%@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "人声清理需要音频或视频";
 "Volume" = "音量";
 "Warmth" = "色温";
-"Welcome to Lenora Pro" = "欢迎使用 Lenora Pro";
+"Welcome to Lenora" = "欢迎使用 Lenora";
 "What's New in v%@" = "v%@ 新功能";
 "White Balance" = "白平衡";
 "Whites" = "白色色阶";

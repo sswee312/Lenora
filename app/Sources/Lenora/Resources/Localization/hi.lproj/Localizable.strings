@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld स्किल्स";
 "%@: %@." = "%@: %@।";
-"%lld Lottie animations are ready in Lenora Pro." = "%lld Lottie एनिमेशन Lenora Pro में तैयार हैं।";
-"%lld audio clips are ready in Lenora Pro." = "%lld ऑडियो क्लिप Lenora Pro में तैयार हैं।";
+"%lld Lottie animations are ready in Lenora." = "%lld Lottie एनिमेशन Lenora में तैयार हैं।";
+"%lld audio clips are ready in Lenora." = "%lld ऑडियो क्लिप Lenora में तैयार हैं।";
 "%lld by timecode, %lld by audio" = "%lld टाइमकोड से, %lld ऑडियो से";
 "%lld clips" = "%lld क्लिप";
 "%lld couldn't align" = "%lld को अलाइन नहीं किया जा सका";
-"%lld images are ready in Lenora Pro." = "%lld इमेज Lenora Pro में तैयार हैं।";
+"%lld images are ready in Lenora." = "%lld इमेज Lenora में तैयार हैं।";
 "%lld items" = "%lld आइटम";
 "%lld media files are missing and will be skipped." = "%lld मीडिया फ़ाइलें उपलब्ध नहीं हैं और छोड़ दी जाएँगी।";
 "%lld selected" = "%lld चयनित";
-"%lld subtitle files are ready in Lenora Pro." = "%lld सबटाइटल फ़ाइलें Lenora Pro में तैयार हैं।";
-"%lld text clips are ready in Lenora Pro." = "%lld टेक्स्ट क्लिप Lenora Pro में तैयार हैं।";
-"%lld videos are ready in Lenora Pro." = "%lld वीडियो Lenora Pro में तैयार हैं।";
+"%lld subtitle files are ready in Lenora." = "%lld सबटाइटल फ़ाइलें Lenora में तैयार हैं।";
+"%lld text clips are ready in Lenora." = "%lld टेक्स्ट क्लिप Lenora में तैयार हैं।";
+"%lld videos are ready in Lenora." = "%lld वीडियो Lenora में तैयार हैं।";
 "(image payload)" = "(इमेज पेलोड)";
 "1 clip" = "1 क्लिप";
 "1 item" = "1 आइटम";
@@ -36,7 +36,7 @@
 "AI Enhance" = "AI एन्हांस";
 "AI Generated" = "AI द्वारा जेनरेट किया गया";
 "AI agent" = "AI एजेंट";
-"About Lenora Pro" = "Lenora Pro के बारे में";
+"About Lenora" = "Lenora के बारे में";
 "Action Safe" = "ऐक्शन सेफ़";
 "Adapters" = "एडैप्टर्स";
 "Add Marker (M)" = "मार्कर जोड़ें (M)";
@@ -136,7 +136,7 @@
 "Center" = "मध्य";
 "Change aspect ratio and extend the frame with AI" = "आस्पेक्ट रेशियो बदलें और AI से फ़्रेम बढ़ाएँ";
 "Change to Match" = "मैच करने के लिए बदलें";
-"Changes take effect after restarting Lenora Pro." = "बदलाव Lenora Pro को रीस्टार्ट करने के बाद लागू होंगे।";
+"Changes take effect after restarting Lenora." = "बदलाव Lenora को रीस्टार्ट करने के बाद लागू होंगे।";
 "Changing the ratio preserves the shorter edge." = "रेशियो बदलने पर छोटी किनारी बनी रहती है।";
 "Chat history" = "चैट इतिहास";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "अपने एजेंट से चैट करें। यह कंटेंट जेनरेट कर सकता है, क्लिप एडिट कर सकता है, एसेट व्यवस्थित कर सकता है और बहुत कुछ। शुरू करने के लिए सेटिंग्स में अपनी Anthropic API कुंजी जोड़ें।";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "कम्पैटिबिलिटी: %@";
 "Completed" = "पूर्ण";
 "Connect an agent" = "एजेंट कनेक्ट करें";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "खुले Lenora Pro प्रोजेक्ट को देखने और एडिट करने के लिए बाहरी एजेंट कनेक्ट करें।";
+"Connect an external agent to inspect and edit the open Lenora project." = "खुले Lenora प्रोजेक्ट को देखने और एडिट करने के लिए बाहरी एजेंट कनेक्ट करें।";
 "Connected" = "कनेक्टेड";
 "Connection failed: %@" = "कनेक्शन विफल: %@";
 "Content" = "कंटेंट";
@@ -642,7 +642,7 @@
 "Prompt" = "प्रॉम्प्ट";
 "Quality" = "क्वालिटी";
 "Queued" = "क्यू में";
-"Quit Lenora Pro" = "Lenora Pro छोड़ें";
+"Quit Lenora" = "Lenora छोड़ें";
 "Radius" = "रेडियस";
 "Range" = "रेंज";
 "Razor (C)" = "रेज़र (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "रेज़ोल्यूशन कम से कम 2 × 2 पिक्सेल होना चाहिए।";
 "Resolution must not exceed 8192 pixels on either edge." = "किसी भी किनारे पर रेज़ोल्यूशन 8192 पिक्सेल से अधिक नहीं होना चाहिए।";
 "Resolved" = "हल";
-"Restart Lenora Pro" = "Lenora Pro रीस्टार्ट करें";
+"Restart Lenora" = "Lenora रीस्टार्ट करें";
 "Retry" = "फिर कोशिश करें";
 "Retry Download" = "डाउनलोड दोबारा करें";
 "Reveal in Finder" = "Finder में दिखाएँ";
@@ -795,7 +795,7 @@
 "Spoken" = "बोली गई सामग्री";
 "Square (1:1)" = "स्क्वेयर (1:1)";
 "Start creating" = "बनाना शुरू करें";
-"Start creating, or explore these to get the most out of Lenora Pro." = "बनाना शुरू करें या Lenora Pro का पूरा लाभ लेने के लिए इन्हें देखें।";
+"Start creating, or explore these to get the most out of Lenora." = "बनाना शुरू करें या Lenora का पूरा लाभ लेने के लिए इन्हें देखें।";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "ग्रुप की क्लॉक में %@s पर शुरू होता है; %@%% विश्वसनीयता के साथ मास्टर से मैच हुआ।";
 "Status Filter" = "स्टेटस फ़िल्टर";
 "Status: %@" = "स्टेटस: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "वॉइस क्लीनअप के लिए ऑडियो या वीडियो चाहिए";
 "Volume" = "वॉल्यूम";
 "Warmth" = "वॉर्म्थ";
-"Welcome to Lenora Pro" = "Lenora Pro में आपका स्वागत है";
+"Welcome to Lenora" = "Lenora में आपका स्वागत है";
 "What's New in v%@" = "v%@ में नया क्या है";
 "White Balance" = "व्हाइट बैलेंस";
 "Whites" = "व्हाइट्स";

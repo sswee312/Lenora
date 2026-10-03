@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld สกิล";
 "%@: %@." = "%@: %@.";
-"%lld Lottie animations are ready in Lenora Pro." = "แอนิเมชัน Lottie %lld รายการพร้อมใน Lenora Pro แล้ว";
-"%lld audio clips are ready in Lenora Pro." = "คลิปเสียง %lld รายการพร้อมใน Lenora Pro แล้ว";
+"%lld Lottie animations are ready in Lenora." = "แอนิเมชัน Lottie %lld รายการพร้อมใน Lenora แล้ว";
+"%lld audio clips are ready in Lenora." = "คลิปเสียง %lld รายการพร้อมใน Lenora แล้ว";
 "%lld by timecode, %lld by audio" = "%lld ตามไทม์โค้ด, %lld ตามเสียง";
 "%lld clips" = "%lld คลิป";
 "%lld couldn't align" = "ไม่สามารถจัดแนวได้ %lld รายการ";
-"%lld images are ready in Lenora Pro." = "ภาพ %lld รายการพร้อมใน Lenora Pro แล้ว";
+"%lld images are ready in Lenora." = "ภาพ %lld รายการพร้อมใน Lenora แล้ว";
 "%lld items" = "%lld รายการ";
 "%lld media files are missing and will be skipped." = "ไฟล์มีเดีย %lld รายการหายไปและจะถูกข้าม";
 "%lld selected" = "เลือกแล้ว %lld รายการ";
-"%lld subtitle files are ready in Lenora Pro." = "ไฟล์คำบรรยาย %lld รายการพร้อมใน Lenora Pro แล้ว";
-"%lld text clips are ready in Lenora Pro." = "คลิปข้อความ %lld รายการพร้อมใน Lenora Pro แล้ว";
-"%lld videos are ready in Lenora Pro." = "วิดีโอ %lld รายการพร้อมใน Lenora Pro แล้ว";
+"%lld subtitle files are ready in Lenora." = "ไฟล์คำบรรยาย %lld รายการพร้อมใน Lenora แล้ว";
+"%lld text clips are ready in Lenora." = "คลิปข้อความ %lld รายการพร้อมใน Lenora แล้ว";
+"%lld videos are ready in Lenora." = "วิดีโอ %lld รายการพร้อมใน Lenora แล้ว";
 "(image payload)" = "(ข้อมูลภาพ)";
 "1 clip" = "1 คลิป";
 "1 item" = "1 รายการ";
@@ -36,7 +36,7 @@
 "AI Enhance" = "ปรับปรุงด้วย AI";
 "AI Generated" = "สร้างด้วย AI";
 "AI agent" = "AI Agent";
-"About Lenora Pro" = "เกี่ยวกับ Lenora Pro";
+"About Lenora" = "เกี่ยวกับ Lenora";
 "Action Safe" = "ขอบปลอดภัยการกระทำ";
 "Adapters" = "อะแดปเตอร์";
 "Add Marker (M)" = "เพิ่มมาร์กเกอร์ (M)";
@@ -136,7 +136,7 @@
 "Center" = "กึ่งกลาง";
 "Change aspect ratio and extend the frame with AI" = "เปลี่ยนอัตราส่วนภาพและขยายเฟรมด้วย AI";
 "Change to Match" = "เปลี่ยนให้ตรงกัน";
-"Changes take effect after restarting Lenora Pro." = "การเปลี่ยนแปลงมีผลหลังจากเริ่มต้น Lenora Pro ใหม่";
+"Changes take effect after restarting Lenora." = "การเปลี่ยนแปลงมีผลหลังจากเริ่มต้น Lenora ใหม่";
 "Changing the ratio preserves the shorter edge." = "การเปลี่ยนอัตราส่วนจะคงขอบที่สั้นกว่าไว้";
 "Chat history" = "ประวัติแชท";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "สนทนากับ Agent ของคุณ Agent สามารถสร้างเนื้อหา แก้ไขคลิป จัดระเบียบแอสเซ็ต และอีกมากมาย เริ่มต้นโดยเพิ่มคีย์ API ของ Anthropic ของคุณในการตั้งค่า";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "ความเข้ากันได้: %@";
 "Completed" = "เสร็จสมบูรณ์";
 "Connect an agent" = "เชื่อมต่อ Agent";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "เชื่อมต่อ Agent ภายนอกเพื่อตรวจสอบและแก้ไขโปรเจ็กต์ Lenora Pro ที่เปิดอยู่";
+"Connect an external agent to inspect and edit the open Lenora project." = "เชื่อมต่อ Agent ภายนอกเพื่อตรวจสอบและแก้ไขโปรเจ็กต์ Lenora ที่เปิดอยู่";
 "Connected" = "เชื่อมต่อแล้ว";
 "Connection failed: %@" = "การเชื่อมต่อล้มเหลว: %@";
 "Content" = "เนื้อหา";
@@ -642,7 +642,7 @@
 "Prompt" = "พรอมต์";
 "Quality" = "คุณภาพ";
 "Queued" = "อยู่ในคิว";
-"Quit Lenora Pro" = "ออกจาก Lenora Pro";
+"Quit Lenora" = "ออกจาก Lenora";
 "Radius" = "รัศมี";
 "Range" = "ช่วง";
 "Razor (C)" = "มีดตัด (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "ความละเอียดต้องมีอย่างน้อย 2 × 2 พิกเซล";
 "Resolution must not exceed 8192 pixels on either edge." = "ความละเอียดต้องไม่เกิน 8192 พิกเซลในแต่ละด้าน";
 "Resolved" = "แก้ไขแล้ว";
-"Restart Lenora Pro" = "เริ่มต้น Lenora Pro ใหม่";
+"Restart Lenora" = "เริ่มต้น Lenora ใหม่";
 "Retry" = "ลองอีกครั้ง";
 "Retry Download" = "ดาวน์โหลดอีกครั้ง";
 "Reveal in Finder" = "แสดงใน Finder";
@@ -795,7 +795,7 @@
 "Spoken" = "ตามคำพูด";
 "Square (1:1)" = "จัตุรัส (1:1)";
 "Start creating" = "เริ่มสร้าง";
-"Start creating, or explore these to get the most out of Lenora Pro." = "เริ่มสร้าง หรือสำรวจรายการเหล่านี้เพื่อใช้ Lenora Pro ให้คุ้มค่า";
+"Start creating, or explore these to get the most out of Lenora." = "เริ่มสร้าง หรือสำรวจรายการเหล่านี้เพื่อใช้ Lenora ให้คุ้มค่า";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "เริ่มที่ %@ วินาทีในนาฬิกากลุ่ม จับคู่กับมาสเตอร์ด้วยความมั่นใจ %@%%";
 "Status Filter" = "ตัวกรองสถานะ";
 "Status: %@" = "สถานะ: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "ทำความสะอาดเสียงพูดต้องใช้เสียงหรือวิดีโอ";
 "Volume" = "ระดับเสียง";
 "Warmth" = "ความอบอุ่น";
-"Welcome to Lenora Pro" = "ยินดีต้อนรับสู่ Lenora Pro";
+"Welcome to Lenora" = "ยินดีต้อนรับสู่ Lenora";
 "What's New in v%@" = "มีอะไรใหม่ใน v%@";
 "White Balance" = "ไวต์บาลานซ์";
 "Whites" = "ขาว";

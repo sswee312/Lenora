@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld ferdigheter";
 "%@: %@." = "%@: %@.";
-"%lld Lottie animations are ready in Lenora Pro." = "%lld Lottie-animasjoner er klare i Lenora Pro.";
-"%lld audio clips are ready in Lenora Pro." = "%lld lydklipp er klare i Lenora Pro.";
+"%lld Lottie animations are ready in Lenora." = "%lld Lottie-animasjoner er klare i Lenora.";
+"%lld audio clips are ready in Lenora." = "%lld lydklipp er klare i Lenora.";
 "%lld by timecode, %lld by audio" = "%lld etter tidskode, %lld etter lyd";
 "%lld clips" = "%lld klipp";
 "%lld couldn't align" = "%lld kunne ikke justeres";
-"%lld images are ready in Lenora Pro." = "%lld bilder er klare i Lenora Pro.";
+"%lld images are ready in Lenora." = "%lld bilder er klare i Lenora.";
 "%lld items" = "%lld elementer";
 "%lld media files are missing and will be skipped." = "%lld mediefiler mangler og hoppes over.";
 "%lld selected" = "%lld valgt";
-"%lld subtitle files are ready in Lenora Pro." = "%lld undertekstfiler er klare i Lenora Pro.";
-"%lld text clips are ready in Lenora Pro." = "%lld tekstklipp er klare i Lenora Pro.";
-"%lld videos are ready in Lenora Pro." = "%lld videoer er klare i Lenora Pro.";
+"%lld subtitle files are ready in Lenora." = "%lld undertekstfiler er klare i Lenora.";
+"%lld text clips are ready in Lenora." = "%lld tekstklipp er klare i Lenora.";
+"%lld videos are ready in Lenora." = "%lld videoer er klare i Lenora.";
 "(image payload)" = "(bildeinnhold)";
 "1 clip" = "1 klipp";
 "1 item" = "1 element";
@@ -36,7 +36,7 @@
 "AI Enhance" = "AI-forbedring";
 "AI Generated" = "AI-generert";
 "AI agent" = "AI-agent";
-"About Lenora Pro" = "Om Lenora Pro";
+"About Lenora" = "Om Lenora";
 "Action Safe" = "Handlingssikker";
 "Adapters" = "Adaptere";
 "Add Marker (M)" = "Legg til markør (M)";
@@ -136,7 +136,7 @@
 "Center" = "Midtstill";
 "Change aspect ratio and extend the frame with AI" = "Endre sideforhold og utvid rammen med AI";
 "Change to Match" = "Endre for å tilpasse";
-"Changes take effect after restarting Lenora Pro." = "Endringer trer i kraft etter at Lenora Pro startes på nytt.";
+"Changes take effect after restarting Lenora." = "Endringer trer i kraft etter at Lenora startes på nytt.";
 "Changing the ratio preserves the shorter edge." = "Når du endrer forholdet, beholdes den korteste kanten.";
 "Chat history" = "Chat-historikk";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Chat med Agent. Den kan generere innhold, redigere klipp, organisere ressursene dine og mer. Legg til din egen Anthropic API-nøkkel i Innstillinger for å komme i gang.";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "Kompatibilitet: %@";
 "Completed" = "Fullført";
 "Connect an agent" = "Koble til en Agent";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "Koble til en ekstern agent for å inspisere og redigere det åpne Lenora Pro-prosjektet.";
+"Connect an external agent to inspect and edit the open Lenora project." = "Koble til en ekstern agent for å inspisere og redigere det åpne Lenora-prosjektet.";
 "Connected" = "Tilkoblet";
 "Connection failed: %@" = "Tilkobling mislyktes: %@";
 "Content" = "Innhold";
@@ -642,7 +642,7 @@
 "Prompt" = "Prompt";
 "Quality" = "Kvalitet";
 "Queued" = "I kø";
-"Quit Lenora Pro" = "Avslutt Lenora Pro";
+"Quit Lenora" = "Avslutt Lenora";
 "Radius" = "Radius";
 "Range" = "Område";
 "Razor (C)" = "Barberkniv (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "Oppløsningen må være minst 2 × 2 piksler.";
 "Resolution must not exceed 8192 pixels on either edge." = "Oppløsningen må ikke overskride 8192 piksler på noen kant.";
 "Resolved" = "Løst";
-"Restart Lenora Pro" = "Start Lenora Pro på nytt";
+"Restart Lenora" = "Start Lenora på nytt";
 "Retry" = "Prøv på nytt";
 "Retry Download" = "Prøv nedlasting på nytt";
 "Reveal in Finder" = "Vis i Finder";
@@ -795,7 +795,7 @@
 "Spoken" = "Talt";
 "Square (1:1)" = "Square (1:1)";
 "Start creating" = "Begynn å lage";
-"Start creating, or explore these to get the most out of Lenora Pro." = "Begynn å lage, eller utforsk dette for å få mer ut av Lenora Pro.";
+"Start creating, or explore these to get the most out of Lenora." = "Begynn å lage, eller utforsk dette for å få mer ut av Lenora.";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "Starter %@s inn i gruppens klokke; traff masteren med %@%% sikkerhet.";
 "Status Filter" = "Statusfilter";
 "Status: %@" = "Status: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "Stemmerensing krever lyd eller video";
 "Volume" = "Volum";
 "Warmth" = "Varme";
-"Welcome to Lenora Pro" = "Velkommen til Lenora Pro";
+"Welcome to Lenora" = "Velkommen til Lenora";
 "What's New in v%@" = "Nyheter i v%@";
 "White Balance" = "Hvitbalanse";
 "Whites" = "Hvitt";

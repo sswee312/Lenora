@@ -13,18 +13,18 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld kỹ năng";
 "%@: %@." = "%@: %@.";
-"%lld Lottie animations are ready in Lenora Pro." = "%lld hoạt ảnh Lottie đã sẵn sàng trong Lenora Pro.";
-"%lld audio clips are ready in Lenora Pro." = "%lld clip âm thanh đã sẵn sàng trong Lenora Pro.";
+"%lld Lottie animations are ready in Lenora." = "%lld hoạt ảnh Lottie đã sẵn sàng trong Lenora.";
+"%lld audio clips are ready in Lenora." = "%lld clip âm thanh đã sẵn sàng trong Lenora.";
 "%lld by timecode, %lld by audio" = "%lld theo mã thời gian, %lld theo âm thanh";
 "%lld clips" = "%lld clip";
 "%lld couldn't align" = "%lld clip không thể căn chỉnh";
-"%lld images are ready in Lenora Pro." = "%lld hình ảnh đã sẵn sàng trong Lenora Pro.";
+"%lld images are ready in Lenora." = "%lld hình ảnh đã sẵn sàng trong Lenora.";
 "%lld items" = "%lld mục";
 "%lld media files are missing and will be skipped." = "Thiếu %lld tệp phương tiện và các tệp này sẽ bị bỏ qua.";
 "%lld selected" = "Đã chọn %lld";
-"%lld subtitle files are ready in Lenora Pro." = "%lld tệp phụ đề đã sẵn sàng trong Lenora Pro.";
-"%lld text clips are ready in Lenora Pro." = "%lld clip văn bản đã sẵn sàng trong Lenora Pro.";
-"%lld videos are ready in Lenora Pro." = "%lld video đã sẵn sàng trong Lenora Pro.";
+"%lld subtitle files are ready in Lenora." = "%lld tệp phụ đề đã sẵn sàng trong Lenora.";
+"%lld text clips are ready in Lenora." = "%lld clip văn bản đã sẵn sàng trong Lenora.";
+"%lld videos are ready in Lenora." = "%lld video đã sẵn sàng trong Lenora.";
 "(image payload)" = "(dữ liệu hình ảnh)";
 "1 clip" = "1 clip";
 "1 item" = "1 mục";
@@ -36,7 +36,7 @@
 "AI Enhance" = "Nâng cao bằng AI";
 "AI Generated" = "Do AI tạo";
 "AI agent" = "Agent AI";
-"About Lenora Pro" = "Giới thiệu Lenora Pro";
+"About Lenora" = "Giới thiệu Lenora";
 "Action Safe" = "Vùng an toàn hành động";
 "Adapters" = "Bộ điều hợp";
 "Add Marker (M)" = "Thêm marker (M)";
@@ -136,7 +136,7 @@
 "Center" = "Căn giữa";
 "Change aspect ratio and extend the frame with AI" = "Đổi tỷ lệ khung hình và mở rộng khung hình bằng AI";
 "Change to Match" = "Đổi cho khớp";
-"Changes take effect after restarting Lenora Pro." = "Thay đổi có hiệu lực sau khi khởi động lại Lenora Pro.";
+"Changes take effect after restarting Lenora." = "Thay đổi có hiệu lực sau khi khởi động lại Lenora.";
 "Changing the ratio preserves the shorter edge." = "Thay đổi tỷ lệ sẽ giữ nguyên cạnh ngắn hơn.";
 "Chat history" = "Lịch sử chat";
 "Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Chat với agent của bạn. Agent có thể tạo nội dung, chỉnh sửa clip, sắp xếp tài nguyên và nhiều việc khác. Hãy thêm khóa API Anthropic của bạn trong Cài đặt để bắt đầu.";
@@ -185,7 +185,7 @@
 "Compatibility: %@" = "Tương thích: %@";
 "Completed" = "Hoàn tất";
 "Connect an agent" = "Kết nối agent";
-"Connect an external agent to inspect and edit the open Lenora Pro project." = "Kết nối agent bên ngoài để kiểm tra và chỉnh sửa dự án Lenora Pro đang mở.";
+"Connect an external agent to inspect and edit the open Lenora project." = "Kết nối agent bên ngoài để kiểm tra và chỉnh sửa dự án Lenora đang mở.";
 "Connected" = "Đã kết nối";
 "Connection failed: %@" = "Kết nối không thành công: %@";
 "Content" = "Nội dung";
@@ -642,7 +642,7 @@
 "Prompt" = "Câu lệnh";
 "Quality" = "Chất lượng";
 "Queued" = "Đang chờ";
-"Quit Lenora Pro" = "Thoát Lenora Pro";
+"Quit Lenora" = "Thoát Lenora";
 "Radius" = "Bán kính";
 "Range" = "Vùng";
 "Razor (C)" = "Dao cắt (C)";
@@ -693,7 +693,7 @@
 "Resolution must be at least 2 × 2 pixels." = "Độ phân giải phải đạt ít nhất 2 × 2 pixel.";
 "Resolution must not exceed 8192 pixels on either edge." = "Độ phân giải không được vượt quá 8192 pixel ở bất kỳ cạnh nào.";
 "Resolved" = "Đã xử lý";
-"Restart Lenora Pro" = "Khởi động lại Lenora Pro";
+"Restart Lenora" = "Khởi động lại Lenora";
 "Retry" = "Thử lại";
 "Retry Download" = "Thử tải lại";
 "Reveal in Finder" = "Hiển thị trong Finder";
@@ -795,7 +795,7 @@
 "Spoken" = "Lời nói";
 "Square (1:1)" = "Vuông (1:1)";
 "Start creating" = "Bắt đầu sáng tạo";
-"Start creating, or explore these to get the most out of Lenora Pro." = "Bắt đầu sáng tạo hoặc khám phá các mục này để tận dụng tối đa Lenora Pro.";
+"Start creating, or explore these to get the most out of Lenora." = "Bắt đầu sáng tạo hoặc khám phá các mục này để tận dụng tối đa Lenora.";
 "Starts %@s into the group's clock; matched the master with %@%% confidence." = "Bắt đầu ở giây thứ %@ theo đồng hồ nhóm; khớp với nguồn chính ở độ tin cậy %@%%.";
 "Status Filter" = "Bộ lọc trạng thái";
 "Status: %@" = "Trạng thái: %@";
@@ -942,7 +942,7 @@
 "Voice Cleanup requires audio or video" = "Làm sạch giọng nói cần âm thanh hoặc video";
 "Volume" = "Âm lượng";
 "Warmth" = "Độ ấm";
-"Welcome to Lenora Pro" = "Chào mừng bạn đến với Lenora Pro";
+"Welcome to Lenora" = "Chào mừng bạn đến với Lenora";
 "What's New in v%@" = "Có gì mới trong v%@";
 "White Balance" = "Cân bằng trắng";
 "Whites" = "Vùng trắng";

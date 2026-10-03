@@ -165,7 +165,7 @@ final class ToolExecutor {
         guard session !== frontmost else { return nil }
         let sessionName = session?.displayName ?? boundProject?.displayName ?? "no project"
         let frontmostName = frontmost?.displayName ?? "no project"
-        return "This session is on '\(sessionName)', but '\(frontmostName)' is active in Lenora Pro. Activate '\(sessionName)' or call manage_project with action='open' before making changes."
+        return "This session is on '\(sessionName)', but '\(frontmostName)' is active in Lenora. Activate '\(sessionName)' or call manage_project with action='open' before making changes."
     }
 
     private static func canReadInactiveProject(_ tool: ToolName) -> Bool {

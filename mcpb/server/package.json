@@ -2,6 +2,6 @@
   "name": "lenora-mcpb-shim",
   "version": "0.2.0",
   "private": true,
-  "description": "Stdio→HTTP shim packaged inside lenora.mcpb for Claude Desktop. Reconnects indefinitely across Lenora Pro restarts.",
+  "description": "Stdio→HTTP shim packaged inside lenora.mcpb for Claude Desktop. Reconnects indefinitely across Lenora restarts.",
   "main": "index.js"
 }
