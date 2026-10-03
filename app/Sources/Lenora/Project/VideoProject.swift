@@ -159,22 +159,46 @@ class VideoProject: NSDocument {
         shouldClose shouldCloseSelector: Selector?,
         contextInfo: UnsafeMutableRawPointer?
     ) {
+        let request = CloseRequest(delegate: delegate as AnyObject, selector: shouldCloseSelector, contextInfo: contextInfo)
         Task { @MainActor in
             do {
                 try await saveBeforeClosing()
                 super.canClose(
-                    withDelegate: delegate,
-                    shouldClose: shouldCloseSelector,
-                    contextInfo: contextInfo
+                    withDelegate: self,
+                    shouldClose: #selector(document(_:shouldClose:contextInfo:)),
+                    contextInfo: Unmanaged.passRetained(request).toOpaque()
                 )
             } catch {
                 presentError(error)
-                guard let shouldCloseSelector else { return }
-                let target = delegate as AnyObject
-                let callback = unsafeBitCast(target.method(for: shouldCloseSelector), to: DocumentCloseCallback.self)
-                callback(target, shouldCloseSelector, self, false, contextInfo)
+                reply(false, to: request)
             }
         }
+    }
+
+    private final class CloseRequest {
+        let delegate: AnyObject
+        let selector: Selector?
+        let contextInfo: UnsafeMutableRawPointer?
+
+        init(delegate: AnyObject, selector: Selector?, contextInfo: UnsafeMutableRawPointer?) {
+            self.delegate = delegate
+            self.selector = selector
+            self.contextInfo = contextInfo
+        }
+    }
+
+    // NSDocument can still refuse after the final save, for example when the user cancels a Save dialog.
+    @objc private func document(_ document: NSDocument, shouldClose: Bool, contextInfo: UnsafeMutableRawPointer?) {
+        guard let contextInfo else { return }
+        let request = Unmanaged<CloseRequest>.fromOpaque(contextInfo).takeRetainedValue()
+        if !shouldClose { MainActor.assumeIsolated { cancelClosing() } }
+        reply(shouldClose, to: request)
+    }
+
+    private func reply(_ shouldClose: Bool, to request: CloseRequest) {
+        guard let selector = request.selector else { return }
+        let callback = unsafeBitCast(request.delegate.method(for: selector), to: DocumentCloseCallback.self)
+        callback(request.delegate, selector, self, shouldClose, request.contextInfo)
     }
 
     @MainActor
