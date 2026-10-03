@@ -9,7 +9,7 @@ import Testing
 struct MCPToolListAnnouncementTests {
 
     @Test func sessionAnnouncesToolListChangedOnceOnGetStreamAttach() async throws {
-        let port = UInt16.random(in: 49_500...64_000)
+        let port = UInt16.random(in: 60_000...64_999)
         let server = MCPHTTPServer(port: port, token: "tok") {
             let server = Server(
                 name: "test",
@@ -68,7 +68,7 @@ struct MCPToolListAnnouncementTests {
     }
 
     @Test func broadcastNotifiesAttachedSessionsOfToolListChanges() async throws {
-        let port = UInt16.random(in: 49_500...64_000)
+        let port = UInt16.random(in: 60_000...64_999)
         let server = MCPHTTPServer(port: port, token: "tok") {
             let server = Server(
                 name: "test",
