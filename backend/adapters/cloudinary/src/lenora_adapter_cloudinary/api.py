@@ -7,10 +7,14 @@ from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import AssetInput, UrlInput
 from lenora_adapter_cloudinary.settings import CloudinarySettings
 
-ASSET_REF = re.compile(
-    r"^(image|video)/upload/(lenora/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"
-)
+PUBLIC_ID_PATTERN = r"lenora/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+PUBLIC_ID = re.compile(PUBLIC_ID_PATTERN)
+ASSET_REF = re.compile(rf"(image|video)/upload/({PUBLIC_ID_PATTERN})")
 DEFAULT_RATE_LIMIT_RETRY = 30
+
+
+class AssetNotFound(ProblemError):
+    """Cloudinary answered 404: the asset does not exist (any other refusal is not proof it is gone)."""
 
 
 @dataclass(frozen=True)
@@ -31,7 +35,7 @@ class Asset:
 
 
 def parse_ref(item: AssetInput | UrlInput, resource_type: str) -> AssetRef:
-    match = ASSET_REF.match(item.assetRef) if isinstance(item, AssetInput) else None
+    match = ASSET_REF.fullmatch(item.assetRef) if isinstance(item, AssetInput) else None
     if match is None or match.group(1) != resource_type:
         raise ProblemError("invalid_request", f"Inputs must be {resource_type} assetRefs from this backend's upload ticket.")
     return AssetRef(match.group(1), match.group(2))
@@ -80,13 +84,13 @@ class CloudinaryAPI:
         except httpx.TransportError as error:
             raise ProblemError("provider_unavailable", f"Cloudinary is unreachable ({type(error).__name__}).") from None
 
-    async def asset(self, ref: AssetRef) -> Asset:
+    async def asset(self, ref: AssetRef, *, duration: bool = False) -> Asset:
         path = f"/v1_1/{self.settings.cloud_name}/resources/{ref.resource_type}/upload/{ref.public_id}"
-        if ref.resource_type == "video":
-            path += "?media_metadata=true"  # without it the lookup omits duration
+        if duration:
+            path += "?media_metadata=true"  # without it a video lookup omits duration
         response = await self.request("GET", path)
         if response.status_code == 404:
-            raise ProblemError("invalid_request", "The input asset was not found; upload it before submitting.")
+            raise AssetNotFound("invalid_request", "The input asset was not found; upload it before submitting.")
         if response.status_code != 200:
             raise problem(response)
         body = response.json()

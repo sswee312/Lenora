@@ -1,4 +1,5 @@
 import asyncio
+import base64
 from urllib.parse import parse_qs
 
 import httpx
@@ -8,7 +9,7 @@ from cld import ADMIN_VIDEO, API, CLOUD, SECRET, UUID, VIDEO_REF, job, run, sett
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import AssetInput
 from lenora_adapter_cloudinary import publish
-from lenora_adapter_cloudinary.delivery import signed_url
+from lenora_adapter_cloudinary.delivery import sign_job, signed_url
 
 EXPLICIT = f"{API}/v1_1/{CLOUD}/video/explicit"
 DESTROY = f"{API}/v1_1/{CLOUD}/video/destroy"
@@ -120,6 +121,18 @@ def test_a_refused_eager_request_is_refunded(tmp_path):
     assert run(scenario, settings(tmp_path, daily_credit_budget=5), mock=mock) == 0
 
 
+def test_a_timed_out_eager_request_keeps_the_charge(tmp_path):
+    async def scenario(adapter):
+        with pytest.raises(ProblemError):
+            await adapter.submit("cloudinary/publish", publish_job())
+        return adapter.budget.usage()["used"]
+
+    def mock(r):
+        video(r)
+        r.post(EXPLICIT).mock(side_effect=httpx.ReadTimeout("slow"))
+    assert run(scenario, settings(tmp_path, daily_credit_budget=5), mock=mock) > 0
+
+
 def status_of(job_id, mock, clock=None):
     return run(lambda a: a.status(job_id), mock=mock, clock=clock)
 
@@ -204,11 +217,37 @@ def test_a_stream_that_times_out_fails_the_job():
 def test_a_deleted_video_fails_the_job():
     state = status_of(submitted_id(), lambda r: r.get(ADMIN_VIDEO).respond(404))
     assert state.status == "failed"
+    assert (state.error.code, state.error.retryable) == ("provider_error", False)
+
+
+@pytest.mark.parametrize("status", [400, 422])
+def test_an_invalid_lookup_is_not_a_deleted_video(status):
+    with pytest.raises(ProblemError) as info:
+        status_of(submitted_id(), lambda r: r.get(ADMIN_VIDEO).respond(status, json={"error": {"message": "bad"}}))
+    assert info.value.code == "invalid_request"
+
+
+@pytest.mark.parametrize("elapsed, expected", [
+    (publish.EAGER_TIMEOUT_SECONDS, "running"), (publish.EAGER_TIMEOUT_SECONDS + 1, "failed")])
+def test_the_output_deadline_is_900_seconds(elapsed, expected):
+    state = status_of(submitted_id(), lambda r: video(r), clock=lambda: 1000.0 + elapsed)
+    assert publish.EAGER_TIMEOUT_SECONDS == 900 and state.status == expected
+
+
+def test_status_polls_do_not_ask_for_media_metadata():
+    seen = []
+
+    def mock(r):
+        r.get(ADMIN_VIDEO).mock(side_effect=lambda req: seen.append(req.url.params.get("media_metadata")) or httpx.Response(
+            200, json={"asset_id": "a1", "bytes": 1, "format": "mp4", "derived": []}))
+    status_of(submitted_id(), mock, clock=lambda: 1100.0)
+    assert seen == [None]
 
 
 def tampered(job_id: str) -> list[str]:
     payload, signature = job_id.removeprefix("publish:").split(".")
-    return [f"publish:{payload}x.{signature}", f"publish:{payload}.{signature[:-1]}A", f"publish:{payload}",
+    raw = base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4)).decode()
+    return [sign_job("eager", raw, SECRET).replace("eager:", "publish:", 1), f"publish:{payload}x.{signature}", f"publish:{payload}.{signature[:-1]}A", f"publish:{payload}",
             "publish:", "publish:%%%.x", publish.encode(publish.decode(job_id, SECRET), "other-secret")]
 
 
