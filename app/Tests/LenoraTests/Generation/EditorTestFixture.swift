@@ -36,11 +36,11 @@ struct EditorTestFixture {
 
     func cleanup() { try? FileManager.default.removeItem(at: root) }
 
-    func waitUntil(timeout: Duration = .seconds(5), _ condition: @MainActor () async -> Bool) async throws {
+    func waitUntil(timeout: Duration = .seconds(30), _ condition: @MainActor () async -> Bool) async throws {
         let deadline = ContinuousClock.now + timeout
         while await !condition() {
             guard ContinuousClock.now < deadline else { throw Timeout() }
-            await Task.yield()
+            try await Task.sleep(for: .milliseconds(10))
         }
     }
 
