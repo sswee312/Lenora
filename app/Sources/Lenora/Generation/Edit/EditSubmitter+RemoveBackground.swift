@@ -43,8 +43,14 @@ extension EditSubmitter {
         let service = editor.generationService
         guard let model = service.catalog.models(ofKind: removeBackgroundKind).first else { return .refused(.unavailable) }
         let sourceURL = asset.url
-        let contentType = UTType(filenameExtension: sourceURL.pathExtension)?.preferredMIMEType ?? "application/octet-stream"
-        guard model.inputs.types.contains(contentType) else { return .refused(.unsupportedType(contentType)) }
+        let contentType = ImageConverter.requiresConversion(sourceURL)
+            ? "image/jpeg"
+            : UTType(filenameExtension: sourceURL.pathExtension)?.preferredMIMEType
+        guard let contentType, model.inputs.types.contains(contentType) else {
+            let shown = contentType
+                ?? (sourceURL.pathExtension.isEmpty ? sourceURL.lastPathComponent : sourceURL.pathExtension.uppercased())
+            return .refused(.unsupportedType(shown))
+        }
         guard let size = await fileSize(sourceURL) else { return .refused(.sourceMissing) }
         guard size <= model.inputs.maxBytes else { return .refused(.tooLarge(maxBytes: model.inputs.maxBytes)) }
         guard editor.mediaAssetsById[asset.id] === asset else { return .refused(.sourceMissing) }

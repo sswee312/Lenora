@@ -49,6 +49,27 @@ struct TransformMediaToolTests {
         #expect(fixture.editor.mediaAssets.count == 1)
     }
 
+    @Test func acceptsHEIFBecauseItUploadsAsJPEG() async throws {
+        let provider = FakeProvider(states: [], hangsOnUpload: true)
+        let fixture = try await EditorTestFixture.withImage(
+            fileExtension: "heif", provider: provider, catalog: EditorTestFixture.connectedCatalog()
+        )
+        defer { fixture.cleanup() }
+        let outcome = await EditSubmitter.submitRemoveBackground(asset: fixture.image, editor: fixture.editor)
+        guard case .started = outcome else { Issue.record("expected the job to start, got \(outcome)"); return }
+        try await fixture.waitUntil { await !provider.uploads.isEmpty }
+        #expect(await provider.uploads.allSatisfy { $0.hasSuffix(".jpg") })
+        fixture.editor.generationService.stopMonitoring()
+    }
+
+    @Test func unknownTypeIsNamedByItsExtension() async throws {
+        let fixture = try await EditorTestFixture.withImage(fileExtension: "qzx", catalog: EditorTestFixture.connectedCatalog())
+        defer { fixture.cleanup() }
+        let outcome = await EditSubmitter.submitRemoveBackground(asset: fixture.image, editor: fixture.editor)
+        #expect(outcome == .refused(.unsupportedType("QZX")))
+        #expect(fixture.editor.mediaAssets.count == 1)
+    }
+
     @Test func refusesNonImage() async throws {
         let fixture = try await EditorTestFixture.withVideo(catalog: EditorTestFixture.connectedCatalog())
         defer { fixture.cleanup() }
