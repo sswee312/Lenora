@@ -139,7 +139,7 @@
 "Changes take effect after restarting Lenora Pro." = "Perubahan berlaku setelah Lenora Pro dimulai ulang.";
 "Changing the ratio preserves the shorter edge." = "Mengubah rasio mempertahankan sisi yang lebih pendek.";
 "Chat history" = "Riwayat chat";
-"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key." = "Chat dengan Agent Anda. Agent dapat menghasilkan konten, mengedit klip, mengatur aset, dan lainnya. Masuk untuk mulai, atau gunakan kunci API Anthropic Anda sendiri.";
+"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Chat dengan Agent Anda. Agent dapat menghasilkan konten, mengedit klip, mengatur aset, dan lainnya. Tambahkan kunci API Anthropic Anda di Pengaturan untuk memulai.";
 "Check the marker name, position, and duration." = "Periksa nama, posisi, dan durasi penanda.";
 "Choose a .cube LUT file" = "Pilih file LUT .cube";
 "Choose a crop aspect" = "Pilih rasio potong";

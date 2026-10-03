@@ -217,7 +217,7 @@ final class TourController {
         }
         steps += [
             TourStep(kind: .spotlight(.panel(.agent)), title: L10n.string("AI agent"),
-                     instruction: L10n.string("Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key.")),
+                     instruction: L10n.string("Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start.")),
             TourStep(kind: .spotlight(.element(.skillsButton)), title: L10n.string("Skills"),
                      instruction: L10n.string("Open Skills to browse bundled playbooks, create your own, or add them to other agents.")),
             TourStep(kind: .outro, title: L10n.string("You're all set"),

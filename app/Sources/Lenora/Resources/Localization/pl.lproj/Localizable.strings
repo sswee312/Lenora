@@ -139,7 +139,7 @@
 "Changes take effect after restarting Lenora Pro." = "Zmiany zaczną obowiązywać po ponownym uruchomieniu Lenora Pro.";
 "Changing the ratio preserves the shorter edge." = "Zmiana proporcji zachowuje krótszą krawędź.";
 "Chat history" = "Historia czatu";
-"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key." = "Czatuj z Agentem. Może generować treść, montować klipy, porządkować zasoby i nie tylko. Zacznij od zalogowania się albo użyj własnego klucza API Anthropic.";
+"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Czatuj z Agentem. Może generować treść, montować klipy, porządkować zasoby i nie tylko. Zacznij od dodania własnego klucza API Anthropic w Ustawienia.";
 "Check the marker name, position, and duration." = "Sprawdź nazwę, położenie i czas trwania znacznika.";
 "Choose a .cube LUT file" = "Wybierz plik LUT .cube";
 "Choose a crop aspect" = "Wybierz proporcje kadrowania";

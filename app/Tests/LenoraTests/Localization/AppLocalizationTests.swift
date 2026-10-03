@@ -16,7 +16,7 @@ struct AppLocalizationTests {
             #expect(localization.string(key: "Moments") == "Moments")
             #expect(localization.string(key: "Spoken") == "Spoken")
             #expect(localization.string(key: "Files") == "Files")
-            #expect(localization.string("\(1234) credits") == "1,234 credits")
+            #expect(localization.string("\(1234) clips") == "1,234 clips")
             #expect(
                 BundledResource.bundle.localizedString(
                     forKey: "CFBundleTypeName",
@@ -42,10 +42,10 @@ struct AppLocalizationTests {
     }
 
     @Test(arguments: [
-        ("zh-Hans", "导出"),
-        ("zh-Hant", "匯出"),
+        ("zh-Hans", "导出", "1,234 个片段"),
+        ("zh-Hant", "匯出", "1,234 個片段"),
     ])
-    func bundledChineseLocalizationCanBeSelected(identifier: String, export: String) throws {
+    func bundledChineseLocalizationCanBeSelected(identifier: String, export: String, clips: String) throws {
         try withDefaults { defaults in
             defaults.set(identifier, forKey: AppLanguage.defaultsKey)
 
@@ -54,6 +54,7 @@ struct AppLocalizationTests {
             #expect(localization.availableLanguages.contains(.language(identifier)))
             #expect(localization.activeIdentifier == identifier)
             #expect(localization.string("Export") == export)
+            #expect(localization.string("\(1234) clips") == clips)
         }
     }
 

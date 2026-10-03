@@ -139,7 +139,7 @@
 "Changes take effect after restarting Lenora Pro." = "השינויים ייכנסו לתוקף לאחר הפעלה מחדש של Lenora Pro.";
 "Changing the ratio preserves the shorter edge." = "שינוי היחס שומר על הצלע הקצרה.";
 "Chat history" = "היסטוריית צ'אט";
-"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key." = "שוחח עם ה-Agent. הוא מפיק תוכן, עורך קליפים, מארגן נכסים ועוד. התחבר, או הבא מפתח API של Anthropic משלך.";
+"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "שוחח עם ה-Agent. הוא מפיק תוכן, עורך קליפים, מארגן נכסים ועוד. כדי להתחיל, הוסף את מפתח ה-API של Anthropic שלך בהגדרות.";
 "Check the marker name, position, and duration." = "בדוק את שם הסמן, המיקום ומשך הזמן.";
 "Choose a .cube LUT file" = "בחר קובץ LUT מסוג ⁨.cube⁩";
 "Choose a crop aspect" = "בחר יחס חיתוך";

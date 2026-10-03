@@ -139,7 +139,7 @@
 "Changes take effect after restarting Lenora Pro." = "बदलाव Lenora Pro को रीस्टार्ट करने के बाद लागू होंगे।";
 "Changing the ratio preserves the shorter edge." = "रेशियो बदलने पर छोटी किनारी बनी रहती है।";
 "Chat history" = "चैट इतिहास";
-"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key." = "अपने एजेंट से चैट करें। यह कंटेंट जेनरेट कर सकता है, क्लिप एडिट कर सकता है, एसेट व्यवस्थित कर सकता है और बहुत कुछ। शुरू करने के लिए साइन इन करें या अपनी Anthropic API कुंजी इस्तेमाल करें।";
+"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "अपने एजेंट से चैट करें। यह कंटेंट जेनरेट कर सकता है, क्लिप एडिट कर सकता है, एसेट व्यवस्थित कर सकता है और बहुत कुछ। शुरू करने के लिए सेटिंग्स में अपनी Anthropic API कुंजी जोड़ें।";
 "Check the marker name, position, and duration." = "मार्कर का नाम, पोज़िशन और अवधि जाँचें।";
 "Choose a .cube LUT file" = ".cube LUT फ़ाइल चुनें";
 "Choose a crop aspect" = "क्रॉप आस्पेक्ट चुनें";

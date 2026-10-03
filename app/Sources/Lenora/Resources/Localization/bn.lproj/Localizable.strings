@@ -139,7 +139,7 @@
 "Changes take effect after restarting Lenora Pro." = "Lenora Pro রিস্টার্ট করার পরে পরিবর্তন কার্যকর হবে।";
 "Changing the ratio preserves the shorter edge." = "রেশিও পরিবর্তন করলে ছোট দিকটি অপরিবর্তিত থাকে।";
 "Chat history" = "চ্যাট হিস্ট্রি";
-"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key." = "আপনার এজেন্টের সঙ্গে চ্যাট করুন। এটি কনটেন্ট জেনারেট, ক্লিপ এডিট, অ্যাসেট সাজানোসহ আরও অনেক কিছু করতে পারে। সাইন ইন করে বা নিজের Anthropic API কী দিয়ে শুরু করুন।";
+"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "আপনার এজেন্টের সঙ্গে চ্যাট করুন। এটি কনটেন্ট জেনারেট, ক্লিপ এডিট, অ্যাসেট সাজানোসহ আরও অনেক কিছু করতে পারে। শুরু করতে সেটিংস-এ আপনার Anthropic API কী যোগ করুন।";
 "Check the marker name, position, and duration." = "মার্কারের নাম, পজিশন ও সময়কাল যাচাই করুন।";
 "Choose a .cube LUT file" = "একটি .cube LUT ফাইল বেছে নিন";
 "Choose a crop aspect" = "ক্রপ অ্যাসপেক্ট বেছে নিন";

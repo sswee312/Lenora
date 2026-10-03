@@ -139,7 +139,7 @@
 "Changes take effect after restarting Lenora Pro." = "변경 사항은 Lenora Pro를 재시동한 후 적용됩니다.";
 "Changing the ratio preserves the shorter edge." = "화면비를 변경해도 짧은 쪽은 유지됩니다.";
 "Chat history" = "채팅 기록";
-"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key." = "에이전트와 채팅하세요. 콘텐츠 생성, 클립 편집, 에셋 정리 등을 할 수 있습니다. 로그인하거나 자체 Anthropic API 키로 시작하세요.";
+"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "에이전트와 채팅하세요. 콘텐츠 생성, 클립 편집, 에셋 정리 등을 할 수 있습니다. 설정에서 Anthropic API 키를 추가해 시작하세요.";
 "Check the marker name, position, and duration." = "마커 이름, 위치, 재생 시간을 확인하세요.";
 "Choose a .cube LUT file" = ".cube LUT 파일 선택";
 "Choose a crop aspect" = "자르기 화면비 선택";

@@ -139,7 +139,7 @@
 "Changes take effect after restarting Lenora Pro." = "Ændringer træder i kraft, når Lenora Pro genstartes.";
 "Changing the ratio preserves the shorter edge." = "Når forholdet ændres, bevares den korte kant.";
 "Chat history" = "Chathistorik";
-"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key." = "Chat med din agent. Den kan generere indhold, redigere klip, organisere dine medier og mere. Start med at logge ind, eller brug din egen Anthropic API-nøgle.";
+"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "Chat med din agent. Den kan generere indhold, redigere klip, organisere dine medier og mere. Start med at tilføje din Anthropic API-nøgle i Indstillinger.";
 "Check the marker name, position, and duration." = "Kontrollér markørens navn, placering og varighed.";
 "Choose a .cube LUT file" = "Vælg en .cube LUT-fil";
 "Choose a crop aspect" = "Vælg et beskæringsformat";

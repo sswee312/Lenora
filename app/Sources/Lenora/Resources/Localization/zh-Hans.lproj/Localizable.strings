@@ -139,7 +139,7 @@
 "Changes take effect after restarting Lenora Pro." = "更改将在重新启动 Lenora Pro 后生效。";
 "Changing the ratio preserves the shorter edge." = "更改比例时会保留较短边。";
 "Chat history" = "对话历史";
-"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Start by signing in, or bring your own Anthropic API key." = "与 Agent 对话。它可以生成内容、编辑片段、整理素材等。登录即可开始，也可以使用自己的 Anthropic API key。";
+"Chat with your agent! It can generate content, edit clips, organize your assets, and much more. Add your Anthropic API key in Settings to start." = "与 Agent 对话。它可以生成内容、编辑片段、整理素材等。在设置中添加你的 Anthropic API key 即可开始。";
 "Check the marker name, position, and duration." = "请检查标记名称、位置和持续时间。";
 "Choose a .cube LUT file" = "选择 .cube LUT 文件";
 "Choose a crop aspect" = "选择裁剪宽高比";
