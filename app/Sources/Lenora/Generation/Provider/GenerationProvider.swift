@@ -8,6 +8,7 @@ protocol GenerationProvider: Sendable {
     func submit(_ job: JobRequest, idempotencyKey: String) async throws -> SubmittedJob
     func jobUpdates(jobId: String) -> AsyncThrowingStream<JobState, Error>
     func cancel(jobId: String) async throws -> JobState
+    func deleteAsset(model: String, assetRef: String) async throws
 }
 
 extension GenerationProvider {

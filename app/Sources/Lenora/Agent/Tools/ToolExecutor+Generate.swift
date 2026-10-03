@@ -570,7 +570,7 @@ extension ToolExecutor {
         )
     }
 
-    func listModels(_ args: [String: Any]) -> ToolResult {
+    func listModels(_ editor: EditorViewModel, _ args: [String: Any]) -> ToolResult {
         let filter = args.string("type")
         var out: [[String: Any]] = []
         if filter == nil || filter == "video" {
@@ -592,6 +592,9 @@ extension ToolExecutor {
         if filter == nil || filter == "transform" {
             out += ToolDefinitions.transformKinds.flatMap { ModelCatalog.shared.models(ofKind: $0) }
                 .map { Self.transformModelInfo($0) }
+        }
+        if filter == nil || filter == "publish", let model = editor.publishService.model, let limits = editor.publishService.limits {
+            out.append(Self.publishModelInfo(model, limits: limits))
         }
         let body: [String: Any] = [
             "models": out,
@@ -698,6 +701,13 @@ extension ToolExecutor {
             "maxBytes": m.inputs.maxBytes,
         ]
         if let estimate = m.estimate { info["estimate"] = ["amount": estimate.amount, "unit": estimate.unit] }
+        return info
+    }
+
+    nonisolated static func publishModelInfo(_ m: BackendModel, limits: PublishLimits) -> [String: Any] {
+        var info: [String: Any] = ["id": m.id, "displayName": m.displayName, "type": "publish", "maxBytes": m.inputs.maxBytes]
+        if let aspects = limits.verticalAspects { info["verticalAspects"] = aspects }
+        if let range = limits.teaserSeconds { info["teaserSeconds"] = ["min": range.min, "max": range.max] }
         return info
     }
 

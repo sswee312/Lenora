@@ -7,7 +7,7 @@ import httpx
 import pytest
 import respx
 
-from cld import DELIVERY, GEN, I2V, SECRET, UUID, gen_task, i2v_job, job, run, settings
+from cld import API, DELIVERY, GEN, I2V, SECRET, UUID, gen_task, i2v_job, job, run, settings
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import AssetInput, JobRequest, UploadRequest, UrlInput
 from lenora_backend.testing.conformance import AdapterConformance
@@ -115,7 +115,7 @@ class TestCloudinaryConformance(AdapterConformance):
     settings = settings(image_generation="on", image_to_video="on")
 
     def upload_request(self, model):
-        content_type = "video/mp4" if model.kind == "video.reframe" else "image/png"
+        content_type = "video/mp4" if model.kind in ("video.reframe", "video.publish") else "image/png"
         return UploadRequest(model=model.id, contentType=content_type, byteCount=100, filename="a")
 
     def job_request(self, model, asset_ref):
@@ -124,15 +124,27 @@ class TestCloudinaryConformance(AdapterConformance):
             "image.edit": ({"op": "remove", "prompt": "the cup"}, None),
             "image.upscale": ({}, None),
             "video.reframe": ({"aspectRatio": "9:16"}, None),
+            "video.publish": ({}, None),
             "image.generate": ({"prompt": "a lighthouse"}, "reference"),
             "video.generate": ({"prompt": "waves", "duration": 4}, "startFrame"),
         }[model.kind]
         return JobRequest(kind=model.kind, model=model.id, params=params,
                           inputs=[AssetInput(assetRef=asset_ref, role=role)])
 
-    def _common(self, router):
-        router.get(url__regex=r"https://api\.cloudinary\.com/v1_1/demo/resources/.*").respond(
-            200, json={"asset_id": "a1", "width": 100, "height": 100, "bytes": 100, "duration": 3.0})
+    def _common(self, router, derived=(), video_gone_after_submit=False):
+        body = {"asset_id": "a1", "width": 100, "height": 100, "bytes": 100, "duration": 3.0, "format": "mp4",
+                "derived": [{"transformation": t, "format": t.rpartition("/")[2]} for t in derived]}
+        seen = set()
+
+        def resource(request):
+            if video_gone_after_submit and "/video/" in request.url.path and request.url.path in seen:
+                return httpx.Response(404)
+            seen.add(request.url.path)
+            if request.url.params.get("media_metadata") != "true":
+                return httpx.Response(200, json={k: v for k, v in body.items() if k != "duration"})
+            return httpx.Response(200, json=body)
+        router.get(url__regex=r"https://api\.cloudinary\.com/v1_1/demo/resources/.*").mock(side_effect=resource)
+        router.post(f"{API}/v1_1/demo/video/explicit").respond(200, json={})
         router.post(url__startswith=GEN).respond(202, json={"data": {"status": "pending", "task_id": "t1"}})
         router.post(I2V).respond(201, json={"data": {"job_id": "v1", "status": "pending"}})
 
@@ -143,13 +155,13 @@ class TestCloudinaryConformance(AdapterConformance):
         router.get(url__startswith=f"{I2V}/").respond(200, json=i2v_job("pending"))
 
     def mock_succeeded(self, router):
-        self._common(router)
+        self._common(router, derived=("sp_auto:maxres_1080p/m3u8", "so_auto/jpg"))
         router.get(url__startswith=DELIVERY).respond(206)
         router.get(url__startswith=f"{GEN}/tasks/").respond(200, json=gen_task("completed"))
         router.get(url__startswith=f"{I2V}/").respond(200, json=i2v_job("completed"))
 
     def mock_failed(self, router):
-        self._common(router)
+        self._common(router, video_gone_after_submit=True)
         router.get(url__startswith=DELIVERY).respond(404, headers={"X-Cld-Error": "Resource not found"})
         router.get(url__startswith=f"{GEN}/tasks/").respond(200, json=gen_task("failed"))
         router.get(url__startswith=f"{I2V}/").respond(200, json=i2v_job("failed"))

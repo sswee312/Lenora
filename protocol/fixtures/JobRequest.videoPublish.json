@@ -1,0 +1,15 @@
+{
+  "kind": "video.publish",
+  "model": "cloudinary/publish",
+  "inputs": [
+    {
+      "assetRef": "video/upload/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d"
+    }
+  ],
+  "params": {
+    "outputs": {
+      "vertical": "9:16",
+      "teaserSeconds": 15
+    }
+  }
+}

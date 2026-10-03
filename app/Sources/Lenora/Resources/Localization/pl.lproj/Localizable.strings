@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld obrazów jest gotowych w Lenora.";
 "%lld items" = "%lld elementów";
 "%lld media files are missing and will be skipped." = "Brakuje %lld plików multimediów — zostaną pominięte.";
+"%lld seconds" = "%lld s";
 "%lld selected" = "Zaznaczono: %lld";
 "%lld subtitle files are ready in Lenora." = "%lld plików napisów jest gotowych w Lenora.";
 "%lld text clips are ready in Lenora." = "%lld klipów tekstowych jest gotowych w Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Strefa akcji";
 "Adapters" = "Adaptery";
 "Add Marker (M)" = "Dodaj znacznik (M)";
+"Add Outputs" = "Dodaj wyjścia";
+"Add Outputs…" = "Dodaj wyjścia…";
 "Add Range to Chat" = "Dodaj zakres do czatu";
 "Add Text" = "Dodaj tekst";
 "Add a comment" = "Dodaj komentarz";
@@ -74,12 +77,14 @@
 "All" = "Wszystko";
 "All Statuses" = "Wszystkie stany";
 "All fonts" = "Wszystkie czcionki";
+"Always includes a stream, a download link and a poster." = "Zawsze zawiera strumień, link do pobrania i plakat.";
 "Amount" = "Kwota";
 "Analyzing media so you can search it." = "Analiza multimediów pod kątem wyszukiwania.";
 "Angle" = "Ujęcie";
 "Animate" = "Animuj";
 "Animation" = "Animacja";
 "Anthropic API Key" = "Klucz API Anthropic";
+"Anyone with the link can watch." = "Każdy, kto ma link, może obejrzeć film.";
 "Appearance" = "Wygląd";
 "Apply" = "Zastosuj";
 "Ask anything, or start with:" = "Zadaj pytanie albo zacznij od:";
@@ -188,6 +193,7 @@
 "Comments" = "Komentarze";
 "Compatibility: %@" = "Zgodność: %@";
 "Completed" = "Ukończono";
+"Confirm that anyone with the link can watch." = "Potwierdź, że każdy, kto ma link, może obejrzeć wideo.";
 "Connect an agent" = "Połącz agenta";
 "Connect an external agent to inspect and edit the open Lenora project." = "Połącz zewnętrznego agenta, aby przeglądać i edytować otwarty projekt Lenora.";
 "Connected" = "Połączono";
@@ -197,7 +203,12 @@
 "Contrast" = "Kontrast";
 "Copied" = "Skopiowano";
 "Copy" = "Kopiuj";
+"Copy Link" = "Kopiuj link";
 "Copy Path" = "Kopiuj ścieżkę";
+"Copy Poster Link" = "Kopiuj link do plakatu";
+"Copy Stream Link" = "Kopiuj link do strumienia";
+"Copy Teaser Link" = "Kopiuj link do zapowiedzi";
+"Copy Vertical Cut Link" = "Kopiuj link do wersji pionowej";
 "Copy message" = "Kopiuj wiadomość";
 "Copy one clip of the same type and try again." = "Skopiuj jeden klip tego samego typu i spróbuj ponownie.";
 "Copy prompt" = "Kopiuj prompt";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "Przełącz na pełny ekran";
 "Erase an object from the image" = "Usuń obiekt z obrazu";
 "Every connected agent will need the new token." = "Każdy połączony agent będzie potrzebował nowego tokenu.";
+"Every link stops working. This can't be undone." = "Wszystkie linki przestaną działać. Tej operacji nie można cofnąć.";
 "Exclusion" = "Wyłączenie";
 "Expand" = "Rozwiń";
 "Export" = "Eksportuj";
@@ -338,6 +350,7 @@
 "Fade In" = "Pojawienie";
 "Fade Out" = "Zanikanie";
 "Failed" = "Niepowodzenie";
+"Failed: %@" = "Niepowodzenie: %@";
 "Feather" = "Wygładzenie";
 "Featured" = "Wyróżnione";
 "File" = "Plik";
@@ -567,6 +580,7 @@
 "No audio" = "Brak dźwięku";
 "No audio selected." = "Nie zaznaczono dźwięku.";
 "No beats detected." = "Nie wykryto taktów.";
+"No connected backend can publish video." = "Żaden połączony backend nie może publikować wideo.";
 "No conversations yet" = "Brak rozmów";
 "No exports yet" = "Brak eksportów";
 "No images" = "Brak obrazów";
@@ -591,6 +605,7 @@
 "Normal" = "Normalny";
 "Not selected" = "Niezaznaczone";
 "Not synced — unusable as an angle." = "Niezsynchronizowane — nie nadaje się jako ujęcie.";
+"Nothing new to add." = "Brak nowych elementów do dodania.";
 "Notifications" = "Powiadomienia";
 "OK" = "OK";
 "Object to recolor" = "Obiekt do przekolorowania";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Starszy format wymiany, najlepszy gdy celem jest Premiere Pro. Obsługuje podstawowy montaż i klatki kluczowe, ale nie tekst, kolor, efekty, miękkość krawędzi ani zaokrąglenie krawędzi.";
 "On-device transcription is not available for %@." = "Transkrypcja na urządzeniu jest niedostępna dla %@.";
 "Only available for AI-generated media" = "Dostępne tylko dla multimediów wygenerowanych przez AI";
+"Only completed MP4 or MOV exports can be published." = "Publikować można tylko ukończone eksporty MP4 lub MOV.";
 "Opacity" = "Krycie";
 "Open" = "Otwórz";
 "Open %@" = "Otwórz %@";
@@ -649,10 +665,16 @@
 "Presence" = "Obecność";
 "Press M in the timeline to add a marker." = "Naciśnij M na osi czasu, aby dodać znacznik.";
 "Preview" = "Podgląd";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Przetwarzanie jest rozliczane przez backend. Szacunek pojawi się po rozpoczęciu przetwarzania.";
+"Processing…" = "Przetwarzanie…";
+"Processing… Estimated %@ %@" = "Przetwarzanie… Szacunkowo: %@ %@";
 "Project" = "Projekt";
 "Project Settings" = "Ustawienia projektu";
 "Projects Couldn’t Be Deleted" = "Nie udało się usunąć projektów";
 "Prompt" = "Prompt";
+"Publish" = "Opublikuj";
+"Published" = "Opublikowano";
+"Publish…" = "Opublikuj…";
 "Put the subject on a new background" = "Umieść obiekt na nowym tle";
 "Quality" = "Jakość";
 "Queued" = "W kolejce";
@@ -661,6 +683,8 @@
 "Range" = "Zakres";
 "Razor (C)" = "Ostrze (C)";
 "Razor Tool" = "Narzędzie ostrza";
+"Ready" = "Gotowe";
+"Ready, %lld failed" = "Gotowe, %lld nieudanych";
 "Reasoning effort" = "Wysiłek rozumowania";
 "Recolor" = "Zmień kolor";
 "Redetect Beats" = "Wykryj takty ponownie";
@@ -851,6 +875,9 @@
 "System appearance" = "Wygląd systemowy";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Zrób zrzut podglądu i użyj go jako referencji do generowania. Szczególnie przydatne przy tworzeniu przejść AI.";
 "Target Language" = "Język docelowy";
+"Teaser" = "Zapowiedź";
+"Teasers aren't available." = "Zwiastuny są niedostępne.";
+"Teasers must be %lld–%lld seconds." = "Zwiastun musi trwać od %lld do %lld s.";
 "Temperature" = "Temperatura";
 "Temporary files" = "Pliki tymczasowe";
 "Test Connection" = "Przetestuj połączenie";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "Dodawany klip ma inne ustawienia niż bieżący projekt.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Połączony backend nie oferuje tej edycji. Otwórz Ustawienia → Backend.";
 "The export" = "Eksport";
+"The export file can't be read." = "Nie można odczytać pliku eksportu.";
+"The export is %@; publishing accepts up to %@." = "Eksport ma %@; publikacja przyjmuje do %@.";
 "The file is larger than %@." = "Plik jest większy niż %@.";
 "The image is larger than %lld pixels in total." = "Obraz ma łącznie ponad %lld pikseli.";
 "The image size isn't known yet. Try again in a moment." = "Rozmiar obrazu nie jest jeszcze znany. Spróbuj ponownie za chwilę.";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "Zadanie zakończyło się bez wyniku.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentarz znacznika zmienił się podczas edycji. Przejrzyj go i spróbuj ponownie.";
 "The project will be moved to the Trash." = "Projekt zostanie przeniesiony do Kosza.";
+"The publication no longer exists." = "Ta publikacja już nie istnieje.";
 "The selected model refused this request. Revise the prompt and try again." = "Wybrany model odrzucił to żądanie. Zmień prompt i spróbuj ponownie.";
 "The selected projects will be moved to the Trash." = "Zaznaczone projekty zostaną przeniesione do Kosza.";
 "The source file is missing." = "Brak pliku źródłowego.";
+"The teaser must be shorter than the video." = "Zwiastun musi być krótszy niż wideo.";
 "The timeline settings changed. Close this sheet and try again." = "Ustawienia osi czasu uległy zmianie. Zamknij ten arkusz i spróbuj ponownie.";
+"The upload didn't finish. Publish the export again." = "Przesyłanie nie zostało ukończone. Opublikuj eksport ponownie.";
 "Theme" = "Motyw";
 "This build includes no skills." = "Ta wersja nie zawiera umiejętności.";
 "This edit works on images only." = "Ta edycja działa tylko na obrazach.";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "Ten model nie może ograniczyć wyjścia do 60 FPS.";
 "This permanently removes %@." = "To trwale usuwa %@.";
 "This source can’t replace the clip." = "To źródło nie może zastąpić klipu.";
+"This video was unpublished." = "Publikacja tego wideo została cofnięta.";
 "Three-Stack" = "Trzy stosy";
 "Three-Up" = "Trzy panele";
 "Threshold" = "Próg";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "Cofnij (⌘Z)";
 "Ungroup Multicam" = "Rozgrupuj multicam";
 "Unlink" = "Odłącz";
+"Unpublish" = "Cofnij publikację";
+"Unpublish this video?" = "Cofnąć publikację tego filmu?";
+"Unpublished" = "Publikacja cofnięta";
 "Untitled" = "Bez nazwy";
 "Update" = "Uaktualnij";
 "Update available" = "Dostępne uaktualnienie";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Domyślnie używa całej osi czasu. Zaznacz zakres na osi czasu, aby skomponować muzykę tylko do tego odcinka.";
 "Version" = "Wersja";
 "Vertical" = "Pionowy";
+"Vertical aspect %@ isn't supported." = "Pionowe proporcje %@ nie są obsługiwane.";
+"Vertical cut" = "Wersja pionowa";
 "Vertical workspace layout" = "Pionowy układ przestrzeni roboczej";
 "Vibrance" = "Jaskrawość";
 "Video" = "Wideo";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "Model czyszczenia głosu jest niedostępny";
 "Voice Cleanup requires audio or video" = "Czyszczenie głosu wymaga dźwięku albo wideo";
 "Volume" = "Głośność";
+"Wait for the current upload or processing to finish." = "Poczekaj na zakończenie bieżącego przesyłania lub przetwarzania.";
 "Warmth" = "Ciepło";
 "Welcome to Lenora" = "Witamy w Lenora";
 "What's New in v%@" = "Nowości w v%@";

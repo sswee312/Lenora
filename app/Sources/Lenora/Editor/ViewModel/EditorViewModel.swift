@@ -227,6 +227,7 @@ final class EditorViewModel {
     )
 
     @ObservationIgnored var generationService: GenerationService
+    let publishService: PublishService
     @ObservationIgnored var remoteDownloadFetch: RemoteMediaDownloader.Fetch?
     let agentService = AgentService()
 
@@ -325,6 +326,7 @@ final class EditorViewModel {
         modelCatalog: ModelCatalog = .shared
     ) {
         generationService = GenerationService(provider: generationProvider, catalog: modelCatalog)
+        publishService = PublishService(provider: generationProvider, catalog: modelCatalog)
         let first = Timeline()
         timelines = [first]
         activeTimelineId = first.id
@@ -340,6 +342,9 @@ final class EditorViewModel {
         }
         mediaVisualCache.onDeadAirCacheInvalidated = { [weak self] in
             self?.deadAirMaskCache.reset()
+        }
+        publishService.exportJobs = { [weak self] in
+            self.map { ExportQueue.shared.jobs(for: $0.exportQueueProjectID) } ?? []
         }
 
         // Re-check media presence when the app regains focus: a user may have

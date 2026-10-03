@@ -148,6 +148,22 @@ struct LenoraBackendClientTests {
         _ = try await client(transport).submit(job, idempotencyKey: "key-1")
         #expect(await transport.requests.first?.value(forHTTPHeaderField: "Idempotency-Key") == "key-1")
     }
+
+    @Test func deleteAssetSendsTheModelAndAcceptsNoContent() async throws {
+        let transport = StubTransport([.success(.init(status: 204))])
+        try await client(transport).deleteAsset(model: "cloudinary/publish", assetRef: "video/upload/lenora/abc")
+        let request = try #require(await transport.requests.first)
+        #expect(request.httpMethod == "DELETE")
+        #expect(request.url?.absoluteString == "http://127.0.0.1:8787/v1/assets/video/upload/lenora/abc?model=cloudinary/publish")
+    }
+
+    @Test func deleteAssetSurfacesNotFound() async {
+        let body = #"{"type":"urn:lenora:problem:not_found","title":"not_found","status":404,"detail":"gone","code":"not_found","retryable":false}"#
+        let transport = StubTransport([.success(.init(status: 404, body: body))])
+        await #expect(throws: BackendError.problem(BackendProblem(code: "not_found", detail: "gone", status: 404, retryable: false))) {
+            try await client(transport).deleteAsset(model: "cloudinary/publish", assetRef: "video/upload/lenora/abc")
+        }
+    }
 }
 
 actor SleepLog {

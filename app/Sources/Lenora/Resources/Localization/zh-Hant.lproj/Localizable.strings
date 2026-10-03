@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld 張影像已在 Lenora 中準備就緒。";
 "%lld items" = "%lld 個專案";
 "%lld media files are missing and will be skipped." = "%lld 個媒體檔案缺失，將被跳過。";
+"%lld seconds" = "%lld 秒";
 "%lld selected" = "已選擇 %lld 個";
 "%lld subtitle files are ready in Lenora." = "%lld 個字幕檔案已在 Lenora 中準備就緒。";
 "%lld text clips are ready in Lenora." = "%lld 個文字片段已在 Lenora 中準備就緒。";
@@ -44,6 +45,8 @@
 "Action Safe" = "動作安全";
 "Adapters" = "轉接器";
 "Add Marker (M)" = "加入標記 (M)";
+"Add Outputs" = "加入輸出";
+"Add Outputs…" = "加入輸出…";
 "Add Range to Chat" = "將範圍加入對話";
 "Add Text" = "加入文字";
 "Add a comment" = "加入註解";
@@ -74,12 +77,14 @@
 "All" = "全部";
 "All Statuses" = "全部狀態";
 "All fonts" = "所有字體";
+"Always includes a stream, a download link and a poster." = "一律包含串流、下載連結和海報。";
 "Amount" = "數量";
 "Analyzing media so you can search it." = "正在分析媒體以供搜尋。";
 "Angle" = "角度";
 "Animate" = "動畫";
 "Animation" = "動畫";
 "Anthropic API Key" = "Anthropic API key";
+"Anyone with the link can watch." = "任何擁有連結的人都可以觀看。";
 "Appearance" = "外觀";
 "Apply" = "套用";
 "Ask anything, or start with:" = "詢問任何問題，或從這裡開始：";
@@ -188,6 +193,7 @@
 "Comments" = "註解";
 "Compatibility: %@" = "相容性：%@";
 "Completed" = "已完成";
+"Confirm that anyone with the link can watch." = "確認任何擁有連結的人都可以觀看。";
 "Connect an agent" = "連接 Agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "連接外部 Agent，以檢查和編輯已打開的 Lenora 專案。";
 "Connected" = "已連線";
@@ -197,7 +203,12 @@
 "Contrast" = "對比";
 "Copied" = "已複製";
 "Copy" = "複製";
+"Copy Link" = "拷貝連結";
 "Copy Path" = "複製路徑";
+"Copy Poster Link" = "拷貝海報連結";
+"Copy Stream Link" = "拷貝串流連結";
+"Copy Teaser Link" = "拷貝預告片連結";
+"Copy Vertical Cut Link" = "拷貝直式版本連結";
 "Copy message" = "複製訊息";
 "Copy one clip of the same type and try again." = "請複製一個相同類型的片段後重試。";
 "Copy prompt" = "複製提示詞";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "進入全螢幕";
 "Erase an object from the image" = "從影像中擦除物件";
 "Every connected agent will need the new token." = "每個已連線的 Agent 都需要新權杖。";
+"Every link stops working. This can't be undone." = "所有連結都將失效。此操作無法還原。";
 "Exclusion" = "排除";
 "Expand" = "展開";
 "Export" = "匯出";
@@ -338,6 +350,7 @@
 "Fade In" = "淡入";
 "Fade Out" = "淡出";
 "Failed" = "失敗";
+"Failed: %@" = "失敗：%@";
 "Feather" = "羽化";
 "Featured" = "精選";
 "File" = "檔案";
@@ -567,6 +580,7 @@
 "No audio" = "沒有音訊";
 "No audio selected." = "未選擇音訊。";
 "No beats detected." = "未偵測到節拍。";
+"No connected backend can publish video." = "沒有已連線的後端可以發布影片。";
 "No conversations yet" = "尚無對話";
 "No exports yet" = "尚無匯出任務";
 "No images" = "沒有圖像";
@@ -591,6 +605,7 @@
 "Normal" = "正常";
 "Not selected" = "未選擇";
 "Not synced — unusable as an angle." = "未同步，無法用作機位。";
+"Nothing new to add." = "沒有可加入的新內容。";
 "Notifications" = "通知";
 "OK" = "好";
 "Object to recolor" = "要重新著色的物件";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "較舊的交換格式，最適合匯入 Premiere Pro。支援基本編輯和關鍵影格，但不支援文字、顏色、效果、邊緣柔化或邊緣圓角。";
 "On-device transcription is not available for %@." = "%@ 不支援裝置端轉錄。";
 "Only available for AI-generated media" = "僅適用於 AI 產生的媒體";
+"Only completed MP4 or MOV exports can be published." = "只能發布已完成的 MP4 或 MOV 匯出。";
 "Opacity" = "不透明度";
 "Open" = "打開";
 "Open %@" = "打開 %@";
@@ -649,10 +665,16 @@
 "Presence" = "臨場感";
 "Press M in the timeline to add a marker." = "在時間軸上按 M 可加入標記。";
 "Preview" = "預覽";
+"Processing is billed by the backend. The estimate appears once processing starts." = "處理費用由後端計費。處理開始後會顯示預估費用。";
+"Processing…" = "處理中…";
+"Processing… Estimated %@ %@" = "處理中… 預估：%@ %@";
 "Project" = "專案";
 "Project Settings" = "專案設定";
 "Projects Couldn’t Be Deleted" = "無法刪除專案";
 "Prompt" = "提示詞";
+"Publish" = "發佈";
+"Published" = "已發佈";
+"Publish…" = "發佈…";
 "Put the subject on a new background" = "將主體放到新背景上";
 "Quality" = "品質";
 "Queued" = "已排隊";
@@ -661,6 +683,8 @@
 "Range" = "範圍";
 "Razor (C)" = "剃刀 (C)";
 "Razor Tool" = "剃刀工具";
+"Ready" = "就緒";
+"Ready, %lld failed" = "就緒，%lld 個失敗";
 "Reasoning effort" = "推理強度";
 "Recolor" = "重新著色";
 "Redetect Beats" = "重新偵測節拍";
@@ -851,6 +875,9 @@
 "System appearance" = "系統外觀";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "截取預覽畫面並將其用作產生參考。這對建立 AI 轉場尤其有用。";
 "Target Language" = "目標語言";
+"Teaser" = "預告片";
+"Teasers aren't available." = "預告片無法使用。";
+"Teasers must be %lld–%lld seconds." = "預告片須為 %lld–%lld 秒。";
 "Temperature" = "色溫";
 "Temporary files" = "臨時檔案";
 "Test Connection" = "測試連線";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "要加入的片段與目前專案的設定不同。";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "已連線的後端不提供此編輯。請打開「設定 → 後端」。";
 "The export" = "匯出任務";
+"The export file can't be read." = "無法讀取匯出檔案。";
+"The export is %@; publishing accepts up to %@." = "匯出檔案大小為 %@；發布最多接受 %@。";
 "The file is larger than %@." = "檔案大於 %@。";
 "The image is larger than %lld pixels in total." = "影像總像素數超過 %lld。";
 "The image size isn't known yet. Try again in a moment." = "尚不知道影像尺寸。請稍後再試。";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "工作已結束，但沒有結果。";
 "The marker comment changed while you were editing. Review it and try again." = "你編輯時標記註解已更改。請查看後重試。";
 "The project will be moved to the Trash." = "專案將被移到垃圾桶。";
+"The publication no longer exists." = "此發布已不存在。";
 "The selected model refused this request. Revise the prompt and try again." = "所選模型拒絕了此請求。請修改提示詞後重試。";
 "The selected projects will be moved to the Trash." = "所選專案將被移到垃圾桶。";
 "The source file is missing." = "找不到來源檔案。";
+"The teaser must be shorter than the video." = "預告片必須短於影片。";
 "The timeline settings changed. Close this sheet and try again." = "時間軸設定已更改。請關閉此表單後重試。";
+"The upload didn't finish. Publish the export again." = "上傳未完成。請再次發布匯出。";
 "Theme" = "主題";
 "This build includes no skills." = "此版本不包含任何技能。";
 "This edit works on images only." = "此編輯僅適用於影像。";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "此模型無法將輸出限制為 60 FPS。";
 "This permanently removes %@." = "這將永久移除 %@。";
 "This source can’t replace the clip." = "此來源媒體無法替換該片段。";
+"This video was unpublished." = "此影片已取消發布。";
 "Three-Stack" = "三疊";
 "Three-Up" = "三畫面";
 "Threshold" = "臨界值";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "還原 (⌘Z)";
 "Ungroup Multicam" = "取消多機位分組";
 "Unlink" = "取消連結";
+"Unpublish" = "取消發佈";
+"Unpublish this video?" = "要取消發佈此影片嗎？";
+"Unpublished" = "已取消發佈";
 "Untitled" = "未命名";
 "Update" = "更新";
 "Update available" = "有可用更新";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "預設使用整個時間軸。在時間軸上標記範圍可僅為該區段配樂。";
 "Version" = "版本";
 "Vertical" = "垂直";
+"Vertical aspect %@ isn't supported." = "不支援直式長寬比 %@。";
+"Vertical cut" = "直式版本";
 "Vertical workspace layout" = "垂直工作區配置";
 "Vibrance" = "自然飽和度";
 "Video" = "影片";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "人聲清理模型不可用";
 "Voice Cleanup requires audio or video" = "人聲清理需要音訊或影片";
 "Volume" = "音量";
+"Wait for the current upload or processing to finish." = "請等待目前的上傳或處理完成。";
 "Warmth" = "色溫";
 "Welcome to Lenora" = "歡迎使用 Lenora";
 "What's New in v%@" = "v%@ 新功能";

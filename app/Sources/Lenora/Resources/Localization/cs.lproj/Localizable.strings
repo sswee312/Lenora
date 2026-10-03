@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "V Lenora je připraveno %lld obrázků.";
 "%lld items" = "%lld položek";
 "%lld media files are missing and will be skipped." = "Chybí %lld mediálních souborů, budou přeskočeny.";
+"%lld seconds" = "%lld s";
 "%lld selected" = "Vybráno: %lld";
 "%lld subtitle files are ready in Lenora." = "V Lenora je připraveno %lld souborů titulků.";
 "%lld text clips are ready in Lenora." = "V Lenora je připraveno %lld textových klipů.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Bezpečná zóna akce";
 "Adapters" = "Adaptéry";
 "Add Marker (M)" = "Přidat značku (M)";
+"Add Outputs" = "Přidat výstupy";
+"Add Outputs…" = "Přidat výstupy…";
 "Add Range to Chat" = "Přidat rozsah do chatu";
 "Add Text" = "Přidat text";
 "Add a comment" = "Přidat komentář";
@@ -74,12 +77,14 @@
 "All" = "Vše";
 "All Statuses" = "Všechny stavy";
 "All fonts" = "Všechna písma";
+"Always includes a stream, a download link and a poster." = "Vždy obsahuje stream, odkaz ke stažení a plakát.";
 "Amount" = "Částka";
 "Analyzing media so you can search it." = "Média se analyzují, abyste v nich mohli hledat.";
 "Angle" = "Úhel";
 "Animate" = "Animovat";
 "Animation" = "Animace";
 "Anthropic API Key" = "API klíč Anthropic";
+"Anyone with the link can watch." = "Video může sledovat každý, kdo má odkaz.";
 "Appearance" = "Vzhled";
 "Apply" = "Použít";
 "Ask anything, or start with:" = "Zeptejte se na cokoli, nebo začněte:";
@@ -188,6 +193,7 @@
 "Comments" = "Komentáře";
 "Compatibility: %@" = "Kompatibilita: %@";
 "Completed" = "Dokončeno";
+"Confirm that anyone with the link can watch." = "Potvrďte, že video může sledovat každý, kdo má odkaz.";
 "Connect an agent" = "Připojit Agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "Připojte externího Agenta pro prohlížení a úpravy otevřeného projektu Lenora.";
 "Connected" = "Připojeno";
@@ -197,7 +203,12 @@
 "Contrast" = "Kontrast";
 "Copied" = "Zkopírováno";
 "Copy" = "Kopírovat";
+"Copy Link" = "Kopírovat odkaz";
 "Copy Path" = "Kopírovat cestu";
+"Copy Poster Link" = "Kopírovat odkaz na plakát";
+"Copy Stream Link" = "Kopírovat odkaz na stream";
+"Copy Teaser Link" = "Kopírovat odkaz na upoutávku";
+"Copy Vertical Cut Link" = "Kopírovat odkaz na svislou verzi";
 "Copy message" = "Kopírovat zprávu";
 "Copy one clip of the same type and try again." = "Zkopírujte jeden klip stejného typu a zkuste to znovu.";
 "Copy prompt" = "Kopírovat prompt";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "Přejít do režimu na celou obrazovku";
 "Erase an object from the image" = "Vymazat objekt z obrázku";
 "Every connected agent will need the new token." = "Každý připojený agent bude potřebovat nový token.";
+"Every link stops working. This can't be undone." = "Všechny odkazy přestanou fungovat. Tuto akci nelze vrátit zpět.";
 "Exclusion" = "Vyloučení";
 "Expand" = "Rozbalit";
 "Export" = "Exportovat";
@@ -338,6 +350,7 @@
 "Fade In" = "Zesílení";
 "Fade Out" = "Zeslabení";
 "Failed" = "Selhalo";
+"Failed: %@" = "Selhalo: %@";
 "Feather" = "Prolnutí okraje";
 "Featured" = "Doporučené";
 "File" = "Soubor";
@@ -567,6 +580,7 @@
 "No audio" = "Žádné audio";
 "No audio selected." = "Není vybráno žádné audio.";
 "No beats detected." = "Nebyly zjištěny žádné doby.";
+"No connected backend can publish video." = "Žádný připojený backend neumí publikovat video.";
 "No conversations yet" = "Zatím žádné konverzace";
 "No exports yet" = "Zatím žádné exporty";
 "No images" = "Žádné obrázky";
@@ -591,6 +605,7 @@
 "Normal" = "Normální";
 "Not selected" = "Nevybráno";
 "Not synced — unusable as an angle." = "Nesynchronizováno — nelze použít jako úhel.";
+"Nothing new to add." = "Není co přidat.";
 "Notifications" = "Oznámení";
 "OK" = "OK";
 "Object to recolor" = "Objekt k přebarvení";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Starší výměnný formát, vhodný jako cíl pro Premiere Pro. Podporuje základní střihy a klíčové snímky, ale ne text, barvu, efekty, měkkost okraje ani zaoblení okraje.";
 "On-device transcription is not available for %@." = "Přepis v zařízení není pro %@ k dispozici.";
 "Only available for AI-generated media" = "Dostupné jen pro média vygenerovaná AI";
+"Only completed MP4 or MOV exports can be published." = "Publikovat lze pouze dokončené exporty MP4 nebo MOV.";
 "Opacity" = "Krytí";
 "Open" = "Otevřít";
 "Open %@" = "Otevřít %@";
@@ -649,10 +665,16 @@
 "Presence" = "Přítomnost";
 "Press M in the timeline to add a marker." = "Stiskněte M na časové ose pro přidání značky.";
 "Preview" = "Náhled";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Zpracování účtuje backend. Odhad se zobrazí po zahájení zpracování.";
+"Processing…" = "Zpracování…";
+"Processing… Estimated %@ %@" = "Zpracování… Odhad: %@ %@";
 "Project" = "Projekt";
 "Project Settings" = "Nastavení projektu";
 "Projects Couldn’t Be Deleted" = "Projekty se nepodařilo smazat";
 "Prompt" = "Prompt";
+"Publish" = "Publikovat";
+"Published" = "Publikováno";
+"Publish…" = "Publikovat…";
 "Put the subject on a new background" = "Umístit objekt na nové pozadí";
 "Quality" = "Kvalita";
 "Queued" = "Ve frontě";
@@ -661,6 +683,8 @@
 "Range" = "Rozsah";
 "Razor (C)" = "Břitva (C)";
 "Razor Tool" = "Nástroj břitva";
+"Ready" = "Připraveno";
+"Ready, %lld failed" = "Připraveno, %lld selhalo";
 "Reasoning effort" = "Úsilí uvažování";
 "Recolor" = "Přebarvit";
 "Redetect Beats" = "Znovu detekovat doby";
@@ -851,6 +875,9 @@
 "System appearance" = "Vzhled systému";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Pořiďte snímek náhledu a použijte ho jako referenci pro generování. Hodí se zejména pro AI přechody.";
 "Target Language" = "Cílový jazyk";
+"Teaser" = "Upoutávka";
+"Teasers aren't available." = "Upoutávky nejsou k dispozici.";
+"Teasers must be %lld–%lld seconds." = "Upoutávka musí trvat %lld–%lld sekund.";
 "Temperature" = "Teplota";
 "Temporary files" = "Dočasné soubory";
 "Test Connection" = "Otestovat připojení";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "Klip, který přidáváte, má jiné nastavení než aktuální projekt.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Připojený backend tuto úpravu nenabízí. Otevřete Nastavení → Backend.";
 "The export" = "Export";
+"The export file can't be read." = "Soubor exportu nelze přečíst.";
+"The export is %@; publishing accepts up to %@." = "Export má %@; publikování přijímá nejvýše %@.";
 "The file is larger than %@." = "Soubor je větší než %@.";
 "The image is larger than %lld pixels in total." = "Obrázek má celkem více než %lld pixelů.";
 "The image size isn't known yet. Try again in a moment." = "Velikost obrázku zatím není známa. Zkuste to za chvíli znovu.";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "Úloha skončila bez výsledku.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentář značky se během úprav změnil. Zkontrolujte ho a zkuste to znovu.";
 "The project will be moved to the Trash." = "Projekt bude přesunut do Koše.";
+"The publication no longer exists." = "Publikace již neexistuje.";
 "The selected model refused this request. Revise the prompt and try again." = "Vybraný model tento požadavek odmítl. Upravte prompt a zkuste to znovu.";
 "The selected projects will be moved to the Trash." = "Vybrané projekty budou přesunuty do Koše.";
 "The source file is missing." = "Zdrojový soubor chybí.";
+"The teaser must be shorter than the video." = "Upoutávka musí být kratší než video.";
 "The timeline settings changed. Close this sheet and try again." = "Nastavení časové osy se změnilo. Zavřete tento list a zkuste to znovu.";
+"The upload didn't finish. Publish the export again." = "Nahrávání nebylo dokončeno. Publikujte export znovu.";
 "Theme" = "Motiv";
 "This build includes no skills." = "Toto sestavení neobsahuje žádné dovednosti.";
 "This edit works on images only." = "Tato úprava funguje jen u obrázků.";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "Tento model nemůže omezit výstup na 60 FPS.";
 "This permanently removes %@." = "Tímto se trvale odebere %@.";
 "This source can’t replace the clip." = "Tento zdroj nemůže klip nahradit.";
+"This video was unpublished." = "Publikování tohoto videa bylo zrušeno.";
 "Three-Stack" = "Tři pod sebou";
 "Three-Up" = "Tři vedle sebe";
 "Threshold" = "Práh";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "Zpět (⌘Z)";
 "Ungroup Multicam" = "Zrušit seskupení multicam";
 "Unlink" = "Odpojit";
+"Unpublish" = "Zrušit publikování";
+"Unpublish this video?" = "Zrušit publikování tohoto videa?";
+"Unpublished" = "Publikování zrušeno";
 "Untitled" = "Bez názvu";
 "Update" = "Aktualizovat";
 "Update available" = "Aktualizace k dispozici";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Ve výchozím stavu použije celou časovou osu. Označte rozsah na časové ose, chcete-li zhudebnit jen ten úsek.";
 "Version" = "Verze";
 "Vertical" = "Svisle";
+"Vertical aspect %@ isn't supported." = "Svislý poměr stran %@ není podporován.";
+"Vertical cut" = "Svislá verze";
 "Vertical workspace layout" = "Svislé rozložení pracovního prostoru";
 "Vibrance" = "Živost";
 "Video" = "Video";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "Model čištění hlasu není k dispozici";
 "Voice Cleanup requires audio or video" = "Čištění hlasu vyžaduje audio nebo video";
 "Volume" = "Hlasitost";
+"Wait for the current upload or processing to finish." = "Počkejte na dokončení probíhajícího nahrávání nebo zpracování.";
 "Warmth" = "Teplo";
 "Welcome to Lenora" = "Vítejte v Lenora";
 "What's New in v%@" = "Novinky ve verzi %@";

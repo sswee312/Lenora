@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lldটি ইমেজ Lenora-তে প্রস্তুত।";
 "%lld items" = "%lldটি আইটেম";
 "%lld media files are missing and will be skipped." = "%lldটি মিডিয়া ফাইল নেই এবং সেগুলো এড়িয়ে যাওয়া হবে।";
+"%lld seconds" = "%lld সেকেন্ড";
 "%lld selected" = "%lldটি সিলেক্ট করা হয়েছে";
 "%lld subtitle files are ready in Lenora." = "%lldটি সাবটাইটেল ফাইল Lenora-তে প্রস্তুত।";
 "%lld text clips are ready in Lenora." = "%lldটি টেক্সট ক্লিপ Lenora-তে প্রস্তুত।";
@@ -44,6 +45,8 @@
 "Action Safe" = "অ্যাকশন সেফ";
 "Adapters" = "অ্যাডাপ্টার";
 "Add Marker (M)" = "মার্কার যোগ করুন (M)";
+"Add Outputs" = "আউটপুট যোগ করুন";
+"Add Outputs…" = "আউটপুট যোগ করুন…";
 "Add Range to Chat" = "চ্যাটে রেঞ্জ যোগ করুন";
 "Add Text" = "টেক্সট যোগ করুন";
 "Add a comment" = "কমেন্ট যোগ করুন";
@@ -74,12 +77,14 @@
 "All" = "সব";
 "All Statuses" = "সব স্ট্যাটাস";
 "All fonts" = "সব ফন্ট";
+"Always includes a stream, a download link and a poster." = "সবসময় একটি স্ট্রিম, একটি ডাউনলোড লিংক এবং একটি পোস্টার থাকে।";
 "Amount" = "পরিমাণ";
 "Analyzing media so you can search it." = "সার্চ করার সুবিধার জন্য মিডিয়া বিশ্লেষণ করা হচ্ছে।";
 "Angle" = "অ্যাঙ্গেল";
 "Animate" = "অ্যানিমেট";
 "Animation" = "অ্যানিমেশন";
 "Anthropic API Key" = "Anthropic API কী";
+"Anyone with the link can watch." = "লিংক থাকা যে কেউ দেখতে পারবেন।";
 "Appearance" = "অ্যাপিয়ারেন্স";
 "Apply" = "প্রয়োগ করুন";
 "Ask anything, or start with:" = "যেকোনো কিছু জিজ্ঞাসা করুন অথবা এটি দিয়ে শুরু করুন:";
@@ -188,6 +193,7 @@
 "Comments" = "কমেন্ট";
 "Compatibility: %@" = "কম্প্যাটিবিলিটি: %@";
 "Completed" = "সম্পন্ন";
+"Confirm that anyone with the link can watch." = "নিশ্চিত করুন যে লিংকধারী যে কেউ ভিডিওটি দেখতে পারবেন।";
 "Connect an agent" = "একটি এজেন্ট কানেক্ট করুন";
 "Connect an external agent to inspect and edit the open Lenora project." = "খোলা Lenora প্রজেক্ট পর্যালোচনা ও এডিট করতে একটি এক্সটার্নাল এজেন্ট কানেক্ট করুন।";
 "Connected" = "কানেক্টেড";
@@ -197,7 +203,12 @@
 "Contrast" = "কনট্রাস্ট";
 "Copied" = "কপি হয়েছে";
 "Copy" = "কপি করুন";
+"Copy Link" = "লিংক কপি করুন";
 "Copy Path" = "পাথ কপি করুন";
+"Copy Poster Link" = "পোস্টার লিংক কপি করুন";
+"Copy Stream Link" = "স্ট্রিম লিংক কপি করুন";
+"Copy Teaser Link" = "টিজার লিংক কপি করুন";
+"Copy Vertical Cut Link" = "ভার্টিক্যাল কাটের লিংক কপি করুন";
 "Copy message" = "মেসেজ কপি করুন";
 "Copy one clip of the same type and try again." = "একই ধরনের একটি ক্লিপ কপি করে আবার চেষ্টা করুন।";
 "Copy prompt" = "প্রম্পট কপি করুন";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "ফুল স্ক্রিনে যান";
 "Erase an object from the image" = "ছবি থেকে একটি বস্তু মুছুন";
 "Every connected agent will need the new token." = "সংযুক্ত প্রতিটি এজেন্টের নতুন টোকেন লাগবে।";
+"Every link stops working. This can't be undone." = "সব লিংক কাজ করা বন্ধ করবে। এটি পূর্বাবস্থায় ফেরানো যাবে না।";
 "Exclusion" = "এক্সক্লুশন";
 "Expand" = "প্রসারিত করুন";
 "Export" = "এক্সপোর্ট";
@@ -338,6 +350,7 @@
 "Fade In" = "ফেড ইন";
 "Fade Out" = "ফেড আউট";
 "Failed" = "ব্যর্থ";
+"Failed: %@" = "ব্যর্থ: %@";
 "Feather" = "ফেদার";
 "Featured" = "ফিচার্ড";
 "File" = "ফাইল";
@@ -567,6 +580,7 @@
 "No audio" = "কোনো অডিও নেই";
 "No audio selected." = "কোনো অডিও সিলেক্ট করা হয়নি।";
 "No beats detected." = "কোনো বিট শনাক্ত হয়নি।";
+"No connected backend can publish video." = "কোনো সংযুক্ত ব্যাকএন্ড ভিডিও প্রকাশ করতে পারে না।";
 "No conversations yet" = "এখনও কোনো কথোপকথন নেই";
 "No exports yet" = "এখনও কোনো এক্সপোর্ট নেই";
 "No images" = "কোনো ইমেজ নেই";
@@ -591,6 +605,7 @@
 "Normal" = "নরমাল";
 "Not selected" = "সিলেক্ট করা হয়নি";
 "Not synced — unusable as an angle." = "সিঙ্ক করা নেই — অ্যাঙ্গেল হিসেবে ব্যবহার করা যাবে না।";
+"Nothing new to add." = "যোগ করার মতো নতুন কিছু নেই।";
 "Notifications" = "নোটিফিকেশন";
 "OK" = "ঠিক আছে";
 "Object to recolor" = "যে বস্তুর রং বদলাবেন";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "গন্তব্য Premiere Pro হলে উপযোগী পুরোনো ইন্টারচেঞ্জ ফরম্যাট। বেসিক এডিট ও কিফ্রেম সাপোর্ট করে; তবে টেক্সট, কালার, ইফেক্ট, এজ সফটনেস বা এজ রাউন্ডিং সাপোর্ট করে না।";
 "On-device transcription is not available for %@." = "%@-এর জন্য অন-ডিভাইস ট্রান্সক্রিপশন পাওয়া যাচ্ছে না।";
 "Only available for AI-generated media" = "শুধু AI দিয়ে জেনারেট করা মিডিয়ার জন্য উপলভ্য";
+"Only completed MP4 or MOV exports can be published." = "শুধু সম্পন্ন হওয়া MP4 বা MOV এক্সপোর্ট প্রকাশ করা যায়।";
 "Opacity" = "ওপাসিটি";
 "Open" = "খুলুন";
 "Open %@" = "%@ খুলুন";
@@ -649,10 +665,16 @@
 "Presence" = "প্রেজেন্স";
 "Press M in the timeline to add a marker." = "টাইমলাইনে মার্কার যোগ করতে M চাপুন।";
 "Preview" = "প্রিভিউ";
+"Processing is billed by the backend. The estimate appears once processing starts." = "প্রসেসিংয়ের বিল ব্যাকএন্ড করে। প্রসেসিং শুরু হলে আনুমানিক খরচ দেখানো হয়।";
+"Processing…" = "প্রসেস হচ্ছে…";
+"Processing… Estimated %@ %@" = "প্রসেস হচ্ছে… আনুমানিক: %@ %@";
 "Project" = "প্রজেক্ট";
 "Project Settings" = "প্রজেক্ট সেটিংস";
 "Projects Couldn’t Be Deleted" = "প্রজেক্ট ডিলিট করা যায়নি";
 "Prompt" = "প্রম্পট";
+"Publish" = "প্রকাশ করুন";
+"Published" = "প্রকাশিত";
+"Publish…" = "প্রকাশ করুন…";
 "Put the subject on a new background" = "বিষয়বস্তুকে নতুন পটভূমিতে রাখুন";
 "Quality" = "কোয়ালিটি";
 "Queued" = "কিউতে আছে";
@@ -661,6 +683,8 @@
 "Range" = "রেঞ্জ";
 "Razor (C)" = "রেজর (C)";
 "Razor Tool" = "রেজর টুল";
+"Ready" = "প্রস্তুত";
+"Ready, %lld failed" = "প্রস্তুত, %lld ব্যর্থ";
 "Reasoning effort" = "রিজনিং এফর্ট";
 "Recolor" = "পুনরায় রং করুন";
 "Redetect Beats" = "বিট আবার শনাক্ত করুন";
@@ -851,6 +875,9 @@
 "System appearance" = "সিস্টেম অ্যাপিয়ারেন্স";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "প্রিভিউয়ের স্ক্রিনশট নিয়ে জেনারেশনের রেফারেন্স হিসেবে ব্যবহার করুন। AI ট্রানজিশন তৈরিতে বিশেষভাবে কাজে লাগে।";
 "Target Language" = "টার্গেট ভাষা";
+"Teaser" = "টিজার";
+"Teasers aren't available." = "টিজার উপলব্ধ নেই।";
+"Teasers must be %lld–%lld seconds." = "টিজার %lld–%lld সেকেন্ডের হতে হবে।";
 "Temperature" = "টেম্পারেচার";
 "Temporary files" = "অস্থায়ী ফাইল";
 "Test Connection" = "কানেকশন টেস্ট করুন";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "আপনি যে ক্লিপ যোগ করছেন তার সেটিংস বর্তমান প্রজেক্ট থেকে আলাদা।";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "সংযুক্ত ব্যাকএন্ড এই সম্পাদনা সরবরাহ করে না। সেটিংস → ব্যাকএন্ড খুলুন।";
 "The export" = "এক্সপোর্টটি";
+"The export file can't be read." = "এক্সপোর্ট ফাইলটি পড়া যাচ্ছে না।";
+"The export is %@; publishing accepts up to %@." = "এক্সপোর্টটি %@; প্রকাশে সর্বোচ্চ %@ গ্রহণযোগ্য।";
 "The file is larger than %@." = "ফাইলটি %@-এর চেয়ে বড়।";
 "The image is larger than %lld pixels in total." = "ছবিটি মোট %lld পিক্সেলের চেয়ে বড়।";
 "The image size isn't known yet. Try again in a moment." = "ছবির আকার এখনও জানা নেই। একটু পরে আবার চেষ্টা করুন।";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "কাজটি কোনো ফলাফল ছাড়াই শেষ হয়েছে।";
 "The marker comment changed while you were editing. Review it and try again." = "এডিট করার সময় মার্কার কমেন্ট বদলেছে। রিভিউ করে আবার চেষ্টা করুন।";
 "The project will be moved to the Trash." = "প্রজেক্টটি ট্র্যাশে সরানো হবে।";
+"The publication no longer exists." = "এই প্রকাশনা আর নেই।";
 "The selected model refused this request. Revise the prompt and try again." = "সিলেক্ট করা মডেল এই অনুরোধ প্রত্যাখ্যান করেছে। প্রম্পট সংশোধন করে আবার চেষ্টা করুন।";
 "The selected projects will be moved to the Trash." = "সিলেক্ট করা প্রজেক্টগুলো ট্র্যাশে সরানো হবে।";
 "The source file is missing." = "সোর্স ফাইলটি পাওয়া যাচ্ছে না।";
+"The teaser must be shorter than the video." = "টিজার ভিডিওর চেয়ে ছোট হতে হবে।";
 "The timeline settings changed. Close this sheet and try again." = "টাইমলাইন সেটিংস বদলেছে। এই শিট বন্ধ করে আবার চেষ্টা করুন।";
+"The upload didn't finish. Publish the export again." = "আপলোড সম্পন্ন হয়নি। এক্সপোর্ট আবার প্রকাশ করুন।";
 "Theme" = "থিম";
 "This build includes no skills." = "এই বিল্ডে কোনো স্কিল অন্তর্ভুক্ত নেই।";
 "This edit works on images only." = "এই সম্পাদনা শুধু ছবিতে কাজ করে।";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "এই মডেল আউটপুট 60 FPS-এ সীমাবদ্ধ করতে পারে না।";
 "This permanently removes %@." = "এটি %@ স্থায়ীভাবে সরিয়ে দেয়।";
 "This source can’t replace the clip." = "এই সোর্স দিয়ে ক্লিপ বদলানো যাচ্ছে না।";
+"This video was unpublished." = "এই ভিডিওর প্রকাশ প্রত্যাহার করা হয়েছে।";
 "Three-Stack" = "থ্রি-স্ট্যাক";
 "Three-Up" = "থ্রি-আপ";
 "Threshold" = "থ্রেশহোল্ড";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "আনডু (⌘Z)";
 "Ungroup Multicam" = "মাল্টিক্যাম আনগ্রুপ করুন";
 "Unlink" = "আনলিঙ্ক";
+"Unpublish" = "প্রকাশ বাতিল করুন";
+"Unpublish this video?" = "এই ভিডিওর প্রকাশ বাতিল করবেন?";
+"Unpublished" = "প্রকাশ বাতিল হয়েছে";
 "Untitled" = "শিরোনামহীন";
 "Update" = "আপডেট";
 "Update available" = "আপডেট পাওয়া যাচ্ছে";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "ডিফল্টভাবে পুরো টাইমলাইন ব্যবহার করে। শুধু একটি অংশে মিউজিক দিতে টাইমলাইনে রেঞ্জ মার্ক করুন।";
 "Version" = "ভার্সন";
 "Vertical" = "ভার্টিক্যাল";
+"Vertical aspect %@ isn't supported." = "উল্লম্ব অনুপাত %@ সমর্থিত নয়।";
+"Vertical cut" = "ভার্টিক্যাল কাট";
 "Vertical workspace layout" = "ভার্টিক্যাল ওয়ার্কস্পেস লেআউট";
 "Vibrance" = "ভাইব্রেন্স";
 "Video" = "ভিডিও";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "ভয়েস ক্লিনআপ মডেল পাওয়া যাচ্ছে না";
 "Voice Cleanup requires audio or video" = "ভয়েস ক্লিনআপের জন্য অডিও বা ভিডিও প্রয়োজন";
 "Volume" = "ভলিউম";
+"Wait for the current upload or processing to finish." = "বর্তমান আপলোড বা প্রক্রিয়াকরণ শেষ হওয়া পর্যন্ত অপেক্ষা করুন।";
 "Warmth" = "ওয়ার্মথ";
 "Welcome to Lenora" = "Lenora-তে স্বাগতম";
 "What's New in v%@" = "v%@-তে নতুন কী";

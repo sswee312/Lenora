@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld gambar siap di Lenora.";
 "%lld items" = "%lld item";
 "%lld media files are missing and will be skipped." = "%lld file media hilang dan akan dilewati.";
+"%lld seconds" = "%lld detik";
 "%lld selected" = "%lld dipilih";
 "%lld subtitle files are ready in Lenora." = "%lld file subtitle siap di Lenora.";
 "%lld text clips are ready in Lenora." = "%lld klip teks siap di Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Zona Aman Aksi";
 "Adapters" = "Adapter";
 "Add Marker (M)" = "Tambahkan Penanda (M)";
+"Add Outputs" = "Tambah keluaran";
+"Add Outputs…" = "Tambah keluaran…";
 "Add Range to Chat" = "Tambahkan Rentang ke Chat";
 "Add Text" = "Tambahkan Teks";
 "Add a comment" = "Tambahkan komentar";
@@ -74,12 +77,14 @@
 "All" = "Semua";
 "All Statuses" = "Semua Status";
 "All fonts" = "Semua font";
+"Always includes a stream, a download link and a poster." = "Selalu menyertakan stream, tautan unduhan, dan poster.";
 "Amount" = "Jumlah";
 "Analyzing media so you can search it." = "Menganalisis media agar Anda dapat mencarinya.";
 "Angle" = "Sudut";
 "Animate" = "Animasikan";
 "Animation" = "Animasi";
 "Anthropic API Key" = "Kunci API Anthropic";
+"Anyone with the link can watch." = "Siapa pun yang memiliki tautan dapat menonton.";
 "Appearance" = "Tampilan";
 "Apply" = "Terapkan";
 "Ask anything, or start with:" = "Ajukan pertanyaan, atau mulai dengan:";
@@ -188,6 +193,7 @@
 "Comments" = "Komentar";
 "Compatibility: %@" = "Kompatibilitas: %@";
 "Completed" = "Selesai";
+"Confirm that anyone with the link can watch." = "Konfirmasi bahwa siapa pun yang memiliki tautan dapat menonton.";
 "Connect an agent" = "Hubungkan Agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "Hubungkan Agent eksternal untuk memeriksa dan mengedit proyek Lenora yang terbuka.";
 "Connected" = "Terhubung";
@@ -197,7 +203,12 @@
 "Contrast" = "Kontras";
 "Copied" = "Disalin";
 "Copy" = "Salin";
+"Copy Link" = "Salin tautan";
 "Copy Path" = "Salin Jalur";
+"Copy Poster Link" = "Salin tautan poster";
+"Copy Stream Link" = "Salin tautan stream";
+"Copy Teaser Link" = "Salin tautan teaser";
+"Copy Vertical Cut Link" = "Salin tautan potongan vertikal";
 "Copy message" = "Salin pesan";
 "Copy one clip of the same type and try again." = "Salin satu klip dengan jenis yang sama, lalu coba lagi.";
 "Copy prompt" = "Salin prompt";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "Masuk ke Layar Penuh";
 "Erase an object from the image" = "Hapus objek dari gambar";
 "Every connected agent will need the new token." = "Setiap agent yang terhubung memerlukan token baru.";
+"Every link stops working. This can't be undone." = "Semua tautan berhenti berfungsi. Tindakan ini tidak dapat dibatalkan.";
 "Exclusion" = "Exclusion";
 "Expand" = "Perluas";
 "Export" = "Ekspor";
@@ -338,6 +350,7 @@
 "Fade In" = "Pudar Masuk";
 "Fade Out" = "Pudar Keluar";
 "Failed" = "Gagal";
+"Failed: %@" = "Gagal: %@";
 "Feather" = "Feather";
 "Featured" = "Unggulan";
 "File" = "File";
@@ -567,6 +580,7 @@
 "No audio" = "Tidak ada audio";
 "No audio selected." = "Tidak ada audio yang dipilih.";
 "No beats detected." = "Tidak ada ketukan terdeteksi.";
+"No connected backend can publish video." = "Tidak ada backend terhubung yang dapat memublikasikan video.";
 "No conversations yet" = "Belum ada percakapan";
 "No exports yet" = "Belum ada ekspor";
 "No images" = "Tidak ada gambar";
@@ -591,6 +605,7 @@
 "Normal" = "Normal";
 "Not selected" = "Tidak dipilih";
 "Not synced — unusable as an angle." = "Tidak tersinkronisasi — tidak dapat digunakan sebagai sudut.";
+"Nothing new to add." = "Tidak ada yang baru untuk ditambahkan.";
 "Notifications" = "Pemberitahuan";
 "OK" = "OK";
 "Object to recolor" = "Objek yang diwarnai ulang";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Format pertukaran yang lebih lama, paling sesuai jika Premiere Pro adalah tujuan. Mendukung edit dasar dan keyframe, tetapi tidak teks, warna, efek, kelembutan tepi, atau pembulatan tepi.";
 "On-device transcription is not available for %@." = "Transkripsi di perangkat tidak tersedia untuk %@.";
 "Only available for AI-generated media" = "Hanya tersedia untuk media yang dihasilkan AI";
+"Only completed MP4 or MOV exports can be published." = "Hanya ekspor MP4 atau MOV yang selesai yang dapat dipublikasikan.";
 "Opacity" = "Opasitas";
 "Open" = "Buka";
 "Open %@" = "Buka %@";
@@ -649,10 +665,16 @@
 "Presence" = "Kehadiran";
 "Press M in the timeline to add a marker." = "Tekan M di linimasa untuk menambahkan penanda.";
 "Preview" = "Pratinjau";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Pemrosesan ditagih oleh backend. Perkiraan muncul setelah pemrosesan dimulai.";
+"Processing…" = "Memproses…";
+"Processing… Estimated %@ %@" = "Memproses… Perkiraan: %@ %@";
 "Project" = "Proyek";
 "Project Settings" = "Pengaturan Proyek";
 "Projects Couldn’t Be Deleted" = "Proyek Tidak Dapat Dihapus";
 "Prompt" = "Prompt";
+"Publish" = "Publikasikan";
+"Published" = "Dipublikasikan";
+"Publish…" = "Publikasikan…";
 "Put the subject on a new background" = "Tempatkan subjek di latar baru";
 "Quality" = "Kualitas";
 "Queued" = "Dalam antrean";
@@ -661,6 +683,8 @@
 "Range" = "Rentang";
 "Razor (C)" = "Pisau (C)";
 "Razor Tool" = "Alat Pisau";
+"Ready" = "Siap";
+"Ready, %lld failed" = "Siap, %lld gagal";
 "Reasoning effort" = "Tingkat penalaran";
 "Recolor" = "Warnai Ulang";
 "Redetect Beats" = "Deteksi Ulang Ketukan";
@@ -851,6 +875,9 @@
 "System appearance" = "Tampilan sistem";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Ambil tangkapan layar pratinjau dan gunakan sebagai referensi untuk generasi. Berguna untuk membuat transisi AI.";
 "Target Language" = "Bahasa Target";
+"Teaser" = "Teaser";
+"Teasers aren't available." = "Teaser tidak tersedia.";
+"Teasers must be %lld–%lld seconds." = "Teaser harus berdurasi %lld–%lld detik.";
 "Temperature" = "Suhu";
 "Temporary files" = "File sementara";
 "Test Connection" = "Uji Koneksi";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "Klip yang Anda tambahkan memiliki pengaturan berbeda dari proyek saat ini.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Backend yang terhubung tidak menyediakan pengeditan ini. Buka Pengaturan → Backend.";
 "The export" = "Ekspor";
+"The export file can't be read." = "File ekspor tidak dapat dibaca.";
+"The export is %@; publishing accepts up to %@." = "Ukuran ekspor %@; publikasi menerima hingga %@.";
 "The file is larger than %@." = "File lebih besar dari %@.";
 "The image is larger than %lld pixels in total." = "Gambar melebihi total %lld piksel.";
 "The image size isn't known yet. Try again in a moment." = "Ukuran gambar belum diketahui. Coba lagi sebentar lagi.";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "Tugas selesai tanpa hasil.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentar penanda berubah saat Anda mengedit. Tinjau dan coba lagi.";
 "The project will be moved to the Trash." = "Proyek akan dipindahkan ke Tong Sampah.";
+"The publication no longer exists." = "Publikasi tidak ada lagi.";
 "The selected model refused this request. Revise the prompt and try again." = "Model yang dipilih menolak permintaan ini. Revisi prompt dan coba lagi.";
 "The selected projects will be moved to the Trash." = "Proyek yang dipilih akan dipindahkan ke Tong Sampah.";
 "The source file is missing." = "File sumber tidak ditemukan.";
+"The teaser must be shorter than the video." = "Teaser harus lebih pendek dari video.";
 "The timeline settings changed. Close this sheet and try again." = "Pengaturan linimasa berubah. Tutup lembar ini dan coba lagi.";
+"The upload didn't finish. Publish the export again." = "Unggahan tidak selesai. Publikasikan ekspor lagi.";
 "Theme" = "Tema";
 "This build includes no skills." = "Build ini tidak menyertakan skill.";
 "This edit works on images only." = "Pengeditan ini hanya untuk gambar.";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "Model ini tidak dapat membatasi output pada 60 FPS.";
 "This permanently removes %@." = "Ini menghapus %@ secara permanen.";
 "This source can’t replace the clip." = "Sumber ini tidak dapat mengganti klip.";
+"This video was unpublished." = "Publikasi video ini telah dibatalkan.";
 "Three-Stack" = "Tiga Tumpuk";
 "Three-Up" = "Tiga Panel";
 "Threshold" = "Ambang";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "Urungkan (⌘Z)";
 "Ungroup Multicam" = "Lepaskan Kelompok Multicam";
 "Unlink" = "Lepaskan tautan";
+"Unpublish" = "Batalkan publikasi";
+"Unpublish this video?" = "Batalkan publikasi video ini?";
+"Unpublished" = "Publikasi dibatalkan";
 "Untitled" = "Tanpa judul";
 "Update" = "Perbarui";
 "Update available" = "Pembaruan tersedia";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Menggunakan seluruh linimasa secara default. Tandai rentang di linimasa untuk membuat skor musik hanya pada rentang itu.";
 "Version" = "Versi";
 "Vertical" = "Vertikal";
+"Vertical aspect %@ isn't supported." = "Rasio aspek vertikal %@ tidak didukung.";
+"Vertical cut" = "Potongan vertikal";
 "Vertical workspace layout" = "Tata letak ruang kerja vertikal";
 "Vibrance" = "Vibrance";
 "Video" = "Video";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "Model Pembersihan Suara tidak tersedia";
 "Voice Cleanup requires audio or video" = "Pembersihan Suara memerlukan audio atau video";
 "Volume" = "Volume";
+"Wait for the current upload or processing to finish." = "Tunggu hingga unggahan atau pemrosesan saat ini selesai.";
 "Warmth" = "Kehangatan";
 "Welcome to Lenora" = "Selamat datang di Lenora";
 "What's New in v%@" = "Yang Baru di v%@";

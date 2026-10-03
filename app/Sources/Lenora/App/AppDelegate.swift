@@ -66,6 +66,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 if !MLXRuntime.beginTermination() {
                     await MLXRuntime.waitUntilIdle()
                 }
+                projects.forEach { $0.editorViewModel.publishService.stopMonitoring() }
                 sender.reply(toApplicationShouldTerminate: true)
             } catch {
                 projects.forEach { $0.editorViewModel.projectPackageCoordinator.cancelClosing() }

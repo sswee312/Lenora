@@ -24,6 +24,8 @@ class Adapter(Protocol):
     async def status(self, job_id: str) -> JobState: ...
     async def cancel(self, job_id: str) -> JobState: ...
     # Optional: `async def health(self, recheck: bool) -> dict[str, Any] | None` adds adapter details to /v1/health.
+    # Optional: `async def start(self) -> None` runs once after loading, before the first request.
+    # Optional: `async def delete_asset(self, model: str, asset_ref: str) -> None` for models with `deletable`.
 
 
 class CancelNotSupported:
@@ -68,6 +70,14 @@ class Registry:
             adapters[adapter_cls.id] = adapter_cls(adapter_settings, http)
             statuses.append(AdapterStatus(adapter_cls.id, True, None, version))
         return cls(adapters, statuses)
+
+    async def start(self) -> None:
+        for adapter_id, adapter in self.adapters.items():
+            if start := getattr(adapter, "start", None):
+                try:
+                    await start()
+                except Exception:
+                    log.exception("adapter %s failed to start", adapter_id)
 
     # Models are read on every call: an adapter's offer can change at runtime (for example, a lapsed add-on).
     def models(self) -> list[ModelInfo]:

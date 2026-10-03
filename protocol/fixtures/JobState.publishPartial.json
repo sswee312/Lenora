@@ -1,0 +1,38 @@
+{
+  "jobId": "cloudinary:publish:eyJwIjoibGVub3JhLzZmMWMifQ.c2ln",
+  "status": "succeeded",
+  "results": [
+    {
+      "url": "https://res.cloudinary.com/demo/video/upload/s--AbCdEfGh--/sp_auto:maxres_1080p/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d.m3u8",
+      "contentType": "application/vnd.apple.mpegurl",
+      "fileExtension": "m3u8",
+      "role": "stream"
+    },
+    {
+      "url": "https://res.cloudinary.com/demo/video/upload/s--YzAbCdEf--/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d.mp4",
+      "contentType": "video/mp4",
+      "fileExtension": "mp4",
+      "role": "download"
+    },
+    {
+      "url": "https://res.cloudinary.com/demo/video/upload/s--IjKlMnOp--/so_auto/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d.jpg",
+      "contentType": "image/jpeg",
+      "fileExtension": "jpg",
+      "role": "poster"
+    },
+    {
+      "url": "https://res.cloudinary.com/demo/video/upload/s--QrStUvWx--/ar_9:16,c_fill,g_auto/lenora/6f1c2b9e-3d4a-4f5b-8c7d-9e0f1a2b3c4d.mp4",
+      "contentType": "video/mp4",
+      "fileExtension": "mp4",
+      "role": "vertical"
+    }
+  ],
+  "error": null,
+  "failedOutputs": [
+    {
+      "role": "teaser",
+      "code": "provider_error",
+      "message": "Timed out after 15 minutes."
+    }
+  ]
+}

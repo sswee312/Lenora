@@ -71,6 +71,7 @@ struct ExportView: View {
     @State private var submissionError: String?
     @State private var lenoraSummary: (collect: Int, missing: Int, bytes: Int64) = (0, 0, 0)
     @State private var selectedTimelineId: String?
+    @State private var publishTarget: PublishSheet.Target?
 
     private var exportTimeline: Timeline {
         selectedTimelineId.flatMap { editor.timeline(for: $0) } ?? editor.timeline
@@ -91,12 +92,21 @@ struct ExportView: View {
                 logHeader
                 Divider().opacity(AppTheme.Opacity.moderate)
                 exportLog
+                if editor.publishService.isAvailable, !editor.publishService.publications.isEmpty {
+                    Divider().opacity(AppTheme.Opacity.moderate)
+                    PublishedSection(onAddOutputs: { publishTarget = .publication($0) })
+                }
             }
             .frame(width: AppTheme.Export.logPaneWidth)
             .background(AppTheme.Background.raisedColor)
         }
         .frame(width: AppTheme.Export.sheetWidthWithLog, height: AppTheme.Export.sheetHeight)
         .appSheetBackground()
+        .sheet(item: $publishTarget) { target in
+            if let limits = editor.publishService.limits {
+                PublishSheet(target: target, limits: limits).environment(editor)
+            }
+        }
         .task {
             selectedTimelineId = editor.activeTimelineId
             let entries = editor.mediaManifest.entries
@@ -317,7 +327,7 @@ struct ExportView: View {
 
             Spacer()
 
-            exportIconButton("trash", help: L10n.string("Clear Finished")) {
+            ExportIconButton("trash", help: L10n.string("Clear Finished")) {
                 exportQueue.clearFinished(for: projectQueueID)
             }
             .disabled(!projectJobs.contains { $0.status.isFinished })
@@ -441,33 +451,23 @@ struct ExportView: View {
     private func exportAction(_ job: ExportJob) -> some View {
         switch job.status {
         case .waiting:
-            exportIconButton("xmark", help: L10n.string("Remove from Queue")) { exportQueue.cancel(job.id) }
+            ExportIconButton("xmark", help: L10n.string("Remove from Queue")) { exportQueue.cancel(job.id) }
         case .preparing, .exporting:
-            exportIconButton("stop.fill", help: L10n.string("Cancel Export")) { exportQueue.cancel(job.id) }
+            ExportIconButton("stop.fill", help: L10n.string("Cancel Export")) { exportQueue.cancel(job.id) }
         case .completed:
-            exportIconButton("folder", help: L10n.string("Reveal in Finder")) {
-                NSWorkspace.shared.activateFileViewerSelecting([job.outputURL])
+            HStack(spacing: AppTheme.Spacing.xs) {
+                if editor.publishService.isAvailable, editor.publishService.canPublish(job) {
+                    ExportIconButton("paperplane", help: L10n.string("Publish…")) { publishTarget = .export(job) }
+                }
+                ExportIconButton("folder", help: L10n.string("Reveal in Finder")) {
+                    NSWorkspace.shared.activateFileViewerSelecting([job.outputURL])
+                }
             }
         case .failed, .canceled:
-            exportIconButton("xmark", help: L10n.string("Dismiss")) { exportQueue.remove(job.id) }
+            ExportIconButton("xmark", help: L10n.string("Dismiss")) { exportQueue.remove(job.id) }
         case .canceling:
             EmptyView()
         }
-    }
-
-    private func exportIconButton(
-        _ systemName: String,
-        help: String,
-        action: @escaping () -> Void
-    ) -> some View {
-        Button(action: action) {
-            Image(systemName: systemName)
-                .frame(width: AppTheme.IconSize.sm, height: AppTheme.IconSize.sm)
-                .hoverHighlight()
-        }
-        .buttonStyle(.plain)
-        .help(help)
-        .accessibilityLabel(help)
     }
 
     // MARK: - Bottom bar
@@ -711,5 +711,28 @@ struct ExportView: View {
                 submissionError = error.localizedDescription
             }
         }
+    }
+}
+
+struct ExportIconButton: View {
+    let systemName: String
+    let help: String
+    let action: () -> Void
+
+    init(_ systemName: String, help: String, action: @escaping () -> Void) {
+        self.systemName = systemName
+        self.help = help
+        self.action = action
+    }
+
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: systemName)
+                .frame(width: AppTheme.IconSize.sm, height: AppTheme.IconSize.sm)
+                .hoverHighlight()
+        }
+        .buttonStyle(.plain)
+        .help(help)
+        .accessibilityLabel(help)
     }
 }

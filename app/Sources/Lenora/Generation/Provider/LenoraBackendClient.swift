@@ -59,6 +59,13 @@ struct LenoraBackendClient: GenerationProvider {
     }
 
     @concurrent
+    func deleteAsset(model: String, assetRef: String) async throws {
+        var deletion = try request("DELETE", "v1", "assets")
+        deletion.url = deletion.url?.appending(path: assetRef).appending(queryItems: [URLQueryItem(name: "model", value: model)])
+        _ = try await send(deletion)
+    }
+
+    @concurrent
     func upload(_ fileURL: URL, ticket: UploadTicket) async throws {
         var request = URLRequest(url: ticket.ticket.url, timeoutInterval: Self.uploadTimeout)
         request.httpMethod = ticket.ticket.method
@@ -134,6 +141,15 @@ struct LenoraBackendClient: GenerationProvider {
     }
 
     private func decode<T: Decodable>(_ type: T.Type, _ request: URLRequest) async throws -> (T, HTTPURLResponse) {
+        let (data, response) = try await send(request)
+        do {
+            return (try BackendCoding.decoder().decode(T.self, from: data), response)
+        } catch is DecodingError {
+            throw BackendError.invalidResponse(status: response.statusCode)
+        }
+    }
+
+    private func send(_ request: URLRequest) async throws -> (Data, HTTPURLResponse) {
         let data: Data
         let response: HTTPURLResponse
         do {
@@ -143,11 +159,7 @@ struct LenoraBackendClient: GenerationProvider {
         }
         switch response.statusCode {
         case 200..<300:
-            do {
-                return (try BackendCoding.decoder().decode(T.self, from: data), response)
-            } catch is DecodingError {
-                throw BackendError.invalidResponse(status: response.statusCode)
-            }
+            return (data, response)
         case 401:
             throw BackendError.unauthorized
         default:

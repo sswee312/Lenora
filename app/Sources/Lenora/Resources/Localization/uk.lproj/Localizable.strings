@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld зображень готові в Lenora.";
 "%lld items" = "%lld елементів";
 "%lld media files are missing and will be skipped." = "Відсутні медіафайли: %lld. Їх буде пропущено.";
+"%lld seconds" = "%lld с";
 "%lld selected" = "Вибрано: %lld";
 "%lld subtitle files are ready in Lenora." = "%lld файлів субтитрів готові в Lenora.";
 "%lld text clips are ready in Lenora." = "%lld текстових кліпів готові в Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Безпечна зона дії";
 "Adapters" = "Адаптери";
 "Add Marker (M)" = "Додати маркер (M)";
+"Add Outputs" = "Додати виходи";
+"Add Outputs…" = "Додати виходи…";
 "Add Range to Chat" = "Додати діапазон у чат";
 "Add Text" = "Додати текст";
 "Add a comment" = "Додати коментар";
@@ -74,12 +77,14 @@
 "All" = "Усі";
 "All Statuses" = "Усі статуси";
 "All fonts" = "Усі шрифти";
+"Always includes a stream, a download link and a poster." = "Завжди містить потік, посилання для завантаження та постер.";
 "Amount" = "Сума";
 "Analyzing media so you can search it." = "Аналіз медіа для подальшого пошуку.";
 "Angle" = "Ракурс";
 "Animate" = "Анімація";
 "Animation" = "Анімація";
 "Anthropic API Key" = "API-ключ Anthropic";
+"Anyone with the link can watch." = "Будь-хто з посиланням зможе переглянути відео.";
 "Appearance" = "Вигляд";
 "Apply" = "Застосувати";
 "Ask anything, or start with:" = "Запитайте що завгодно або почніть із:";
@@ -188,6 +193,7 @@
 "Comments" = "Коментарі";
 "Compatibility: %@" = "Сумісність: %@";
 "Completed" = "Завершено";
+"Confirm that anyone with the link can watch." = "Підтвердьте, що відео зможе дивитися будь-хто за посиланням.";
 "Connect an agent" = "Підключити Agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "Підключіть зовнішній Agent, щоб переглядати й редагувати відкритий проєкт Lenora.";
 "Connected" = "Підключено";
@@ -197,7 +203,12 @@
 "Contrast" = "Контраст";
 "Copied" = "Скопійовано";
 "Copy" = "Скопіювати";
+"Copy Link" = "Скопіювати посилання";
 "Copy Path" = "Скопіювати шлях";
+"Copy Poster Link" = "Скопіювати посилання на постер";
+"Copy Stream Link" = "Скопіювати посилання на потік";
+"Copy Teaser Link" = "Скопіювати посилання на тизер";
+"Copy Vertical Cut Link" = "Скопіювати посилання на вертикальну версію";
 "Copy message" = "Скопіювати повідомлення";
 "Copy one clip of the same type and try again." = "Скопіюйте один кліп того самого типу й повторіть спробу.";
 "Copy prompt" = "Скопіювати промпт";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "Перейти в повноекранний режим";
 "Erase an object from the image" = "Стерти об’єкт із зображення";
 "Every connected agent will need the new token." = "Кожному підключеному агенту знадобиться новий токен.";
+"Every link stops working. This can't be undone." = "Усі посилання перестануть працювати. Цю дію не можна скасувати.";
 "Exclusion" = "Виключення";
 "Expand" = "Розгорнути";
 "Export" = "Експортувати";
@@ -338,6 +350,7 @@
 "Fade In" = "Поява";
 "Fade Out" = "Зникнення";
 "Failed" = "Не вдалося";
+"Failed: %@" = "Помилка: %@";
 "Feather" = "Розтушування";
 "Featured" = "Рекомендовані";
 "File" = "Файл";
@@ -567,6 +580,7 @@
 "No audio" = "Немає аудіо";
 "No audio selected." = "Аудіо не вибрано.";
 "No beats detected." = "Бітів не визначено.";
+"No connected backend can publish video." = "Жоден підключений бекенд не може публікувати відео.";
 "No conversations yet" = "Розмов ще немає";
 "No exports yet" = "Експортів ще немає";
 "No images" = "Немає зображень";
@@ -591,6 +605,7 @@
 "Normal" = "Звичайний";
 "Not selected" = "Не вибрано";
 "Not synced — unusable as an angle." = "Не синхронізовано — непридатний як ракурс.";
+"Nothing new to add." = "Немає чого додавати.";
 "Notifications" = "Сповіщення";
 "OK" = "OK";
 "Object to recolor" = "Об’єкт для перефарбування";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Старіший формат обміну, найкращий, якщо призначенням є Premiere Pro. Підтримує базовий монтаж і ключові кадри, але не текст, колір, ефекти, м'якість країв чи заокруглення країв.";
 "On-device transcription is not available for %@." = "Локальна транскрипція недоступна для %@.";
 "Only available for AI-generated media" = "Доступно лише для медіа, створених AI";
+"Only completed MP4 or MOV exports can be published." = "Публікувати можна лише завершені експорти MP4 або MOV.";
 "Opacity" = "Непрозорість";
 "Open" = "Відкрити";
 "Open %@" = "Відкрити %@";
@@ -649,10 +665,16 @@
 "Presence" = "Присутність";
 "Press M in the timeline to add a marker." = "Натисніть M на таймлайні, щоб додати маркер.";
 "Preview" = "Перегляд";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Обробка тарифікується бекендом. Оцінка з’явиться після початку обробки.";
+"Processing…" = "Обробка…";
+"Processing… Estimated %@ %@" = "Обробка… Оцінка: %@ %@";
 "Project" = "Проєкт";
 "Project Settings" = "Параметри проєкту";
 "Projects Couldn’t Be Deleted" = "Не вдалося видалити проєкти";
 "Prompt" = "Промпт";
+"Publish" = "Опублікувати";
+"Published" = "Опубліковано";
+"Publish…" = "Опублікувати…";
 "Put the subject on a new background" = "Розмістити об’єкт на новому тлі";
 "Quality" = "Якість";
 "Queued" = "У черзі";
@@ -661,6 +683,8 @@
 "Range" = "Діапазон";
 "Razor (C)" = "Лезо (C)";
 "Razor Tool" = "Інструмент «Лезо»";
+"Ready" = "Готово";
+"Ready, %lld failed" = "Готово, невдало: %lld";
 "Reasoning effort" = "Глибина міркування";
 "Recolor" = "Перефарбувати";
 "Redetect Beats" = "Визначити біти знову";
@@ -851,6 +875,9 @@
 "System appearance" = "Вигляд системи";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Зробіть знімок перегляду й використайте його як референс для генерації. Особливо корисно для AI-переходів.";
 "Target Language" = "Цільова мова";
+"Teaser" = "Тизер";
+"Teasers aren't available." = "Тизери недоступні.";
+"Teasers must be %lld–%lld seconds." = "Тривалість тизера: від %lld до %lld секунд.";
 "Temperature" = "Температура";
 "Temporary files" = "Тимчасові файли";
 "Test Connection" = "Перевірити підключення";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "Кліп, який ви додаєте, має інші параметри, ніж поточний проєкт.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Підключений бекенд не пропонує цю правку. Відкрийте Параметри → Бекенд.";
 "The export" = "Експорт";
+"The export file can't be read." = "Не вдається прочитати файл експорту.";
+"The export is %@; publishing accepts up to %@." = "Розмір експорту: %@; для публікації допустимо не більше %@.";
 "The file is larger than %@." = "Файл більший за %@.";
 "The image is larger than %lld pixels in total." = "Зображення більше за %lld пікселів загалом.";
 "The image size isn't known yet. Try again in a moment." = "Розмір зображення ще невідомий. Спробуйте ще раз за мить.";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "Завдання завершилося без результату.";
 "The marker comment changed while you were editing. Review it and try again." = "Коментар маркера змінився під час редагування. Перегляньте його й повторіть спробу.";
 "The project will be moved to the Trash." = "Проєкт буде переміщено в Кошик.";
+"The publication no longer exists." = "Публікації більше не існує.";
 "The selected model refused this request. Revise the prompt and try again." = "Вибрана модель відхилила цей запит. Змініть промпт і повторіть спробу.";
 "The selected projects will be moved to the Trash." = "Вибрані проєкти буде переміщено в Кошик.";
 "The source file is missing." = "Вихідний файл відсутній.";
+"The teaser must be shorter than the video." = "Тизер має бути коротшим за відео.";
 "The timeline settings changed. Close this sheet and try again." = "Параметри таймлайну змінилися. Закрийте це вікно й повторіть спробу.";
+"The upload didn't finish. Publish the export again." = "Завантаження не завершено. Опублікуйте експорт ще раз.";
 "Theme" = "Тема";
 "This build includes no skills." = "У цій збірці немає навичок.";
 "This edit works on images only." = "Ця правка працює лише із зображеннями.";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "Ця модель не може обмежити вихід до 60 FPS.";
 "This permanently removes %@." = "Це остаточно вилучає %@.";
 "This source can’t replace the clip." = "Це джерело не може замінити кліп.";
+"This video was unpublished." = "Публікацію цього відео знято.";
 "Three-Stack" = "Три стоси";
 "Three-Up" = "Три панелі";
 "Threshold" = "Поріг";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "Відмінити (⌘Z)";
 "Ungroup Multicam" = "Розгрупувати мультикамеру";
 "Unlink" = "Роз'єднати";
+"Unpublish" = "Зняти з публікації";
+"Unpublish this video?" = "Зняти це відео з публікації?";
+"Unpublished" = "Знято з публікації";
 "Untitled" = "Без назви";
 "Update" = "Оновити";
 "Update available" = "Доступне оновлення";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Типово використовує весь таймлайн. Позначте діапазон на таймлайні, щоб написати музику лише для цього фрагмента.";
 "Version" = "Версія";
 "Vertical" = "Вертикально";
+"Vertical aspect %@ isn't supported." = "Вертикальне співвідношення сторін %@ не підтримується.";
+"Vertical cut" = "Вертикальна версія";
 "Vertical workspace layout" = "Вертикальне компонування робочого простору";
 "Vibrance" = "Соковитість";
 "Video" = "Відео";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "Модель очищення голосу недоступна";
 "Voice Cleanup requires audio or video" = "Для очищення голосу потрібне аудіо або відео";
 "Volume" = "Гучність";
+"Wait for the current upload or processing to finish." = "Зачекайте на завершення поточного завантаження або обробки.";
 "Warmth" = "Теплота";
 "Welcome to Lenora" = "Вітаємо в Lenora";
 "What's New in v%@" = "Що нового у v%@";

@@ -51,6 +51,7 @@ final class AppState {
     private func resumePendingGenerations() {
         for project in openProjects {
             project.editorViewModel.generationService.resumePendingGenerations(editor: project.editorViewModel)
+            project.editorViewModel.publishService.resumeMonitoring()
         }
     }
 

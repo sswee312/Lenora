@@ -27,6 +27,7 @@ struct BackendModel: Decodable, Sendable {
     let estimate: BackendEstimate?
     let ui: Value?
     let operations: [String]?
+    var deletable: Bool? = nil
 }
 
 struct AdapterVersion: Decodable, Sendable, Equatable {
@@ -157,6 +158,13 @@ struct JobResult: Codable, Sendable, Equatable {
     let url: URL
     let contentType: String
     let fileExtension: String
+    var role: String? = nil
+}
+
+struct FailedOutput: Codable, Sendable, Equatable {
+    let role: String
+    let code: String
+    let message: String
 }
 
 struct JobFailure: Decodable, Sendable, Equatable {
@@ -170,6 +178,7 @@ struct JobState: Decodable, Sendable {
     let status: JobStatus
     let results: [JobResult]?
     let error: JobFailure?
+    var failedOutputs: [FailedOutput]? = nil
 }
 
 struct BackendProblem: Decodable, Sendable, Equatable, Error {

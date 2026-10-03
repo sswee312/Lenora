@@ -26,6 +26,8 @@ class Asset:
     height: int | None
     bytes: int
     duration: float | None
+    format: str | None = None
+    derived: tuple[tuple[str, str | None], ...] = ()
 
 
 def parse_ref(item: AssetInput | UrlInput, resource_type: str) -> AssetRef:
@@ -80,11 +82,15 @@ class CloudinaryAPI:
 
     async def asset(self, ref: AssetRef) -> Asset:
         path = f"/v1_1/{self.settings.cloud_name}/resources/{ref.resource_type}/upload/{ref.public_id}"
+        if ref.resource_type == "video":
+            path += "?media_metadata=true"  # without it the lookup omits duration
         response = await self.request("GET", path)
         if response.status_code == 404:
             raise ProblemError("invalid_request", "The input asset was not found; upload it before submitting.")
         if response.status_code != 200:
             raise problem(response)
         body = response.json()
+        derived = tuple((d["transformation"], d.get("format")) for d in body.get("derived") or [] if d.get("transformation"))
         return Asset(asset_id=body["asset_id"], width=body.get("width"), height=body.get("height"),
-                     bytes=int(body.get("bytes", 0)), duration=body.get("duration"))
+                     bytes=int(body.get("bytes", 0)), duration=body.get("duration"), format=body.get("format"),
+                     derived=derived)

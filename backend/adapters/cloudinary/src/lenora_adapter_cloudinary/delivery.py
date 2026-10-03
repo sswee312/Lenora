@@ -7,7 +7,8 @@ from urllib.parse import quote
 
 from lenora_backend.kinds import EditOp
 
-CONTENT_TYPES = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp", "mp4": "video/mp4"}
+CONTENT_TYPES = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp", "mp4": "video/mp4",
+                 "mov": "video/quicktime", "webm": "video/webm", "m3u8": "application/vnd.apple.mpegurl"}
 
 
 def sign_upload(params: dict[str, str], secret: str) -> str:
@@ -17,8 +18,8 @@ def sign_upload(params: dict[str, str], secret: str) -> str:
 
 
 def signed_url(cloud_name: str, resource_type: str, transformation: str, path: str, secret: str) -> str:
-    """Delivery URL with an `s--<8>--` signature over `<transformation>/<public_id>.<ext>`."""
-    to_sign = f"{transformation}/{path}"
+    """Delivery URL with an `s--<8>--` signature over `[<transformation>/]<public_id>.<ext>`."""
+    to_sign = f"{transformation}/{path}" if transformation else path
     digest = base64.urlsafe_b64encode(hashlib.sha1((to_sign + secret).encode()).digest()).decode()[:8]
     return f"https://res.cloudinary.com/{cloud_name}/{resource_type}/upload/s--{digest}--/{to_sign}"
 

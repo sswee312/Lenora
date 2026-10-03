@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "ภาพ %lld รายการพร้อมใน Lenora แล้ว";
 "%lld items" = "%lld รายการ";
 "%lld media files are missing and will be skipped." = "ไฟล์มีเดีย %lld รายการหายไปและจะถูกข้าม";
+"%lld seconds" = "%lld วินาที";
 "%lld selected" = "เลือกแล้ว %lld รายการ";
 "%lld subtitle files are ready in Lenora." = "ไฟล์คำบรรยาย %lld รายการพร้อมใน Lenora แล้ว";
 "%lld text clips are ready in Lenora." = "คลิปข้อความ %lld รายการพร้อมใน Lenora แล้ว";
@@ -44,6 +45,8 @@
 "Action Safe" = "ขอบปลอดภัยการกระทำ";
 "Adapters" = "อะแดปเตอร์";
 "Add Marker (M)" = "เพิ่มมาร์กเกอร์ (M)";
+"Add Outputs" = "เพิ่มเอาต์พุต";
+"Add Outputs…" = "เพิ่มเอาต์พุต…";
 "Add Range to Chat" = "เพิ่มช่วงไปยังแชท";
 "Add Text" = "เพิ่มข้อความ";
 "Add a comment" = "เพิ่มความคิดเห็น";
@@ -74,12 +77,14 @@
 "All" = "ทั้งหมด";
 "All Statuses" = "สถานะทั้งหมด";
 "All fonts" = "แบบอักษรทั้งหมด";
+"Always includes a stream, a download link and a poster." = "มีสตรีม ลิงก์ดาวน์โหลด และโปสเตอร์เสมอ";
 "Amount" = "จำนวน";
 "Analyzing media so you can search it." = "กำลังวิเคราะห์มีเดียเพื่อให้คุณค้นหาได้";
 "Angle" = "มุมกล้อง";
 "Animate" = "ทำแอนิเมชัน";
 "Animation" = "แอนิเมชัน";
 "Anthropic API Key" = "คีย์ API ของ Anthropic";
+"Anyone with the link can watch." = "ทุกคนที่มีลิงก์สามารถรับชมได้";
 "Appearance" = "ลักษณะ";
 "Apply" = "ปรับใช้";
 "Ask anything, or start with:" = "ถามอะไรก็ได้ หรือเริ่มจาก:";
@@ -188,6 +193,7 @@
 "Comments" = "ความคิดเห็น";
 "Compatibility: %@" = "ความเข้ากันได้: %@";
 "Completed" = "เสร็จสมบูรณ์";
+"Confirm that anyone with the link can watch." = "ยืนยันว่าทุกคนที่มีลิงก์สามารถดูวิดีโอได้";
 "Connect an agent" = "เชื่อมต่อ Agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "เชื่อมต่อ Agent ภายนอกเพื่อตรวจสอบและแก้ไขโปรเจ็กต์ Lenora ที่เปิดอยู่";
 "Connected" = "เชื่อมต่อแล้ว";
@@ -197,7 +203,12 @@
 "Contrast" = "คอนทราสต์";
 "Copied" = "คัดลอกแล้ว";
 "Copy" = "คัดลอก";
+"Copy Link" = "คัดลอกลิงก์";
 "Copy Path" = "คัดลอกเส้นทาง";
+"Copy Poster Link" = "คัดลอกลิงก์โปสเตอร์";
+"Copy Stream Link" = "คัดลอกลิงก์สตรีม";
+"Copy Teaser Link" = "คัดลอกลิงก์ทีเซอร์";
+"Copy Vertical Cut Link" = "คัดลอกลิงก์เวอร์ชันแนวตั้ง";
 "Copy message" = "คัดลอกข้อความ";
 "Copy one clip of the same type and try again." = "คัดลอกคลิปประเภทเดียวกันหนึ่งรายการ แล้วลองอีกครั้ง";
 "Copy prompt" = "คัดลอกพรอมต์";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "เข้าสู่เต็มหน้าจอ";
 "Erase an object from the image" = "ลบวัตถุออกจากภาพ";
 "Every connected agent will need the new token." = "Agent ที่เชื่อมต่ออยู่ทุกตัวจะต้องใช้โทเค็นใหม่";
+"Every link stops working. This can't be undone." = "ลิงก์ทั้งหมดจะใช้งานไม่ได้ การดำเนินการนี้ไม่สามารถย้อนกลับได้";
 "Exclusion" = "ยกเว้น";
 "Expand" = "ขยาย";
 "Export" = "ส่งออก";
@@ -338,6 +350,7 @@
 "Fade In" = "จางเข้า";
 "Fade Out" = "จางออก";
 "Failed" = "ล้มเหลว";
+"Failed: %@" = "ล้มเหลว: %@";
 "Feather" = "ความนุ่มขอบ";
 "Featured" = "แนะนำ";
 "File" = "ไฟล์";
@@ -567,6 +580,7 @@
 "No audio" = "ไม่มีเสียง";
 "No audio selected." = "ยังไม่ได้เลือกเสียง";
 "No beats detected." = "ไม่พบจังหวะ";
+"No connected backend can publish video." = "ไม่มีแบ็กเอนด์ที่เชื่อมต่อซึ่งเผยแพร่วิดีโอได้";
 "No conversations yet" = "ยังไม่มีการสนทนา";
 "No exports yet" = "ยังไม่มีการส่งออก";
 "No images" = "ไม่มีภาพ";
@@ -591,6 +605,7 @@
 "Normal" = "ปกติ";
 "Not selected" = "ยังไม่ได้เลือก";
 "Not synced — unusable as an angle." = "ยังไม่ซิงค์ — ใช้เป็นมุมกล้องไม่ได้";
+"Nothing new to add." = "ไม่มีสิ่งใหม่ให้เพิ่ม";
 "Notifications" = "การแจ้งเตือน";
 "OK" = "ตกลง";
 "Object to recolor" = "วัตถุที่จะเปลี่ยนสี";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "รูปแบบแลกเปลี่ยนรุ่นเก่า เหมาะเมื่อปลายทางคือ Premiere Pro รองรับการตัดต่อพื้นฐานและคีย์เฟรม แต่ไม่รองรับข้อความ สี เอฟเฟกต์ ความนุ่มขอบ หรือความโค้งขอบ";
 "On-device transcription is not available for %@." = "การถอดเสียงบนอุปกรณ์ไม่พร้อมใช้งานสำหรับ %@";
 "Only available for AI-generated media" = "ใช้ได้เฉพาะมีเดียที่สร้างด้วย AI";
+"Only completed MP4 or MOV exports can be published." = "เผยแพร่ได้เฉพาะไฟล์ส่งออก MP4 หรือ MOV ที่เสร็จสมบูรณ์เท่านั้น";
 "Opacity" = "ความทึบ";
 "Open" = "เปิด";
 "Open %@" = "เปิด %@";
@@ -649,10 +665,16 @@
 "Presence" = "ความเด่น";
 "Press M in the timeline to add a marker." = "กด M ในไทม์ไลน์เพื่อเพิ่มมาร์กเกอร์";
 "Preview" = "ตัวอย่าง";
+"Processing is billed by the backend. The estimate appears once processing starts." = "แบ็กเอนด์เป็นผู้เรียกเก็บค่าประมวลผล ค่าประมาณจะแสดงเมื่อเริ่มประมวลผล";
+"Processing…" = "กำลังประมวลผล…";
+"Processing… Estimated %@ %@" = "กำลังประมวลผล… ค่าประมาณ: %@ %@";
 "Project" = "โปรเจ็กต์";
 "Project Settings" = "การตั้งค่าโปรเจ็กต์";
 "Projects Couldn’t Be Deleted" = "ไม่สามารถลบโปรเจ็กต์ได้";
 "Prompt" = "พรอมต์";
+"Publish" = "เผยแพร่";
+"Published" = "เผยแพร่แล้ว";
+"Publish…" = "เผยแพร่…";
 "Put the subject on a new background" = "วางตัวแบบบนพื้นหลังใหม่";
 "Quality" = "คุณภาพ";
 "Queued" = "อยู่ในคิว";
@@ -661,6 +683,8 @@
 "Range" = "ช่วง";
 "Razor (C)" = "มีดตัด (C)";
 "Razor Tool" = "เครื่องมือมีดตัด";
+"Ready" = "พร้อม";
+"Ready, %lld failed" = "พร้อม ล้มเหลว %lld รายการ";
 "Reasoning effort" = "ความพยายามในการให้เหตุผล";
 "Recolor" = "เปลี่ยนสี";
 "Redetect Beats" = "ตรวจจับจังหวะอีกครั้ง";
@@ -851,6 +875,9 @@
 "System appearance" = "ลักษณะของระบบ";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "จับภาพหน้าจอของตัวอย่างแล้วใช้เป็นข้อมูลอ้างอิงในการสร้าง มีประโยชน์อย่างยิ่งสำหรับการสร้างทรานซิชัน AI";
 "Target Language" = "ภาษาปลายทาง";
+"Teaser" = "ทีเซอร์";
+"Teasers aren't available." = "ไม่มีทีเซอร์ให้ใช้งาน";
+"Teasers must be %lld–%lld seconds." = "ทีเซอร์ต้องยาว %lld–%lld วินาที";
 "Temperature" = "อุณหภูมิสี";
 "Temporary files" = "ไฟล์ชั่วคราว";
 "Test Connection" = "ทดสอบการเชื่อมต่อ";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "คลิปที่คุณกำลังเพิ่มมีการตั้งค่าต่างจากโปรเจ็กต์ปัจจุบัน";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "แบ็กเอนด์ที่เชื่อมต่อไม่มีการแก้ไขนี้ เปิดการตั้งค่า → แบ็กเอนด์";
 "The export" = "รายการส่งออก";
+"The export file can't be read." = "อ่านไฟล์ส่งออกไม่ได้";
+"The export is %@; publishing accepts up to %@." = "ไฟล์ส่งออกมีขนาด %@ การเผยแพร่รับได้สูงสุด %@";
 "The file is larger than %@." = "ไฟล์มีขนาดใหญ่กว่า %@";
 "The image is larger than %lld pixels in total." = "ภาพมีจำนวนพิกเซลรวมมากกว่า %lld";
 "The image size isn't known yet. Try again in a moment." = "ยังไม่ทราบขนาดภาพ ลองอีกครั้งในอีกสักครู่";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "งานสิ้นสุดโดยไม่มีผลลัพธ์";
 "The marker comment changed while you were editing. Review it and try again." = "ความคิดเห็นของมาร์กเกอร์เปลี่ยนระหว่างที่คุณแก้ไข ตรวจทานแล้วลองอีกครั้ง";
 "The project will be moved to the Trash." = "โปรเจ็กต์จะถูกย้ายไปที่ถังขยะ";
+"The publication no longer exists." = "การเผยแพร่นี้ไม่มีอยู่แล้ว";
 "The selected model refused this request. Revise the prompt and try again." = "โมเดลที่เลือกปฏิเสธคำขอนี้ แก้ไขพรอมต์แล้วลองอีกครั้ง";
 "The selected projects will be moved to the Trash." = "โปรเจ็กต์ที่เลือกจะถูกย้ายไปที่ถังขยะ";
 "The source file is missing." = "ไม่พบไฟล์ต้นทาง";
+"The teaser must be shorter than the video." = "ทีเซอร์ต้องสั้นกว่าวิดีโอ";
 "The timeline settings changed. Close this sheet and try again." = "การตั้งค่าไทม์ไลน์เปลี่ยนไป ปิดชีตนี้แล้วลองอีกครั้ง";
+"The upload didn't finish. Publish the export again." = "การอัปโหลดไม่เสร็จสมบูรณ์ เผยแพร่ไฟล์ส่งออกอีกครั้ง";
 "Theme" = "ธีม";
 "This build includes no skills." = "บิลด์นี้ไม่มีสกิล";
 "This edit works on images only." = "การแก้ไขนี้ใช้ได้กับภาพเท่านั้น";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "โมเดลนี้ไม่สามารถจำกัดเอาต์พุตที่ 60 FPS ได้";
 "This permanently removes %@." = "การดำเนินการนี้จะลบ %@ อย่างถาวร";
 "This source can’t replace the clip." = "ต้นทางนี้แทนที่คลิปไม่ได้";
+"This video was unpublished." = "วิดีโอนี้ถูกยกเลิกการเผยแพร่แล้ว";
 "Three-Stack" = "สามชั้น";
 "Three-Up" = "สามช่อง";
 "Threshold" = "เกณฑ์";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "เลิกทำ (⌘Z)";
 "Ungroup Multicam" = "ยกเลิกการจัดกลุ่มมัลติแคม";
 "Unlink" = "ยกเลิกการเชื่อมโยง";
+"Unpublish" = "ยกเลิกการเผยแพร่";
+"Unpublish this video?" = "ยกเลิกการเผยแพร่วิดีโอนี้หรือไม่";
+"Unpublished" = "ยกเลิกการเผยแพร่แล้ว";
 "Untitled" = "ไม่มีชื่อ";
 "Update" = "อัปเดต";
 "Update available" = "มีอัปเดต";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "ใช้ทั้งไทม์ไลน์เป็นค่าเริ่มต้น ทำเครื่องหมายช่วงบนไทม์ไลน์เพื่อประพันธ์เพลงเฉพาะช่วงนั้น";
 "Version" = "เวอร์ชัน";
 "Vertical" = "แนวตั้ง";
+"Vertical aspect %@ isn't supported." = "ไม่รองรับสัดส่วนภาพแนวตั้ง %@";
+"Vertical cut" = "เวอร์ชันแนวตั้ง";
 "Vertical workspace layout" = "เค้าโครงพื้นที่ทำงานแนวตั้ง";
 "Vibrance" = "ความสด";
 "Video" = "วิดีโอ";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "โมเดลทำความสะอาดเสียงพูดไม่พร้อมใช้งาน";
 "Voice Cleanup requires audio or video" = "ทำความสะอาดเสียงพูดต้องใช้เสียงหรือวิดีโอ";
 "Volume" = "ระดับเสียง";
+"Wait for the current upload or processing to finish." = "รอให้การอัปโหลดหรือการประมวลผลปัจจุบันเสร็จสิ้น";
 "Warmth" = "ความอบอุ่น";
 "Welcome to Lenora" = "ยินดีต้อนรับสู่ Lenora";
 "What's New in v%@" = "มีอะไรใหม่ใน v%@";

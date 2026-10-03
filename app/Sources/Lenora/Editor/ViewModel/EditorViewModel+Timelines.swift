@@ -27,6 +27,7 @@ extension EditorViewModel {
         }
         timelineTabBarExpandedOverride = nil
         restoreActiveViewState()
+        publishService.restore(file.publications ?? [])
     }
 
     /// Snapshot for save/export; view states pruned to timelines that still exist.
@@ -38,7 +39,8 @@ extension EditorViewModel {
             activeTimelineId: activeTimelineId,
             openTimelineIds: openTimelineIds,
             viewStates: liveViewStates.filter { ids.contains($0.key) },
-            multicamGroups: savedMulticamGroups()
+            multicamGroups: savedMulticamGroups(),
+            publications: publishService.publications.isEmpty ? nil : publishService.publications
         )
     }
 

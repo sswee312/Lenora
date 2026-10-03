@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "이미지 %lld개가 Lenora에 준비되었습니다.";
 "%lld items" = "항목 %lld개";
 "%lld media files are missing and will be skipped." = "미디어 파일 %lld개가 유실되어 건너뜁니다.";
+"%lld seconds" = "%lld초";
 "%lld selected" = "%lld개 선택됨";
 "%lld subtitle files are ready in Lenora." = "자막 파일 %lld개가 Lenora에 준비되었습니다.";
 "%lld text clips are ready in Lenora." = "텍스트 클립 %lld개가 Lenora에 준비되었습니다.";
@@ -44,6 +45,8 @@
 "Action Safe" = "액션 세이프";
 "Adapters" = "어댑터";
 "Add Marker (M)" = "마커 추가 (M)";
+"Add Outputs" = "출력 추가";
+"Add Outputs…" = "출력 추가…";
 "Add Range to Chat" = "채팅에 범위 추가";
 "Add Text" = "텍스트 추가";
 "Add a comment" = "코멘트 추가";
@@ -74,12 +77,14 @@
 "All" = "모두";
 "All Statuses" = "모든 상태";
 "All fonts" = "모든 서체";
+"Always includes a stream, a download link and a poster." = "스트림, 다운로드 링크, 포스터가 항상 포함됩니다.";
 "Amount" = "양";
 "Analyzing media so you can search it." = "검색할 수 있도록 미디어를 분석하는 중입니다.";
 "Angle" = "앵글";
 "Animate" = "애니메이션";
 "Animation" = "애니메이션";
 "Anthropic API Key" = "Anthropic API 키";
+"Anyone with the link can watch." = "링크가 있는 사람은 누구나 시청할 수 있습니다.";
 "Appearance" = "화면 모드";
 "Apply" = "적용";
 "Ask anything, or start with:" = "무엇이든 질문하거나 다음으로 시작하세요:";
@@ -188,6 +193,7 @@
 "Comments" = "코멘트";
 "Compatibility: %@" = "호환성: %@";
 "Completed" = "완료됨";
+"Confirm that anyone with the link can watch." = "링크가 있는 누구나 시청할 수 있음을 확인하세요.";
 "Connect an agent" = "에이전트 연결";
 "Connect an external agent to inspect and edit the open Lenora project." = "외부 에이전트를 연결하여 열려 있는 Lenora 프로젝트를 검사하고 편집합니다.";
 "Connected" = "연결됨";
@@ -197,7 +203,12 @@
 "Contrast" = "대비";
 "Copied" = "복사됨";
 "Copy" = "복사";
+"Copy Link" = "링크 복사";
 "Copy Path" = "경로 복사";
+"Copy Poster Link" = "포스터 링크 복사";
+"Copy Stream Link" = "스트림 링크 복사";
+"Copy Teaser Link" = "티저 링크 복사";
+"Copy Vertical Cut Link" = "세로 컷 링크 복사";
 "Copy message" = "메시지 복사";
 "Copy one clip of the same type and try again." = "같은 유형의 클립을 하나 복사한 후 다시 시도하세요.";
 "Copy prompt" = "프롬프트 복사";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "전체 화면 시작";
 "Erase an object from the image" = "이미지에서 개체 지우기";
 "Every connected agent will need the new token." = "연결된 모든 에이전트에 새 토큰이 필요합니다.";
+"Every link stops working. This can't be undone." = "모든 링크가 작동을 멈춥니다. 이 작업은 되돌릴 수 없습니다.";
 "Exclusion" = "제외";
 "Expand" = "확장";
 "Export" = "내보내기";
@@ -338,6 +350,7 @@
 "Fade In" = "페이드 인";
 "Fade Out" = "페이드 아웃";
 "Failed" = "실패";
+"Failed: %@" = "실패: %@";
 "Feather" = "페더";
 "Featured" = "추천";
 "File" = "파일";
@@ -567,6 +580,7 @@
 "No audio" = "오디오 없음";
 "No audio selected." = "선택한 오디오가 없습니다.";
 "No beats detected." = "감지된 비트가 없습니다.";
+"No connected backend can publish video." = "동영상을 게시할 수 있는 연결된 백엔드가 없습니다.";
 "No conversations yet" = "아직 대화 없음";
 "No exports yet" = "아직 내보내기 없음";
 "No images" = "이미지 없음";
@@ -591,6 +605,7 @@
 "Normal" = "일반";
 "Not selected" = "선택되지 않음";
 "Not synced — unusable as an angle." = "동기화되지 않음 — 앵글로 사용할 수 없습니다.";
+"Nothing new to add." = "추가할 새 항목이 없습니다.";
 "Notifications" = "알림";
 "OK" = "확인";
 "Object to recolor" = "색상을 바꿀 개체";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Premiere Pro로 보낼 때 적합한 이전 교환 포맷입니다. 기본 편집과 키프레임을 지원하지만 텍스트, 색상, 효과, 가장자리 부드러움 또는 가장자리 둥글기는 지원하지 않습니다.";
 "On-device transcription is not available for %@." = "%@에는 온디바이스 트랜스크립션을 사용할 수 없습니다.";
 "Only available for AI-generated media" = "AI로 생성한 미디어에서만 사용할 수 있습니다";
+"Only completed MP4 or MOV exports can be published." = "완료된 MP4 또는 MOV 내보내기만 게시할 수 있습니다.";
 "Opacity" = "불투명도";
 "Open" = "열기";
 "Open %@" = "%@ 열기";
@@ -649,10 +665,16 @@
 "Presence" = "프레즌스";
 "Press M in the timeline to add a marker." = "타임라인에서 M을 눌러 마커를 추가하세요.";
 "Preview" = "미리보기";
+"Processing is billed by the backend. The estimate appears once processing starts." = "처리 비용은 백엔드에서 청구됩니다. 예상 비용은 처리가 시작되면 표시됩니다.";
+"Processing…" = "처리 중…";
+"Processing… Estimated %@ %@" = "처리 중… 예상: %@ %@";
 "Project" = "프로젝트";
 "Project Settings" = "프로젝트 설정";
 "Projects Couldn’t Be Deleted" = "프로젝트를 삭제할 수 없음";
 "Prompt" = "프롬프트";
+"Publish" = "게시";
+"Published" = "게시됨";
+"Publish…" = "게시…";
 "Put the subject on a new background" = "피사체를 새 배경에 배치";
 "Quality" = "품질";
 "Queued" = "대기 중";
@@ -661,6 +683,8 @@
 "Range" = "범위";
 "Razor (C)" = "면도날(C)";
 "Razor Tool" = "면도날 도구";
+"Ready" = "준비됨";
+"Ready, %lld failed" = "준비됨, %lld개 실패";
 "Reasoning effort" = "추론 강도";
 "Recolor" = "색상 변경";
 "Redetect Beats" = "비트 다시 감지";
@@ -851,6 +875,9 @@
 "System appearance" = "시스템 모드";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "미리보기의 스크린샷을 찍어 생성 참조로 사용합니다. 특히 AI 전환을 만들 때 유용합니다.";
 "Target Language" = "대상 언어";
+"Teaser" = "티저";
+"Teasers aren't available." = "티저를 사용할 수 없습니다.";
+"Teasers must be %lld–%lld seconds." = "티저는 %lld–%lld초여야 합니다.";
 "Temperature" = "온도";
 "Temporary files" = "임시 파일";
 "Test Connection" = "연결 테스트";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "추가하려는 클립의 설정이 현재 프로젝트와 다릅니다.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "연결된 백엔드가 이 편집을 제공하지 않습니다. 설정 → 백엔드를 여세요.";
 "The export" = "내보내기";
+"The export file can't be read." = "내보내기 파일을 읽을 수 없습니다.";
+"The export is %@; publishing accepts up to %@." = "내보내기 크기는 %@이며, 게시는 최대 %@까지 허용합니다.";
 "The file is larger than %@." = "파일이 %@보다 큽니다.";
 "The image is larger than %lld pixels in total." = "이미지의 총 픽셀 수가 %lld를 초과합니다.";
 "The image size isn't known yet. Try again in a moment." = "아직 이미지 크기를 알 수 없습니다. 잠시 후 다시 시도하세요.";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "작업이 결과 없이 종료되었습니다.";
 "The marker comment changed while you were editing. Review it and try again." = "편집하는 동안 마커 코멘트가 변경되었습니다. 확인한 후 다시 시도하세요.";
 "The project will be moved to the Trash." = "프로젝트가 휴지통으로 이동됩니다.";
+"The publication no longer exists." = "이 게시물은 더 이상 존재하지 않습니다.";
 "The selected model refused this request. Revise the prompt and try again." = "선택한 모델이 이 요청을 거부했습니다. 프롬프트를 수정한 후 다시 시도하세요.";
 "The selected projects will be moved to the Trash." = "선택한 프로젝트가 휴지통으로 이동됩니다.";
 "The source file is missing." = "소스 파일이 없습니다.";
+"The teaser must be shorter than the video." = "티저는 동영상보다 짧아야 합니다.";
 "The timeline settings changed. Close this sheet and try again." = "타임라인 설정이 변경되었습니다. 이 시트를 닫고 다시 시도하세요.";
+"The upload didn't finish. Publish the export again." = "업로드가 완료되지 않았습니다. 내보내기를 다시 게시하세요.";
 "Theme" = "테마";
 "This build includes no skills." = "이 빌드에는 스킬이 포함되어 있지 않습니다.";
 "This edit works on images only." = "이 편집은 이미지에서만 작동합니다.";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "이 모델은 출력을 60 FPS로 제한할 수 없습니다.";
 "This permanently removes %@." = "%@이(가) 영구적으로 제거됩니다.";
 "This source can’t replace the clip." = "이 소스로는 클립을 대체할 수 없습니다.";
+"This video was unpublished." = "이 동영상의 게시가 취소되었습니다.";
 "Three-Stack" = "3스택";
 "Three-Up" = "3분할";
 "Threshold" = "임계값";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "실행 취소(⌘Z)";
 "Ungroup Multicam" = "멀티캠 그룹 해제";
 "Unlink" = "연결 해제";
+"Unpublish" = "게시 취소";
+"Unpublish this video?" = "이 비디오의 게시를 취소하시겠습니까?";
+"Unpublished" = "게시 취소됨";
 "Untitled" = "제목 없음";
 "Update" = "업데이트";
 "Update available" = "업데이트 사용 가능";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "기본적으로 전체 타임라인을 사용합니다. 해당 구간에만 음악을 만들려면 타임라인에 범위를 표시하세요.";
 "Version" = "버전";
 "Vertical" = "세로";
+"Vertical aspect %@ isn't supported." = "세로 화면 비율 %@은(는) 지원되지 않습니다.";
+"Vertical cut" = "세로 컷";
 "Vertical workspace layout" = "세로 작업 공간 레이아웃";
 "Vibrance" = "생동감";
 "Video" = "비디오";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "음성 정리 모델을 사용할 수 없습니다";
 "Voice Cleanup requires audio or video" = "음성 정리에는 오디오 또는 비디오가 필요합니다";
 "Volume" = "음량";
+"Wait for the current upload or processing to finish." = "현재 업로드 또는 처리가 끝날 때까지 기다리세요.";
 "Warmth" = "따뜻함";
 "Welcome to Lenora" = "Lenora에 오신 것을 환영합니다";
 "What's New in v%@" = "v%@의 새로운 기능";

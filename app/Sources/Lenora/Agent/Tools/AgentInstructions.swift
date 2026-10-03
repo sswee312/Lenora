@@ -117,6 +117,8 @@ enum AgentInstructions {
           is waiting. Use manage_exports to list progress and read warnings/results, or \
           cancel an exact jobId when the user asks; never infer that an export is stuck from \
           elapsed time alone. The user can also manage the queue in the Export dialog.
+        - To share a finished cut, publish_export a completed video export (public links; \
+          confirm with the user first), then poll manage_publications.
 
         # Generation
         - Costs real money and is not undoable. For generation, propose prompt, model, \

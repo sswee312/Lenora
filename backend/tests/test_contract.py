@@ -49,6 +49,7 @@ PARAMS_SCHEMAS = {
     "image.removeBackground": "RemoveBackgroundParams", "image.generate": "ImageGenerateParams",
     "image.edit": "ImageEditParams", "image.upscale": "ImageUpscaleParams",
     "video.generate": "VideoGenerateParams", "video.reframe": "VideoReframeParams",
+    "video.publish": "VideoPublishParams",
 }
 
 

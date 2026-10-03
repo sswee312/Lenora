@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld billeder er klar i Lenora.";
 "%lld items" = "%lld elementer";
 "%lld media files are missing and will be skipped." = "%lld mediefiler mangler og springes over.";
+"%lld seconds" = "%lld sekunder";
 "%lld selected" = "%lld valgt";
 "%lld subtitle files are ready in Lenora." = "%lld undertekstfiler er klar i Lenora.";
 "%lld text clips are ready in Lenora." = "%lld tekstklip er klar i Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Handlingssikker";
 "Adapters" = "Adaptere";
 "Add Marker (M)" = "Tilføj markør (M)";
+"Add Outputs" = "Tilføj output";
+"Add Outputs…" = "Tilføj output…";
 "Add Range to Chat" = "Tilføj område til chat";
 "Add Text" = "Tilføj tekst";
 "Add a comment" = "Tilføj en kommentar";
@@ -74,12 +77,14 @@
 "All" = "Alle";
 "All Statuses" = "Alle statusser";
 "All fonts" = "Alle skrifttyper";
+"Always includes a stream, a download link and a poster." = "Indeholder altid en stream, et downloadlink og en plakat.";
 "Amount" = "Beløb";
 "Analyzing media so you can search it." = "Medier analyseres, så du kan søge i dem.";
 "Angle" = "Vinkel";
 "Animate" = "Animér";
 "Animation" = "Animation";
 "Anthropic API Key" = "Anthropic API-nøgle";
+"Anyone with the link can watch." = "Alle med linket kan se videoen.";
 "Appearance" = "Udseende";
 "Apply" = "Anvend";
 "Ask anything, or start with:" = "Spørg om hvad som helst, eller start med:";
@@ -188,6 +193,7 @@
 "Comments" = "Kommentarer";
 "Compatibility: %@" = "Kompatibilitet: %@";
 "Completed" = "Fuldført";
+"Confirm that anyone with the link can watch." = "Bekræft, at alle med linket kan se videoen.";
 "Connect an agent" = "Tilslut en agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "Tilslut en ekstern agent for at inspicere og redigere det åbne Lenora-projekt.";
 "Connected" = "Forbundet";
@@ -197,7 +203,12 @@
 "Contrast" = "Kontrast";
 "Copied" = "Kopieret";
 "Copy" = "Kopiér";
+"Copy Link" = "Kopiér link";
 "Copy Path" = "Kopiér sti";
+"Copy Poster Link" = "Kopiér plakatlink";
+"Copy Stream Link" = "Kopiér streamlink";
+"Copy Teaser Link" = "Kopiér teaserlink";
+"Copy Vertical Cut Link" = "Kopiér link til lodret version";
 "Copy message" = "Kopiér besked";
 "Copy one clip of the same type and try again." = "Kopiér ét klip af samme type, og prøv igen.";
 "Copy prompt" = "Kopiér prompt";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "Aktivér fuld skærm";
 "Erase an object from the image" = "Slet et objekt fra billedet";
 "Every connected agent will need the new token." = "Hver tilsluttet agent skal bruge det nye token.";
+"Every link stops working. This can't be undone." = "Alle links holder op med at virke. Det kan ikke fortrydes.";
 "Exclusion" = "Udelukkelse";
 "Expand" = "Udvid";
 "Export" = "Eksportér";
@@ -338,6 +350,7 @@
 "Fade In" = "Indtoning";
 "Fade Out" = "Udtoning";
 "Failed" = "Mislykkedes";
+"Failed: %@" = "Mislykkedes: %@";
 "Feather" = "Blødgøring";
 "Featured" = "Udvalgt";
 "File" = "Arkiv";
@@ -567,6 +580,7 @@
 "No audio" = "Ingen lyd";
 "No audio selected." = "Ingen lyd valgt.";
 "No beats detected." = "Ingen takter registreret.";
+"No connected backend can publish video." = "Ingen tilsluttet backend kan publicere video.";
 "No conversations yet" = "Ingen samtaler endnu";
 "No exports yet" = "Ingen eksporter endnu";
 "No images" = "Ingen billeder";
@@ -591,6 +605,7 @@
 "Normal" = "Normal";
 "Not selected" = "Ikke valgt";
 "Not synced — unusable as an angle." = "Ikke synkroniseret — kan ikke bruges som vinkel.";
+"Nothing new to add." = "Intet nyt at tilføje.";
 "Notifications" = "Notifikationer";
 "OK" = "OK";
 "Object to recolor" = "Objekt der skal farves om";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Ældre udvekslingsformat, bedst når Premiere Pro er destinationen. Understøtter grundlæggende redigering og nøgleframes, men ikke tekst, farve, effekter, kantblødhed eller kantrunding.";
 "On-device transcription is not available for %@." = "Transskription på enheden er ikke tilgængelig for %@.";
 "Only available for AI-generated media" = "Kun tilgængelig for AI-genererede medier";
+"Only completed MP4 or MOV exports can be published." = "Kun fuldførte MP4- eller MOV-eksporter kan publiceres.";
 "Opacity" = "Uigennemsigtighed";
 "Open" = "Åbn";
 "Open %@" = "Åbn %@";
@@ -649,10 +665,16 @@
 "Presence" = "Tilstedeværelse";
 "Press M in the timeline to add a marker." = "Tryk på M på tidslinjen for at tilføje en markør.";
 "Preview" = "Forhåndsvisning";
+"Processing is billed by the backend. The estimate appears once processing starts." = "Behandling faktureres af backend. Estimatet vises, når behandlingen starter.";
+"Processing…" = "Behandler…";
+"Processing… Estimated %@ %@" = "Behandler… Estimeret: %@ %@";
 "Project" = "Projekt";
 "Project Settings" = "Projektindstillinger";
 "Projects Couldn’t Be Deleted" = "Projekter kunne ikke slettes";
 "Prompt" = "Prompt";
+"Publish" = "Udgiv";
+"Published" = "Udgivet";
+"Publish…" = "Udgiv…";
 "Put the subject on a new background" = "Placer motivet på en ny baggrund";
 "Quality" = "Kvalitet";
 "Queued" = "I kø";
@@ -661,6 +683,8 @@
 "Range" = "Område";
 "Razor (C)" = "Barberkniv (C)";
 "Razor Tool" = "Barberknivsværktøj";
+"Ready" = "Klar";
+"Ready, %lld failed" = "Klar, %lld mislykkedes";
 "Reasoning effort" = "Ræsonnementsindsats";
 "Recolor" = "Farv om";
 "Redetect Beats" = "Registrer takter igen";
@@ -851,6 +875,9 @@
 "System appearance" = "Systemudseende";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Tag et skærmbillede af forhåndsvisningen, og brug det som reference til generering. Særligt nyttigt til AI-overgange.";
 "Target Language" = "Målsprog";
+"Teaser" = "Teaser";
+"Teasers aren't available." = "Teasere er ikke tilgængelige.";
+"Teasers must be %lld–%lld seconds." = "Teasere skal være %lld–%lld sekunder.";
 "Temperature" = "Temperatur";
 "Temporary files" = "Midlertidige filer";
 "Test Connection" = "Test forbindelse";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "Klippet, du tilføjer, har andre indstillinger end det aktuelle projekt.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Den forbundne backend tilbyder ikke denne redigering. Åbn Indstillinger → Backend.";
 "The export" = "Eksporten";
+"The export file can't be read." = "Eksportfilen kan ikke læses.";
+"The export is %@; publishing accepts up to %@." = "Eksporten er %@; publicering accepterer op til %@.";
 "The file is larger than %@." = "Filen er større end %@.";
 "The image is larger than %lld pixels in total." = "Billedet er større end %lld pixels i alt.";
 "The image size isn't known yet. Try again in a moment." = "Billedets størrelse er ikke kendt endnu. Prøv igen om et øjeblik.";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "Jobbet blev afsluttet uden et resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markørkommentaren blev ændret, mens du redigerede. Gennemgå den, og prøv igen.";
 "The project will be moved to the Trash." = "Projektet flyttes til papirkurven.";
+"The publication no longer exists." = "Publiceringen findes ikke længere.";
 "The selected model refused this request. Revise the prompt and try again." = "Den valgte model afviste denne anmodning. Ret prompten, og prøv igen.";
 "The selected projects will be moved to the Trash." = "De valgte projekter flyttes til papirkurven.";
 "The source file is missing." = "Kildefilen mangler.";
+"The teaser must be shorter than the video." = "Teaseren skal være kortere end videoen.";
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeindstillingerne blev ændret. Luk dette ark, og prøv igen.";
+"The upload didn't finish. Publish the export again." = "Uploaden blev ikke fuldført. Publicer eksporten igen.";
 "Theme" = "Tema";
 "This build includes no skills." = "Denne version indeholder ingen færdigheder.";
 "This edit works on images only." = "Denne redigering virker kun på billeder.";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "Denne model kan ikke begrænse outputtet til 60 FPS.";
 "This permanently removes %@." = "Dette fjerner %@ permanent.";
 "This source can’t replace the clip." = "Denne kilde kan ikke erstatte klippet.";
+"This video was unpublished." = "Denne video er afpubliceret.";
 "Three-Stack" = "Trestak";
 "Three-Up" = "Tre ved siden af";
 "Threshold" = "Tærskel";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "Fortryd (⌘Z)";
 "Ungroup Multicam" = "Ophæv multicam-gruppe";
 "Unlink" = "Fjern kædning";
+"Unpublish" = "Fjern udgivelse";
+"Unpublish this video?" = "Fjern udgivelsen af denne video?";
+"Unpublished" = "Udgivelse fjernet";
 "Untitled" = "Unavngivet";
 "Update" = "Opdater";
 "Update available" = "Opdatering tilgængelig";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Bruger hele tidslinjen som standard. Markér et område på tidslinjen for kun at lægge musik på det interval.";
 "Version" = "Version";
 "Vertical" = "Lodret";
+"Vertical aspect %@ isn't supported." = "Det lodrette billedformat %@ understøttes ikke.";
+"Vertical cut" = "Lodret version";
 "Vertical workspace layout" = "Lodret layout for arbejdsområde";
 "Vibrance" = "Farveintensitet";
 "Video" = "Video";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "Stemmerensningsmodel ikke tilgængelig";
 "Voice Cleanup requires audio or video" = "Stemmerensning kræver lyd eller video";
 "Volume" = "Lydstyrke";
+"Wait for the current upload or processing to finish." = "Vent, til den igangværende upload eller behandling er færdig.";
 "Warmth" = "Varme";
 "Welcome to Lenora" = "Velkommen til Lenora";
 "What's New in v%@" = "Nyheder i v%@";

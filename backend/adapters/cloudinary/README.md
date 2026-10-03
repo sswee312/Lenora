@@ -10,6 +10,7 @@ Cloudinary adapter for lenora-backend. Every result is a signed delivery URL (`s
 | `cloudinary/reframe` | `video.reframe` | `ar_<W:H>,c_fill,g_auto`; on the fly up to `LENORA_CLOUDINARY_ON_THE_FLY_VIDEO_MAX_BYTES`, larger videos (up to 100 MB) through `eager_async` |
 | `cloudinary/image-generation` | `image.generate` | needs the Image Generation add-on |
 | `cloudinary/image-to-video` | `video.generate` | needs the Image to Video add-on; prompt-only requests chain through image generation |
+| `cloudinary/publish` | `video.publish` | Stream (HLS ≤1080p), download, poster, optional vertical cut (9:16, 1:1, 4:5) and 5–30 s teaser. Stream 8, vertical 14, teaser 2 per started second; poster 1. Free plan: up to 100 MB per export. |
 
 ## Add-ons
 
@@ -22,6 +23,22 @@ Estimates use Cloudinary's published transformation counts (1 credit = 1000 tran
 ## State
 
 Chain jobs and learned add-on state live in `LENORA_DATA_DIR/cloudinary.sqlite3`. Run a single instance, and mount a volume when you deploy with Docker. If the process crashes while a chain hands off from image to video, the video step can be submitted, and billed, twice.
+
+## Publish
+
+`video.publish` uploads one export (a single request, up to `min(100 MB, the account video limit)`), then asks Cloudinary for every derived output in one `explicit` call with `eager_async`:
+
+| Role | Transformation |
+|---|---|
+| `stream` | `sp_auto:maxres_1080p/m3u8` |
+| `poster` | `so_auto/jpg` |
+| `vertical` | `ar_<aspect>,c_fill,g_auto/mp4` |
+| `teaser` | `e_preview:duration_<N>/mp4` |
+| `download` | the original file |
+
+Every URL is signed. Links are public but unlisted: the public ID holds a random UUID. Results arrive when every output is ready. An output still pending after 15 minutes is reported in `failedOutputs`, and the job fails only when the stream does. Publishing more outputs later requests only the missing ones and costs nothing for the rest.
+
+`DELETE /v1/assets/{assetRef}?model=cloudinary/publish` runs `destroy` with `invalidate=true`. That removes the video and every derived output and clears the CDN cache. A second delete returns 404 `not_found`.
 
 ## Limits
 

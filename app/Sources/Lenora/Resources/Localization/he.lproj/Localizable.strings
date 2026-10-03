@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "⁨%lld⁩ תמונות מוכנות ב-Lenora.";
 "%lld items" = "⁨%lld⁩ פריטים";
 "%lld media files are missing and will be skipped." = "חסרים ⁨%lld⁩ קובצי מדיה והם ידולגו.";
+"%lld seconds" = "%lld שניות";
 "%lld selected" = "נבחרו ⁨%lld⁩";
 "%lld subtitle files are ready in Lenora." = "⁨%lld⁩ קובצי כתוביות מוכנים ב-Lenora.";
 "%lld text clips are ready in Lenora." = "⁨%lld⁩ קליפי טקסט מוכנים ב-Lenora.";
@@ -44,6 +45,8 @@
 "Action Safe" = "אזור פעולה בטוח";
 "Adapters" = "מתאמים";
 "Add Marker (M)" = "הוסף סמן ⁨(M)⁩";
+"Add Outputs" = "הוספת פלטים";
+"Add Outputs…" = "הוספת פלטים…";
 "Add Range to Chat" = "הוסף טווח לצ'אט";
 "Add Text" = "הוסף טקסט";
 "Add a comment" = "הוסף הערה";
@@ -74,12 +77,14 @@
 "All" = "הכול";
 "All Statuses" = "כל הסטטוסים";
 "All fonts" = "כל הגופנים";
+"Always includes a stream, a download link and a poster." = "תמיד כולל שידור, קישור להורדה ופוסטר.";
 "Amount" = "סכום";
 "Analyzing media so you can search it." = "מנתח מדיה כדי שאפשר יהיה לחפש בה.";
 "Angle" = "זווית";
 "Animate" = "הנפש";
 "Animation" = "אנימציה";
 "Anthropic API Key" = "מפתח API של Anthropic";
+"Anyone with the link can watch." = "כל מי שיש לו את הקישור יכול לצפות.";
 "Appearance" = "מראה";
 "Apply" = "החל";
 "Ask anything, or start with:" = "שאל כל דבר, או התחל ב:";
@@ -188,6 +193,7 @@
 "Comments" = "הערות";
 "Compatibility: %@" = "תאימות: ⁨%@⁩";
 "Completed" = "הושלם";
+"Confirm that anyone with the link can watch." = "אשר שכל מי שיש לו את הקישור יכול לצפות בסרטון.";
 "Connect an agent" = "חבר Agent";
 "Connect an external agent to inspect and edit the open Lenora project." = "חבר Agent חיצוני כדי לבדוק ולערוך את פרויקט Lenora הפתוח.";
 "Connected" = "מחובר";
@@ -197,7 +203,12 @@
 "Contrast" = "ניגודיות";
 "Copied" = "הועתק";
 "Copy" = "העתק";
+"Copy Link" = "העתקת קישור";
 "Copy Path" = "העתק נתיב";
+"Copy Poster Link" = "העתקת קישור לפוסטר";
+"Copy Stream Link" = "העתקת קישור לשידור";
+"Copy Teaser Link" = "העתקת קישור לטיזר";
+"Copy Vertical Cut Link" = "העתקת קישור לגרסה האנכית";
 "Copy message" = "העתק הודעה";
 "Copy one clip of the same type and try again." = "העתק קליפ אחד מאותו סוג ונסה שוב.";
 "Copy prompt" = "העתק הנחיה";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "עבור למסך מלא";
 "Erase an object from the image" = "מחיקת אובייקט מהתמונה";
 "Every connected agent will need the new token." = "כל Agent מחובר יצטרך את הטוקן החדש.";
+"Every link stops working. This can't be undone." = "כל הקישורים יפסיקו לעבוד. אי אפשר לבטל פעולה זו.";
 "Exclusion" = "החרגה";
 "Expand" = "הרחב";
 "Export" = "ייצוא";
@@ -338,6 +350,7 @@
 "Fade In" = "עמעום כניסה";
 "Fade Out" = "עמעום יציאה";
 "Failed" = "נכשל";
+"Failed: %@" = "נכשל: %@";
 "Feather" = "ריכוך";
 "Featured" = "מומלץ";
 "File" = "קובץ";
@@ -567,6 +580,7 @@
 "No audio" = "אין שמע";
 "No audio selected." = "לא נבחר שמע.";
 "No beats detected." = "לא זוהו פעימות.";
+"No connected backend can publish video." = "אין קצה אחורי מחובר שיכול לפרסם וידאו.";
 "No conversations yet" = "אין שיחות עדיין";
 "No exports yet" = "אין ייצואים עדיין";
 "No images" = "אין תמונות";
@@ -591,6 +605,7 @@
 "Normal" = "רגיל";
 "Not selected" = "לא נבחר";
 "Not synced — unusable as an angle." = "לא מסונכרן — לא ניתן לשימוש כזווית.";
+"Nothing new to add." = "אין מה להוסיף.";
 "Notifications" = "התראות";
 "OK" = "אישור";
 "Object to recolor" = "אובייקט לצביעה מחדש";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "פורמט חילופים ישן יותר, מתאים כשהיעד הוא Premiere Pro. תומך בעריכות בסיסיות ובפריימי מפתח, אך לא בטקסט, בצבע, באפקטים, בריכוך קצה או בעיגול קצה.";
 "On-device transcription is not available for %@." = "תמלול במכשיר אינו זמין עבור ⁨%@⁩.";
 "Only available for AI-generated media" = "זמין רק למדיה שנוצרה ב-AI";
+"Only completed MP4 or MOV exports can be published." = "ניתן לפרסם רק ייצואי MP4 או MOV שהושלמו.";
 "Opacity" = "אטימות";
 "Open" = "פתח";
 "Open %@" = "פתח את ⁨%@⁩";
@@ -649,10 +665,16 @@
 "Presence" = "נוכחות";
 "Press M in the timeline to add a marker." = "לחץ ⁨M⁩ בציר הזמן כדי להוסיף סמן.";
 "Preview" = "תצוגה מקדימה";
+"Processing is billed by the backend. The estimate appears once processing starts." = "העיבוד מחויב על ידי הקצה האחורי. ההערכה מופיעה כשהעיבוד מתחיל.";
+"Processing…" = "מעבד…";
+"Processing… Estimated %@ %@" = "מעבד… הערכה: %@ %@";
 "Project" = "פרויקט";
 "Project Settings" = "הגדרות פרויקט";
 "Projects Couldn’t Be Deleted" = "לא ניתן היה למחוק פרויקטים";
 "Prompt" = "הנחיה";
+"Publish" = "פרסום";
+"Published" = "פורסם";
+"Publish…" = "פרסום…";
 "Put the subject on a new background" = "הצבת הנושא על רקע חדש";
 "Quality" = "איכות";
 "Queued" = "בתור";
@@ -661,6 +683,8 @@
 "Range" = "טווח";
 "Razor (C)" = "סכין ⁨(C)⁩";
 "Razor Tool" = "כלי סכין";
+"Ready" = "מוכן";
+"Ready, %lld failed" = "מוכן, %lld נכשלו";
 "Reasoning effort" = "מאמץ חשיבה";
 "Recolor" = "צביעה מחדש";
 "Redetect Beats" = "זהה פעימות מחדש";
@@ -851,6 +875,9 @@
 "System appearance" = "מראה המערכת";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "צלם את התצוגה המקדימה והשתמש בה כייחוס להפקה. שימושי במיוחד ליצירת מעברי AI.";
 "Target Language" = "שפת יעד";
+"Teaser" = "טיזר";
+"Teasers aren't available." = "טריילרים קצרים אינם זמינים.";
+"Teasers must be %lld–%lld seconds." = "אורך הטריילר חייב להיות %lld–%lld שניות.";
 "Temperature" = "טמפרטורה";
 "Temporary files" = "קבצים זמניים";
 "Test Connection" = "בדוק חיבור";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "לקליפ שאתה מוסיף יש הגדרות שונות מאלה של הפרויקט הנוכחי.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "השרת המחובר אינו מציע עריכה זו. פתח הגדרות ← שרת.";
 "The export" = "הייצוא";
+"The export file can't be read." = "לא ניתן לקרוא את קובץ הייצוא.";
+"The export is %@; publishing accepts up to %@." = "גודל הייצוא הוא %@; הפרסום מקבל עד %@.";
 "The file is larger than %@." = "הקובץ גדול מ-%@.";
 "The image is larger than %lld pixels in total." = "התמונה גדולה מ-%lld פיקסלים בסך הכול.";
 "The image size isn't known yet. Try again in a moment." = "גודל התמונה עדיין לא ידוע. נסה שוב בעוד רגע.";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "המשימה הסתיימה ללא תוצאה.";
 "The marker comment changed while you were editing. Review it and try again." = "הערת הסמן השתנתה בזמן העריכה. סקור אותה ונסה שוב.";
 "The project will be moved to the Trash." = "הפרויקט יועבר לפח.";
+"The publication no longer exists." = "הפרסום כבר לא קיים.";
 "The selected model refused this request. Revise the prompt and try again." = "המודל שנבחר דחה את הבקשה. עדכן את ההנחיה ונסה שוב.";
 "The selected projects will be moved to the Trash." = "הפרויקטים שנבחרו יועברו לפח.";
 "The source file is missing." = "קובץ המקור חסר.";
+"The teaser must be shorter than the video." = "הטריילר חייב להיות קצר מהסרטון.";
 "The timeline settings changed. Close this sheet and try again." = "הגדרות ציר הזמן השתנו. סגור גיליון זה ונסה שוב.";
+"The upload didn't finish. Publish the export again." = "ההעלאה לא הושלמה. פרסם את הייצוא שוב.";
 "Theme" = "ערכת נושא";
 "This build includes no skills." = "גרסה זו אינה כוללת מיומנויות.";
 "This edit works on images only." = "עריכה זו פועלת על תמונות בלבד.";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "מודל זה אינו יכול להגביל את הפלט ל-⁨60 FPS⁩.";
 "This permanently removes %@." = "פעולה זו מסירה את ⁨%@⁩ לצמיתות.";
 "This source can’t replace the clip." = "מקור זה אינו יכול להחליף את הקליפ.";
+"This video was unpublished." = "פרסום הסרטון הזה בוטל.";
 "Three-Stack" = "שלוש ערימות";
 "Three-Up" = "שלושה לרוחב";
 "Threshold" = "סף";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "בטל ⁨(⌘Z)⁩";
 "Ungroup Multicam" = "בטל קיבוץ מולטיקאם";
 "Unlink" = "נתק קישור";
+"Unpublish" = "ביטול פרסום";
+"Unpublish this video?" = "לבטל את הפרסום של הסרטון הזה?";
+"Unpublished" = "הפרסום בוטל";
 "Untitled" = "ללא שם";
 "Update" = "עדכן";
 "Update available" = "עדכון זמין";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "משתמש בכל ציר הזמן כברירת מחדל. סמן טווח בציר הזמן כדי לחבר פסקול לקטע זה בלבד.";
 "Version" = "גרסה";
 "Vertical" = "אנכי";
+"Vertical aspect %@ isn't supported." = "יחס הגובה-רוחב האנכי %@ אינו נתמך.";
+"Vertical cut" = "גרסה אנכית";
 "Vertical workspace layout" = "פריסת סביבת עבודה אנכית";
 "Vibrance" = "חיוניות";
 "Video" = "וידאו";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "מודל ניקוי קול אינו זמין";
 "Voice Cleanup requires audio or video" = "ניקוי קול דורש שמע או וידאו";
 "Volume" = "עוצמה";
+"Wait for the current upload or processing to finish." = "המתן לסיום ההעלאה או העיבוד הנוכחיים.";
 "Warmth" = "חום";
 "Welcome to Lenora" = "ברוך הבא אל Lenora";
 "What's New in v%@" = "מה חדש ב-⁨v%@⁩";

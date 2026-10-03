@@ -25,6 +25,7 @@
 "%lld images are ready in Lenora." = "%lld görüntü Lenora'da hazır.";
 "%lld items" = "%lld öğe";
 "%lld media files are missing and will be skipped." = "%lld medya dosyası eksik ve atlanacak.";
+"%lld seconds" = "%lld saniye";
 "%lld selected" = "%lld seçili";
 "%lld subtitle files are ready in Lenora." = "%lld altyazı dosyası Lenora’da hazır.";
 "%lld text clips are ready in Lenora." = "%lld metin klibi Lenora'da hazır.";
@@ -44,6 +45,8 @@
 "Action Safe" = "Güvenli Eylem";
 "Adapters" = "Bağdaştırıcılar";
 "Add Marker (M)" = "İşaretleyici Ekle (M)";
+"Add Outputs" = "Çıktı ekle";
+"Add Outputs…" = "Çıktı ekle…";
 "Add Range to Chat" = "Aralığı Sohbete Ekle";
 "Add Text" = "Metin Ekle";
 "Add a comment" = "Yorum ekle";
@@ -74,12 +77,14 @@
 "All" = "Tümü";
 "All Statuses" = "Tüm Durumlar";
 "All fonts" = "Tüm fontlar";
+"Always includes a stream, a download link and a poster." = "Her zaman bir akış, bir indirme bağlantısı ve bir poster içerir.";
 "Amount" = "Miktar";
 "Analyzing media so you can search it." = "Arayabilmeniz için medya analiz ediliyor.";
 "Angle" = "Açı";
 "Animate" = "Canlandır";
 "Animation" = "Animasyon";
 "Anthropic API Key" = "Anthropic API Anahtarı";
+"Anyone with the link can watch." = "Bağlantıya sahip herkes izleyebilir.";
 "Appearance" = "Görünüm";
 "Apply" = "Uygula";
 "Ask anything, or start with:" = "İstediğinizi sorun veya şununla başlayın:";
@@ -188,6 +193,7 @@
 "Comments" = "Yorumlar";
 "Compatibility: %@" = "Uyumluluk: %@";
 "Completed" = "Tamamlandı";
+"Confirm that anyone with the link can watch." = "Bağlantıya sahip herkesin videoyu izleyebileceğini onaylayın.";
 "Connect an agent" = "Bir aracı bağla";
 "Connect an external agent to inspect and edit the open Lenora project." = "Açık Lenora projesini inceleyip düzenlemek için harici bir aracı bağlayın.";
 "Connected" = "Bağlandı";
@@ -197,7 +203,12 @@
 "Contrast" = "Kontrast";
 "Copied" = "Kopyalandı";
 "Copy" = "Kopyala";
+"Copy Link" = "Bağlantıyı kopyala";
 "Copy Path" = "Yolu Kopyala";
+"Copy Poster Link" = "Poster bağlantısını kopyala";
+"Copy Stream Link" = "Akış bağlantısını kopyala";
+"Copy Teaser Link" = "Tanıtım bağlantısını kopyala";
+"Copy Vertical Cut Link" = "Dikey kesim bağlantısını kopyala";
 "Copy message" = "Mesajı kopyala";
 "Copy one clip of the same type and try again." = "Aynı türde bir klip kopyalayıp yeniden deneyin.";
 "Copy prompt" = "İstemi kopyala";
@@ -319,6 +330,7 @@
 "Enter Full Screen" = "Tam Ekrana Geç";
 "Erase an object from the image" = "Görüntüden bir nesneyi sil";
 "Every connected agent will need the new token." = "Bağlı her aracı yeni belirteci gerektirecek.";
+"Every link stops working. This can't be undone." = "Tüm bağlantılar çalışmayı durdurur. Bu işlem geri alınamaz.";
 "Exclusion" = "Dışlama";
 "Expand" = "Genişlet";
 "Export" = "Dışa Aktar";
@@ -338,6 +350,7 @@
 "Fade In" = "Açılma";
 "Fade Out" = "Kararma";
 "Failed" = "Başarısız";
+"Failed: %@" = "Başarısız: %@";
 "Feather" = "Yumuşatma";
 "Featured" = "Öne Çıkan";
 "File" = "Dosya";
@@ -567,6 +580,7 @@
 "No audio" = "Ses yok";
 "No audio selected." = "Ses seçilmedi.";
 "No beats detected." = "Vuruş algılanmadı.";
+"No connected backend can publish video." = "Bağlı hiçbir arka uç video yayımlayamıyor.";
 "No conversations yet" = "Henüz sohbet yok";
 "No exports yet" = "Henüz dışa aktarma yok";
 "No images" = "Görüntü yok";
@@ -591,6 +605,7 @@
 "Normal" = "Normal";
 "Not selected" = "Seçilmedi";
 "Not synced — unusable as an angle." = "Eşzamanlanmadı — açı olarak kullanılamaz.";
+"Nothing new to add." = "Eklenecek yeni bir şey yok.";
 "Notifications" = "Bildirimler";
 "OK" = "Tamam";
 "Object to recolor" = "Yeniden renklendirilecek nesne";
@@ -600,6 +615,7 @@
 "Older interchange format, best when Premiere Pro is the destination. Supports basic edits and keyframes, but not text, color, effects, edge softness, or edge rounding." = "Hedef Premiere Pro olduğunda en uygun olan eski aktarım biçimi. Temel düzenlemeleri ve anahtar kareleri destekler; metin, renk, efekt, kenar yumuşaklığı veya kenar yuvarlaklığını desteklemez.";
 "On-device transcription is not available for %@." = "%@ için aygıt içi yazıya çevirme kullanılamıyor.";
 "Only available for AI-generated media" = "Yalnızca yapay zekâ ile oluşturulan medyada kullanılabilir";
+"Only completed MP4 or MOV exports can be published." = "Yalnızca tamamlanmış MP4 veya MOV dışa aktarımları yayımlanabilir.";
 "Opacity" = "Opaklık";
 "Open" = "Aç";
 "Open %@" = "%@ Öğesini Aç";
@@ -649,10 +665,16 @@
 "Presence" = "Varlık";
 "Press M in the timeline to add a marker." = "Zaman ekseninde M tuşuna basarak işaretleyici ekleyin.";
 "Preview" = "Önizleme";
+"Processing is billed by the backend. The estimate appears once processing starts." = "İşleme, arka uç tarafından ücretlendirilir. Tahmin, işleme başladığında görünür.";
+"Processing…" = "İşleniyor…";
+"Processing… Estimated %@ %@" = "İşleniyor… Tahmini: %@ %@";
 "Project" = "Proje";
 "Project Settings" = "Proje Ayarları";
 "Projects Couldn’t Be Deleted" = "Projeler Silinemedi";
 "Prompt" = "İstem";
+"Publish" = "Yayınla";
+"Published" = "Yayınlandı";
+"Publish…" = "Yayınla…";
 "Put the subject on a new background" = "Konuyu yeni bir arka plana yerleştir";
 "Quality" = "Kalite";
 "Queued" = "Kuyruğa Alındı";
@@ -661,6 +683,8 @@
 "Range" = "Aralık";
 "Razor (C)" = "Kesme (C)";
 "Razor Tool" = "Kesme Aracı";
+"Ready" = "Hazır";
+"Ready, %lld failed" = "Hazır, %lld başarısız";
 "Reasoning effort" = "Akıl yürütme düzeyi";
 "Recolor" = "Yeniden Renklendir";
 "Redetect Beats" = "Vuruşları Yeniden Algıla";
@@ -851,6 +875,9 @@
 "System appearance" = "Sistem görünümü";
 "Take a screenshot of the preview and use it as a reference for generation. Particularly useful for creating AI transitions." = "Önizlemenin ekran görüntüsünü alıp oluşturma için referans olarak kullanın. Özellikle yapay zekâ geçişleri oluşturmak için kullanışlıdır.";
 "Target Language" = "Hedef Dil";
+"Teaser" = "Tanıtım";
+"Teasers aren't available." = "Teaser'lar kullanılamıyor.";
+"Teasers must be %lld–%lld seconds." = "Teaser %lld–%lld saniye olmalıdır.";
 "Temperature" = "Sıcaklık";
 "Temporary files" = "Geçici dosyalar";
 "Test Connection" = "Bağlantıyı Sına";
@@ -863,6 +890,8 @@
 "The clip you're adding has different settings than the current project." = "Eklediğiniz klibin ayarları geçerli projeden farklı.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Bağlı arka uç bu düzenlemeyi sunmuyor. Ayarlar → Arka Uç’u açın.";
 "The export" = "Dışa aktarma";
+"The export file can't be read." = "Dışa aktarma dosyası okunamıyor.";
+"The export is %@; publishing accepts up to %@." = "Dışa aktarma %@; yayımlama en fazla %@ kabul eder.";
 "The file is larger than %@." = "Dosya %@ boyutundan büyük.";
 "The image is larger than %lld pixels in total." = "Görüntü toplamda %lld pikselden büyük.";
 "The image size isn't known yet. Try again in a moment." = "Görüntü boyutu henüz bilinmiyor. Biraz sonra yeniden deneyin.";
@@ -870,10 +899,13 @@
 "The job finished without a result." = "İş sonuç üretmeden tamamlandı.";
 "The marker comment changed while you were editing. Review it and try again." = "İşaretleyici yorumu siz düzenlerken değişti. Gözden geçirip yeniden deneyin.";
 "The project will be moved to the Trash." = "Proje Çöp Sepeti'ne taşınacak.";
+"The publication no longer exists." = "Yayın artık mevcut değil.";
 "The selected model refused this request. Revise the prompt and try again." = "Seçili model bu isteği reddetti. İstemi gözden geçirip yeniden deneyin.";
 "The selected projects will be moved to the Trash." = "Seçili projeler Çöp Sepeti'ne taşınacak.";
 "The source file is missing." = "Kaynak dosya eksik.";
+"The teaser must be shorter than the video." = "Teaser videodan kısa olmalıdır.";
 "The timeline settings changed. Close this sheet and try again." = "Zaman ekseni ayarları değişti. Bu sayfayı kapatıp yeniden deneyin.";
+"The upload didn't finish. Publish the export again." = "Yükleme tamamlanmadı. Dışa aktarmayı yeniden yayımlayın.";
 "Theme" = "Tema";
 "This build includes no skills." = "Bu derleme hiç beceri içermiyor.";
 "This edit works on images only." = "Bu düzenleme yalnızca görüntülerde çalışır.";
@@ -884,6 +916,7 @@
 "This model cannot cap the output at 60 FPS." = "Bu model çıktıyı 60 FPS ile sınırlayamaz.";
 "This permanently removes %@." = "Bu işlem %@ öğesini kalıcı olarak kaldırır.";
 "This source can’t replace the clip." = "Bu kaynak klibin yerini alamaz.";
+"This video was unpublished." = "Bu videonun yayını kaldırıldı.";
 "Three-Stack" = "Üçlü Yığın";
 "Three-Up" = "Üçlü";
 "Threshold" = "Eşik";
@@ -933,6 +966,9 @@
 "Undo (⌘Z)" = "Geri Al (⌘Z)";
 "Ungroup Multicam" = "Çoklu Kamera Grubunu Çöz";
 "Unlink" = "Bağlantıyı Kaldır";
+"Unpublish" = "Yayından kaldır";
+"Unpublish this video?" = "Bu video yayından kaldırılsın mı?";
+"Unpublished" = "Yayından kaldırıldı";
 "Untitled" = "Adsız";
 "Update" = "Güncelle";
 "Update available" = "Güncelleme var";
@@ -955,6 +991,8 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Saptanmış olarak tüm zaman eksenini kullanır. Yalnızca belirli bir aralığa müzik yapmak için zaman ekseninde aralığı işaretleyin.";
 "Version" = "Sürüm";
 "Vertical" = "Dikey";
+"Vertical aspect %@ isn't supported." = "Dikey en boy oranı %@ desteklenmiyor.";
+"Vertical cut" = "Dikey kesim";
 "Vertical workspace layout" = "Dikey çalışma alanı düzeni";
 "Vibrance" = "Canlılık";
 "Video" = "Video";
@@ -972,6 +1010,7 @@
 "Voice Cleanup model not available" = "Ses Temizleme modeli kullanılamıyor";
 "Voice Cleanup requires audio or video" = "Ses Temizleme için ses veya video gerekli";
 "Volume" = "Ses Düzeyi";
+"Wait for the current upload or processing to finish." = "Devam eden yükleme veya işlemenin bitmesini bekleyin.";
 "Warmth" = "Sıcaklık";
 "Welcome to Lenora" = "Lenora'ya Hoş Geldiniz";
 "What's New in v%@" = "v%@ Sürümündeki Yenilikler";

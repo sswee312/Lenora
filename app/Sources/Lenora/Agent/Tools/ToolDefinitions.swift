@@ -14,6 +14,8 @@ enum ToolName: String, CaseIterable, Sendable {
     case setProjectSettings = "set_project_settings"
     case exportProject = "export_project"
     case manageExports = "manage_exports"
+    case publishExport = "publish_export"
+    case managePublications = "manage_publications"
 
     // Media library
     case getMedia = "get_media"
@@ -177,6 +179,31 @@ enum ToolDefinitions {
                 properties: [
                     "action": ["type": "string", "enum": ["list", "cancel"]],
                     "jobId": ["type": "string", "description": "Required for cancel. Exact jobId from export_project or manage_exports list."],
+                ],
+                required: ["action"]
+            )
+        ),
+        AgentTool(
+            name: .publishExport,
+            description: "Publishes a completed video export as public, unlisted links: a stream (HLS), a download, a poster, and optionally a vertical cut and a short teaser. Anyone with a link can watch, so publish only when the user asked to share or publish, and pass confirmPublic: true. Pass exportJobId (a completed MP4 or MOV export from export_project or manage_exports) to publish it. Pass publicationId instead to add or retry outputs on an existing publication without uploading again: outputs that are already ready are not requested again, and a request with nothing new returns noop: true. The allowed vertical aspects and teaser lengths come from list_models (type='publish': verticalAspects, teaserSeconds, maxBytes); invalid values, a teaser not shorter than the video, and exports over the size limit are refused before anything is uploaded. Processing is billed by the backend and takes minutes. The call returns at once with status uploading; poll manage_publications get for progress, the estimate, every output's link and any per-output error. A partial status means some outputs failed; retry them with publicationId. Refusals return {error: {code, message, field?}}.",
+            inputSchema: objectSchema(
+                properties: [
+                    "exportJobId": ["type": "string", "description": "jobId of a completed video export. Exactly one of exportJobId or publicationId."],
+                    "publicationId": ["type": "string", "description": "Existing publication to add or retry outputs on. Exactly one of exportJobId or publicationId."],
+                    "confirmPublic": ["type": "boolean", "description": "Must be true. The links are public to anyone who has them."],
+                    "vertical": ["type": "string", "description": "Optional vertical-cut aspect ratio, for example 9:16."],
+                    "teaserSeconds": ["type": "integer", "description": "Optional teaser length in whole seconds, for example 15."],
+                ],
+                required: ["confirmPublic"]
+            )
+        ),
+        AgentTool(
+            name: .managePublications,
+            description: "Lists, reads or unpublishes this project's publications. action=list returns them newest first; action=get returns one publication with status, estimate, and every output's role, status, url and errorCode; action=unpublish deletes the video and everything derived from it from the backend and clears every link. Unpublish only when the user asks. Repeating unpublish returns noop: true. Links are never downloaded into the project. Refusals return {error: {code, message, field?}}.",
+            inputSchema: objectSchema(
+                properties: [
+                    "action": ["type": "string", "enum": ["list", "get", "unpublish"]],
+                    "publicationId": ["type": "string", "description": "Required for get and unpublish. From publish_export or manage_publications list."],
                 ],
                 required: ["action"]
             )
@@ -1061,10 +1088,10 @@ enum ToolDefinitions {
         ),
         AgentTool(
             name: .listModels,
-            description: "Lists AI models with their capabilities (durations, aspect ratios, resolutions, draft mode, first/last frame support, reference support, voices/category for audio, configurable settings for upscalers, and accepted input types and size limits for transforms). Always call before generate_video, generate_image, generate_audio, upscale_media, or transform_media (type='transform') so the model you pick actually supports the constraints you need. Returns { models, loaded } — loaded=false means the catalog hasn't finished its first sync, so retry shortly; an empty models array with loaded=true means the connected backend doesn't offer that type yet (with no type filter: no backend is connected or no adapter is enabled) — tell the user Settings → Backend shows which adapters are enabled.",
+            description: "Lists AI models with their capabilities (durations, aspect ratios, resolutions, draft mode, first/last frame support, reference support, voices/category for audio, configurable settings for upscalers, accepted input types and size limits for transforms, and the publish model with its size limit, allowed vertical aspects and teaser length range). Always call before generate_video, generate_image, generate_audio, upscale_media, or transform_media (type='transform') so the model you pick actually supports the constraints you need. Returns { models, loaded } — loaded=false means the catalog hasn't finished its first sync, so retry shortly; an empty models array with loaded=true means the connected backend doesn't offer that type yet (with no type filter: no backend is connected or no adapter is enabled) — tell the user Settings → Backend shows which adapters are enabled.",
             inputSchema: objectSchema(
                 properties: [
-                    "type": ["type": "string", "enum": ["video", "image", "audio", "upscale", "transform"], "description": "Filter by type. Omit to list all models."],
+                    "type": ["type": "string", "enum": ["video", "image", "audio", "upscale", "transform", "publish"], "description": "Filter by type. Omit to list all models."],
                 ]
             )
         ),
@@ -1449,6 +1476,7 @@ extension ToolName {
         case .generateImage: ClipType.image.generationKinds
         case .generateAudio: ClipType.audio.generationKinds
         case .upscaleMedia: ["image.upscale", "video.upscale"]
+        case .publishExport, .managePublications: [PublishService.kind]
         default: nil
         }
     }
