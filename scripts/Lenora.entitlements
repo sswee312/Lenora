@@ -4,11 +4,11 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>MMFLRC7562.xyz.agentage.lenora</string>
+		<string>TEAM_ID.xyz.agentage.lenora</string>
 	</array>
 	<key>com.apple.application-identifier</key>
-	<string>MMFLRC7562.xyz.agentage.lenora</string>
+	<string>TEAM_ID.xyz.agentage.lenora</string>
 	<key>com.apple.developer.team-identifier</key>
-	<string>MMFLRC7562</string>
+	<string>TEAM_ID</string>
 </dict>
 </plist>

@@ -11,3 +11,14 @@ __pycache__/
 mcpb/server/node_modules/
 mcpb/server/package-lock.json
 .data/
+.env.*
+!.env.example
+*.provisionprofile
+*.p12
+*.p8
+*.pem
+*.key
+DerivedData/
+xcuserdata/
+app/models/*/build/
+app/models/*/.venv/

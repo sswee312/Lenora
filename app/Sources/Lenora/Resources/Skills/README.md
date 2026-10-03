@@ -1,6 +1,6 @@
 # lenora-skills
 
-Curated and community skills for [Lenora](https://github.com/vermatushar/lenora), the
+Curated and community skills for [Lenora](https://github.com/vermatushar/Lenora), the
 AI-native macOS video editor.
 
 ## Quickstart

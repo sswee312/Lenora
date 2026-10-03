@@ -2,7 +2,7 @@ import AppKit
 import SwiftUI
 
 struct OnboardingWelcomeStep: View {
-    private static let hero = BundledResource.url("Images/welcome-butterfly.jpg")
+    private static let hero = BundledResource.url("Images/welcome-hero.jpg")
         .flatMap(NSImage.init(contentsOf:))
 
     var body: some View {

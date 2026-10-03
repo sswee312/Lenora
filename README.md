@@ -11,12 +11,19 @@ Open-source, agent-native video editor for the Mac. Edit by hand, or let Claude 
 
 ## Get started
 ```bash
-git clone https://github.com/vermatushar/lenora.git
+git clone https://github.com/vermatushar/Lenora.git
 cd lenora
 ./scripts/bootstrap
 ./scripts/dev
 ```
-No accounts or keys are needed to edit. To turn on AI features, add your Cloudinary keys to `.env` and restart `./scripts/dev`.
+No accounts or keys are needed to edit. To turn on AI features, add your Cloudinary keys to `.env` and restart `./scripts/dev`. `bootstrap` creates `.env` from [`.env.example`](.env.example), which documents every variable; `backend/README.md` covers running and deploying the backend on its own.
+
+## Test
+```bash
+cd backend && uv run pytest
+cd app && swift build && swift test
+```
+See `CONTRIBUTING.md` for the full set of checks.
 
 ## Connect an agent
 Open **Settings → Agent → Connect an agent** and copy the snippet for Claude Code, Cursor, Codex or Claude Desktop.

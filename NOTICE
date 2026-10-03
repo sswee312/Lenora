@@ -5,6 +5,10 @@ The editor in app/ is a derivative of Palmier Pro, licensed under the GNU
 General Public License v3.0, from the source tagged last-gpl-source
 (commit 8805801). The editor is distributed under GPLv3; see LICENSE.
 
+Palmier Pro
+Copyright (C) 2026 Palmier, Inc.
+Modified by the Lenora contributors since 2026-10-03.
+
 protocol/, backend/ and skills/ are licensed under the Apache License 2.0.
 
 Bundled agent skills (app/Sources/Lenora/Resources/Skills/, repo-root symlink skills/)
@@ -14,3 +18,9 @@ Modified: rebranded to Lenora, catalog paths and hashes regenerated, lenora-ai-t
 
 The semantic search model vermatushar/siglip2-base-coreml is converted from
 google/siglip2-base-patch16-256 (Apache License 2.0).
+
+Beat This beat-tracking model (app/Sources/Lenora/Resources/Models/BeatThis.mlmodelc)
+Converted from Beat This (https://github.com/CPJKU/beat_this).
+Copyright (c) 2024 Institute of Computational Perception, JKU Linz, Austria
+Licensed under the MIT License (full text in
+app/Sources/Lenora/Resources/Models/BeatThis-LICENSE.txt, shipped in the app's Models/).
