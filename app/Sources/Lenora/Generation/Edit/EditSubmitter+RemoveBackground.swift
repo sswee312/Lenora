@@ -58,6 +58,7 @@ extension EditSubmitter {
         let sourceAssetId = asset.id
         var input = GenerationInput(prompt: "", model: model.id, duration: 0, aspectRatio: "")
         input.undoActionName = L10n.string("Remove Background")
+        input.imageURLAssetIds = [sourceAssetId]
         let placeholderId = service.generate(
             genInput: input,
             assetType: .image,
@@ -68,7 +69,6 @@ extension EditSubmitter {
             buildParams: { _ in .removeBackground },
             snapshotRefs: { input, uploaded in
                 input.imageURLs = uploaded.isEmpty ? nil : uploaded
-                input.imageURLAssetIds = [sourceAssetId]
             },
             fileExtension: "png",
             projectURL: editor.projectURL,

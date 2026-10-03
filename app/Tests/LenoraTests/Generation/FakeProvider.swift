@@ -12,12 +12,17 @@ actor FakeProvider: GenerationProvider {
     private(set) var terminations = 0
     private let hangsOnSubmit: Bool
     private let hangsOnUpload: Bool
+    private let uploadFailure: BackendError?
 
-    init(states: [JobState], failure: BackendError? = nil, hangsOnSubmit: Bool = false, hangsOnUpload: Bool = false) {
+    init(
+        states: [JobState], failure: BackendError? = nil, hangsOnSubmit: Bool = false, hangsOnUpload: Bool = false,
+        uploadFailure: BackendError? = nil
+    ) {
         self.states = states
         self.failure = failure
         self.hangsOnSubmit = hangsOnSubmit
         self.hangsOnUpload = hangsOnUpload
+        self.uploadFailure = uploadFailure
     }
 
     nonisolated func health() async throws -> BackendHealth { BackendHealth(status: "ok", protocolVersion: "1", backendVersion: "t", adapters: []) }
@@ -30,6 +35,7 @@ actor FakeProvider: GenerationProvider {
 
     func upload(_ fileURL: URL, ticket: UploadTicket) async throws {
         uploads.append(ticket.assetRef)
+        if let uploadFailure { throw uploadFailure }
         if hangsOnUpload { try await Task.sleep(for: .seconds(3600)) }
     }
 

@@ -84,6 +84,31 @@ extension EditorViewModel {
         }
     }
 
+    /// The source a failed Remove Background placeholder can be retried from, while the source
+    /// still exists and the connected backend still offers the transform.
+    func removeBackgroundRetrySource(for placeholder: MediaAsset) -> MediaAsset? {
+        guard case .failed = placeholder.generationStatus,
+              let input = placeholder.generationInput,
+              generationService.catalog.backendModel(id: input.model)?.kind == EditSubmitter.removeBackgroundKind,
+              let sourceId = input.imageURLAssetIds?.first,
+              let source = mediaAssetsById[sourceId] else { return nil }
+        return source
+    }
+
+    /// Resubmits from the source; the failed placeholder is dropped only once the new job starts.
+    @discardableResult
+    func retryRemoveBackground(_ placeholder: MediaAsset) async -> RemoveBackgroundOutcome? {
+        guard let source = removeBackgroundRetrySource(for: placeholder) else { return nil }
+        let outcome = await EditSubmitter.submitRemoveBackground(asset: source, editor: self)
+        switch outcome {
+        case .started:
+            removeGenerationPlaceholders([placeholder])
+        case .refused(let refusal):
+            mediaPanelToast = MediaPanelToast(message: refusal.userMessage, kind: .warning)
+        }
+        return outcome
+    }
+
     /// Music/SFX: output is new audio, so no source replacement — place it on the timeline at the clip.
     func beginAIVideoAudio(clipId: String, kind: VideoToAudioEditKind) {
         guard let (_, asset) = aiEditClipAsset(clipId),

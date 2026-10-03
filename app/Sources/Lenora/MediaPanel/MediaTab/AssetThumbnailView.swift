@@ -91,6 +91,11 @@ struct AssetThumbnailView: View {
             if asset.generationStatus == .generating, asset.generationInput?.jobId != nil {
                 Button(L10n.string("Cancel Generation")) { cancelGeneration() }
             }
+            if editor.removeBackgroundRetrySource(for: asset) != nil {
+                Button(L10n.string("Retry")) {
+                    Task { await editor.retryRemoveBackground(asset) }
+                }
+            }
             AIEditMenu(asset: asset)
             Divider()
         }
