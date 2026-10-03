@@ -91,3 +91,23 @@ def test_addons_missing_on_this_account_are_learned_and_persist(tmp_path):
         return {m.id for m in adapter.models()}
     ids = asyncio.run(live(restarted)(tmp_path))
     assert "cloudinary/image-generation" not in ids and "cloudinary/image-to-video" not in ids
+
+
+def test_publish_then_unpublish(tmp_path):
+    """About 0.3 credits: every publish output for the 13-second sample, then delete."""
+    async def scenario(adapter, http):
+        await adapter.start()
+        ref = await upload(adapter, http, "cloudinary/publish", "video/mp4", SAMPLE_VIDEO)
+        try:
+            request = JobRequest(kind="video.publish", model="cloudinary/publish", inputs=[AssetInput(assetRef=ref)],
+                                 params={"outputs": {"vertical": "9:16", "teaserSeconds": 5}})
+            state = await finish(adapter, (await adapter.submit(request.model, request)).jobId, timeout=900)
+        finally:
+            await adapter.delete_asset("cloudinary/publish", ref)
+        with pytest.raises(ProblemError) as again:
+            await adapter.delete_asset("cloudinary/publish", ref)
+        return state, again.value.code
+    state, second_delete = asyncio.run(live(scenario)(tmp_path))
+    assert state.status == "succeeded" and state.failedOutputs is None, (state.error, state.failedOutputs)
+    assert sorted(r.role for r in state.results) == ["download", "poster", "stream", "teaser", "vertical"]
+    assert second_delete == "not_found"
