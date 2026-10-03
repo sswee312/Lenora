@@ -1,4 +1,3 @@
-import asyncio
 import time
 import uuid
 from collections.abc import Callable
@@ -53,8 +52,8 @@ class CloudinaryAdapter(CancelNotSupported):
         self.store = Store(settings.data_dir / "cloudinary.sqlite3", now=clock())
         self.addons = Addons({IMAGE_GENERATION: settings.image_generation, IMAGE_TO_VIDEO: settings.image_to_video},
                              self.store)
-        # ponytail: one lock serializes chain hand-offs in this process; a shared store needs a row lock instead.
-        self._chain_lock = asyncio.Lock()
+        # ponytail: in-process claim set; a shared store needs a row claim instead.
+        self._handing_off: set[str] = set()
         self.budget = costs.Budget(settings.daily_credit_budget, clock)
         self.publish_max_bytes = publish.MAX_BYTES
 
@@ -293,14 +292,18 @@ class CloudinaryAdapter(CancelNotSupported):
                 return generation.failed(job_id, f"First frame: {error}")
             if state == "running":
                 return generation.running(job_id)
-            async with self._chain_lock:
-                chain = self.store.chain(chain_id)
-                if chain.stage == "image":
-                    start = (assets[0].get("storage") or {}).get("asset_id")
-                    if not isinstance(start, str):
-                        return generation.failed(job_id, "First frame: generated image has no asset_id.")
-                    self._require(IMAGE_TO_VIDEO)
-                    params = VideoGenerateParams.model_validate(chain.params)
+            # No await between the check and the claim, so exactly one poll starts the hand-off.
+            chain = self.store.chain(chain_id)
+            if chain.stage == "image" and chain_id not in self._handing_off:
+                start = (assets[0].get("storage") or {}).get("asset_id")
+                if not isinstance(start, str):
+                    return generation.failed(job_id, "First frame: generated image has no asset_id.")
+                self._require(IMAGE_TO_VIDEO)
+                params = VideoGenerateParams.model_validate(chain.params)
+                self._handing_off.add(chain_id)
+                try:
                     self.store.advance_chain(chain_id, await self._start_video_job(params, start, None, []))
+                finally:
+                    self._handing_off.discard(chain_id)
             return generation.running(job_id)
         return await self._image_to_video_status(job_id, chain.i2v_id)

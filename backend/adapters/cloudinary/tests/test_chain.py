@@ -70,6 +70,39 @@ def test_chain_hands_off_once_and_survives_a_restart(tmp_path):
     assert final.status == "succeeded" and len(video_posts) == 1
 
 
+def test_a_slow_hand_off_does_not_block_another_chain(tmp_path):
+    video_posts = []
+    slow_started, other_started, release = asyncio.Event(), asyncio.Event(), asyncio.Event()
+
+    async def post_video(req):
+        video_posts.append(req)
+        if len(video_posts) == 1:
+            slow_started.set()
+            await release.wait()
+        else:
+            other_started.set()
+        return httpx.Response(201, json={"data": {"job_id": "v1"}})
+
+    def mock(r):
+        r.post(f"{GEN}/text_to_image").respond(202, json={"data": {"task_id": "t1"}})
+        r.get(f"{GEN}/tasks/t1").respond(200, json=gen_task("completed", asset_id="frame-asset"))
+        r.post(I2V).mock(side_effect=post_video)
+
+    async def scenario(a):
+        slow = (await a.submit("cloudinary/image-to-video", chain_request())).jobId
+        other = (await a.submit("cloudinary/image-to-video", chain_request())).jobId
+        first = asyncio.create_task(a.status(slow))
+        await slow_started.wait()
+        second = asyncio.create_task(a.status(other))
+        try:
+            await asyncio.wait_for(other_started.wait(), timeout=2)
+        finally:
+            release.set()
+        await asyncio.gather(first, second)
+    run(scenario, settings(tmp_path, **ON), mock)
+    assert len(video_posts) == 2
+
+
 @pytest.mark.parametrize("stage", ["image", "video"])
 def test_chain_failure_at_each_stage(stage, tmp_path):
     s = settings(tmp_path, **ON)
