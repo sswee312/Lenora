@@ -92,7 +92,7 @@ struct ExportView: View {
                 logHeader
                 Divider().opacity(AppTheme.Opacity.moderate)
                 exportLog
-                if editor.publishService.isAvailable, !editor.publishService.publications.isEmpty {
+                if !editor.publishService.publications.isEmpty {
                     Divider().opacity(AppTheme.Opacity.moderate)
                     PublishedSection(onAddOutputs: { publishTarget = .publication($0) })
                 }

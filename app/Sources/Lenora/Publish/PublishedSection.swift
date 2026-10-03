@@ -22,6 +22,13 @@ struct PublishedSection: View {
                     ForEach(editor.publishService.publications.reversed()) { row($0) }
                 }
             }
+            if !editor.publishService.isAvailable {
+                Text(L10n.string("Reconnect a backend that publishes video to unpublish or add outputs."))
+                    .font(.system(size: AppTheme.FontSize.xs))
+                    .foregroundStyle(AppTheme.Text.mutedColor)
+                    .padding(.horizontal, AppTheme.Spacing.lg)
+                    .padding(.bottom, AppTheme.Spacing.sm)
+            }
             if let errorMessage {
                 Text(verbatim: errorMessage)
                     .font(.system(size: AppTheme.FontSize.xs))
@@ -73,12 +80,14 @@ struct PublishedSection: View {
             if let download = record.url(.download) {
                 ExportIconButton("arrow.up.right.square", help: L10n.string("Open")) { NSWorkspace.shared.open(download) }
             }
+            let available = editor.publishService.isAvailable
             if record.canAddOutputs {
                 ExportIconButton("plus.rectangle.on.rectangle", help: L10n.string("Add Outputs…")) { onAddOutputs(record) }
+                    .disabled(!available)
             }
             if record.status != .unpublished {
                 ExportIconButton("xmark.icloud", help: L10n.string("Unpublish")) { pendingUnpublish = record }
-                    .disabled(unpublishing.contains(record.id))
+                    .disabled(!available || unpublishing.contains(record.id))
             }
         }
         .padding(.horizontal, AppTheme.Spacing.lg)
