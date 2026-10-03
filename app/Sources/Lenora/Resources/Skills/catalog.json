@@ -1,0 +1,100 @@
+[
+  {
+    "id": "caption-templates",
+    "name": "caption-templates",
+    "description": "Style captions in Lenora from a fixed catalog of 28 verified presets (Clean Creator, Keyword Yellow, Karaoke Fill, Meme Classic, Documentary, Floating Pill, Marker Highlight, Comic Book POW, Retro VHS, TikTok Meme Bottom Bar, and more) instead of guessing at fonts, colors, sizes, and animations. Use whenever adding, restyling, or choosing a look for captions/subtitles in Lenora — \"add captions\", \"caption this\", \"subtitles\", \"make the captions pop\", \"karaoke captions\", \"podcast captions\", \"TikTok-style captions\", \"change the caption style\".",
+    "sha": "c135316296a0",
+    "path": "caption-templates/SKILL.md"
+  },
+  {
+    "id": "character-pipeline",
+    "name": "character-pipeline",
+    "description": "Builds consistent character stills in Lenora — hero identity plate to seamless multi-angle sheet (bust and/or full-body) to environment plate to light-matched scene placement. Use when the same face must survive across stills, casting someone into a new environment, or photoreal identity lock before any later motion. Not for video prompting itself (hand off to video-prompting / cinematic-motion) and not for quick UGC talking-head anchors (use ugc-photo-prompts).",
+    "sha": "90b2a5271b06",
+    "path": "character-pipeline/SKILL.md"
+  },
+  {
+    "id": "cinematic-motion",
+    "name": "cinematic-motion",
+    "description": "Writes Lenora generate_video motion prompts so clips feel captured — one readable camera move plus imperfect handheld texture, not a timid micro-settle. Use for photoreal editorial motion, unstable handheld, beauty/product, or dialogue-to-camera. Bakeoff note: naive \"slow cinematic push-in\" can beat an over-soft effects score; always lead with visible motion.",
+    "sha": "10a93491d706",
+    "path": "cinematic-motion/SKILL.md"
+  },
+  {
+    "id": "color-grading",
+    "name": "color-grading",
+    "description": "Color grade clips the way a professional colorist does — normalize, balance, match, then build a look — using inspect_color scopes and apply_color (exposure, white balance, wheels, curves, hue curves, LUTs). Use when the user asks to color, grade, match shots, fix white balance, fix exposure, neutralize a cast, or apply a look/film stock.",
+    "sha": "0f7245c4236e",
+    "path": "color-grading/SKILL.md"
+  },
+  {
+    "id": "create-skill-from-timeline",
+    "name": "create-skill-from-timeline",
+    "description": "Reverse-engineer a finished Lenora timeline into a reusable SKILL.md that recreates the same edit from the same footage with no prior context, or applies the same style to new footage with minimal tweaks. Use when the user asks to create a skill, save a template, distill this edit into a playbook, document how this video was built, or turn a timeline / chat session into a reusable workflow.",
+    "sha": "31b40e99032e",
+    "path": "create-skill-from-timeline/SKILL.md"
+  },
+  {
+    "id": "lenora-ai-tools",
+    "name": "lenora-ai-tools",
+    "description": "Use Lenora's backend-powered AI tools (transform_media and generation tools) correctly, including capability checks, cost and polling.",
+    "sha": "5e10e6dd3253",
+    "path": "lenora-ai-tools/SKILL.md"
+  },
+  {
+    "id": "motion-graphics",
+    "name": "motion-graphics",
+    "description": "Kinetic titles, stings, Apple-flat glass UI motion, and scripted product promos in Lenora via MiniMax H3 Max (hailuo-03-max) — exact string locks, journey tempo (not metronome chops), sparse accents, switching product-native UI, and image/video refs including logos. Use for motion graphics, kinetic type, cold opens, bumpers, glassy UI explainers, Introducing product films, or agent demos. Prefer over video-prompting for readable on-screen type. Not for photoreal handheld camera feel (use cinematic-motion). Sibling: video-prompting for cinematic multimodal; caption-templates for timeline captions.",
+    "sha": "5a8dcd8998ee",
+    "path": "motion-graphics/SKILL.md"
+  },
+  {
+    "id": "multi-cam-editing",
+    "name": "multi-cam-editing",
+    "description": "Edit multi-camera / shared-audio sessions (podcasts, interviews, panels) inside Lenora — create a multicam group first, verify sync and mic-to-person mapping, then cut angles to the speaker with wide/layout moments for overlap. Use whenever the footage has multiple cameras, multiple mics, dual-system sound, or the user mentions multicam, multi-cam, podcast edit, interview cut, camera switching, or synced audio.",
+    "sha": "51d1dca56b94",
+    "path": "multi-cam-editing/SKILL.md"
+  },
+  {
+    "id": "podcast-ad",
+    "name": "podcast-ad",
+    "description": "Builds converting podcast-style ads in Lenora as an overheard two-person conversation — sceptic arc, believer mechanism, opposed reverse-shot stills, locked voice + eyeline, exact off-screen backchannels, Flux-first beats, assemble + silence trim. Use for podcast ads, UGC conversation ads, sceptic-to-believer product spots — not for single-hook talking-head ads (use ugc-video-prompts).",
+    "sha": "e0623cacbd64",
+    "path": "podcast-ad/SKILL.md"
+  },
+  {
+    "id": "timeless-love-story",
+    "name": "timeless-love-story",
+    "description": "Generates a ~70-second cinematic short where one couple is reincarnated across five historical eras plus a modern-day finale, shot in a consistent handheld DV-camcorder \"found footage\" style, scored with epic-romantic orchestral strings. Requires two reference photos (man, woman) and their two names — ask for these if missing. Use when the user asks to make a multi-era love story video, a reincarnated-lovers video, a \"Timeless\"-style short, or describes this exact concept (couple across history eras, camcorder POV, doorway transitions between eras). Always use this skill for this request rather than improvising the flow — the execution order (sheets first, then everything in parallel) is the point of the skill.",
+    "sha": "23dd691be30b",
+    "path": "timeless-love-story/SKILL.md"
+  },
+  {
+    "id": "ugc-editing",
+    "name": "ugc-editing",
+    "description": "Covers assembling raw footage, trimming bad takes and silences, choosing and applying a talking-head/b-roll format (straight intercut, stacked split, or masked/floating overlay), and caption placement for UGC-style content — agnostic to whether the clips are AI-generated or real filmed footage. Use whenever the user wants to edit, cut, assemble, format, or caption UGC-style video, or pick a talking-head + b-roll layout. Picks up after ugc-photo-prompts/ugc-video-prompts if the footage is AI-generated, or after real footage is imported via import_media.",
+    "sha": "a7f71482cd8e",
+    "path": "ugc-editing/SKILL.md"
+  },
+  {
+    "id": "ugc-photo-prompts",
+    "name": "ugc-photo-prompts",
+    "description": "Generate ultra-realistic, UGC/influencer-style photos inside Lenora — candid selfies, flash photos, lifestyle shots, and product-in-hand ad creative that read as genuine phone photos instead of AI-generated images. Drives Lenora's get_timeline/get_media/generate_image tools directly (correct aspect ratio, model choice, reference-image handling). Use whenever the user wants UGC-style imagery, influencer selfies, \"make it look like a real iPhone photo,\" authentic/non-AI-looking ad creative, or product photos held by a model — even if they don't say \"UGC\" explicitly.",
+    "sha": "9d1bbe5abd7c",
+    "path": "ugc-photo-prompts/SKILL.md"
+  },
+  {
+    "id": "ugc-video-prompts",
+    "name": "ugc-video-prompts",
+    "description": "Generate ultra-realistic UGC/influencer-style video clips inside Lenora — talking selfies, product demos, candid lifestyle motion — using the proven still-then-animate pipeline instead of cold text-to-video. Drives Lenora's generate_video, get_timeline, and get_media tools directly, with model selection grounded in this project's actual capabilities (dialogue/audio support, reference limits, resolution). Use whenever the user wants UGC-style video, influencer clips, talking-to-camera ad creative, \"make a video of [a person/product],\" or animating a still into motion — even if they don't say \"UGC\" explicitly. Pairs with the ugc-photo-prompts skill, which should run first to produce the anchor still.",
+    "sha": "11306f52cd9b",
+    "path": "ugc-video-prompts/SKILL.md"
+  },
+  {
+    "id": "video-prompting",
+    "name": "video-prompting",
+    "description": "Base craft for AI video prompts inside Lenora across Seedance, Kling, MiniMax H3/Hailuo, Grok, and Veo. Assigns @Image/@Video/@Audio authority, locks identity and screen geography, then stages timed shots. Use for generate_video multimodal prompts, precise video edits, or cinematic AI video beyond simple UGC talking-head beats. For UGC selfie-then-animate prefer ugc-photo-prompts then ugc-video-prompts. Specialized siblings: character-pipeline, cinematic-motion, motion-graphics, podcast-ad.",
+    "sha": "6243a7e453ab",
+    "path": "video-prompting/SKILL.md"
+  }
+]

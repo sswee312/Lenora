@@ -106,6 +106,12 @@ else
   echo "!! missing Fonts/ in SwiftPM resource bundle at $RES_BUNDLE" >&2
   exit 1
 fi
+if [ -f "$RES_BUNDLE/Skills/catalog.json" ]; then
+  cp -R "$RES_BUNDLE/Skills" "$APP/Contents/Resources/"
+else
+  echo "!! missing Skills/catalog.json in SwiftPM resource bundle at $RES_BUNDLE" >&2
+  exit 1
+fi
 
 # Ensure the shipped Claude Desktop connector is always up to date with mcpb/ sources.
 MCPB_SRC="$ROOT/mcpb"

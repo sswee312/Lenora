@@ -1,6 +1,6 @@
 import Foundation
 
-/// One entry in the published catalog.json. `sha` is a content hash of the SKILL.md
+/// One entry in the bundled catalog.json. `sha` is a content hash of the SKILL.md
 /// and is the version anchor: a changed sha means an update is available.
 struct SkillCatalogEntry: Codable, Identifiable, Sendable {
     let id: String
@@ -10,69 +10,44 @@ struct SkillCatalogEntry: Codable, Identifiable, Sendable {
     let path: String
 }
 
-/// Fetches the community skill catalog from the lenora-skills repo (raw GitHub CDN)
+/// Loads the skill catalog bundled with the app.
 @Observable
 @MainActor
 final class SkillCatalog {
     static let shared = SkillCatalog()
 
-    /// Catalog source. Override with the LENORA_SKILLS_BASE env var to test against a
-    /// local clone, e.g. file:///path/to/lenora-skills.
-    static var base: String {
-        ProcessInfo.processInfo.environment["LENORA_SKILLS_BASE"]
-            ?? "https://raw.githubusercontent.com/vermatushar/lenora-skills/main"
-    }
-
     private(set) var entries: [SkillCatalogEntry] = []
     private(set) var isLoading = false
     private(set) var lastError: String?
 
-    private static var cacheURL: URL {
-        DiskCache.rootDirectory.appendingPathComponent("skills-catalog.json")
-    }
-
-    private init() { loadCache() }
+    private init() {}
 
     func entry(id: String) -> SkillCatalogEntry? { entries.first { $0.id == id } }
 
-    static func bodyURL(path: String) -> URL? { URL(string: "\(base)/\(path)") }
-
-    private func loadCache() {
-        guard let data = try? Data(contentsOf: Self.cacheURL),
-              let decoded = try? JSONDecoder().decode([SkillCatalogEntry].self, from: data)
-        else { return }
-        entries = decoded
-    }
+    static func bodyURL(path: String) -> URL? { BundledResource.url("Skills/\(path)") }
 
     @discardableResult
     func refresh() async -> Bool {
-        guard !isLoading, let url = URL(string: "\(Self.base)/catalog.json") else { return false }
+        guard !isLoading else { return false }
+        guard let url = BundledResource.url("Skills/catalog.json") else {
+            lastError = L10n.string("Bundled skills are missing from this build.")
+            Log.agent.error("bundled skills catalog missing")
+            return false
+        }
         isLoading = true
         defer { isLoading = false }
         do {
-            let data = try await Self.fetch(url)
-            entries = try JSONDecoder().decode([SkillCatalogEntry].self, from: data)
+            entries = try JSONDecoder().decode([SkillCatalogEntry].self, from: try await Self.fetch(url))
             lastError = nil
-            try? FileManager.default.createDirectory(
-                at: Self.cacheURL.deletingLastPathComponent(), withIntermediateDirectories: true
-            )
-            try? data.write(to: Self.cacheURL)
-            Log.agent.notice("skill catalog loaded \(self.entries.count) entries from \(Self.base)")
             return true
         } catch {
             lastError = error.localizedDescription
-            Log.agent.error("skill catalog refresh failed (\(Self.base)): \(error.localizedDescription)")
+            Log.agent.error("bundled skills catalog unreadable: \(error.localizedDescription)")
             return false
         }
     }
 
-    /// Reads a catalog/body URL. File URLs are read directly
-    static func fetch(_ url: URL) async throws -> Data {
-        if url.isFileURL { return try Data(contentsOf: url) }
-        let (data, response) = try await URLSession.shared.data(from: url)
-        if let http = response as? HTTPURLResponse, http.statusCode != 200 {
-            throw URLError(.badServerResponse)
-        }
-        return data
+    @concurrent static func fetch(_ url: URL) async throws -> Data {
+        try Data(contentsOf: url)
     }
 }

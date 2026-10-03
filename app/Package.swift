@@ -57,6 +57,7 @@ let package = Package(
             ],
             resources: [
                 .copy("Resources/Fonts"),
+                .copy("Resources/Skills"),
                 .copy("Resources/MCPB/lenora.mcpb"),
                 .copy("Resources/Images"),
                 .copy("Resources/Changelog"),
