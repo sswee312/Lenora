@@ -96,7 +96,7 @@ class UrlInput(BaseModel):
 
 
 class JobRequest(BaseModel):
-    kind: Kind
+    kind: str = Field(min_length=1, max_length=64)
     model: str
     inputs: list[AssetInput | UrlInput] = Field(default_factory=list, max_length=8)
     params: dict[str, Any] = Field(default_factory=dict)

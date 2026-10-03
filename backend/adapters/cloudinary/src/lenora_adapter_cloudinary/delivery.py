@@ -1,6 +1,8 @@
 import base64
 import binascii
 import hashlib
+import hmac
+import re
 from urllib.parse import quote
 
 from lenora_backend.kinds import EditOp
@@ -44,6 +46,24 @@ def edit_transformation(op: EditOp) -> str:
 
 def encode_url_job(url: str) -> str:
     return "url:" + base64.urlsafe_b64encode(url.encode()).decode().rstrip("=")
+
+
+DELIVERY_URL = re.compile(
+    r"https://res\.cloudinary\.com/([^/]+)/(image|video)/upload/s--[A-Za-z0-9_-]{8}--/(.+)/(lenora/[0-9a-f-]{36}\.([a-z0-9]+))")
+
+
+def verify_url_job(job_id: str, cloud_name: str, secret: str) -> tuple[str, str] | None:
+    """The job's delivery URL and extension, only if this adapter signed it for its own cloud."""
+    url = decode_url_job(job_id)
+    match = DELIVERY_URL.fullmatch(url or "")
+    if not match:
+        return None
+    cloud, resource_type, transformation, path, extension = match.groups()
+    if cloud != cloud_name or extension not in CONTENT_TYPES:
+        return None
+    if not hmac.compare_digest(signed_url(cloud, resource_type, transformation, path, secret), url):
+        return None
+    return url, extension
 
 
 def decode_url_job(job_id: str) -> str | None:

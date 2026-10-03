@@ -104,3 +104,40 @@ def test_rate_limited_delivery_keeps_running():
         return await a.status((await a.submit(request.model, request)).jobId)
     state = run(scenario, mock=lambda r: r.get(url__startswith="https://res.cloudinary.com/").respond(420))
     assert state.status == "running" and state.retryAfter == 30
+
+
+def submitted_edit_url() -> str:
+    submitted = run(lambda a: a.submit("cloudinary/generative-edit", job("image.edit", "cloudinary/generative-edit", {"op": "restore"})))
+    return url_of(submitted.jobId)
+
+
+def url_job(url: str) -> str:
+    return "url:" + base64.urlsafe_b64encode(url.encode()).decode().rstrip("=")
+
+
+@pytest.mark.parametrize("tamper", [
+    lambda u: u.replace("/lenora/", "/../other-cloud/image/upload/lenora/"),
+    lambda u: u.replace("/upload/", "/fetch/"),
+    lambda u: u.replace("s--", "s--x", 1).replace("--/", "-/", 1),
+    lambda u: u.replace("e_gen_restore", "e_gen_remove:prompt_x"),
+])
+def test_status_rejects_urls_not_signed_by_this_adapter(tamper):
+    job_id = url_job(tamper(submitted_edit_url()))
+    routes = []
+    with pytest.raises(ProblemError) as info:
+        run(lambda a: a.status(job_id), mock=lambda r: routes.append(r.get(url__regex=".*").respond(200)))
+    assert info.value.code == "not_found" and not routes[0].called
+
+
+@pytest.mark.parametrize("status, code", [(429, "rate_limited"), (500, "provider_unavailable"), (503, "provider_unavailable")])
+def test_transient_delivery_errors_are_not_terminal(status, code):
+    url = submitted_edit_url()
+    with pytest.raises(ProblemError) as info:
+        run(lambda a: a.status(url_job(url)), mock=lambda r: r.get(url).respond(status))
+    assert info.value.code == code and info.value.retryable
+
+
+def test_delivery_client_error_is_terminal_failure():
+    url = submitted_edit_url()
+    state = run(lambda a: a.status(url_job(url)), mock=lambda r: r.get(url).respond(400, headers={"X-Cld-Error": "Bad transformation"}))
+    assert (state.status, state.error.message) == ("failed", "Bad transformation")

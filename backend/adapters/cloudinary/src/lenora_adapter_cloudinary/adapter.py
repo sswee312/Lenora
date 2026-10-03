@@ -42,7 +42,6 @@ class CloudinaryAdapter(CancelNotSupported):
         self.http = http
         self.clock = clock
         self.api = CloudinaryAPI(settings, http)
-        self.delivery_root = f"https://res.cloudinary.com/{settings.cloud_name}/"
         self.store = Store(settings.data_dir / "cloudinary.sqlite3", now=clock())
         self.addons = Addons({IMAGE_GENERATION: settings.image_generation, IMAGE_TO_VIDEO: settings.image_to_video},
                              self.store)
@@ -93,7 +92,7 @@ class CloudinaryAdapter(CancelNotSupported):
     async def status(self, job_id: str) -> JobState:
         prefix, _, local = job_id.partition(":")
         if prefix == "url":
-            return await deliveries.status(self.http, self.delivery_root, job_id)
+            return await deliveries.status(self.http, self.settings, job_id)
         raise ProblemError("not_found", "Unknown job.")
 
     async def health(self, recheck: bool) -> dict[str, Any]:

@@ -7,7 +7,7 @@ from lenora_backend.kinds import (
 )
 from lenora_adapter_cloudinary import costs
 from lenora_adapter_cloudinary.api import Asset, AssetRef, CloudinaryAPI, parse_ref
-from lenora_adapter_cloudinary.delivery import CONTENT_TYPES, decode_url_job, edit_transformation, signed_url
+from lenora_adapter_cloudinary.delivery import CONTENT_TYPES, edit_transformation, signed_url, verify_url_job
 
 UPSCALE_MAX_PIXELS = 2048 * 2048
 PENDING_RETRY_AFTER = 5
@@ -51,10 +51,11 @@ async def plan(api: CloudinaryAPI, job: JobRequest) -> tuple[str, Estimate]:
     return signed_url(settings.cloud_name, "image", transformation, f"{ref.public_id}.png", secret), estimate
 
 
-async def status(http: httpx.AsyncClient, delivery_root: str, job_id: str) -> JobState:
-    url = decode_url_job(job_id)
-    if url is None or not url.startswith(delivery_root):
+async def status(http: httpx.AsyncClient, settings, job_id: str) -> JobState:
+    verified = verify_url_job(job_id, settings.cloud_name, settings.api_secret.get_secret_value())
+    if verified is None:
         raise ProblemError("not_found", "Unknown job.")
+    url, extension = verified
     try:
         response = await http.get(url, headers={"Range": "bytes=0-0"})
     except httpx.TransportError as error:
@@ -63,8 +64,12 @@ async def status(http: httpx.AsyncClient, delivery_root: str, job_id: str) -> Jo
         return JobState(jobId=job_id, status="running", retryAfter=PENDING_RETRY_AFTER)
     if response.status_code == 420:
         return JobState(jobId=job_id, status="running", retryAfter=RATE_LIMIT_RETRY_AFTER)
+    if response.status_code == 429:
+        raise ProblemError("rate_limited", "Cloudinary is rate limiting delivery.",
+                           headers={"Retry-After": response.headers.get("Retry-After", str(RATE_LIMIT_RETRY_AFTER))})
+    if response.status_code >= 500:
+        raise ProblemError("provider_unavailable", f"Cloudinary returned HTTP {response.status_code}.")
     if response.status_code in (200, 206):
-        extension = url.rsplit(".", 1)[-1]
         return JobState(jobId=job_id, status="succeeded", results=[
             JobResult(url=url, contentType=CONTENT_TYPES[extension], fileExtension=extension)])
     message = response.headers.get("X-Cld-Error") or f"Cloudinary returned HTTP {response.status_code}."
