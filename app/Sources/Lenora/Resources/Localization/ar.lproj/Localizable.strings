@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "تم التقاط ⁨%@⁩. تمت إزالة مجلد الوجهة، لذا حُفظ الإطار في المستوى الأعلى من «الوسائط».";
 "Censor profanity" = "حجب الألفاظ النابية";
 "Center" = "الوسط";
-"Change aspect ratio and extend the frame with AI" = "تغيير نسبة العرض إلى الارتفاع وتوسيع الإطار بالذكاء الاصطناعي";
 "Change the color of an object" = "تغيير لون عنصر";
 "Change to Match" = "التغيير للمطابقة";
 "Changes take effect after restarting Lenora." = "تسري التغييرات بعد إعادة تشغيل Lenora.";
@@ -224,6 +223,7 @@
 "Creating…" = "جارٍ الإنشاء…";
 "Crop" = "اقتصاص";
 "Crop applies to one clip at a time" = "ينطبق الاقتصاص على مقطع واحد في كل مرة";
+"Crop to a new aspect ratio, keeping the subject in frame" = "اقتصاص إلى نسبة عرض إلى ارتفاع جديدة مع إبقاء الموضوع داخل الإطار";
 "Curves" = "المنحنيات";
 "Custom Aspect Ratio" = "نسبة عرض إلى ارتفاع مخصصة";
 "Custom…" = "مخصص…";

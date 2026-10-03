@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "Acquisizione di %@ completata. La cartella di destinazione è stata rimossa, quindi il fotogramma è stato salvato al livello principale di Media.";
 "Censor profanity" = "Censura volgarità";
 "Center" = "Centro";
-"Change aspect ratio and extend the frame with AI" = "Modifica le proporzioni ed estendi l'inquadratura con l'AI";
 "Change the color of an object" = "Cambia il colore di un oggetto";
 "Change to Match" = "Modifica per corrispondere";
 "Changes take effect after restarting Lenora." = "Le modifiche avranno effetto dopo il riavvio di Lenora.";
@@ -224,6 +223,7 @@
 "Creating…" = "Creazione…";
 "Crop" = "Ritaglia";
 "Crop applies to one clip at a time" = "Il ritaglio viene applicato a una clip alla volta";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Ritaglia a un nuovo rapporto d'aspetto mantenendo il soggetto nell'inquadratura";
 "Curves" = "Curve";
 "Custom Aspect Ratio" = "Proporzioni personalizzate";
 "Custom…" = "Personalizzato…";

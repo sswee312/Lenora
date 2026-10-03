@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "Zachyceno %@. Cílová složka byla odstraněna, snímek se proto uložil na nejvyšší úroveň Média.";
 "Censor profanity" = "Cenzurovat vulgarity";
 "Center" = "Na střed";
-"Change aspect ratio and extend the frame with AI" = "Změnit poměr stran a rozšířit rámeček pomocí AI";
 "Change the color of an object" = "Změnit barvu objektu";
 "Change to Match" = "Změnit podle projektu";
 "Changes take effect after restarting Lenora." = "Změny se projeví po restartu Lenora.";
@@ -224,6 +223,7 @@
 "Creating…" = "Vytváření…";
 "Crop" = "Oříznutí";
 "Crop applies to one clip at a time" = "Oříznutí platí vždy jen pro jeden klip";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Oříznout na nový poměr stran a ponechat objekt v záběru";
 "Curves" = "Křivky";
 "Custom Aspect Ratio" = "Vlastní poměr stran";
 "Custom…" = "Vlastní…";

@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "Fanget %@. Destinasjonsmappen ble fjernet, så bildet ble arkivert på øverste nivå i Media.";
 "Censor profanity" = "Sensurer banneord";
 "Center" = "Midtstill";
-"Change aspect ratio and extend the frame with AI" = "Endre sideforhold og utvid rammen med AI";
 "Change the color of an object" = "Endre fargen på et objekt";
 "Change to Match" = "Endre for å tilpasse";
 "Changes take effect after restarting Lenora." = "Endringer trer i kraft etter at Lenora startes på nytt.";
@@ -224,6 +223,7 @@
 "Creating…" = "Oppretter…";
 "Crop" = "Beskjær";
 "Crop applies to one clip at a time" = "Beskjæring gjelder ett klipp om gangen";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Beskjær til et nytt sideforhold og hold motivet i bildet";
 "Curves" = "Kurver";
 "Custom Aspect Ratio" = "Tilpasset sideforhold";
 "Custom…" = "Tilpasset…";

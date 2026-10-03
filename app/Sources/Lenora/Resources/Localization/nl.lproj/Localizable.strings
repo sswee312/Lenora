@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "%@ vastgelegd. De doelmap is verwijderd, dus het frame is bewaard op het hoogste niveau van Media.";
 "Censor profanity" = "Censureer grof taalgebruik";
 "Center" = "Midden";
-"Change aspect ratio and extend the frame with AI" = "Wijzig de beeldverhouding en breid het frame uit met AI";
 "Change the color of an object" = "De kleur van een object wijzigen";
 "Change to Match" = "Pas aan";
 "Changes take effect after restarting Lenora." = "Wijzigingen gaan in na het herstarten van Lenora.";
@@ -224,6 +223,7 @@
 "Creating…" = "Maken…";
 "Crop" = "Uitsnede";
 "Crop applies to one clip at a time" = "Uitsnede geldt voor één clip tegelijk";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Snijd bij naar een nieuwe beeldverhouding en houd het onderwerp in beeld";
 "Curves" = "Curven";
 "Custom Aspect Ratio" = "Aangepaste beeldverhouding";
 "Custom…" = "Aangepast…";

@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "Przechwycono %@. Folder docelowy został usunięty, więc klatkę zachowano na najwyższym poziomie multimediów.";
 "Censor profanity" = "Cenzuruj wulgaryzmy";
 "Center" = "Środek";
-"Change aspect ratio and extend the frame with AI" = "Zmień proporcje i rozszerz kadr za pomocą AI";
 "Change the color of an object" = "Zmień kolor obiektu";
 "Change to Match" = "Zmień, aby dopasować";
 "Changes take effect after restarting Lenora." = "Zmiany zaczną obowiązywać po ponownym uruchomieniu Lenora.";
@@ -224,6 +223,7 @@
 "Creating…" = "Tworzenie…";
 "Crop" = "Kadruj";
 "Crop applies to one clip at a time" = "Kadrowanie dotyczy jednego klipu naraz";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Przytnij do nowych proporcji, zachowując obiekt w kadrze";
 "Curves" = "Krzywe";
 "Custom Aspect Ratio" = "Własne proporcje obrazu";
 "Custom…" = "Własne…";

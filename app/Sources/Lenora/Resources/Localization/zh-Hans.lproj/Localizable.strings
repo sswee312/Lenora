@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "已截取 %@。目标文件夹已被移除，因此该帧已保存到“媒体”的顶层。";
 "Censor profanity" = "屏蔽不雅用语";
 "Center" = "居中";
-"Change aspect ratio and extend the frame with AI" = "使用 AI 更改宽高比并扩展画面";
 "Change the color of an object" = "更改对象的颜色";
 "Change to Match" = "更改以匹配";
 "Changes take effect after restarting Lenora." = "更改将在重新启动 Lenora 后生效。";
@@ -224,6 +223,7 @@
 "Creating…" = "正在创建…";
 "Crop" = "裁剪";
 "Crop applies to one clip at a time" = "每次只能裁剪一个片段";
+"Crop to a new aspect ratio, keeping the subject in frame" = "裁剪为新的宽高比，并将主体保持在画面内";
 "Curves" = "曲线";
 "Custom Aspect Ratio" = "自定义宽高比";
 "Custom…" = "自定义…";

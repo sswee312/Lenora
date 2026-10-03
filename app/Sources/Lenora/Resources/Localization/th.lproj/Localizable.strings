@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "จับ %@ แล้ว โฟลเดอร์ปลายทางถูกลบ จึงบันทึกเฟรมไว้ที่ระดับบนสุดของมีเดีย";
 "Censor profanity" = "เซ็นเซอร์คำหยาบ";
 "Center" = "กึ่งกลาง";
-"Change aspect ratio and extend the frame with AI" = "เปลี่ยนอัตราส่วนภาพและขยายเฟรมด้วย AI";
 "Change the color of an object" = "เปลี่ยนสีของวัตถุ";
 "Change to Match" = "เปลี่ยนให้ตรงกัน";
 "Changes take effect after restarting Lenora." = "การเปลี่ยนแปลงมีผลหลังจากเริ่มต้น Lenora ใหม่";
@@ -224,6 +223,7 @@
 "Creating…" = "กำลังสร้าง…";
 "Crop" = "ครอป";
 "Crop applies to one clip at a time" = "ครอปใช้ได้ทีละคลิป";
+"Crop to a new aspect ratio, keeping the subject in frame" = "ครอบตัดเป็นอัตราส่วนภาพใหม่ โดยคงตัวแบบไว้ในเฟรม";
 "Curves" = "เส้นโค้ง";
 "Custom Aspect Ratio" = "อัตราส่วนภาพกำหนดเอง";
 "Custom…" = "กำหนดเอง…";

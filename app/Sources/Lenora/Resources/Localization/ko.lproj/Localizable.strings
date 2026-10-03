@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "%@을(를) 캡처했습니다. 대상 폴더가 제거되어 프레임을 미디어의 최상위 수준에 저장했습니다.";
 "Censor profanity" = "비속어 검열";
 "Center" = "가운데";
-"Change aspect ratio and extend the frame with AI" = "AI로 화면비를 변경하고 프레임 확장";
 "Change the color of an object" = "개체의 색상 변경";
 "Change to Match" = "일치하도록 변경";
 "Changes take effect after restarting Lenora." = "변경 사항은 Lenora를 재시동한 후 적용됩니다.";
@@ -224,6 +223,7 @@
 "Creating…" = "생성하는 중…";
 "Crop" = "자르기";
 "Crop applies to one clip at a time" = "자르기는 한 번에 하나의 클립에 적용됩니다";
+"Crop to a new aspect ratio, keeping the subject in frame" = "새 화면비로 자르고 피사체를 프레임 안에 유지합니다";
 "Curves" = "곡선";
 "Custom Aspect Ratio" = "사용자 설정 화면비";
 "Custom…" = "사용자 설정…";

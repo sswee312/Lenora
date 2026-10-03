@@ -140,7 +140,7 @@ struct AIEditTab: View {
                     action: .reframe,
                     icon: "aspectratio",
                     title: L10n.string("Reframe"),
-                    description: L10n.string("Change aspect ratio and extend the frame with AI")
+                    description: EditAction.reframe.aiEditDescription
                 )
             }
             if asset.type == .image {

@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "Tallennettiin %@. Kohdekansio poistettiin, joten ruutu tallennettiin Median juureen.";
 "Censor profanity" = "Sensuroi kirosanat";
 "Center" = "Keskitä";
-"Change aspect ratio and extend the frame with AI" = "Vaihda kuvasuhdetta ja laajenna ruutua tekoälyllä";
 "Change the color of an object" = "Vaihda kohteen väri";
 "Change to Match" = "Muuta vastaamaan";
 "Changes take effect after restarting Lenora." = "Muutokset tulevat voimaan, kun käynnistät Lenora Pron uudelleen.";
@@ -224,6 +223,7 @@
 "Creating…" = "Luodaan…";
 "Crop" = "Rajaa";
 "Crop applies to one clip at a time" = "Rajaus koskee yhtä leikettä kerrallaan";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Rajaa uuteen kuvasuhteeseen ja pidä kohde kuvassa";
 "Curves" = "Käyrät";
 "Custom Aspect Ratio" = "Oma kuvasuhde";
 "Custom…" = "Oma…";

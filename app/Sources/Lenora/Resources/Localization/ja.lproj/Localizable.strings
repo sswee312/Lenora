@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "%@をキャプチャしました。保存先フォルダが削除されたため、フレームを「メディア」の最上位に保存しました。";
 "Censor profanity" = "不適切な言葉を伏せる";
 "Center" = "中央";
-"Change aspect ratio and extend the frame with AI" = "アスペクト比を変更し、AIでフレームを拡張";
 "Change the color of an object" = "オブジェクトの色を変更";
 "Change to Match" = "設定を一致させる";
 "Changes take effect after restarting Lenora." = "変更はLenoraの再起動後に反映されます。";
@@ -224,6 +223,7 @@
 "Creating…" = "作成中…";
 "Crop" = "クロップ";
 "Crop applies to one clip at a time" = "クロップは一度に1つのクリップに適用されます";
+"Crop to a new aspect ratio, keeping the subject in frame" = "新しいアスペクト比にクロップし、被写体をフレーム内に保ちます";
 "Curves" = "カーブ";
 "Custom Aspect Ratio" = "カスタムアスペクト比";
 "Custom…" = "カスタム…";

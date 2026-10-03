@@ -48,7 +48,7 @@ enum EditAction: String {
         case .recolor: L10n.string("Change the color of an object")
         case .replaceBackground: L10n.string("Put the subject on a new background")
         case .restore: L10n.string("Repair noise, blur and compression damage")
-        default: L10n.string("Change aspect ratio and extend the frame with AI")
+        default: L10n.string("Crop to a new aspect ratio, keeping the subject in frame")
         }
     }
 

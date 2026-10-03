@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "Сохранено: %@. Папка назначения была удалена, поэтому кадр сохранён на верхнем уровне раздела «Медиафайлы».";
 "Censor profanity" = "Скрывать ненормативную лексику";
 "Center" = "По центру";
-"Change aspect ratio and extend the frame with AI" = "Изменить соотношение сторон и расширить кадр с помощью AI";
 "Change the color of an object" = "Изменить цвет объекта";
 "Change to Match" = "Изменить под клип";
 "Changes take effect after restarting Lenora." = "Изменения вступят в силу после перезапуска Lenora.";
@@ -224,6 +223,7 @@
 "Creating…" = "Создание…";
 "Crop" = "Кадрирование";
 "Crop applies to one clip at a time" = "Кадрирование применяется к одному клипу за раз";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Обрезать до нового соотношения сторон, сохраняя объект в кадре";
 "Curves" = "Кривые";
 "Custom Aspect Ratio" = "Пользовательское соотношение сторон";
 "Custom…" = "Другое…";

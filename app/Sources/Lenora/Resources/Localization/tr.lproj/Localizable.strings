@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "%@ yakalandı. Hedef klasör kaldırıldığı için kare Medya bölümünün en üst düzeyine kaydedildi.";
 "Censor profanity" = "Küfürleri sansürle";
 "Center" = "Ortala";
-"Change aspect ratio and extend the frame with AI" = "En-boy oranını değiştirin ve kareyi yapay zekâyla genişletin";
 "Change the color of an object" = "Bir nesnenin rengini değiştir";
 "Change to Match" = "Eşleşecek Şekilde Değiştir";
 "Changes take effect after restarting Lenora." = "Değişiklikler Lenora yeniden başlatıldıktan sonra geçerli olur.";
@@ -224,6 +223,7 @@
 "Creating…" = "Oluşturuluyor…";
 "Crop" = "Kırp";
 "Crop applies to one clip at a time" = "Kırpma her seferinde bir klibe uygulanır";
+"Crop to a new aspect ratio, keeping the subject in frame" = "Yeni bir en boy oranına kırp ve özneyi karede tut";
 "Curves" = "Eğriler";
 "Custom Aspect Ratio" = "Özel En-Boy Oranı";
 "Custom…" = "Özel…";

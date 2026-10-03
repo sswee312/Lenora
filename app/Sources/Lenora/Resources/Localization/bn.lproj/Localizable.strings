@@ -138,7 +138,6 @@
 "Captured %@. The destination folder was removed, so the frame was saved at the top level of Media." = "%@ ক্যাপচার করা হয়েছে। ডেস্টিনেশন ফোল্ডারটি সরানো হয়েছে, তাই ফ্রেমটি মিডিয়ার টপ লেভেলে সেভ করা হয়েছে।";
 "Censor profanity" = "অশালীন শব্দ সেন্সর করুন";
 "Center" = "মাঝখানে";
-"Change aspect ratio and extend the frame with AI" = "AI দিয়ে অ্যাসপেক্ট রেশিও পরিবর্তন ও ফ্রেম এক্সটেন্ড করুন";
 "Change the color of an object" = "একটি বস্তুর রং পরিবর্তন করুন";
 "Change to Match" = "ম্যাচ করতে পরিবর্তন করুন";
 "Changes take effect after restarting Lenora." = "Lenora রিস্টার্ট করার পরে পরিবর্তন কার্যকর হবে।";
@@ -224,6 +223,7 @@
 "Creating…" = "তৈরি করা হচ্ছে…";
 "Crop" = "ক্রপ";
 "Crop applies to one clip at a time" = "একবারে একটি ক্লিপে ক্রপ প্রয়োগ হয়";
+"Crop to a new aspect ratio, keeping the subject in frame" = "নতুন অ্যাসপেক্ট রেশিওতে ক্রপ করুন, বিষয়বস্তু ফ্রেমে রেখে";
 "Curves" = "কার্ভ";
 "Custom Aspect Ratio" = "কাস্টম অ্যাসপেক্ট রেশিও";
 "Custom…" = "কাস্টম…";
