@@ -36,8 +36,8 @@ whether five eras is right.
 
 ## Golden rules of execution order (this is the whole point of the skill)
 1. **Session check first.** `get_timeline` once, then `list_models`. If `list_models` returns
-   no models, the Lenora backend isn't connected or configured — tell the user to check
-   Settings → Backend; generation will fail otherwise. **Read the
+   no models, the connected backend doesn't offer this type yet — tell the user to check Settings → Backend,
+   which shows the enabled adapters; generation will fail otherwise. **Read the
    project's actual `fps` from this response and use it for all frame math below** — do
    not assume 24fps. (The reference build that produced the numbers in Step 3 happened to
    run at 24fps, 1280×720; a 30fps project needs every frame count recalculated, e.g. an
@@ -425,7 +425,7 @@ plays under it — don't leave the card sitting in silence.
 
 ## Recap of the parallelization (the heart of the skill)
 1. Get 2 images + 2 names (ASK if missing). `get_timeline`.
-2. `list_models` (empty → tell the user to check Settings → Backend). Fire ALL 12 character sheets (Seedream, `landscape_16_9`, both user refs
+2. `list_models` (empty → the connected backend doesn't offer it yet; tell the user to check Settings → Backend). Fire ALL 12 character sheets (Seedream, `landscape_16_9`, both user refs
    on each). **Block until every sheet is finished** (no `generationStatus`). No videos yet.
 3. **Only then** fire ALL 6 era videos (Seedance 2, 720p, 11s / finale 14s, each era's 2
    finished sheets as refs) + the music (ElevenLabs, 90s instrumental) — one burst, no

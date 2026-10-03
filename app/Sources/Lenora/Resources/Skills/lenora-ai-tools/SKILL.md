@@ -8,8 +8,8 @@ description: Use Lenora's backend-powered AI tools (transform_media and generati
 Lenora's AI tools run through the Lenora backend the user connected in Settings → Backend. Editing tools (timeline, clips, color, captions) never need a backend.
 
 ## Before calling an AI tool
-- AI tools appear in the tool list only while the connected backend supports them. If a tool you expect is missing, tell the user to open Settings → Backend; do not try a different tool to work around it.
-- Call `list_models` to see the models, accepted input types and size limits. An empty `models` array with `loaded: true` means the backend isn't connected or configured; `loaded: false` means the first sync hasn't finished, so retry shortly.
+- AI tools appear in the tool list only while the connected backend supports them. If a tool you expect is missing, tell the user that Settings → Backend shows which adapters are enabled; do not try a different tool to work around it.
+- Call `list_models` to see the models, accepted input types and size limits. An empty `models` array with `loaded: true` means the connected backend doesn't offer that type yet (with no type filter: no backend is connected or no adapter is enabled), so tell the user to check Settings → Backend; `loaded: false` means the first sync hasn't finished, so retry shortly.
 
 ## transform_media
 - Listed only when the backend supports it. `operation: "removeBackground"` cuts out the subject of an image asset, importing a transparent PNG next to it.

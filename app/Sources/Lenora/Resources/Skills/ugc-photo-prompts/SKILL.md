@@ -81,7 +81,7 @@ Format: candid iPhone photo, 4:5. Framing: mid-distance, chest-up or mid-thigh, 
 This skill drives Lenora's MCP tools directly. Standard sequence:
 
 1. **Canvas.** `get_timeline` first. Derive `aspectRatio` from project width/height — a 9:16 project wants 9:16 stills, not default 4:5.
-2. **Models.** Always `list_models({ type: "image" })` before generating — ids and caps change. If it returns no models, the Lenora backend isn't connected or configured: stop and tell the user to check Settings → Backend. Then pick:
+2. **Models.** Always `list_models({ type: "image" })` before generating — ids and caps change. If it returns no models, the connected backend doesn't offer this type yet: stop and tell the user to check Settings → Backend, which shows the enabled adapters. Then pick:
    - **Realism / "doesn't look AI"** (most UGC) → `nano-banana-pro` (or whatever the catalog currently lists as Nano Banana Pro).
    - **Product must read unmistakably** → GPT Image family (`gpt-image-2` when available).
    - When it matters, generate one of each and compare. Propose model + prompt to the user before generating (generation is paid and not undoable).

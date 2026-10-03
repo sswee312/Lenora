@@ -22,7 +22,7 @@ Do **not** skip to scene placement without an approved sheet. Reroll stills unti
 
 ## Session gates
 
-- `list_models({ type: "image" })` — if it returns no models, the Lenora backend isn't connected or configured: tell the user to check Settings → Backend
+- `list_models({ type: "image" })` — if it returns no models, the connected backend doesn't offer this type yet: tell the user to check Settings → Backend, which shows the enabled adapters
 - Propose each paid generation; wait for confirmation
 - Folders e.g. `Character/Hero`, `Character/Sheets`, `Character/Scenes`
 

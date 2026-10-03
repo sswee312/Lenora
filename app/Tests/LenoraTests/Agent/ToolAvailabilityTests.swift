@@ -31,6 +31,17 @@ struct ToolAvailabilityTests {
         #expect(listed.contains(.readSkill))
     }
 
+    @Test func backendGuidanceDoesNotEquateNoGenerationWithNoBackend() throws {
+        let timeline = try #require(ToolDefinitions.mcpServer.first { $0.name == .getTimeline }).description
+        let listModels = try #require(ToolDefinitions.mcpServer.first { $0.name == .listModels }).description
+        for text in [timeline, listModels, AgentInstructions.serverInstructions] {
+            #expect(!text.contains("connect a backend"))
+            #expect(!text.contains("isn't connected"))
+            #expect(text.contains("transform_media"))
+            #expect(text.contains("Settings → Backend shows which adapters are enabled"))
+        }
+    }
+
     @Test func editingToolsNeverDependOnTheBackend() {
         let unconditional = ToolDefinitions.mcpServer.filter { $0.name.requiredKinds == nil }.map(\.name)
         #expect(unconditional.contains(.getTimeline) && unconditional.contains(.addClips))

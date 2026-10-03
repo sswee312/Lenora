@@ -25,7 +25,7 @@ Write a **production brief**, not a vibe paragraph. Models fail when every asset
 
 ## Session gates
 
-1. `list_models` for `image` / `video` / `audio` — ids and caps drift. If it returns no models, the Lenora backend isn't connected or configured: tell the user to check Settings → Backend.
+1. `list_models` for `image` / `video` / `audio` — ids and caps drift. If it returns no models, the connected backend doesn't offer this type yet: tell the user to check Settings → Backend, which shows the enabled adapters.
 2. Propose prompt + model + duration + aspect (+ refs). **Wait for confirmation** — paid, not undoable.
 3. Fire `generate_*`; do not busy-poll. Ready when `get_media({ ids })` has **no** `generationStatus`. On `failed`, report and ask before retry.
 4. Organize with `folder` (e.g. `Hero/Sheets`, `Hero/Takes`).
@@ -162,7 +162,7 @@ Preserve identity, timing, occlusion, eyeline, camera, layout, dialogue, ambienc
 | Room pops between people | Identical set wording on both stills (`podcast-ad`) |
 | Bad burned-in titles | `generate_image` / `add_texts`, not video |
 | Refs ignored | `@Image1` = first `referenceImageMediaRefs` entry |
-| `list_models` returns no models | Backend not connected — Settings → Backend |
+| `list_models` returns no models | Connected backend doesn't offer this type yet — Settings → Backend |
 
 Debug order: authority → locks → timing → preserve → then adjectives.
 
