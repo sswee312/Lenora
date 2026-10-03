@@ -44,7 +44,10 @@ extension ToolExecutor {
             if let fps = entry.sourceFPS { a["fps"] = fps }
             if entry.hasAudio == true, entry.type == .video { a["hasAudio"] = true }
             if let path = folderPathString(entry.folderId, editor: editor) { a["folder"] = path }
-            if pending, let status { a["generationStatus"] = status }
+            if pending, let status {
+                a["generationStatus"] = status
+                a.merge(Self.jobFields(editor.mediaAssetsById[entry.id]?.generationInput ?? entry.generationInput)) { _, new in new }
+            }
             if entry.generationInput?.draft == true { a["draft"] = true }
             if let prompt = Self.truncatedPrompt(entry.generationInput?.prompt) { a["prompt"] = prompt }
             assets.append(a)
@@ -352,12 +355,20 @@ extension ToolExecutor {
         ]
         if case .none = asset.generationStatus {} else {
             meta["generationStatus"] = asset.generationStatus.serialized
+            meta.merge(jobFields(asset.generationInput)) { _, new in new }
         }
         if let w = asset.sourceWidth { meta["width"] = w }
         if let h = asset.sourceHeight { meta["height"] = h }
         if let fps = asset.sourceFPS { meta["fps"] = fps }
         if let prompt = truncatedPrompt(asset.generationInput?.prompt) { meta["prompt"] = prompt }
         return meta
+    }
+
+    private static func jobFields(_ input: GenerationInput?) -> [String: Any] {
+        var fields: [String: Any] = [:]
+        if let jobId = input?.jobId { fields["jobId"] = jobId }
+        if let estimate = input?.estimate { fields["estimate"] = ["amount": estimate.amount, "unit": estimate.unit] }
+        return fields
     }
 
     private static func truncatedPrompt(_ prompt: String?) -> String? {

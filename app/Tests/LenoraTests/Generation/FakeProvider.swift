@@ -61,7 +61,7 @@ actor FakeProvider: GenerationProvider {
         submitted.append((job, idempotencyKey))
         if let submitError { throw submitError }
         if hangsOnSubmit { try await Task.sleep(for: .seconds(3600)) }
-        return try BackendCoding.decoder().decode(SubmittedJob.self, from: Data(#"{"jobId":"fake:1","status":"queued"}"#.utf8))
+        return try BackendCoding.decoder().decode(SubmittedJob.self, from: Data(#"{"jobId":"fake:1","status":"queued","estimate":{"amount":0.05,"unit":"cloudinary_credits"}}"#.utf8))
     }
 
     nonisolated func jobUpdates(jobId: String) -> AsyncThrowingStream<JobState, Error> {

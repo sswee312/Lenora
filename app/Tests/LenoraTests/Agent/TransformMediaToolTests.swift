@@ -136,6 +136,23 @@ struct TransformMediaToolTests {
         fixture.editor.generationService.stopMonitoring()
     }
 
+    @Test func getMediaReportsTheSubmittedJobIdAndEstimate() async throws {
+        let fixture = try await EditorTestFixture.withImage(
+            provider: FakeProvider(states: [jobState(.running)]), catalog: EditorTestFixture.connectedCatalog()
+        )
+        defer { fixture.cleanup() }
+        guard case .text(let text) = try #require(await run(fixture, operation: "removeBackground").content.first) else { Issue.record("expected text"); return }
+        let shortId = try #require((try JSONSerialization.jsonObject(with: Data(text.utf8)) as? [String: Any])?["mediaRef"] as? String)
+        let placeholder = try #require(fixture.editor.mediaAssets.first { $0.id.hasPrefix(shortId) })
+        try await fixture.waitUntil { placeholder.generationInput?.jobId != nil }
+        let result = await fixture.executor.execute(name: "get_media", args: ["ids": [placeholder.id]], source: "mcp")
+        guard case .text(let json) = try #require(result.content.first) else { Issue.record("expected text"); return }
+        let asset = try #require(((try JSONSerialization.jsonObject(with: Data(json.utf8)) as? [String: Any])?["assets"] as? [[String: Any]])?.first)
+        #expect(asset["jobId"] as? String == "fake:1")
+        #expect((asset["estimate"] as? [String: Any])?["amount"] as? Double == 0.05)
+        fixture.editor.generationService.stopMonitoring()
+    }
+
     @Test func landedResultIsOneNamedUndoStep() async throws {
         let result = JobResult(url: EditorTestFixture.servedImageURL, contentType: "image/png", fileExtension: "png")
         let fixture = try await EditorTestFixture.withImage(
