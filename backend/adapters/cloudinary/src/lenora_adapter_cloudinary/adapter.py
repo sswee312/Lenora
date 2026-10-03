@@ -14,7 +14,8 @@ from lenora_backend.kinds import (
     UploadRequest, UploadTicket, VideoGenerateParams,
 )
 from lenora_backend.registry import CancelNotSupported
-from lenora_adapter_cloudinary import costs, deliveries, eager, generation, image_to_video, publish
+from lenora_adapter_cloudinary import analysis, costs, deliveries, eager, generation, image_to_video, publish
+from lenora_adapter_cloudinary.account import ANALYSIS_MODELS, DELIVERY_MODELS, AccountAddons
 from lenora_adapter_cloudinary.addons import IMAGE_GENERATION, IMAGE_TO_VIDEO, Addons
 from lenora_adapter_cloudinary.api import CloudinaryAPI, is_subscription_refusal, parse_ref
 from lenora_adapter_cloudinary.delivery import encode_url_job, sign_upload
@@ -53,13 +54,15 @@ class CloudinaryAdapter(CancelNotSupported):
         self.store = Store(settings.data_dir / "cloudinary.sqlite3", now=clock())
         self.addons = Addons({IMAGE_GENERATION: settings.image_generation, IMAGE_TO_VIDEO: settings.image_to_video},
                              self.store)
+        self.account = AccountAddons()
         # ponytail: one lock serializes chain hand-offs in this process; a shared store needs a row lock instead.
         self._chain_lock = asyncio.Lock()
         self.budget = costs.Budget(settings.daily_credit_budget, clock)
         self.publish_max_bytes = publish.MAX_BYTES
 
     async def start(self) -> None:
-        self.publish_max_bytes = await publish.max_bytes(self.api)
+        await self.account.refresh(self.api)
+        self.publish_max_bytes = publish.limit_from_usage(self.account.report)
 
     def models(self) -> list[ModelInfo]:
         models = [
@@ -100,6 +103,7 @@ class CloudinaryAdapter(CancelNotSupported):
                         "framesAndReferencesExclusive": False, "referenceTagNoun": "Image",
                         "requiresSourceVideo": False, "requiresReferenceImage": False,
                         "requiresFirstFrame": not self.addons.available(IMAGE_GENERATION)}}))
+        models.extend(self._account_models())
         return models
 
     async def create_upload(self, model: str, req: UploadRequest) -> UploadTicket:
@@ -132,6 +136,10 @@ class CloudinaryAdapter(CancelNotSupported):
         if job.kind == "video.publish":
             job_id, estimate = await publish.submit(self.api, self.budget, job, self.publish_max_bytes, int(self.clock()))
             return SubmittedJob(jobId=job_id, status="queued", estimate=estimate)
+        if job.kind == "image.analyze":
+            return await analysis.submit(self, job)
+        if job.kind in ("image.enhance", "image.crop"):
+            return analysis.submit_delivery(self, job)
         url, estimate = await deliveries.plan(self.api, job)
         self.budget.reserve(estimate)
         return SubmittedJob(jobId=encode_url_job(url), status="queued", estimate=estimate)
@@ -147,6 +155,8 @@ class CloudinaryAdapter(CancelNotSupported):
                 return await self._image_to_video_status(job_id, local)
             if prefix == "chain" and local:
                 return await self._chain_status(job_id, local)
+            if prefix == "an" and local:
+                return await analysis.status(self, job_id, local)
         except ProblemError as error:
             if error.code != "provider_unavailable" or error.retryable:
                 raise
@@ -164,7 +174,26 @@ class CloudinaryAdapter(CancelNotSupported):
     async def health(self, recheck: bool) -> dict[str, Any]:
         if recheck:
             self.addons.recheck()
-        return {"addons": self.addons.details(), "budget": self.budget.usage()}
+        await self.account.refresh(self.api)
+        if self.account.report is not None:
+            self.publish_max_bytes = publish.limit_from_usage(self.account.report)
+        return {"addons": self.addons.details() + self.account.details(), "budget": self.budget.usage()}
+
+    def _account_models(self) -> list[ModelInfo]:
+        enabled = self.account.enabled
+        models = [
+            ModelInfo(id=spec.id, kind="image.analyze", displayName=spec.display_name, inputs=_image_inputs(),
+                      cancellable=False, estimate=analysis.ADDON_ESTIMATE,
+                      ui={"providerName": "Cloudinary", "responseShape": "analysis"})
+            for spec in ANALYSIS_MODELS if spec.addon in enabled
+        ]
+        models.extend(
+            ModelInfo(id=spec.id, kind=spec.kind, displayName=spec.display_name, inputs=_image_inputs(),
+                      cancellable=False, estimate=analysis.ADDON_ESTIMATE,
+                      ui={"providerName": "Cloudinary", "responseShape": "image"})
+            for spec in DELIVERY_MODELS if spec.addon in enabled
+        )
+        return models
 
     async def _submit_reframe(self, job: JobRequest) -> SubmittedJob:
         ref, asset, transformation, estimate = await deliveries.plan_reframe(self.api, job)

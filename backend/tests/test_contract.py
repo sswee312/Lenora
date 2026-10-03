@@ -48,6 +48,7 @@ def test_kinds_match_openapi_examples():
 PARAMS_SCHEMAS = {
     "image.removeBackground": "RemoveBackgroundParams", "image.generate": "ImageGenerateParams",
     "image.edit": "ImageEditParams", "image.upscale": "ImageUpscaleParams",
+    "image.analyze": "ImageAnalyzeParams", "image.enhance": "ImageEnhanceParams", "image.crop": "ImageCropParams",
     "video.generate": "VideoGenerateParams", "video.reframe": "VideoReframeParams",
     "video.publish": "VideoPublishParams",
 }

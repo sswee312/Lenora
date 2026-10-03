@@ -16,6 +16,22 @@ Cloudinary adapter for lenora-backend. Every result is a signed delivery URL (`s
 
 `LENORA_CLOUDINARY_IMAGE_GENERATION` and `LENORA_CLOUDINARY_IMAGE_TO_VIDEO` take `auto` (default), `on` or `off`. In `auto`, the first real request that Cloudinary refuses with 401 or 403 marks the add-on unavailable. Its models then leave `/v1/capabilities` and stay hidden across restarts. `GET /v1/health?recheck=addons` (Settings → Backend → Test Connection in the app) clears the learned state.
 
+Other subscribed add-ons come from the account's usage report (`GET /usage`), which health loads. A usage entry with a numeric limit is subscribed. Settings lists each one (`google_tagging`, `ai_vision`, `object_detection`, and so on) with how much of its quota is used. The same load adds models:
+
+| Model | Kind | Add-on | Needs |
+|---|---|---|---|
+| `cloudinary/google-tagging` | `image.analyze` | `google_tagging` | the image |
+| `cloudinary/google-logo-detection` | `image.analyze` | `google_tagging` | the image |
+| `cloudinary/imagga-tagging` | `image.analyze` | `imagga_tagging` | the image |
+| `cloudinary/ai-vision` | `image.analyze` | `ai_vision` | `prompt` |
+| `cloudinary/ai-vision-tagging` | `image.analyze` | `ai_vision` | `tags` (name + description, up to 10) |
+| `cloudinary/ai-vision-moderation` | `image.analyze` | `ai_vision` | `questions` (up to 10) |
+| `cloudinary/captioning`, `cloudinary/object-detection`, `cloudinary/fashion-detection`, `cloudinary/text-detection`, `cloudinary/human-anatomy`, `cloudinary/image-quality`, `cloudinary/lvis`, `cloudinary/shop-classifier`, `cloudinary/unidet`, `cloudinary/watermark-detection` | `image.analyze` | `object_detection` | the image |
+| `cloudinary/viesus-correct` | `image.enhance` | `viesus_correct` | the image |
+| `cloudinary/imagga-crop` | `image.crop` | `imagga_crop` | the image; `aspectRatio` defaults to `1:1` |
+
+`image.analyze` finishes with `analysis` on the job, not a new media file. `url2png` is listed when the account has it, and has no model: it screenshots a web page rather than an uploaded image. Image generation stays on its own switch and is not listed twice.
+
 ## Costs and budget
 
 Estimates use Cloudinary's published transformation counts (1 credit = 1000 transformations). Add-on prices are not published, so `LENORA_CLOUDINARY_COST_IMAGE_GENERATION` and `LENORA_CLOUDINARY_COST_IMAGE_TO_VIDEO_PER_SECOND` default to cautious guesses; set them from your Cloudinary usage report. `LENORA_CLOUDINARY_DAILY_CREDIT_BUDGET` refuses jobs with `quota_exceeded` once the UTC day's estimates reach it. The budget lives in memory, per process.

@@ -91,7 +91,7 @@ components:
     Kind:
       type: string
       description: Operation kind. Clients ignore kinds they do not recognise.
-      examples: [image.removeBackground, image.generate, image.edit, image.upscale, video.generate, video.reframe, video.publish, video.edit, video.lipSync, video.upscale, audio.speech, audio.music, audio.sfx, text.rewritePrompt]
+      examples: [image.removeBackground, image.generate, image.edit, image.upscale, image.analyze, image.enhance, image.crop, video.generate, video.reframe, video.publish, video.edit, video.lipSync, video.upscale, audio.speech, audio.music, audio.sfx, text.rewritePrompt]
     JobStatus:
       type: string
       enum: [queued, running, succeeded, failed, cancelled]
@@ -232,6 +232,7 @@ components:
         results: { type: [array, "null"], items: { $ref: "#/components/schemas/JobResult" } }
         error: { oneOf: [{ $ref: "#/components/schemas/JobError" }, { type: "null" }] }
         failedOutputs: { type: [array, "null"], items: { $ref: "#/components/schemas/FailedOutput" }, description: "Outputs that failed while the job still succeeded." }
+        analysis: { type: [object, "null"], additionalProperties: true, description: "Structured add-on output for image.analyze. Omitted when the job has none." }
     Problem:
       type: object
       required: [type, title, status, code, retryable]
@@ -254,6 +255,29 @@ components:
     ImageUpscaleParams:
       type: object
       additionalProperties: false
+    TagDefinition:
+      type: object
+      additionalProperties: false
+      required: [name, description]
+      properties:
+        name: { type: string, minLength: 1, maxLength: 100 }
+        description: { type: string, minLength: 1, maxLength: 500 }
+    ImageAnalyzeParams:
+      type: object
+      additionalProperties: false
+      description: "Empty for tagging and detection. AI Vision uses prompt, tags, or questions."
+      properties:
+        prompt: { type: [string, "null"], minLength: 1, maxLength: 1000 }
+        tags: { type: [array, "null"], minItems: 1, maxItems: 10, items: { $ref: "#/components/schemas/TagDefinition" } }
+        questions: { type: [array, "null"], minItems: 1, maxItems: 10, items: { type: string, minLength: 1, maxLength: 300 } }
+    ImageEnhanceParams:
+      type: object
+      additionalProperties: false
+    ImageCropParams:
+      type: object
+      additionalProperties: false
+      properties:
+        aspectRatio: { $ref: "#/components/schemas/ImageAspect", default: "1:1" }
     ImageGenerateParams:
       type: object
       additionalProperties: false

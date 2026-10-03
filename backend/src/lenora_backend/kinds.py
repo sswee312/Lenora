@@ -5,6 +5,7 @@ from pydantic import BaseModel, ConfigDict, Field, HttpUrl, RootModel, model_val
 
 Kind = Literal[
     "image.removeBackground", "image.generate", "image.edit", "image.upscale",
+    "image.analyze", "image.enhance", "image.crop",
     "video.generate", "video.reframe", "video.publish", "video.edit", "video.lipSync", "video.upscale",
     "audio.speech", "audio.music", "audio.sfx", "text.rewritePrompt",
 ]
@@ -137,7 +138,14 @@ class JobState(BaseModel):
     results: list[JobResult] | None = None
     error: JobError | None = None
     failedOutputs: list[FailedOutput] | None = None
+    analysis: dict[str, Any] | None = None
     retryAfter: int | None = Field(default=None, exclude=True)
+
+    def model_dump(self, **kwargs):
+        data = super().model_dump(**kwargs)
+        if data.get("analysis") is None:
+            data.pop("analysis", None)
+        return data
 
 
 class Problem(BaseModel):
@@ -164,6 +172,27 @@ class RemoveBackgroundParams(StrictParams):
 
 class ImageUpscaleParams(StrictParams):
     pass
+
+
+class TagDefinition(StrictParams):
+    name: str = Field(min_length=1, max_length=100)
+    description: str = Field(min_length=1, max_length=500)
+
+
+class ImageAnalyzeParams(StrictParams):
+    """Empty for add-ons that need only the image. AI Vision fills one of the three fields."""
+
+    prompt: str | None = Field(default=None, min_length=1, max_length=1000)
+    tags: list[TagDefinition] | None = Field(default=None, min_length=1, max_length=10)
+    questions: list[Annotated[str, Field(min_length=1, max_length=300)]] | None = Field(default=None, min_length=1, max_length=10)
+
+
+class ImageEnhanceParams(StrictParams):
+    pass
+
+
+class ImageCropParams(StrictParams):
+    aspectRatio: ImageAspect = "1:1"
 
 
 class ImageGenerateParams(StrictParams):
@@ -249,6 +278,9 @@ PARAMS: dict[str, type[BaseModel]] = {
     "image.generate": ImageGenerateParams,
     "image.edit": ImageEditParams,
     "image.upscale": ImageUpscaleParams,
+    "image.analyze": ImageAnalyzeParams,
+    "image.enhance": ImageEnhanceParams,
+    "image.crop": ImageCropParams,
     "video.generate": VideoGenerateParams,
     "video.reframe": VideoReframeParams,
     "video.publish": VideoPublishParams,
@@ -259,11 +291,17 @@ INPUT_ROLES: dict[str, dict[str | None, int]] = {
     "image.generate": {"reference": 4},
     "image.edit": {None: 1},
     "image.upscale": {None: 1},
+    "image.analyze": {None: 1},
+    "image.enhance": {None: 1},
+    "image.crop": {None: 1},
     "video.generate": {"startFrame": 1, "endFrame": 1, "reference": 2},
     "video.reframe": {None: 1},
     "video.publish": {None: 1},
 }
-REQUIRED_INPUTS: dict[str, int] = {"image.removeBackground": 1, "image.edit": 1, "image.upscale": 1, "video.reframe": 1, "video.publish": 1}
+REQUIRED_INPUTS: dict[str, int] = {
+    "image.removeBackground": 1, "image.edit": 1, "image.upscale": 1, "video.reframe": 1, "video.publish": 1,
+    "image.analyze": 1, "image.enhance": 1, "image.crop": 1,
+}
 
 
 def input_problem(kind: str, inputs: list[AssetInput | UrlInput]) -> str | None:

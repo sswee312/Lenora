@@ -19,6 +19,7 @@ ADMIN_IMAGE = f"{API}/v1_1/{CLOUD}/resources/image/upload/lenora/{UUID}"
 ADMIN_VIDEO = f"{API}/v1_1/{CLOUD}/resources/video/upload/lenora/{UUID}"
 GEN = f"{API}/v2/generate/{CLOUD}"
 I2V = f"{API}/v2/video/{CLOUD}/image_to_video/generate"
+USAGE = f"{API}/v1_1/{CLOUD}/usage"
 DELIVERY = f"https://res.cloudinary.com/{CLOUD}/"
 
 
@@ -32,6 +33,7 @@ def run(scenario, settings_: CloudinarySettings | None = None, mock=None, clock=
     """Run `scenario(adapter)` against respx mocks; returns its result."""
     async def go():
         with respx.mock(assert_all_called=False) as router:
+            router.get(USAGE).respond(200, json={"media_limits": {"video_max_size_bytes": 104857600}})
             if mock:
                 mock(router)
             async with httpx.AsyncClient() as http:

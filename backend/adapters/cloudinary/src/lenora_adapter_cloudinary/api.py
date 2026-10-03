@@ -5,6 +5,7 @@ import httpx
 
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import AssetInput, UrlInput
+from lenora_adapter_cloudinary.delivery import sign_upload
 from lenora_adapter_cloudinary.settings import CloudinarySettings
 
 ASSET_REF = re.compile(
@@ -79,6 +80,27 @@ class CloudinaryAPI:
             return await self.http.request(method, self.base + path, json=json, data=data, auth=self.auth)
         except httpx.TransportError as error:
             raise ProblemError("provider_unavailable", f"Cloudinary is unreachable ({type(error).__name__}).") from None
+
+    async def usage(self) -> dict:
+        response = await self.request("GET", f"/v1_1/{self.settings.cloud_name}/usage")
+        if response.status_code != 200:
+            raise problem(response)
+        body = response.json()
+        if not isinstance(body, dict):
+            raise ProblemError("provider_error", "Cloudinary usage report was not an object.", retryable=True)
+        return body
+
+    async def analyze(self, endpoint: str, body: dict) -> httpx.Response:
+        return await self.request("POST", f"/v2/analysis/{self.settings.cloud_name}/analyze/{endpoint}", json=body)
+
+    async def analysis_task(self, task_id: str) -> httpx.Response:
+        return await self.request("GET", f"/v2/analysis/{self.settings.cloud_name}/tasks/{task_id}")
+
+    async def explicit(self, public_id: str, timestamp: str, extra: dict[str, str]) -> httpx.Response:
+        signed = {"public_id": public_id, "type": "upload", "timestamp": timestamp, **extra}
+        fields = {**signed, "api_key": self.settings.api_key,
+                  "signature": sign_upload(signed, self.settings.api_secret.get_secret_value())}
+        return await self.request("POST", f"/v1_1/{self.settings.cloud_name}/image/explicit", data=fields)
 
     async def asset(self, ref: AssetRef) -> Asset:
         path = f"/v1_1/{self.settings.cloud_name}/resources/{ref.resource_type}/upload/{ref.public_id}"

@@ -92,17 +92,24 @@ def decode(job_id: str, secret: str) -> PublishJob | None:
     return job if valid else None
 
 
-async def max_bytes(api: CloudinaryAPI) -> int:
+def limit_from_usage(usage: dict | None) -> int:
     """The account's video upload limit, capped at one upload request."""
     try:
-        response = await api.request("GET", f"/v1_1/{api.settings.cloud_name}/usage")
-        limit = int(response.json()["media_limits"]["video_max_size_bytes"]) if response.status_code == 200 else None
-    except (ProblemError, ValueError, KeyError, TypeError):
+        limit = int((usage or {})["media_limits"]["video_max_size_bytes"])
+    except (TypeError, KeyError, ValueError):
         limit = None
     if limit is None or limit <= 0:
         log.warning("Cloudinary usage limits unavailable; publishing accepts up to %d bytes", MAX_BYTES)
         return MAX_BYTES
     return min(MAX_BYTES, limit)
+
+
+async def max_bytes(api: CloudinaryAPI) -> int:
+    try:
+        usage = await api.usage()
+    except ProblemError:
+        usage = None
+    return limit_from_usage(usage)
 
 
 async def _signed_post(api: CloudinaryAPI, path: str, params: dict[str, str]):
