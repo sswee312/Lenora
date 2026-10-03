@@ -40,6 +40,7 @@ def test_remove_background_url_is_signed():
     encoded = submitted.jobId.removeprefix("url:")
     url = base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4)).decode()
     assert url == signed_url("demo", "image", "e_background_removal", f"lenora/{UUID}.png", SECRET)
+    assert submitted.estimate.amount == pytest.approx(0.075)
 
 
 @pytest.mark.parametrize("ref", [
@@ -94,6 +95,16 @@ def test_defaults(monkeypatch):
     monkeypatch.setenv("LENORA_CLOUDINARY_API_SECRET", "s")
     s = CloudinarySettings()
     assert (s.on_the_fly_video_max_bytes, s.image_generation, s.image_to_video) == (41943040, "auto", "auto")
+    assert (str(s.data_dir), s.daily_credit_budget) == (".data", None)
+
+
+def test_data_dir_reads_the_shared_variable(monkeypatch, tmp_path):
+    monkeypatch.setenv("LENORA_DATA_DIR", str(tmp_path))
+    assert CloudinarySettings(cloud_name="d", api_key="k", api_secret="s").data_dir == tmp_path
+
+
+def test_data_dir_argument_is_used(tmp_path):
+    assert settings(tmp_path).data_dir == tmp_path
 
 
 class TestCloudinaryConformance(AdapterConformance):

@@ -1,5 +1,7 @@
 """Shared builders for the Cloudinary adapter tests."""
 import asyncio
+import tempfile
+from pathlib import Path
 
 import httpx
 import respx
@@ -20,8 +22,10 @@ I2V = f"{API}/v2/video/{CLOUD}/image_to_video/generate"
 DELIVERY = f"https://res.cloudinary.com/{CLOUD}/"
 
 
-def settings(**overrides) -> CloudinarySettings:
-    return CloudinarySettings(cloud_name=CLOUD, api_key="123456789012345", api_secret=SECRET, **overrides)
+def settings(data_dir: Path | None = None, **overrides) -> CloudinarySettings:
+    """Test settings; pass pytest's tmp_path. Without one, a fresh temporary directory is used (conformance)."""
+    return CloudinarySettings(cloud_name=CLOUD, api_key="123456789012345", api_secret=SECRET,
+                              data_dir=data_dir or Path(tempfile.mkdtemp()), **overrides)
 
 
 def run(scenario, settings_: CloudinarySettings | None = None, mock=None, clock=None):
