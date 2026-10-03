@@ -31,7 +31,7 @@ extension EditSubmitter {
         onComplete: (@MainActor (MediaAsset) -> Void)? = nil,
         onFailure: (@MainActor () -> Void)? = nil
     ) -> String? {
-        guard ModelCatalog.shared.supportsAny(of: ["image.upscale", "video.upscale"]),
+        guard editor.generationService.catalog.supportsAny(of: ["image.upscale", "video.upscale"]),
               asset.sourceWidth != nil, asset.sourceHeight != nil,
               model.supports(source: asset),
               asset.type != .video || asset.sourceFPS != nil else { return nil }
@@ -40,6 +40,7 @@ extension EditSubmitter {
         var genInput = upscaleSeed(for: asset, model: model, trimmedSource: trimmedSource)
         let resolvedSettings = settings ?? model.defaultSettings
         genInput.upscaleSettings = resolvedSettings
+        genInput.undoActionName = L10n.string("Upscale")
 
         let isImage = asset.type == .image
         let placeholderDuration: Double
