@@ -203,6 +203,19 @@ struct TransformMediaToolTests {
         #expect(!fixture.undoManager.canUndo)
     }
 
+    @Test func upscaleToolReturnsStructuredErrorWhenTheSourceFileIsMissing() async throws {
+        let fixture = try await EditorTestFixture.withImage(catalog: EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull"))
+        defer { fixture.cleanup() }
+        try FileManager.default.removeItem(at: fixture.image.url)
+        let result = await fixture.executor.execute(name: "upscale_media", args: ["mediaRef": fixture.image.id], source: "mcp")
+        #expect(result.isError)
+        let error = try error(in: result)
+        #expect(error["code"] as? String == "invalid_request")
+        #expect(error["message"] as? String == MediaEditRefusal.sourceMissing.toolMessage)
+        #expect(fixture.editor.mediaAssets.count == 1)
+        #expect(!fixture.undoManager.canUndo)
+    }
+
     @Test func landedUpscaleIsOneNamedUndoStep() async throws {
         let result = JobResult(url: EditorTestFixture.servedImageURL, contentType: "image/png", fileExtension: "png")
         let fixture = try await EditorTestFixture.withImage(
