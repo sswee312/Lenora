@@ -28,7 +28,8 @@ def main() -> None:
         handler.setFormatter(JsonFormatter())
     logging.basicConfig(level=logging.INFO, handlers=[handler])
     uvicorn.run(create_app(settings), host=settings.bind_host, port=port,
-                proxy_headers=settings.env == "production", log_config=None)
+                proxy_headers=settings.env == "production", forwarded_allow_ips=settings.forwarded_allow_ips,
+                log_config=None)
 
 
 if __name__ == "__main__":

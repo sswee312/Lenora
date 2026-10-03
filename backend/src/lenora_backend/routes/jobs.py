@@ -4,13 +4,15 @@ from pydantic import ValidationError
 
 from lenora_backend.errors import ProblemError, provider_call
 from lenora_backend.kinds import PARAMS, TERMINAL, JobRequest, JobState, input_problem
+from lenora_backend.results import ResultStore
 
 router = APIRouter()
 DEFAULT_RETRY_AFTER = 2
 
 
-def _state_response(adapter_id: str, state: JobState) -> JSONResponse:
-    body = state.model_copy(update={"jobId": f"{adapter_id}:{state.jobId}"}).model_dump(mode="json")
+def _state_response(adapter_id: str, state: JobState, base_url: str) -> JSONResponse:
+    results = [ResultStore.resolve(r, base_url) for r in state.results] if state.results else state.results
+    body = state.model_copy(update={"jobId": f"{adapter_id}:{state.jobId}", "results": results}).model_dump(mode="json")
     headers = {} if state.status in TERMINAL else {"Retry-After": str(state.retryAfter or DEFAULT_RETRY_AFTER)}
     return JSONResponse(body, headers=headers)
 
@@ -47,11 +49,11 @@ async def submit_job(
 async def get_job(job_id: str, request: Request) -> JSONResponse:
     adapter, local = request.app.state.registry.job_adapter(job_id)
     timeout = request.app.state.settings.provider_timeout_seconds
-    return _state_response(adapter.id, await provider_call(adapter.status(local), timeout))
+    return _state_response(adapter.id, await provider_call(adapter.status(local), timeout), str(request.base_url))
 
 
 @router.delete("/jobs/{job_id:path}")
 async def cancel_job(job_id: str, request: Request) -> JSONResponse:
     adapter, local = request.app.state.registry.job_adapter(job_id)
     timeout = request.app.state.settings.provider_timeout_seconds
-    return _state_response(adapter.id, await provider_call(adapter.cancel(local), timeout))
+    return _state_response(adapter.id, await provider_call(adapter.cancel(local), timeout), str(request.base_url))

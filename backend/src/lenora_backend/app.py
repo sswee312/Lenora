@@ -1,5 +1,7 @@
+import asyncio
+import logging
 from collections.abc import Callable
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, suppress
 
 import httpx
 from fastapi import Depends, FastAPI
@@ -9,19 +11,43 @@ from lenora_backend.auth import require_token
 from lenora_backend.errors import install_error_handlers
 from lenora_backend.idempotency import IdempotencyStore
 from lenora_backend.registry import Registry
-from lenora_backend.routes import assets, capabilities, health, jobs, uploads
+from lenora_backend.results import ResultStore
+from lenora_backend.routes import assets, capabilities, health, jobs, results, uploads
 from lenora_backend.settings import CoreSettings
 
 HTTP_TIMEOUT = httpx.Timeout(connect=5.0, read=30.0, write=30.0, pool=5.0)
+SWEEP_INTERVAL_SECONDS = 3600
+log = logging.getLogger("lenora.results")
+
+
+async def _sweep(store: ResultStore) -> None:
+    try:
+        await store.sweep()
+    except OSError as error:
+        log.warning("result sweep failed: %s", type(error).__name__)
+
+
+async def _sweep_hourly(store: ResultStore) -> None:
+    while True:
+        await asyncio.sleep(SWEEP_INTERVAL_SECONDS)
+        await _sweep(store)
 
 
 def create_app(settings: CoreSettings, load_registry: Callable[[httpx.AsyncClient], Registry] = Registry.load) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI):
+        app.state.results = ResultStore(settings.data_dir / "results")
+        await _sweep(app.state.results)
+        sweeper = asyncio.create_task(_sweep_hourly(app.state.results))
         async with httpx.AsyncClient(timeout=HTTP_TIMEOUT, follow_redirects=False) as http:
-            app.state.registry = load_registry(http)
-            await app.state.registry.start(settings.provider_timeout_seconds)
-            yield
+            try:
+                app.state.registry = load_registry(http)
+                await app.state.registry.start(settings.provider_timeout_seconds)
+                yield
+            finally:
+                sweeper.cancel()
+                with suppress(asyncio.CancelledError):
+                    await sweeper
 
     docs = "/docs" if settings.docs_enabled else None
     app = FastAPI(title="lenora-backend", version=__version__, lifespan=lifespan,
@@ -35,4 +61,5 @@ def create_app(settings: CoreSettings, load_registry: Callable[[httpx.AsyncClien
     app.include_router(uploads.router, prefix="/v1", dependencies=protected)
     app.include_router(jobs.router, prefix="/v1", dependencies=protected)
     app.include_router(assets.router, prefix="/v1", dependencies=protected)
+    app.include_router(results.router, prefix="/v1", dependencies=protected)
     return app
