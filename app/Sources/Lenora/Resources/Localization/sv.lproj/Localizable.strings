@@ -1,7 +1,5 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
-"$%lld/mo" = "$%lld/mån";
-"$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Krediter upphör vid förnyelse.";
 "%@ could not be exported." = "Det gick inte att exportera %@.";
 "%@ does not accept this media" = "%@ accepterar inte det här mediet";
 "%@ does not support this media type." = "%@ stöder inte den här mediatypen.";
@@ -15,30 +13,22 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld färdigheter";
 "%@: %@." = "%@: %@.";
-"%lld / %lld credits" = "%lld / %lld krediter";
 "%lld Lottie animations are ready in Lenora Pro." = "%lld Lottie-animeringar är klara i Lenora Pro.";
 "%lld audio clips are ready in Lenora Pro." = "%lld ljudklipp är klara i Lenora Pro.";
 "%lld by timecode, %lld by audio" = "%lld via tidskod, %lld via ljud";
 "%lld clips" = "%lld klipp";
 "%lld couldn't align" = "%lld gick inte att justera";
-"%lld credits" = "%lld krediter";
-"%lld credits / month" = "%lld krediter / månad";
 "%lld images are ready in Lenora Pro." = "%lld bilder är klara i Lenora Pro.";
 "%lld items" = "%lld objekt";
 "%lld media files are missing and will be skipped." = "%lld mediafiler saknas och hoppas över.";
-"%lld of %lld credits remaining this period" = "%lld av %lld krediter kvar den här perioden";
 "%lld selected" = "%lld markerade";
 "%lld subtitle files are ready in Lenora Pro." = "%lld undertextfiler är klara i Lenora Pro.";
 "%lld text clips are ready in Lenora Pro." = "%lld textklipp är klara i Lenora Pro.";
 "%lld videos are ready in Lenora Pro." = "%lld videor är klara i Lenora Pro.";
-"%lldk credits" = "%lldk krediter";
 "(image payload)" = "(bilddata)";
-"/ month" = "/ månad";
 "1 clip" = "1 klipp";
 "1 item" = "1 objekt";
 "1 media file is missing and will be skipped." = "1 mediafil saknas och hoppas över.";
-"= %lld credits" = "= %lld krediter";
-"= 1 credit" = "= 1 kredit";
 "A video editor built for AI. Generate, and edit all in one place." = "En videoredigerare byggd för AI. Generera och redigera på ett ställe.";
 "AI Audio" = "AI-ljud";
 "AI Chat" = "AI-chatt";
@@ -47,8 +37,6 @@
 "AI Generated" = "AI-genererad";
 "AI agent" = "AI Agent";
 "About Lenora Pro" = "Om Lenora Pro";
-"Account" = "Konto";
-"Account settings" = "Kontoinställningar";
 "Action Safe" = "Säker åtgärdsyta";
 "Adapters" = "Adaptrar";
 "Add Marker (M)" = "Lägg till markör (M)";
@@ -59,7 +47,6 @@
 "Add an Anthropic API key to use this model." = "Lägg till en Anthropic API-nyckel för att använda den här modellen.";
 "Add an OpenAI API key to use this model." = "Lägg till en OpenAI API-nyckel för att använda den här modellen.";
 "Add captions" = "Lägg till undertexter";
-"Add credits" = "Lägg till krediter";
 "Add emoji" = "Lägg till emoji";
 "Add generated audio to an audio track at this clip's start." = "Lägg till genererat ljud på ett ljudspår vid det här klippets start.";
 "Add keyframe" = "Lägg till nyckelbild";
@@ -117,9 +104,6 @@
 "Bundled" = "Medföljande";
 "Bundled Skills Unavailable" = "Medföljande färdigheter är inte tillgängliga";
 "Bundled skills are missing from this build." = "Medföljande färdigheter saknas i den här versionen.";
-"Buy" = "Köp";
-"Buy $%lld" = "Köp $%lld";
-"Buy more" = "Köp mer";
 "Cache" = "Cache";
 "Can't add captions from \"%@\" — %@" = "Det går inte att lägga till undertexter från \"%@\" — %@";
 "Can't add captions — \"%@\" is offline." = "Det går inte att lägga till undertexter — \"%@\" är offline.";
@@ -137,7 +121,6 @@
 "Cancel key color sampling" = "Avbryt provtagning av nyckelfärg";
 "Canceled" = "Avbruten";
 "Canceling" = "Avbryter";
-"Cancels %@" = "Avbryter %@";
 "Canvas" = "Duk";
 "Canvas Guides" = "Dukens hjälplinjer";
 "Canvas Zoom" = "Dukzoom";
@@ -234,8 +217,6 @@
 "Create a skill or browse the Bundled collection." = "Skapa en färdighet eller bläddra i den medföljande samlingen.";
 "Create matching sound for the video" = "Skapa passande ljud till videon";
 "Creating…" = "Skapar…";
-"Credits" = "Krediter";
-"Credits cover AI generation and chat." = "Krediter täcker AI-generering och chatt.";
 "Crop" = "Beskär";
 "Crop applies to one clip at a time" = "Beskärning gäller ett klipp i taget";
 "Curves" = "Kurvor";
@@ -373,7 +354,6 @@
 "Format References" = "Formatreferenser";
 "Forward" = "Framåt";
 "Frame Rate" = "Bildfrekvens";
-"Free" = "Gratis";
 "Freeform" = "Fritt format";
 "Full Frame" = "Hel bildruta";
 "Full Screen" = "Helskärm";
@@ -504,7 +484,6 @@
 "Loading source dimensions…" = "Läser in källans mått…";
 "Loading source frame rate…" = "Läser in källans bildfrekvens…";
 "Loading video metadata…" = "Läser in metadata för video…";
-"Loading…" = "Läser in…";
 "Local" = "Lokalt";
 "Low" = "Låg";
 "Luma" = "Luma";
@@ -515,8 +494,6 @@
 "MCP Setup" = "MCP-konfiguration";
 "Main + Sidebar" = "Huvud + sidofält";
 "Make vertical shorts" = "Gör vertikala shorts";
-"Manage credits" = "Hantera krediter";
-"Manage subscription" = "Hantera prenumeration";
 "Manual setup" = "Manuell konfiguration";
 "Mark Beats" = "Markera takter";
 "Mark Range End" = "Markera områdesslut";
@@ -531,7 +508,6 @@
 "Match mouth movement to replacement audio" = "Matcha munrörelser mot ersättningsljudet";
 "Max" = "Max";
 "Max characters" = "Max antal tecken";
-"Max plan" = "Max-plan";
 "Max words" = "Max antal ord";
 "Maximize Focused Panel" = "Maximera fokuserad panel";
 "Media" = "Media";
@@ -624,7 +600,6 @@
 "Open Timeline" = "Öppna tidslinje";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Öppna fliken AI-redigering för att uppskala, redigera med prompt, skapa video från en bildruta eller generera musik, SFX, rensning och dubbning från klippet.";
 "OpenAI API Key" = "OpenAI API-nyckel";
-"Opening Google…" = "Öppnar Google…";
 "Open…" = "Öppna…";
 "Organize with Agent" = "Organisera med Agent";
 "Original" = "Original";
@@ -661,7 +636,6 @@
 "Presence" = "Närvaro";
 "Press M in the timeline to add a marker." = "Tryck på M i tidslinjen för att lägga till en markör.";
 "Preview" = "Förhandsvisning";
-"Pro plan" = "Pro-plan";
 "Project" = "Projekt";
 "Project Settings" = "Projektinställningar";
 "Projects Couldn’t Be Deleted" = "Projekten kunde inte raderas";
@@ -688,7 +662,6 @@
 "Relink Folder…" = "Länka om mapp…";
 "Relinked %lld of %lld offline clips." = "Länkade om %lld av %lld offlineklipp.";
 "Relink…" = "Länka om…";
-"Remaining" = "Kvar";
 "Remove" = "Ta bort";
 "Remove %@" = "Ta bort %@";
 "Remove API key" = "Ta bort API-nyckel";
@@ -714,7 +687,6 @@
 "Reset All" = "Återställ allt";
 "Reset Clipping Indicators" = "Återställ klippningsindikatorer";
 "Reset: %@" = "Återställ: %@";
-"Resets %@" = "Återställer %@";
 "Resolution" = "Upplösning";
 "Resolution must be at least 2 × 2 pixels." = "Upplösningen måste vara minst 2 × 2 pixlar.";
 "Resolution must not exceed 8192 pixels on either edge." = "Upplösningen får inte överstiga 8192 pixlar på någon kant.";
@@ -794,15 +766,6 @@
 "Show notifications" = "Visa aviseringar";
 "Show reasoning" = "Visa resonemang";
 "Side by Side" = "Sida vid sida";
-"Sign In" = "Logga in";
-"Sign in" = "Logga in";
-"Sign in to receive 250 free credits for AI chat and generation." = "Logga in för att få 250 gratis krediter för AI-chatt och generering.";
-"Sign in to subscribe and use AI generation." = "Logga in för att prenumerera och använda AI-generering.";
-"Sign in with Google" = "Logga in med Google";
-"Sign out" = "Logga ut";
-"Sign-in couldn’t be completed. Try again." = "Inloggningen kunde inte slutföras. Försök igen.";
-"Signed in" = "Inloggad";
-"Signed out" = "Utloggad";
 "Silence Detection" = "Tystnadsidentifiering";
 "Size" = "Storlek";
 "Skill instructions" = "Färdighetsinstruktioner";
@@ -848,7 +811,6 @@
 "Strikethrough" = "Genomstrykning";
 "Style" = "Stil";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Stilanvisningar (valfritt). t.ex. varmt och långsamt, brittisk accent.";
-"Subscription" = "Prenumeration";
 "Subtitle" = "Undertext";
 "Subtitle file is unavailable." = "Undertextfilen är inte tillgänglig.";
 "Swap Media" = "Byt media";
@@ -944,11 +906,6 @@
 "Update" = "Uppdatera";
 "Update available" = "Uppdatering tillgänglig";
 "Updating %@" = "Uppdaterar %@";
-"Upgrade" = "Uppgradera";
-"Upgrade to %@" = "Uppgradera till %@";
-"Upgrade to Max" = "Uppgradera till Max";
-"Upgrade to Pro" = "Uppgradera till Pro";
-"Upgrade to add credits" = "Uppgradera för att lägga till krediter";
 "Uploading…" = "Överför…";
 "Upscale" = "Uppskala";
 "Upscale model not available" = "Uppskalningsmodellen är inte tillgänglig";
@@ -984,10 +941,7 @@
 "Voice Cleanup requires audio or video" = "Röstrensning kräver ljud eller video";
 "Volume" = "Volym";
 "Warmth" = "Värme";
-"Welcome" = "Välkommen";
 "Welcome to Lenora Pro" = "Välkommen till Lenora Pro";
-"Welcome to Lenora Pro, %@" = "Välkommen till Lenora Pro, %@";
-"Welcome, %@" = "Välkommen, %@";
 "What's New in v%@" = "Nyheter i v%@";
 "White Balance" = "Vitbalans";
 "Whites" = "Vitt";
@@ -1000,7 +954,6 @@
 "Workspace layout" = "Arbetsytelayout";
 "X High" = "X hög";
 "You're all set" = "Allt är klart";
-"You're ready to start creating." = "Du är redo att börja skapa.";
 "Your Lottie animation is ready." = "Din Lottie-animering är klar.";
 "Your audio clip is ready." = "Ditt ljudklipp är klart.";
 "Your image is ready." = "Din bild är klar.";

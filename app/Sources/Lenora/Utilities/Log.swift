@@ -14,7 +14,6 @@ enum Log {
     static let preview    = CategoryLog("preview")
     static let mcp        = CategoryLog("mcp")
     static let agent      = CategoryLog("agent")
-    static let account    = CategoryLog("account")
     static let generation = CategoryLog("generation")
     static let project    = CategoryLog("project")
     static let transcription = CategoryLog("transcription")

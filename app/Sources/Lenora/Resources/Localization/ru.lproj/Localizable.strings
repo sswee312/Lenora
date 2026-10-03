@@ -1,7 +1,5 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
-"$%lld/mo" = "$%lld/мес.";
-"$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Срок действия кредитов истекает при продлении.";
 "%@ could not be exported." = "Не удалось экспортировать %@.";
 "%@ does not accept this media" = "%@ не принимает этот медиафайл";
 "%@ does not support this media type." = "%@ не поддерживает медиафайлы этого типа.";
@@ -15,30 +13,22 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, навыков: %lld";
 "%@: %@." = "%@: %@.";
-"%lld / %lld credits" = "%lld / %lld кредитов";
 "%lld Lottie animations are ready in Lenora Pro." = "Анимации Lottie готовы в Lenora Pro: %lld.";
 "%lld audio clips are ready in Lenora Pro." = "Аудиоклипы готовы в Lenora Pro: %lld.";
 "%lld by timecode, %lld by audio" = "По таймкоду: %lld, по аудио: %lld";
 "%lld clips" = "Клипов: %lld";
 "%lld couldn't align" = "Не удалось синхронизировать: %lld";
-"%lld credits" = "%lld кредитов";
-"%lld credits / month" = "%lld кредитов в месяц";
 "%lld images are ready in Lenora Pro." = "Изображения готовы в Lenora Pro: %lld.";
 "%lld items" = "Объектов: %lld";
 "%lld media files are missing and will be skipped." = "Отсутствуют медиафайлы: %lld. Они будут пропущены.";
-"%lld of %lld credits remaining this period" = "В этом периоде осталось %lld из %lld кредитов";
 "%lld selected" = "Выбрано: %lld";
 "%lld subtitle files are ready in Lenora Pro." = "%lld файлов субтитров готовы в Lenora Pro.";
 "%lld text clips are ready in Lenora Pro." = "Текстовые клипы готовы в Lenora Pro: %lld.";
 "%lld videos are ready in Lenora Pro." = "Видео готовы в Lenora Pro: %lld.";
-"%lldk credits" = "%lld тыс. кредитов";
 "(image payload)" = "(данные изображения)";
-"/ month" = "/ месяц";
 "1 clip" = "1 клип";
 "1 item" = "1 объект";
 "1 media file is missing and will be skipped." = "Отсутствует 1 медиафайл. Он будет пропущен.";
-"= %lld credits" = "= %lld кредитов";
-"= 1 credit" = "= 1 кредит";
 "A video editor built for AI. Generate, and edit all in one place." = "Видеоредактор для работы с AI. Генерируйте и монтируйте в одном приложении.";
 "AI Audio" = "AI-аудио";
 "AI Chat" = "AI-чат";
@@ -47,8 +37,6 @@
 "AI Generated" = "Создано AI";
 "AI agent" = "AI-агент";
 "About Lenora Pro" = "О Lenora Pro";
-"Account" = "Учётная запись";
-"Account settings" = "Настройки учётной записи";
 "Action Safe" = "Безопасная зона действия";
 "Adapters" = "Адаптеры";
 "Add Marker (M)" = "Добавить маркер (M)";
@@ -59,7 +47,6 @@
 "Add an Anthropic API key to use this model." = "Добавьте API-ключ Anthropic, чтобы использовать эту модель.";
 "Add an OpenAI API key to use this model." = "Добавьте API-ключ OpenAI, чтобы использовать эту модель.";
 "Add captions" = "Добавить субтитры";
-"Add credits" = "Добавить кредиты";
 "Add emoji" = "Добавить эмодзи";
 "Add generated audio to an audio track at this clip's start." = "Добавить созданное аудио на аудиодорожку в начале этого клипа.";
 "Add keyframe" = "Добавить ключевой кадр";
@@ -117,9 +104,6 @@
 "Bundled" = "Встроенные";
 "Bundled Skills Unavailable" = "Встроенные навыки недоступны";
 "Bundled skills are missing from this build." = "Встроенные навыки отсутствуют в этой сборке.";
-"Buy" = "Купить";
-"Buy $%lld" = "Купить за $%lld";
-"Buy more" = "Купить ещё";
 "Cache" = "Кэш";
 "Can't add captions from \"%@\" — %@" = "Нельзя добавить субтитры из «%@» — %@";
 "Can't add captions — \"%@\" is offline." = "Нельзя добавить субтитры — «%@» недоступен.";
@@ -137,7 +121,6 @@
 "Cancel key color sampling" = "Отменить выбор ключевого цвета";
 "Canceled" = "Отменено";
 "Canceling" = "Отмена…";
-"Cancels %@" = "Отменяет %@";
 "Canvas" = "Холст";
 "Canvas Guides" = "Направляющие холста";
 "Canvas Zoom" = "Масштаб холста";
@@ -234,8 +217,6 @@
 "Create a skill or browse the Bundled collection." = "Создайте навык или просмотрите встроенную коллекцию.";
 "Create matching sound for the video" = "Создать подходящий звук для видео";
 "Creating…" = "Создание…";
-"Credits" = "Кредиты";
-"Credits cover AI generation and chat." = "Кредиты используются для AI-генерации и чата.";
 "Crop" = "Кадрирование";
 "Crop applies to one clip at a time" = "Кадрирование применяется к одному клипу за раз";
 "Curves" = "Кривые";
@@ -373,7 +354,6 @@
 "Format References" = "Референсы формата";
 "Forward" = "Вперёд";
 "Frame Rate" = "Частота кадров";
-"Free" = "Бесплатно";
 "Freeform" = "Свободная форма";
 "Full Frame" = "Полный кадр";
 "Full Screen" = "Полноэкранный режим";
@@ -504,7 +484,6 @@
 "Loading source dimensions…" = "Загрузка размеров исходного файла…";
 "Loading source frame rate…" = "Загрузка частоты кадров исходного файла…";
 "Loading video metadata…" = "Загрузка метаданных видео…";
-"Loading…" = "Загрузка…";
 "Local" = "Локально";
 "Low" = "Низкий";
 "Luma" = "Яркостный канал";
@@ -515,8 +494,6 @@
 "MCP Setup" = "Настройка MCP";
 "Main + Sidebar" = "Основная область + боковая панель";
 "Make vertical shorts" = "Сделать вертикальные шорты";
-"Manage credits" = "Управление кредитами";
-"Manage subscription" = "Управление подпиской";
 "Manual setup" = "Настроить вручную";
 "Mark Beats" = "Отметить доли";
 "Mark Range End" = "Отметить конец диапазона";
@@ -531,7 +508,6 @@
 "Match mouth movement to replacement audio" = "Синхронизировать движения губ с заменённым аудио";
 "Max" = "Максимум";
 "Max characters" = "Максимум символов";
-"Max plan" = "План Max";
 "Max words" = "Максимум слов";
 "Maximize Focused Panel" = "Развернуть активную панель";
 "Media" = "Медиафайлы";
@@ -624,7 +600,6 @@
 "Open Timeline" = "Открыть таймлайн";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Откройте вкладку «AI-правка», чтобы увеличить разрешение, изменить клип по запросу, создать видео из кадра или сгенерировать музыку, звуковые эффекты, очистку голоса и дубляж.";
 "OpenAI API Key" = "API-ключ OpenAI";
-"Opening Google…" = "Открывается Google…";
 "Open…" = "Открыть…";
 "Organize with Agent" = "Упорядочить с помощью агента";
 "Original" = "Оригинал";
@@ -661,7 +636,6 @@
 "Presence" = "Присутствие";
 "Press M in the timeline to add a marker." = "Нажмите M на таймлайне, чтобы добавить маркер.";
 "Preview" = "Предпросмотр";
-"Pro plan" = "План Pro";
 "Project" = "Проект";
 "Project Settings" = "Настройки проекта";
 "Projects Couldn’t Be Deleted" = "Не удалось удалить проекты";
@@ -688,7 +662,6 @@
 "Relink Folder…" = "Перепривязать папку…";
 "Relinked %lld of %lld offline clips." = "Перепривязано клипов: %lld из %lld недоступных.";
 "Relink…" = "Перепривязать…";
-"Remaining" = "Осталось";
 "Remove" = "Удалить";
 "Remove %@" = "Удалить %@";
 "Remove API key" = "Удалить API-ключ";
@@ -714,7 +687,6 @@
 "Reset All" = "Сбросить все";
 "Reset Clipping Indicators" = "Сбросить индикаторы клиппинга";
 "Reset: %@" = "Сбросить: %@";
-"Resets %@" = "Сбрасывает %@";
 "Resolution" = "Разрешение";
 "Resolution must be at least 2 × 2 pixels." = "Разрешение должно быть не менее 2 × 2 пикселей.";
 "Resolution must not exceed 8192 pixels on either edge." = "Разрешение не должно превышать 8192 пикселя по любой стороне.";
@@ -794,15 +766,6 @@
 "Show notifications" = "Показывать уведомления";
 "Show reasoning" = "Показать рассуждения";
 "Side by Side" = "Бок о бок";
-"Sign In" = "Войти";
-"Sign in" = "Войти";
-"Sign in to receive 250 free credits for AI chat and generation." = "Войдите и получите 250 бесплатных кредитов на AI-чат и генерацию.";
-"Sign in to subscribe and use AI generation." = "Войдите, чтобы оформить подписку и использовать AI-генерацию.";
-"Sign in with Google" = "Войти с Google";
-"Sign out" = "Выйти";
-"Sign-in couldn’t be completed. Try again." = "Не удалось выполнить вход. Повторите попытку.";
-"Signed in" = "Вход выполнен";
-"Signed out" = "Выход выполнен";
 "Silence Detection" = "Определение тишины";
 "Size" = "Размер";
 "Skill instructions" = "Инструкции навыка";
@@ -848,7 +811,6 @@
 "Strikethrough" = "Зачёркивание";
 "Style" = "Стиль";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Инструкции по стилю (необязательно). Например: тёплый и медленный голос, британский акцент.";
-"Subscription" = "Подписка";
 "Subtitle" = "Субтитры";
 "Subtitle file is unavailable." = "Файл субтитров недоступен.";
 "Swap Media" = "Заменить медиафайл";
@@ -944,11 +906,6 @@
 "Update" = "Обновить";
 "Update available" = "Доступно обновление";
 "Updating %@" = "Обновляется %@";
-"Upgrade" = "Улучшить план";
-"Upgrade to %@" = "Перейти на %@";
-"Upgrade to Max" = "Перейти на Max";
-"Upgrade to Pro" = "Перейти на Pro";
-"Upgrade to add credits" = "Улучшите план, чтобы добавить кредиты";
 "Uploading…" = "Отправка…";
 "Upscale" = "Увеличить разрешение";
 "Upscale model not available" = "Модель увеличения разрешения недоступна";
@@ -984,10 +941,7 @@
 "Voice Cleanup requires audio or video" = "Для очистки голоса требуется аудио или видео";
 "Volume" = "Громкость";
 "Warmth" = "Теплота";
-"Welcome" = "Добро пожаловать";
 "Welcome to Lenora Pro" = "Добро пожаловать в Lenora Pro";
-"Welcome to Lenora Pro, %@" = "Добро пожаловать в Lenora Pro, %@";
-"Welcome, %@" = "Добро пожаловать, %@";
 "What's New in v%@" = "Что нового в v%@";
 "White Balance" = "Баланс белого";
 "Whites" = "Белые";
@@ -1000,7 +954,6 @@
 "Workspace layout" = "Расположение рабочей области";
 "X High" = "Сверхвысокий";
 "You're all set" = "Всё готово";
-"You're ready to start creating." = "Всё готово — можно начинать творить.";
 "Your Lottie animation is ready." = "Ваша анимация Lottie готова.";
 "Your audio clip is ready." = "Ваш аудиоклип готов.";
 "Your image is ready." = "Ваше изображение готово.";

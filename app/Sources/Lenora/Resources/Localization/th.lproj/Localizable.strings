@@ -1,7 +1,5 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
-"$%lld/mo" = "$%lld/เดือน";
-"$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · เครดิตหมดอายุเมื่อต่ออายุ";
 "%@ could not be exported." = "ไม่สามารถส่งออก %@ ได้";
 "%@ does not accept this media" = "%@ ไม่รับมีเดียนี้";
 "%@ does not support this media type." = "%@ ไม่รองรับประเภทมีเดียนี้";
@@ -15,30 +13,22 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld สกิล";
 "%@: %@." = "%@: %@.";
-"%lld / %lld credits" = "%lld / %lld เครดิต";
 "%lld Lottie animations are ready in Lenora Pro." = "แอนิเมชัน Lottie %lld รายการพร้อมใน Lenora Pro แล้ว";
 "%lld audio clips are ready in Lenora Pro." = "คลิปเสียง %lld รายการพร้อมใน Lenora Pro แล้ว";
 "%lld by timecode, %lld by audio" = "%lld ตามไทม์โค้ด, %lld ตามเสียง";
 "%lld clips" = "%lld คลิป";
 "%lld couldn't align" = "ไม่สามารถจัดแนวได้ %lld รายการ";
-"%lld credits" = "%lld เครดิต";
-"%lld credits / month" = "%lld เครดิต / เดือน";
 "%lld images are ready in Lenora Pro." = "ภาพ %lld รายการพร้อมใน Lenora Pro แล้ว";
 "%lld items" = "%lld รายการ";
 "%lld media files are missing and will be skipped." = "ไฟล์มีเดีย %lld รายการหายไปและจะถูกข้าม";
-"%lld of %lld credits remaining this period" = "เหลือ %lld จาก %lld เครดิตในช่วงนี้";
 "%lld selected" = "เลือกแล้ว %lld รายการ";
 "%lld subtitle files are ready in Lenora Pro." = "ไฟล์คำบรรยาย %lld รายการพร้อมใน Lenora Pro แล้ว";
 "%lld text clips are ready in Lenora Pro." = "คลิปข้อความ %lld รายการพร้อมใน Lenora Pro แล้ว";
 "%lld videos are ready in Lenora Pro." = "วิดีโอ %lld รายการพร้อมใน Lenora Pro แล้ว";
-"%lldk credits" = "%lldk เครดิต";
 "(image payload)" = "(ข้อมูลภาพ)";
-"/ month" = "/ เดือน";
 "1 clip" = "1 คลิป";
 "1 item" = "1 รายการ";
 "1 media file is missing and will be skipped." = "ไฟล์มีเดีย 1 รายการหายไปและจะถูกข้าม";
-"= %lld credits" = "= %lld เครดิต";
-"= 1 credit" = "= 1 เครดิต";
 "A video editor built for AI. Generate, and edit all in one place." = "โปรแกรมตัดต่อวิดีโอที่สร้างมาสำหรับ AI สร้างและตัดต่อได้ในที่เดียว";
 "AI Audio" = "เสียง AI";
 "AI Chat" = "แชท AI";
@@ -47,8 +37,6 @@
 "AI Generated" = "สร้างด้วย AI";
 "AI agent" = "AI Agent";
 "About Lenora Pro" = "เกี่ยวกับ Lenora Pro";
-"Account" = "บัญชี";
-"Account settings" = "การตั้งค่าบัญชี";
 "Action Safe" = "ขอบปลอดภัยการกระทำ";
 "Adapters" = "อะแดปเตอร์";
 "Add Marker (M)" = "เพิ่มมาร์กเกอร์ (M)";
@@ -59,7 +47,6 @@
 "Add an Anthropic API key to use this model." = "เพิ่มคีย์ API ของ Anthropic เพื่อใช้โมเดลนี้";
 "Add an OpenAI API key to use this model." = "เพิ่มคีย์ API ของ OpenAI เพื่อใช้โมเดลนี้";
 "Add captions" = "เพิ่มคำบรรยาย";
-"Add credits" = "เพิ่มเครดิต";
 "Add emoji" = "เพิ่มอิโมจิ";
 "Add generated audio to an audio track at this clip's start." = "เพิ่มเสียงที่สร้างแล้วไปยังแทร็กเสียงที่จุดเริ่มคลิปนี้";
 "Add keyframe" = "เพิ่มคีย์เฟรม";
@@ -117,9 +104,6 @@
 "Bundled" = "ที่มาพร้อมแอป";
 "Bundled Skills Unavailable" = "สกิลที่มาพร้อมแอปไม่พร้อมใช้งาน";
 "Bundled skills are missing from this build." = "ไม่พบสกิลที่มาพร้อมแอปในบิลด์นี้";
-"Buy" = "ซื้อ";
-"Buy $%lld" = "ซื้อ $%lld";
-"Buy more" = "ซื้อเพิ่ม";
 "Cache" = "แคช";
 "Can't add captions from \"%@\" — %@" = "ไม่สามารถเพิ่มคำบรรยายจาก \"%@\" — %@";
 "Can't add captions — \"%@\" is offline." = "ไม่สามารถเพิ่มคำบรรยาย — \"%@\" ออฟไลน์อยู่";
@@ -137,7 +121,6 @@
 "Cancel key color sampling" = "ยกเลิกการสุ่มตัวอย่างสีคีย์";
 "Canceled" = "ยกเลิกแล้ว";
 "Canceling" = "กำลังยกเลิก";
-"Cancels %@" = "ยกเลิก %@";
 "Canvas" = "แคนวาส";
 "Canvas Guides" = "เส้นไกด์แคนวาส";
 "Canvas Zoom" = "ซูมแคนวาส";
@@ -234,8 +217,6 @@
 "Create a skill or browse the Bundled collection." = "สร้างสกิล หรือเรียกดูคอลเลกชันที่มาพร้อมแอป";
 "Create matching sound for the video" = "สร้างเสียงที่เข้ากับวิดีโอ";
 "Creating…" = "กำลังสร้าง…";
-"Credits" = "เครดิต";
-"Credits cover AI generation and chat." = "เครดิตครอบคลุมการสร้างด้วย AI และการแชท";
 "Crop" = "ครอป";
 "Crop applies to one clip at a time" = "ครอปใช้ได้ทีละคลิป";
 "Curves" = "เส้นโค้ง";
@@ -373,7 +354,6 @@
 "Format References" = "ข้อมูลอ้างอิงรูปแบบ";
 "Forward" = "ไปข้างหน้า";
 "Frame Rate" = "อัตราเฟรม";
-"Free" = "ฟรี";
 "Freeform" = "อิสระ";
 "Full Frame" = "เต็มเฟรม";
 "Full Screen" = "เต็มหน้าจอ";
@@ -504,7 +484,6 @@
 "Loading source dimensions…" = "กำลังโหลดขนาดต้นทาง…";
 "Loading source frame rate…" = "กำลังโหลดอัตราเฟรมต้นทาง…";
 "Loading video metadata…" = "กำลังโหลดข้อมูลเมตาของวิดีโอ…";
-"Loading…" = "กำลังโหลด…";
 "Local" = "ภายในเครื่อง";
 "Low" = "ต่ำ";
 "Luma" = "ลูมา";
@@ -515,8 +494,6 @@
 "MCP Setup" = "การตั้งค่า MCP";
 "Main + Sidebar" = "หลัก + แถบข้าง";
 "Make vertical shorts" = "สร้างคลิปสั้นแนวตั้ง";
-"Manage credits" = "จัดการเครดิต";
-"Manage subscription" = "จัดการการสมัครสมาชิก";
 "Manual setup" = "ตั้งค่าด้วยตนเอง";
 "Mark Beats" = "ทำเครื่องหมายจังหวะ";
 "Mark Range End" = "ทำเครื่องหมายจุดสิ้นสุดช่วง";
@@ -531,7 +508,6 @@
 "Match mouth movement to replacement audio" = "ให้การเคลื่อนไหวปากตรงกับเสียงแทนที่";
 "Max" = "สูงสุด";
 "Max characters" = "อักขระสูงสุด";
-"Max plan" = "แผน Max";
 "Max words" = "คำสูงสุด";
 "Maximize Focused Panel" = "ขยายแผงที่โฟกัส";
 "Media" = "มีเดีย";
@@ -624,7 +600,6 @@
 "Open Timeline" = "เปิดไทม์ไลน์";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "เปิดแท็บแก้ไขด้วย AI เพื่อเพิ่มความละเอียด แก้ไขด้วยพรอมต์ สร้างวิดีโอจากเฟรม หรือสร้างเพลง SFX ทำความสะอาด และการพากย์จากคลิป";
 "OpenAI API Key" = "คีย์ API ของ OpenAI";
-"Opening Google…" = "กำลังเปิด Google…";
 "Open…" = "เปิด…";
 "Organize with Agent" = "จัดระเบียบด้วย Agent";
 "Original" = "ต้นฉบับ";
@@ -661,7 +636,6 @@
 "Presence" = "ความเด่น";
 "Press M in the timeline to add a marker." = "กด M ในไทม์ไลน์เพื่อเพิ่มมาร์กเกอร์";
 "Preview" = "ตัวอย่าง";
-"Pro plan" = "แผน Pro";
 "Project" = "โปรเจ็กต์";
 "Project Settings" = "การตั้งค่าโปรเจ็กต์";
 "Projects Couldn’t Be Deleted" = "ไม่สามารถลบโปรเจ็กต์ได้";
@@ -688,7 +662,6 @@
 "Relink Folder…" = "เชื่อมโยงโฟลเดอร์ใหม่…";
 "Relinked %lld of %lld offline clips." = "เชื่อมโยงใหม่แล้ว %lld จาก %lld คลิปออฟไลน์";
 "Relink…" = "เชื่อมโยงใหม่…";
-"Remaining" = "คงเหลือ";
 "Remove" = "ลบออก";
 "Remove %@" = "ลบออก %@";
 "Remove API key" = "ลบคีย์ API";
@@ -714,7 +687,6 @@
 "Reset All" = "รีเซ็ตทั้งหมด";
 "Reset Clipping Indicators" = "รีเซ็ตตัวบ่งชี้คลิปปิ้ง";
 "Reset: %@" = "รีเซ็ต: %@";
-"Resets %@" = "รีเซ็ต %@";
 "Resolution" = "ความละเอียด";
 "Resolution must be at least 2 × 2 pixels." = "ความละเอียดต้องมีอย่างน้อย 2 × 2 พิกเซล";
 "Resolution must not exceed 8192 pixels on either edge." = "ความละเอียดต้องไม่เกิน 8192 พิกเซลในแต่ละด้าน";
@@ -794,15 +766,6 @@
 "Show notifications" = "แสดงการแจ้งเตือน";
 "Show reasoning" = "แสดงเหตุผล";
 "Side by Side" = "ข้างกัน";
-"Sign In" = "ลงชื่อเข้า";
-"Sign in" = "ลงชื่อเข้า";
-"Sign in to receive 250 free credits for AI chat and generation." = "ลงชื่อเข้าเพื่อรับ 250 เครดิตฟรีสำหรับแชท AI และการสร้าง";
-"Sign in to subscribe and use AI generation." = "ลงชื่อเข้าเพื่อสมัครสมาชิกและใช้การสร้างด้วย AI";
-"Sign in with Google" = "ลงชื่อเข้าด้วย Google";
-"Sign out" = "ออกจากระบบ";
-"Sign-in couldn’t be completed. Try again." = "ไม่สามารถลงชื่อเข้าให้เสร็จได้ ลองอีกครั้ง";
-"Signed in" = "ลงชื่อเข้าแล้ว";
-"Signed out" = "ออกจากระบบแล้ว";
 "Silence Detection" = "การตรวจจับช่วงเงียบ";
 "Size" = "ขนาด";
 "Skill instructions" = "คำแนะนำสกิล";
@@ -848,7 +811,6 @@
 "Strikethrough" = "ขีดฆ่า";
 "Style" = "สไตล์";
 "Style instructions (optional). e.g., warm and slow, British accent." = "คำแนะนำสไตล์ (ไม่บังคับ) เช่น อบอุ่นและช้า สำเนียงอังกฤษ";
-"Subscription" = "การสมัครสมาชิก";
 "Subtitle" = "คำบรรยาย";
 "Subtitle file is unavailable." = "ไฟล์คำบรรยายไม่พร้อมใช้งาน";
 "Swap Media" = "สลับมีเดีย";
@@ -944,11 +906,6 @@
 "Update" = "อัปเดต";
 "Update available" = "มีอัปเดต";
 "Updating %@" = "กำลังอัปเดต %@";
-"Upgrade" = "อัปเกรด";
-"Upgrade to %@" = "อัปเกรดเป็น %@";
-"Upgrade to Max" = "อัปเกรดเป็น Max";
-"Upgrade to Pro" = "อัปเกรดเป็น Pro";
-"Upgrade to add credits" = "อัปเกรดเพื่อเพิ่มเครดิต";
 "Uploading…" = "กำลังอัปโหลด…";
 "Upscale" = "เพิ่มความละเอียด";
 "Upscale model not available" = "โมเดลเพิ่มความละเอียดไม่พร้อมใช้งาน";
@@ -984,10 +941,7 @@
 "Voice Cleanup requires audio or video" = "ทำความสะอาดเสียงพูดต้องใช้เสียงหรือวิดีโอ";
 "Volume" = "ระดับเสียง";
 "Warmth" = "ความอบอุ่น";
-"Welcome" = "ยินดีต้อนรับ";
 "Welcome to Lenora Pro" = "ยินดีต้อนรับสู่ Lenora Pro";
-"Welcome to Lenora Pro, %@" = "ยินดีต้อนรับสู่ Lenora Pro, %@";
-"Welcome, %@" = "ยินดีต้อนรับ, %@";
 "What's New in v%@" = "มีอะไรใหม่ใน v%@";
 "White Balance" = "ไวต์บาลานซ์";
 "Whites" = "ขาว";
@@ -1000,7 +954,6 @@
 "Workspace layout" = "เค้าโครงพื้นที่ทำงาน";
 "X High" = "สูงมาก";
 "You're all set" = "พร้อมใช้งานแล้ว";
-"You're ready to start creating." = "คุณพร้อมเริ่มสร้างสรรค์แล้ว";
 "Your Lottie animation is ready." = "แอนิเมชัน Lottie ของคุณพร้อมแล้ว";
 "Your audio clip is ready." = "คลิปเสียงของคุณพร้อมแล้ว";
 "Your image is ready." = "ภาพของคุณพร้อมแล้ว";

@@ -1,7 +1,5 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
-"$%lld/mo" = "$%lld/mnd";
-"$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Kreditter utløper ved fornyelse.";
 "%@ could not be exported." = "%@ kunne ikke eksporteres.";
 "%@ does not accept this media" = "%@ godtar ikke dette mediet";
 "%@ does not support this media type." = "%@ støtter ikke denne mediatypen.";
@@ -15,30 +13,22 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld ferdigheter";
 "%@: %@." = "%@: %@.";
-"%lld / %lld credits" = "%lld / %lld kreditter";
 "%lld Lottie animations are ready in Lenora Pro." = "%lld Lottie-animasjoner er klare i Lenora Pro.";
 "%lld audio clips are ready in Lenora Pro." = "%lld lydklipp er klare i Lenora Pro.";
 "%lld by timecode, %lld by audio" = "%lld etter tidskode, %lld etter lyd";
 "%lld clips" = "%lld klipp";
 "%lld couldn't align" = "%lld kunne ikke justeres";
-"%lld credits" = "%lld kreditter";
-"%lld credits / month" = "%lld kreditter / måned";
 "%lld images are ready in Lenora Pro." = "%lld bilder er klare i Lenora Pro.";
 "%lld items" = "%lld elementer";
 "%lld media files are missing and will be skipped." = "%lld mediefiler mangler og hoppes over.";
-"%lld of %lld credits remaining this period" = "%lld av %lld kreditter gjenstår i denne perioden";
 "%lld selected" = "%lld valgt";
 "%lld subtitle files are ready in Lenora Pro." = "%lld undertekstfiler er klare i Lenora Pro.";
 "%lld text clips are ready in Lenora Pro." = "%lld tekstklipp er klare i Lenora Pro.";
 "%lld videos are ready in Lenora Pro." = "%lld videoer er klare i Lenora Pro.";
-"%lldk credits" = "%lldk kreditter";
 "(image payload)" = "(bildeinnhold)";
-"/ month" = "/ måned";
 "1 clip" = "1 klipp";
 "1 item" = "1 element";
 "1 media file is missing and will be skipped." = "1 mediefil mangler og hoppes over.";
-"= %lld credits" = "= %lld kreditter";
-"= 1 credit" = "= 1 kreditt";
 "A video editor built for AI. Generate, and edit all in one place." = "En videoredigerer bygget for AI. Generer og rediger på ett sted.";
 "AI Audio" = "AI-lyd";
 "AI Chat" = "AI-chat";
@@ -47,8 +37,6 @@
 "AI Generated" = "AI-generert";
 "AI agent" = "AI-agent";
 "About Lenora Pro" = "Om Lenora Pro";
-"Account" = "Konto";
-"Account settings" = "Kontoinnstillinger";
 "Action Safe" = "Handlingssikker";
 "Adapters" = "Adaptere";
 "Add Marker (M)" = "Legg til markør (M)";
@@ -59,7 +47,6 @@
 "Add an Anthropic API key to use this model." = "Legg til en Anthropic API-nøkkel for å bruke denne modellen.";
 "Add an OpenAI API key to use this model." = "Legg til en OpenAI API-nøkkel for å bruke denne modellen.";
 "Add captions" = "Legg til undertekster";
-"Add credits" = "Legg til kreditter";
 "Add emoji" = "Legg til emoji";
 "Add generated audio to an audio track at this clip's start." = "Legg generert lyd på et lydspor ved starten av dette klippet.";
 "Add keyframe" = "Legg til nøkkelbilde";
@@ -117,9 +104,6 @@
 "Bundled" = "Medfølgende";
 "Bundled Skills Unavailable" = "Medfølgende ferdigheter utilgjengelige";
 "Bundled skills are missing from this build." = "Medfølgende ferdigheter mangler i denne versjonen.";
-"Buy" = "Kjøp";
-"Buy $%lld" = "Kjøp $%lld";
-"Buy more" = "Kjøp mer";
 "Cache" = "Hurtiglager";
 "Can't add captions from \"%@\" — %@" = "Kan ikke legge til undertekster fra \"%@\" — %@";
 "Can't add captions — \"%@\" is offline." = "Kan ikke legge til undertekster — \"%@\" er frakoblet.";
@@ -137,7 +121,6 @@
 "Cancel key color sampling" = "Avbryt valg av nøkkelfarge";
 "Canceled" = "Avbrutt";
 "Canceling" = "Avbryter";
-"Cancels %@" = "Avbryter %@";
 "Canvas" = "Lerret";
 "Canvas Guides" = "Lerretsguider";
 "Canvas Zoom" = "Lerretszoom";
@@ -234,8 +217,6 @@
 "Create a skill or browse the Bundled collection." = "Opprett en ferdighet, eller bla gjennom den medfølgende samlingen.";
 "Create matching sound for the video" = "Lag tilpasset lyd til videoen";
 "Creating…" = "Oppretter…";
-"Credits" = "Kreditter";
-"Credits cover AI generation and chat." = "Kreditter dekker AI-generering og chat.";
 "Crop" = "Beskjær";
 "Crop applies to one clip at a time" = "Beskjæring gjelder ett klipp om gangen";
 "Curves" = "Kurver";
@@ -373,7 +354,6 @@
 "Format References" = "Formatreferanser";
 "Forward" = "Fremover";
 "Frame Rate" = "Bilderate";
-"Free" = "Gratis";
 "Freeform" = "Fri form";
 "Full Frame" = "Fullt bilde";
 "Full Screen" = "Fullskjerm";
@@ -504,7 +484,6 @@
 "Loading source dimensions…" = "Laster kildedimensjoner…";
 "Loading source frame rate…" = "Laster kildebilderate…";
 "Loading video metadata…" = "Laster videometadata…";
-"Loading…" = "Laster…";
 "Local" = "Lokalt";
 "Low" = "Lav";
 "Luma" = "Luma";
@@ -515,8 +494,6 @@
 "MCP Setup" = "MCP-oppsett";
 "Main + Sidebar" = "Hoved + sidestolpe";
 "Make vertical shorts" = "Lag vertikale shorts";
-"Manage credits" = "Administrer kreditter";
-"Manage subscription" = "Administrer abonnement";
 "Manual setup" = "Manuelt oppsett";
 "Mark Beats" = "Merk takter";
 "Mark Range End" = "Merk områdeslutt";
@@ -531,7 +508,6 @@
 "Match mouth movement to replacement audio" = "Tilpass munnbevegelse til erstatningslyd";
 "Max" = "Maks";
 "Max characters" = "Maks tegn";
-"Max plan" = "Max-abonnement";
 "Max words" = "Maks ord";
 "Maximize Focused Panel" = "Maksimer aktivt panel";
 "Media" = "Media";
@@ -624,7 +600,6 @@
 "Open Timeline" = "Åpne tidslinje";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Åpne fanen AI-redigering for å oppskalere, prompt-redigere, lage video fra et bilde, eller generere musikk, SFX, rensing og dubbing fra klippet.";
 "OpenAI API Key" = "OpenAI API-nøkkel";
-"Opening Google…" = "Åpner Google…";
 "Open…" = "Åpne…";
 "Organize with Agent" = "Organiser med Agent";
 "Original" = "Original";
@@ -661,7 +636,6 @@
 "Presence" = "Tilstedeværelse";
 "Press M in the timeline to add a marker." = "Trykk M i tidslinjen for å legge til en markør.";
 "Preview" = "Forhåndsvisning";
-"Pro plan" = "Pro-abonnement";
 "Project" = "Prosjekt";
 "Project Settings" = "Prosjektinnstillinger";
 "Projects Couldn’t Be Deleted" = "Prosjektene kunne ikke slettes";
@@ -688,7 +662,6 @@
 "Relink Folder…" = "Koble mappe på nytt…";
 "Relinked %lld of %lld offline clips." = "Koblet %lld av %lld frakoblede klipp på nytt.";
 "Relink…" = "Koble på nytt…";
-"Remaining" = "Gjenstående";
 "Remove" = "Fjern";
 "Remove %@" = "Fjern %@";
 "Remove API key" = "Fjern API-nøkkel";
@@ -714,7 +687,6 @@
 "Reset All" = "Tilbakestill alle";
 "Reset Clipping Indicators" = "Tilbakestill klippeindikatorer";
 "Reset: %@" = "Tilbakestill: %@";
-"Resets %@" = "Tilbakestiller %@";
 "Resolution" = "Oppløsning";
 "Resolution must be at least 2 × 2 pixels." = "Oppløsningen må være minst 2 × 2 piksler.";
 "Resolution must not exceed 8192 pixels on either edge." = "Oppløsningen må ikke overskride 8192 piksler på noen kant.";
@@ -794,15 +766,6 @@
 "Show notifications" = "Vis varslinger";
 "Show reasoning" = "Vis resonnering";
 "Side by Side" = "Side om side";
-"Sign In" = "Logg inn";
-"Sign in" = "Logg inn";
-"Sign in to receive 250 free credits for AI chat and generation." = "Logg inn for å motta 250 gratis kreditter til AI-chat og generering.";
-"Sign in to subscribe and use AI generation." = "Logg inn for å abonnere og bruke AI-generering.";
-"Sign in with Google" = "Logg inn med Google";
-"Sign out" = "Logg ut";
-"Sign-in couldn’t be completed. Try again." = "Innloggingen kunne ikke fullføres. Prøv på nytt.";
-"Signed in" = "Logget inn";
-"Signed out" = "Logget ut";
 "Silence Detection" = "Stillhetsgjenkjenning";
 "Size" = "Størrelse";
 "Skill instructions" = "Ferdighetsinstruksjoner";
@@ -848,7 +811,6 @@
 "Strikethrough" = "Gjennomstreking";
 "Style" = "Stil";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Stilinstruksjoner (valgfritt). f.eks. varm og langsom, britisk aksent.";
-"Subscription" = "Abonnement";
 "Subtitle" = "Undertekst";
 "Subtitle file is unavailable." = "Undertekstfilen er utilgjengelig.";
 "Swap Media" = "Bytt media";
@@ -944,11 +906,6 @@
 "Update" = "Oppdater";
 "Update available" = "Oppdatering tilgjengelig";
 "Updating %@" = "Oppdaterer %@";
-"Upgrade" = "Oppgrader";
-"Upgrade to %@" = "Oppgrader til %@";
-"Upgrade to Max" = "Oppgrader til Max";
-"Upgrade to Pro" = "Oppgrader til Pro";
-"Upgrade to add credits" = "Oppgrader for å legge til kreditter";
 "Uploading…" = "Laster opp…";
 "Upscale" = "Oppskaler";
 "Upscale model not available" = "Oppskaleringsmodell ikke tilgjengelig";
@@ -984,10 +941,7 @@
 "Voice Cleanup requires audio or video" = "Stemmerensing krever lyd eller video";
 "Volume" = "Volum";
 "Warmth" = "Varme";
-"Welcome" = "Velkommen";
 "Welcome to Lenora Pro" = "Velkommen til Lenora Pro";
-"Welcome to Lenora Pro, %@" = "Velkommen til Lenora Pro, %@";
-"Welcome, %@" = "Velkommen, %@";
 "What's New in v%@" = "Nyheter i v%@";
 "White Balance" = "Hvitbalanse";
 "Whites" = "Hvitt";
@@ -1000,7 +954,6 @@
 "Workspace layout" = "Arbeidsområdeoppsett";
 "X High" = "X høy";
 "You're all set" = "Alt er klart";
-"You're ready to start creating." = "Du er klar til å begynne å lage.";
 "Your Lottie animation is ready." = "Lottie-animasjonen din er klar.";
 "Your audio clip is ready." = "Lydklippet ditt er klart.";
 "Your image is ready." = "Bildet ditt er klart.";

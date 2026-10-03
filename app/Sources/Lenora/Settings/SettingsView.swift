@@ -1,7 +1,6 @@
 import SwiftUI
 
 enum SettingsTab: String, CaseIterable, Identifiable {
-    case account
     case general
     case appearance
     case models
@@ -14,7 +13,6 @@ enum SettingsTab: String, CaseIterable, Identifiable {
 
     var label: String {
         switch self {
-        case .account: return L10n.key("Account")
         case .general: return L10n.key("General")
         case .appearance: return L10n.key("Appearance")
         case .models: return L10n.key("Models")
@@ -27,7 +25,6 @@ enum SettingsTab: String, CaseIterable, Identifiable {
 
     var systemImage: String {
         switch self {
-        case .account: return "person.circle"
         case .general: return "gearshape"
         case .appearance: return "sun.max"
         case .models: return "square.stack.3d.up"
@@ -40,22 +37,15 @@ enum SettingsTab: String, CaseIterable, Identifiable {
 }
 
 struct SettingsView: View {
-    @Bindable private var account = AccountService.shared
     @State private var selectedTab: SettingsTab
 
-    init(initialTab: SettingsTab = .account) {
+    init(initialTab: SettingsTab = .general) {
         _selectedTab = State(initialValue: initialTab)
-    }
-
-    private var visibleTabs: [SettingsTab] {
-        SettingsTab.allCases.filter { tab in
-            !(tab == .account && account.isMisconfigured)
-        }
     }
 
     var body: some View {
         HStack(spacing: 0) {
-            SettingsSidebar(selectedTab: $selectedTab, visibleTabs: visibleTabs)
+            SettingsSidebar(selectedTab: $selectedTab)
                 .frame(width: AppTheme.Settings.sidebarWidth)
 
             SettingsDetail(tab: selectedTab)
@@ -70,24 +60,14 @@ struct SettingsView: View {
         )
         .background(.ultraThinMaterial)
         .focusEffectDisabled()
-        .onAppear {
-            if !visibleTabs.contains(selectedTab) {
-                selectedTab = visibleTabs.first ?? .general
-            }
-        }
     }
 }
 
 private struct SettingsSidebar: View {
     @Binding var selectedTab: SettingsTab
-    let visibleTabs: [SettingsTab]
-    @Bindable private var account = AccountService.shared
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            if !account.isMisconfigured {
-                IdentityStrip()
-            }
             tabList
             Spacer(minLength: 0)
         }
@@ -96,7 +76,7 @@ private struct SettingsSidebar: View {
 
     private var tabList: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.xxs) {
-            ForEach(visibleTabs) { tab in
+            ForEach(SettingsTab.allCases) { tab in
                 SidebarRowButton(
                     label: L10n.string(key: tab.label),
                     systemImage: tab.systemImage,
@@ -134,8 +114,6 @@ private struct SettingsDetail: View {
                     ScrollView {
                         VStack(alignment: .leading, spacing: AppTheme.Spacing.xxl) {
                             switch tab {
-                            case .account:
-                                AccountPane()
                             case .general:
                                 GeneralPane()
                             case .appearance:

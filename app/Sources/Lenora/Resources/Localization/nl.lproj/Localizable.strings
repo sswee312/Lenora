@@ -1,7 +1,5 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
-"$%lld/mo" = "$%lld/mnd";
-"$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Credits vervallen bij verlenging.";
 "%@ could not be exported." = "%@ kon niet worden geëxporteerd.";
 "%@ does not accept this media" = "%@ accepteert deze media niet";
 "%@ does not support this media type." = "%@ ondersteunt dit mediatype niet.";
@@ -15,30 +13,22 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skills";
 "%@: %@." = "%@: %@.";
-"%lld / %lld credits" = "%lld / %lld credits";
 "%lld Lottie animations are ready in Lenora Pro." = "%lld Lottie-animaties zijn gereed in Lenora Pro.";
 "%lld audio clips are ready in Lenora Pro." = "%lld audioclips zijn gereed in Lenora Pro.";
 "%lld by timecode, %lld by audio" = "%lld op timecode, %lld op audio";
 "%lld clips" = "%lld clips";
 "%lld couldn't align" = "%lld konden niet worden uitgelijnd";
-"%lld credits" = "%lld credits";
-"%lld credits / month" = "%lld credits / maand";
 "%lld images are ready in Lenora Pro." = "%lld afbeeldingen zijn gereed in Lenora Pro.";
 "%lld items" = "%lld items";
 "%lld media files are missing and will be skipped." = "%lld mediabestanden ontbreken en worden overgeslagen.";
-"%lld of %lld credits remaining this period" = "%lld van %lld credits over deze periode";
 "%lld selected" = "%lld geselecteerd";
 "%lld subtitle files are ready in Lenora Pro." = "%lld ondertitelbestanden zijn gereed in Lenora Pro.";
 "%lld text clips are ready in Lenora Pro." = "%lld tekstclips zijn gereed in Lenora Pro.";
 "%lld videos are ready in Lenora Pro." = "%lld video's zijn gereed in Lenora Pro.";
-"%lldk credits" = "%lldk credits";
 "(image payload)" = "(afbeeldingspayload)";
-"/ month" = "/ maand";
 "1 clip" = "1 clip";
 "1 item" = "1 item";
 "1 media file is missing and will be skipped." = "1 mediabestand ontbreekt en wordt overgeslagen.";
-"= %lld credits" = "= %lld credits";
-"= 1 credit" = "= 1 credit";
 "A video editor built for AI. Generate, and edit all in one place." = "Een video-editor gebouwd voor AI. Genereer en bewerk op één plek.";
 "AI Audio" = "AI-audio";
 "AI Chat" = "AI-chat";
@@ -47,8 +37,6 @@
 "AI Generated" = "AI-gegenereerd";
 "AI agent" = "AI-agent";
 "About Lenora Pro" = "Over Lenora Pro";
-"Account" = "Account";
-"Account settings" = "Accountinstellingen";
 "Action Safe" = "Veilige actiezone";
 "Adapters" = "Adapters";
 "Add Marker (M)" = "Voeg markering toe (M)";
@@ -59,7 +47,6 @@
 "Add an Anthropic API key to use this model." = "Voeg een Anthropic API-sleutel toe om dit model te gebruiken.";
 "Add an OpenAI API key to use this model." = "Voeg een OpenAI API-sleutel toe om dit model te gebruiken.";
 "Add captions" = "Voeg ondertitels toe";
-"Add credits" = "Voeg credits toe";
 "Add emoji" = "Voeg emoji toe";
 "Add generated audio to an audio track at this clip's start." = "Voeg gegenereerde audio toe aan een audio-Track bij het begin van deze clip.";
 "Add keyframe" = "Voeg keyframe toe";
@@ -117,9 +104,6 @@
 "Bundled" = "Meegeleverd";
 "Bundled Skills Unavailable" = "Meegeleverde skills niet beschikbaar";
 "Bundled skills are missing from this build." = "Meegeleverde skills ontbreken in deze build.";
-"Buy" = "Koop";
-"Buy $%lld" = "Koop $%lld";
-"Buy more" = "Koop meer";
 "Cache" = "Cache";
 "Can't add captions from \"%@\" — %@" = "Kan geen ondertitels toevoegen vanuit \"%@\" — %@";
 "Can't add captions — \"%@\" is offline." = "Kan geen ondertitels toevoegen — \"%@\" is offline.";
@@ -137,7 +121,6 @@
 "Cancel key color sampling" = "Annuleer sleutelkleurmeting";
 "Canceled" = "Geannuleerd";
 "Canceling" = "Annuleren";
-"Cancels %@" = "Annuleert %@";
 "Canvas" = "Canvas";
 "Canvas Guides" = "Canvashulplijnen";
 "Canvas Zoom" = "Canvaszoom";
@@ -234,8 +217,6 @@
 "Create a skill or browse the Bundled collection." = "Maak een skill of bekijk de meegeleverde collectie.";
 "Create matching sound for the video" = "Maak passende audio bij de video";
 "Creating…" = "Maken…";
-"Credits" = "Credits";
-"Credits cover AI generation and chat." = "Credits dekken AI-generatie en chat.";
 "Crop" = "Uitsnede";
 "Crop applies to one clip at a time" = "Uitsnede geldt voor één clip tegelijk";
 "Curves" = "Curven";
@@ -373,7 +354,6 @@
 "Format References" = "Formaatreferenties";
 "Forward" = "Vooruit";
 "Frame Rate" = "Beeldsnelheid";
-"Free" = "Gratis";
 "Freeform" = "Vrije vorm";
 "Full Frame" = "Volledig frame";
 "Full Screen" = "Schermvullend";
@@ -504,7 +484,6 @@
 "Loading source dimensions…" = "Bronafmetingen laden…";
 "Loading source frame rate…" = "Bronbeeldsnelheid laden…";
 "Loading video metadata…" = "Videometadata laden…";
-"Loading…" = "Laden…";
 "Local" = "Lokaal";
 "Low" = "Laag";
 "Luma" = "Luma";
@@ -515,8 +494,6 @@
 "MCP Setup" = "MCP-instelling";
 "Main + Sidebar" = "Hoofd + zijbalk";
 "Make vertical shorts" = "Maak verticale shorts";
-"Manage credits" = "Beheer credits";
-"Manage subscription" = "Beheer abonnement";
 "Manual setup" = "Handmatige instelling";
 "Mark Beats" = "Markeer beats";
 "Mark Range End" = "Markeer einde bereik";
@@ -531,7 +508,6 @@
 "Match mouth movement to replacement audio" = "Pas mondbeweging aan op vervangende audio";
 "Max" = "Max";
 "Max characters" = "Max. tekens";
-"Max plan" = "Max-abonnement";
 "Max words" = "Max. woorden";
 "Maximize Focused Panel" = "Maximaliseer actief paneel";
 "Media" = "Media";
@@ -624,7 +600,6 @@
 "Open Timeline" = "Open Timeline";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Open het tabblad AI-bewerking om op te schalen, met een prompt te bewerken, video van een frame te maken, of muziek, SFX, opschoning en nasynchronisatie vanuit de clip te genereren.";
 "OpenAI API Key" = "OpenAI API-sleutel";
-"Opening Google…" = "Google openen…";
 "Open…" = "Open…";
 "Organize with Agent" = "Organiseer met Agent";
 "Original" = "Origineel";
@@ -661,7 +636,6 @@
 "Presence" = "Aanwezigheid";
 "Press M in the timeline to add a marker." = "Druk op M in de Timeline om een markering toe te voegen.";
 "Preview" = "Voorvertoning";
-"Pro plan" = "Pro-abonnement";
 "Project" = "Project";
 "Project Settings" = "Projectinstellingen";
 "Projects Couldn’t Be Deleted" = "Projecten konden niet worden verwijderd";
@@ -688,7 +662,6 @@
 "Relink Folder…" = "Koppel map opnieuw…";
 "Relinked %lld of %lld offline clips." = "%lld van %lld offline clips opnieuw gekoppeld.";
 "Relink…" = "Koppel opnieuw…";
-"Remaining" = "Resterend";
 "Remove" = "Verwijder";
 "Remove %@" = "Verwijder %@";
 "Remove API key" = "Verwijder API-sleutel";
@@ -714,7 +687,6 @@
 "Reset All" = "Zet alles terug";
 "Reset Clipping Indicators" = "Zet clippingindicators terug";
 "Reset: %@" = "Zet terug: %@";
-"Resets %@" = "Zet %@ terug";
 "Resolution" = "Resolutie";
 "Resolution must be at least 2 × 2 pixels." = "Resolutie moet minstens 2 × 2 pixels zijn.";
 "Resolution must not exceed 8192 pixels on either edge." = "Resolutie mag aan geen enkele zijde groter zijn dan 8192 pixels.";
@@ -794,15 +766,6 @@
 "Show notifications" = "Toon meldingen";
 "Show reasoning" = "Toon redenering";
 "Side by Side" = "Naast elkaar";
-"Sign In" = "Log in";
-"Sign in" = "Log in";
-"Sign in to receive 250 free credits for AI chat and generation." = "Log in om 250 gratis credits te ontvangen voor AI-chat en generatie.";
-"Sign in to subscribe and use AI generation." = "Log in om u te abonneren en AI-generatie te gebruiken.";
-"Sign in with Google" = "Log in met Google";
-"Sign out" = "Log uit";
-"Sign-in couldn’t be completed. Try again." = "Inloggen kon niet worden voltooid. Probeer het opnieuw.";
-"Signed in" = "Ingelogd";
-"Signed out" = "Uitgelogd";
 "Silence Detection" = "Stiltedetectie";
 "Size" = "Grootte";
 "Skill instructions" = "Skill-instructies";
@@ -848,7 +811,6 @@
 "Strikethrough" = "Doorhalen";
 "Style" = "Stijl";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Stijlinstructies (optioneel). Bijv. warm en langzaam, Brits accent.";
-"Subscription" = "Abonnement";
 "Subtitle" = "Ondertitel";
 "Subtitle file is unavailable." = "Ondertitelbestand is niet beschikbaar.";
 "Swap Media" = "Verwissel media";
@@ -944,11 +906,6 @@
 "Update" = "Werk bij";
 "Update available" = "Update beschikbaar";
 "Updating %@" = "%@ bijwerken";
-"Upgrade" = "Upgrade";
-"Upgrade to %@" = "Upgrade naar %@";
-"Upgrade to Max" = "Upgrade naar Max";
-"Upgrade to Pro" = "Upgrade naar Pro";
-"Upgrade to add credits" = "Upgrade om credits toe te voegen";
 "Uploading…" = "Uploaden…";
 "Upscale" = "Schaal op";
 "Upscale model not available" = "Upscale-model niet beschikbaar";
@@ -984,10 +941,7 @@
 "Voice Cleanup requires audio or video" = "Stem opschonen vereist audio of video";
 "Volume" = "Volume";
 "Warmth" = "Warmte";
-"Welcome" = "Welkom";
 "Welcome to Lenora Pro" = "Welkom bij Lenora Pro";
-"Welcome to Lenora Pro, %@" = "Welkom bij Lenora Pro, %@";
-"Welcome, %@" = "Welkom, %@";
 "What's New in v%@" = "Nieuw in v%@";
 "White Balance" = "Witbalans";
 "Whites" = "Wit";
@@ -1000,7 +954,6 @@
 "Workspace layout" = "Werkruimte-indeling";
 "X High" = "X High";
 "You're all set" = "Alles is gereed";
-"You're ready to start creating." = "U kunt beginnen met maken.";
 "Your Lottie animation is ready." = "Uw Lottie-animatie is gereed.";
 "Your audio clip is ready." = "Uw audioclip is gereed.";
 "Your image is ready." = "Uw afbeelding is gereed.";

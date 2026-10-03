@@ -5,12 +5,11 @@ import Testing
 @Suite("Onboarding store")
 @MainActor
 struct OnboardingStoreTests {
-    @Test func newUserStartsAtWelcome() throws {
+    @Test func newUserStartsIncomplete() throws {
         try withDefaults { defaults in
             let store = OnboardingStore(defaults: defaults)
 
             #expect(!store.isComplete)
-            #expect(store.step == .welcome)
         }
     }
 
@@ -24,34 +23,9 @@ struct OnboardingStoreTests {
         }
     }
 
-    @Test func welcomeAdvancesToAccount() throws {
-        try withDefaults { defaults in
-            let store = OnboardingStore(defaults: defaults)
-            store.advance()
-
-            #expect(store.step == .account)
-        }
-    }
-
-    @Test func stepsClampAtBothEnds() throws {
-        try withDefaults { defaults in
-            let store = OnboardingStore(defaults: defaults)
-            store.goBack()
-
-            #expect(store.step == .welcome)
-
-            store.advance()
-            store.advance()
-
-            #expect(store.step == .account)
-        }
-    }
-
     @Test func completionPersists() throws {
         try withDefaults { defaults in
             let store = OnboardingStore(defaults: defaults)
-            store.advance()
-
             store.complete()
 
             #expect(store.isComplete)

@@ -1,5 +1,4 @@
 import AppKit
-import ClerkKit
 
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
@@ -97,27 +96,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             applicationURL.path,
         ]
         try process.run()
-    }
-
-    func application(_ application: NSApplication, open urls: [URL]) {
-        for url in urls {
-            Task { @MainActor in
-                do {
-                    let handled = try await Clerk.shared.handle(url)
-                    Log.account.notice("auth callback \(handled ? "handled" : "ignored") url=\(Self.safeURLDescription(url))")
-                } catch {
-                    Log.account.warning("auth callback failed url=\(Self.safeURLDescription(url)) error=\(Log.detail(error))")
-                }
-            }
-        }
-    }
-
-    private static func safeURLDescription(_ url: URL) -> String {
-        var components = URLComponents()
-        components.scheme = url.scheme
-        components.host = url.host
-        components.path = url.path
-        return components.string ?? url.scheme ?? "unknown"
     }
 
     @MainActor

@@ -2,7 +2,6 @@ import AppKit
 
 Log.bootstrap()
 BundledFonts.register()
-AccountService.shared.configure()
 Task { @MainActor in await BackendConnection.shared.reload() }
 
 // Shorten the default tooltip delay from 2s to 0.01s.

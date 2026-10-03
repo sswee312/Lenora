@@ -1,7 +1,5 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
-"$%lld/mo" = "$%lld/mês";
-"$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Os créditos expiram na renovação.";
 "%@ could not be exported." = "Não foi possível exportar %@.";
 "%@ does not accept this media" = "%@ não aceita esta média";
 "%@ does not support this media type." = "%@ não é compatível com este tipo de média.";
@@ -15,30 +13,22 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skills";
 "%@: %@." = "%@: %@.";
-"%lld / %lld credits" = "%lld / %lld créditos";
 "%lld Lottie animations are ready in Lenora Pro." = "%lld animações Lottie estão prontas no Lenora Pro.";
 "%lld audio clips are ready in Lenora Pro." = "%lld clips de áudio estão prontos no Lenora Pro.";
 "%lld by timecode, %lld by audio" = "%lld por timecode, %lld por áudio";
 "%lld clips" = "%lld clips";
 "%lld couldn't align" = "%lld não puderam ser alinhados";
-"%lld credits" = "%lld créditos";
-"%lld credits / month" = "%lld créditos / mês";
 "%lld images are ready in Lenora Pro." = "%lld imagens estão prontas no Lenora Pro.";
 "%lld items" = "%lld itens";
 "%lld media files are missing and will be skipped." = "%lld ficheiros de média estão em falta e serão ignorados.";
-"%lld of %lld credits remaining this period" = "Restam %lld de %lld créditos neste período";
 "%lld selected" = "%lld selecionados";
 "%lld subtitle files are ready in Lenora Pro." = "%lld ficheiros de subtítulos estão prontos no Lenora Pro.";
 "%lld text clips are ready in Lenora Pro." = "%lld clips de texto estão prontos no Lenora Pro.";
 "%lld videos are ready in Lenora Pro." = "%lld vídeos estão prontos no Lenora Pro.";
-"%lldk credits" = "%lldk créditos";
 "(image payload)" = "(payload da imagem)";
-"/ month" = "/ mês";
 "1 clip" = "1 clip";
 "1 item" = "1 item";
 "1 media file is missing and will be skipped." = "1 ficheiro de média está em falta e será ignorado.";
-"= %lld credits" = "= %lld créditos";
-"= 1 credit" = "= 1 crédito";
 "A video editor built for AI. Generate, and edit all in one place." = "Um editor de vídeo feito para AI. Gera e edita, tudo no mesmo sítio.";
 "AI Audio" = "Áudio com AI";
 "AI Chat" = "Chat com AI";
@@ -47,8 +37,6 @@
 "AI Generated" = "Gerado por AI";
 "AI agent" = "agente de AI";
 "About Lenora Pro" = "Acerca do Lenora Pro";
-"Account" = "Conta";
-"Account settings" = "Definições da conta";
 "Action Safe" = "Área de segurança de ação";
 "Adapters" = "Adaptadores";
 "Add Marker (M)" = "Adicionar marcador (M)";
@@ -59,7 +47,6 @@
 "Add an Anthropic API key to use this model." = "Adiciona uma chave de API da Anthropic para usar este modelo.";
 "Add an OpenAI API key to use this model." = "Adiciona uma chave de API da OpenAI para usar este modelo.";
 "Add captions" = "Adicionar legendas";
-"Add credits" = "Adicionar créditos";
 "Add emoji" = "Adicionar emoji";
 "Add generated audio to an audio track at this clip's start." = "Adiciona o áudio gerado a uma faixa de áudio no início deste clip.";
 "Add keyframe" = "Adicionar keyframe";
@@ -117,9 +104,6 @@
 "Bundled" = "Incluídas";
 "Bundled Skills Unavailable" = "Skills incluídas indisponíveis";
 "Bundled skills are missing from this build." = "Faltam as skills incluídas nesta versão.";
-"Buy" = "Comprar";
-"Buy $%lld" = "Comprar $%lld";
-"Buy more" = "Comprar mais";
 "Cache" = "Cache";
 "Can't add captions from \"%@\" — %@" = "Não é possível adicionar legendas de \"%@\" — %@";
 "Can't add captions — \"%@\" is offline." = "Não é possível adicionar legendas — \"%@\" está offline.";
@@ -137,7 +121,6 @@
 "Cancel key color sampling" = "Cancelar amostragem da cor-chave";
 "Canceled" = "Cancelado";
 "Canceling" = "A cancelar";
-"Cancels %@" = "Cancela %@";
 "Canvas" = "Tela";
 "Canvas Guides" = "Guias da tela";
 "Canvas Zoom" = "Zoom da tela";
@@ -234,8 +217,6 @@
 "Create a skill or browse the Bundled collection." = "Cria uma skill ou explora a coleção incluída.";
 "Create matching sound for the video" = "Criar som correspondente ao vídeo";
 "Creating…" = "A criar…";
-"Credits" = "Créditos";
-"Credits cover AI generation and chat." = "Os créditos cobrem a geração com AI e o chat.";
 "Crop" = "Recortar";
 "Crop applies to one clip at a time" = "O recorte aplica-se a um clip de cada vez";
 "Curves" = "Curvas";
@@ -373,7 +354,6 @@
 "Format References" = "Referências de formato";
 "Forward" = "Avançar";
 "Frame Rate" = "Frequência de fotogramas";
-"Free" = "Grátis";
 "Freeform" = "Livre";
 "Full Frame" = "Fotograma completo";
 "Full Screen" = "Ecrã inteiro";
@@ -504,7 +484,6 @@
 "Loading source dimensions…" = "A carregar dimensões da origem…";
 "Loading source frame rate…" = "A carregar frequência de fotogramas da origem…";
 "Loading video metadata…" = "A carregar metadados do vídeo…";
-"Loading…" = "A carregar…";
 "Local" = "Local";
 "Low" = "Baixo";
 "Luma" = "Luma";
@@ -515,8 +494,6 @@
 "MCP Setup" = "Configuração MCP";
 "Main + Sidebar" = "Principal + barra lateral";
 "Make vertical shorts" = "Criar shorts verticais";
-"Manage credits" = "Gerir créditos";
-"Manage subscription" = "Gerir subscrição";
 "Manual setup" = "Configuração manual";
 "Mark Beats" = "Marcar batidas";
 "Mark Range End" = "Marcar fim do intervalo";
@@ -531,7 +508,6 @@
 "Match mouth movement to replacement audio" = "Sincronizar o movimento da boca com o áudio de substituição";
 "Max" = "Máx.";
 "Max characters" = "Máximo de caracteres";
-"Max plan" = "Plano Max";
 "Max words" = "Máximo de palavras";
 "Maximize Focused Panel" = "Maximizar o painel em foco";
 "Media" = "Média";
@@ -624,7 +600,6 @@
 "Open Timeline" = "Abrir timeline";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Abre o separador Edição com AI para aumentar a resolução, editar com prompt, criar vídeo a partir de um fotograma, ou gerar música, SFX, limpeza e dobragem a partir do clip.";
 "OpenAI API Key" = "Chave de API da OpenAI";
-"Opening Google…" = "A abrir o Google…";
 "Open…" = "Abrir…";
 "Organize with Agent" = "Organizar com o Agent";
 "Original" = "Original";
@@ -661,7 +636,6 @@
 "Presence" = "Presença";
 "Press M in the timeline to add a marker." = "Carrega em M na timeline para adicionar um marcador.";
 "Preview" = "Pré-visualização";
-"Pro plan" = "Plano Pro";
 "Project" = "Projeto";
 "Project Settings" = "Definições do projeto";
 "Projects Couldn’t Be Deleted" = "Não foi possível eliminar os projetos";
@@ -688,7 +662,6 @@
 "Relink Folder…" = "Religar pasta…";
 "Relinked %lld of %lld offline clips." = "Religados %lld de %lld clips offline.";
 "Relink…" = "Religar…";
-"Remaining" = "Restante";
 "Remove" = "Remover";
 "Remove %@" = "Remover %@";
 "Remove API key" = "Remover chave de API";
@@ -714,7 +687,6 @@
 "Reset All" = "Repor tudo";
 "Reset Clipping Indicators" = "Repor indicadores de clipping";
 "Reset: %@" = "Repor: %@";
-"Resets %@" = "Repõe %@";
 "Resolution" = "Resolução";
 "Resolution must be at least 2 × 2 pixels." = "A resolução tem de ser de pelo menos 2 × 2 píxeis.";
 "Resolution must not exceed 8192 pixels on either edge." = "A resolução não pode exceder 8192 píxeis em nenhum lado.";
@@ -794,15 +766,6 @@
 "Show notifications" = "Mostrar notificações";
 "Show reasoning" = "Mostrar raciocínio";
 "Side by Side" = "Lado a lado";
-"Sign In" = "Iniciar sessão";
-"Sign in" = "Iniciar sessão";
-"Sign in to receive 250 free credits for AI chat and generation." = "Inicia sessão para receber 250 créditos grátis para chat de AI e geração.";
-"Sign in to subscribe and use AI generation." = "Inicia sessão para subscrever e usar a geração com AI.";
-"Sign in with Google" = "Iniciar sessão com o Google";
-"Sign out" = "Terminar sessão";
-"Sign-in couldn’t be completed. Try again." = "Não foi possível concluir o início de sessão. Tenta novamente.";
-"Signed in" = "Sessão iniciada";
-"Signed out" = "Sessão terminada";
 "Silence Detection" = "Deteção de silêncio";
 "Size" = "Tamanho";
 "Skill instructions" = "Instruções da skill";
@@ -848,7 +811,6 @@
 "Strikethrough" = "Rasurado";
 "Style" = "Estilo";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Instruções de estilo (opcional). Por exemplo, quente e lento, sotaque britânico.";
-"Subscription" = "Subscrição";
 "Subtitle" = "Subtítulo";
 "Subtitle file is unavailable." = "O ficheiro de subtítulos não está disponível.";
 "Swap Media" = "Trocar média";
@@ -944,11 +906,6 @@
 "Update" = "Atualizar";
 "Update available" = "Atualização disponível";
 "Updating %@" = "A atualizar %@";
-"Upgrade" = "Atualizar";
-"Upgrade to %@" = "Atualizar para %@";
-"Upgrade to Max" = "Atualizar para Max";
-"Upgrade to Pro" = "Atualizar para Pro";
-"Upgrade to add credits" = "Atualiza para adicionar créditos";
 "Uploading…" = "A enviar…";
 "Upscale" = "Aumentar resolução";
 "Upscale model not available" = "Modelo de aumento de resolução indisponível";
@@ -984,10 +941,7 @@
 "Voice Cleanup requires audio or video" = "A limpeza de voz requer áudio ou vídeo";
 "Volume" = "Volume";
 "Warmth" = "Calor";
-"Welcome" = "Boas-vindas";
 "Welcome to Lenora Pro" = "Bem-vindo ao Lenora Pro";
-"Welcome to Lenora Pro, %@" = "Bem-vindo ao Lenora Pro, %@";
-"Welcome, %@" = "Bem-vindo, %@";
 "What's New in v%@" = "Novidades da v%@";
 "White Balance" = "Balanço de brancos";
 "Whites" = "Brancos";
@@ -1000,7 +954,6 @@
 "Workspace layout" = "Disposição do espaço de trabalho";
 "X High" = "X alto";
 "You're all set" = "Tudo pronto";
-"You're ready to start creating." = "Estás pronto para começar a criar.";
 "Your Lottie animation is ready." = "A tua animação Lottie está pronta.";
 "Your audio clip is ready." = "O teu clip de áudio está pronto.";
 "Your image is ready." = "A tua imagem está pronta.";

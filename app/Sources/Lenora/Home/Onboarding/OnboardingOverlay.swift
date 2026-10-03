@@ -3,9 +3,6 @@ import SwiftUI
 struct OnboardingOverlay: View {
     @Bindable var onboarding: OnboardingStore
 
-    @Bindable private var account = AccountService.shared
-    @State private var signInFailed = false
-
     var body: some View {
         ZStack {
             AppTheme.MediaOverlay.backgroundColor.opacity(AppTheme.Opacity.strong)
@@ -17,7 +14,6 @@ struct OnboardingOverlay: View {
                 )
         }
         .transition(.opacity)
-        .animation(.easeInOut(duration: AppTheme.Anim.transition), value: onboarding.step)
     }
 
     private var card: some View {
@@ -43,98 +39,18 @@ struct OnboardingOverlay: View {
         .shadow(AppTheme.Shadow.lg)
     }
 
-    @ViewBuilder
     private var cardContent: some View {
-        let content = stepContent
-            .id(onboarding.step)
-            .frame(maxWidth: .infinity, alignment: .topLeading)
-            .padding(.horizontal, AppTheme.Spacing.xxl)
-            .padding(.top, AppTheme.Spacing.xxl)
-            .padding(.bottom, AppTheme.Spacing.xxl)
-        if onboarding.step == .account {
-            ScrollView { content }
-                .scrollEdgeEffectStyle(.soft, for: .bottom)
-        } else {
-            content
-                .frame(maxHeight: .infinity, alignment: .topLeading)
-        }
-    }
-
-    @ViewBuilder
-    private var stepContent: some View {
-        switch onboarding.step {
-        case .welcome:
-            OnboardingWelcomeStep()
-        case .account:
-            OnboardingAccountStep(
-                account: account,
-                signInFailed: signInFailed
-            )
-        }
+        OnboardingWelcomeStep()
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .padding(AppTheme.Spacing.xxl)
     }
 
     private var footer: some View {
-        HStack(spacing: AppTheme.Spacing.sm) {
-            if onboarding.step != .welcome {
-                secondaryButton(L10n.string("Back"), action: onboarding.goBack)
-            }
+        HStack {
             Spacer()
-            switch onboarding.step {
-            case .welcome:
-                primaryButton(L10n.string("Continue"), action: onboarding.advance)
-            case .account:
-                secondaryButton(
-                    L10n.string("Skip"),
-                    action: onboarding.skip,
-                    disabled: account.isSigningIn
-                )
-                accountAction
-            }
-        }
-    }
-
-    @ViewBuilder
-    private var accountAction: some View {
-        if account.isSignedIn || account.isMisconfigured {
-            primaryButton(L10n.string("Get Started"), action: onboarding.complete)
-        } else {
-            primaryButton(
-                account.isSigningIn ? L10n.string("Opening Google…") : L10n.string("Sign in with Google"),
-                action: signIn
-            )
-        }
-    }
-
-    private func primaryButton(_ label: String, action: @escaping () -> Void) -> some View {
-        Button(label, action: action)
-            .buttonStyle(.capsule(.prominent, size: .regular))
-            .keyboardShortcut(.defaultAction)
-            .disabled(isBusy)
-    }
-
-    private func secondaryButton(
-        _ label: String,
-        action: @escaping () -> Void,
-        disabled: Bool? = nil
-    ) -> some View {
-        Button(label, action: action)
-            .buttonStyle(.capsule(
-                .secondary,
-                size: .regular,
-                fill: AnyShapeStyle(AppTheme.Onboarding.secondaryButtonFill)
-            ))
-            .disabled(disabled ?? isBusy)
-    }
-
-    private var isBusy: Bool {
-        account.isSigningIn
-    }
-
-    private func signIn() {
-        Task {
-            signInFailed = false
-            await account.signInWithGoogle()
-            signInFailed = !account.isSignedIn && account.lastError != nil
+            Button(L10n.string("Get Started"), action: onboarding.complete)
+                .buttonStyle(.capsule(.prominent, size: .regular))
+                .keyboardShortcut(.defaultAction)
         }
     }
 }

@@ -437,15 +437,11 @@ enum AppTheme {
         static let cardWidth: CGFloat = 520
         static let cardHeight: CGFloat = 420
         static let welcomeHeroHeight: CGFloat = 240
-        static var secondaryButtonFill: Color {
-            AppTheme.Accent.primary.opacity(AppTheme.Opacity.muted)
-        }
     }
 
     enum Settings {
         static let sidebarWidth: CGFloat = 220
         static let contentMaxWidth: CGFloat = 640
-        static let creditInputWidth: CGFloat = 56
         static let skillsSearchWidth: CGFloat = 260
         static let skillRowIconFrame: CGFloat = 42
         static let skillStatusWidth: CGFloat = 124

@@ -324,8 +324,7 @@ struct InspectorView: View {
         }
         if !audios.isEmpty { tabs.append(.audio) }
         if selectedMulticamGroupId != nil { tabs.append(.multicam) }
-        if aiEditEligible(selection: selection, resolvedClipAsset: resolvedClipAsset)
-            && !AccountService.shared.isMisconfigured {
+        if aiEditEligible(selection: selection, resolvedClipAsset: resolvedClipAsset) {
             tabs.append(.ai)
         }
         return tabs

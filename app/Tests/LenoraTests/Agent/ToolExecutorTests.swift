@@ -700,7 +700,7 @@ struct ToolExecutorReadOnlyTests {
     }
 
     @Test func listModelsReportsCatalogNotLoadedInTestEnvironment() async throws {
-        // No Convex connection → catalog stays unloaded. Agents must use this to disambiguate
+        // No backend connection → catalog stays unloaded. Agents must use this to disambiguate
         // empty results from "catalog not synced yet".
         let h = ToolHarness()
         let body = try await h.runOK("list_models") as? [String: Any]

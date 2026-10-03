@@ -1,7 +1,5 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
-"$%lld/mo" = "$%lld/kk";
-"$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Kreditit vanhenevat uusittaessa.";
 "%@ could not be exported." = "%@ ei voitu viedä.";
 "%@ does not accept this media" = "%@ ei hyväksy tätä mediaa";
 "%@ does not support this media type." = "%@ ei tue tätä mediatyyppiä.";
@@ -15,30 +13,22 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld taitoa";
 "%@: %@." = "%@: %@.";
-"%lld / %lld credits" = "%lld / %lld kredittiä";
 "%lld Lottie animations are ready in Lenora Pro." = "%lld Lottie-animaatiota on valmiina Lenora Prossa.";
 "%lld audio clips are ready in Lenora Pro." = "%lld äänileikettä on valmiina Lenora Prossa.";
 "%lld by timecode, %lld by audio" = "%lld aikakoodin, %lld äänen perusteella";
 "%lld clips" = "%lld leikettä";
 "%lld couldn't align" = "%lld ei voitu kohdistaa";
-"%lld credits" = "%lld kredittiä";
-"%lld credits / month" = "%lld kredittiä / kk";
 "%lld images are ready in Lenora Pro." = "%lld kuvaa on valmiina Lenora Prossa.";
 "%lld items" = "%lld kohdetta";
 "%lld media files are missing and will be skipped." = "%lld mediatiedostoa puuttuu, ja ne ohitetaan.";
-"%lld of %lld credits remaining this period" = "%lld / %lld kredittiä jäljellä tällä kaudella";
 "%lld selected" = "%lld valittu";
 "%lld subtitle files are ready in Lenora Pro." = "%lld tekstitystiedostoa on valmiina Lenora Prossa.";
 "%lld text clips are ready in Lenora Pro." = "%lld tekstileikettä on valmiina Lenora Prossa.";
 "%lld videos are ready in Lenora Pro." = "%lld videota on valmiina Lenora Prossa.";
-"%lldk credits" = "%lldk kredittiä";
 "(image payload)" = "(kuvadata)";
-"/ month" = "/ kk";
 "1 clip" = "1 leike";
 "1 item" = "1 kohde";
 "1 media file is missing and will be skipped." = "1 mediatiedosto puuttuu, ja se ohitetaan.";
-"= %lld credits" = "= %lld kredittiä";
-"= 1 credit" = "= 1 kredit";
 "A video editor built for AI. Generate, and edit all in one place." = "Videomuokkain tekoälylle. Generoi ja muokkaa samassa paikassa.";
 "AI Audio" = "AI-ääni";
 "AI Chat" = "AI-keskustelu";
@@ -47,8 +37,6 @@
 "AI Generated" = "AI-generoitu";
 "AI agent" = "AI Agent";
 "About Lenora Pro" = "Tietoja Lenora Prosta";
-"Account" = "Tili";
-"Account settings" = "Tilin asetukset";
 "Action Safe" = "Toiminta-alue";
 "Adapters" = "Sovittimet";
 "Add Marker (M)" = "Lisää merkki (M)";
@@ -59,7 +47,6 @@
 "Add an Anthropic API key to use this model." = "Lisää Anthropic API -avain käyttääksesi tätä mallia.";
 "Add an OpenAI API key to use this model." = "Lisää OpenAI API -avain käyttääksesi tätä mallia.";
 "Add captions" = "Lisää tekstitykset";
-"Add credits" = "Lisää kredittejä";
 "Add emoji" = "Lisää emoji";
 "Add generated audio to an audio track at this clip's start." = "Lisää generoitu ääni ääniraidalle tämän leikkeen alkuun.";
 "Add keyframe" = "Lisää avainkuva";
@@ -117,9 +104,6 @@
 "Bundled" = "Mukana tulevat";
 "Bundled Skills Unavailable" = "Mukana tulevat taidot eivät ole käytettävissä";
 "Bundled skills are missing from this build." = "Mukana tulevat taidot puuttuvat tästä versiosta.";
-"Buy" = "Osta";
-"Buy $%lld" = "Osta $%lld";
-"Buy more" = "Osta lisää";
 "Cache" = "Välimuisti";
 "Can't add captions from \"%@\" — %@" = "Tekstityksiä ei voi lisätä tiedostosta \"%@\" — %@";
 "Can't add captions — \"%@\" is offline." = "Tekstityksiä ei voi lisätä — \"%@\" ei ole käytettävissä.";
@@ -137,7 +121,6 @@
 "Cancel key color sampling" = "Peruuta avainvärin näyte";
 "Canceled" = "Peruutettu";
 "Canceling" = "Peruutetaan";
-"Cancels %@" = "Peruuttaa: %@";
 "Canvas" = "Esitysalue";
 "Canvas Guides" = "Esitysalueen apuviivat";
 "Canvas Zoom" = "Esitysalueen zoomaus";
@@ -234,8 +217,6 @@
 "Create a skill or browse the Bundled collection." = "Luo taito tai selaa mukana tulevaa kokoelmaa.";
 "Create matching sound for the video" = "Luo videoon sopiva ääni";
 "Creating…" = "Luodaan…";
-"Credits" = "Kreditit";
-"Credits cover AI generation and chat." = "Kreditit kattavat AI-generoinnin ja keskustelun.";
 "Crop" = "Rajaa";
 "Crop applies to one clip at a time" = "Rajaus koskee yhtä leikettä kerrallaan";
 "Curves" = "Käyrät";
@@ -373,7 +354,6 @@
 "Format References" = "Formaattiviitteet";
 "Forward" = "Eteenpäin";
 "Frame Rate" = "Kuvataajuus";
-"Free" = "Ilmainen";
 "Freeform" = "Vapaa muoto";
 "Full Frame" = "Koko ruutu";
 "Full Screen" = "Koko näyttö";
@@ -504,7 +484,6 @@
 "Loading source dimensions…" = "Ladataan lähteen mittoja…";
 "Loading source frame rate…" = "Ladataan lähteen kuvataajuutta…";
 "Loading video metadata…" = "Ladataan videon metatietoja…";
-"Loading…" = "Ladataan…";
 "Local" = "Paikallinen";
 "Low" = "Matala";
 "Luma" = "Luma";
@@ -515,8 +494,6 @@
 "MCP Setup" = "MCP-määritys";
 "Main + Sidebar" = "Pää + sivupalkki";
 "Make vertical shorts" = "Tee pystysuuntaisia lyhytvideoita";
-"Manage credits" = "Hallitse kredittejä";
-"Manage subscription" = "Hallitse tilausta";
 "Manual setup" = "Manuaalinen määritys";
 "Mark Beats" = "Merkitse iskut";
 "Mark Range End" = "Merkitse alueen loppu";
@@ -531,7 +508,6 @@
 "Match mouth movement to replacement audio" = "Sovita suun liike korvaavaan ääneen";
 "Max" = "Enint.";
 "Max characters" = "Enimmäismerkit";
-"Max plan" = "Max-tilaus";
 "Max words" = "Enimmäissanat";
 "Maximize Focused Panel" = "Suurenna kohdistettu paneeli";
 "Media" = "Media";
@@ -624,7 +600,6 @@
 "Open Timeline" = "Avaa aikajana";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Avaa AI-muokkaus-välilehti skaalataksesi ylös, muokataksesi kehotteella, luodaksesi videon ruudusta tai generoidaksesi musiikkia, SFX:ää, puhdistusta ja dubbausta leikkeestä.";
 "OpenAI API Key" = "OpenAI API -avain";
-"Opening Google…" = "Avataan Google…";
 "Open…" = "Avaa…";
 "Organize with Agent" = "Järjestä Agentilla";
 "Original" = "Alkuperäinen";
@@ -661,7 +636,6 @@
 "Presence" = "Läsnäolo";
 "Press M in the timeline to add a marker." = "Paina M aikajanalla lisätäksesi merkin.";
 "Preview" = "Esikatselu";
-"Pro plan" = "Pro-tilaus";
 "Project" = "Projekti";
 "Project Settings" = "Projektin asetukset";
 "Projects Couldn’t Be Deleted" = "Projekteja ei voitu poistaa";
@@ -688,7 +662,6 @@
 "Relink Folder…" = "Linkitä kansio uudelleen…";
 "Relinked %lld of %lld offline clips." = "Linkitettiin uudelleen %lld / %lld offline-leikettä.";
 "Relink…" = "Linkitä uudelleen…";
-"Remaining" = "Jäljellä";
 "Remove" = "Poista";
 "Remove %@" = "Poista %@";
 "Remove API key" = "Poista API-avain";
@@ -714,7 +687,6 @@
 "Reset All" = "Palauta kaikki";
 "Reset Clipping Indicators" = "Palauta leikkausilmaisimet";
 "Reset: %@" = "Palauta: %@";
-"Resets %@" = "Palauttaa: %@";
 "Resolution" = "Resoluutio";
 "Resolution must be at least 2 × 2 pixels." = "Resoluution on oltava vähintään 2 × 2 pikseliä.";
 "Resolution must not exceed 8192 pixels on either edge." = "Resoluutio ei saa ylittää 8192 pikseliä kummallakaan reunalla.";
@@ -794,15 +766,6 @@
 "Show notifications" = "Näytä ilmoitukset";
 "Show reasoning" = "Näytä päättely";
 "Side by Side" = "Vierekkäin";
-"Sign In" = "Kirjaudu sisään";
-"Sign in" = "Kirjaudu sisään";
-"Sign in to receive 250 free credits for AI chat and generation." = "Kirjaudu sisään saadaksesi 250 ilmaista kredittiä AI-keskusteluun ja generointiin.";
-"Sign in to subscribe and use AI generation." = "Kirjaudu sisään tilataksesi ja käyttääksesi AI-generointia.";
-"Sign in with Google" = "Kirjaudu sisään Googlella";
-"Sign out" = "Kirjaudu ulos";
-"Sign-in couldn’t be completed. Try again." = "Kirjautumista ei voitu suorittaa. Yritä uudelleen.";
-"Signed in" = "Kirjautunut sisään";
-"Signed out" = "Kirjautunut ulos";
 "Silence Detection" = "Hiljaisuuden tunnistus";
 "Size" = "Koko";
 "Skill instructions" = "Taidon ohjeet";
@@ -848,7 +811,6 @@
 "Strikethrough" = "Yliviivaus";
 "Style" = "Tyyli";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Tyyliohjeet (valinnainen), esim. lämmin ja hidas, brittiläinen aksentti.";
-"Subscription" = "Tilaus";
 "Subtitle" = "Tekstitys";
 "Subtitle file is unavailable." = "Tekstitystiedosto ei ole käytettävissä.";
 "Swap Media" = "Vaihda media";
@@ -944,11 +906,6 @@
 "Update" = "Päivitä";
 "Update available" = "Päivitys saatavilla";
 "Updating %@" = "Päivitetään %@";
-"Upgrade" = "Päivitä";
-"Upgrade to %@" = "Päivitä tilaukseen %@";
-"Upgrade to Max" = "Päivitä Maxiin";
-"Upgrade to Pro" = "Päivitä Prohon";
-"Upgrade to add credits" = "Päivitä lisätäksesi kredittejä";
 "Uploading…" = "Lähetetään…";
 "Upscale" = "Skaalaa ylös";
 "Upscale model not available" = "Ylöskaalausmalli ei ole käytettävissä";
@@ -984,10 +941,7 @@
 "Voice Cleanup requires audio or video" = "Äänen puhdistus edellyttää ääntä tai videota";
 "Volume" = "Äänenvoimakkuus";
 "Warmth" = "Lämpö";
-"Welcome" = "Tervetuloa";
 "Welcome to Lenora Pro" = "Tervetuloa Lenora Prohon";
-"Welcome to Lenora Pro, %@" = "Tervetuloa Lenora Prohon, %@";
-"Welcome, %@" = "Tervetuloa, %@";
 "What's New in v%@" = "Uutta versiossa v%@";
 "White Balance" = "Valkotasapaino";
 "Whites" = "Valkoiset";
@@ -1000,7 +954,6 @@
 "Workspace layout" = "Työtilan asettelu";
 "X High" = "X High";
 "You're all set" = "Kaikki valmista";
-"You're ready to start creating." = "Olet valmis aloittamaan luomisen.";
 "Your Lottie animation is ready." = "Lottie-animaatio on valmis.";
 "Your audio clip is ready." = "Äänileike on valmis.";
 "Your image is ready." = "Kuva on valmis.";

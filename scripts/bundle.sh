@@ -52,7 +52,6 @@ SIGNING_IDENTITY="${SIGNING_IDENTITY:-Developer ID Application: Lenora, Inc. (MM
 NOTARY_PROFILE="${NOTARY_PROFILE:-lenora-notary}"
 PROVISION_PROFILE="${PROVISION_PROFILE:-$ROOT/scripts/Lenora_Pro_Developer_ID.provisionprofile}"
 ENTITLEMENTS="$ROOT/scripts/Lenora.entitlements"
-KEYCHAIN_ACCESS_GROUP="${KEYCHAIN_ACCESS_GROUP:-MMFLRC7562.xyz.agentage.lenora}"
 RESOURCES="$PKG/Sources/Lenora/Resources"
 APP="$PKG/.build/Lenora.app"
 ZIP="$PKG/.build/Lenora.zip"
@@ -82,20 +81,6 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$APP/Contents/Framewor
 cp "$BIN" "$APP/Contents/MacOS/Lenora"
 cp "$RESOURCES/Info.plist" "$APP/Contents/Info.plist"
 
-inject_plist() {
-  local key="$1" value="$2"
-  if [ -z "$value" ]; then
-    echo "!! $key not set in $ENV_FILE — app will fatalError on launch" >&2
-    return
-  fi
-  /usr/libexec/PlistBuddy -c "Delete :$key" "$APP/Contents/Info.plist" 2>/dev/null || true
-  /usr/libexec/PlistBuddy -c "Add :$key string $value" "$APP/Contents/Info.plist"
-}
-
-echo "==> Injecting backend config into Info.plist"
-inject_plist LenoraClerkPublishableKey "${CLERK_PUBLISHABLE_KEY:-}"
-inject_plist LenoraConvexDeploymentURL "${CONVEX_DEPLOYMENT_URL:-}"
-inject_plist LenoraConvexHttpURL "${CONVEX_HTTP_URL:-}"
 cp "$RESOURCES/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
 
 # Flatten SwiftPM's resource bundle into the app's Resources tree.
@@ -202,13 +187,12 @@ if [ "$MODE" = "dev" ]; then
   exit 0
 fi
 
-echo "==> Embedding provisioning profile + keychain access group"
+echo "==> Embedding provisioning profile"
 if [ ! -f "$PROVISION_PROFILE" ]; then
   echo "!! provisioning profile not found at $PROVISION_PROFILE" >&2
   exit 1
 fi
 cp "$PROVISION_PROFILE" "$APP/Contents/embedded.provisionprofile"
-inject_plist LenoraClerkKeychainAccessGroup "$KEYCHAIN_ACCESS_GROUP"
 
 echo "==> Codesigning main app"
 codesign --force --options runtime --timestamp \

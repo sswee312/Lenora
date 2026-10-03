@@ -1,7 +1,5 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
-"$%lld/mo" = "$%lld/bln";
-"$%lld–$%lld · Credits expire at renewal." = "$%lld–$%lld · Kredit kedaluwarsa saat perpanjangan.";
 "%@ could not be exported." = "%@ tidak dapat diekspor.";
 "%@ does not accept this media" = "%@ tidak menerima media ini";
 "%@ does not support this media type." = "%@ tidak mendukung jenis media ini.";
@@ -15,30 +13,22 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@, %lld skill";
 "%@: %@." = "%@: %@.";
-"%lld / %lld credits" = "%lld / %lld kredit";
 "%lld Lottie animations are ready in Lenora Pro." = "%lld animasi Lottie siap di Lenora Pro.";
 "%lld audio clips are ready in Lenora Pro." = "%lld klip audio siap di Lenora Pro.";
 "%lld by timecode, %lld by audio" = "%lld berdasarkan kode waktu, %lld berdasarkan audio";
 "%lld clips" = "%lld klip";
 "%lld couldn't align" = "%lld tidak dapat disejajarkan";
-"%lld credits" = "%lld kredit";
-"%lld credits / month" = "%lld kredit / bulan";
 "%lld images are ready in Lenora Pro." = "%lld gambar siap di Lenora Pro.";
 "%lld items" = "%lld item";
 "%lld media files are missing and will be skipped." = "%lld file media hilang dan akan dilewati.";
-"%lld of %lld credits remaining this period" = "%lld dari %lld kredit tersisa periode ini";
 "%lld selected" = "%lld dipilih";
 "%lld subtitle files are ready in Lenora Pro." = "%lld file subtitle siap di Lenora Pro.";
 "%lld text clips are ready in Lenora Pro." = "%lld klip teks siap di Lenora Pro.";
 "%lld videos are ready in Lenora Pro." = "%lld video siap di Lenora Pro.";
-"%lldk credits" = "%lldk kredit";
 "(image payload)" = "(muatan gambar)";
-"/ month" = "/ bulan";
 "1 clip" = "1 klip";
 "1 item" = "1 item";
 "1 media file is missing and will be skipped." = "1 file media hilang dan akan dilewati.";
-"= %lld credits" = "= %lld kredit";
-"= 1 credit" = "= 1 kredit";
 "A video editor built for AI. Generate, and edit all in one place." = "Editor video untuk AI. Hasilkan dan edit di satu tempat.";
 "AI Audio" = "Audio AI";
 "AI Chat" = "Chat AI";
@@ -47,8 +37,6 @@
 "AI Generated" = "Dihasilkan AI";
 "AI agent" = "Agent AI";
 "About Lenora Pro" = "Tentang Lenora Pro";
-"Account" = "Akun";
-"Account settings" = "Pengaturan akun";
 "Action Safe" = "Zona Aman Aksi";
 "Adapters" = "Adapter";
 "Add Marker (M)" = "Tambahkan Penanda (M)";
@@ -59,7 +47,6 @@
 "Add an Anthropic API key to use this model." = "Tambahkan kunci API Anthropic untuk menggunakan model ini.";
 "Add an OpenAI API key to use this model." = "Tambahkan kunci API OpenAI untuk menggunakan model ini.";
 "Add captions" = "Tambahkan teks terjemahan";
-"Add credits" = "Tambahkan kredit";
 "Add emoji" = "Tambahkan emoji";
 "Add generated audio to an audio track at this clip's start." = "Tambahkan audio yang dihasilkan ke trek audio pada awal klip ini.";
 "Add keyframe" = "Tambahkan keyframe";
@@ -117,9 +104,6 @@
 "Bundled" = "Bawaan";
 "Bundled Skills Unavailable" = "Skill Bawaan Tidak Tersedia";
 "Bundled skills are missing from this build." = "Skill bawaan tidak ada di build ini.";
-"Buy" = "Beli";
-"Buy $%lld" = "Beli $%lld";
-"Buy more" = "Beli lagi";
 "Cache" = "Cache";
 "Can't add captions from \"%@\" — %@" = "Tidak dapat menambahkan teks terjemahan dari \"%@\" — %@";
 "Can't add captions — \"%@\" is offline." = "Tidak dapat menambahkan teks terjemahan — \"%@\" offline.";
@@ -137,7 +121,6 @@
 "Cancel key color sampling" = "Batalkan pengambilan warna kunci";
 "Canceled" = "Dibatalkan";
 "Canceling" = "Membatalkan";
-"Cancels %@" = "Membatalkan %@";
 "Canvas" = "Kanvas";
 "Canvas Guides" = "Panduan Kanvas";
 "Canvas Zoom" = "Zoom Kanvas";
@@ -234,8 +217,6 @@
 "Create a skill or browse the Bundled collection." = "Buat skill atau jelajahi koleksi Bawaan.";
 "Create matching sound for the video" = "Buat suara yang sesuai untuk video";
 "Creating…" = "Membuat…";
-"Credits" = "Kredit";
-"Credits cover AI generation and chat." = "Kredit mencakup generasi AI dan chat.";
 "Crop" = "Potong";
 "Crop applies to one clip at a time" = "Potong berlaku untuk satu klip pada satu waktu";
 "Curves" = "Kurva";
@@ -373,7 +354,6 @@
 "Format References" = "Referensi Format";
 "Forward" = "Maju";
 "Frame Rate" = "Kecepatan Frame";
-"Free" = "Gratis";
 "Freeform" = "Bebas";
 "Full Frame" = "Frame Penuh";
 "Full Screen" = "Layar Penuh";
@@ -504,7 +484,6 @@
 "Loading source dimensions…" = "Memuat dimensi sumber…";
 "Loading source frame rate…" = "Memuat kecepatan frame sumber…";
 "Loading video metadata…" = "Memuat metadata video…";
-"Loading…" = "Memuat…";
 "Local" = "Lokal";
 "Low" = "Rendah";
 "Luma" = "Luma";
@@ -515,8 +494,6 @@
 "MCP Setup" = "Penyiapan MCP";
 "Main + Sidebar" = "Utama + Bilah Samping";
 "Make vertical shorts" = "Buat short vertikal";
-"Manage credits" = "Kelola kredit";
-"Manage subscription" = "Kelola langganan";
 "Manual setup" = "Penyiapan manual";
 "Mark Beats" = "Tandai Ketukan";
 "Mark Range End" = "Tandai Akhir Rentang";
@@ -531,7 +508,6 @@
 "Match mouth movement to replacement audio" = "Sesuaikan gerakan mulut dengan audio pengganti";
 "Max" = "Maks";
 "Max characters" = "Karakter maks";
-"Max plan" = "Paket Max";
 "Max words" = "Kata maks";
 "Maximize Focused Panel" = "Perbesar Panel yang Difokuskan";
 "Media" = "Media";
@@ -624,7 +600,6 @@
 "Open Timeline" = "Buka Linimasa";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Buka tab Edit AI untuk upscale, edit dengan prompt, membuat video dari frame, atau menghasilkan musik, SFX, pembersihan, dan dubbing dari klip.";
 "OpenAI API Key" = "Kunci API OpenAI";
-"Opening Google…" = "Membuka Google…";
 "Open…" = "Buka…";
 "Organize with Agent" = "Atur dengan Agent";
 "Original" = "Asli";
@@ -661,7 +636,6 @@
 "Presence" = "Kehadiran";
 "Press M in the timeline to add a marker." = "Tekan M di linimasa untuk menambahkan penanda.";
 "Preview" = "Pratinjau";
-"Pro plan" = "Paket Pro";
 "Project" = "Proyek";
 "Project Settings" = "Pengaturan Proyek";
 "Projects Couldn’t Be Deleted" = "Proyek Tidak Dapat Dihapus";
@@ -688,7 +662,6 @@
 "Relink Folder…" = "Tautkan Ulang Folder…";
 "Relinked %lld of %lld offline clips." = "Menautkan ulang %lld dari %lld klip offline.";
 "Relink…" = "Tautkan ulang…";
-"Remaining" = "Tersisa";
 "Remove" = "Hapus";
 "Remove %@" = "Hapus %@";
 "Remove API key" = "Hapus kunci API";
@@ -714,7 +687,6 @@
 "Reset All" = "Atur Ulang Semua";
 "Reset Clipping Indicators" = "Atur Ulang Indikator Clipping";
 "Reset: %@" = "Atur ulang: %@";
-"Resets %@" = "Mengatur ulang %@";
 "Resolution" = "Resolusi";
 "Resolution must be at least 2 × 2 pixels." = "Resolusi harus minimal 2 × 2 piksel.";
 "Resolution must not exceed 8192 pixels on either edge." = "Resolusi tidak boleh melebihi 8192 piksel pada salah satu sisi.";
@@ -794,15 +766,6 @@
 "Show notifications" = "Tampilkan pemberitahuan";
 "Show reasoning" = "Tampilkan penalaran";
 "Side by Side" = "Bersebelahan";
-"Sign In" = "Masuk";
-"Sign in" = "Masuk";
-"Sign in to receive 250 free credits for AI chat and generation." = "Masuk untuk menerima 250 kredit gratis untuk chat AI dan generasi.";
-"Sign in to subscribe and use AI generation." = "Masuk untuk berlangganan dan menggunakan generasi AI.";
-"Sign in with Google" = "Masuk dengan Google";
-"Sign out" = "Keluar";
-"Sign-in couldn’t be completed. Try again." = "Masuk tidak dapat diselesaikan. Coba lagi.";
-"Signed in" = "Sudah masuk";
-"Signed out" = "Sudah keluar";
 "Silence Detection" = "Deteksi Keheningan";
 "Size" = "Ukuran";
 "Skill instructions" = "Instruksi skill";
@@ -848,7 +811,6 @@
 "Strikethrough" = "Coret";
 "Style" = "Gaya";
 "Style instructions (optional). e.g., warm and slow, British accent." = "Instruksi gaya (opsional). Misalnya, hangat dan lambat, aksen British.";
-"Subscription" = "Langganan";
 "Subtitle" = "Subtitle";
 "Subtitle file is unavailable." = "File subtitle tidak tersedia.";
 "Swap Media" = "Tukar Media";
@@ -944,11 +906,6 @@
 "Update" = "Perbarui";
 "Update available" = "Pembaruan tersedia";
 "Updating %@" = "Memperbarui %@";
-"Upgrade" = "Tingkatkan";
-"Upgrade to %@" = "Tingkatkan ke %@";
-"Upgrade to Max" = "Tingkatkan ke Max";
-"Upgrade to Pro" = "Tingkatkan ke Pro";
-"Upgrade to add credits" = "Tingkatkan untuk menambahkan kredit";
 "Uploading…" = "Mengunggah…";
 "Upscale" = "Upscale";
 "Upscale model not available" = "Model Upscale tidak tersedia";
@@ -984,10 +941,7 @@
 "Voice Cleanup requires audio or video" = "Pembersihan Suara memerlukan audio atau video";
 "Volume" = "Volume";
 "Warmth" = "Kehangatan";
-"Welcome" = "Selamat datang";
 "Welcome to Lenora Pro" = "Selamat datang di Lenora Pro";
-"Welcome to Lenora Pro, %@" = "Selamat datang di Lenora Pro, %@";
-"Welcome, %@" = "Selamat datang, %@";
 "What's New in v%@" = "Yang Baru di v%@";
 "White Balance" = "Keseimbangan Putih";
 "Whites" = "Putih";
@@ -1000,7 +954,6 @@
 "Workspace layout" = "Tata letak ruang kerja";
 "X High" = "X High";
 "You're all set" = "Semua sudah siap";
-"You're ready to start creating." = "Anda siap mulai berkarya.";
 "Your Lottie animation is ready." = "Animasi Lottie Anda siap.";
 "Your audio clip is ready." = "Klip audio Anda siap.";
 "Your image is ready." = "Gambar Anda siap.";

@@ -1,7 +1,5 @@
 /* Generated from app-owned UI copy. Translate values only in other locales. */
 
-"$%lld/mo" = "$%lld/月";
-"$%lld–$%lld · Credits expire at renewal." = "$%lld～$%lld · クレジットは更新時に失効します。";
 "%@ could not be exported." = "%@を書き出せませんでした。";
 "%@ does not accept this media" = "%@ではこのメディアを使用できません";
 "%@ does not support this media type." = "%@はこのメディア形式に対応していません。";
@@ -15,30 +13,22 @@
 "%@ · %lld" = "%@ · %lld";
 "%@, %lld skills" = "%@、%lld個のスキル";
 "%@: %@." = "%@: %@。";
-"%lld / %lld credits" = "%lld / %lldクレジット";
 "%lld Lottie animations are ready in Lenora Pro." = "%lld個のLottieアニメーションをLenora Proで使用できます。";
 "%lld audio clips are ready in Lenora Pro." = "%lld個のオーディオクリップをLenora Proで使用できます。";
 "%lld by timecode, %lld by audio" = "タイムコードで%lld個、オーディオで%lld個";
 "%lld clips" = "%lld個のクリップ";
 "%lld couldn't align" = "%lld個を同期できませんでした";
-"%lld credits" = "%lldクレジット";
-"%lld credits / month" = "%lldクレジット / 月";
 "%lld images are ready in Lenora Pro." = "%lld枚の画像をLenora Proで使用できます。";
 "%lld items" = "%lld項目";
 "%lld media files are missing and will be skipped." = "%lld個のメディアファイルが見つからないためスキップされます。";
-"%lld of %lld credits remaining this period" = "今期は%lld / %lldクレジット残っています";
 "%lld selected" = "%lld件選択中";
 "%lld subtitle files are ready in Lenora Pro." = "%lld個の字幕ファイルをLenora Proで使用できます。";
 "%lld text clips are ready in Lenora Pro." = "%lld個のテキストクリップをLenora Proで使用できます。";
 "%lld videos are ready in Lenora Pro." = "%lld本のビデオをLenora Proで使用できます。";
-"%lldk credits" = "%lldkクレジット";
 "(image payload)" = "（画像ペイロード）";
-"/ month" = "/ 月";
 "1 clip" = "1個のクリップ";
 "1 item" = "1項目";
 "1 media file is missing and will be skipped." = "1個のメディアファイルが見つからないためスキップされます。";
-"= %lld credits" = "= %lldクレジット";
-"= 1 credit" = "= 1クレジット";
 "A video editor built for AI. Generate, and edit all in one place." = "AIのために設計されたビデオエディタ。生成も編集も、すべてここで行えます。";
 "AI Audio" = "AIオーディオ";
 "AI Chat" = "AIチャット";
@@ -47,8 +37,6 @@
 "AI Generated" = "AI生成";
 "AI agent" = "AIエージェント";
 "About Lenora Pro" = "Lenora Proについて";
-"Account" = "アカウント";
-"Account settings" = "アカウント設定";
 "Action Safe" = "アクションセーフ";
 "Adapters" = "アダプター";
 "Add Marker (M)" = "マーカーを追加（M）";
@@ -59,7 +47,6 @@
 "Add an Anthropic API key to use this model." = "このモデルを使用するには、Anthropic APIキーを追加してください。";
 "Add an OpenAI API key to use this model." = "このモデルを使用するには、OpenAI APIキーを追加してください。";
 "Add captions" = "キャプションを追加";
-"Add credits" = "クレジットを追加";
 "Add emoji" = "絵文字を追加";
 "Add generated audio to an audio track at this clip's start." = "生成したオーディオを、このクリップの開始位置にあるオーディオトラックへ追加します。";
 "Add keyframe" = "キーフレームを追加";
@@ -117,9 +104,6 @@
 "Bundled" = "同梱";
 "Bundled Skills Unavailable" = "同梱スキルを利用できません";
 "Bundled skills are missing from this build." = "このビルドには同梱スキルが含まれていません。";
-"Buy" = "購入";
-"Buy $%lld" = "$%lldで購入";
-"Buy more" = "さらに購入";
 "Cache" = "キャッシュ";
 "Can't add captions from \"%@\" — %@" = "「%@」からキャプションを追加できません — %@";
 "Can't add captions — \"%@\" is offline." = "キャプションを追加できません — 「%@」はオフラインです。";
@@ -137,7 +121,6 @@
 "Cancel key color sampling" = "キーカラーのサンプリングをキャンセル";
 "Canceled" = "キャンセル済み";
 "Canceling" = "キャンセル中";
-"Cancels %@" = "%@をキャンセル";
 "Canvas" = "キャンバス";
 "Canvas Guides" = "キャンバスガイド";
 "Canvas Zoom" = "キャンバスのズーム";
@@ -234,8 +217,6 @@
 "Create a skill or browse the Bundled collection." = "スキルを作成するか、同梱コレクションを参照してください。";
 "Create matching sound for the video" = "ビデオに合うサウンドを作成";
 "Creating…" = "作成中…";
-"Credits" = "クレジット";
-"Credits cover AI generation and chat." = "クレジットはAI生成とチャットに使用されます。";
 "Crop" = "クロップ";
 "Crop applies to one clip at a time" = "クロップは一度に1つのクリップに適用されます";
 "Curves" = "カーブ";
@@ -373,7 +354,6 @@
 "Format References" = "フォーマット参照";
 "Forward" = "進む";
 "Frame Rate" = "フレームレート";
-"Free" = "無料";
 "Freeform" = "フリーフォーム";
 "Full Frame" = "フルフレーム";
 "Full Screen" = "フルスクリーン";
@@ -504,7 +484,6 @@
 "Loading source dimensions…" = "ソースのサイズを読み込み中…";
 "Loading source frame rate…" = "ソースのフレームレートを読み込み中…";
 "Loading video metadata…" = "ビデオのメタデータを読み込み中…";
-"Loading…" = "読み込み中…";
 "Local" = "ローカル";
 "Low" = "低";
 "Luma" = "輝度";
@@ -515,8 +494,6 @@
 "MCP Setup" = "MCPの設定";
 "Main + Sidebar" = "メイン + サイドバー";
 "Make vertical shorts" = "縦型ショートを作成";
-"Manage credits" = "クレジットを管理";
-"Manage subscription" = "サブスクリプションを管理";
 "Manual setup" = "手動設定";
 "Mark Beats" = "ビートをマーク";
 "Mark Range End" = "範囲の終了位置をマーク";
@@ -531,7 +508,6 @@
 "Match mouth movement to replacement audio" = "口の動きを差し替えオーディオに合わせる";
 "Max" = "最大";
 "Max characters" = "最大文字数";
-"Max plan" = "Maxプラン";
 "Max words" = "最大単語数";
 "Maximize Focused Panel" = "フォーカス中のパネルを最大化";
 "Media" = "メディア";
@@ -624,7 +600,6 @@
 "Open Timeline" = "タイムラインを開く";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "「AI編集」タブを開いて、アップスケール、プロンプト編集、フレームからのビデオ作成、またはクリップからの音楽・SFX・クリーンアップ・吹き替え生成を行えます。";
 "OpenAI API Key" = "OpenAI APIキー";
-"Opening Google…" = "Googleを開いています…";
 "Open…" = "開く…";
 "Organize with Agent" = "エージェントで整理";
 "Original" = "オリジナル";
@@ -661,7 +636,6 @@
 "Presence" = "プレゼンス";
 "Press M in the timeline to add a marker." = "タイムラインでMキーを押すとマーカーを追加できます。";
 "Preview" = "プレビュー";
-"Pro plan" = "Proプラン";
 "Project" = "プロジェクト";
 "Project Settings" = "プロジェクト設定";
 "Projects Couldn’t Be Deleted" = "プロジェクトを削除できませんでした";
@@ -688,7 +662,6 @@
 "Relink Folder…" = "フォルダを再リンク…";
 "Relinked %lld of %lld offline clips." = "オフラインクリップ%lld個のうち%lld個を再リンクしました。";
 "Relink…" = "再リンク…";
-"Remaining" = "残り";
 "Remove" = "削除";
 "Remove %@" = "%@を削除";
 "Remove API key" = "APIキーを削除";
@@ -714,7 +687,6 @@
 "Reset All" = "すべてリセット";
 "Reset Clipping Indicators" = "クリッピングインジケータをリセット";
 "Reset: %@" = "リセット：%@";
-"Resets %@" = "%@をリセット";
 "Resolution" = "解像度";
 "Resolution must be at least 2 × 2 pixels." = "解像度は2 × 2ピクセル以上にする必要があります。";
 "Resolution must not exceed 8192 pixels on either edge." = "解像度はどちらの辺も8192ピクセル以下にする必要があります。";
@@ -794,15 +766,6 @@
 "Show notifications" = "通知を表示";
 "Show reasoning" = "推論を表示";
 "Side by Side" = "左右に並べる";
-"Sign In" = "サインイン";
-"Sign in" = "サインイン";
-"Sign in to receive 250 free credits for AI chat and generation." = "サインインすると、AIチャットと生成に使える250クレジットを無料で獲得できます。";
-"Sign in to subscribe and use AI generation." = "サブスクリプションに登録してAI生成を使用するには、サインインしてください。";
-"Sign in with Google" = "Googleでサインイン";
-"Sign out" = "サインアウト";
-"Sign-in couldn’t be completed. Try again." = "サインインを完了できませんでした。もう一度お試しください。";
-"Signed in" = "サインイン済み";
-"Signed out" = "サインアウト済み";
 "Silence Detection" = "無音検出";
 "Size" = "サイズ";
 "Skill instructions" = "スキルの手順";
@@ -848,7 +811,6 @@
 "Strikethrough" = "取り消し線";
 "Style" = "スタイル";
 "Style instructions (optional). e.g., warm and slow, British accent." = "スタイルの指示（任意）。例：暖かくゆっくり、イギリス英語のアクセント。";
-"Subscription" = "サブスクリプション";
 "Subtitle" = "字幕";
 "Subtitle file is unavailable." = "字幕ファイルを利用できません。";
 "Swap Media" = "メディアを入れ替え";
@@ -944,11 +906,6 @@
 "Update" = "アップデート";
 "Update available" = "アップデートがあります";
 "Updating %@" = "%@をアップデート中";
-"Upgrade" = "アップグレード";
-"Upgrade to %@" = "%@にアップグレード";
-"Upgrade to Max" = "Maxにアップグレード";
-"Upgrade to Pro" = "Proにアップグレード";
-"Upgrade to add credits" = "アップグレードしてクレジットを追加";
 "Uploading…" = "アップロード中…";
 "Upscale" = "アップスケール";
 "Upscale model not available" = "アップスケールモデルを利用できません";
@@ -984,10 +941,7 @@
 "Voice Cleanup requires audio or video" = "音声クリーンアップにはオーディオまたはビデオが必要です";
 "Volume" = "音量";
 "Warmth" = "暖かみ";
-"Welcome" = "ようこそ";
 "Welcome to Lenora Pro" = "Lenora Proへようこそ";
-"Welcome to Lenora Pro, %@" = "Lenora Proへようこそ、%@";
-"Welcome, %@" = "%@さん、ようこそ";
 "What's New in v%@" = "バージョン%@の新機能";
 "White Balance" = "ホワイトバランス";
 "Whites" = "ホワイト";
@@ -1000,7 +954,6 @@
 "Workspace layout" = "ワークスペースレイアウト";
 "X High" = "最高";
 "You're all set" = "準備ができました";
-"You're ready to start creating." = "作成を始める準備ができました。";
 "Your Lottie animation is ready." = "Lottieアニメーションの準備ができました。";
 "Your audio clip is ready." = "オーディオクリップの準備ができました。";
 "Your image is ready." = "画像の準備ができました。";
