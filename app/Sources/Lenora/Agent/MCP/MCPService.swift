@@ -162,12 +162,12 @@ final class MCPService {
         }
     }
 
-    private static func availableTools() -> [AgentTool] {
-        ToolDefinitions.available(ToolDefinitions.mcpServer, catalog: .shared)
+    private static func availableTools(catalog: ModelCatalog = .shared) -> [AgentTool] {
+        ToolDefinitions.available(ToolDefinitions.mcpServer, catalog: catalog)
     }
 
-    private static func toolListSignature() -> [String] {
-        availableTools().map(\.name.rawValue).sorted() + ToolDefinitions.transformOperations(catalog: .shared)
+    static func toolListSignature(catalog: ModelCatalog = .shared) -> [String] {
+        availableTools(catalog: catalog).map(\.name.rawValue).sorted() + ToolDefinitions.transformOperations(catalog: catalog)
     }
 
     private func catalogDidChange() {

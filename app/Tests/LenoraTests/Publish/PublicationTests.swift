@@ -1,3 +1,4 @@
+import AVFoundation
 import Foundation
 import Testing
 @testable import Lenora
@@ -41,7 +42,9 @@ struct PublicationTests {
         (PublishOptions(vertical: "9:16"), tenSeconds, nil),
         (PublishOptions(teaserSeconds: 4), tenSeconds, .teaserOutOfRange(4, min: 5, max: 30)),
         (PublishOptions(teaserSeconds: 31), PublishProbe(byteCount: 1, durationSeconds: 60), .teaserOutOfRange(31, min: 5, max: 30)),
-        (PublishOptions(teaserSeconds: 10), tenSeconds, .teaserTooLong(10, durationSeconds: 10)),
+        (PublishOptions(teaserSeconds: 10), tenSeconds, .teaserTooLong(10, longest: 9)),
+        (PublishOptions(teaserSeconds: 5), PublishProbe(byteCount: 1, durationSeconds: 5), .teaserTooLong(5, longest: nil)),
+        (PublishOptions(teaserSeconds: 10), PublishProbe(byteCount: 1, durationSeconds: 10.5), nil),
         (PublishOptions(teaserSeconds: 9), tenSeconds, nil),
     ] as [(PublishOptions, PublishProbe, PublishRefusal?)])
     func limitsRefuseImpossibleRequests(options: PublishOptions, probe: PublishProbe, expected: PublishRefusal?) {
@@ -74,7 +77,7 @@ struct PublicationTests {
     @Test func failedJobFailsEveryPendingOutput() throws {
         var record = Self.record()
         record.apply(try Self.state(#"{"jobId":"j","status":"failed","error":{"code":"provider_error","message":"Stream failed.","retryable":false}}"#))
-        #expect(record.status == .failed && record.message == "Stream failed.")
+        #expect(record.status == .failed && record.failure == PublishFailure(code: "provider_error", message: "Stream failed."))
         #expect(record.outputs.allSatisfy { $0.status == .failed && $0.errorCode == "provider_error" })
     }
 
@@ -121,7 +124,109 @@ struct PublicationTests {
     }
 }
 
+@MainActor
+struct PublishFailureTests {
+    @Test(arguments: [
+        (BackendError.unreachable(URL(string: "http://127.0.0.1:1")!), "backend_unreachable"),
+        (.unauthorized, "unauthorized"),
+        (.problem(BackendProblem(code: "rate_limited", detail: "Slow down.", status: 429, retryable: true)), "rate_limited"),
+        (.invalidResponse(status: 502), "invalid_response"),
+        (.uploadFailed(status: 500), "upload_failed"),
+        (.uploadUnreachable, "upload_unreachable"),
+    ])
+    func backendErrorsKeepAStableCode(error: BackendError, code: String) {
+        #expect(PublishFailure(error).code == code)
+    }
+
+    @Test func otherErrorsAreInternal() {
+        #expect(PublishFailure(CocoaError(.fileReadUnknown)).code == "internal_error")
+    }
+
+    @Test func knownCodesRenderLocalizedCopyNotTheStoredText() {
+        #expect(PublishFailure(code: "upload_interrupted", message: "stored").userMessage == L10n.string("Upload interrupted."))
+        #expect(PublishFailure(code: "backend_unreachable", message: "stored").userMessage == L10n.string("Can't reach the backend."))
+    }
+
+    @Test func aBareCodeShowsTheGenericFailure() {
+        #expect(PublishFailure(code: "rate_limited", message: "rate_limited").userMessage == L10n.string("Publishing failed."))
+    }
+
+    @Test func unknownCodesShowTheBackendTextVerbatim() {
+        #expect(PublishFailure(code: "rate_limited", message: "Slow down.").userMessage == "Slow down.")
+    }
+}
+
+@MainActor
+struct PublishRefusalTests {
+    @Test(arguments: [
+        (PublishRefusal.unavailable, "unavailable"),
+        (.notConfirmed, "invalid_request"),
+        (.exportNotPublishable, "invalid_request"),
+        (.unreadable, "invalid_request"),
+        (.tooLarge(byteCount: 2, maxBytes: 1), "input_too_large"),
+        (.unsupportedAspect("16:9", allowed: ["9:16"]), "invalid_request"),
+        (.teaserUnsupported, "invalid_request"),
+        (.teaserOutOfRange(4, min: 5, max: 30), "invalid_request"),
+        (.teaserTooLong(10, longest: 9), "invalid_request"),
+        (.notFound, "not_found"),
+        (.busy, "invalid_request"),
+        (.notUploaded, "invalid_request"),
+        (.unpublished, "invalid_request"),
+    ])
+    func refusalsMapToStableCodes(refusal: PublishRefusal, code: String) {
+        #expect(refusal.code == code)
+        #expect(!refusal.message.isEmpty && !refusal.userMessage.isEmpty)
+    }
+
+    @Test func agentMessagesNameTheLimits() {
+        #expect(PublishRefusal.tooLarge(byteCount: 2_000, maxBytes: 1_000).message == "The export is 2000 bytes; publishing accepts up to 1000 bytes.")
+        #expect(PublishRefusal.unsupportedAspect("16:9", allowed: ["9:16", "1:1"]).message == "Vertical aspect 16:9 isn't supported. Allowed: 9:16, 1:1.")
+    }
+
+    @Test func unsupportedAspectNamesTheAllowedAspects() {
+        let text = PublishRefusal.unsupportedAspect("16:9", allowed: ["9:16", "1:1"]).userMessage
+        #expect(text.contains("16:9") && text.contains("9:16") && text.contains("1:1"))
+    }
+
+    @Test(arguments: [(10.0, 9), (10.5, 10), (5.0, nil), (1e300, 30)] as [(Double, Int?)])
+    func longestTeaserFitsInsideTheVideoAndRange(durationSeconds: Double, longest: Int?) {
+        #expect(PublicationTests.limits.longestTeaser(for: durationSeconds) == longest)
+    }
+
+    @Test func teaserTooLongNamesTheLongestAllowedTeaser() {
+        let text = PublishRefusal.teaserTooLong(10, longest: 9).userMessage
+        #expect(text.contains(9.secondsText(locale: AppLocalization.shared.activeLocale)))
+    }
+
+    @Test func teaserTooLongSaysWhenNoTeaserFits() {
+        #expect(PublishRefusal.teaserTooLong(5, longest: nil).userMessage == L10n.string("This video is too short for a teaser."))
+    }
+
+    @Test(arguments: [(1, "1 second"), (15, "15 seconds")])
+    func secondsTextIsPluralized(seconds: Int, expected: String) {
+        #expect(seconds.secondsText(locale: Locale(identifier: "en_US")) == expected)
+    }
+}
+
 struct PublishProbeTests {
+    @Test(arguments: [CMTime.invalid, .indefinite, .positiveInfinity, .zero, CMTime(value: -1, timescale: 1)])
+    func unusableDurationsAreUnreadable(_ duration: CMTime) {
+        #expect(throws: PublishRefusal.unreadable) { try PublishProbe.seconds(of: duration) }
+    }
+
+    @Test func numericDurationIsInSeconds() throws {
+        #expect(try PublishProbe.seconds(of: CMTime(value: 5, timescale: 2)) == 2.5)
+    }
+
+    @Test func readsSizeAndDurationOfARealVideo() async throws {
+        let url = try await FixtureVideo.write(scenes: [.init(rgb: (0, 0, 0), seconds: 2)])
+        defer { try? FileManager.default.removeItem(at: url) }
+        let size = try #require(try url.resourceValues(forKeys: [.fileSizeKey]).fileSize)
+        let probe = try await PublishProbe.read(url)
+        #expect(probe.byteCount == Int64(size) && probe.byteCount > 0)
+        #expect(abs(probe.durationSeconds - 2) < 0.5)
+    }
+
     @Test func unknownFileSizeIsUnreadable() async throws {
         let directory = FileManager.default.temporaryDirectory.appending(path: "probe-\(UUID().uuidString)")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)

@@ -69,7 +69,7 @@ struct PublishSheet: View {
                     Toggle(L10n.string("Teaser"), isOn: $includeTeaser)
                     Spacer()
                     Stepper(value: $teaserSeconds, in: range.min...range.max) {
-                        Text(L10n.string("\(teaserSeconds) seconds")).monospacedDigit()
+                        Text(verbatim: teaserSeconds.secondsText(locale: AppLocalization.shared.activeLocale)).monospacedDigit()
                     }
                     .disabled(!includeTeaser)
                 }

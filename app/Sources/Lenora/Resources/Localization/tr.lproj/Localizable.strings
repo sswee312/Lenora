@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld görüntü Lenora'da hazır.";
 "%lld items" = "%lld öğe";
 "%lld media files are missing and will be skipped." = "%lld medya dosyası eksik ve atlanacak.";
-"%lld seconds" = "%lld saniye";
 "%lld selected" = "%lld seçili";
 "%lld subtitle files are ready in Lenora." = "%lld altyazı dosyası Lenora’da hazır.";
 "%lld text clips are ready in Lenora." = "%lld metin klibi Lenora'da hazır.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "\"%@\" içe aktarılamıyor. Dosya türü desteklenmiyor.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "\"%@\" buraya yapıştırılamıyor. Bu işlem zaman eksenini kendi içine yerleştirir.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "%@ adresindeki backend'e ulaşılamıyor. ./scripts/dev ile başlatın, ardından yeniden sınayın.";
+"Can't reach the backend." = "Arka uca ulaşılamıyor.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "\"%@\" yeniden bağlanamıyor. Gerekli medya türü: %@. Seçilen medya türü: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Çok kameralı bir izde eşzamanlama kilidi açılamaz. \"%@\" bu iz üzerinden hizalı kalır.";
 "Cancel" = "İptal";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Ses klibi rengini seç";
 "Choose color" = "Renk seç";
 "Choose image clip color" = "Görüntü klibi rengini seç";
+"Choose one of these aspect ratios: %@." = "Şu en-boy oranlarından birini seçin: %@.";
 "Choose sequence clip color" = "Sekans klibi rengini seç";
 "Choose text clip color" = "Metin klibi rengini seç";
 "Choose the folder that holds your media" = "Medyanızı içeren klasörü seçin";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "%lld klip hizalanamadı.";
 "Couldn't change marker." = "İşaretleyici değiştirilemedi.";
 "Couldn't delete marker." = "İşaretleyici silinemedi.";
+"Couldn't reach the provider to upload the file." = "Dosyayı yüklemek için sağlayıcıya ulaşılamadı.";
 "Couldn't save the token to the Keychain." = "Belirteç Anahtar Zinciri'ne kaydedilemedi.";
 "Couldn't switch angle." = "Açı değiştirilemedi.";
 "Couldn’t move %@ to the Trash." = "%@ Çöp Sepeti'ne taşınamadı.";
@@ -328,6 +330,7 @@
 "Enhance" = "İyileştir";
 "Enhance resolution or frame rate with AI" = "Çözünürlüğü veya kare hızını yapay zekâyla iyileştirin";
 "Enter Full Screen" = "Tam Ekrana Geç";
+"Enter the color as #RRGGBB." = "Rengi #RRGGBB biçiminde girin.";
 "Erase an object from the image" = "Görüntüden bir nesneyi sil";
 "Every connected agent will need the new token." = "Bağlı her aracı yeni belirteci gerektirecek.";
 "Every link stops working. This can't be undone." = "Tüm bağlantılar çalışmayı durdurur. Bu işlem geri alınamaz.";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "Henüz ayar yok";
 "No audio" = "Ses yok";
 "No audio selected." = "Ses seçilmedi.";
+"No backend is connected." = "Bağlı arka uç yok.";
 "No beats detected." = "Vuruş algılanmadı.";
 "No connected backend can publish video." = "Bağlı hiçbir arka uç video yayımlayamıyor.";
 "No conversations yet" = "Henüz sohbet yok";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "Zaman ekseninde M tuşuna basarak işaretleyici ekleyin.";
 "Preview" = "Önizleme";
 "Processing is billed by the backend. The estimate appears once processing starts." = "İşleme, arka uç tarafından ücretlendirilir. Tahmin, işleme başladığında görünür.";
+"Processing request interrupted." = "İşleme isteği kesintiye uğradı.";
 "Processing…" = "İşleniyor…";
 "Processing… Estimated %@ %@" = "İşleniyor… Tahmini: %@ %@";
 "Project" = "Proje";
@@ -674,6 +679,7 @@
 "Prompt" = "İstem";
 "Publish" = "Yayınla";
 "Published" = "Yayınlandı";
+"Publishing failed." = "Yayınlama başarısız oldu.";
 "Publish…" = "Yayınla…";
 "Put the subject on a new background" = "Konuyu yeni bir arka plana yerleştir";
 "Quality" = "Kalite";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "Hazır, %lld başarısız";
 "Reasoning effort" = "Akıl yürütme düzeyi";
 "Recolor" = "Yeniden Renklendir";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "Yayından kaldırmak veya çıktı eklemek için video yayınlayan bir arka uca yeniden bağlanın.";
 "Redetect Beats" = "Vuruşları Yeniden Algıla";
 "Redo" = "Yinele";
 "Redo (⇧⌘Z)" = "Yinele (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "Seslendirilecek metin (en az %lld karakter)";
 "The MCP server could not start. Check the port, then try again." = "MCP sunucusu başlatılamadı. Bağlantı noktasını kontrol edip tekrar deneyin.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP belirteci kullanılamıyor. Anahtar Zinciri erişimini kontrol edip tekrar deneyin.";
+"The backend rejected the token." = "Arka uç belirteci reddetti.";
+"The backend returned an unexpected response." = "Arka uç beklenmeyen bir yanıt döndürdü.";
+"The backend returned no result for this output." = "Arka uç bu çıktı için sonuç döndürmedi.";
 "The clip you're adding has different settings than the current project." = "Eklediğiniz klibin ayarları geçerli projeden farklı.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Bağlı arka uç bu düzenlemeyi sunmuyor. Ayarlar → Arka Uç’u açın.";
 "The export" = "Dışa aktarma";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "Seçili model bu isteği reddetti. İstemi gözden geçirip yeniden deneyin.";
 "The selected projects will be moved to the Trash." = "Seçili projeler Çöp Sepeti'ne taşınacak.";
 "The source file is missing." = "Kaynak dosya eksik.";
-"The teaser must be shorter than the video." = "Teaser videodan kısa olmalıdır.";
 "The timeline settings changed. Close this sheet and try again." = "Zaman ekseni ayarları değişti. Bu sayfayı kapatıp yeniden deneyin.";
 "The upload didn't finish. Publish the export again." = "Yükleme tamamlanmadı. Dışa aktarmayı yeniden yayımlayın.";
+"The upload to the provider failed." = "Sağlayıcıya yükleme başarısız oldu.";
 "Theme" = "Tema";
 "This build includes no skills." = "Bu derleme hiç beceri içermiyor.";
 "This edit works on images only." = "Bu düzenleme yalnızca görüntülerde çalışır.";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Bu model çıktıyı 60 FPS ile sınırlayamaz.";
 "This permanently removes %@." = "Bu işlem %@ öğesini kalıcı olarak kaldırır.";
 "This source can’t replace the clip." = "Bu kaynak klibin yerini alamaz.";
+"This video allows teasers up to %@." = "Bu video en fazla %@ uzunluğunda teaser'lara izin veriyor.";
+"This video is too short for a teaser." = "Bu video teaser için çok kısa.";
 "This video was unpublished." = "Bu videonun yayını kaldırıldı.";
 "Three-Stack" = "Üçlü Yığın";
 "Three-Up" = "Üçlü";
@@ -973,12 +985,14 @@
 "Update" = "Güncelle";
 "Update available" = "Güncelleme var";
 "Updating %@" = "%@ güncelleniyor";
+"Upload interrupted." = "Yükleme kesintiye uğradı.";
 "Uploading…" = "Yükleniyor…";
 "Upscale" = "Çözünürlüğü Yükselt";
 "Upscale model not available" = "Çözünürlük yükseltme modeli kullanılamıyor";
 "Upscale only works on video or images" = "Çözünürlüğü Yükselt yalnızca video veya görüntülerde çalışır";
 "Upscale source media" = "Kaynak medyanın çözünürlüğünü yükselt";
 "Upscale…" = "Çözünürlüğü Yükselt…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "1–100 harf, rakam, boşluk, nokta, kesme işareti veya kısa çizgi kullanın.";
 "Use Freeform" = "Serbest Kullan";
 "Use Freeform to edit individual crop insets." = "Tek tek kırpma iç boşluklarını düzenlemek için Serbest’i kullanın.";
 "Use a port between 1024 and 65535." = "1024 ile 65535 arasında bir bağlantı noktası kullanın.";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Saptanmış olarak tüm zaman eksenini kullanır. Yalnızca belirli bir aralığa müzik yapmak için zaman ekseninde aralığı işaretleyin.";
 "Version" = "Sürüm";
 "Vertical" = "Dikey";
-"Vertical aspect %@ isn't supported." = "Dikey en boy oranı %@ desteklenmiyor.";
+"Vertical aspect %@ isn't supported. Use %@." = "Dikey en boy oranı %@ desteklenmiyor. %@ kullanın.";
 "Vertical cut" = "Dikey kesim";
+"Vertical cuts aren't available." = "Dikey kesimler kullanılamıyor.";
 "Vertical workspace layout" = "Dikey çalışma alanı düzeni";
 "Vibrance" = "Canlılık";
 "Video" = "Video";

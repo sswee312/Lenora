@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld Bilder sind in Lenora bereit.";
 "%lld items" = "%lld Objekte";
 "%lld media files are missing and will be skipped." = "%lld Mediendateien fehlen und werden übersprungen.";
-"%lld seconds" = "%lld Sekunden";
 "%lld selected" = "%lld ausgewählt";
 "%lld subtitle files are ready in Lenora." = "%lld Untertiteldateien sind in Lenora bereit.";
 "%lld text clips are ready in Lenora." = "%lld Text-Clips sind in Lenora bereit.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "\"%@\" kann nicht importiert werden — nicht unterstützter Dateityp.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "\"%@\" kann hier nicht eingesetzt werden — diese Timeline würde in sich selbst verschachtelt.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Backend unter %@ nicht erreichbar. Starten Sie es mit ./scripts/dev und testen Sie erneut.";
+"Can't reach the backend." = "Das Backend ist nicht erreichbar.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "\"%@\" kann nicht neu verknüpft werden. Erforderlicher Medientyp: %@. Ausgewählter Medientyp: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Die Synchronisierung einer Multicam-Spur kann nicht aufgehoben werden — \"%@\" bleibt darüber ausgerichtet.";
 "Cancel" = "Abbrechen";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Farbe für Audio-Clip wählen";
 "Choose color" = "Farbe wählen";
 "Choose image clip color" = "Farbe für Bild-Clip wählen";
+"Choose one of these aspect ratios: %@." = "Wählen Sie eines dieser Seitenverhältnisse: %@.";
 "Choose sequence clip color" = "Farbe für Sequenz-Clip wählen";
 "Choose text clip color" = "Farbe für Text-Clip wählen";
 "Choose the folder that holds your media" = "Wählen Sie den Ordner mit Ihren Medien";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "%lld Clips konnten nicht ausgerichtet werden.";
 "Couldn't change marker." = "Markierung konnte nicht geändert werden.";
 "Couldn't delete marker." = "Markierung konnte nicht gelöscht werden.";
+"Couldn't reach the provider to upload the file." = "Der Anbieter war zum Hochladen der Datei nicht erreichbar.";
 "Couldn't save the token to the Keychain." = "Das Token konnte nicht im Schlüsselbund gesichert werden.";
 "Couldn't switch angle." = "Winkel konnte nicht gewechselt werden.";
 "Couldn’t move %@ to the Trash." = "%@ konnte nicht in den Papierkorb gelegt werden.";
@@ -328,6 +330,7 @@
 "Enhance" = "Verbessern";
 "Enhance resolution or frame rate with AI" = "Auflösung oder Bildrate mit KI verbessern";
 "Enter Full Screen" = "Vollbildmodus aktivieren";
+"Enter the color as #RRGGBB." = "Geben Sie die Farbe als #RRGGBB ein.";
 "Erase an object from the image" = "Ein Objekt aus dem Bild entfernen";
 "Every connected agent will need the new token." = "Jeder verbundene Agent benötigt das neue Token.";
 "Every link stops working. This can't be undone." = "Alle Links funktionieren nicht mehr. Das kann nicht rückgängig gemacht werden.";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "Noch keine Anpassungen";
 "No audio" = "Kein Audio";
 "No audio selected." = "Kein Audio ausgewählt.";
+"No backend is connected." = "Kein Backend verbunden.";
 "No beats detected." = "Keine Beats erkannt.";
 "No connected backend can publish video." = "Kein verbundenes Backend kann Videos veröffentlichen.";
 "No conversations yet" = "Noch keine Unterhaltungen";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "Drücken Sie M in der Timeline, um eine Markierung hinzuzufügen.";
 "Preview" = "Vorschau";
 "Processing is billed by the backend. The estimate appears once processing starts." = "Die Verarbeitung wird vom Backend abgerechnet. Die Schätzung erscheint, sobald die Verarbeitung beginnt.";
+"Processing request interrupted." = "Verarbeitungsanfrage unterbrochen.";
 "Processing…" = "Wird verarbeitet…";
 "Processing… Estimated %@ %@" = "Wird verarbeitet… Geschätzt: %@ %@";
 "Project" = "Projekt";
@@ -674,6 +679,7 @@
 "Prompt" = "Prompt";
 "Publish" = "Veröffentlichen";
 "Published" = "Veröffentlicht";
+"Publishing failed." = "Veröffentlichung fehlgeschlagen.";
 "Publish…" = "Veröffentlichen…";
 "Put the subject on a new background" = "Das Motiv vor einen neuen Hintergrund setzen";
 "Quality" = "Qualität";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "Bereit, %lld fehlgeschlagen";
 "Reasoning effort" = "Begründungsaufwand";
 "Recolor" = "Umfärben";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "Verbinde erneut ein Backend, das Videos veröffentlicht, um die Veröffentlichung aufzuheben oder Ausgaben hinzuzufügen.";
 "Redetect Beats" = "Beats erneut erkennen";
 "Redo" = "Wiederholen";
 "Redo (⇧⌘Z)" = "Wiederholen (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "Vorzulesender Text (mindestens %lld Zeichen)";
 "The MCP server could not start. Check the port, then try again." = "Der MCP-Server konnte nicht gestartet werden. Prüfen Sie den Port und versuchen Sie es erneut.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Das MCP-Token ist nicht verfügbar. Prüfen Sie den Zugriff auf den Schlüsselbund und versuchen Sie es erneut.";
+"The backend rejected the token." = "Das Backend hat das Token abgelehnt.";
+"The backend returned an unexpected response." = "Das Backend hat eine unerwartete Antwort zurückgegeben.";
+"The backend returned no result for this output." = "Das Backend hat für diese Ausgabe kein Ergebnis geliefert.";
 "The clip you're adding has different settings than the current project." = "Der Clip, den Sie hinzufügen, hat andere Einstellungen als das aktuelle Projekt.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Das verbundene Backend bietet diese Bearbeitung nicht an. Öffne Einstellungen → Backend.";
 "The export" = "Der Export";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "Das ausgewählte Modell hat diese Anfrage abgelehnt. Überarbeiten Sie den Prompt und versuchen Sie es erneut.";
 "The selected projects will be moved to the Trash." = "Die ausgewählten Projekte werden in den Papierkorb gelegt.";
 "The source file is missing." = "Die Quelldatei fehlt.";
-"The teaser must be shorter than the video." = "Der Teaser muss kürzer als das Video sein.";
 "The timeline settings changed. Close this sheet and try again." = "Die Timeline-Einstellungen haben sich geändert. Schließen Sie dieses Blatt und versuchen Sie es erneut.";
 "The upload didn't finish. Publish the export again." = "Der Upload wurde nicht abgeschlossen. Veröffentliche den Export erneut.";
+"The upload to the provider failed." = "Das Hochladen zum Anbieter ist fehlgeschlagen.";
 "Theme" = "Thema";
 "This build includes no skills." = "Dieser Build enthält keine Skills.";
 "This edit works on images only." = "Diese Bearbeitung funktioniert nur mit Bildern.";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Dieses Modell kann die Ausgabe nicht auf 60 FPS begrenzen.";
 "This permanently removes %@." = "Dadurch wird %@ dauerhaft entfernt.";
 "This source can’t replace the clip." = "Diese Quelle kann den Clip nicht ersetzen.";
+"This video allows teasers up to %@." = "Dieses Video erlaubt Teaser bis zu %@.";
+"This video is too short for a teaser." = "Dieses Video ist für einen Teaser zu kurz.";
 "This video was unpublished." = "Die Veröffentlichung dieses Videos wurde aufgehoben.";
 "Three-Stack" = "Drei gestapelt";
 "Three-Up" = "Drei nebeneinander";
@@ -973,12 +985,14 @@
 "Update" = "Aktualisieren";
 "Update available" = "Update verfügbar";
 "Updating %@" = "%@ wird aktualisiert";
+"Upload interrupted." = "Hochladen unterbrochen.";
 "Uploading…" = "Wird hochgeladen…";
 "Upscale" = "Hochskalieren";
 "Upscale model not available" = "Hochskalierungsmodell nicht verfügbar";
 "Upscale only works on video or images" = "Hochskalieren funktioniert nur mit Video oder Bildern";
 "Upscale source media" = "Quellmedien hochskalieren";
 "Upscale…" = "Hochskalieren…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Verwenden Sie 1–100 Buchstaben, Ziffern, Leerzeichen, Punkte, Apostrophe oder Bindestriche.";
 "Use Freeform" = "Freiform verwenden";
 "Use Freeform to edit individual crop insets." = "Verwenden Sie Freiform, um einzelne Zuschnittseinzüge zu bearbeiten.";
 "Use a port between 1024 and 65535." = "Verwenden Sie einen Port zwischen 1024 und 65535.";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Verwendet standardmäßig die gesamte Timeline. Markieren Sie einen Bereich auf der Timeline, um nur diesen Abschnitt zu vertonen.";
 "Version" = "Version";
 "Vertical" = "Vertikal";
-"Vertical aspect %@ isn't supported." = "Das vertikale Seitenverhältnis %@ wird nicht unterstützt.";
+"Vertical aspect %@ isn't supported. Use %@." = "Das vertikale Seitenverhältnis %@ wird nicht unterstützt. Verwende %@.";
 "Vertical cut" = "Hochformat";
+"Vertical cuts aren't available." = "Hochformat-Versionen sind nicht verfügbar.";
 "Vertical workspace layout" = "Vertikaler Arbeitsbereich";
 "Vibrance" = "Dynamik";
 "Video" = "Video";

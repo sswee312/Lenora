@@ -23,12 +23,13 @@ enum AgentProvider: String, CaseIterable, Sendable {
     }
 
     fileprivate var storedAPIKey: String {
+        let store = CredentialStore.current
         #if DEBUG
-        let environmentValue = ProcessInfo.processInfo.environment[credentialStorage.environment]?
+        let environmentValue = store.environment[credentialStorage.environment]?
             .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         if !environmentValue.isEmpty { return environmentValue }
         #endif
-        return KeychainStore.load(account: credentialStorage.account) ?? ""
+        return ((try? store.read(credentialStorage.account)) ?? nil) ?? ""
     }
 
     @concurrent
@@ -38,10 +39,11 @@ enum AgentProvider: String, CaseIterable, Sendable {
 
     @concurrent
     func setAPIKey(_ key: String?) async {
+        let store = CredentialStore.current
         if let key {
-            KeychainStore.save(key, account: credentialStorage.account)
+            _ = store.save(key, credentialStorage.account)
         } else {
-            KeychainStore.delete(account: credentialStorage.account)
+            store.delete(credentialStorage.account)
         }
         NotificationCenter.default.post(name: .agentAPIKeyChanged, object: rawValue)
     }
@@ -166,7 +168,7 @@ struct AgentCredentialSnapshot: Equatable, Sendable {
     }
 
     @concurrent
-    static func loadFromKeychain() async -> AgentCredentialSnapshot {
+    static func loadStored() async -> AgentCredentialSnapshot {
         AgentCredentialSnapshot(Dictionary(uniqueKeysWithValues: AgentProvider.allCases.map {
             ($0, $0.storedAPIKey)
         }))

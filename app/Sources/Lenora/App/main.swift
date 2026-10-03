@@ -1,6 +1,7 @@
 import AppKit
 
 Log.bootstrap()
+CredentialStore.useLoginKeychain()
 BundledFonts.register()
 Task { @MainActor in await BackendConnection.shared.reload() }
 

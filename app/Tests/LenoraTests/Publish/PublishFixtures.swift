@@ -11,8 +11,8 @@ enum PublishFixtures {
         return try! BackendCoding.decoder().decode(JobState.self, from: Data(json.utf8))
     }
 
-    static func readyRecord(_ options: PublishOptions = PublishOptions()) -> Publication {
-        var record = Publication(id: UUID(), exportFilename: "cut.mp4", createdAt: Date(timeIntervalSince1970: 0),
+    static func readyRecord(_ options: PublishOptions = PublishOptions(), createdAt: Date = Date(timeIntervalSince1970: 0)) -> Publication {
+        var record = Publication(id: UUID(), exportFilename: "cut.mp4", createdAt: createdAt,
                                  model: "cloudinary/publish", durationSeconds: 20, options: options,
                                  assetRef: "a", jobId: "fake:0", status: .processing, outputs: [])
         record.request(options.roles, options: options)

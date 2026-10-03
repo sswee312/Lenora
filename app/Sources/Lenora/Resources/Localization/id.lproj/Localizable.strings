@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld gambar siap di Lenora.";
 "%lld items" = "%lld item";
 "%lld media files are missing and will be skipped." = "%lld file media hilang dan akan dilewati.";
-"%lld seconds" = "%lld detik";
 "%lld selected" = "%lld dipilih";
 "%lld subtitle files are ready in Lenora." = "%lld file subtitle siap di Lenora.";
 "%lld text clips are ready in Lenora." = "%lld klip teks siap di Lenora.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "Tidak dapat mengimpor \"%@\" — jenis file tidak didukung.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "Tidak dapat menempel \"%@\" di sini — linimasa ini akan tersarang di dalam dirinya sendiri.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Tidak dapat menjangkau backend di %@. Jalankan dengan ./scripts/dev, lalu uji lagi.";
+"Can't reach the backend." = "Tidak dapat menjangkau backend.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "Tidak dapat menautkan ulang \"%@\". Jenis media yang diperlukan: %@. Jenis media yang dipilih: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Tidak dapat membuka kunci sinkronisasi pada trek multicam — \"%@\" tetap sejajar melaluinya.";
 "Cancel" = "Batalkan";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Pilih warna klip audio";
 "Choose color" = "Pilih warna";
 "Choose image clip color" = "Pilih warna klip gambar";
+"Choose one of these aspect ratios: %@." = "Pilih salah satu rasio aspek berikut: %@.";
 "Choose sequence clip color" = "Pilih warna klip sekuens";
 "Choose text clip color" = "Pilih warna klip teks";
 "Choose the folder that holds your media" = "Pilih folder yang berisi media Anda";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "Tidak dapat menyelaraskan %lld klip.";
 "Couldn't change marker." = "Tidak dapat mengubah penanda.";
 "Couldn't delete marker." = "Tidak dapat menghapus penanda.";
+"Couldn't reach the provider to upload the file." = "Tidak dapat menjangkau penyedia untuk mengunggah file.";
 "Couldn't save the token to the Keychain." = "Tidak dapat menyimpan token ke Rantai Kunci.";
 "Couldn't switch angle." = "Tidak dapat mengganti sudut.";
 "Couldn’t move %@ to the Trash." = "Tidak dapat memindahkan %@ ke Tong Sampah.";
@@ -328,6 +330,7 @@
 "Enhance" = "Tingkatkan";
 "Enhance resolution or frame rate with AI" = "Tingkatkan resolusi atau kecepatan frame dengan AI";
 "Enter Full Screen" = "Masuk ke Layar Penuh";
+"Enter the color as #RRGGBB." = "Masukkan warna sebagai #RRGGBB.";
 "Erase an object from the image" = "Hapus objek dari gambar";
 "Every connected agent will need the new token." = "Setiap agent yang terhubung memerlukan token baru.";
 "Every link stops working. This can't be undone." = "Semua tautan berhenti berfungsi. Tindakan ini tidak dapat dibatalkan.";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "Belum ada penyesuaian";
 "No audio" = "Tidak ada audio";
 "No audio selected." = "Tidak ada audio yang dipilih.";
+"No backend is connected." = "Tidak ada backend yang terhubung.";
 "No beats detected." = "Tidak ada ketukan terdeteksi.";
 "No connected backend can publish video." = "Tidak ada backend terhubung yang dapat memublikasikan video.";
 "No conversations yet" = "Belum ada percakapan";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "Tekan M di linimasa untuk menambahkan penanda.";
 "Preview" = "Pratinjau";
 "Processing is billed by the backend. The estimate appears once processing starts." = "Pemrosesan ditagih oleh backend. Perkiraan muncul setelah pemrosesan dimulai.";
+"Processing request interrupted." = "Permintaan pemrosesan terputus.";
 "Processing…" = "Memproses…";
 "Processing… Estimated %@ %@" = "Memproses… Perkiraan: %@ %@";
 "Project" = "Proyek";
@@ -674,6 +679,7 @@
 "Prompt" = "Prompt";
 "Publish" = "Publikasikan";
 "Published" = "Dipublikasikan";
+"Publishing failed." = "Publikasi gagal.";
 "Publish…" = "Publikasikan…";
 "Put the subject on a new background" = "Tempatkan subjek di latar baru";
 "Quality" = "Kualitas";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "Siap, %lld gagal";
 "Reasoning effort" = "Tingkat penalaran";
 "Recolor" = "Warnai Ulang";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "Hubungkan kembali backend yang memublikasikan video untuk membatalkan publikasi atau menambah keluaran.";
 "Redetect Beats" = "Deteksi Ulang Ketukan";
 "Redo" = "Ulangi";
 "Redo (⇧⌘Z)" = "Ulangi (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "Teks untuk diucapkan (minimum %lld karakter)";
 "The MCP server could not start. Check the port, then try again." = "Server MCP tidak dapat dimulai. Periksa port, lalu coba lagi.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Token MCP tidak tersedia. Periksa akses Rantai Kunci, lalu coba lagi.";
+"The backend rejected the token." = "Backend menolak token.";
+"The backend returned an unexpected response." = "Backend mengembalikan respons yang tidak terduga.";
+"The backend returned no result for this output." = "Backend tidak mengembalikan hasil untuk keluaran ini.";
 "The clip you're adding has different settings than the current project." = "Klip yang Anda tambahkan memiliki pengaturan berbeda dari proyek saat ini.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Backend yang terhubung tidak menyediakan pengeditan ini. Buka Pengaturan → Backend.";
 "The export" = "Ekspor";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "Model yang dipilih menolak permintaan ini. Revisi prompt dan coba lagi.";
 "The selected projects will be moved to the Trash." = "Proyek yang dipilih akan dipindahkan ke Tong Sampah.";
 "The source file is missing." = "File sumber tidak ditemukan.";
-"The teaser must be shorter than the video." = "Teaser harus lebih pendek dari video.";
 "The timeline settings changed. Close this sheet and try again." = "Pengaturan linimasa berubah. Tutup lembar ini dan coba lagi.";
 "The upload didn't finish. Publish the export again." = "Unggahan tidak selesai. Publikasikan ekspor lagi.";
+"The upload to the provider failed." = "Unggahan ke penyedia gagal.";
 "Theme" = "Tema";
 "This build includes no skills." = "Build ini tidak menyertakan skill.";
 "This edit works on images only." = "Pengeditan ini hanya untuk gambar.";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Model ini tidak dapat membatasi output pada 60 FPS.";
 "This permanently removes %@." = "Ini menghapus %@ secara permanen.";
 "This source can’t replace the clip." = "Sumber ini tidak dapat mengganti klip.";
+"This video allows teasers up to %@." = "Video ini mengizinkan teaser hingga %@.";
+"This video is too short for a teaser." = "Video ini terlalu pendek untuk teaser.";
 "This video was unpublished." = "Publikasi video ini telah dibatalkan.";
 "Three-Stack" = "Tiga Tumpuk";
 "Three-Up" = "Tiga Panel";
@@ -973,12 +985,14 @@
 "Update" = "Perbarui";
 "Update available" = "Pembaruan tersedia";
 "Updating %@" = "Memperbarui %@";
+"Upload interrupted." = "Unggahan terputus.";
 "Uploading…" = "Mengunggah…";
 "Upscale" = "Upscale";
 "Upscale model not available" = "Model Upscale tidak tersedia";
 "Upscale only works on video or images" = "Upscale hanya berfungsi pada video atau gambar";
 "Upscale source media" = "Upscale media sumber";
 "Upscale…" = "Upscale…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Gunakan 1–100 huruf, angka, spasi, titik, apostrof, atau tanda hubung.";
 "Use Freeform" = "Gunakan Bebas";
 "Use Freeform to edit individual crop insets." = "Gunakan Bebas untuk mengedit sisipan potongan satu per satu.";
 "Use a port between 1024 and 65535." = "Gunakan port antara 1024 dan 65535.";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Menggunakan seluruh linimasa secara default. Tandai rentang di linimasa untuk membuat skor musik hanya pada rentang itu.";
 "Version" = "Versi";
 "Vertical" = "Vertikal";
-"Vertical aspect %@ isn't supported." = "Rasio aspek vertikal %@ tidak didukung.";
+"Vertical aspect %@ isn't supported. Use %@." = "Rasio aspek vertikal %@ tidak didukung. Gunakan %@.";
 "Vertical cut" = "Potongan vertikal";
+"Vertical cuts aren't available." = "Potongan vertikal tidak tersedia.";
 "Vertical workspace layout" = "Tata letak ruang kerja vertikal";
 "Vibrance" = "Vibrance";
 "Video" = "Video";

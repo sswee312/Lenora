@@ -92,7 +92,7 @@ struct ExportView: View {
                 logHeader
                 Divider().opacity(AppTheme.Opacity.moderate)
                 exportLog
-                if editor.publishService.isAvailable, !editor.publishService.publications.isEmpty {
+                if !editor.publishService.publications.isEmpty {
                     Divider().opacity(AppTheme.Opacity.moderate)
                     PublishedSection(onAddOutputs: { publishTarget = .publication($0) })
                 }
@@ -509,7 +509,7 @@ struct ExportView: View {
             case .lenoraProject:
                 HStack(spacing: AppTheme.Spacing.xs) {
                     Image(systemName: "shippingbox")
-                    Text(verbatim: "~\(ByteCountFormatter.string(fromByteCount: lenoraSummary.bytes, countStyle: .file))")
+                    Text(verbatim: "~\(lenoraSummary.bytes.byteCountText())")
                 }
                 Text(verbatim: ".\(Project.fileExtension)")
             }
@@ -619,7 +619,7 @@ struct ExportView: View {
         case .hdr:    0.45e6
         }
         let bytesPerSec = bytesPerSecPerMP * max(0.1, megapixels)
-        return ByteCountFormatter.string(fromByteCount: Int64(bytesPerSec * seconds), countStyle: .file)
+        return Int64(bytesPerSec * seconds).byteCountText()
     }
 
     private var exportFormat: ExportFormat {

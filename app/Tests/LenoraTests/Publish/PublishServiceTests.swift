@@ -14,23 +14,41 @@ struct PublishServiceTests {
     }
 
     private func makeService(_ provider: FakeProvider, catalog: ModelCatalog? = nil, jobs: [ExportJob]? = nil,
-                             probe: PublishProbe? = nil) throws -> PublishService {
+                             probe: PublishProbe? = nil,
+                             sleep: @escaping @Sendable (Duration) async throws -> Void = { _ in }) throws -> PublishService {
         let probe = probe ?? twentySeconds
         let catalog = try catalog ?? EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")
-        let service = PublishService(provider: { provider }, catalog: catalog, probe: { _ in probe })
+        let service = PublishService(provider: { provider }, catalog: catalog, probe: { _ in probe }, sleep: sleep)
         let jobs = jobs ?? [export()]
         service.exportJobs = { jobs }
         return service
     }
 
-    /// Resumes when `condition` holds after a change; never sleeps.
+    @MainActor private final class ChangeWaiter {
+        var continuation: CheckedContinuation<Void, Never>?
+        func resume() {
+            continuation?.resume()
+            continuation = nil
+        }
+    }
+
+    /// Resumes when `condition` holds after a change, or when the test is cancelled; never sleeps.
     private func waitFor(_ service: PublishService, _ condition: @escaping @MainActor () -> Bool) async {
         if condition() { return }
-        await withCheckedContinuation { continuation in
-            service.onChange = {
-                guard condition() else { return }
+        let waiter = ChangeWaiter()
+        await withTaskCancellationHandler {
+            await withCheckedContinuation { continuation in
+                waiter.continuation = continuation
+                service.onChange = {
+                    guard condition() else { return }
+                    service.onChange = {}
+                    waiter.resume()
+                }
+            }
+        } onCancel: {
+            Task { @MainActor in
                 service.onChange = {}
-                continuation.resume()
+                waiter.resume()
             }
         }
     }
@@ -71,7 +89,7 @@ struct PublishServiceTests {
             expected = .tooLarge(byteCount: 104_857_601, maxBytes: 104_857_600)
         case .teaserTooLong:
             probe = PublishProbe(byteCount: 1, durationSeconds: 5); options.teaserSeconds = 5
-            expected = .teaserTooLong(5, durationSeconds: 5)
+            expected = .teaserTooLong(5, longest: nil)
         case .badAspect: options.vertical = "16:9"; expected = .unsupportedAspect("16:9", allowed: ["9:16", "1:1", "4:5"])
         case .unavailable: expected = .unavailable
         case .unreadable: probe = PublishProbe(byteCount: 1, durationSeconds: .nan); expected = .unreadable
@@ -115,6 +133,83 @@ struct PublishServiceTests {
         #expect(service.publications.first?.assetRef == "ref-cut.mp4")
         #expect(try await service.unpublish(record.id) == false)
         #expect(await provider.deletedAssets == ["ref-cut.mp4"])
+    }
+
+    @Test func uploadFailureRecordsItsCode() async throws {
+        let service = try makeService(FakeProvider(states: [], uploadFailure: .uploadFailed(status: 500)))
+        _ = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await waitFor(service) { service.publications.first?.status == .failed }
+        #expect(service.publications.first?.failure?.code == "upload_failed")
+        #expect(service.publications.first?.outputs.allSatisfy { $0.errorCode == "upload_failed" } == true)
+    }
+
+    private static let rateLimited = BackendError.problem(BackendProblem(code: "rate_limited", detail: nil, status: 429, retryable: true))
+
+    @Test func exhaustedTransientPollingKeepsPollingWithBackoff() async throws {
+        let provider = FakeProvider(states: [PublishFixtures.state(.running)], failure: Self.rateLimited)
+        let (delays, recordDelay) = AsyncStream<Duration>.makeStream()
+        let service = try makeService(provider) { delay in
+            recordDelay.yield(delay)
+            await provider.recover(states: [PublishFixtures.state(.succeeded, roles: PublishOptions().roles)])
+        }
+        _ = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await waitFor(service) { service.publications.first?.status == .ready }
+        recordDelay.finish()
+        var recorded: [Duration] = []
+        for await delay in delays { recorded.append(delay) }
+        #expect(recorded == [.seconds(2)])
+        #expect(await provider.pollers == 2)
+    }
+
+    @MainActor private final class ProviderSlot {
+        var current: FakeProvider?
+        init(_ provider: FakeProvider) { current = provider }
+    }
+
+    @Test func backoffPollsTheProviderConnectedAfterTheWait() async throws {
+        let first = FakeProvider(states: [PublishFixtures.state(.running)], failure: Self.rateLimited)
+        let second = FakeProvider(states: [PublishFixtures.state(.succeeded, roles: PublishOptions().roles)])
+        let slot = ProviderSlot(first)
+        let catalog = try EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")
+        let probe = twentySeconds
+        let service = PublishService(provider: { slot.current }, catalog: catalog, probe: { _ in probe }, sleep: { _ in
+            await MainActor.run { slot.current = second }
+        })
+        let jobs = [export()]
+        service.exportJobs = { jobs }
+        _ = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await waitFor(service) { service.publications.first?.status == .ready }
+        #expect(await first.pollers == 1)
+        #expect(await second.pollers == 1)
+    }
+
+    @Test(arguments: [(1, 2), (2, 4), (5, 32), (6, 60), (40, 60)])
+    func pollingBackoffIsCapped(retries: Int, seconds: Int) {
+        #expect(PublishService.pollRetryDelay(after: retries) == .seconds(seconds))
+    }
+
+    @Test func closingCancelsTheBackoffWait() async throws {
+        let provider = FakeProvider(states: [PublishFixtures.state(.running)], failure: Self.rateLimited)
+        let (entered, enter) = AsyncStream<Void>.makeStream()
+        let (exited, exit) = AsyncStream<Bool>.makeStream()
+        let (parking, park) = AsyncStream<Void>.makeStream()
+        let service = try makeService(provider) { _ in
+            enter.yield()
+            for await _ in parking {}
+            exit.yield(Task.isCancelled)
+            try Task.checkCancellation()
+        }
+        _ = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        for await _ in entered { break }
+        var changes = 0
+        service.onChange = { changes += 1 }
+        service.stopMonitoring()
+        var cancelled = false
+        for await value in exited { cancelled = value; break }
+        park.finish()
+        #expect(cancelled)
+        #expect(service.publications.first?.status == .processing)
+        #expect(changes == 0)
     }
 
     @Test func lateResultAfterCloseIsNotCommitted() async throws {
@@ -162,7 +257,7 @@ struct PublishServiceTests {
         record.status = .uploading
         service.restore([record])
         #expect(service.publications.first?.status == .failed)
-        #expect(service.publications.first?.message == "Upload interrupted.")
+        #expect(service.publications.first?.failure == .uploadInterrupted)
         #expect(service.publications.first?.assetRef == "a")
         #expect(try await service.unpublish(record.id) == false)
         #expect(service.publications.first?.status == .unpublished)
@@ -287,6 +382,7 @@ struct PublishServiceTests {
         let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
         await provider.waitForCalls(.upload)
         let unpublishing = Task { try await service.unpublish(record.id) }
+        await provider.waitForCancellation(.upload)
         await provider.release(.upload)
         await provider.waitForCalls(.deleteAsset)
         await provider.release(.deleteAsset)
@@ -304,6 +400,7 @@ struct PublishServiceTests {
         let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
         await provider.waitForCalls(.upload)
         let unpublishing = Task { try await service.unpublish(record.id) }
+        await provider.waitForCancellation(.upload)
         await provider.release(.upload)
         await #expect(throws: BackendError.self) { try await unpublishing.value }
         let settled = try #require(service.publications.first)
@@ -327,10 +424,51 @@ struct PublishServiceTests {
         record.jobId = nil
         service.restore([record])
         let restored = try #require(service.publications.first)
-        #expect(restored.status == .partial && restored.message == "Submit interrupted.")
+        #expect(restored.status == .partial && restored.failure == .submitInterrupted)
         #expect(restored.outputs.first { $0.role == .vertical }?.status == .failed)
         #expect(restored.outputs.filter { $0.status == .ready }.count == 3)
         #expect(await provider.pollers == 0)
+    }
+
+    @Test func publishAfterCloseIsRefused() async throws {
+        let provider = FakeProvider(states: [])
+        let service = try makeService(provider)
+        service.stopMonitoring()
+        await #expect(throws: CancellationError.self) {
+            try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        }
+        #expect(service.publications.isEmpty)
+        #expect(await provider.uploads.isEmpty)
+    }
+
+    @Test func firstPublishProcessingWithoutJobFailsOnRestore() async throws {
+        let provider = FakeProvider(states: [])
+        let service = try makeService(provider)
+        var record = PublicationTests.record()
+        record.assetRef = "a"
+        record.status = .processing
+        service.restore([record])
+        let restored = try #require(service.publications.first)
+        #expect(restored.status == .failed && restored.failure == .submitInterrupted)
+        #expect(restored.outputs.allSatisfy { $0.status == .failed && $0.errorCode == "submit_interrupted" })
+        #expect(await provider.pollers == 0)
+    }
+
+    @Test func reopenAfterCancelledCloseSettlesTheStoppedUpload() async throws {
+        let provider = FakeProvider(states: [])
+        await provider.hold(.upload)
+        let service = try makeService(provider)
+        let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await provider.waitForCalls(.upload)
+        service.stopMonitoring()
+        var changes = 0
+        service.onChange = { changes += 1 }
+        service.reopen()
+        let settled = try #require(service.publications.first)
+        #expect(settled.status == .failed && settled.failure == .uploadInterrupted && settled.assetRef == "ref-cut.mp4")
+        #expect(changes == 1)
+        #expect(try await service.unpublish(record.id) == false)
+        await provider.release(.upload)
     }
 
     @Test func intentsAfterCloseChangeNothing() async throws {
@@ -412,6 +550,7 @@ struct PublishServiceTests {
         await provider.waitForCalls(.upload)
         await provider.hold(.deleteAsset)
         let unpublishing = Task { try await service.unpublish(record.id) }
+        await provider.waitForCancellation(.upload)
         await provider.release(.upload)
         await provider.waitForCalls(.deleteAsset)
         let before = service.publications

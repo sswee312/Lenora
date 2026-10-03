@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld bilder är klara i Lenora.";
 "%lld items" = "%lld objekt";
 "%lld media files are missing and will be skipped." = "%lld mediafiler saknas och hoppas över.";
-"%lld seconds" = "%lld sekunder";
 "%lld selected" = "%lld markerade";
 "%lld subtitle files are ready in Lenora." = "%lld undertextfiler är klara i Lenora.";
 "%lld text clips are ready in Lenora." = "%lld textklipp är klara i Lenora.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "Det går inte att importera \"%@\" — filtypen stöds inte.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "Det går inte att klistra in \"%@\" här — tidslinjen skulle bäddas in i sig själv.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Det går inte att nå backend på %@. Starta den med ./scripts/dev och testa igen.";
+"Can't reach the backend." = "Det går inte att nå backend.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "Det går inte att länka om \"%@\". Krävd mediatyp: %@. Vald mediatyp: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Det går inte att låsa upp synk på ett flerkameraspår — \"%@\" hålls justerad genom det.";
 "Cancel" = "Avbryt";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Välj färg för ljudklipp";
 "Choose color" = "Välj färg";
 "Choose image clip color" = "Välj färg för bildklipp";
+"Choose one of these aspect ratios: %@." = "Välj ett av dessa bildförhållanden: %@.";
 "Choose sequence clip color" = "Välj färg för sekvensklipp";
 "Choose text clip color" = "Välj färg för textklipp";
 "Choose the folder that holds your media" = "Välj mappen som innehåller ditt media";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "Det gick inte att justera %lld klipp.";
 "Couldn't change marker." = "Det gick inte att ändra markören.";
 "Couldn't delete marker." = "Det gick inte att radera markören.";
+"Couldn't reach the provider to upload the file." = "Det gick inte att nå leverantören för att ladda upp filen.";
 "Couldn't save the token to the Keychain." = "Det gick inte att spara token i nyckelringen.";
 "Couldn't switch angle." = "Det gick inte att byta vinkel.";
 "Couldn’t move %@ to the Trash." = "Det gick inte att flytta %@ till Papperskorgen.";
@@ -328,6 +330,7 @@
 "Enhance" = "Förbättra";
 "Enhance resolution or frame rate with AI" = "Förbättra upplösning eller bildfrekvens med AI";
 "Enter Full Screen" = "Gå till helskärm";
+"Enter the color as #RRGGBB." = "Ange färgen som #RRGGBB.";
 "Erase an object from the image" = "Radera ett objekt från bilden";
 "Every connected agent will need the new token." = "Varje ansluten agent behöver den nya token.";
 "Every link stops working. This can't be undone." = "Alla länkar slutar fungera. Det går inte att ångra.";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "Inga justeringar än";
 "No audio" = "Inget ljud";
 "No audio selected." = "Inget ljud markerat.";
+"No backend is connected." = "Ingen backend är ansluten.";
 "No beats detected." = "Inga takter identifierades.";
 "No connected backend can publish video." = "Ingen ansluten backend kan publicera video.";
 "No conversations yet" = "Inga konversationer än";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "Tryck på M i tidslinjen för att lägga till en markör.";
 "Preview" = "Förhandsvisning";
 "Processing is billed by the backend. The estimate appears once processing starts." = "Bearbetningen faktureras av backend. Uppskattningen visas när bearbetningen startar.";
+"Processing request interrupted." = "Bearbetningsbegäran avbröts.";
 "Processing…" = "Bearbetar…";
 "Processing… Estimated %@ %@" = "Bearbetar… Uppskattat: %@ %@";
 "Project" = "Projekt";
@@ -674,6 +679,7 @@
 "Prompt" = "Prompt";
 "Publish" = "Publicera";
 "Published" = "Publicerad";
+"Publishing failed." = "Publiceringen misslyckades.";
 "Publish…" = "Publicera…";
 "Put the subject on a new background" = "Placera motivet på en ny bakgrund";
 "Quality" = "Kvalitet";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "Klar, %lld misslyckades";
 "Reasoning effort" = "Resonemangsinsats";
 "Recolor" = "Färga om";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "Anslut en backend som publicerar video igen för att avpublicera eller lägga till utdata.";
 "Redetect Beats" = "Identifiera takter igen";
 "Redo" = "Gör om";
 "Redo (⇧⌘Z)" = "Gör om (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "Text att tala (minst %lld tecken)";
 "The MCP server could not start. Check the port, then try again." = "MCP-servern kunde inte startas. Kontrollera porten och försök igen.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-token är inte tillgänglig. Kontrollera åtkomsten till nyckelringen och försök igen.";
+"The backend rejected the token." = "Backend avvisade token.";
+"The backend returned an unexpected response." = "Backend returnerade ett oväntat svar.";
+"The backend returned no result for this output." = "Backend returnerade inget resultat för denna utdata.";
 "The clip you're adding has different settings than the current project." = "Klippet du lägger till har andra inställningar än det aktuella projektet.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Den anslutna backenden erbjuder inte den här redigeringen. Öppna Inställningar → Backend.";
 "The export" = "Exporten";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "Den valda modellen avvisade den här begäran. Ändra prompten och försök igen.";
 "The selected projects will be moved to the Trash." = "De markerade projekten flyttas till Papperskorgen.";
 "The source file is missing." = "Källfilen saknas.";
-"The teaser must be shorter than the video." = "Teasern måste vara kortare än videon.";
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeinställningarna ändrades. Stäng det här bladet och försök igen.";
 "The upload didn't finish. Publish the export again." = "Uppladdningen slutfördes inte. Publicera exporten igen.";
+"The upload to the provider failed." = "Uppladdningen till leverantören misslyckades.";
 "Theme" = "Tema";
 "This build includes no skills." = "Den här versionen innehåller inga färdigheter.";
 "This edit works on images only." = "Den här redigeringen fungerar bara på bilder.";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Den här modellen kan inte begränsa utdata till 60 FPS.";
 "This permanently removes %@." = "Det här tar bort %@ permanent.";
 "This source can’t replace the clip." = "Den här källan kan inte ersätta klippet.";
+"This video allows teasers up to %@." = "Den här videon tillåter teasers på upp till %@.";
+"This video is too short for a teaser." = "Den här videon är för kort för en teaser.";
 "This video was unpublished." = "Den här videon har avpublicerats.";
 "Three-Stack" = "Trestapel";
 "Three-Up" = "Tre bredvid";
@@ -973,12 +985,14 @@
 "Update" = "Uppdatera";
 "Update available" = "Uppdatering tillgänglig";
 "Updating %@" = "Uppdaterar %@";
+"Upload interrupted." = "Uppladdningen avbröts.";
 "Uploading…" = "Överför…";
 "Upscale" = "Uppskala";
 "Upscale model not available" = "Uppskalningsmodellen är inte tillgänglig";
 "Upscale only works on video or images" = "Uppskala fungerar bara på video eller bilder";
 "Upscale source media" = "Uppskala källmedia";
 "Upscale…" = "Uppskala…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Använd 1–100 bokstäver, siffror, mellanslag, punkter, apostrofer eller bindestreck.";
 "Use Freeform" = "Använd fritt format";
 "Use Freeform to edit individual crop insets." = "Använd fritt format för att redigera enskilda beskärningsmarginaler.";
 "Use a port between 1024 and 65535." = "Använd en port mellan 1024 och 65535.";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Använder hela tidslinjen som standard. Markera ett område på tidslinjen för att bara tonsätta det avsnittet.";
 "Version" = "Version";
 "Vertical" = "Vertikalt";
-"Vertical aspect %@ isn't supported." = "Det vertikala bildförhållandet %@ stöds inte.";
+"Vertical aspect %@ isn't supported. Use %@." = "Det vertikala bildförhållandet %@ stöds inte. Använd %@.";
 "Vertical cut" = "Vertikal version";
+"Vertical cuts aren't available." = "Vertikala versioner är inte tillgängliga.";
 "Vertical workspace layout" = "Vertikal arbetsytelayout";
 "Vibrance" = "Lyster";
 "Video" = "Video";

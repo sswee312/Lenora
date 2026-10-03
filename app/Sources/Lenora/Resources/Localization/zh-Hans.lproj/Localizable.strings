@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld 张图像已在 Lenora 中准备就绪。";
 "%lld items" = "%lld 个项目";
 "%lld media files are missing and will be skipped." = "%lld 个媒体文件缺失，将被跳过。";
-"%lld seconds" = "%lld 秒";
 "%lld selected" = "已选择 %lld 个";
 "%lld subtitle files are ready in Lenora." = "%lld 个字幕文件已在 Lenora 中准备就绪。";
 "%lld text clips are ready in Lenora." = "%lld 个文本片段已在 Lenora 中准备就绪。";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "无法导入“%@”。不支持此文件类型。";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "无法在此粘贴“%@”。这会将时间线嵌套到自身中。";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "无法连接到 %@ 的后端。请先用 ./scripts/dev 启动，然后重新测试。";
+"Can't reach the backend." = "无法连接到后端。";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "无法重新链接“%@”。所需媒体类型：%@。所选媒体类型：%@。";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "无法解锁多机位轨道的同步。“%@”需要通过该轨道保持对齐。";
 "Cancel" = "取消";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "选择音频片段颜色";
 "Choose color" = "选择颜色";
 "Choose image clip color" = "选择图像片段颜色";
+"Choose one of these aspect ratios: %@." = "请选择以下宽高比之一：%@。";
 "Choose sequence clip color" = "选择序列片段颜色";
 "Choose text clip color" = "选择文本片段颜色";
 "Choose the folder that holds your media" = "选择包含媒体的文件夹";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "无法对齐 %lld 个片段。";
 "Couldn't change marker." = "无法更改标记。";
 "Couldn't delete marker." = "无法删除标记。";
+"Couldn't reach the provider to upload the file." = "无法连接到提供商以上传文件。";
 "Couldn't save the token to the Keychain." = "无法将令牌保存到钥匙串。";
 "Couldn't switch angle." = "无法切换角度。";
 "Couldn’t move %@ to the Trash." = "无法将 %@ 移到废纸篓。";
@@ -328,6 +330,7 @@
 "Enhance" = "增强";
 "Enhance resolution or frame rate with AI" = "使用 AI 提升分辨率或帧率";
 "Enter Full Screen" = "进入全屏幕";
+"Enter the color as #RRGGBB." = "请以 #RRGGBB 格式输入颜色。";
 "Erase an object from the image" = "从图像中擦除对象";
 "Every connected agent will need the new token." = "每个已连接的 Agent 都需要新令牌。";
 "Every link stops working. This can't be undone." = "所有链接将失效。此操作无法撤销。";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "尚未进行调整";
 "No audio" = "没有音频";
 "No audio selected." = "未选择音频。";
+"No backend is connected." = "未连接后端。";
 "No beats detected." = "未检测到节拍。";
 "No connected backend can publish video." = "没有已连接的后端可以发布视频。";
 "No conversations yet" = "尚无对话";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "在时间线上按 M 可添加标记。";
 "Preview" = "预览";
 "Processing is billed by the backend. The estimate appears once processing starts." = "处理费用由后端计费。处理开始后会显示预估费用。";
+"Processing request interrupted." = "处理请求已中断。";
 "Processing…" = "正在处理…";
 "Processing… Estimated %@ %@" = "正在处理… 预估：%@ %@";
 "Project" = "项目";
@@ -674,6 +679,7 @@
 "Prompt" = "提示词";
 "Publish" = "发布";
 "Published" = "已发布";
+"Publishing failed." = "发布失败。";
 "Publish…" = "发布…";
 "Put the subject on a new background" = "将主体放到新背景上";
 "Quality" = "质量";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "就绪，%lld 个失败";
 "Reasoning effort" = "推理强度";
 "Recolor" = "重新着色";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "请重新连接可发布视频的后端，以取消发布或添加输出。";
 "Redetect Beats" = "重新检测节拍";
 "Redo" = "重做";
 "Redo (⇧⌘Z)" = "重做 (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "要朗读的文本（至少 %lld 个字符）";
 "The MCP server could not start. Check the port, then try again." = "无法启动 MCP 服务器。请检查端口，然后重试。";
 "The MCP token is unavailable. Check Keychain access, then try again." = "无法使用 MCP 令牌。请检查钥匙串访问权限，然后重试。";
+"The backend rejected the token." = "后端拒绝了令牌。";
+"The backend returned an unexpected response." = "后端返回了意外的响应。";
+"The backend returned no result for this output." = "后端未返回此输出的结果。";
 "The clip you're adding has different settings than the current project." = "要添加的片段与当前项目的设置不同。";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "已连接的后端不提供此编辑。请打开“设置 → 后端”。";
 "The export" = "导出任务";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "所选模型拒绝了此请求。请修改提示词后重试。";
 "The selected projects will be moved to the Trash." = "所选项目将被移到废纸篓。";
 "The source file is missing." = "找不到源文件。";
-"The teaser must be shorter than the video." = "预告片必须短于视频。";
 "The timeline settings changed. Close this sheet and try again." = "时间线设置已更改。请关闭此表单后重试。";
 "The upload didn't finish. Publish the export again." = "上传未完成。请再次发布导出。";
+"The upload to the provider failed." = "上传到提供商失败。";
 "Theme" = "主题";
 "This build includes no skills." = "此版本不包含任何技能。";
 "This edit works on images only." = "此编辑仅适用于图像。";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "此模型无法将输出限制为 60 FPS。";
 "This permanently removes %@." = "这将永久移除 %@。";
 "This source can’t replace the clip." = "此源媒体无法替换该片段。";
+"This video allows teasers up to %@." = "此视频的预告片最长为 %@。";
+"This video is too short for a teaser." = "此视频太短，无法制作预告片。";
 "This video was unpublished." = "此视频已取消发布。";
 "Three-Stack" = "三叠";
 "Three-Up" = "三画面";
@@ -973,12 +985,14 @@
 "Update" = "更新";
 "Update available" = "有可用更新";
 "Updating %@" = "正在更新 %@";
+"Upload interrupted." = "上传已中断。";
 "Uploading…" = "正在上传…";
 "Upscale" = "放大";
 "Upscale model not available" = "放大模型不可用";
 "Upscale only works on video or images" = "放大仅适用于视频或图像";
 "Upscale source media" = "放大源媒体";
 "Upscale…" = "放大…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "请使用 1–100 个字母、数字、空格、句点、撇号或连字符。";
 "Use Freeform" = "使用自由形式";
 "Use Freeform to edit individual crop insets." = "使用自由形式可分别编辑各裁剪内边距。";
 "Use a port between 1024 and 65535." = "请使用 1024 到 65535 之间的端口。";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "默认使用整个时间线。在时间线上标记范围可仅为该区段配乐。";
 "Version" = "版本";
 "Vertical" = "垂直";
-"Vertical aspect %@ isn't supported." = "不支持竖屏宽高比 %@。";
+"Vertical aspect %@ isn't supported. Use %@." = "不支持竖屏宽高比 %@。请使用 %@。";
 "Vertical cut" = "竖版";
+"Vertical cuts aren't available." = "竖版不可用。";
 "Vertical workspace layout" = "垂直工作区布局";
 "Vibrance" = "自然饱和度";
 "Video" = "视频";

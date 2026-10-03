@@ -47,10 +47,6 @@ enum KeychainStore {
         }
     }
 
-    static func load(account: String) -> String? {
-        (try? read(account: account)) ?? nil
-    }
-
     /// Returns nil only when no usable item exists; any other Keychain failure throws.
     static func read(account: String) throws -> String? {
         let query: [String: Any] = [

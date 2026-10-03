@@ -30,9 +30,8 @@ struct LenoraBackendClient: GenerationProvider {
 
     @concurrent
     func health(recheckAddons: Bool) async throws -> BackendHealth {
-        var health = try request("GET", "v1", "health")
-        if recheckAddons { health.url?.append(queryItems: [URLQueryItem(name: "recheck", value: "addons")]) }
-        return try await decode(BackendHealth.self, health).0
+        let query = recheckAddons ? [URLQueryItem(name: "recheck", value: "addons")] : []
+        return try await decode(BackendHealth.self, request("GET", "v1", "health", query: query)).0
     }
 
     @concurrent
@@ -60,9 +59,8 @@ struct LenoraBackendClient: GenerationProvider {
 
     @concurrent
     func deleteAsset(model: String, assetRef: String) async throws {
-        var deletion = try request("DELETE", "v1", "assets")
-        deletion.url = deletion.url?.appending(path: assetRef).appending(queryItems: [URLQueryItem(name: "model", value: model)])
-        _ = try await send(deletion)
+        let query = [URLQueryItem(name: "model", value: model)]
+        _ = try await send(request("DELETE", "v1", "assets", trailingPath: assetRef, query: query))
     }
 
     @concurrent
@@ -120,10 +118,14 @@ struct LenoraBackendClient: GenerationProvider {
 
     // MARK: - Plumbing
 
+    // `trailingPath` keeps its slashes, for asset refs that are provider paths.
     private func request(
-        _ method: String, _ path: String..., body: (any Encodable)? = nil, headers: [String: String] = [:]
+        _ method: String, _ path: String..., trailingPath: String? = nil, query: [URLQueryItem] = [],
+        body: (any Encodable)? = nil, headers: [String: String] = [:]
     ) throws -> URLRequest {
-        let url = path.reduce(configuration.baseURL) { $0.appending(component: $1) }
+        var url = path.reduce(configuration.baseURL) { $0.appending(component: $1) }
+        if let trailingPath { url.append(path: trailingPath) }
+        if !query.isEmpty { url.append(queryItems: query) }
         var request = URLRequest(url: url, timeoutInterval: Self.requestTimeout)
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Accept")

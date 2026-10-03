@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "ภาพ %lld รายการพร้อมใน Lenora แล้ว";
 "%lld items" = "%lld รายการ";
 "%lld media files are missing and will be skipped." = "ไฟล์มีเดีย %lld รายการหายไปและจะถูกข้าม";
-"%lld seconds" = "%lld วินาที";
 "%lld selected" = "เลือกแล้ว %lld รายการ";
 "%lld subtitle files are ready in Lenora." = "ไฟล์คำบรรยาย %lld รายการพร้อมใน Lenora แล้ว";
 "%lld text clips are ready in Lenora." = "คลิปข้อความ %lld รายการพร้อมใน Lenora แล้ว";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "ไม่สามารถนำเข้า \"%@\" — ประเภทไฟล์ไม่รองรับ";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "ไม่สามารถวาง \"%@\" ที่นี่ — จะซ้อนไทม์ไลน์นี้ในตัวเอง";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "ไม่สามารถเข้าถึงแบ็กเอนด์ที่ %@ เริ่มด้วย ./scripts/dev แล้วทดสอบอีกครั้ง";
+"Can't reach the backend." = "ไม่สามารถเชื่อมต่อแบ็กเอนด์ได้";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "ไม่สามารถเชื่อมโยง \"%@\" ใหม่ได้ ประเภทมีเดียที่ต้องการ: %@ ประเภทที่เลือก: %@";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "ไม่สามารถปลดล็อกซิงค์บนแทร็กมัลติแคม — \"%@\" จัดแนวผ่านแทร็กนี้";
 "Cancel" = "ยกเลิก";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "เลือกสีคลิปเสียง";
 "Choose color" = "เลือกสี";
 "Choose image clip color" = "เลือกสีคลิปภาพ";
+"Choose one of these aspect ratios: %@." = "เลือกอัตราส่วนภาพอย่างใดอย่างหนึ่งต่อไปนี้: %@";
 "Choose sequence clip color" = "เลือกสีคลิปซีเควนซ์";
 "Choose text clip color" = "เลือกสีคลิปข้อความ";
 "Choose the folder that holds your media" = "เลือกโฟลเดอร์ที่เก็บมีเดียของคุณ";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "ไม่สามารถจัดแนวคลิป %lld รายการได้";
 "Couldn't change marker." = "ไม่สามารถเปลี่ยนมาร์กเกอร์ได้";
 "Couldn't delete marker." = "ไม่สามารถลบมาร์กเกอร์ได้";
+"Couldn't reach the provider to upload the file." = "ไม่สามารถเชื่อมต่อผู้ให้บริการเพื่ออัปโหลดไฟล์ได้";
 "Couldn't save the token to the Keychain." = "บันทึกโทเค็นลงในพวงกุญแจไม่ได้";
 "Couldn't switch angle." = "ไม่สามารถสลับมุมกล้องได้";
 "Couldn’t move %@ to the Trash." = "ไม่สามารถย้าย %@ ไปที่ถังขยะได้";
@@ -328,6 +330,7 @@
 "Enhance" = "ปรับปรุง";
 "Enhance resolution or frame rate with AI" = "ปรับปรุงความละเอียดหรืออัตราเฟรมด้วย AI";
 "Enter Full Screen" = "เข้าสู่เต็มหน้าจอ";
+"Enter the color as #RRGGBB." = "ป้อนสีในรูปแบบ #RRGGBB";
 "Erase an object from the image" = "ลบวัตถุออกจากภาพ";
 "Every connected agent will need the new token." = "Agent ที่เชื่อมต่ออยู่ทุกตัวจะต้องใช้โทเค็นใหม่";
 "Every link stops working. This can't be undone." = "ลิงก์ทั้งหมดจะใช้งานไม่ได้ การดำเนินการนี้ไม่สามารถย้อนกลับได้";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "ยังไม่มีการปรับ";
 "No audio" = "ไม่มีเสียง";
 "No audio selected." = "ยังไม่ได้เลือกเสียง";
+"No backend is connected." = "ไม่มีแบ็กเอนด์ที่เชื่อมต่ออยู่";
 "No beats detected." = "ไม่พบจังหวะ";
 "No connected backend can publish video." = "ไม่มีแบ็กเอนด์ที่เชื่อมต่อซึ่งเผยแพร่วิดีโอได้";
 "No conversations yet" = "ยังไม่มีการสนทนา";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "กด M ในไทม์ไลน์เพื่อเพิ่มมาร์กเกอร์";
 "Preview" = "ตัวอย่าง";
 "Processing is billed by the backend. The estimate appears once processing starts." = "แบ็กเอนด์เป็นผู้เรียกเก็บค่าประมวลผล ค่าประมาณจะแสดงเมื่อเริ่มประมวลผล";
+"Processing request interrupted." = "คำขอประมวลผลถูกขัดจังหวะ";
 "Processing…" = "กำลังประมวลผล…";
 "Processing… Estimated %@ %@" = "กำลังประมวลผล… ค่าประมาณ: %@ %@";
 "Project" = "โปรเจ็กต์";
@@ -674,6 +679,7 @@
 "Prompt" = "พรอมต์";
 "Publish" = "เผยแพร่";
 "Published" = "เผยแพร่แล้ว";
+"Publishing failed." = "การเผยแพร่ล้มเหลว";
 "Publish…" = "เผยแพร่…";
 "Put the subject on a new background" = "วางตัวแบบบนพื้นหลังใหม่";
 "Quality" = "คุณภาพ";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "พร้อม ล้มเหลว %lld รายการ";
 "Reasoning effort" = "ความพยายามในการให้เหตุผล";
 "Recolor" = "เปลี่ยนสี";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "เชื่อมต่อแบ็กเอนด์ที่เผยแพร่วิดีโอได้อีกครั้งเพื่อยกเลิกการเผยแพร่หรือเพิ่มเอาต์พุต";
 "Redetect Beats" = "ตรวจจับจังหวะอีกครั้ง";
 "Redo" = "ทำอีกครั้ง";
 "Redo (⇧⌘Z)" = "ทำอีกครั้ง (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "ข้อความที่จะพูด (อย่างน้อย %lld อักขระ)";
 "The MCP server could not start. Check the port, then try again." = "เริ่มเซิร์ฟเวอร์ MCP ไม่ได้ ตรวจสอบพอร์ตแล้วลองอีกครั้ง";
 "The MCP token is unavailable. Check Keychain access, then try again." = "ไม่สามารถใช้โทเค็น MCP ได้ ตรวจสอบสิทธิ์เข้าถึงพวงกุญแจ แล้วลองอีกครั้ง";
+"The backend rejected the token." = "แบ็กเอนด์ปฏิเสธโทเค็น";
+"The backend returned an unexpected response." = "แบ็กเอนด์ส่งการตอบกลับที่ไม่คาดคิด";
+"The backend returned no result for this output." = "แบ็กเอนด์ไม่ได้ส่งผลลัพธ์สำหรับเอาต์พุตนี้";
 "The clip you're adding has different settings than the current project." = "คลิปที่คุณกำลังเพิ่มมีการตั้งค่าต่างจากโปรเจ็กต์ปัจจุบัน";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "แบ็กเอนด์ที่เชื่อมต่อไม่มีการแก้ไขนี้ เปิดการตั้งค่า → แบ็กเอนด์";
 "The export" = "รายการส่งออก";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "โมเดลที่เลือกปฏิเสธคำขอนี้ แก้ไขพรอมต์แล้วลองอีกครั้ง";
 "The selected projects will be moved to the Trash." = "โปรเจ็กต์ที่เลือกจะถูกย้ายไปที่ถังขยะ";
 "The source file is missing." = "ไม่พบไฟล์ต้นทาง";
-"The teaser must be shorter than the video." = "ทีเซอร์ต้องสั้นกว่าวิดีโอ";
 "The timeline settings changed. Close this sheet and try again." = "การตั้งค่าไทม์ไลน์เปลี่ยนไป ปิดชีตนี้แล้วลองอีกครั้ง";
 "The upload didn't finish. Publish the export again." = "การอัปโหลดไม่เสร็จสมบูรณ์ เผยแพร่ไฟล์ส่งออกอีกครั้ง";
+"The upload to the provider failed." = "การอัปโหลดไปยังผู้ให้บริการล้มเหลว";
 "Theme" = "ธีม";
 "This build includes no skills." = "บิลด์นี้ไม่มีสกิล";
 "This edit works on images only." = "การแก้ไขนี้ใช้ได้กับภาพเท่านั้น";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "โมเดลนี้ไม่สามารถจำกัดเอาต์พุตที่ 60 FPS ได้";
 "This permanently removes %@." = "การดำเนินการนี้จะลบ %@ อย่างถาวร";
 "This source can’t replace the clip." = "ต้นทางนี้แทนที่คลิปไม่ได้";
+"This video allows teasers up to %@." = "วิดีโอนี้อนุญาตทีเซอร์ยาวได้สูงสุด %@";
+"This video is too short for a teaser." = "วิดีโอนี้สั้นเกินไปสำหรับทีเซอร์";
 "This video was unpublished." = "วิดีโอนี้ถูกยกเลิกการเผยแพร่แล้ว";
 "Three-Stack" = "สามชั้น";
 "Three-Up" = "สามช่อง";
@@ -973,12 +985,14 @@
 "Update" = "อัปเดต";
 "Update available" = "มีอัปเดต";
 "Updating %@" = "กำลังอัปเดต %@";
+"Upload interrupted." = "การอัปโหลดถูกขัดจังหวะ";
 "Uploading…" = "กำลังอัปโหลด…";
 "Upscale" = "เพิ่มความละเอียด";
 "Upscale model not available" = "โมเดลเพิ่มความละเอียดไม่พร้อมใช้งาน";
 "Upscale only works on video or images" = "เพิ่มความละเอียดใช้ได้กับวิดีโอหรือภาพเท่านั้น";
 "Upscale source media" = "เพิ่มความละเอียดมีเดียต้นทาง";
 "Upscale…" = "เพิ่มความละเอียด…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "ใช้ตัวอักษร ตัวเลข ช่องว่าง จุด อะพอสทรอฟี หรือยัติภังค์ 1–100 ตัว";
 "Use Freeform" = "ใช้อิสระ";
 "Use Freeform to edit individual crop insets." = "ใช้อิสระเพื่อแก้ไขส่วนเยื้องครอปทีละรายการ";
 "Use a port between 1024 and 65535." = "ใช้พอร์ตระหว่าง 1024 ถึง 65535";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "ใช้ทั้งไทม์ไลน์เป็นค่าเริ่มต้น ทำเครื่องหมายช่วงบนไทม์ไลน์เพื่อประพันธ์เพลงเฉพาะช่วงนั้น";
 "Version" = "เวอร์ชัน";
 "Vertical" = "แนวตั้ง";
-"Vertical aspect %@ isn't supported." = "ไม่รองรับสัดส่วนภาพแนวตั้ง %@";
+"Vertical aspect %@ isn't supported. Use %@." = "ไม่รองรับสัดส่วนภาพแนวตั้ง %@ ให้ใช้ %@";
 "Vertical cut" = "เวอร์ชันแนวตั้ง";
+"Vertical cuts aren't available." = "ไม่มีเวอร์ชันแนวตั้งให้ใช้งาน";
 "Vertical workspace layout" = "เค้าโครงพื้นที่ทำงานแนวตั้ง";
 "Vibrance" = "ความสด";
 "Video" = "วิดีโอ";

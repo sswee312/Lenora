@@ -12,6 +12,7 @@ final class PublishService {
     private let provider: @MainActor () -> (any GenerationProvider)?
     private let catalog: ModelCatalog
     private let probe: @Sendable (URL) async throws -> PublishProbe
+    private let sleep: @Sendable (Duration) async throws -> Void
     @ObservationIgnored private var runs: [UUID: Run] = [:]
     @ObservationIgnored private var deletesInFlight: [UUID: Int] = [:]
     @ObservationIgnored private var isOpen = true
@@ -24,16 +25,19 @@ final class PublishService {
     init(
         provider: @escaping @MainActor () -> (any GenerationProvider)?,
         catalog: ModelCatalog = .shared,
-        probe: @escaping @Sendable (URL) async throws -> PublishProbe = { try await PublishProbe.read($0) }
+        probe: @escaping @Sendable (URL) async throws -> PublishProbe = { try await PublishProbe.read($0) },
+        sleep: @escaping @Sendable (Duration) async throws -> Void = { try await Task.sleep(for: $0) }
     ) {
         self.provider = provider
         self.catalog = catalog
         self.probe = probe
+        self.sleep = sleep
     }
 
     var model: BackendModel? { catalog.models(ofKind: Self.kind).first }
     var limits: PublishLimits? { model.flatMap(PublishLimits.init(model:)) }
     var isAvailable: Bool { limits != nil }
+    var publicationsNewestFirst: [Publication] { publications.sorted { $0.createdAt > $1.createdAt } }
 
     func canPublish(_ job: ExportJob) -> Bool {
         guard job.status == .completed, let contentType = job.videoContentType else { return false }
@@ -134,9 +138,9 @@ final class PublishService {
     private static func settledAfterInterruption(_ record: Publication) -> Publication {
         var settled = record
         if record.status == .uploading {
-            settled.markFailed(message: "Upload interrupted.")
+            settled.markFailed(.uploadInterrupted)
         } else if record.status == .processing, record.jobId == nil {
-            settled.failPendingOutputs(message: "Submit interrupted.")
+            settled.failPendingOutputs(.submitInterrupted)
         }
         return settled
     }
@@ -146,6 +150,18 @@ final class PublishService {
         guard isOpen, let index = publications.firstIndex(where: { $0.id == id }) else { return }
         publications[index] = Self.settledAfterInterruption(publications[index])
         onChange()
+        resumeMonitoring()
+    }
+
+    // After a cancelled close: runs stopped by stopMonitoring settle as if the project had been reopened.
+    func reopen() {
+        guard !isOpen else { return }
+        isOpen = true
+        let settled = publications.map(Self.settledAfterInterruption)
+        if settled != publications {
+            publications = settled
+            onChange()
+        }
         resumeMonitoring()
     }
 
@@ -168,7 +184,7 @@ final class PublishService {
 
     private func upload(_ id: UUID, file: URL, contentType: String, byteCount: Int64, token: UUID) async {
         guard let provider = provider(), let model = publication(id)?.model else {
-            return fail(id, token: token, message: "No backend is connected.")
+            return fail(id, token: token, .backendUnavailable)
         }
         do {
             let ticket = try await provider.createUpload(
@@ -181,7 +197,7 @@ final class PublishService {
             try await provider.upload(file, ticket: ticket)
             await submit(id, provider: provider, token: token)
         } catch {
-            fail(id, token: token, message: error.localizedDescription)
+            fail(id, token: token, PublishFailure(error))
         }
     }
 
@@ -202,19 +218,34 @@ final class PublishService {
             }) else { return }
             await monitor(id, jobId: submitted.jobId, provider: provider, token: token)
         } catch {
-            fail(id, token: token, message: error.localizedDescription)
+            fail(id, token: token, PublishFailure(error))
         }
     }
 
+    nonisolated static func pollRetryDelay(after retries: Int) -> Duration {
+        .seconds(min(1 << min(retries, 6), 60))
+    }
+
     private func monitor(_ id: UUID, jobId: String, provider: any GenerationProvider, token: UUID) async {
-        do {
-            for try await state in provider.jobUpdates(jobId: jobId) {
-                guard commit(id, token: token, { $0.apply(state) }) else { return }
+        var provider = provider
+        var retries = 0
+        while true {
+            do {
+                for try await state in provider.jobUpdates(jobId: jobId) {
+                    retries = 0
+                    guard commit(id, token: token, { $0.apply(state) }) else { return }
+                }
+                return
+            } catch let error as BackendError where error.isTransient {
+                retries += 1
+                do { try await sleep(Self.pollRetryDelay(after: retries)) } catch { return }
+                guard runs[id]?.token == token else { return }
+                // A reconnect or backend switch during the wait replaces the provider; without one, resumeMonitoring takes over.
+                guard let current = self.provider() else { return }
+                provider = current
+            } catch {
+                return fail(id, token: token, PublishFailure(error))
             }
-        } catch let error as BackendError where error.isTransient {
-            // Stays processing; resumeMonitoring picks it up after the backend reconnects.
-        } catch {
-            fail(id, token: token, message: error.localizedDescription)
         }
     }
 
@@ -238,8 +269,8 @@ final class PublishService {
         return true
     }
 
-    private func fail(_ id: UUID, token: UUID, message: String) {
-        commit(id, token: token) { $0.failPendingOutputs(message: message) }
+    private func fail(_ id: UUID, token: UUID, _ failure: PublishFailure) {
+        commit(id, token: token) { $0.failPendingOutputs(failure) }
     }
 
     /// Best effort: deletes an asset whose run went stale, outside the cancelled run.

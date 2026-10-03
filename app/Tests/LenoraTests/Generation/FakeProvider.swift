@@ -6,7 +6,7 @@ actor FakeProvider: GenerationProvider {
     var submitted: [(JobRequest, String)] = []
     var cancelResult: Result<JobState, BackendError> = .failure(.problem(BackendProblem(code: "not_cancellable", detail: nil, status: 409, retryable: false)))
     private var states: [JobState]
-    private let failure: BackendError?
+    private var failure: BackendError?
     private var stream: AsyncThrowingStream<JobState, Error>.Continuation?
     private(set) var deletedAssets: [String] = []
     private var deleteResult: Result<Void, BackendError> = .success(())
@@ -16,12 +16,15 @@ actor FakeProvider: GenerationProvider {
     private let hangsOnUpload: Bool
     private let uploadFailure: BackendError?
     private let submitError: BackendError?
+    private let healthFailure: BackendError?
+    private var capabilitiesResult: BackendCapabilities = .empty
 
     init(
         states: [JobState] = [], failure: BackendError? = nil, hangsOnSubmit: Bool = false, hangsOnUpload: Bool = false,
-        uploadFailure: BackendError? = nil, submitError: BackendError? = nil
+        uploadFailure: BackendError? = nil, submitError: BackendError? = nil, healthFailure: BackendError? = nil
     ) {
         self.states = states
+        self.healthFailure = healthFailure
         self.submitError = submitError
         self.failure = failure
         self.hangsOnSubmit = hangsOnSubmit
@@ -29,8 +32,17 @@ actor FakeProvider: GenerationProvider {
         self.uploadFailure = uploadFailure
     }
 
-    nonisolated func health(recheckAddons: Bool) async throws -> BackendHealth { BackendHealth(status: "ok", protocolVersion: "1", backendVersion: "t", adapters: []) }
-    nonisolated func capabilities() async throws -> BackendCapabilities { .empty }
+    func health(recheckAddons: Bool) async throws -> BackendHealth {
+        if let healthFailure { throw healthFailure }
+        return BackendHealth(status: "ok", protocolVersion: "1", backendVersion: "t", adapters: [])
+    }
+
+    func capabilities() async throws -> BackendCapabilities {
+        await arrive(.capabilities)
+        return capabilitiesResult
+    }
+
+    func setCapabilities(_ capabilities: BackendCapabilities) { capabilitiesResult = capabilities }
 
     func createUpload(model: String, contentType: String, byteCount: Int64, filename: String) async throws -> UploadTicket {
         await arrive(.createUpload)
@@ -49,7 +61,7 @@ actor FakeProvider: GenerationProvider {
         submitted.append((job, idempotencyKey))
         if let submitError { throw submitError }
         if hangsOnSubmit { try await Task.sleep(for: .seconds(3600)) }
-        return try BackendCoding.decoder().decode(SubmittedJob.self, from: Data(#"{"jobId":"fake:1","status":"queued"}"#.utf8))
+        return try BackendCoding.decoder().decode(SubmittedJob.self, from: Data(#"{"jobId":"fake:1","status":"queued","estimate":{"amount":0.05,"unit":"cloudinary_credits"}}"#.utf8))
     }
 
     nonisolated func jobUpdates(jobId: String) -> AsyncThrowingStream<JobState, Error> {
@@ -71,14 +83,22 @@ actor FakeProvider: GenerationProvider {
 
     func emit(_ state: JobState) { stream?.yield(state) }
 
+    /// Later `jobUpdates` streams replay `states` and finish without failing.
+    func recover(states: [JobState]) {
+        self.states = states
+        failure = nil
+    }
+
     private var pollerWaiters: [CheckedContinuation<Void, Never>] = []
 
-    enum Call: Hashable, Sendable { case createUpload, upload, deleteAsset }
+    enum Call: Hashable, Sendable { case createUpload, upload, deleteAsset, capabilities }
 
     private var heldCalls: Set<Call> = []
     private var parkedCalls: [Call: [CheckedContinuation<Void, Never>]] = [:]
     private var arrivals: [Call: Int] = [:]
     private var arrivalWaiters: [(call: Call, count: Int, continuation: CheckedContinuation<Void, Never>)] = []
+    private var cancelledCalls: Set<Call> = []
+    private var cancellationWaiters: [(call: Call, continuation: CheckedContinuation<Void, Never>)] = []
 
     /// Parks every later `call` until `release(_:)`; parked calls ignore cancellation.
     func hold(_ call: Call) { heldCalls.insert(call) }
@@ -109,13 +129,47 @@ actor FakeProvider: GenerationProvider {
         arrivalWaiters.filter { $0.call == call && $0.count <= total }.forEach { $0.continuation.resume() }
         arrivalWaiters.removeAll { $0.call == call && $0.count <= total }
         guard heldCalls.contains(call) else { return }
-        await withCheckedContinuation { parkedCalls[call, default: []].append($0) }
+        await withTaskCancellationHandler {
+            await withCheckedContinuation { parkedCalls[call, default: []].append($0) }
+        } onCancel: {
+            Task { await self.noteCancelled(call) }
+        }
     }
 
-    /// Returns once a consumer has attached to `jobUpdates`.
+    /// Returns once a parked `call` has been cancelled by its caller, or when the waiting test is cancelled.
+    func waitForCancellation(_ call: Call) async {
+        if cancelledCalls.contains(call) { return }
+        await withTaskCancellationHandler {
+            await withCheckedContinuation { cancellationWaiters.append((call, $0)) }
+        } onCancel: {
+            Task { await self.resumeCancellationWaiters() }
+        }
+    }
+
+    private func resumeCancellationWaiters() {
+        cancellationWaiters.forEach { $0.continuation.resume() }
+        cancellationWaiters.removeAll()
+    }
+
+    private func noteCancelled(_ call: Call) {
+        cancelledCalls.insert(call)
+        cancellationWaiters.filter { $0.call == call }.forEach { $0.continuation.resume() }
+        cancellationWaiters.removeAll { $0.call == call }
+    }
+
+    /// Returns once a consumer has attached to `jobUpdates`, or when the waiting test is cancelled.
     func waitForPoller() async {
         if pollers > 0 { return }
-        await withCheckedContinuation { pollerWaiters.append($0) }
+        await withTaskCancellationHandler {
+            await withCheckedContinuation { pollerWaiters.append($0) }
+        } onCancel: {
+            Task { await self.resumePollerWaiters() }
+        }
+    }
+
+    private func resumePollerWaiters() {
+        pollerWaiters.forEach { $0.resume() }
+        pollerWaiters.removeAll()
     }
 
     private func noteTermination() { terminations += 1 }
@@ -126,8 +180,7 @@ actor FakeProvider: GenerationProvider {
         for state in states { continuation.yield(state) }
         if let failure { continuation.finish(throwing: failure) }
         else if states.last?.status.isTerminal == true { continuation.finish() }
-        pollerWaiters.forEach { $0.resume() }
-        pollerWaiters.removeAll()
+        resumePollerWaiters()
     }
 
     func setCancelResult(_ result: Result<JobState, BackendError>) { cancelResult = result }

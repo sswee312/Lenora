@@ -43,6 +43,17 @@ enum BackendError: Error, Sendable, Equatable, LocalizedError {
         }
     }
 
+    var code: String {
+        switch self {
+        case .unreachable: "backend_unreachable"
+        case .unauthorized: "unauthorized"
+        case .problem(let problem): problem.code
+        case .invalidResponse: "invalid_response"
+        case .uploadFailed: "upload_failed"
+        case .uploadUnreachable: "upload_unreachable"
+        }
+    }
+
     var errorDescription: String? {
         switch self {
         case .unreachable(let url):

@@ -36,8 +36,8 @@ enum MCPAccessToken {
     }
 
     private static let store = MCPAccessTokenStore(
-        read: { try KeychainStore.read(account: account) },
-        write: { KeychainStore.save($0, account: account) }
+        read: { try CredentialStore.current.read(account) },
+        write: { CredentialStore.current.save($0, account) }
     )
 }
 

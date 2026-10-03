@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "⁨%lld⁩ תמונות מוכנות ב-Lenora.";
 "%lld items" = "⁨%lld⁩ פריטים";
 "%lld media files are missing and will be skipped." = "חסרים ⁨%lld⁩ קובצי מדיה והם ידולגו.";
-"%lld seconds" = "%lld שניות";
 "%lld selected" = "נבחרו ⁨%lld⁩";
 "%lld subtitle files are ready in Lenora." = "⁨%lld⁩ קובצי כתוביות מוכנים ב-Lenora.";
 "%lld text clips are ready in Lenora." = "⁨%lld⁩ קליפי טקסט מוכנים ב-Lenora.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "לא ניתן לייבא את \"⁨%@⁩\" — סוג קובץ לא נתמך.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "לא ניתן להדביק את \"⁨%@⁩\" כאן — זה יקנן את ציר הזמן בתוך עצמו.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "לא ניתן להגיע ל-Backend בכתובת ⁨%@⁩. הפעל אותו באמצעות ./scripts/dev ובדוק שוב.";
+"Can't reach the backend." = "לא ניתן להתחבר לשרת האחורי.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "לא ניתן לקשר מחדש את \"⁨%@⁩\". סוג מדיה נדרש: ⁨%@⁩. סוג מדיה שנבחר: ⁨%@⁩.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "לא ניתן לבטל נעילת סנכרון ברצועת מולטיקאם — \"⁨%@⁩\" נשאר מיושר דרכה.";
 "Cancel" = "ביטול";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "בחר צבע קליפ שמע";
 "Choose color" = "בחר צבע";
 "Choose image clip color" = "בחר צבע קליפ תמונה";
+"Choose one of these aspect ratios: %@." = "בחר אחד מיחסי גובה-רוחב אלה: %@.";
 "Choose sequence clip color" = "בחר צבע קליפ רצף";
 "Choose text clip color" = "בחר צבע קליפ טקסט";
 "Choose the folder that holds your media" = "בחר את התיקייה שמכילה את המדיה";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "לא ניתן היה ליישר ⁨%lld⁩ קליפים.";
 "Couldn't change marker." = "לא ניתן היה לשנות סמן.";
 "Couldn't delete marker." = "לא ניתן היה למחוק סמן.";
+"Couldn't reach the provider to upload the file." = "לא ניתן היה להתחבר לספק כדי להעלות את הקובץ.";
 "Couldn't save the token to the Keychain." = "לא ניתן היה לשמור את הטוקן בצרור המפתחות.";
 "Couldn't switch angle." = "לא ניתן היה להחליף זווית.";
 "Couldn’t move %@ to the Trash." = "לא ניתן היה להעביר את ⁨%@⁩ לפח.";
@@ -328,6 +330,7 @@
 "Enhance" = "שפר";
 "Enhance resolution or frame rate with AI" = "שפר רזולוציה או קצב פריימים באמצעות AI";
 "Enter Full Screen" = "עבור למסך מלא";
+"Enter the color as #RRGGBB." = "הזן את הצבע בתבנית #RRGGBB.";
 "Erase an object from the image" = "מחיקת אובייקט מהתמונה";
 "Every connected agent will need the new token." = "כל Agent מחובר יצטרך את הטוקן החדש.";
 "Every link stops working. This can't be undone." = "כל הקישורים יפסיקו לעבוד. אי אפשר לבטל פעולה זו.";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "אין כוונונים עדיין";
 "No audio" = "אין שמע";
 "No audio selected." = "לא נבחר שמע.";
+"No backend is connected." = "אין שרת אחורי מחובר.";
 "No beats detected." = "לא זוהו פעימות.";
 "No connected backend can publish video." = "אין קצה אחורי מחובר שיכול לפרסם וידאו.";
 "No conversations yet" = "אין שיחות עדיין";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "לחץ ⁨M⁩ בציר הזמן כדי להוסיף סמן.";
 "Preview" = "תצוגה מקדימה";
 "Processing is billed by the backend. The estimate appears once processing starts." = "העיבוד מחויב על ידי הקצה האחורי. ההערכה מופיעה כשהעיבוד מתחיל.";
+"Processing request interrupted." = "בקשת העיבוד נקטעה.";
 "Processing…" = "מעבד…";
 "Processing… Estimated %@ %@" = "מעבד… הערכה: %@ %@";
 "Project" = "פרויקט";
@@ -674,6 +679,7 @@
 "Prompt" = "הנחיה";
 "Publish" = "פרסום";
 "Published" = "פורסם";
+"Publishing failed." = "הפרסום נכשל.";
 "Publish…" = "פרסום…";
 "Put the subject on a new background" = "הצבת הנושא על רקע חדש";
 "Quality" = "איכות";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "מוכן, %lld נכשלו";
 "Reasoning effort" = "מאמץ חשיבה";
 "Recolor" = "צביעה מחדש";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "יש לחבר מחדש שרת אחורי שמפרסם וידאו כדי לבטל פרסום או להוסיף פלטים.";
 "Redetect Beats" = "זהה פעימות מחדש";
 "Redo" = "בצע שוב";
 "Redo (⇧⌘Z)" = "בצע שוב ⁨(⇧⌘Z)⁩";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "טקסט להקראה (לפחות ⁨%lld⁩ תווים)";
 "The MCP server could not start. Check the port, then try again." = "לא ניתן היה להפעיל את שרת ה-MCP. בדוק את הפורט ונסה שוב.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "טוקן ה-MCP אינו זמין. בדוק את הגישה לצרור המפתחות ונסה שוב.";
+"The backend rejected the token." = "השרת האחורי דחה את האסימון.";
+"The backend returned an unexpected response." = "השרת האחורי החזיר תגובה לא צפויה.";
+"The backend returned no result for this output." = "השרת האחורי לא החזיר תוצאה עבור פלט זה.";
 "The clip you're adding has different settings than the current project." = "לקליפ שאתה מוסיף יש הגדרות שונות מאלה של הפרויקט הנוכחי.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "השרת המחובר אינו מציע עריכה זו. פתח הגדרות ← שרת.";
 "The export" = "הייצוא";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "המודל שנבחר דחה את הבקשה. עדכן את ההנחיה ונסה שוב.";
 "The selected projects will be moved to the Trash." = "הפרויקטים שנבחרו יועברו לפח.";
 "The source file is missing." = "קובץ המקור חסר.";
-"The teaser must be shorter than the video." = "הטריילר חייב להיות קצר מהסרטון.";
 "The timeline settings changed. Close this sheet and try again." = "הגדרות ציר הזמן השתנו. סגור גיליון זה ונסה שוב.";
 "The upload didn't finish. Publish the export again." = "ההעלאה לא הושלמה. פרסם את הייצוא שוב.";
+"The upload to the provider failed." = "ההעלאה לספק נכשלה.";
 "Theme" = "ערכת נושא";
 "This build includes no skills." = "גרסה זו אינה כוללת מיומנויות.";
 "This edit works on images only." = "עריכה זו פועלת על תמונות בלבד.";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "מודל זה אינו יכול להגביל את הפלט ל-⁨60 FPS⁩.";
 "This permanently removes %@." = "פעולה זו מסירה את ⁨%@⁩ לצמיתות.";
 "This source can’t replace the clip." = "מקור זה אינו יכול להחליף את הקליפ.";
+"This video allows teasers up to %@." = "סרטון זה מאפשר טריילרים באורך של עד %@.";
+"This video is too short for a teaser." = "הסרטון קצר מדי לטריילר.";
 "This video was unpublished." = "פרסום הסרטון הזה בוטל.";
 "Three-Stack" = "שלוש ערימות";
 "Three-Up" = "שלושה לרוחב";
@@ -973,12 +985,14 @@
 "Update" = "עדכן";
 "Update available" = "עדכון זמין";
 "Updating %@" = "מעדכן את ⁨%@⁩";
+"Upload interrupted." = "ההעלאה נקטעה.";
 "Uploading…" = "מעלה…";
 "Upscale" = "הגדל רזולוציה";
 "Upscale model not available" = "מודל הגדלת רזולוציה אינו זמין";
 "Upscale only works on video or images" = "הגדלת רזולוציה פועלת על וידאו או תמונות בלבד";
 "Upscale source media" = "הגדל רזולוציית מדיית מקור";
 "Upscale…" = "הגדל רזולוציה…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "השתמש ב-1–100 אותיות, ספרות, רווחים, נקודות, גרשים או מקפים.";
 "Use Freeform" = "השתמש בחופשי";
 "Use Freeform to edit individual crop insets." = "השתמש בחופשי כדי לערוך שולי חיתוך בנפרד.";
 "Use a port between 1024 and 65535." = "השתמש בפורט בין 1024 ל-65535.";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "משתמש בכל ציר הזמן כברירת מחדל. סמן טווח בציר הזמן כדי לחבר פסקול לקטע זה בלבד.";
 "Version" = "גרסה";
 "Vertical" = "אנכי";
-"Vertical aspect %@ isn't supported." = "יחס הגובה-רוחב האנכי %@ אינו נתמך.";
+"Vertical aspect %@ isn't supported. Use %@." = "יחס הגובה-רוחב האנכי %@ אינו נתמך. יש להשתמש ב-%@.";
 "Vertical cut" = "גרסה אנכית";
+"Vertical cuts aren't available." = "גרסאות אנכיות אינן זמינות.";
 "Vertical workspace layout" = "פריסת סביבת עבודה אנכית";
 "Vibrance" = "חיוניות";
 "Video" = "וידאו";

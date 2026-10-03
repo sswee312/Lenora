@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld зображень готові в Lenora.";
 "%lld items" = "%lld елементів";
 "%lld media files are missing and will be skipped." = "Відсутні медіафайли: %lld. Їх буде пропущено.";
-"%lld seconds" = "%lld с";
 "%lld selected" = "Вибрано: %lld";
 "%lld subtitle files are ready in Lenora." = "%lld файлів субтитрів готові в Lenora.";
 "%lld text clips are ready in Lenora." = "%lld текстових кліпів готові в Lenora.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "Не можна імпортувати \"%@\" — непідтримуваний тип файлу.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "Не можна вставити \"%@\" сюди — таймлайн опиниться всередині себе.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Не вдається зв'язатися з бекендом за адресою %@. Запустіть його командою ./scripts/dev і перевірте знову.";
+"Can't reach the backend." = "Не вдається підключитися до бекенда.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "Не можна перезв'язати \"%@\". Потрібний тип медіа: %@. Вибраний тип медіа: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Не можна вимкнути синхронізацію на доріжці мультикамери — \"%@\" вирівнюється через неї.";
 "Cancel" = "Скасувати";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Вибрати колір аудіокліпу";
 "Choose color" = "Вибрати колір";
 "Choose image clip color" = "Вибрати колір кліпу зображення";
+"Choose one of these aspect ratios: %@." = "Виберіть одне з цих співвідношень сторін: %@.";
 "Choose sequence clip color" = "Вибрати колір кліпу секвенції";
 "Choose text clip color" = "Вибрати колір текстового кліпу";
 "Choose the folder that holds your media" = "Виберіть папку з медіа";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "Не вдалося вирівняти кліпи: %lld.";
 "Couldn't change marker." = "Не вдалося змінити маркер.";
 "Couldn't delete marker." = "Не вдалося видалити маркер.";
+"Couldn't reach the provider to upload the file." = "Не вдалося підключитися до провайдера для завантаження файлу.";
 "Couldn't save the token to the Keychain." = "Не вдалося зберегти токен у В'язці ключів.";
 "Couldn't switch angle." = "Не вдалося змінити ракурс.";
 "Couldn’t move %@ to the Trash." = "Не вдалося перемістити %@ у Кошик.";
@@ -328,6 +330,7 @@
 "Enhance" = "Покращити";
 "Enhance resolution or frame rate with AI" = "Покращити роздільність або частоту кадрів за допомогою AI";
 "Enter Full Screen" = "Перейти в повноекранний режим";
+"Enter the color as #RRGGBB." = "Введіть колір у форматі #RRGGBB.";
 "Erase an object from the image" = "Стерти об’єкт із зображення";
 "Every connected agent will need the new token." = "Кожному підключеному агенту знадобиться новий токен.";
 "Every link stops working. This can't be undone." = "Усі посилання перестануть працювати. Цю дію не можна скасувати.";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "Корекції ще немає";
 "No audio" = "Немає аудіо";
 "No audio selected." = "Аудіо не вибрано.";
+"No backend is connected." = "Бекенд не підключено.";
 "No beats detected." = "Бітів не визначено.";
 "No connected backend can publish video." = "Жоден підключений бекенд не може публікувати відео.";
 "No conversations yet" = "Розмов ще немає";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "Натисніть M на таймлайні, щоб додати маркер.";
 "Preview" = "Перегляд";
 "Processing is billed by the backend. The estimate appears once processing starts." = "Обробка тарифікується бекендом. Оцінка з’явиться після початку обробки.";
+"Processing request interrupted." = "Запит на обробку перервано.";
 "Processing…" = "Обробка…";
 "Processing… Estimated %@ %@" = "Обробка… Оцінка: %@ %@";
 "Project" = "Проєкт";
@@ -674,6 +679,7 @@
 "Prompt" = "Промпт";
 "Publish" = "Опублікувати";
 "Published" = "Опубліковано";
+"Publishing failed." = "Не вдалося опублікувати.";
 "Publish…" = "Опублікувати…";
 "Put the subject on a new background" = "Розмістити об’єкт на новому тлі";
 "Quality" = "Якість";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "Готово, невдало: %lld";
 "Reasoning effort" = "Глибина міркування";
 "Recolor" = "Перефарбувати";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "Щоб зняти з публікації або додати виходи, знову підключіть бекенд, що публікує відео.";
 "Redetect Beats" = "Визначити біти знову";
 "Redo" = "Повторити";
 "Redo (⇧⌘Z)" = "Повторити (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "Текст для озвучення (мінімум %lld символів)";
 "The MCP server could not start. Check the port, then try again." = "Не вдалося запустити сервер MCP. Перевірте порт і повторіть спробу.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Токен MCP недоступний. Перевірте доступ до В'язки ключів і повторіть спробу.";
+"The backend rejected the token." = "Бекенд відхилив токен.";
+"The backend returned an unexpected response." = "Бекенд повернув неочікувану відповідь.";
+"The backend returned no result for this output." = "Бекенд не повернув результату для цього виходу.";
 "The clip you're adding has different settings than the current project." = "Кліп, який ви додаєте, має інші параметри, ніж поточний проєкт.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Підключений бекенд не пропонує цю правку. Відкрийте Параметри → Бекенд.";
 "The export" = "Експорт";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "Вибрана модель відхилила цей запит. Змініть промпт і повторіть спробу.";
 "The selected projects will be moved to the Trash." = "Вибрані проєкти буде переміщено в Кошик.";
 "The source file is missing." = "Вихідний файл відсутній.";
-"The teaser must be shorter than the video." = "Тизер має бути коротшим за відео.";
 "The timeline settings changed. Close this sheet and try again." = "Параметри таймлайну змінилися. Закрийте це вікно й повторіть спробу.";
 "The upload didn't finish. Publish the export again." = "Завантаження не завершено. Опублікуйте експорт ще раз.";
+"The upload to the provider failed." = "Не вдалося завантажити файл до провайдера.";
 "Theme" = "Тема";
 "This build includes no skills." = "У цій збірці немає навичок.";
 "This edit works on images only." = "Ця правка працює лише із зображеннями.";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Ця модель не може обмежити вихід до 60 FPS.";
 "This permanently removes %@." = "Це остаточно вилучає %@.";
 "This source can’t replace the clip." = "Це джерело не може замінити кліп.";
+"This video allows teasers up to %@." = "Максимальна тривалість тизера для цього відео: %@.";
+"This video is too short for a teaser." = "Це відео закоротке для тизера.";
 "This video was unpublished." = "Публікацію цього відео знято.";
 "Three-Stack" = "Три стоси";
 "Three-Up" = "Три панелі";
@@ -973,12 +985,14 @@
 "Update" = "Оновити";
 "Update available" = "Доступне оновлення";
 "Updating %@" = "Оновлення %@";
+"Upload interrupted." = "Завантаження перервано.";
 "Uploading…" = "Вивантаження…";
 "Upscale" = "Збільшити роздільність";
 "Upscale model not available" = "Модель збільшення роздільності недоступна";
 "Upscale only works on video or images" = "Збільшення роздільності працює лише з відео або зображеннями";
 "Upscale source media" = "Збільшити роздільність вихідних медіа";
 "Upscale…" = "Збільшити роздільність…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Використайте від 1 до 100 літер, цифр, пробілів, крапок, апострофів або дефісів.";
 "Use Freeform" = "Використати довільний режим";
 "Use Freeform to edit individual crop insets." = "Використайте довільний режим, щоб редагувати окремі відступи кадрування.";
 "Use a port between 1024 and 65535." = "Використайте порт від 1024 до 65535.";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Типово використовує весь таймлайн. Позначте діапазон на таймлайні, щоб написати музику лише для цього фрагмента.";
 "Version" = "Версія";
 "Vertical" = "Вертикально";
-"Vertical aspect %@ isn't supported." = "Вертикальне співвідношення сторін %@ не підтримується.";
+"Vertical aspect %@ isn't supported. Use %@." = "Вертикальне співвідношення сторін %@ не підтримується. Використовуйте %@.";
 "Vertical cut" = "Вертикальна версія";
+"Vertical cuts aren't available." = "Вертикальні версії недоступні.";
 "Vertical workspace layout" = "Вертикальне компонування робочого простору";
 "Vibrance" = "Соковитість";
 "Video" = "Відео";

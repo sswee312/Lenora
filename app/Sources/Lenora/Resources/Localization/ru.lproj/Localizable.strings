@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "Изображения готовы в Lenora: %lld.";
 "%lld items" = "Объектов: %lld";
 "%lld media files are missing and will be skipped." = "Отсутствуют медиафайлы: %lld. Они будут пропущены.";
-"%lld seconds" = "%lld с";
 "%lld selected" = "Выбрано: %lld";
 "%lld subtitle files are ready in Lenora." = "%lld файлов субтитров готовы в Lenora.";
 "%lld text clips are ready in Lenora." = "Текстовые клипы готовы в Lenora: %lld.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "Не удалось импортировать «%@»: тип файла не поддерживается.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "Нельзя вставить «%@» сюда: этот таймлайн окажется вложенным в самого себя.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Не удаётся связаться с бэкендом по адресу %@. Запустите его командой ./scripts/dev и проверьте снова.";
+"Can't reach the backend." = "Не удаётся подключиться к бэкенду.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "Не удалось перепривязать «%@». Требуемый тип медиафайла: %@. Выбранный тип: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Нельзя отключить синхронизацию на мультикамерной дорожке: «%@» останется выровненным по ней.";
 "Cancel" = "Отмена";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Выберите цвет аудиоклипа";
 "Choose color" = "Выберите цвет";
 "Choose image clip color" = "Выберите цвет клипа изображения";
+"Choose one of these aspect ratios: %@." = "Выберите одно из этих соотношений сторон: %@.";
 "Choose sequence clip color" = "Выберите цвет клипа последовательности";
 "Choose text clip color" = "Выберите цвет текстового клипа";
 "Choose the folder that holds your media" = "Выберите папку с медиафайлами";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "Не удалось синхронизировать клипы: %lld.";
 "Couldn't change marker." = "Не удалось изменить маркер.";
 "Couldn't delete marker." = "Не удалось удалить маркер.";
+"Couldn't reach the provider to upload the file." = "Не удалось подключиться к провайдеру для загрузки файла.";
 "Couldn't save the token to the Keychain." = "Не удалось сохранить токен в Связке ключей.";
 "Couldn't switch angle." = "Не удалось переключить ракурс.";
 "Couldn’t move %@ to the Trash." = "Не удалось переместить %@ в Корзину.";
@@ -328,6 +330,7 @@
 "Enhance" = "Улучшить";
 "Enhance resolution or frame rate with AI" = "Улучшить разрешение или частоту кадров с помощью AI";
 "Enter Full Screen" = "Перейти в полноэкранный режим";
+"Enter the color as #RRGGBB." = "Введите цвет в формате #RRGGBB.";
 "Erase an object from the image" = "Стереть объект с изображения";
 "Every connected agent will need the new token." = "Каждому подключённому агенту понадобится новый токен.";
 "Every link stops working. This can't be undone." = "Все ссылки перестанут работать. Это действие нельзя отменить.";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "Коррекции ещё не применялись";
 "No audio" = "Нет аудио";
 "No audio selected." = "Аудио не выбрано.";
+"No backend is connected." = "Бэкенд не подключён.";
 "No beats detected." = "Доли не обнаружены.";
 "No connected backend can publish video." = "Ни один подключённый бэкенд не может публиковать видео.";
 "No conversations yet" = "Пока нет бесед";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "Нажмите M на таймлайне, чтобы добавить маркер.";
 "Preview" = "Предпросмотр";
 "Processing is billed by the backend. The estimate appears once processing starts." = "Обработка тарифицируется бэкендом. Оценка появится после начала обработки.";
+"Processing request interrupted." = "Запрос на обработку прерван.";
 "Processing…" = "Обработка…";
 "Processing… Estimated %@ %@" = "Обработка… Оценка: %@ %@";
 "Project" = "Проект";
@@ -674,6 +679,7 @@
 "Prompt" = "Запрос";
 "Publish" = "Опубликовать";
 "Published" = "Опубликовано";
+"Publishing failed." = "Не удалось опубликовать.";
 "Publish…" = "Опубликовать…";
 "Put the subject on a new background" = "Поместить объект на новый фон";
 "Quality" = "Качество";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "Готово, не удалось: %lld";
 "Reasoning effort" = "Уровень рассуждений";
 "Recolor" = "Перекрасить";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "Чтобы снять с публикации или добавить выходы, снова подключите бэкенд, публикующий видео.";
 "Redetect Beats" = "Повторно определить ритм";
 "Redo" = "Повторить";
 "Redo (⇧⌘Z)" = "Повторить (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "Текст для озвучивания (минимум символов: %lld)";
 "The MCP server could not start. Check the port, then try again." = "Не удалось запустить сервер MCP. Проверьте порт и повторите попытку.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Токен MCP недоступен. Проверьте доступ к Связке ключей и повторите попытку.";
+"The backend rejected the token." = "Бэкенд отклонил токен.";
+"The backend returned an unexpected response." = "Бэкенд вернул неожиданный ответ.";
+"The backend returned no result for this output." = "Бэкенд не вернул результат для этого выхода.";
 "The clip you're adding has different settings than the current project." = "У добавляемого клипа настройки отличаются от текущего проекта.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Подключённый бэкенд не предлагает эту правку. Откройте Настройки → Бэкенд.";
 "The export" = "задачу экспорта";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "Выбранная модель отклонила этот запрос. Измените запрос и повторите попытку.";
 "The selected projects will be moved to the Trash." = "Выбранные проекты будут перемещены в Корзину.";
 "The source file is missing." = "Исходный файл отсутствует.";
-"The teaser must be shorter than the video." = "Тизер должен быть короче видео.";
 "The timeline settings changed. Close this sheet and try again." = "Настройки таймлайна изменились. Закройте это окно и повторите попытку.";
 "The upload didn't finish. Publish the export again." = "Загрузка не завершена. Опубликуйте экспорт ещё раз.";
+"The upload to the provider failed." = "Не удалось загрузить файл к провайдеру.";
 "Theme" = "Тема";
 "This build includes no skills." = "В этой сборке нет навыков.";
 "This edit works on images only." = "Эта правка работает только с изображениями.";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Эта модель не может ограничить результат частотой 60 FPS.";
 "This permanently removes %@." = "Это безвозвратно удалит %@.";
 "This source can’t replace the clip." = "Этот источник не может заменить клип.";
+"This video allows teasers up to %@." = "Максимальная длина тизера для этого видео: %@.";
+"This video is too short for a teaser." = "Это видео слишком короткое для тизера.";
 "This video was unpublished." = "Публикация этого видео снята.";
 "Three-Stack" = "Три панели";
 "Three-Up" = "Три окна";
@@ -973,12 +985,14 @@
 "Update" = "Обновить";
 "Update available" = "Доступно обновление";
 "Updating %@" = "Обновляется %@";
+"Upload interrupted." = "Загрузка прервана.";
 "Uploading…" = "Отправка…";
 "Upscale" = "Увеличить разрешение";
 "Upscale model not available" = "Модель увеличения разрешения недоступна";
 "Upscale only works on video or images" = "Увеличение разрешения работает только с видео или изображениями";
 "Upscale source media" = "Увеличить разрешение исходного медиафайла";
 "Upscale…" = "Увеличить разрешение…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Используйте от 1 до 100 букв, цифр, пробелов, точек, апострофов или дефисов.";
 "Use Freeform" = "Свободная форма";
 "Use Freeform to edit individual crop insets." = "Используйте свободную форму, чтобы изменить отдельные отступы кадрирования.";
 "Use a port between 1024 and 65535." = "Используйте порт от 1024 до 65535.";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "По умолчанию используется весь таймлайн. Отметьте диапазон на таймлайне, чтобы создать музыку только для этого фрагмента.";
 "Version" = "Версия";
 "Vertical" = "По вертикали";
-"Vertical aspect %@ isn't supported." = "Вертикальное соотношение сторон %@ не поддерживается.";
+"Vertical aspect %@ isn't supported. Use %@." = "Вертикальное соотношение сторон %@ не поддерживается. Используйте %@.";
 "Vertical cut" = "Вертикальная версия";
+"Vertical cuts aren't available." = "Вертикальные версии недоступны.";
 "Vertical workspace layout" = "Вертикальное расположение рабочей области";
 "Vibrance" = "Красочность";
 "Video" = "Видео";

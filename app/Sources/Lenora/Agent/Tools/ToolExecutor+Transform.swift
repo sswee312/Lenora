@@ -5,7 +5,8 @@ extension ToolExecutor {
         let mediaRef = try args.requireString("mediaRef")
         let operation = try args.requireString("operation")
         let request: MediaEditRequest
-        do { request = try Self.mediaEditRequest(operation: operation, args: args) }
+        let supported = ToolDefinitions.transformOperations(catalog: editor.generationService.catalog)
+        do { request = try Self.mediaEditRequest(operation: operation, args: args, supported: supported) }
         catch let error as TransformArgumentError { return Self.transformError(code: "invalid_request", message: error.message, field: error.field) }
         let source = try asset(mediaRef, editor: editor)
         switch await EditSubmitter.submitEdit(request, asset: source, editor: editor) {
@@ -23,7 +24,7 @@ extension ToolExecutor {
 
     struct TransformArgumentError: Error { let field: String; let message: String }
 
-    static func mediaEditRequest(operation: String, args: [String: Any]) throws -> MediaEditRequest {
+    static func mediaEditRequest(operation: String, args: [String: Any], supported: [String]) throws -> MediaEditRequest {
         func text(_ key: String) throws -> String {
             guard let value = args[key] as? String else { throw TransformArgumentError(field: key, message: "\(key) is required for \(operation).") }
             return value
@@ -40,7 +41,8 @@ extension ToolExecutor {
         case "restore": return .edit(.restore)
         case "reframe": return .reframe(VideoReframeParams(aspectRatio: try text("aspectRatio")))
         default:
-            throw TransformArgumentError(field: "operation", message: "Unsupported operation '\(operation)'. Supported: \(ToolDefinitions.transformOperationKinds.map(\.operation).joined(separator: ", ")).")
+            let available = supported.isEmpty ? "The connected backend offers no transform operations." : "Supported: \(supported.joined(separator: ", "))."
+            throw TransformArgumentError(field: "operation", message: "Unsupported operation '\(operation)'. \(available)")
         }
     }
 

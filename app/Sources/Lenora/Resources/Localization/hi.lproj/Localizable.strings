@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld इमेज Lenora में तैयार हैं।";
 "%lld items" = "%lld आइटम";
 "%lld media files are missing and will be skipped." = "%lld मीडिया फ़ाइलें उपलब्ध नहीं हैं और छोड़ दी जाएँगी।";
-"%lld seconds" = "%lld सेकंड";
 "%lld selected" = "%lld चयनित";
 "%lld subtitle files are ready in Lenora." = "%lld सबटाइटल फ़ाइलें Lenora में तैयार हैं।";
 "%lld text clips are ready in Lenora." = "%lld टेक्स्ट क्लिप Lenora में तैयार हैं।";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "\"%@\" को इम्पोर्ट नहीं किया जा सकता — फ़ाइल प्रकार समर्थित नहीं है।";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "\"%@\" को यहाँ पेस्ट नहीं किया जा सकता — इससे यह टाइमलाइन अपने अंदर नेस्ट हो जाएगी।";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "%@ पर बैकएंड तक नहीं पहुँच सकते। इसे ./scripts/dev से शुरू करें, फिर दोबारा टेस्ट करें।";
+"Can't reach the backend." = "बैकएंड तक नहीं पहुँचा जा सकता।";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "\"%@\" को रीलिंक नहीं किया जा सकता। आवश्यक मीडिया प्रकार: %@। चयनित मीडिया प्रकार: %@।";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "मल्टीकैम ट्रैक पर सिंक अनलॉक नहीं किया जा सकता — \"%@\" इसके ज़रिए अलाइन रहता है।";
 "Cancel" = "रद्द करें";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "ऑडियो क्लिप का रंग चुनें";
 "Choose color" = "रंग चुनें";
 "Choose image clip color" = "इमेज क्लिप का रंग चुनें";
+"Choose one of these aspect ratios: %@." = "इनमें से कोई एक आस्पेक्ट रेशियो चुनें: %@।";
 "Choose sequence clip color" = "सीक्वेंस क्लिप का रंग चुनें";
 "Choose text clip color" = "टेक्स्ट क्लिप का रंग चुनें";
 "Choose the folder that holds your media" = "मीडिया वाली फ़ोल्डर चुनें";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "%lld क्लिप अलाइन नहीं की जा सकीं।";
 "Couldn't change marker." = "मार्कर बदला नहीं जा सका।";
 "Couldn't delete marker." = "मार्कर हटाया नहीं जा सका।";
+"Couldn't reach the provider to upload the file." = "फ़ाइल अपलोड करने के लिए प्रदाता तक नहीं पहुँचा जा सका।";
 "Couldn't save the token to the Keychain." = "टोकन को Keychain में सेव नहीं किया जा सका।";
 "Couldn't switch angle." = "एंगल बदला नहीं जा सका।";
 "Couldn’t move %@ to the Trash." = "%@ को ट्रैश में नहीं ले जाया जा सका।";
@@ -328,6 +330,7 @@
 "Enhance" = "एन्हांस";
 "Enhance resolution or frame rate with AI" = "AI से रेज़ोल्यूशन या फ़्रेम रेट बेहतर करें";
 "Enter Full Screen" = "फ़ुल स्क्रीन में जाएँ";
+"Enter the color as #RRGGBB." = "रंग को #RRGGBB के रूप में दर्ज करें।";
 "Erase an object from the image" = "छवि से कोई वस्तु मिटाएँ";
 "Every connected agent will need the new token." = "जुड़े हर एजेंट को नया टोकन चाहिए होगा।";
 "Every link stops working. This can't be undone." = "सभी लिंक काम करना बंद कर देंगे। इसे पूर्ववत नहीं किया जा सकता।";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "अभी कोई एडजस्टमेंट नहीं";
 "No audio" = "कोई ऑडियो नहीं";
 "No audio selected." = "कोई ऑडियो चयनित नहीं।";
+"No backend is connected." = "कोई बैकएंड कनेक्ट नहीं है।";
 "No beats detected." = "कोई बीट नहीं पहचानी गई।";
 "No connected backend can publish video." = "कोई कनेक्टेड बैकएंड वीडियो प्रकाशित नहीं कर सकता।";
 "No conversations yet" = "अभी कोई बातचीत नहीं";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "टाइमलाइन में मार्कर जोड़ने के लिए M दबाएँ।";
 "Preview" = "प्रीव्यू";
 "Processing is billed by the backend. The estimate appears once processing starts." = "प्रोसेसिंग का बिल बैकएंड द्वारा लिया जाता है। प्रोसेसिंग शुरू होने पर अनुमान दिखाई देता है।";
+"Processing request interrupted." = "प्रोसेसिंग अनुरोध बाधित हुआ।";
 "Processing…" = "प्रोसेस हो रहा है…";
 "Processing… Estimated %@ %@" = "प्रोसेस हो रहा है… अनुमानित: %@ %@";
 "Project" = "प्रोजेक्ट";
@@ -674,6 +679,7 @@
 "Prompt" = "प्रॉम्प्ट";
 "Publish" = "प्रकाशित करें";
 "Published" = "प्रकाशित";
+"Publishing failed." = "प्रकाशन विफल रहा।";
 "Publish…" = "प्रकाशित करें…";
 "Put the subject on a new background" = "विषय को नई पृष्ठभूमि पर रखें";
 "Quality" = "क्वालिटी";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "तैयार, %lld विफल";
 "Reasoning effort" = "रीज़निंग एफ़र्ट";
 "Recolor" = "फिर से रंगें";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "अप्रकाशित करने या आउटपुट जोड़ने के लिए वीडियो प्रकाशित करने वाला बैकएंड फिर से कनेक्ट करें।";
 "Redetect Beats" = "बीट्स दोबारा पहचानें";
 "Redo" = "रीडू";
 "Redo (⇧⌘Z)" = "रीडू (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "बोला जाने वाला टेक्स्ट (कम से कम %lld अक्षर)";
 "The MCP server could not start. Check the port, then try again." = "MCP सर्वर शुरू नहीं हो सका। पोर्ट जाँचें, फिर दोबारा कोशिश करें।";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP टोकन उपलब्ध नहीं है। Keychain एक्सेस जाँचें, फिर दोबारा कोशिश करें।";
+"The backend rejected the token." = "बैकएंड ने टोकन अस्वीकार कर दिया।";
+"The backend returned an unexpected response." = "बैकएंड ने अप्रत्याशित प्रतिक्रिया दी।";
+"The backend returned no result for this output." = "बैकएंड ने इस आउटपुट के लिए कोई परिणाम नहीं दिया।";
 "The clip you're adding has different settings than the current project." = "आप जो क्लिप जोड़ रहे हैं उसकी सेटिंग्स मौजूदा प्रोजेक्ट से अलग हैं।";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "कनेक्ट किया गया बैकएंड यह संपादन उपलब्ध नहीं कराता। सेटिंग्स → बैकएंड खोलें।";
 "The export" = "एक्सपोर्ट";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "चयनित मॉडल ने यह अनुरोध अस्वीकार कर दिया। प्रॉम्प्ट संशोधित करें और फिर कोशिश करें।";
 "The selected projects will be moved to the Trash." = "चयनित प्रोजेक्ट ट्रैश में भेज दिए जाएँगे।";
 "The source file is missing." = "सोर्स फ़ाइल नहीं मिली।";
-"The teaser must be shorter than the video." = "टीज़र वीडियो से छोटा होना चाहिए।";
 "The timeline settings changed. Close this sheet and try again." = "टाइमलाइन सेटिंग्स बदल गई हैं। यह शीट बंद करके फिर कोशिश करें।";
 "The upload didn't finish. Publish the export again." = "अपलोड पूरा नहीं हुआ। एक्सपोर्ट को फिर से प्रकाशित करें।";
+"The upload to the provider failed." = "प्रदाता पर अपलोड विफल रहा।";
 "Theme" = "थीम";
 "This build includes no skills." = "इस बिल्ड में कोई स्किल शामिल नहीं है।";
 "This edit works on images only." = "यह संपादन केवल छवियों पर काम करता है।";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "यह मॉडल आउटपुट को 60 FPS पर सीमित नहीं कर सकता।";
 "This permanently removes %@." = "यह %@ को स्थायी रूप से हटाता है।";
 "This source can’t replace the clip." = "यह सोर्स क्लिप को नहीं बदल सकता।";
+"This video allows teasers up to %@." = "यह वीडियो अधिकतम %@ तक के टीज़र की अनुमति देता है।";
+"This video is too short for a teaser." = "यह वीडियो टीज़र के लिए बहुत छोटा है।";
 "This video was unpublished." = "इस वीडियो का प्रकाशन हटा दिया गया है।";
 "Three-Stack" = "तीन-स्टैक";
 "Three-Up" = "तीन पैनल";
@@ -973,12 +985,14 @@
 "Update" = "अपडेट";
 "Update available" = "अपडेट उपलब्ध है";
 "Updating %@" = "%@ अपडेट हो रहा है";
+"Upload interrupted." = "अपलोड बाधित हुआ।";
 "Uploading…" = "अपलोड हो रहा है…";
 "Upscale" = "अपस्केल";
 "Upscale model not available" = "अपस्केल मॉडल उपलब्ध नहीं है";
 "Upscale only works on video or images" = "अपस्केल केवल वीडियो या इमेज पर काम करता है";
 "Upscale source media" = "सोर्स मीडिया अपस्केल करें";
 "Upscale…" = "अपस्केल…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "1–100 अक्षर, अंक, स्पेस, पूर्ण विराम, एपॉस्ट्रॉफ़ी या हाइफ़न उपयोग करें।";
 "Use Freeform" = "फ़्रीफ़ॉर्म उपयोग करें";
 "Use Freeform to edit individual crop insets." = "अलग-अलग क्रॉप इन्सेट एडिट करने के लिए फ़्रीफ़ॉर्म उपयोग करें।";
 "Use a port between 1024 and 65535." = "1024 से 65535 के बीच का पोर्ट उपयोग करें।";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "डिफ़ॉल्ट रूप से पूरी टाइमलाइन उपयोग करता है। केवल किसी हिस्से को स्कोर करने के लिए टाइमलाइन पर रेंज मार्क करें।";
 "Version" = "वर्ज़न";
 "Vertical" = "वर्टिकल";
-"Vertical aspect %@ isn't supported." = "वर्टिकल आस्पेक्ट %@ समर्थित नहीं है।";
+"Vertical aspect %@ isn't supported. Use %@." = "वर्टिकल आस्पेक्ट %@ समर्थित नहीं है। %@ का उपयोग करें।";
 "Vertical cut" = "वर्टिकल कट";
+"Vertical cuts aren't available." = "वर्टिकल कट उपलब्ध नहीं हैं।";
 "Vertical workspace layout" = "वर्टिकल वर्कस्पेस लेआउट";
 "Vibrance" = "वाइब्रेंस";
 "Video" = "वीडियो";

@@ -32,7 +32,7 @@ extension ToolExecutor {
             switch input.action {
             case "list":
                 guard input.publicationId == nil else { throw PublishArgumentError(field: "publicationId", message: "publicationId only applies to get and unpublish.") }
-                return try Self.publishReceipt(["publications": service.publications.reversed().map { $0.toolPayload() }], tool: "manage_publications")
+                return try Self.publishReceipt(["publications": service.publicationsNewestFirst.map { $0.toolPayload() }], tool: "manage_publications")
             case "get", "unpublish":
                 guard let raw = input.publicationId, let id = UUID(uuidString: raw) else {
                     throw PublishArgumentError(field: "publicationId", message: "\(input.action) requires a publicationId from manage_publications list.")
@@ -57,14 +57,14 @@ extension ToolExecutor {
         return .ok(json)
     }
 
-    private static func publishError(_ error: Error) -> ToolResult {
+    static func publishError(_ error: Error) -> ToolResult {
         switch error {
         case let refusal as PublishRefusal: transformError(code: refusal.code, message: refusal.message, field: refusal.field)
         case let error as PublishArgumentError: transformError(code: "invalid_request", message: error.message, field: error.field)
         case let error as ToolError: transformError(code: "invalid_request", message: error.message, field: nil)
         case is CancellationError: transformError(code: "cancelled", message: "The project closed before the request finished.", field: nil)
-        case BackendError.problem(let problem): transformError(code: problem.code, message: error.localizedDescription, field: nil)
-        default: transformError(code: "backend_error", message: error.localizedDescription, field: nil)
+        case let error as BackendError: transformError(code: error.code, message: error.localizedDescription, field: nil)
+        default: transformError(code: "internal_error", message: error.localizedDescription, field: nil)
         }
     }
 }
@@ -115,7 +115,10 @@ private extension Publication {
             },
         ]
         if let estimate { payload["estimate"] = ["amount": estimate.amount, "unit": estimate.unit] }
-        if let message { payload["message"] = message }
+        if let failure {
+            payload["errorCode"] = failure.code
+            payload["message"] = failure.message
+        }
         if let noop { payload["noop"] = noop }
         return payload
     }

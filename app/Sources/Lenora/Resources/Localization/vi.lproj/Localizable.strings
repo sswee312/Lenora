@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld hình ảnh đã sẵn sàng trong Lenora.";
 "%lld items" = "%lld mục";
 "%lld media files are missing and will be skipped." = "Thiếu %lld tệp phương tiện và các tệp này sẽ bị bỏ qua.";
-"%lld seconds" = "%lld giây";
 "%lld selected" = "Đã chọn %lld";
 "%lld subtitle files are ready in Lenora." = "%lld tệp phụ đề đã sẵn sàng trong Lenora.";
 "%lld text clips are ready in Lenora." = "%lld clip văn bản đã sẵn sàng trong Lenora.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "Không thể nhập \"%@\" vì loại tệp không được hỗ trợ.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "Không thể dán \"%@\" tại đây vì thao tác này sẽ lồng timeline vào chính nó.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Không thể kết nối tới backend tại %@. Hãy khởi động bằng ./scripts/dev rồi kiểm tra lại.";
+"Can't reach the backend." = "Không thể kết nối tới backend.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "Không thể liên kết lại \"%@\". Loại phương tiện bắt buộc: %@. Loại đã chọn: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Không thể mở khóa đồng bộ trên track multicam. \"%@\" phải tiếp tục căn chỉnh theo track này.";
 "Cancel" = "Hủy";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Chọn màu clip âm thanh";
 "Choose color" = "Chọn màu";
 "Choose image clip color" = "Chọn màu clip hình ảnh";
+"Choose one of these aspect ratios: %@." = "Chọn một trong các tỷ lệ khung hình sau: %@.";
 "Choose sequence clip color" = "Chọn màu clip chuỗi";
 "Choose text clip color" = "Chọn màu clip văn bản";
 "Choose the folder that holds your media" = "Chọn thư mục chứa phương tiện";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "Không thể căn chỉnh %lld clip.";
 "Couldn't change marker." = "Không thể đổi marker.";
 "Couldn't delete marker." = "Không thể xóa marker.";
+"Couldn't reach the provider to upload the file." = "Không thể kết nối tới nhà cung cấp để tải tệp lên.";
 "Couldn't save the token to the Keychain." = "Không thể lưu token vào Chuỗi khóa.";
 "Couldn't switch angle." = "Không thể đổi góc.";
 "Couldn’t move %@ to the Trash." = "Không thể chuyển %@ vào Thùng rác.";
@@ -328,6 +330,7 @@
 "Enhance" = "Nâng cao";
 "Enhance resolution or frame rate with AI" = "Nâng cao độ phân giải hoặc tốc độ khung hình bằng AI";
 "Enter Full Screen" = "Vào toàn màn hình";
+"Enter the color as #RRGGBB." = "Nhập màu theo dạng #RRGGBB.";
 "Erase an object from the image" = "Xóa một vật thể khỏi hình ảnh";
 "Every connected agent will need the new token." = "Mọi agent đã kết nối sẽ cần token mới.";
 "Every link stops working. This can't be undone." = "Mọi liên kết sẽ ngừng hoạt động. Không thể hoàn tác thao tác này.";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "Chưa có điều chỉnh";
 "No audio" = "Không có âm thanh";
 "No audio selected." = "Chưa chọn âm thanh.";
+"No backend is connected." = "Chưa kết nối backend nào.";
 "No beats detected." = "Không phát hiện nhịp.";
 "No connected backend can publish video." = "Không có backend nào đang kết nối có thể xuất bản video.";
 "No conversations yet" = "Chưa có cuộc trò chuyện";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "Nhấn M trên timeline để thêm marker.";
 "Preview" = "Xem trước";
 "Processing is billed by the backend. The estimate appears once processing starts." = "Backend tính phí xử lý. Ước tính xuất hiện khi quá trình xử lý bắt đầu.";
+"Processing request interrupted." = "Yêu cầu xử lý bị gián đoạn.";
 "Processing…" = "Đang xử lý…";
 "Processing… Estimated %@ %@" = "Đang xử lý… Ước tính: %@ %@";
 "Project" = "Dự án";
@@ -674,6 +679,7 @@
 "Prompt" = "Câu lệnh";
 "Publish" = "Xuất bản";
 "Published" = "Đã xuất bản";
+"Publishing failed." = "Xuất bản thất bại.";
 "Publish…" = "Xuất bản…";
 "Put the subject on a new background" = "Đặt chủ thể lên nền mới";
 "Quality" = "Chất lượng";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "Sẵn sàng, %lld thất bại";
 "Reasoning effort" = "Mức độ lập luận";
 "Recolor" = "Tô màu lại";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "Kết nối lại backend có thể xuất bản video để hủy xuất bản hoặc thêm đầu ra.";
 "Redetect Beats" = "Phát hiện lại nhịp";
 "Redo" = "Làm lại";
 "Redo (⇧⌘Z)" = "Làm lại (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "Văn bản cần đọc (tối thiểu %lld ký tự)";
 "The MCP server could not start. Check the port, then try again." = "Không thể khởi động máy chủ MCP. Hãy kiểm tra cổng rồi thử lại.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "Không thể dùng token MCP. Hãy kiểm tra quyền truy cập Chuỗi khóa rồi thử lại.";
+"The backend rejected the token." = "Backend đã từ chối token.";
+"The backend returned an unexpected response." = "Backend trả về phản hồi không mong đợi.";
+"The backend returned no result for this output." = "Backend không trả về kết quả cho đầu ra này.";
 "The clip you're adding has different settings than the current project." = "Clip bạn đang thêm có cài đặt khác với dự án hiện tại.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Backend đã kết nối không cung cấp bản chỉnh sửa này. Mở Cài đặt → Backend.";
 "The export" = "Bản xuất";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "Mô hình đã chọn từ chối yêu cầu này. Chỉnh lại prompt và thử lại.";
 "The selected projects will be moved to the Trash." = "Các dự án đã chọn sẽ được chuyển vào Thùng rác.";
 "The source file is missing." = "Không tìm thấy tệp nguồn.";
-"The teaser must be shorter than the video." = "Teaser phải ngắn hơn video.";
 "The timeline settings changed. Close this sheet and try again." = "Cài đặt timeline đã thay đổi. Đóng bảng này và thử lại.";
 "The upload didn't finish. Publish the export again." = "Tải lên chưa hoàn tất. Hãy xuất bản lại bản xuất.";
+"The upload to the provider failed." = "Tải lên nhà cung cấp thất bại.";
 "Theme" = "Chủ đề";
 "This build includes no skills." = "Bản dựng này không có kỹ năng nào.";
 "This edit works on images only." = "Bản chỉnh sửa này chỉ dùng cho hình ảnh.";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Mô hình này không thể giới hạn đầu ra ở 60 FPS.";
 "This permanently removes %@." = "Thao tác này sẽ xóa vĩnh viễn %@.";
 "This source can’t replace the clip." = "Nguồn này không thể thay clip.";
+"This video allows teasers up to %@." = "Video này cho phép teaser dài tối đa %@.";
+"This video is too short for a teaser." = "Video này quá ngắn để tạo teaser.";
 "This video was unpublished." = "Video này đã được hủy xuất bản.";
 "Three-Stack" = "Ba tầng";
 "Three-Up" = "Ba khung";
@@ -973,12 +985,14 @@
 "Update" = "Cập nhật";
 "Update available" = "Có bản cập nhật";
 "Updating %@" = "Đang cập nhật %@";
+"Upload interrupted." = "Quá trình tải lên bị gián đoạn.";
 "Uploading…" = "Đang tải lên…";
 "Upscale" = "Nâng độ phân giải";
 "Upscale model not available" = "Mô hình nâng độ phân giải không khả dụng";
 "Upscale only works on video or images" = "Nâng độ phân giải chỉ hoạt động với video hoặc hình ảnh";
 "Upscale source media" = "Nâng độ phân giải phương tiện nguồn";
 "Upscale…" = "Nâng độ phân giải…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Dùng 1–100 chữ cái, chữ số, dấu cách, dấu chấm, dấu nháy đơn hoặc dấu gạch nối.";
 "Use Freeform" = "Dùng Tự do";
 "Use Freeform to edit individual crop insets." = "Dùng Tự do để chỉnh từng lề cắt xén.";
 "Use a port between 1024 and 65535." = "Dùng cổng trong khoảng 1024 đến 65535.";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Mặc định dùng toàn bộ timeline. Đánh dấu một vùng trên timeline để chỉ tạo nhạc nền cho đoạn đó.";
 "Version" = "Phiên bản";
 "Vertical" = "Dọc";
-"Vertical aspect %@ isn't supported." = "Tỷ lệ khung hình dọc %@ không được hỗ trợ.";
+"Vertical aspect %@ isn't supported. Use %@." = "Tỷ lệ khung hình dọc %@ không được hỗ trợ. Hãy dùng %@.";
 "Vertical cut" = "Bản dọc";
+"Vertical cuts aren't available." = "Bản dọc không khả dụng.";
 "Vertical workspace layout" = "Bố cục không gian làm việc dọc";
 "Vibrance" = "Độ rực";
 "Video" = "Video";

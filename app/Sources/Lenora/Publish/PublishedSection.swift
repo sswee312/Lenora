@@ -19,8 +19,15 @@ struct PublishedSection: View {
                 .padding(.vertical, AppTheme.Spacing.md)
             ScrollView {
                 LazyVStack(spacing: AppTheme.Spacing.zero) {
-                    ForEach(editor.publishService.publications.reversed()) { row($0) }
+                    ForEach(editor.publishService.publicationsNewestFirst) { row($0) }
                 }
+            }
+            if !editor.publishService.isAvailable {
+                Text(L10n.string("Reconnect a backend that publishes video to unpublish or add outputs."))
+                    .font(.system(size: AppTheme.FontSize.xs))
+                    .foregroundStyle(AppTheme.Text.mutedColor)
+                    .padding(.horizontal, AppTheme.Spacing.lg)
+                    .padding(.bottom, AppTheme.Spacing.sm)
             }
             if let errorMessage {
                 Text(verbatim: errorMessage)
@@ -73,12 +80,14 @@ struct PublishedSection: View {
             if let download = record.url(.download) {
                 ExportIconButton("arrow.up.right.square", help: L10n.string("Open")) { NSWorkspace.shared.open(download) }
             }
+            let available = editor.publishService.isAvailable
             if record.canAddOutputs {
                 ExportIconButton("plus.rectangle.on.rectangle", help: L10n.string("Add Outputs…")) { onAddOutputs(record) }
+                    .disabled(!available)
             }
             if record.status != .unpublished {
                 ExportIconButton("xmark.icloud", help: L10n.string("Unpublish")) { pendingUnpublish = record }
-                    .disabled(unpublishing.contains(record.id))
+                    .disabled(!available || unpublishing.contains(record.id))
             }
         }
         .padding(.horizontal, AppTheme.Spacing.lg)
@@ -92,7 +101,7 @@ struct PublishedSection: View {
             record.estimate.map { L10n.string("Processing… Estimated \($0.amount.formatted()) \($0.unit)") } ?? L10n.string("Processing…")
         case .ready: L10n.string("Ready")
         case .partial: L10n.string("Ready, \(record.outputs.count { $0.status == .failed }) failed")
-        case .failed: record.message.map { L10n.string("Failed: \($0)") } ?? L10n.string("Failed")
+        case .failed: record.failure.map { L10n.string("Failed: \($0.userMessage)") } ?? L10n.string("Failed")
         case .unpublished: L10n.string("Unpublished")
         }
     }

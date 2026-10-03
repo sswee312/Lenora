@@ -25,7 +25,6 @@
 "%lld images are ready in Lenora." = "%lld kuvaa on valmiina Lenora Prossa.";
 "%lld items" = "%lld kohdetta";
 "%lld media files are missing and will be skipped." = "%lld mediatiedostoa puuttuu, ja ne ohitetaan.";
-"%lld seconds" = "%lld sekuntia";
 "%lld selected" = "%lld valittu";
 "%lld subtitle files are ready in Lenora." = "%lld tekstitystiedostoa on valmiina Lenora Prossa.";
 "%lld text clips are ready in Lenora." = "%lld tekstileikettä on valmiina Lenora Prossa.";
@@ -121,6 +120,7 @@
 "Can't import \"%@\" — unsupported file type." = "\"%@\" ei voi tuoda — tiedostotyyppiä ei tueta.";
 "Can't paste \"%@\" here — it would nest this timeline inside itself." = "\"%@\" ei voi sijoittaa tähän — aikajana sisäistyisi itseensä.";
 "Can't reach backend at %@. Start it with ./scripts/dev, then test again." = "Taustapalvelinta osoitteessa %@ ei tavoiteta. Käynnistä se komennolla ./scripts/dev ja testaa uudelleen.";
+"Can't reach the backend." = "Taustapalveluun ei saada yhteyttä.";
 "Can't relink \"%@\". Required media type: %@. Selected media type: %@." = "\"%@\" ei voi linkittää uudelleen. Vaadittu mediatyyppi: %@. Valittu mediatyyppi: %@.";
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Monikameraraidan synkronointia ei voi avata — \"%@\" pysyy kohdistettuna sen kautta.";
 "Cancel" = "Peruuta";
@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Valitse äänileikkeen väri";
 "Choose color" = "Valitse väri";
 "Choose image clip color" = "Valitse kuvaleikkeen väri";
+"Choose one of these aspect ratios: %@." = "Valitse jokin näistä kuvasuhteista: %@.";
 "Choose sequence clip color" = "Valitse jaksoleikkeen väri";
 "Choose text clip color" = "Valitse tekstileikkeen väri";
 "Choose the folder that holds your media" = "Valitse kansio, jossa media on";
@@ -220,6 +221,7 @@
 "Couldn't align %lld clips." = "%lld leikettä ei voitu kohdistaa.";
 "Couldn't change marker." = "Merkkiä ei voitu muuttaa.";
 "Couldn't delete marker." = "Merkkiä ei voitu poistaa.";
+"Couldn't reach the provider to upload the file." = "Palveluntarjoajaan ei saatu yhteyttä tiedoston lataamiseksi.";
 "Couldn't save the token to the Keychain." = "Tunnuksen tallennus avainnippuun epäonnistui.";
 "Couldn't switch angle." = "Kulmaa ei voitu vaihtaa.";
 "Couldn’t move %@ to the Trash." = "%@ ei voitu siirtää roskakoriin.";
@@ -328,6 +330,7 @@
 "Enhance" = "Paranna";
 "Enhance resolution or frame rate with AI" = "Paranna resoluutiota tai kuvataajuutta tekoälyllä";
 "Enter Full Screen" = "Siirry koko näytön tilaan";
+"Enter the color as #RRGGBB." = "Anna väri muodossa #RRGGBB.";
 "Erase an object from the image" = "Poista kohde kuvasta";
 "Every connected agent will need the new token." = "Jokainen yhdistetty agentti tarvitsee uuden tunnuksen.";
 "Every link stops working. This can't be undone." = "Kaikki linkit lakkaavat toimimasta. Toimintoa ei voi kumota.";
@@ -579,6 +582,7 @@
 "No adjustments yet" = "Ei säätöjä vielä";
 "No audio" = "Ei ääntä";
 "No audio selected." = "Ääntä ei ole valittu.";
+"No backend is connected." = "Taustapalvelua ei ole yhdistetty.";
 "No beats detected." = "Iskuja ei tunnistettu.";
 "No connected backend can publish video." = "Mikään yhdistetty backend ei voi julkaista videota.";
 "No conversations yet" = "Ei keskusteluja vielä";
@@ -666,6 +670,7 @@
 "Press M in the timeline to add a marker." = "Paina M aikajanalla lisätäksesi merkin.";
 "Preview" = "Esikatselu";
 "Processing is billed by the backend. The estimate appears once processing starts." = "Taustapalvelu laskuttaa käsittelystä. Arvio näkyy, kun käsittely alkaa.";
+"Processing request interrupted." = "Käsittelypyyntö keskeytyi.";
 "Processing…" = "Käsitellään…";
 "Processing… Estimated %@ %@" = "Käsitellään… Arvio: %@ %@";
 "Project" = "Projekti";
@@ -674,6 +679,7 @@
 "Prompt" = "Kehote";
 "Publish" = "Julkaise";
 "Published" = "Julkaistu";
+"Publishing failed." = "Julkaisu epäonnistui.";
 "Publish…" = "Julkaise…";
 "Put the subject on a new background" = "Siirrä kohde uudelle taustalle";
 "Quality" = "Laatu";
@@ -687,6 +693,7 @@
 "Ready, %lld failed" = "Valmis, %lld epäonnistui";
 "Reasoning effort" = "Päättelyn määrä";
 "Recolor" = "Väritä uudelleen";
+"Reconnect a backend that publishes video to unpublish or add outputs." = "Yhdistä uudelleen videoita julkaiseva taustapalvelu peruuttaaksesi julkaisun tai lisätäksesi tulosteita.";
 "Redetect Beats" = "Tunnista iskut uudelleen";
 "Redo" = "Tee uudelleen";
 "Redo (⇧⌘Z)" = "Tee uudelleen (⇧⌘Z)";
@@ -887,6 +894,9 @@
 "Text to speak (minimum %lld characters)" = "Luettava teksti (vähintään %lld merkkiä)";
 "The MCP server could not start. Check the port, then try again." = "MCP-palvelinta ei voitu käynnistää. Tarkista portti ja yritä uudelleen.";
 "The MCP token is unavailable. Check Keychain access, then try again." = "MCP-tunnus ei ole käytettävissä. Tarkista avainnipun käyttöoikeus ja yritä uudelleen.";
+"The backend rejected the token." = "Taustapalvelu hylkäsi tunnuksen.";
+"The backend returned an unexpected response." = "Taustapalvelu palautti odottamattoman vastauksen.";
+"The backend returned no result for this output." = "Taustapalvelu ei palauttanut tulosta tälle tulosteelle.";
 "The clip you're adding has different settings than the current project." = "Lisättävän leikkeen asetukset poikkeavat nykyisestä projektista.";
 "The connected backend doesn't offer this edit. Open Settings → Backend." = "Yhdistetty taustapalvelu ei tarjoa tätä muokkausta. Avaa Asetukset → Taustapalvelu.";
 "The export" = "Vienti";
@@ -903,9 +913,9 @@
 "The selected model refused this request. Revise the prompt and try again." = "Valittu malli hylkäsi tämän pyynnön. Muokkaa kehotetta ja yritä uudelleen.";
 "The selected projects will be moved to the Trash." = "Valitut projektit siirretään roskakoriin.";
 "The source file is missing." = "Lähdetiedosto puuttuu.";
-"The teaser must be shorter than the video." = "Teaserin on oltava videota lyhyempi.";
 "The timeline settings changed. Close this sheet and try again." = "Aikajanan asetukset muuttuivat. Sulje tämä arkki ja yritä uudelleen.";
 "The upload didn't finish. Publish the export again." = "Lataus ei valmistunut. Julkaise vienti uudelleen.";
+"The upload to the provider failed." = "Lataus palveluntarjoajalle epäonnistui.";
 "Theme" = "Teema";
 "This build includes no skills." = "Tämä versio ei sisällä taitoja.";
 "This edit works on images only." = "Tämä muokkaus toimii vain kuville.";
@@ -916,6 +926,8 @@
 "This model cannot cap the output at 60 FPS." = "Tämä malli ei voi rajoittaa tulosta 60 FPS:ään.";
 "This permanently removes %@." = "Tämä poistaa kohteen %@ pysyvästi.";
 "This source can’t replace the clip." = "Tämä lähde ei voi korvata leikettä.";
+"This video allows teasers up to %@." = "Teaserin enimmäispituus tälle videolle: %@.";
+"This video is too short for a teaser." = "Tämä video on liian lyhyt teaserille.";
 "This video was unpublished." = "Tämän videon julkaisu on peruttu.";
 "Three-Stack" = "Kolmipino";
 "Three-Up" = "Kolme rinnakkain";
@@ -973,12 +985,14 @@
 "Update" = "Päivitä";
 "Update available" = "Päivitys saatavilla";
 "Updating %@" = "Päivitetään %@";
+"Upload interrupted." = "Lataus keskeytyi.";
 "Uploading…" = "Lähetetään…";
 "Upscale" = "Skaalaa ylös";
 "Upscale model not available" = "Ylöskaalausmalli ei ole käytettävissä";
 "Upscale only works on video or images" = "Skaalaa ylös toimii vain videolle tai kuville";
 "Upscale source media" = "Skaalaa lähdemedia ylös";
 "Upscale…" = "Skaalaa ylös…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Käytä 1–100 kirjainta, numeroa, välilyöntiä, pistettä, heittomerkkiä tai yhdysmerkkiä.";
 "Use Freeform" = "Käytä vapaata muotoa";
 "Use Freeform to edit individual crop insets." = "Käytä vapaata muotoa yksittäisten rajausreunusten muokkaamiseen.";
 "Use a port between 1024 and 65535." = "Käytä porttia väliltä 1024–65535.";
@@ -991,8 +1005,9 @@
 "Uses the whole timeline by default. Mark a range on the timeline to score only that span." = "Käyttää oletuksena koko aikajanaa. Merkitse alue aikajanalla säveltääksesi vain sen jakson.";
 "Version" = "Versio";
 "Vertical" = "Pysty";
-"Vertical aspect %@ isn't supported." = "Pystysuuntaista kuvasuhdetta %@ ei tueta.";
+"Vertical aspect %@ isn't supported. Use %@." = "Pystysuuntaista kuvasuhdetta %@ ei tueta. Käytä kuvasuhdetta %@.";
 "Vertical cut" = "Pystyversio";
+"Vertical cuts aren't available." = "Pystyversiot eivät ole käytettävissä.";
 "Vertical workspace layout" = "Pystysuuntainen työtilan asettelu";
 "Vibrance" = "Eloisuus";
 "Video" = "Video";
