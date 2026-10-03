@@ -149,6 +149,18 @@ final class PublishService {
         resumeMonitoring()
     }
 
+    // After a cancelled close: runs stopped by stopMonitoring settle as if the project had been reopened.
+    func reopen() {
+        guard !isOpen else { return }
+        isOpen = true
+        let settled = publications.map(Self.settledAfterInterruption)
+        if settled != publications {
+            publications = settled
+            onChange()
+        }
+        resumeMonitoring()
+    }
+
     func resumeMonitoring() {
         guard isOpen, let provider = provider() else { return }
         for record in publications where record.status == .processing && runs[record.id] == nil {

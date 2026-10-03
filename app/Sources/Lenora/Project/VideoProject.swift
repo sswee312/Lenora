@@ -183,6 +183,7 @@ class VideoProject: NSDocument {
         defer { isSavingBeforeClose = false }
         let coordinator = editorViewModel.projectPackageCoordinator
         await coordinator.beginClosing()
+        editorViewModel.publishService.stopMonitoring()
         do {
             repeat {
                 guard let url = fileURL else { throw CocoaError(.fileNoSuchFile) }
@@ -198,9 +199,15 @@ class VideoProject: NSDocument {
             } while hasUnautosavedChanges
             await coordinator.waitUntilIdle()
         } catch {
-            coordinator.cancelClosing()
+            cancelClosing()
             throw error
         }
+    }
+
+    @MainActor
+    func cancelClosing() {
+        editorViewModel.projectPackageCoordinator.cancelClosing()
+        editorViewModel.publishService.reopen()
     }
 
     override func writeSafely(

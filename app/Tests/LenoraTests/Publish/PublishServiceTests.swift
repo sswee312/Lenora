@@ -365,6 +365,23 @@ struct PublishServiceTests {
         #expect(await provider.pollers == 0)
     }
 
+    @Test func reopenAfterCancelledCloseSettlesTheStoppedUpload() async throws {
+        let provider = FakeProvider(states: [])
+        await provider.hold(.upload)
+        let service = try makeService(provider)
+        let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await provider.waitForCalls(.upload)
+        service.stopMonitoring()
+        var changes = 0
+        service.onChange = { changes += 1 }
+        service.reopen()
+        let settled = try #require(service.publications.first)
+        #expect(settled.status == .failed && settled.failure == .uploadInterrupted && settled.assetRef == "ref-cut.mp4")
+        #expect(changes == 1)
+        #expect(try await service.unpublish(record.id) == false)
+        await provider.release(.upload)
+    }
+
     @Test func intentsAfterCloseChangeNothing() async throws {
         let provider = FakeProvider(states: [])
         let service = try makeService(provider)
