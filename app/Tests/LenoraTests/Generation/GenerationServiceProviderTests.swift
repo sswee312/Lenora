@@ -52,6 +52,24 @@ struct GenerationServiceProviderTests {
         #expect(await provider.uploads.isEmpty)
     }
 
+    @Test func unsupportedInputsAfterUploadFailAsARefusalNotAnUploadFailure() async throws {
+        let fixture = try await EditorTestFixture.withImage()
+        defer { fixture.cleanup() }
+        let provider = FakeProvider(states: [])
+        let service = GenerationService(provider: { provider }, catalog: try cloudinaryCatalog())
+        var input = GenerationInput(prompt: "", model: "cloudinary/background-removal", duration: 0, aspectRatio: "")
+        input.createdAt = Date()
+        let params = VideoGenerationParams(prompt: "x", duration: 4, aspectRatio: "", resolution: nil, referenceVideoURLs: ["ref"])
+        let id = service.generate(
+            genInput: input, assetType: .image, placeholderDuration: 0, references: [fixture.image],
+            buildParams: { _ in .video(params) }, fileExtension: "png", projectURL: fixture.editor.projectURL, editor: fixture.editor
+        )
+        let placeholder = try placeholder(id, in: fixture.editor)
+        let refusal = GenerationError.unsupportedInputs("video and audio references").localizedDescription
+        try await fixture.waitUntil { placeholder.generationStatus == .failed(refusal) }
+        #expect(await provider.submitted.isEmpty)
+    }
+
     @Test func disconnectedBackendFailsPlaceholder() async throws {
         let fixture = try await EditorTestFixture.withImage()
         defer { fixture.cleanup() }

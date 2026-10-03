@@ -162,7 +162,13 @@ final class GenerationService {
                 if finalGenInput.createdAt == nil {
                     finalGenInput.createdAt = Date()
                 }
-                let parts = try buildParams(uploaded).jobParts(uploaded: uploaded)
+                let parts: (inputs: [JobInput], params: any Encodable & Sendable)
+                do { parts = try buildParams(uploaded).jobParts(uploaded: uploaded) }
+                catch {
+                    Log.generation.warning("submit refused model=\(genInput.model) error=\(error.localizedDescription)")
+                    fail(error.localizedDescription)
+                    return
+                }
                 let job = JobRequest(kind: model.kind, model: model.id, inputs: parts.inputs, params: parts.params)
                 finalGenInput.idempotencyKey = idempotencyKey
                 finalGenInput.submission = try PendingSubmission(job)
