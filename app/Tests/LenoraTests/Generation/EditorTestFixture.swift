@@ -39,8 +39,8 @@ struct EditorTestFixture {
         return fixture
     }
 
-    static func withVideo(catalog: ModelCatalog = ModelCatalog()) async throws -> EditorTestFixture {
-        let editor = EditorViewModel(generationProvider: { nil }, modelCatalog: catalog)
+    static func withVideo(provider: (any GenerationProvider)? = nil, catalog: ModelCatalog = ModelCatalog()) async throws -> EditorTestFixture {
+        let editor = EditorViewModel(generationProvider: { provider }, modelCatalog: catalog)
         return try make(editor: editor, byteCount: nil, fileExtension: "png", width: 4, height: 4, includesVideo: true)
     }
 

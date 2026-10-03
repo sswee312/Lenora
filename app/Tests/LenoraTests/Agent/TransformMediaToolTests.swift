@@ -146,7 +146,48 @@ struct TransformMediaToolTests {
         let model = try #require(EditorTestFixture.connectedCatalog().models(ofKind: "image.removeBackground").first)
         let info = ToolExecutor.transformModelInfo(model)
         #expect(info["type"] as? String == "transform")
-        #expect(info["operation"] as? String == "removeBackground")
+        #expect(info["operations"] as? [String] == ["removeBackground"])
         #expect(info["maxBytes"] as? Int64 == 10_485_760)
+    }
+
+    @Test func schemaListsOnlySupportedOperations() throws {
+        #expect(ToolDefinitions.transformOperations(catalog: try EditorTestFixture.connectedCatalog()) == ["removeBackground"])
+        #expect(ToolDefinitions.transformOperations(catalog: try EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")) ==
+                ["removeBackground", "generativeFill", "replace", "remove", "recolor", "backgroundReplace", "restore", "reframe"])
+    }
+
+    @Test func listedSchemaEnumFollowsTheCatalog() throws {
+        let tool = try #require(ToolDefinitions.available(ToolDefinitions.mcpServer, catalog: try EditorTestFixture.connectedCatalog()).first { $0.name == .transformMedia })
+        let operation = (tool.inputSchema["properties"] as? [String: Any])?["operation"] as? [String: Any]
+        #expect(operation?["enum"] as? [String] == ["removeBackground"])
+    }
+
+    @Test(arguments: [
+        (["operation": "remove", "prompt": "the cat, left"], "prompt"),
+        (["operation": "recolor", "prompt": "jacket", "color": "blue"], "color"),
+        (["operation": "generativeFill", "aspectRatio": "2:1"], "aspectRatio"),
+        (["operation": "replace", "from": "cup"], "to"),
+    ] as [([String: String], String)])
+    func invalidFieldsAreNamed(args: [String: String], field: String) async throws {
+        let fixture = try await EditorTestFixture.withImage(catalog: EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull"))
+        defer { fixture.cleanup() }
+        let result = await fixture.executor.execute(name: "transform_media", args: args.merging(["mediaRef": fixture.image.id]) { a, _ in a }, source: "mcp")
+        guard case .text(let text) = try #require(result.content.first) else { Issue.record("expected text"); return }
+        let error = try #require((try JSONSerialization.jsonObject(with: Data(text.utf8)) as? [String: Any])?["error"] as? [String: Any])
+        #expect(result.isError && error["code"] as? String == "invalid_request" && error["field"] as? String == field)
+        #expect(fixture.editor.mediaAssets.count == 1 && !fixture.undoManager.canUndo)
+    }
+
+    @Test func reframeReceiptNamesTheOperation() async throws {
+        let fixture = try await EditorTestFixture.withVideo(
+            provider: FakeProvider(states: [jobState(.running)]), catalog: EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")
+        )
+        defer { fixture.cleanup() }
+        let video = try #require(fixture.video)
+        let result = await fixture.executor.execute(name: "transform_media", args: ["mediaRef": video.id, "operation": "reframe", "aspectRatio": "9:16"], source: "mcp")
+        guard case .text(let text) = try #require(result.content.first) else { Issue.record("expected text"); return }
+        let receipt = try #require(try JSONSerialization.jsonObject(with: Data(text.utf8)) as? [String: Any])
+        #expect(receipt["operation"] as? String == "reframe" && receipt["status"] as? String == "generating")
+        fixture.editor.generationService.stopMonitoring()
     }
 }

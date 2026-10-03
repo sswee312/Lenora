@@ -1155,11 +1155,16 @@ enum ToolDefinitions {
         ),
         AgentTool(
             name: .transformMedia,
-            description: "Applies an AI transform to an existing image asset and imports the result as a new asset next to it. Operation removeBackground cuts out the subject and returns a transparent PNG. Accepts PNG, JPEG, WebP, HEIC or TIFF up to the limit list_models reports (10 MB on Cloudinary's free plan). Costs provider credits (about 0.075 Cloudinary credits per image); the receipt's estimate is informational. Returns {mediaRef, status: \"generating\", estimate} immediately — poll get_media until mediaRef is ready, then place it with add_clips. The finished import is one undo step. Listed only while the connected backend supports the operation.",
+            description: "Applies a direct AI edit to an existing asset and imports the result as a new asset next to it. Image operations: removeBackground (transparent PNG), generativeFill (extend the canvas to aspectRatio), replace (from → to), remove (prompt), recolor (prompt to color), backgroundReplace (optional prompt), restore (repair compression and noise). Video operation: reframe (smart crop to aspectRatio, keeping the subject in frame). Text fields allow only letters, digits, spaces and . ' - (up to 100 characters); describe objects plainly (\"the red car\"). Inputs must fit the limits list_models reports (bytes, pixels, types). Costs provider credits; the receipt's estimate is informational and the backend may refuse with quota_exceeded when its daily budget is spent. Returns {mediaRef, status: \"generating\", operation, estimate} at once — poll get_media until mediaRef is ready. Errors are {error: {code, message, field?}} with code unsupported_kind, invalid_request, input_too_large, quota_exceeded or provider_unavailable. The finished import is one undo step. For upscaling use upscale_media. Only operations the connected backend supports are listed.",
             inputSchema: objectSchema(
                 properties: [
-                    "mediaRef": ["type": "string", "description": "ID of the image asset to transform"],
-                    "operation": ["type": "string", "enum": ["removeBackground"], "description": "The transform to apply"],
+                    "mediaRef": ["type": "string", "description": "ID of the image or video asset to edit"],
+                    "operation": ["type": "string", "enum": transformOperationKinds.map(\.operation), "description": "The edit to apply"],
+                    "aspectRatio": ["type": "string", "description": "generativeFill: 1:1, 16:9, 9:16, 4:3 or 3:4. reframe: 9:16, 1:1, 4:5 or 16:9."],
+                    "from": ["type": "string", "description": "replace: what to replace. 1–100 letters, digits, spaces or . ' -"],
+                    "to": ["type": "string", "description": "replace: what to put there. Same character rules as from."],
+                    "prompt": ["type": "string", "description": "remove, recolor: the object. backgroundReplace: optional new background. Same character rules as from."],
+                    "color": ["type": "string", "description": "recolor: target colour as #RRGGBB."],
                 ],
                 required: ["mediaRef", "operation"]
             )
@@ -1439,7 +1444,7 @@ extension ToolName {
     /// Backend model kinds the tool needs; nil means it never depends on the backend.
     var requiredKinds: [String]? {
         switch self {
-        case .transformMedia: ["image.removeBackground"]
+        case .transformMedia: ToolDefinitions.transformKinds
         case .generateVideo: ClipType.video.generationKinds
         case .generateImage: ClipType.image.generationKinds
         case .generateAudio: ClipType.audio.generationKinds
@@ -1452,5 +1457,38 @@ extension ToolName {
 extension ToolDefinitions {
     @MainActor static func available(_ tools: [AgentTool], catalog: ModelCatalog) -> [AgentTool] {
         tools.filter { tool in tool.name.requiredKinds.map(catalog.supportsAny(of:)) ?? true }
+            .map { $0.name == .transformMedia ? $0.withTransformOperations(transformOperations(catalog: catalog)) : $0 }
+    }
+
+    static let transformOperationKinds: [(operation: String, kind: String, op: String?)] = [
+        ("removeBackground", "image.removeBackground", nil),
+        ("generativeFill", "image.edit", "fill"), ("replace", "image.edit", "replace"), ("remove", "image.edit", "remove"),
+        ("recolor", "image.edit", "recolor"), ("backgroundReplace", "image.edit", "backgroundReplace"),
+        ("restore", "image.edit", "restore"), ("reframe", "video.reframe", nil),
+    ]
+
+    static let transformKinds = ["image.removeBackground", "image.edit", "video.reframe"]
+
+    static func transformOperations(of model: BackendModel) -> [String] {
+        transformOperationKinds.filter { entry in
+            entry.kind == model.kind && (entry.op.map { model.operations?.contains($0) == true } ?? true)
+        }.map(\.operation)
+    }
+
+    @MainActor static func transformOperations(catalog: ModelCatalog) -> [String] {
+        let supported = Set(transformKinds.flatMap { catalog.models(ofKind: $0) }.flatMap(transformOperations(of:)))
+        return transformOperationKinds.map(\.operation).filter(supported.contains)
+    }
+}
+
+private extension AgentTool {
+    func withTransformOperations(_ operations: [String]) -> AgentTool {
+        var schema = inputSchema
+        var properties = schema["properties"] as? [String: Any] ?? [:]
+        var operation = properties["operation"] as? [String: Any] ?? [:]
+        operation["enum"] = operations
+        properties["operation"] = operation
+        schema["properties"] = properties
+        return AgentTool(name: name, description: description, inputSchema: schema)
     }
 }

@@ -41,7 +41,7 @@ final class MCPService {
     @ObservationIgnored
     private var catalogObserver: (any NSObjectProtocol)?
     @ObservationIgnored
-    private var announcedToolNames: Set<ToolName> = []
+    private var announcedToolList: [String] = []
 
     @ObservationIgnored
     private let portProvider: () -> UInt16
@@ -115,7 +115,7 @@ final class MCPService {
 
     private func observeCatalog() {
         stopObservingCatalog()
-        announcedToolNames = Set(Self.availableTools().map(\.name))
+        announcedToolList = Self.toolListSignature()
         catalogObserver = NotificationCenter.default.addObserver(
             forName: ModelCatalog.didChange, object: ModelCatalog.shared, queue: .main
         ) { [weak self] _ in
@@ -166,10 +166,14 @@ final class MCPService {
         ToolDefinitions.available(ToolDefinitions.mcpServer, catalog: .shared)
     }
 
+    private static func toolListSignature() -> [String] {
+        availableTools().map(\.name.rawValue).sorted() + ToolDefinitions.transformOperations(catalog: .shared)
+    }
+
     private func catalogDidChange() {
-        let names = Set(Self.availableTools().map(\.name))
-        guard names != announcedToolNames else { return }
-        announcedToolNames = names
+        let signature = Self.toolListSignature()
+        guard signature != announcedToolList else { return }
+        announcedToolList = signature
         guard let httpServer else { return }
         Task { await httpServer.broadcastToolListChanged() }
     }

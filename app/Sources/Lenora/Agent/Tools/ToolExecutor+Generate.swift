@@ -588,7 +588,7 @@ extension ToolExecutor {
                 .map { Self.upscaleModelInfo($0) }
         }
         if filter == nil || filter == "transform" {
-            out += ModelCatalog.shared.models(ofKind: MediaEditRequest.removeBackground.kind)
+            out += ToolDefinitions.transformKinds.flatMap { ModelCatalog.shared.models(ofKind: $0) }
                 .map { Self.transformModelInfo($0) }
         }
         let body: [String: Any] = [
@@ -691,7 +691,7 @@ extension ToolExecutor {
         var info: [String: Any] = [
             "id": m.id, "displayName": m.displayName,
             "type": "transform",
-            "operation": "removeBackground",
+            "operations": ToolDefinitions.transformOperations(of: m),
             "acceptedTypes": m.inputs.types,
             "maxBytes": m.inputs.maxBytes,
         ]
