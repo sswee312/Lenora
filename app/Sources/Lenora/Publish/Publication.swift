@@ -232,7 +232,7 @@ enum PublishRefusal: Error, Equatable {
         case .exportNotPublishable: L10n.string("Only completed MP4 or MOV exports can be published.")
         case .unreadable: L10n.string("The export file can't be read.")
         case .tooLarge(let bytes, let max):
-            L10n.string("The export is \(bytes.byteCountText); publishing accepts up to \(max.byteCountText).")
+            L10n.string("The export is \(bytes.byteCountText()); publishing accepts up to \(max.byteCountText()).")
         case .unsupportedAspect(let aspect, _): L10n.string("Vertical aspect \(aspect) isn't supported.")
         case .teaserUnsupported: L10n.string("Teasers aren't available.")
         case .teaserOutOfRange(_, let min, let max): L10n.string("Teasers must be \(min)–\(max) seconds.")

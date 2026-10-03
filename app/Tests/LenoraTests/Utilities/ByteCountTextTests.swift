@@ -1,10 +1,10 @@
+import Foundation
 import Testing
 @testable import Lenora
 
-@MainActor
 struct ByteCountTextTests {
-    @Test func mebibyteLimitsReadAsWholeMegabytes() {
-        #expect(MediaEditRefusal.tooLarge(maxBytes: 10_485_760).userMessage.contains("10 MB"))
-        #expect(PublishRefusal.tooLarge(byteCount: 209_715_200, maxBytes: 104_857_600).userMessage.contains("100 MB"))
+    @Test(arguments: [(Int64(10_485_760), "10 MB"), (104_857_600, "100 MB"), (1_073_741_824, "1 GB")])
+    func mebibyteLimitsReadAsWholeUnits(bytes: Int64, text: String) {
+        #expect(bytes.byteCountText(locale: Locale(identifier: "en_US_POSIX")) == text)
     }
 }

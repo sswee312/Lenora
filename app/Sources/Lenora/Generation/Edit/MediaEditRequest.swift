@@ -109,7 +109,7 @@ enum MediaEditRefusal: Equatable {
         case .wrongMediaType: L10n.string("This edit works on images only.")
         case .invalidParameter(_, let issue): issue.userMessage()
         case .unsupportedType(let type): L10n.string("\(type) files aren't supported by this edit.")
-        case .tooLarge(let max): L10n.string("The file is larger than \(max.byteCountText).")
+        case .tooLarge(let max): L10n.string("The file is larger than \(max.byteCountText()).")
         case .tooManyPixels(let max): L10n.string("The image is larger than \(max) pixels in total.")
         case .dimensionsUnknown: L10n.string("The image size isn't known yet. Try again in a moment.")
         case .sourceMissing: L10n.string("The source file is missing.")
