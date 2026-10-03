@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import os
 import time
 
@@ -13,6 +14,7 @@ pytestmark = [
     pytest.mark.live,
     pytest.mark.skipif(not os.environ.get("LENORA_CLOUDINARY_API_SECRET"), reason="needs Cloudinary keys"),
 ]
+log = logging.getLogger(__name__)
 SAMPLE_IMAGE = "https://res.cloudinary.com/demo/image/upload/sample.jpg"
 SAMPLE_VIDEO = "https://res.cloudinary.com/demo/video/upload/dog.mp4"
 
@@ -101,9 +103,12 @@ def test_publish_then_unpublish(tmp_path):
         try:
             request = JobRequest(kind="video.publish", model="cloudinary/publish", inputs=[AssetInput(assetRef=ref)],
                                  params={"outputs": {"vertical": "9:16", "teaserSeconds": 5}})
-            state = await finish(adapter, (await adapter.submit(request.model, request)).jobId, timeout=900)
+            state = await finish(adapter, (await adapter.submit(request.model, request)).jobId, timeout=960)
         finally:
-            await adapter.delete_asset("cloudinary/publish", ref)
+            try:
+                await adapter.delete_asset("cloudinary/publish", ref)
+            except Exception:  # never mask the primary failure
+                log.exception("cleanup delete of %s failed", ref)
         with pytest.raises(ProblemError) as again:
             await adapter.delete_asset("cloudinary/publish", ref)
         return state, again.value.code
