@@ -605,6 +605,7 @@
 "Normal" = "일반";
 "Not selected" = "선택되지 않음";
 "Not synced — unusable as an angle." = "동기화되지 않음 — 앵글로 사용할 수 없습니다.";
+"Nothing new to add." = "추가할 새 항목이 없습니다.";
 "Notifications" = "알림";
 "OK" = "확인";
 "Object to recolor" = "색상을 바꿀 개체";

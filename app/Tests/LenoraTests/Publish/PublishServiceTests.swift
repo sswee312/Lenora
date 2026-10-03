@@ -202,6 +202,22 @@ struct PublishServiceTests {
         #expect(service.publications.first?.url(.teaser) != nil)
     }
 
+    @Test func addOutputsRefusesWhenNoOutputIsReady() async throws {
+        let provider = FakeProvider(states: [])
+        let service = try makeService(provider)
+        var record = PublishFixtures.readyRecord()
+        record.markUnpublished()
+        record.status = .failed
+        record.outputs = [PublishedOutput(role: .stream, status: .failed)]
+        service.restore([record])
+        #expect(!record.canAddOutputs)
+        #expect(throws: PublishRefusal.notUploaded) {
+            try service.addOutputs(to: record.id, options: PublishOptions(vertical: "9:16"), confirmPublic: true)
+        }
+        #expect(service.publications == [record])
+        #expect(await provider.submitted.isEmpty)
+    }
+
     @Test func addOutputsWithNothingNewIsANoop() async throws {
         let provider = FakeProvider(states: [])
         let service = try makeService(provider)

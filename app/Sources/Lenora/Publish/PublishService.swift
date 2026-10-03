@@ -73,7 +73,7 @@ final class PublishService {
         let record = publications[index]
         guard record.status != .unpublished else { throw PublishRefusal.unpublished }
         guard record.status != .uploading, record.status != .processing else { throw PublishRefusal.busy }
-        guard record.assetRef != nil else { throw PublishRefusal.notUploaded }
+        guard record.canAddOutputs else { throw PublishRefusal.notUploaded }
         let merged = record.options.merging(options)
         let known = PublishProbe(byteCount: 0, durationSeconds: record.durationSeconds)
         if let refusal = limits.refusal(for: merged, probe: known, maxBytes: nil) { throw refusal }

@@ -605,6 +605,7 @@
 "Normal" = "通常";
 "Not selected" = "未選択";
 "Not synced — unusable as an angle." = "未同期 — アングルとして使用できません。";
+"Nothing new to add." = "追加する項目はありません。";
 "Notifications" = "通知";
 "OK" = "OK";
 "Object to recolor" = "色を変えるオブジェクト";

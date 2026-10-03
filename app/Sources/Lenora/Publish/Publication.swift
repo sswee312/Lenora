@@ -51,6 +51,11 @@ struct Publication: Codable, Sendable, Equatable, Identifiable {
     var estimate: BackendEstimate? = nil
     var message: String? = nil
 
+    /// A ready output proves the upload and first job finished, so more outputs can be requested.
+    var canAddOutputs: Bool {
+        [.ready, .partial, .failed].contains(status) && assetRef != nil && outputs.contains { $0.status == .ready }
+    }
+
     func url(_ role: PublishRole) -> URL? { outputs.first { $0.role == role }?.url }
 
     /// Roles in `options` that aren't ready yet, or whose aspect or length changed.

@@ -6,6 +6,7 @@ struct PublishedSection: View {
     let onAddOutputs: (Publication) -> Void
     @State private var pendingUnpublish: Publication?
     @State private var errorMessage: String?
+    @State private var unpublishing: Set<UUID> = []
 
     private static let copyOrder: [PublishRole] = [.download, .stream, .poster, .vertical, .teaser]
 
@@ -67,15 +68,17 @@ struct PublishedSection: View {
             .fixedSize()
             .disabled(ready.isEmpty)
             .help(L10n.string("Copy Link"))
+            .accessibilityLabel(L10n.string("Copy Link"))
 
             if let download = record.url(.download) {
                 ExportIconButton("arrow.up.right.square", help: L10n.string("Open")) { NSWorkspace.shared.open(download) }
             }
-            if [.ready, .partial, .failed].contains(record.status), record.assetRef != nil {
+            if record.canAddOutputs {
                 ExportIconButton("plus.rectangle.on.rectangle", help: L10n.string("Add Outputs…")) { onAddOutputs(record) }
             }
             if record.status != .unpublished {
                 ExportIconButton("xmark.icloud", help: L10n.string("Unpublish")) { pendingUnpublish = record }
+                    .disabled(unpublishing.contains(record.id))
             }
         }
         .padding(.horizontal, AppTheme.Spacing.lg)
@@ -103,7 +106,9 @@ struct PublishedSection: View {
     private func unpublish(_ record: Publication) {
         errorMessage = nil
         let service = editor.publishService
+        guard unpublishing.insert(record.id).inserted else { return }
         Task {
+            defer { unpublishing.remove(record.id) }
             do { _ = try await service.unpublish(record.id) }
             catch is CancellationError {}
             catch let refusal as PublishRefusal { errorMessage = refusal.userMessage }

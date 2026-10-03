@@ -24,6 +24,14 @@ struct PublicationTests {
         #expect(caps.models.filter { $0.kind != "video.publish" }.allSatisfy { PublishLimits(model: $0) == nil })
     }
 
+    @Test func invertedTeaserRangeMakesPublishingUnavailable() throws {
+        let text = String(decoding: try ProtocolFixtures.data("Capabilities.cloudinaryFull"), as: UTF8.self)
+            .replacingOccurrences(of: "\"min\": 5", with: "\"min\": 40")
+        let caps = try BackendCoding.decoder().decode(BackendCapabilities.self, from: Data(text.utf8))
+        let model = try #require(caps.models.first { $0.kind == "video.publish" })
+        #expect(PublishLimits(model: model) == nil)
+    }
+
     @Test(arguments: [
         (PublishOptions(), PublishProbe(byteCount: 104_857_600, durationSeconds: 10), nil),
         (PublishOptions(), PublishProbe(byteCount: 104_857_601, durationSeconds: 10), PublishRefusal.tooLarge(byteCount: 104_857_601, maxBytes: 104_857_600)),

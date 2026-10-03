@@ -22,6 +22,7 @@ struct PublishSheet: View {
     @State private var includeTeaser: Bool
     @State private var teaserSeconds: Int
     @State private var errorMessage: String?
+    @State private var notice: String?
     @State private var isSubmitting = false
 
     init(target: Target, limits: PublishLimits) {
@@ -30,7 +31,8 @@ struct PublishSheet: View {
         let options: PublishOptions
         if case .publication(let record) = target { options = record.options } else { options = PublishOptions() }
         _includeVertical = State(initialValue: options.vertical != nil)
-        _aspect = State(initialValue: options.vertical ?? limits.verticalAspects?.first ?? "")
+        let aspects = limits.verticalAspects ?? []
+        _aspect = State(initialValue: options.vertical.flatMap { aspects.contains($0) ? $0 : nil } ?? aspects.first ?? "")
         _includeTeaser = State(initialValue: options.teaserSeconds != nil)
         _teaserSeconds = State(initialValue: options.teaserSeconds ?? limits.teaserSeconds?.min ?? 0)
     }
@@ -80,6 +82,11 @@ struct PublishSheet: View {
                 .font(.system(size: AppTheme.FontSize.xs))
                 .foregroundStyle(AppTheme.Text.mutedColor)
 
+            if let notice {
+                Text(verbatim: notice)
+                    .font(.system(size: AppTheme.FontSize.xs))
+                    .foregroundStyle(AppTheme.Text.secondaryColor)
+            }
             if let errorMessage {
                 Text(verbatim: errorMessage)
                     .font(.system(size: AppTheme.FontSize.xs))
@@ -90,6 +97,7 @@ struct PublishSheet: View {
                 Spacer()
                 Button(L10n.string("Cancel")) { dismiss() }
                     .keyboardShortcut(.cancelAction)
+                    .disabled(isSubmitting)
                 Button(L10n.string("Publish")) { submit() }
                     .keyboardShortcut(.defaultAction)
                     .disabled(isSubmitting)
@@ -98,6 +106,9 @@ struct PublishSheet: View {
         .padding(AppTheme.Spacing.xl)
         .frame(width: AppTheme.Export.publishSheetWidth)
         .appSheetBackground()
+        .onChange(of: editor.publishService.isAvailable) { _, available in
+            if !available { dismiss() }
+        }
     }
 
     private var title: String {
@@ -119,6 +130,7 @@ struct PublishSheet: View {
         let service = editor.publishService
         isSubmitting = true
         errorMessage = nil
+        notice = nil
         Task {
             defer { isSubmitting = false }
             do {
@@ -126,7 +138,11 @@ struct PublishSheet: View {
                 case .export(let job):
                     _ = try await service.publish(exportJobId: job.id, options: options, confirmPublic: true)
                 case .publication(let record):
-                    _ = try service.addOutputs(to: record.id, options: options, confirmPublic: true)
+                    let (_, noop) = try service.addOutputs(to: record.id, options: options, confirmPublic: true)
+                    if noop {
+                        notice = L10n.string("Nothing new to add.")
+                        return
+                    }
                 }
                 dismiss()
             } catch is CancellationError {
