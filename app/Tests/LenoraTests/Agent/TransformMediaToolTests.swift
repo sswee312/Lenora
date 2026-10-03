@@ -20,6 +20,19 @@ struct TransformMediaToolTests {
         #expect(fixture.editor.mediaAssets.count == 1)
     }
 
+    private func error(in result: ToolResult) throws -> [String: Any] {
+        guard case .text(let text) = try #require(result.content.first) else { throw ToolError("expected text") }
+        return try #require((try JSONSerialization.jsonObject(with: Data(text.utf8)) as? [String: Any])?["error"] as? [String: Any])
+    }
+
+    @Test func unknownOperationListsOnlyCatalogSupportedOperations() async throws {
+        let fixture = try await EditorTestFixture.withImage(catalog: EditorTestFixture.connectedCatalog())
+        defer { fixture.cleanup() }
+        let error = try error(in: await run(fixture, operation: "sharpen"))
+        #expect(error["field"] as? String == "operation")
+        #expect(error["message"] as? String == "Unsupported operation 'sharpen'. Supported: removeBackground.")
+    }
+
     @Test func refusesWithoutBackendAndCreatesNothing() async throws {
         let fixture = try await EditorTestFixture.withImage()
         defer { fixture.cleanup() }
