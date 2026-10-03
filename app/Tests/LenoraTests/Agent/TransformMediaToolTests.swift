@@ -62,6 +62,27 @@ struct TransformMediaToolTests {
         #expect(await EditSubmitter.submitRemoveBackground(asset: fixture.image, editor: fixture.editor) == .refused(.unavailable))
     }
 
+    @Test func getMediaReportsResultAsPendingWhileUploading() async throws {
+        let provider = FakeProvider(states: [], hangsOnUpload: true)
+        let fixture = try await EditorTestFixture.withImage(provider: provider, catalog: EditorTestFixture.connectedCatalog())
+        defer { fixture.cleanup() }
+        let receipt = await run(fixture, operation: "removeBackground")
+        guard case .text(let text) = try #require(receipt.content.first) else { Issue.record("expected text"); return }
+        let shortId = try #require((try JSONSerialization.jsonObject(with: Data(text.utf8)) as? [String: Any])?["mediaRef"] as? String)
+        try await fixture.waitUntil { await !provider.uploads.isEmpty }
+
+        func assets(_ args: [String: Any]) async throws -> [[String: Any]] {
+            let result = await fixture.executor.execute(name: "get_media", args: args, source: "mcp")
+            guard case .text(let json) = try #require(result.content.first) else { return [] }
+            return try #require((try JSONSerialization.jsonObject(with: Data(json.utf8)) as? [String: Any])?["assets"] as? [[String: Any]])
+        }
+        let listed = try #require(try await assets([:]).first { ($0["id"] as? String)?.hasPrefix(shortId) == true })
+        #expect(listed["generationStatus"] as? String == "preparing")
+        let pending = try await assets(["pending": true])
+        #expect(pending.contains { ($0["id"] as? String)?.hasPrefix(shortId) == true })
+        fixture.editor.generationService.stopMonitoring()
+    }
+
     @Test func startReturnsStructuredReceipt() async throws {
         let fixture = try await EditorTestFixture.withImage(
             provider: FakeProvider(states: [jobState(.running)]), catalog: EditorTestFixture.connectedCatalog()

@@ -27,10 +27,12 @@ extension ToolExecutor {
                 [try folderId(atPath: folderPath, editor: editor)])
         }
 
+        // The manifest drops transient statuses like .preparing, so read live assets first.
+        let liveStatus = Dictionary(editor.mediaAssets.map { ($0.id, $0.generationStatus.serialized) }, uniquingKeysWith: { a, _ in a })
         var assets: [[String: Any]] = []
         for entry in editor.mediaManifest.entries {
             if !idFilter.isEmpty && !idFilter.contains(entry.id) { continue }
-            let status = entry.generationStatus
+            let status = liveStatus[entry.id] ?? entry.generationStatus
             let pending = status != nil && status != "none"
             if pendingOnly && !pending { continue }
             if let folderScope {

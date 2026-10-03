@@ -11,11 +11,13 @@ actor FakeProvider: GenerationProvider {
     private(set) var pollers = 0
     private(set) var terminations = 0
     private let hangsOnSubmit: Bool
+    private let hangsOnUpload: Bool
 
-    init(states: [JobState], failure: BackendError? = nil, hangsOnSubmit: Bool = false) {
+    init(states: [JobState], failure: BackendError? = nil, hangsOnSubmit: Bool = false, hangsOnUpload: Bool = false) {
         self.states = states
         self.failure = failure
         self.hangsOnSubmit = hangsOnSubmit
+        self.hangsOnUpload = hangsOnUpload
     }
 
     nonisolated func health() async throws -> BackendHealth { BackendHealth(status: "ok", protocolVersion: "1", backendVersion: "t", adapters: []) }
@@ -26,7 +28,10 @@ actor FakeProvider: GenerationProvider {
         return try BackendCoding.decoder().decode(UploadTicket.self, from: Data(json.utf8))
     }
 
-    func upload(_ fileURL: URL, ticket: UploadTicket) async throws { uploads.append(ticket.assetRef) }
+    func upload(_ fileURL: URL, ticket: UploadTicket) async throws {
+        uploads.append(ticket.assetRef)
+        if hangsOnUpload { try await Task.sleep(for: .seconds(3600)) }
+    }
 
     func submit(_ job: JobRequest, idempotencyKey: String) async throws -> SubmittedJob {
         submitted.append((job, idempotencyKey))
