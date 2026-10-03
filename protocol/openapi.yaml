@@ -291,7 +291,7 @@ components:
     VideoPublishParams:
       type: object
       additionalProperties: false
-      description: "One video input. Stream, download and poster are always produced; results carry a role. A running job may already list finished results."
+      description: "One video input. Stream, download and poster are always produced; results carry a role and arrive when the job ends."
       properties:
         outputs:
           type: object

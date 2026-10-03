@@ -26,6 +26,8 @@ class Asset:
     height: int | None
     bytes: int
     duration: float | None
+    format: str | None = None
+    derived: tuple[tuple[str, str | None], ...] = ()
 
 
 def parse_ref(item: AssetInput | UrlInput, resource_type: str) -> AssetRef:
@@ -86,5 +88,7 @@ class CloudinaryAPI:
         if response.status_code != 200:
             raise problem(response)
         body = response.json()
+        derived = tuple((d["transformation"], d.get("format")) for d in body.get("derived") or [] if d.get("transformation"))
         return Asset(asset_id=body["asset_id"], width=body.get("width"), height=body.get("height"),
-                     bytes=int(body.get("bytes", 0)), duration=body.get("duration"))
+                     bytes=int(body.get("bytes", 0)), duration=body.get("duration"), format=body.get("format"),
+                     derived=derived)

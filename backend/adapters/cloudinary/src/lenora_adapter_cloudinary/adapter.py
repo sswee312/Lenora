@@ -10,11 +10,11 @@ from pydantic_settings import BaseSettings
 
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import (
-    EDIT_OPS, Estimate, ImageGenerateParams, InputLimits, JobError, JobRequest, JobState, ModelInfo, SubmittedJob, Ticket,
+    EDIT_OPS, AssetInput, Estimate, ImageGenerateParams, InputLimits, JobError, JobRequest, JobState, ModelInfo, SubmittedJob, Ticket,
     UploadRequest, UploadTicket, VideoGenerateParams,
 )
 from lenora_backend.registry import CancelNotSupported
-from lenora_adapter_cloudinary import costs, deliveries, eager, generation, image_to_video
+from lenora_adapter_cloudinary import costs, deliveries, eager, generation, image_to_video, publish
 from lenora_adapter_cloudinary.addons import IMAGE_GENERATION, IMAGE_TO_VIDEO, Addons
 from lenora_adapter_cloudinary.api import CloudinaryAPI, is_subscription_refusal, parse_ref
 from lenora_adapter_cloudinary.delivery import encode_url_job, sign_upload
@@ -28,6 +28,7 @@ UPSCALE = "cloudinary/upscale"
 REFRAME = "cloudinary/reframe"
 IMAGE_GENERATION_MODEL = "cloudinary/image-generation"
 IMAGE_TO_VIDEO_MODEL = "cloudinary/image-to-video"
+PUBLISH = "cloudinary/publish"
 FREE_PLAN_VIDEO_MAX_BYTES = 100 * 1024 * 1024
 IMAGE_TYPES = ["image/png", "image/jpeg", "image/webp", "image/heic", "image/tiff"]
 VIDEO_TYPES = ["video/mp4", "video/quicktime", "video/webm"]
@@ -55,6 +56,10 @@ class CloudinaryAdapter(CancelNotSupported):
         # ponytail: one lock serializes chain hand-offs in this process; a shared store needs a row lock instead.
         self._chain_lock = asyncio.Lock()
         self.budget = costs.Budget(settings.daily_credit_budget, clock)
+        self.publish_max_bytes = publish.MAX_BYTES
+
+    async def start(self) -> None:
+        self.publish_max_bytes = await publish.max_bytes(self.api)
 
     def models(self) -> list[ModelInfo]:
         models = [
@@ -71,6 +76,10 @@ class CloudinaryAdapter(CancelNotSupported):
             ModelInfo(id=REFRAME, kind="video.reframe", displayName="Cloudinary Smart Reframe",
                       inputs=InputLimits(types=VIDEO_TYPES, maxBytes=FREE_PLAN_VIDEO_MAX_BYTES),
                       cancellable=False),
+            ModelInfo(id=PUBLISH, kind="video.publish", displayName="Cloudinary Publish",
+                      inputs=InputLimits(types=VIDEO_TYPES, maxBytes=self.publish_max_bytes), cancellable=False,
+                      deletable=True, ui={"publish": {"verticalAspects": publish.VERTICAL_ASPECTS,
+                                                      "teaserSeconds": publish.TEASER_SECONDS}}),
         ]
         if self.addons.available(IMAGE_GENERATION):
             models.append(ModelInfo(
@@ -120,6 +129,9 @@ class CloudinaryAdapter(CancelNotSupported):
             return await self._submit_chain(job)
         if job.kind == "video.reframe":
             return await self._submit_reframe(job)
+        if job.kind == "video.publish":
+            job_id, estimate = await publish.submit(self.api, self.budget, job, self.publish_max_bytes, int(self.clock()))
+            return SubmittedJob(jobId=job_id, status="queued", estimate=estimate)
         url, estimate = await deliveries.plan(self.api, job)
         self.budget.reserve(estimate)
         return SubmittedJob(jobId=encode_url_job(url), status="queued", estimate=estimate)
@@ -140,9 +152,14 @@ class CloudinaryAdapter(CancelNotSupported):
                 raise
             return JobState(jobId=job_id, status="failed",
                             error=JobError(code="provider_unavailable", message=error.detail, retryable=False))
+        if prefix == "publish" and local:
+            return await publish.status(self.api, job_id, int(self.clock()))
         if prefix == "eager" and local:
             return await eager.status(self.api, job_id, self.clock())
         raise ProblemError("not_found", "Unknown job.")
+
+    async def delete_asset(self, model: str, asset_ref: str) -> None:
+        await publish.destroy(self.api, parse_ref(AssetInput(assetRef=asset_ref), "video"), int(self.clock()))
 
     async def health(self, recheck: bool) -> dict[str, Any]:
         if recheck:

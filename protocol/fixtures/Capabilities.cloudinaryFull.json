@@ -115,6 +115,37 @@
       "deletable": null
     },
     {
+      "id": "cloudinary/publish",
+      "kind": "video.publish",
+      "displayName": "Cloudinary Publish",
+      "inputs": {
+        "types": [
+          "video/mp4",
+          "video/quicktime",
+          "video/webm"
+        ],
+        "maxBytes": 104857600,
+        "maxPixels": null
+      },
+      "cancellable": false,
+      "estimate": null,
+      "ui": {
+        "publish": {
+          "verticalAspects": [
+            "9:16",
+            "1:1",
+            "4:5"
+          ],
+          "teaserSeconds": {
+            "min": 5,
+            "max": 30
+          }
+        }
+      },
+      "operations": null,
+      "deletable": true
+    },
+    {
       "id": "cloudinary/image-generation",
       "kind": "image.generate",
       "displayName": "Cloudinary Image Generation",
