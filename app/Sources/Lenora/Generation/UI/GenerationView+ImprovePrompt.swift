@@ -15,7 +15,7 @@ extension GenerationView {
         let rewriter = editor.promptRewriter
         if rewriter.isAvailable, let target = rewriteTargetKind {
             Button {
-                rewriter.rewrite(prompt, targetKind: target, current: { prompt }, apply: { prompt = $0 })
+                rewriter.rewrite(prompt, targetKind: target, current: { prompt }, apply: applyRewrite)
             } label: {
                 Group {
                     if rewriter.phase == .rewriting {
@@ -30,7 +30,7 @@ extension GenerationView {
                 .hoverHighlight()
             }
             .buttonStyle(.plain)
-            .disabled(prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || rewriter.phase == .rewriting)
+            .disabled(!rewriter.canRewrite(prompt) || rewriter.phase == .rewriting)
             .help(L10n.string("Improve Prompt"))
             .accessibilityLabel(L10n.string("Improve Prompt"))
         }
@@ -44,6 +44,14 @@ extension GenerationView {
                 .foregroundStyle(AppTheme.Status.errorColor)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .transition(.opacity)
+        }
+    }
+
+    func applyRewrite(_ rewritten: String) {
+        if let view = NSApp.keyWindow?.firstResponder as? NSTextView, view.string == prompt {
+            PromptRewriter.replaceText(in: view, with: rewritten)
+        } else {
+            prompt = rewritten
         }
     }
 

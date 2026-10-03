@@ -283,8 +283,8 @@ struct GenerationView: View {
             guard !isPopulatingPanel else { return }
             normalizeModelSelection()
         }
+        .onChange(of: rewriteTargetKind) { _, _ in cancelPromptRewrite() }
         .onChange(of: selectedType) { _, newValue in
-            cancelPromptRewrite()
             guard !isPopulatingPanel else { return }
             normalizeModelSelection()
             resetSettings()

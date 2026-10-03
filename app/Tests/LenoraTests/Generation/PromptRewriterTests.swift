@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 import Testing
 @testable import Lenora
@@ -38,9 +39,10 @@ struct PromptRewriterTests {
         try await provider.waitForPoller()
         field.value = "a dog"
         rewriter.fieldDidChange(field.value)
+        field.value = "a cat"
         await provider.emit(jobState(.succeeded, text: "A golden retriever."))
         await task?.value
-        #expect(field.value == "a dog" && rewriter.phase == .idle)
+        #expect(field.value == "a cat" && rewriter.phase == .idle)
     }
 
     @Test func cancelLeavesTheFieldAlone() async throws {
@@ -85,4 +87,31 @@ struct PromptRewriterTests {
         #expect(start(try rewriter(provider), Box("  \n")) == nil)
         #expect(await provider.submitted.isEmpty)
     }
+
+    @Test func refusesTextOverTheProtocolLimit() throws {
+        let provider = FakeProvider()
+        let rewriter = try rewriter(provider)
+        #expect(rewriter.canRewrite(String(repeating: "a", count: PromptRewriter.maxTextLength)))
+        #expect(!rewriter.canRewrite(String(repeating: "a", count: PromptRewriter.maxTextLength + 1)))
+        #expect(start(rewriter, Box(String(repeating: "a", count: PromptRewriter.maxTextLength + 1))) == nil)
+    }
+
+    @Test func textViewReplacementUndoesInOneStep() {
+        let undo = UndoManager()
+        let delegate = UndoDelegate(undo)
+        let view = NSTextView()
+        view.allowsUndo = true
+        view.delegate = delegate
+        view.string = "a cat"
+        PromptRewriter.replaceText(in: view, with: "A black cat.")
+        #expect(view.string == "A black cat.")
+        undo.undo()
+        #expect(view.string == "a cat")
+    }
+}
+
+private final class UndoDelegate: NSObject, NSTextViewDelegate {
+    let manager: UndoManager
+    init(_ manager: UndoManager) { self.manager = manager }
+    func undoManager(for view: NSTextView) -> UndoManager? { manager }
 }

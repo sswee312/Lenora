@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 import Observation
 
@@ -19,6 +20,8 @@ final class PromptRewriter {
     enum Phase: Equatable { case idle, rewriting, failed(PromptRewriteFailure) }
 
     static let kind = "text.rewritePrompt"
+    /// RewritePromptParams.text maxLength in protocol/openapi.yaml.
+    static let maxTextLength = 4096
 
     private(set) var phase: Phase = .idle
     @ObservationIgnored private let provider: @MainActor () -> (any GenerationProvider)?
@@ -33,13 +36,25 @@ final class PromptRewriter {
 
     var isAvailable: Bool { model != nil }
 
+    func canRewrite(_ text: String) -> Bool {
+        !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && text.count <= Self.maxTextLength
+    }
+
+    /// One undo step on the text view's undo manager.
+    static func replaceText(in view: NSTextView, with text: String) {
+        let range = NSRange(location: 0, length: (view.string as NSString).length)
+        guard view.shouldChangeText(in: range, replacementString: text) else { return }
+        view.textStorage?.replaceCharacters(in: range, with: text)
+        view.didChangeText()
+    }
+
     private var model: BackendModel? { catalog.models(ofKind: Self.kind).first }
 
     /// Applies the rewrite only if `current()` still returns `text` when the result arrives.
     @discardableResult
     func rewrite(_ text: String, targetKind: String, current: @escaping @MainActor () -> String,
                  apply: @escaping @MainActor (String) -> Void) -> Task<Void, Never>? {
-        guard phase != .rewriting, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+        guard phase != .rewriting, canRewrite(text),
               let model, let provider = provider() else { return nil }
         let job = JobRequest(kind: Self.kind, model: model.id, inputs: [],
                              params: RewritePromptParams(text: text, targetKind: targetKind))
