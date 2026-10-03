@@ -149,7 +149,60 @@ struct PublishFailureTests {
     }
 }
 
+@MainActor
+struct PublishRefusalTests {
+    @Test(arguments: [
+        (PublishRefusal.unavailable, "unavailable"),
+        (.notConfirmed, "invalid_request"),
+        (.exportNotPublishable, "invalid_request"),
+        (.unreadable, "invalid_request"),
+        (.tooLarge(byteCount: 2, maxBytes: 1), "input_too_large"),
+        (.unsupportedAspect("16:9", allowed: ["9:16"]), "invalid_request"),
+        (.teaserUnsupported, "invalid_request"),
+        (.teaserOutOfRange(4, min: 5, max: 30), "invalid_request"),
+        (.teaserTooLong(10, durationSeconds: 10), "invalid_request"),
+        (.notFound, "not_found"),
+        (.busy, "invalid_request"),
+        (.notUploaded, "invalid_request"),
+        (.unpublished, "invalid_request"),
+    ])
+    func refusalsMapToStableCodes(refusal: PublishRefusal, code: String) {
+        #expect(refusal.code == code)
+        #expect(!refusal.message.isEmpty && !refusal.userMessage.isEmpty)
+    }
+
+    @Test func agentMessagesNameTheLimits() {
+        #expect(PublishRefusal.tooLarge(byteCount: 2_000, maxBytes: 1_000).message == "The export is 2000 bytes; publishing accepts up to 1000 bytes.")
+        #expect(PublishRefusal.unsupportedAspect("16:9", allowed: ["9:16", "1:1"]).message == "Vertical aspect 16:9 isn't supported. Allowed: 9:16, 1:1.")
+    }
+
+    @Test func unsupportedAspectNamesTheAllowedAspects() {
+        let text = PublishRefusal.unsupportedAspect("16:9", allowed: ["9:16", "1:1"]).userMessage
+        #expect(text.contains("16:9") && text.contains("9:16") && text.contains("1:1"))
+    }
+
+    @Test(arguments: [(10.0, 9), (10.5, 10)])
+    func teaserTooLongNamesTheLongestAllowedTeaser(durationSeconds: Double, longest: Int) {
+        let text = PublishRefusal.teaserTooLong(longest + 1, durationSeconds: durationSeconds).userMessage
+        #expect(text.contains(longest.secondsText(locale: AppLocalization.shared.activeLocale)))
+    }
+
+    @Test(arguments: [(1, "1 second"), (15, "15 seconds")])
+    func secondsTextIsPluralized(seconds: Int, expected: String) {
+        #expect(seconds.secondsText(locale: Locale(identifier: "en_US")) == expected)
+    }
+}
+
 struct PublishProbeTests {
+    @Test func readsSizeAndDurationOfARealVideo() async throws {
+        let url = try await FixtureVideo.write(scenes: [.init(rgb: (0, 0, 0), seconds: 2)])
+        defer { try? FileManager.default.removeItem(at: url) }
+        let size = try #require(try url.resourceValues(forKeys: [.fileSizeKey]).fileSize)
+        let probe = try await PublishProbe.read(url)
+        #expect(probe.byteCount == Int64(size) && probe.byteCount > 0)
+        #expect(abs(probe.durationSeconds - 2) < 0.5)
+    }
+
     @Test func unknownFileSizeIsUnreadable() async throws {
         let directory = FileManager.default.temporaryDirectory.appending(path: "probe-\(UUID().uuidString)")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)

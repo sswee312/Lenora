@@ -96,7 +96,6 @@ struct Publication: Codable, Sendable, Equatable, Identifiable {
 
     func url(_ role: PublishRole) -> URL? { outputs.first { $0.role == role }?.url }
 
-    /// Roles in `options` that aren't ready yet, or whose aspect or length changed.
     func rolesToRequest(for options: PublishOptions) -> [PublishRole] {
         options.roles.filter { role in
             guard outputs.first(where: { $0.role == role })?.status == .ready else { return true }
@@ -233,7 +232,6 @@ enum PublishRefusal: Error, Equatable {
     case notUploaded
     case unpublished
 
-    /// Stable machine code for Agent tools.
     var code: String {
         switch self {
         case .unavailable: "unavailable"
@@ -243,7 +241,6 @@ enum PublishRefusal: Error, Equatable {
         }
     }
 
-    /// English message for Agent tools.
     var message: String {
         switch self {
         case .unavailable: "No connected backend can publish video."
@@ -270,10 +267,13 @@ enum PublishRefusal: Error, Equatable {
         case .unreadable: L10n.string("The export file can't be read.")
         case .tooLarge(let bytes, let max):
             L10n.string("The export is \(bytes.byteCountText()); publishing accepts up to \(max.byteCountText()).")
-        case .unsupportedAspect(let aspect, _): L10n.string("Vertical aspect \(aspect) isn't supported.")
+        case .unsupportedAspect(_, let allowed) where allowed.isEmpty: L10n.string("Vertical cuts aren't available.")
+        case .unsupportedAspect(let aspect, let allowed):
+            L10n.string("Vertical aspect \(aspect) isn't supported. Use \(allowed.formatted(.list(type: .or).locale(AppLocalization.shared.activeLocale))).")
         case .teaserUnsupported: L10n.string("Teasers aren't available.")
         case .teaserOutOfRange(_, let min, let max): L10n.string("Teasers must be \(min)–\(max) seconds.")
-        case .teaserTooLong: L10n.string("The teaser must be shorter than the video.")
+        case .teaserTooLong(_, let duration):
+            L10n.string("This video allows teasers up to \((Int(duration.rounded(.up)) - 1).secondsText(locale: AppLocalization.shared.activeLocale)).")
         case .notFound: L10n.string("The publication no longer exists.")
         case .busy: L10n.string("Wait for the current upload or processing to finish.")
         case .notUploaded: L10n.string("The upload didn't finish. Publish the export again.")
@@ -282,8 +282,13 @@ enum PublishRefusal: Error, Equatable {
     }
 }
 
+extension Int {
+    func secondsText(locale: Locale) -> String {
+        Duration.seconds(self).formatted(.units(allowed: [.seconds], width: .wide).locale(locale))
+    }
+}
+
 extension ExportJob {
-    /// The upload content type of a video export; nil for timeline interchange and project exports.
     var videoContentType: String? {
         switch outputURL.pathExtension.lowercased() {
         case "mp4": "video/mp4"

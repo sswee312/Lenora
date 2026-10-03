@@ -341,6 +341,30 @@ struct PublishServiceTests {
         #expect(await provider.pollers == 0)
     }
 
+    @Test func publishAfterCloseIsRefused() async throws {
+        let provider = FakeProvider(states: [])
+        let service = try makeService(provider)
+        service.stopMonitoring()
+        await #expect(throws: CancellationError.self) {
+            try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        }
+        #expect(service.publications.isEmpty)
+        #expect(await provider.uploads.isEmpty)
+    }
+
+    @Test func firstPublishProcessingWithoutJobFailsOnRestore() async throws {
+        let provider = FakeProvider(states: [])
+        let service = try makeService(provider)
+        var record = PublicationTests.record()
+        record.assetRef = "a"
+        record.status = .processing
+        service.restore([record])
+        let restored = try #require(service.publications.first)
+        #expect(restored.status == .failed && restored.failure == .submitInterrupted)
+        #expect(restored.outputs.allSatisfy { $0.status == .failed && $0.errorCode == "submit_interrupted" })
+        #expect(await provider.pollers == 0)
+    }
+
     @Test func intentsAfterCloseChangeNothing() async throws {
         let provider = FakeProvider(states: [])
         let service = try makeService(provider)
