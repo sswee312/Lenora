@@ -3,7 +3,9 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 [[ -f "$ROOT/.env" ]] || { echo "No .env — run ./scripts/bootstrap first." >&2; exit 1; }
-set -a; source "$ROOT/.env"; set +a
+# Plain shell variables, not exported: the backend reads .env itself, and the editor
+# must never inherit provider secrets.
+source "$ROOT/.env"
 BACKEND_URL="http://127.0.0.1:${LENORA_PORT:-8787}"
 
 pids=()
@@ -26,7 +28,11 @@ curl -fsS "$BACKEND_URL/v1/health" >/dev/null || { echo "Backend did not start; 
 
 "$ROOT/scripts/bundle.sh" debug --fast
 APP_BIN="$ROOT/app/.build/Lenora.app/Contents/MacOS/Lenora"
-(LENORA_BACKEND_URL="$BACKEND_URL" LENORA_TOKEN="$LENORA_TOKEN" exec "$APP_BIN") > >(sed -u 's/^/[app] /') 2>&1 &
+app_env=(LENORA_BACKEND_URL="$BACKEND_URL" LENORA_TOKEN="$LENORA_TOKEN")
+# Debug builds read the agent's BYOK keys from the environment.
+[[ -n "${ANTHROPIC_API_KEY:-}" ]] && app_env+=(ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY")
+[[ -n "${OPENAI_API_KEY:-}" ]] && app_env+=(OPENAI_API_KEY="$OPENAI_API_KEY")
+(exec env "${app_env[@]}" "$APP_BIN") > >(sed -u 's/^/[app] /') 2>&1 &
 pids+=($!)
 
 # Stock macOS bash 3.2 has no `wait -n`; exit when either process ends.
