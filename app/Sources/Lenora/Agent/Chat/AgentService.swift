@@ -32,7 +32,7 @@ final class AgentService {
 
     private func reloadAPIKeys() {
         Task { [weak self] in
-            let credentials = await AgentCredentialSnapshot.loadFromKeychain()
+            let credentials = await AgentCredentialSnapshot.loadStored()
             self?.credentials = credentials
         }
     }
@@ -72,7 +72,7 @@ final class AgentService {
 
     private func selectClient(for settings: AgentRunSettings) async -> (any AgentClient)? {
         // Re-read keys so changes made mid-session affect the next send.
-        let credentials = await AgentCredentialSnapshot.loadFromKeychain()
+        let credentials = await AgentCredentialSnapshot.loadStored()
         self.credentials = credentials
 
         switch AgentRouting.route(model: settings.model, credentials: credentials) {

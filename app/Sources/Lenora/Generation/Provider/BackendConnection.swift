@@ -114,10 +114,10 @@ final class BackendConnection {
     }
 
     @concurrent private static func loadToken() async -> String? {
-        KeychainStore.load(account: LenoraBackendConfiguration.tokenAccount)
+        (try? CredentialStore.current.read(LenoraBackendConfiguration.tokenAccount)) ?? nil
     }
 
     @concurrent private static func storeToken(_ token: String) async -> Bool {
-        KeychainStore.save(token, account: LenoraBackendConfiguration.tokenAccount)
+        CredentialStore.current.save(token, LenoraBackendConfiguration.tokenAccount)
     }
 }
