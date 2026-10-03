@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Выберите цвет аудиоклипа";
 "Choose color" = "Выберите цвет";
 "Choose image clip color" = "Выберите цвет клипа изображения";
+"Choose one of these aspect ratios: %@." = "Выберите одно из этих соотношений сторон: %@.";
 "Choose sequence clip color" = "Выберите цвет клипа последовательности";
 "Choose text clip color" = "Выберите цвет текстового клипа";
 "Choose the folder that holds your media" = "Выберите папку с медиафайлами";
@@ -328,6 +329,7 @@
 "Enhance" = "Улучшить";
 "Enhance resolution or frame rate with AI" = "Улучшить разрешение или частоту кадров с помощью AI";
 "Enter Full Screen" = "Перейти в полноэкранный режим";
+"Enter the color as #RRGGBB." = "Введите цвет в формате #RRGGBB.";
 "Erase an object from the image" = "Стереть объект с изображения";
 "Every connected agent will need the new token." = "Каждому подключённому агенту понадобится новый токен.";
 "Every link stops working. This can't be undone." = "Все ссылки перестанут работать. Это действие нельзя отменить.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "Увеличение разрешения работает только с видео или изображениями";
 "Upscale source media" = "Увеличить разрешение исходного медиафайла";
 "Upscale…" = "Увеличить разрешение…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Используйте от 1 до 100 букв, цифр, пробелов, точек, апострофов или дефисов.";
 "Use Freeform" = "Свободная форма";
 "Use Freeform to edit individual crop insets." = "Используйте свободную форму, чтобы изменить отдельные отступы кадрирования.";
 "Use a port between 1024 and 65535." = "Используйте порт от 1024 до 65535.";

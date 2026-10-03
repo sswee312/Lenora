@@ -46,7 +46,7 @@ struct MediaEditSheet: View {
     private var message: String? {
         if let refusal { return refusal }
         guard !(first.isEmpty && second.isEmpty) else { return nil }
-        return request.invalidField()?.reason
+        return request.invalidField()?.issue.userMessage()
     }
 
     @ViewBuilder private var fields: some View {

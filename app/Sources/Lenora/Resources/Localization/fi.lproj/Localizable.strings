@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Valitse äänileikkeen väri";
 "Choose color" = "Valitse väri";
 "Choose image clip color" = "Valitse kuvaleikkeen väri";
+"Choose one of these aspect ratios: %@." = "Valitse jokin näistä kuvasuhteista: %@.";
 "Choose sequence clip color" = "Valitse jaksoleikkeen väri";
 "Choose text clip color" = "Valitse tekstileikkeen väri";
 "Choose the folder that holds your media" = "Valitse kansio, jossa media on";
@@ -328,6 +329,7 @@
 "Enhance" = "Paranna";
 "Enhance resolution or frame rate with AI" = "Paranna resoluutiota tai kuvataajuutta tekoälyllä";
 "Enter Full Screen" = "Siirry koko näytön tilaan";
+"Enter the color as #RRGGBB." = "Anna väri muodossa #RRGGBB.";
 "Erase an object from the image" = "Poista kohde kuvasta";
 "Every connected agent will need the new token." = "Jokainen yhdistetty agentti tarvitsee uuden tunnuksen.";
 "Every link stops working. This can't be undone." = "Kaikki linkit lakkaavat toimimasta. Toimintoa ei voi kumota.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "Skaalaa ylös toimii vain videolle tai kuville";
 "Upscale source media" = "Skaalaa lähdemedia ylös";
 "Upscale…" = "Skaalaa ylös…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Käytä 1–100 kirjainta, numeroa, välilyöntiä, pistettä, heittomerkkiä tai yhdysmerkkiä.";
 "Use Freeform" = "Käytä vapaata muotoa";
 "Use Freeform to edit individual crop insets." = "Käytä vapaata muotoa yksittäisten rajausreunusten muokkaamiseen.";
 "Use a port between 1024 and 65535." = "Käytä porttia väliltä 1024–65535.";

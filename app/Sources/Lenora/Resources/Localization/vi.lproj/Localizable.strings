@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Chọn màu clip âm thanh";
 "Choose color" = "Chọn màu";
 "Choose image clip color" = "Chọn màu clip hình ảnh";
+"Choose one of these aspect ratios: %@." = "Chọn một trong các tỷ lệ khung hình sau: %@.";
 "Choose sequence clip color" = "Chọn màu clip chuỗi";
 "Choose text clip color" = "Chọn màu clip văn bản";
 "Choose the folder that holds your media" = "Chọn thư mục chứa phương tiện";
@@ -328,6 +329,7 @@
 "Enhance" = "Nâng cao";
 "Enhance resolution or frame rate with AI" = "Nâng cao độ phân giải hoặc tốc độ khung hình bằng AI";
 "Enter Full Screen" = "Vào toàn màn hình";
+"Enter the color as #RRGGBB." = "Nhập màu theo dạng #RRGGBB.";
 "Erase an object from the image" = "Xóa một vật thể khỏi hình ảnh";
 "Every connected agent will need the new token." = "Mọi agent đã kết nối sẽ cần token mới.";
 "Every link stops working. This can't be undone." = "Mọi liên kết sẽ ngừng hoạt động. Không thể hoàn tác thao tác này.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "Nâng độ phân giải chỉ hoạt động với video hoặc hình ảnh";
 "Upscale source media" = "Nâng độ phân giải phương tiện nguồn";
 "Upscale…" = "Nâng độ phân giải…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Dùng 1–100 chữ cái, chữ số, dấu cách, dấu chấm, dấu nháy đơn hoặc dấu gạch nối.";
 "Use Freeform" = "Dùng Tự do";
 "Use Freeform to edit individual crop insets." = "Dùng Tự do để chỉnh từng lề cắt xén.";
 "Use a port between 1024 and 65535." = "Dùng cổng trong khoảng 1024 đến 65535.";

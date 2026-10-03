@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Pilih warna klip audio";
 "Choose color" = "Pilih warna";
 "Choose image clip color" = "Pilih warna klip gambar";
+"Choose one of these aspect ratios: %@." = "Pilih salah satu rasio aspek berikut: %@.";
 "Choose sequence clip color" = "Pilih warna klip sekuens";
 "Choose text clip color" = "Pilih warna klip teks";
 "Choose the folder that holds your media" = "Pilih folder yang berisi media Anda";
@@ -328,6 +329,7 @@
 "Enhance" = "Tingkatkan";
 "Enhance resolution or frame rate with AI" = "Tingkatkan resolusi atau kecepatan frame dengan AI";
 "Enter Full Screen" = "Masuk ke Layar Penuh";
+"Enter the color as #RRGGBB." = "Masukkan warna sebagai #RRGGBB.";
 "Erase an object from the image" = "Hapus objek dari gambar";
 "Every connected agent will need the new token." = "Setiap agent yang terhubung memerlukan token baru.";
 "Every link stops working. This can't be undone." = "Semua tautan berhenti berfungsi. Tindakan ini tidak dapat dibatalkan.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "Upscale hanya berfungsi pada video atau gambar";
 "Upscale source media" = "Upscale media sumber";
 "Upscale…" = "Upscale…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Gunakan 1–100 huruf, angka, spasi, titik, apostrof, atau tanda hubung.";
 "Use Freeform" = "Gunakan Bebas";
 "Use Freeform to edit individual crop insets." = "Gunakan Bebas untuk mengedit sisipan potongan satu per satu.";
 "Use a port between 1024 and 65535." = "Gunakan port antara 1024 dan 65535.";

@@ -156,6 +156,7 @@
 "Choose audio clip color" = "オーディオクリップのカラーを選択";
 "Choose color" = "カラーを選択";
 "Choose image clip color" = "画像クリップのカラーを選択";
+"Choose one of these aspect ratios: %@." = "次のアスペクト比のいずれかを選択してください: %@。";
 "Choose sequence clip color" = "シーケンスクリップのカラーを選択";
 "Choose text clip color" = "テキストクリップのカラーを選択";
 "Choose the folder that holds your media" = "メディアが含まれるフォルダを選択";
@@ -328,6 +329,7 @@
 "Enhance" = "補正";
 "Enhance resolution or frame rate with AI" = "AIで解像度やフレームレートを向上";
 "Enter Full Screen" = "フルスクリーンにする";
+"Enter the color as #RRGGBB." = "カラーを#RRGGBB形式で入力してください。";
 "Erase an object from the image" = "画像からオブジェクトを消去";
 "Every connected agent will need the new token." = "接続中のすべてのエージェントで新しいトークンが必要になります。";
 "Every link stops working. This can't be undone." = "すべてのリンクが無効になります。この操作は取り消せません。";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "アップスケールはビデオまたは画像でのみ使用できます";
 "Upscale source media" = "ソースメディアをアップスケール";
 "Upscale…" = "アップスケール…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "1〜100文字の英字、数字、スペース、ピリオド、アポストロフィ、ハイフンを使用してください。";
 "Use Freeform" = "フリーフォームを使用";
 "Use Freeform to edit individual crop insets." = "個々のクロップインセットを編集するにはフリーフォームを使用します。";
 "Use a port between 1024 and 65535." = "1024〜65535のポートを使用してください。";

@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Kies kleur van audioclip";
 "Choose color" = "Kies kleur";
 "Choose image clip color" = "Kies kleur van afbeeldingsclip";
+"Choose one of these aspect ratios: %@." = "Kies een van deze beeldverhoudingen: %@.";
 "Choose sequence clip color" = "Kies kleur van sequence-clip";
 "Choose text clip color" = "Kies kleur van tekstclip";
 "Choose the folder that holds your media" = "Kies de map met uw media";
@@ -328,6 +329,7 @@
 "Enhance" = "Verbeter";
 "Enhance resolution or frame rate with AI" = "Verbeter resolutie of beeldsnelheid met AI";
 "Enter Full Screen" = "Schakel schermvullend in";
+"Enter the color as #RRGGBB." = "Voer de kleur in als #RRGGBB.";
 "Erase an object from the image" = "Een object uit de afbeelding wissen";
 "Every connected agent will need the new token." = "Elke verbonden agent heeft het nieuwe token nodig.";
 "Every link stops working. This can't be undone." = "Alle links werken niet meer. Dit kan niet ongedaan worden gemaakt.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "Opschalen werkt alleen met video of afbeeldingen";
 "Upscale source media" = "Schaal bronmedia op";
 "Upscale…" = "Schaal op…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Gebruik 1–100 letters, cijfers, spaties, punten, apostrofs of koppeltekens.";
 "Use Freeform" = "Gebruik vrije vorm";
 "Use Freeform to edit individual crop insets." = "Gebruik vrije vorm om afzonderlijke uitsnede-inzetten te bewerken.";
 "Use a port between 1024 and 65535." = "Gebruik een poort tussen 1024 en 65535.";

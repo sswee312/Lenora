@@ -156,6 +156,7 @@
 "Choose audio clip color" = "অডিও ক্লিপের রং বেছে নিন";
 "Choose color" = "রং বেছে নিন";
 "Choose image clip color" = "ইমেজ ক্লিপের রং বেছে নিন";
+"Choose one of these aspect ratios: %@." = "এই অ্যাসপেক্ট রেশিওগুলোর একটি বেছে নিন: %@।";
 "Choose sequence clip color" = "সিকোয়েন্স ক্লিপের রং বেছে নিন";
 "Choose text clip color" = "টেক্সট ক্লিপের রং বেছে নিন";
 "Choose the folder that holds your media" = "আপনার মিডিয়ার ফোল্ডারটি বেছে নিন";
@@ -328,6 +329,7 @@
 "Enhance" = "এনহ্যান্স";
 "Enhance resolution or frame rate with AI" = "AI দিয়ে রেজোলিউশন বা ফ্রেম রেট বাড়ান";
 "Enter Full Screen" = "ফুল স্ক্রিনে যান";
+"Enter the color as #RRGGBB." = "রংটি #RRGGBB আকারে লিখুন।";
 "Erase an object from the image" = "ছবি থেকে একটি বস্তু মুছুন";
 "Every connected agent will need the new token." = "সংযুক্ত প্রতিটি এজেন্টের নতুন টোকেন লাগবে।";
 "Every link stops working. This can't be undone." = "সব লিংক কাজ করা বন্ধ করবে। এটি পূর্বাবস্থায় ফেরানো যাবে না।";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "আপস্কেল শুধু ভিডিও বা ইমেজে কাজ করে";
 "Upscale source media" = "সোর্স মিডিয়া আপস্কেল করুন";
 "Upscale…" = "আপস্কেল…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "1–100টি অক্ষর, সংখ্যা, স্পেস, পিরিয়ড, অ্যাপোস্ট্রফি বা হাইফেন ব্যবহার করুন।";
 "Use Freeform" = "ফ্রিফর্ম ব্যবহার করুন";
 "Use Freeform to edit individual crop insets." = "আলাদা আলাদা ক্রপ ইনসেট এডিট করতে ফ্রিফর্ম ব্যবহার করুন।";
 "Use a port between 1024 and 65535." = "1024 থেকে 65535-এর মধ্যে একটি পোর্ট ব্যবহার করুন।";

@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Velg farge for lydklipp";
 "Choose color" = "Velg farge";
 "Choose image clip color" = "Velg farge for bildeklipp";
+"Choose one of these aspect ratios: %@." = "Velg ett av disse sideforholdene: %@.";
 "Choose sequence clip color" = "Velg farge for sekvensklipp";
 "Choose text clip color" = "Velg farge for tekstklipp";
 "Choose the folder that holds your media" = "Velg mappen som inneholder mediene dine";
@@ -328,6 +329,7 @@
 "Enhance" = "Forbedre";
 "Enhance resolution or frame rate with AI" = "Forbedre oppløsning eller bilderate med AI";
 "Enter Full Screen" = "Gå til fullskjerm";
+"Enter the color as #RRGGBB." = "Angi fargen som #RRGGBB.";
 "Erase an object from the image" = "Slett et objekt fra bildet";
 "Every connected agent will need the new token." = "Alle tilkoblede agenter trenger det nye tokenet.";
 "Every link stops working. This can't be undone." = "Alle lenker slutter å fungere. Dette kan ikke angres.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "Oppskalering fungerer bare på video eller bilder";
 "Upscale source media" = "Oppskaler kildemedia";
 "Upscale…" = "Oppskaler…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Bruk 1–100 bokstaver, sifre, mellomrom, punktum, apostrofer eller bindestreker.";
 "Use Freeform" = "Bruk fri form";
 "Use Freeform to edit individual crop insets." = "Bruk fri form for å redigere enkeltinnrykk i beskjæringen.";
 "Use a port between 1024 and 65535." = "Bruk en port mellom 1024 og 65535.";

@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Escolher cor do clip de áudio";
 "Choose color" = "Escolher cor";
 "Choose image clip color" = "Escolher cor do clip de imagem";
+"Choose one of these aspect ratios: %@." = "Escolhe uma destas proporções: %@.";
 "Choose sequence clip color" = "Escolher cor do clip de sequência";
 "Choose text clip color" = "Escolher cor do clip de texto";
 "Choose the folder that holds your media" = "Escolher a pasta que contém a tua média";
@@ -328,6 +329,7 @@
 "Enhance" = "Melhorar";
 "Enhance resolution or frame rate with AI" = "Melhorar a resolução ou a frequência de fotogramas com AI";
 "Enter Full Screen" = "Passar a ecrã inteiro";
+"Enter the color as #RRGGBB." = "Introduz a cor no formato #RRGGBB.";
 "Erase an object from the image" = "Apagar um objeto da imagem";
 "Every connected agent will need the new token." = "Todos os agentes ligados vão precisar do novo token.";
 "Every link stops working. This can't be undone." = "Todas as ligações deixam de funcionar. Esta ação não pode ser anulada.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "Aumentar a resolução só funciona com vídeo ou imagens";
 "Upscale source media" = "Aumentar resolução da média de origem";
 "Upscale…" = "Aumentar resolução…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Usa de 1 a 100 letras, algarismos, espaços, pontos, apóstrofos ou hífenes.";
 "Use Freeform" = "Usar Livre";
 "Use Freeform to edit individual crop insets." = "Usa Livre para editar as margens de recorte individualmente.";
 "Use a port between 1024 and 65535." = "Usa uma porta entre 1024 e 65535.";

@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Välj färg för ljudklipp";
 "Choose color" = "Välj färg";
 "Choose image clip color" = "Välj färg för bildklipp";
+"Choose one of these aspect ratios: %@." = "Välj ett av dessa bildförhållanden: %@.";
 "Choose sequence clip color" = "Välj färg för sekvensklipp";
 "Choose text clip color" = "Välj färg för textklipp";
 "Choose the folder that holds your media" = "Välj mappen som innehåller ditt media";
@@ -328,6 +329,7 @@
 "Enhance" = "Förbättra";
 "Enhance resolution or frame rate with AI" = "Förbättra upplösning eller bildfrekvens med AI";
 "Enter Full Screen" = "Gå till helskärm";
+"Enter the color as #RRGGBB." = "Ange färgen som #RRGGBB.";
 "Erase an object from the image" = "Radera ett objekt från bilden";
 "Every connected agent will need the new token." = "Varje ansluten agent behöver den nya token.";
 "Every link stops working. This can't be undone." = "Alla länkar slutar fungera. Det går inte att ångra.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "Uppskala fungerar bara på video eller bilder";
 "Upscale source media" = "Uppskala källmedia";
 "Upscale…" = "Uppskala…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Använd 1–100 bokstäver, siffror, mellanslag, punkter, apostrofer eller bindestreck.";
 "Use Freeform" = "Använd fritt format";
 "Use Freeform to edit individual crop insets." = "Använd fritt format för att redigera enskilda beskärningsmarginaler.";
 "Use a port between 1024 and 65535." = "Använd en port mellan 1024 och 65535.";

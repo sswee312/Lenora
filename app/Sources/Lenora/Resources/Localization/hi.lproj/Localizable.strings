@@ -156,6 +156,7 @@
 "Choose audio clip color" = "ऑडियो क्लिप का रंग चुनें";
 "Choose color" = "रंग चुनें";
 "Choose image clip color" = "इमेज क्लिप का रंग चुनें";
+"Choose one of these aspect ratios: %@." = "इनमें से कोई एक आस्पेक्ट रेशियो चुनें: %@।";
 "Choose sequence clip color" = "सीक्वेंस क्लिप का रंग चुनें";
 "Choose text clip color" = "टेक्स्ट क्लिप का रंग चुनें";
 "Choose the folder that holds your media" = "मीडिया वाली फ़ोल्डर चुनें";
@@ -328,6 +329,7 @@
 "Enhance" = "एन्हांस";
 "Enhance resolution or frame rate with AI" = "AI से रेज़ोल्यूशन या फ़्रेम रेट बेहतर करें";
 "Enter Full Screen" = "फ़ुल स्क्रीन में जाएँ";
+"Enter the color as #RRGGBB." = "रंग को #RRGGBB के रूप में दर्ज करें।";
 "Erase an object from the image" = "छवि से कोई वस्तु मिटाएँ";
 "Every connected agent will need the new token." = "जुड़े हर एजेंट को नया टोकन चाहिए होगा।";
 "Every link stops working. This can't be undone." = "सभी लिंक काम करना बंद कर देंगे। इसे पूर्ववत नहीं किया जा सकता।";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "अपस्केल केवल वीडियो या इमेज पर काम करता है";
 "Upscale source media" = "सोर्स मीडिया अपस्केल करें";
 "Upscale…" = "अपस्केल…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "1–100 अक्षर, अंक, स्पेस, पूर्ण विराम, एपॉस्ट्रॉफ़ी या हाइफ़न उपयोग करें।";
 "Use Freeform" = "फ़्रीफ़ॉर्म उपयोग करें";
 "Use Freeform to edit individual crop insets." = "अलग-अलग क्रॉप इन्सेट एडिट करने के लिए फ़्रीफ़ॉर्म उपयोग करें।";
 "Use a port between 1024 and 65535." = "1024 से 65535 के बीच का पोर्ट उपयोग करें।";

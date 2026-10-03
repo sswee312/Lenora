@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Вибрати колір аудіокліпу";
 "Choose color" = "Вибрати колір";
 "Choose image clip color" = "Вибрати колір кліпу зображення";
+"Choose one of these aspect ratios: %@." = "Виберіть одне з цих співвідношень сторін: %@.";
 "Choose sequence clip color" = "Вибрати колір кліпу секвенції";
 "Choose text clip color" = "Вибрати колір текстового кліпу";
 "Choose the folder that holds your media" = "Виберіть папку з медіа";
@@ -328,6 +329,7 @@
 "Enhance" = "Покращити";
 "Enhance resolution or frame rate with AI" = "Покращити роздільність або частоту кадрів за допомогою AI";
 "Enter Full Screen" = "Перейти в повноекранний режим";
+"Enter the color as #RRGGBB." = "Введіть колір у форматі #RRGGBB.";
 "Erase an object from the image" = "Стерти об’єкт із зображення";
 "Every connected agent will need the new token." = "Кожному підключеному агенту знадобиться новий токен.";
 "Every link stops working. This can't be undone." = "Усі посилання перестануть працювати. Цю дію не можна скасувати.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "Збільшення роздільності працює лише з відео або зображеннями";
 "Upscale source media" = "Збільшити роздільність вихідних медіа";
 "Upscale…" = "Збільшити роздільність…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Використайте від 1 до 100 літер, цифр, пробілів, крапок, апострофів або дефісів.";
 "Use Freeform" = "Використати довільний режим";
 "Use Freeform to edit individual crop insets." = "Використайте довільний режим, щоб редагувати окремі відступи кадрування.";
 "Use a port between 1024 and 65535." = "Використайте порт від 1024 до 65535.";

@@ -38,13 +38,13 @@ enum MediaEditRequest: Equatable, Sendable {
         text.wholeMatch(of: /[A-Za-z0-9 .'\-]{1,100}/) != nil
     }
 
-    func invalidField() -> (field: String, reason: String)? {
-        let unsafe = "Use 1–100 letters, digits, spaces or . ' -"
+    func invalidField() -> (field: String, issue: MediaEditParameterIssue)? {
+        let unsafe = MediaEditParameterIssue.unsafeText
         switch self {
         case .removeBackground, .edit(.restore):
             return nil
         case .edit(.fill(let aspectRatio)):
-            return Self.fillAspectRatios.contains(aspectRatio) ? nil : ("aspectRatio", "Use one of \(Self.fillAspectRatios.joined(separator: ", "))")
+            return Self.fillAspectRatios.contains(aspectRatio) ? nil : ("aspectRatio", .aspectRatio(Self.fillAspectRatios))
         case .edit(.replace(let from, let to)):
             if !Self.isURLSafe(from) { return ("from", unsafe) }
             return Self.isURLSafe(to) ? nil : ("to", unsafe)
@@ -52,11 +52,33 @@ enum MediaEditRequest: Equatable, Sendable {
             return Self.isURLSafe(prompt) ? nil : ("prompt", unsafe)
         case .edit(.recolor(let prompt, let color)):
             if !Self.isURLSafe(prompt) { return ("prompt", unsafe) }
-            return color.wholeMatch(of: /#[0-9A-Fa-f]{6}/) != nil ? nil : ("color", "Use #RRGGBB")
+            return color.wholeMatch(of: /#[0-9A-Fa-f]{6}/) != nil ? nil : ("color", .hexColor)
         case .edit(.backgroundReplace(let prompt)):
             return prompt.map(Self.isURLSafe) == false ? ("prompt", unsafe) : nil
         case .reframe(let params):
-            return Self.reframeAspectRatios.contains(params.aspectRatio) ? nil : ("aspectRatio", "Use one of \(Self.reframeAspectRatios.joined(separator: ", "))")
+            return Self.reframeAspectRatios.contains(params.aspectRatio) ? nil : ("aspectRatio", .aspectRatio(Self.reframeAspectRatios))
+        }
+    }
+}
+
+enum MediaEditParameterIssue: Equatable, Sendable {
+    case unsafeText
+    case aspectRatio([String])
+    case hexColor
+
+    var toolReason: String {
+        switch self {
+        case .unsafeText: "Use 1–100 letters, digits, spaces or . ' -"
+        case .aspectRatio(let ratios): "Use one of \(ratios.joined(separator: ", "))"
+        case .hexColor: "Use #RRGGBB"
+        }
+    }
+
+    @MainActor func userMessage(in localization: AppLocalization = .shared) -> String {
+        switch self {
+        case .unsafeText: localization.string("Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens.")
+        case .aspectRatio(let ratios): localization.string("Choose one of these aspect ratios: \(ratios.joined(separator: ", ")).")
+        case .hexColor: localization.string("Enter the color as #RRGGBB.")
         }
     }
 }
@@ -65,7 +87,7 @@ enum MediaEditRefusal: Equatable {
     case unavailable(kind: String)
     case operationUnavailable(String)
     case wrongMediaType(ClipType)
-    case invalidParameter(field: String, reason: String)
+    case invalidParameter(field: String, issue: MediaEditParameterIssue)
     case unsupportedType(String)
     case tooLarge(maxBytes: Int64)
     case tooManyPixels(maxPixels: Int64)
@@ -85,7 +107,7 @@ enum MediaEditRefusal: Equatable {
         case .unavailable, .operationUnavailable: L10n.string("The connected backend doesn't offer this edit. Open Settings → Backend.")
         case .wrongMediaType(.video): L10n.string("This edit works on videos only.")
         case .wrongMediaType: L10n.string("This edit works on images only.")
-        case .invalidParameter(_, let reason): reason
+        case .invalidParameter(_, let issue): issue.userMessage()
         case .unsupportedType(let type): L10n.string("\(type) files aren't supported by this edit.")
         case .tooLarge(let max): L10n.string("The file is larger than \(max.byteCountText).")
         case .tooManyPixels(let max): L10n.string("The image is larger than \(max) pixels in total.")
@@ -99,7 +121,7 @@ enum MediaEditRefusal: Equatable {
         case .unavailable(let kind): "No connected backend supports \(kind). Tell the user to connect one in Settings → Backend."
         case .operationUnavailable(let op): "The connected backend does not offer operation \(op)."
         case .wrongMediaType(let type): "This operation needs a \(type.rawValue) asset."
-        case .invalidParameter(let field, let reason): "Invalid \(field): \(reason)."
+        case .invalidParameter(let field, let issue): "Invalid \(field): \(issue.toolReason)."
         case .unsupportedType(let type): "Unsupported file type \(type)."
         case .tooLarge(let max): "File exceeds the \(max)-byte limit."
         case .tooManyPixels(let max): "Image exceeds the \(max)-pixel limit."

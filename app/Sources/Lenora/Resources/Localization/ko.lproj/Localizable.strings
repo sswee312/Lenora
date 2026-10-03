@@ -156,6 +156,7 @@
 "Choose audio clip color" = "오디오 클립 색상 선택";
 "Choose color" = "색상 선택";
 "Choose image clip color" = "이미지 클립 색상 선택";
+"Choose one of these aspect ratios: %@." = "다음 화면비 중 하나를 선택하세요: %@.";
 "Choose sequence clip color" = "시퀀스 클립 색상 선택";
 "Choose text clip color" = "텍스트 클립 색상 선택";
 "Choose the folder that holds your media" = "미디어가 있는 폴더 선택";
@@ -328,6 +329,7 @@
 "Enhance" = "향상";
 "Enhance resolution or frame rate with AI" = "AI로 해상도 또는 프레임률 향상";
 "Enter Full Screen" = "전체 화면 시작";
+"Enter the color as #RRGGBB." = "색상을 #RRGGBB 형식으로 입력하세요.";
 "Erase an object from the image" = "이미지에서 개체 지우기";
 "Every connected agent will need the new token." = "연결된 모든 에이전트에 새 토큰이 필요합니다.";
 "Every link stops working. This can't be undone." = "모든 링크가 작동을 멈춥니다. 이 작업은 되돌릴 수 없습니다.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "업스케일은 비디오 또는 이미지에서만 사용할 수 있습니다";
 "Upscale source media" = "소스 미디어 업스케일";
 "Upscale…" = "업스케일…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "1~100자의 문자, 숫자, 공백, 마침표, 아포스트로피 또는 하이픈을 사용하세요.";
 "Use Freeform" = "자유 형식 사용";
 "Use Freeform to edit individual crop insets." = "개별 자르기 인셋을 편집하려면 자유 형식을 사용하세요.";
 "Use a port between 1024 and 65535." = "1024에서 65535 사이의 포트를 사용하세요.";

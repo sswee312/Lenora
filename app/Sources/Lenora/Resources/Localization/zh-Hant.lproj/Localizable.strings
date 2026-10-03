@@ -156,6 +156,7 @@
 "Choose audio clip color" = "選擇音訊片段顏色";
 "Choose color" = "選擇顏色";
 "Choose image clip color" = "選擇圖像片段顏色";
+"Choose one of these aspect ratios: %@." = "請選擇以下長寬比之一：%@。";
 "Choose sequence clip color" = "選擇序列片段顏色";
 "Choose text clip color" = "選擇文字片段顏色";
 "Choose the folder that holds your media" = "選擇包含媒體的資料夾";
@@ -328,6 +329,7 @@
 "Enhance" = "增強";
 "Enhance resolution or frame rate with AI" = "使用 AI 提升解析度或影格率";
 "Enter Full Screen" = "進入全螢幕";
+"Enter the color as #RRGGBB." = "請以 #RRGGBB 格式輸入顏色。";
 "Erase an object from the image" = "從影像中擦除物件";
 "Every connected agent will need the new token." = "每個已連線的 Agent 都需要新權杖。";
 "Every link stops working. This can't be undone." = "所有連結都將失效。此操作無法還原。";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "放大僅適用於影片或影像";
 "Upscale source media" = "放大來源媒體";
 "Upscale…" = "放大…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "請使用 1–100 個字母、數字、空格、句點、撇號或連字號。";
 "Use Freeform" = "使用自由形式";
 "Use Freeform to edit individual crop insets." = "使用自由形式可分別編輯各裁切內邊距。";
 "Use a port between 1024 and 65535." = "請使用 1024 到 65535 之間的連接埠。";

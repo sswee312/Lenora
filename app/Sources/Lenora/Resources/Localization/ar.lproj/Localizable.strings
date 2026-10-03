@@ -156,6 +156,7 @@
 "Choose audio clip color" = "اختيار لون مقطع الصوت";
 "Choose color" = "اختيار لون";
 "Choose image clip color" = "اختيار لون مقطع الصورة";
+"Choose one of these aspect ratios: %@." = "اختر إحدى نسب العرض إلى الارتفاع التالية: %@.";
 "Choose sequence clip color" = "اختيار لون مقطع التسلسل";
 "Choose text clip color" = "اختيار لون مقطع النص";
 "Choose the folder that holds your media" = "اختيار المجلد الذي يحتوي على وسائطك";
@@ -328,6 +329,7 @@
 "Enhance" = "تحسين";
 "Enhance resolution or frame rate with AI" = "تحسين الدقة أو معدل الإطارات بالذكاء الاصطناعي";
 "Enter Full Screen" = "الدخول إلى ملء الشاشة";
+"Enter the color as #RRGGBB." = "أدخل اللون بالصيغة #RRGGBB.";
 "Erase an object from the image" = "مسح عنصر من الصورة";
 "Every connected agent will need the new token." = "سيحتاج كل وكيل متصل إلى الرمز المميز الجديد.";
 "Every link stops working. This can't be undone." = "ستتوقف جميع الروابط عن العمل. لا يمكن التراجع عن هذا الإجراء.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "يعمل رفع الدقة مع الفيديو أو الصور فقط";
 "Upscale source media" = "رفع دقة وسائط المصدر";
 "Upscale…" = "رفع الدقة…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "استخدم من 1 إلى 100 من الأحرف أو الأرقام أو المسافات أو النقاط أو الفواصل العليا أو الشرطات.";
 "Use Freeform" = "استخدام الوضع الحر";
 "Use Freeform to edit individual crop insets." = "استخدم الوضع الحر لتحرير هوامش الاقتصاص كلًّا على حدة.";
 "Use a port between 1024 and 65535." = "استخدم منفذًا بين 1024 و65535.";

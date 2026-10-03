@@ -8,7 +8,7 @@ extension EditSubmitter {
             return .refused(.operationUnavailable(params.op))
         }
         guard asset.type == request.mediaType else { return .refused(.wrongMediaType(request.mediaType)) }
-        if let invalid = request.invalidField() { return .refused(.invalidParameter(field: invalid.field, reason: invalid.reason)) }
+        if let invalid = request.invalidField() { return .refused(.invalidParameter(field: invalid.field, issue: invalid.issue)) }
         let source = MediaInputCheck.Source(url: asset.url, width: asset.sourceWidth, height: asset.sourceHeight)
         if let refusal = await MediaInputCheck.refusal(for: source, limits: model.inputs) { return .refused(refusal) }
         guard editor.mediaAssetsById[asset.id] === asset else { return .refused(.sourceMissing) }

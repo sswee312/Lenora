@@ -156,6 +156,7 @@
 "Choose audio clip color" = "בחר צבע קליפ שמע";
 "Choose color" = "בחר צבע";
 "Choose image clip color" = "בחר צבע קליפ תמונה";
+"Choose one of these aspect ratios: %@." = "בחר אחד מיחסי גובה-רוחב אלה: %@.";
 "Choose sequence clip color" = "בחר צבע קליפ רצף";
 "Choose text clip color" = "בחר צבע קליפ טקסט";
 "Choose the folder that holds your media" = "בחר את התיקייה שמכילה את המדיה";
@@ -328,6 +329,7 @@
 "Enhance" = "שפר";
 "Enhance resolution or frame rate with AI" = "שפר רזולוציה או קצב פריימים באמצעות AI";
 "Enter Full Screen" = "עבור למסך מלא";
+"Enter the color as #RRGGBB." = "הזן את הצבע בתבנית #RRGGBB.";
 "Erase an object from the image" = "מחיקת אובייקט מהתמונה";
 "Every connected agent will need the new token." = "כל Agent מחובר יצטרך את הטוקן החדש.";
 "Every link stops working. This can't be undone." = "כל הקישורים יפסיקו לעבוד. אי אפשר לבטל פעולה זו.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "הגדלת רזולוציה פועלת על וידאו או תמונות בלבד";
 "Upscale source media" = "הגדל רזולוציית מדיית מקור";
 "Upscale…" = "הגדל רזולוציה…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "השתמש ב-1–100 אותיות, ספרות, רווחים, נקודות, גרשים או מקפים.";
 "Use Freeform" = "השתמש בחופשי";
 "Use Freeform to edit individual crop insets." = "השתמש בחופשי כדי לערוך שולי חיתוך בנפרד.";
 "Use a port between 1024 and 65535." = "השתמש בפורט בין 1024 ל-65535.";

@@ -156,6 +156,7 @@
 "Choose audio clip color" = "Vybrat barvu audio klipu";
 "Choose color" = "Vybrat barvu";
 "Choose image clip color" = "Vybrat barvu obrazového klipu";
+"Choose one of these aspect ratios: %@." = "Vyberte jeden z těchto poměrů stran: %@.";
 "Choose sequence clip color" = "Vybrat barvu sekvenčního klipu";
 "Choose text clip color" = "Vybrat barvu textového klipu";
 "Choose the folder that holds your media" = "Vyberte složku s médii";
@@ -328,6 +329,7 @@
 "Enhance" = "Vylepšit";
 "Enhance resolution or frame rate with AI" = "Vylepšit rozlišení nebo snímkovou frekvenci pomocí AI";
 "Enter Full Screen" = "Přejít do režimu na celou obrazovku";
+"Enter the color as #RRGGBB." = "Zadejte barvu ve formátu #RRGGBB.";
 "Erase an object from the image" = "Vymazat objekt z obrázku";
 "Every connected agent will need the new token." = "Každý připojený agent bude potřebovat nový token.";
 "Every link stops working. This can't be undone." = "Všechny odkazy přestanou fungovat. Tuto akci nelze vrátit zpět.";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "Zvětšení rozlišení funguje jen u videa nebo obrázků";
 "Upscale source media" = "Zvětšit rozlišení zdrojových médií";
 "Upscale…" = "Zvětšit rozlišení…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "Použijte 1–100 písmen, číslic, mezer, teček, apostrofů nebo spojovníků.";
 "Use Freeform" = "Použít Volný tvar";
 "Use Freeform to edit individual crop insets." = "Pro úpravu jednotlivých odsazení oříznutí použijte Volný tvar.";
 "Use a port between 1024 and 65535." = "Použijte port v rozsahu 1024 až 65535.";

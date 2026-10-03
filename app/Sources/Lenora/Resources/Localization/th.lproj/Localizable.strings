@@ -156,6 +156,7 @@
 "Choose audio clip color" = "เลือกสีคลิปเสียง";
 "Choose color" = "เลือกสี";
 "Choose image clip color" = "เลือกสีคลิปภาพ";
+"Choose one of these aspect ratios: %@." = "เลือกอัตราส่วนภาพอย่างใดอย่างหนึ่งต่อไปนี้: %@";
 "Choose sequence clip color" = "เลือกสีคลิปซีเควนซ์";
 "Choose text clip color" = "เลือกสีคลิปข้อความ";
 "Choose the folder that holds your media" = "เลือกโฟลเดอร์ที่เก็บมีเดียของคุณ";
@@ -328,6 +329,7 @@
 "Enhance" = "ปรับปรุง";
 "Enhance resolution or frame rate with AI" = "ปรับปรุงความละเอียดหรืออัตราเฟรมด้วย AI";
 "Enter Full Screen" = "เข้าสู่เต็มหน้าจอ";
+"Enter the color as #RRGGBB." = "ป้อนสีในรูปแบบ #RRGGBB";
 "Erase an object from the image" = "ลบวัตถุออกจากภาพ";
 "Every connected agent will need the new token." = "Agent ที่เชื่อมต่ออยู่ทุกตัวจะต้องใช้โทเค็นใหม่";
 "Every link stops working. This can't be undone." = "ลิงก์ทั้งหมดจะใช้งานไม่ได้ การดำเนินการนี้ไม่สามารถย้อนกลับได้";
@@ -979,6 +981,7 @@
 "Upscale only works on video or images" = "เพิ่มความละเอียดใช้ได้กับวิดีโอหรือภาพเท่านั้น";
 "Upscale source media" = "เพิ่มความละเอียดมีเดียต้นทาง";
 "Upscale…" = "เพิ่มความละเอียด…";
+"Use 1–100 letters, digits, spaces, periods, apostrophes or hyphens." = "ใช้ตัวอักษร ตัวเลข ช่องว่าง จุด อะพอสทรอฟี หรือยัติภังค์ 1–100 ตัว";
 "Use Freeform" = "ใช้อิสระ";
 "Use Freeform to edit individual crop insets." = "ใช้อิสระเพื่อแก้ไขส่วนเยื้องครอปทีละรายการ";
 "Use a port between 1024 and 65535." = "ใช้พอร์ตระหว่าง 1024 ถึง 65535";

@@ -1,3 +1,4 @@
+import Foundation
 import Testing
 @testable import Lenora
 
@@ -18,6 +19,28 @@ struct MediaEditRequestTests {
         #expect(MediaEditRequest.edit(.backgroundReplace(prompt: nil)).invalidField() == nil)
         #expect(MediaEditRequest.edit(.fill(aspectRatio: "2:1")).invalidField()?.field == "aspectRatio")
         #expect(MediaEditRequest.reframe(VideoReframeParams(aspectRatio: "3:2")).invalidField()?.field == "aspectRatio")
+    }
+
+    @Test func invalidFieldsNameTheirIssue() {
+        #expect(MediaEditRequest.edit(.remove(prompt: "a;b")).invalidField()?.issue == .unsafeText)
+        #expect(MediaEditRequest.edit(.recolor(prompt: "jacket", color: "blue")).invalidField()?.issue == .hexColor)
+        #expect(MediaEditRequest.edit(.fill(aspectRatio: "2:1")).invalidField()?.issue == .aspectRatio(MediaEditRequest.fillAspectRatios))
+    }
+
+    @MainActor
+    @Test(arguments: [MediaEditParameterIssue.unsafeText, .aspectRatio(["1:1", "16:9"]), .hexColor])
+    func parameterIssuesAreTranslated(issue: MediaEditParameterIssue) throws {
+        let english = try localization(["en"]), german = try localization(["de"])
+        #expect(issue.userMessage(in: german) != issue.userMessage(in: english))
+        #expect(MediaEditRefusal.invalidParameter(field: "x", issue: issue).toolMessage == "Invalid x: \(issue.toolReason).")
+    }
+
+    @MainActor
+    private func localization(_ languages: [String]) throws -> AppLocalization {
+        let suite = "MediaEditRequestTests-\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        return AppLocalization(defaults: defaults, preferredLanguages: languages)
     }
 
     @Test func kindsAndMediaTypes() {
