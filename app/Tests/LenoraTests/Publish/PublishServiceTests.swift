@@ -386,6 +386,44 @@ struct PublishServiceTests {
         #expect(service.publications.first?.status == .unpublished)
     }
 
+    @Test func addOutputsDuringUnpublishIsRefusedAsBusy() async throws {
+        let provider = FakeProvider(states: [])
+        await provider.hold(.deleteAsset)
+        let service = try makeService(provider)
+        let record = PublishFixtures.readyRecord()
+        service.restore([record])
+        let unpublishing = Task { try await service.unpublish(record.id) }
+        await provider.waitForCalls(.deleteAsset)
+        #expect(throws: PublishRefusal.busy) {
+            try service.addOutputs(to: record.id, options: PublishOptions(vertical: "9:16"), confirmPublic: true)
+        }
+        await provider.release(.deleteAsset)
+        #expect(try await unpublishing.value == false)
+        #expect(service.publications.first?.status == .unpublished)
+        #expect(await provider.submitted.isEmpty)
+    }
+
+    @Test func failedUnpublishAfterCloseChangesNothing() async throws {
+        let provider = FakeProvider(states: [])
+        await provider.hold(.upload)
+        await provider.setDeleteResult(.failure(.problem(BackendProblem(code: "provider_error", detail: nil, status: 502, retryable: false))))
+        let service = try makeService(provider)
+        let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await provider.waitForCalls(.upload)
+        await provider.hold(.deleteAsset)
+        let unpublishing = Task { try await service.unpublish(record.id) }
+        await provider.release(.upload)
+        await provider.waitForCalls(.deleteAsset)
+        let before = service.publications
+        service.stopMonitoring()
+        var changes = 0
+        service.onChange = { changes += 1 }
+        await provider.release(.deleteAsset)
+        await #expect(throws: (any Error).self) { try await unpublishing.value }
+        #expect(service.publications == before)
+        #expect(changes == 0)
+    }
+
     @Test func editorSavesAndRestoresPublications() throws {
         let editor = EditorViewModel(generationProvider: { nil })
         let record = PublishFixtures.readyRecord()

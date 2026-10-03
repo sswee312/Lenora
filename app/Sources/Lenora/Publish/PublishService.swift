@@ -13,6 +13,7 @@ final class PublishService {
     private let catalog: ModelCatalog
     private let probe: @Sendable (URL) async throws -> PublishProbe
     @ObservationIgnored private var runs: [UUID: Run] = [:]
+    @ObservationIgnored private var deletesInFlight: [UUID: Int] = [:]
     @ObservationIgnored private var isOpen = true
 
     private struct Run {
@@ -72,7 +73,8 @@ final class PublishService {
         guard let index = publications.firstIndex(where: { $0.id == id }) else { throw PublishRefusal.notFound }
         let record = publications[index]
         guard record.status != .unpublished else { throw PublishRefusal.unpublished }
-        guard record.status != .uploading, record.status != .processing else { throw PublishRefusal.busy }
+        guard record.status != .uploading, record.status != .processing, deletesInFlight[id] == nil
+        else { throw PublishRefusal.busy }
         guard record.canAddOutputs else { throw PublishRefusal.notUploaded }
         let merged = record.options.merging(options)
         let known = PublishProbe(byteCount: 0, durationSeconds: record.durationSeconds)
@@ -100,6 +102,8 @@ final class PublishService {
             let run = runs.removeValue(forKey: id)
             run?.task.cancel()
             await run?.task.value
+            deletesInFlight[id, default: 0] += 1
+            defer { deletesInFlight[id] = deletesInFlight[id].flatMap { $0 > 1 ? $0 - 1 : nil } }
             do {
                 try await provider.deleteAsset(model: record.model, assetRef: assetRef)
             } catch BackendError.problem(let problem) where problem.code == "not_found" {
@@ -139,7 +143,7 @@ final class PublishService {
 
     /// An unpublish that stopped a run but then failed leaves the record as restore would find it.
     private func settleInterrupted(_ id: UUID) {
-        guard let index = publications.firstIndex(where: { $0.id == id }) else { return }
+        guard isOpen, let index = publications.firstIndex(where: { $0.id == id }) else { return }
         publications[index] = Self.settledAfterInterruption(publications[index])
         onChange()
         resumeMonitoring()
