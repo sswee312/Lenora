@@ -13,15 +13,6 @@ extension TimelineView {
         let audioActions = actions.filter { $0.group(for: mediaType) == .audio }
         let addAction: (EditAction) -> Void = { action in
             switch action {
-            case .enhanceDraft:
-                let item = NSMenuItem(
-                    title: L10n.string("FLUX Enhance"),
-                    action: #selector(self.performAIEnhanceDraft(_:)),
-                    keyEquivalent: ""
-                )
-                item.target = self
-                item.representedObject = clipId
-                submenu.addItem(item)
             case .upscale:
                 let upscaleItem = NSMenuItem(title: L10n.string("Upscale…"), action: #selector(self.performAIEditUpscale(_:)), keyEquivalent: "")
                 upscaleItem.target = self
@@ -99,13 +90,6 @@ extension TimelineView {
     @objc private func performAIEditEdit(_ sender: Any?) {
         guard let clipId = (sender as? NSMenuItem)?.representedObject as? String else { return }
         editor.beginAIEdit(clipId: clipId)
-    }
-
-    @objc private func performAIEnhanceDraft(_ sender: Any?) {
-        guard let clipId = (sender as? NSMenuItem)?.representedObject as? String,
-              let clip = editor.clipFor(id: clipId),
-              let asset = editor.mediaAssets.first(where: { $0.id == clip.mediaRef }) else { return }
-        editor.generationService.enhanceDraft(asset: asset, editor: editor)
     }
 
     @objc private func performAIEditReframe(_ sender: Any?) {

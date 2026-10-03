@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld clip không thể căn chỉnh";
 "%lld credits" = "%lld tín dụng";
 "%lld credits / month" = "%lld tín dụng / tháng";
-"%lld credits refunded" = "Đã hoàn %lld tín dụng";
 "%lld images are ready in Lenora Pro." = "%lld hình ảnh đã sẵn sàng trong Lenora Pro.";
 "%lld items" = "%lld mục";
 "%lld media files are missing and will be skipped." = "Thiếu %lld tệp phương tiện và các tệp này sẽ bị bỏ qua.";
@@ -51,7 +50,6 @@
 "Account" = "Tài khoản";
 "Account settings" = "Cài đặt tài khoản";
 "Action Safe" = "Vùng an toàn hành động";
-"Activity unavailable" = "Hoạt động không khả dụng";
 "Adapters" = "Bộ điều hợp";
 "Add Marker (M)" = "Thêm marker (M)";
 "Add Range to Chat" = "Thêm vùng vào chat";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Không thể mở khóa đồng bộ trên track multicam. \"%@\" phải tiếp tục căn chỉnh theo track này.";
 "Cancel" = "Hủy";
 "Cancel Export" = "Hủy xuất";
+"Cancel Generation" = "Hủy tạo";
 "Cancel Key Color Sampling" = "Hủy lấy mẫu màu khóa";
 "Cancel key color sampling" = "Hủy lấy mẫu màu khóa";
 "Canceled" = "Đã hủy";
@@ -298,7 +297,6 @@
 "Downloading…" = "Đang tải xuống…";
 "Downloads a %@ on-device model so you can search media visually." = "Tải mô hình %@ trên thiết bị để tìm kiếm phương tiện bằng hình ảnh.";
 "Draft" = "Bản nháp";
-"Draft already enhanced or cache unavailable" = "Bản nháp đã được nâng cao hoặc bộ nhớ đệm không khả dụng";
 "Drag to add or shape a point · double-click to remove" = "Kéo để thêm hoặc định hình điểm · bấm đúp để xóa";
 "Drop files here or import from disk" = "Thả tệp vào đây hoặc nhập từ ổ đĩa";
 "Dubbing" = "Lồng tiếng";
@@ -330,7 +328,6 @@
 "Enabled" = "Đã bật";
 "Enhance" = "Nâng cao";
 "Enhance resolution or frame rate with AI" = "Nâng cao độ phân giải hoặc tốc độ khung hình bằng AI";
-"Enhanced with FLUX.3 at 1080p." = "Đã nâng cao bằng FLUX.3 ở 1080p.";
 "Enter Full Screen" = "Vào toàn màn hình";
 "Exclusion" = "Loại trừ";
 "Expand" = "Mở rộng";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Kéo dài phụ đề qua các khoảng trống ngắn và giữ phụ đề cuối.";
 "Extra Large" = "Rất lớn";
 "Extract Audio" = "Trích xuất âm thanh";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Tăng dần";
 "Fade Out" = "Giảm dần";
 "Failed" = "Không thành công";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Tạo không thành công";
 "Generation Input" = "Đầu vào tạo";
 "Generation complete" = "Đã tạo xong";
+"Generation failed." = "Tạo thất bại.";
 "Generation in progress" = "Đang tạo";
 "Generation panel" = "Bảng tạo nội dung";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Việc tạo nội dung chạy trên backend Lenora của bạn. Token được lưu trong Chuỗi khóa macOS.";
@@ -588,7 +585,6 @@
 "No beats detected." = "Không phát hiện nhịp.";
 "No conversations yet" = "Chưa có cuộc trò chuyện";
 "No exports yet" = "Chưa có bản xuất";
-"No generations yet" = "Chưa có nội dung được tạo";
 "No images" = "Không có hình ảnh";
 "No markers" = "Không có marker";
 "No markers match this filter." = "Không có marker khớp bộ lọc này.";
@@ -667,7 +663,6 @@
 "Preview" = "Xem trước";
 "Pro plan" = "Gói Pro";
 "Project" = "Dự án";
-"Project Activity" = "Hoạt động dự án";
 "Project Settings" = "Cài đặt dự án";
 "Projects Couldn’t Be Deleted" = "Không thể xóa dự án";
 "Prompt" = "Câu lệnh";
@@ -678,7 +673,6 @@
 "Range" = "Vùng";
 "Razor (C)" = "Dao cắt (C)";
 "Razor Tool" = "Công cụ Dao cắt";
-"Re-render the same motion at full quality in 1080p" = "Dựng lại cùng chuyển động ở chất lượng đầy đủ 1080p";
 "Reasoning effort" = "Mức độ lập luận";
 "Redetect Beats" = "Phát hiện lại nhịp";
 "Redo" = "Làm lại";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Lưu vùng thành phương tiện";
 "Save as Audio" = "Lưu thành âm thanh";
 "Save as Media" = "Lưu thành phương tiện";
-"Save this project to view activity" = "Lưu dự án này để xem hoạt động";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Lưu bản sao dự án kèm theo toàn bộ phương tiện để có thể mở trên mọi máy.";
 "Scale" = "Tỷ lệ";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Văn bản cần đọc (tối thiểu %lld ký tự)";
 "The clip you're adding has different settings than the current project." = "Clip bạn đang thêm có cài đặt khác với dự án hiện tại.";
 "The export" = "Bản xuất";
+"The job already finished." = "Tác vụ đã hoàn tất.";
+"The job finished without a result." = "Tác vụ kết thúc mà không có kết quả.";
 "The marker comment changed while you were editing. Review it and try again." = "Bình luận của marker đã đổi trong lúc bạn chỉnh. Xem lại và thử lại.";
 "The project will be moved to the Trash." = "Dự án sẽ được chuyển vào Thùng rác.";
 "The selected model refused this request. Revise the prompt and try again." = "Mô hình đã chọn từ chối yêu cầu này. Chỉnh lại prompt và thử lại.";
@@ -894,6 +889,7 @@
 "Theme" = "Chủ đề";
 "This is where all your footage and assets live." = "Đây là nơi chứa toàn bộ cảnh quay và tài nguyên của bạn.";
 "This is your preview panel to play a selected media or the whole timeline." = "Đây là bảng xem trước để phát phương tiện đã chọn hoặc toàn bộ timeline.";
+"This job can't be cancelled. It will finish on its own." = "Không thể hủy tác vụ này. Tác vụ sẽ tự hoàn tất.";
 "This model cannot cap the output at 60 FPS." = "Mô hình này không thể giới hạn đầu ra ở 60 FPS.";
 "This permanently removes %@." = "Thao tác này sẽ xóa vĩnh viễn %@.";
 "This source can’t replace the clip." = "Nguồn này không thể thay clip.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Đang xử lý %@";
 "Workspace layout" = "Bố cục không gian làm việc";
 "X High" = "Rất cao";
-"You were not charged for this generation" = "Bạn không bị tính phí cho lần tạo này";
 "You're all set" = "Mọi thứ đã sẵn sàng";
 "You're ready to start creating." = "Bạn đã sẵn sàng để bắt đầu sáng tạo.";
 "Your Lottie animation is ready." = "Hoạt ảnh Lottie của bạn đã sẵn sàng.";

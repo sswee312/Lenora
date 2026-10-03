@@ -226,7 +226,8 @@ final class EditorViewModel {
         manifest: { MediaManifest() }, projectURL: { nil }
     )
 
-    let generationService = GenerationService()
+    let generationService = GenerationService(provider: { BackendConnection.shared.provider })
+    @ObservationIgnored var remoteDownloadFetch: RemoteMediaDownloader.Fetch?
     let agentService = AgentService()
 
     var agentPanelVisible: Bool = {

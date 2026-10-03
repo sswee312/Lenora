@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lldটি অ্যালাইন করা যায়নি";
 "%lld credits" = "%lld ক্রেডিট";
 "%lld credits / month" = "%lld ক্রেডিট / মাস";
-"%lld credits refunded" = "%lld ক্রেডিট ফেরত দেওয়া হয়েছে";
 "%lld images are ready in Lenora Pro." = "%lldটি ইমেজ Lenora Pro-তে প্রস্তুত।";
 "%lld items" = "%lldটি আইটেম";
 "%lld media files are missing and will be skipped." = "%lldটি মিডিয়া ফাইল নেই এবং সেগুলো এড়িয়ে যাওয়া হবে।";
@@ -51,7 +50,6 @@
 "Account" = "অ্যাকাউন্ট";
 "Account settings" = "অ্যাকাউন্ট সেটিংস";
 "Action Safe" = "অ্যাকশন সেফ";
-"Activity unavailable" = "অ্যাক্টিভিটি পাওয়া যাচ্ছে না";
 "Adapters" = "অ্যাডাপ্টার";
 "Add Marker (M)" = "মার্কার যোগ করুন (M)";
 "Add Range to Chat" = "চ্যাটে রেঞ্জ যোগ করুন";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "মাল্টিক্যাম ট্র্যাকে সিঙ্ক আনলক করা যাবে না — \"%@\" এর মাধ্যমে অ্যালাইন থাকে।";
 "Cancel" = "বাতিল";
 "Cancel Export" = "এক্সপোর্ট বাতিল করুন";
+"Cancel Generation" = "জেনারেশন বাতিল করুন";
 "Cancel Key Color Sampling" = "কী কালার স্যাম্পলিং বাতিল করুন";
 "Cancel key color sampling" = "কী কালার স্যাম্পলিং বাতিল করুন";
 "Canceled" = "বাতিল হয়েছে";
@@ -298,7 +297,6 @@
 "Downloading…" = "ডাউনলোড হচ্ছে…";
 "Downloads a %@ on-device model so you can search media visually." = "মিডিয়ায় ভিজ্যুয়াল সার্চের জন্য %@ আকারের অন-ডিভাইস মডেল ডাউনলোড করে।";
 "Draft" = "ড্রাফট";
-"Draft already enhanced or cache unavailable" = "ড্রাফট আগেই এনহ্যান্স করা হয়েছে বা ক্যাশ পাওয়া যাচ্ছে না";
 "Drag to add or shape a point · double-click to remove" = "পয়েন্ট যোগ বা শেপ করতে ড্র্যাগ করুন · সরাতে ডাবল-ক্লিক করুন";
 "Drop files here or import from disk" = "এখানে ফাইল ড্রপ করুন বা ডিস্ক থেকে ইমপোর্ট করুন";
 "Dubbing" = "ডাবিং";
@@ -330,7 +328,6 @@
 "Enabled" = "সক্রিয়";
 "Enhance" = "এনহ্যান্স";
 "Enhance resolution or frame rate with AI" = "AI দিয়ে রেজোলিউশন বা ফ্রেম রেট বাড়ান";
-"Enhanced with FLUX.3 at 1080p." = "1080p-তে FLUX.3 দিয়ে এনহ্যান্স করা হয়েছে।";
 "Enter Full Screen" = "ফুল স্ক্রিনে যান";
 "Exclusion" = "এক্সক্লুশন";
 "Expand" = "প্রসারিত করুন";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "ছোট গ্যাপ জুড়ে ক্যাপশন এক্সটেন্ড করে এবং শেষ ক্যাপশন হোল্ড করে।";
 "Extra Large" = "অনেক বড়";
 "Extract Audio" = "অডিও বের করুন";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "ফেড ইন";
 "Fade Out" = "ফেড আউট";
 "Failed" = "ব্যর্থ";
@@ -402,6 +398,7 @@
 "Generation Failed" = "জেনারেশন ব্যর্থ হয়েছে";
 "Generation Input" = "জেনারেশন ইনপুট";
 "Generation complete" = "জেনারেশন সম্পন্ন";
+"Generation failed." = "জেনারেশন ব্যর্থ হয়েছে।";
 "Generation in progress" = "জেনারেশন চলছে";
 "Generation panel" = "জেনারেশন প্যানেল";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "জেনারেশন আপনার Lenora ব্যাকএন্ডে চলে। টোকেন macOS Keychain-এ সেভ থাকে।";
@@ -479,6 +476,10 @@
 "Layout" = "লেআউট";
 "Left" = "বাঁয়ে";
 "Length of the generated music. It's placed at the playhead, or at the marked range start." = "জেনারেট করা মিউজিকের দৈর্ঘ্য। এটি প্লেহেডে বা মার্ক করা রেঞ্জের শুরুতে রাখা হয়।";
+"Lenora Project" = "Lenora প্রজেক্ট";
+"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora এই ক্লিপের সোর্স ফাইল লোড করতে পারেনি। ফাইলটি নেই, খুলে নেওয়া কোনো ড্রাইভে আছে অথবা পড়া যাচ্ছে না।";
+"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora এই সোর্স ফাইল লোড করতে পারেনি। ফাইলটি নেই, খুলে নেওয়া কোনো ড্রাইভে আছে অথবা পড়া যাচ্ছে না।";
+"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora এই ক্লিপের সোর্স ফাইল লোড করেছে, কিন্তু প্লেব্যাকের জন্য প্রস্তুত করতে পারেনি। ফাইলটি নষ্ট বা সাপোর্ট না করা ফরম্যাটে হতে পারে।";
 "Let Agent create captions for you. Choose a predefined task, or ask Agent in the chat." = "এজেন্টকে আপনার জন্য ক্যাপশন তৈরি করতে দিন। আগে থেকে নির্ধারিত টাস্ক বেছে নিন বা চ্যাটে এজেন্টকে বলুন।";
 "Let Agent generate music for you. Choose a starter, or ask Agent in the chat." = "এজেন্টকে আপনার জন্য মিউজিক জেনারেট করতে দিন। একটি স্টার্টার বেছে নিন বা চ্যাটে এজেন্টকে বলুন।";
 "Let's take a quick tour of the workspace and what you can do." = "ওয়ার্কস্পেস এবং এতে কী করতে পারবেন তা সংক্ষেপে দেখে নেওয়া যাক।";
@@ -584,7 +585,6 @@
 "No beats detected." = "কোনো বিট শনাক্ত হয়নি।";
 "No conversations yet" = "এখনও কোনো কথোপকথন নেই";
 "No exports yet" = "এখনও কোনো এক্সপোর্ট নেই";
-"No generations yet" = "এখনও কোনো জেনারেশন নেই";
 "No images" = "কোনো ইমেজ নেই";
 "No markers" = "কোনো মার্কার নেই";
 "No markers match this filter." = "এই ফিল্টারের সঙ্গে কোনো মার্কার মেলে না।";
@@ -635,10 +635,6 @@
 "Overlay" = "ওভারলে";
 "Overline" = "ওভারলাইন";
 "Padding" = "প্যাডিং";
-"Lenora Project" = "Lenora প্রজেক্ট";
-"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora এই ক্লিপের সোর্স ফাইল লোড করতে পারেনি। ফাইলটি নেই, খুলে নেওয়া কোনো ড্রাইভে আছে অথবা পড়া যাচ্ছে না।";
-"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora এই সোর্স ফাইল লোড করতে পারেনি। ফাইলটি নেই, খুলে নেওয়া কোনো ড্রাইভে আছে অথবা পড়া যাচ্ছে না।";
-"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora এই ক্লিপের সোর্স ফাইল লোড করেছে, কিন্তু প্লেব্যাকের জন্য প্রস্তুত করতে পারেনি। ফাইলটি নষ্ট বা সাপোর্ট না করা ফরম্যাটে হতে পারে।";
 "Paste" = "পেস্ট করুন";
 "Paste Clip Settings" = "ক্লিপ সেটিংস পেস্ট করুন";
 "Paste LENORA_TOKEN" = "LENORA_TOKEN পেস্ট করুন";
@@ -667,7 +663,6 @@
 "Preview" = "প্রিভিউ";
 "Pro plan" = "Pro প্ল্যান";
 "Project" = "প্রজেক্ট";
-"Project Activity" = "প্রজেক্ট অ্যাক্টিভিটি";
 "Project Settings" = "প্রজেক্ট সেটিংস";
 "Projects Couldn’t Be Deleted" = "প্রজেক্ট ডিলিট করা যায়নি";
 "Prompt" = "প্রম্পট";
@@ -678,7 +673,6 @@
 "Range" = "রেঞ্জ";
 "Razor (C)" = "রেজর (C)";
 "Razor Tool" = "রেজর টুল";
-"Re-render the same motion at full quality in 1080p" = "একই মোশন 1080p-তে পূর্ণ কোয়ালিটিতে আবার রেন্ডার করুন";
 "Reasoning effort" = "রিজনিং এফর্ট";
 "Redetect Beats" = "বিট আবার শনাক্ত করুন";
 "Redo" = "রিডু";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "রেঞ্জ মিডিয়া হিসেবে সেভ করুন";
 "Save as Audio" = "অডিও হিসেবে সেভ করুন";
 "Save as Media" = "মিডিয়া হিসেবে সেভ করুন";
-"Save this project to view activity" = "অ্যাক্টিভিটি দেখতে এই প্রজেক্টটি সেভ করুন";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "সব মিডিয়া ভেতরে বান্ডেল করে প্রজেক্টটির একটি কপি সেভ করে, যাতে যেকোনো কম্পিউটারে খোলা যায়।";
 "Scale" = "স্কেল";
 "Scope (2.39:1)" = "স্কোপ (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "যে টেক্সট বলা হবে (কমপক্ষে %lld অক্ষর)";
 "The clip you're adding has different settings than the current project." = "আপনি যে ক্লিপ যোগ করছেন তার সেটিংস বর্তমান প্রজেক্ট থেকে আলাদা।";
 "The export" = "এক্সপোর্টটি";
+"The job already finished." = "কাজটি ইতিমধ্যে শেষ হয়েছে।";
+"The job finished without a result." = "কাজটি কোনো ফলাফল ছাড়াই শেষ হয়েছে।";
 "The marker comment changed while you were editing. Review it and try again." = "এডিট করার সময় মার্কার কমেন্ট বদলেছে। রিভিউ করে আবার চেষ্টা করুন।";
 "The project will be moved to the Trash." = "প্রজেক্টটি ট্র্যাশে সরানো হবে।";
 "The selected model refused this request. Revise the prompt and try again." = "সিলেক্ট করা মডেল এই অনুরোধ প্রত্যাখ্যান করেছে। প্রম্পট সংশোধন করে আবার চেষ্টা করুন।";
@@ -894,6 +889,7 @@
 "Theme" = "থিম";
 "This is where all your footage and assets live." = "আপনার সব ফুটেজ ও অ্যাসেট এখানে থাকে।";
 "This is your preview panel to play a selected media or the whole timeline." = "এটি সিলেক্ট করা মিডিয়া বা পুরো টাইমলাইন প্লে করার প্রিভিউ প্যানেল।";
+"This job can't be cancelled. It will finish on its own." = "এই কাজটি বাতিল করা যাবে না। এটি নিজে থেকেই শেষ হবে।";
 "This model cannot cap the output at 60 FPS." = "এই মডেল আউটপুট 60 FPS-এ সীমাবদ্ধ করতে পারে না।";
 "This permanently removes %@." = "এটি %@ স্থায়ীভাবে সরিয়ে দেয়।";
 "This source can’t replace the clip." = "এই সোর্স দিয়ে ক্লিপ বদলানো যাচ্ছে না।";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "%@ নিয়ে কাজ হচ্ছে";
 "Workspace layout" = "ওয়ার্কস্পেস লেআউট";
 "X High" = "X হাই";
-"You were not charged for this generation" = "এই জেনারেশনের জন্য আপনাকে চার্জ করা হয়নি";
 "You're all set" = "সব প্রস্তুত";
 "You're ready to start creating." = "আপনি তৈরি শুরু করতে প্রস্তুত।";
 "Your Lottie animation is ready." = "আপনার Lottie অ্যানিমেশন প্রস্তুত।";

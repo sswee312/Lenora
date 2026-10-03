@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld개를 정렬할 수 없음";
 "%lld credits" = "%lld 크레딧";
 "%lld credits / month" = "%lld 크레딧/월";
-"%lld credits refunded" = "%lld 크레딧 환불됨";
 "%lld images are ready in Lenora Pro." = "이미지 %lld개가 Lenora Pro에 준비되었습니다.";
 "%lld items" = "항목 %lld개";
 "%lld media files are missing and will be skipped." = "미디어 파일 %lld개가 유실되어 건너뜁니다.";
@@ -51,7 +50,6 @@
 "Account" = "계정";
 "Account settings" = "계정 설정";
 "Action Safe" = "액션 세이프";
-"Activity unavailable" = "활동을 사용할 수 없음";
 "Adapters" = "어댑터";
 "Add Marker (M)" = "마커 추가 (M)";
 "Add Range to Chat" = "채팅에 범위 추가";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "멀티캠 트랙의 동기화를 잠금 해제할 수 없습니다. \"%@\"은(는) 이 트랙을 통해 정렬 상태를 유지합니다.";
 "Cancel" = "취소";
 "Cancel Export" = "내보내기 취소";
+"Cancel Generation" = "생성 취소";
 "Cancel Key Color Sampling" = "키 색상 샘플링 취소";
 "Cancel key color sampling" = "키 색상 샘플링 취소";
 "Canceled" = "취소됨";
@@ -298,7 +297,6 @@
 "Downloading…" = "다운로드 중…";
 "Downloads a %@ on-device model so you can search media visually." = "%@ 온디바이스 모델을 다운로드하여 미디어를 시각적으로 검색할 수 있게 합니다.";
 "Draft" = "드래프트";
-"Draft already enhanced or cache unavailable" = "드래프트가 이미 향상되었거나 캐시를 사용할 수 없음";
 "Drag to add or shape a point · double-click to remove" = "드래그하여 포인트 추가 또는 모양 조절 · 이중 클릭하여 제거";
 "Drop files here or import from disk" = "여기에 파일을 놓거나 디스크에서 가져오기";
 "Dubbing" = "더빙";
@@ -330,7 +328,6 @@
 "Enabled" = "사용";
 "Enhance" = "향상";
 "Enhance resolution or frame rate with AI" = "AI로 해상도 또는 프레임률 향상";
-"Enhanced with FLUX.3 at 1080p." = "FLUX.3로 1080p에서 향상됨.";
 "Enter Full Screen" = "전체 화면 시작";
 "Exclusion" = "제외";
 "Expand" = "확장";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "짧은 간격에 캡션을 연장하고 마지막 캡션을 유지합니다.";
 "Extra Large" = "매우 크게";
 "Extract Audio" = "오디오 추출";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "페이드 인";
 "Fade Out" = "페이드 아웃";
 "Failed" = "실패";
@@ -402,6 +398,7 @@
 "Generation Failed" = "생성 실패";
 "Generation Input" = "생성 입력";
 "Generation complete" = "생성 완료";
+"Generation failed." = "생성에 실패했습니다.";
 "Generation in progress" = "생성 진행 중";
 "Generation panel" = "생성 패널";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "생성은 Lenora 백엔드에서 실행됩니다. 토큰은 macOS 키체인에 저장됩니다.";
@@ -588,7 +585,6 @@
 "No beats detected." = "감지된 비트가 없습니다.";
 "No conversations yet" = "아직 대화 없음";
 "No exports yet" = "아직 내보내기 없음";
-"No generations yet" = "아직 생성 항목 없음";
 "No images" = "이미지 없음";
 "No markers" = "마커 없음";
 "No markers match this filter." = "이 필터와 일치하는 마커가 없습니다.";
@@ -667,7 +663,6 @@
 "Preview" = "미리보기";
 "Pro plan" = "Pro 요금제";
 "Project" = "프로젝트";
-"Project Activity" = "프로젝트 활동";
 "Project Settings" = "프로젝트 설정";
 "Projects Couldn’t Be Deleted" = "프로젝트를 삭제할 수 없음";
 "Prompt" = "프롬프트";
@@ -678,7 +673,6 @@
 "Range" = "범위";
 "Razor (C)" = "면도날(C)";
 "Razor Tool" = "면도날 도구";
-"Re-render the same motion at full quality in 1080p" = "동일한 모션을 1080p 최고 품질로 다시 렌더링";
 "Reasoning effort" = "추론 강도";
 "Redetect Beats" = "비트 다시 감지";
 "Redo" = "다시 실행";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "범위를 미디어로 저장";
 "Save as Audio" = "오디오로 저장";
 "Save as Media" = "미디어로 저장";
-"Save this project to view activity" = "활동을 보려면 이 프로젝트를 저장하세요";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "모든 미디어를 내부에 번들로 포함한 프로젝트 사본을 저장하여 어느 컴퓨터에서나 열 수 있게 합니다.";
 "Scale" = "크기 조절";
 "Scope (2.39:1)" = "스코프 (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "말할 텍스트(최소 %lld자)";
 "The clip you're adding has different settings than the current project." = "추가하려는 클립의 설정이 현재 프로젝트와 다릅니다.";
 "The export" = "내보내기";
+"The job already finished." = "작업이 이미 완료되었습니다.";
+"The job finished without a result." = "작업이 결과 없이 종료되었습니다.";
 "The marker comment changed while you were editing. Review it and try again." = "편집하는 동안 마커 코멘트가 변경되었습니다. 확인한 후 다시 시도하세요.";
 "The project will be moved to the Trash." = "프로젝트가 휴지통으로 이동됩니다.";
 "The selected model refused this request. Revise the prompt and try again." = "선택한 모델이 이 요청을 거부했습니다. 프롬프트를 수정한 후 다시 시도하세요.";
@@ -894,6 +889,7 @@
 "Theme" = "테마";
 "This is where all your footage and assets live." = "모든 푸티지와 에셋이 보관되는 곳입니다.";
 "This is your preview panel to play a selected media or the whole timeline." = "선택한 미디어 또는 전체 타임라인을 재생하는 미리보기 패널입니다.";
+"This job can't be cancelled. It will finish on its own." = "이 작업은 취소할 수 없습니다. 자동으로 완료됩니다.";
 "This model cannot cap the output at 60 FPS." = "이 모델은 출력을 60 FPS로 제한할 수 없습니다.";
 "This permanently removes %@." = "%@이(가) 영구적으로 제거됩니다.";
 "This source can’t replace the clip." = "이 소스로는 클립을 대체할 수 없습니다.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "%@ 작업 중";
 "Workspace layout" = "작업 공간 레이아웃";
 "X High" = "매우 높음";
-"You were not charged for this generation" = "이번 생성에는 요금이 청구되지 않았습니다";
 "You're all set" = "준비가 완료되었습니다";
 "You're ready to start creating." = "이제 만들기를 시작할 준비가 되었습니다.";
 "Your Lottie animation is ready." = "Lottie 애니메이션이 준비되었습니다.";

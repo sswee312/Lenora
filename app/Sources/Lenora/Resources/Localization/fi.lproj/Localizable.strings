@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld ei voitu kohdistaa";
 "%lld credits" = "%lld kredittiä";
 "%lld credits / month" = "%lld kredittiä / kk";
-"%lld credits refunded" = "%lld kredittiä hyvitetty";
 "%lld images are ready in Lenora Pro." = "%lld kuvaa on valmiina Lenora Prossa.";
 "%lld items" = "%lld kohdetta";
 "%lld media files are missing and will be skipped." = "%lld mediatiedostoa puuttuu, ja ne ohitetaan.";
@@ -51,7 +50,6 @@
 "Account" = "Tili";
 "Account settings" = "Tilin asetukset";
 "Action Safe" = "Toiminta-alue";
-"Activity unavailable" = "Toiminta ei ole käytettävissä";
 "Adapters" = "Sovittimet";
 "Add Marker (M)" = "Lisää merkki (M)";
 "Add Range to Chat" = "Lisää alue keskusteluun";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Monikameraraidan synkronointia ei voi avata — \"%@\" pysyy kohdistettuna sen kautta.";
 "Cancel" = "Peruuta";
 "Cancel Export" = "Peruuta vienti";
+"Cancel Generation" = "Peruuta generointi";
 "Cancel Key Color Sampling" = "Peruuta avainvärin näyte";
 "Cancel key color sampling" = "Peruuta avainvärin näyte";
 "Canceled" = "Peruutettu";
@@ -298,7 +297,6 @@
 "Downloading…" = "Ladataan…";
 "Downloads a %@ on-device model so you can search media visually." = "Lataa %@ laitteen sisäinen malli, jotta voit etsiä mediaa visuaalisesti.";
 "Draft" = "Luonnos";
-"Draft already enhanced or cache unavailable" = "Luonnos on jo parannettu tai välimuisti ei ole käytettävissä";
 "Drag to add or shape a point · double-click to remove" = "Vedä lisätäksesi tai muokataksesi pistettä · kaksoisklikkaa poistaaksesi";
 "Drop files here or import from disk" = "Pudota tiedostot tähän tai tuo levyltä";
 "Dubbing" = "Dubbaus";
@@ -330,7 +328,6 @@
 "Enabled" = "Käytössä";
 "Enhance" = "Paranna";
 "Enhance resolution or frame rate with AI" = "Paranna resoluutiota tai kuvataajuutta tekoälyllä";
-"Enhanced with FLUX.3 at 1080p." = "Parannettu FLUX.3:lla 1080p-resoluutiossa.";
 "Enter Full Screen" = "Siirry koko näytön tilaan";
 "Exclusion" = "Poissulkeminen";
 "Expand" = "Laajenna";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Jatkaa tekstityksiä lyhyiden aukkojen yli ja pitää viimeisen tekstityksen.";
 "Extra Large" = "Erittäin suuri";
 "Extract Audio" = "Pura ääni";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Häivytä sisään";
 "Fade Out" = "Häivytä ulos";
 "Failed" = "Epäonnistui";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Generointi epäonnistui";
 "Generation Input" = "Generoinnin syöte";
 "Generation complete" = "Generointi valmis";
+"Generation failed." = "Generointi epäonnistui.";
 "Generation in progress" = "Generointi käynnissä";
 "Generation panel" = "Generointipaneeli";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Luonti suoritetaan Lenora-taustapalvelimellasi. Tunnus tallennetaan macOS:n avainnippuun.";
@@ -479,6 +476,10 @@
 "Layout" = "Asettelu";
 "Left" = "Vasen";
 "Length of the generated music. It's placed at the playhead, or at the marked range start." = "Generoidun musiikin pituus. Se sijoitetaan toistopäähän tai merkityn alueen alkuun.";
+"Lenora Project" = "Lenora-projekti";
+"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora ei voinut ladata tämän leikkeen lähdetiedostoa. Se voi puuttua, olla irrotetulla asemalla tai olla lukukelvoton.";
+"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora ei voinut ladata tätä lähdetiedostoa. Se voi puuttua, olla irrotetulla asemalla tai olla lukukelvoton.";
+"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora latasi tämän leikkeen lähdetiedoston, mutta ei voinut valmistella sitä toistoon. Tiedosto voi olla vioittunut tai muodoltaan tukematon.";
 "Let Agent create captions for you. Choose a predefined task, or ask Agent in the chat." = "Anna Agentin luoda tekstitykset. Valitse valmis tehtävä tai pyydä Agentilta keskustelussa.";
 "Let Agent generate music for you. Choose a starter, or ask Agent in the chat." = "Anna Agentin generoida musiikkia. Valitse aloitus tai pyydä Agentilta keskustelussa.";
 "Let's take a quick tour of the workspace and what you can do." = "Käydään työtila ja sen toiminnot lyhyesti läpi.";
@@ -584,7 +585,6 @@
 "No beats detected." = "Iskuja ei tunnistettu.";
 "No conversations yet" = "Ei keskusteluja vielä";
 "No exports yet" = "Ei vientejä vielä";
-"No generations yet" = "Ei generointeja vielä";
 "No images" = "Ei kuvia";
 "No markers" = "Ei merkkejä";
 "No markers match this filter." = "Yksikään merkki ei vastaa tätä suodatinta.";
@@ -635,10 +635,6 @@
 "Overlay" = "Peitto";
 "Overline" = "Yläviiva";
 "Padding" = "Täyte";
-"Lenora Project" = "Lenora-projekti";
-"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora ei voinut ladata tämän leikkeen lähdetiedostoa. Se voi puuttua, olla irrotetulla asemalla tai olla lukukelvoton.";
-"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora ei voinut ladata tätä lähdetiedostoa. Se voi puuttua, olla irrotetulla asemalla tai olla lukukelvoton.";
-"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora latasi tämän leikkeen lähdetiedoston, mutta ei voinut valmistella sitä toistoon. Tiedosto voi olla vioittunut tai muodoltaan tukematon.";
 "Paste" = "Sijoita";
 "Paste Clip Settings" = "Sijoita leikkeen asetukset";
 "Paste LENORA_TOKEN" = "Liitä LENORA_TOKEN";
@@ -667,7 +663,6 @@
 "Preview" = "Esikatselu";
 "Pro plan" = "Pro-tilaus";
 "Project" = "Projekti";
-"Project Activity" = "Projektin toiminta";
 "Project Settings" = "Projektin asetukset";
 "Projects Couldn’t Be Deleted" = "Projekteja ei voitu poistaa";
 "Prompt" = "Kehote";
@@ -678,7 +673,6 @@
 "Range" = "Alue";
 "Razor (C)" = "Leikkuri (C)";
 "Razor Tool" = "Leikkurityökalu";
-"Re-render the same motion at full quality in 1080p" = "Renderöi sama liike uudelleen täydellä laadulla 1080p-resoluutiossa";
 "Reasoning effort" = "Päättelyn määrä";
 "Redetect Beats" = "Tunnista iskut uudelleen";
 "Redo" = "Tee uudelleen";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Tallenna alue mediaksi";
 "Save as Audio" = "Tallenna äänenä";
 "Save as Media" = "Tallenna mediaksi";
-"Save this project to view activity" = "Tallenna tämä projekti nähdäksesi toiminnan";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Tallentaa kopion projektista kaikkine medioineen, jotta se avautuu millä tahansa koneella.";
 "Scale" = "Skaala";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Luettava teksti (vähintään %lld merkkiä)";
 "The clip you're adding has different settings than the current project." = "Lisättävän leikkeen asetukset poikkeavat nykyisestä projektista.";
 "The export" = "Vienti";
+"The job already finished." = "Työ on jo valmis.";
+"The job finished without a result." = "Työ päättyi ilman tulosta.";
 "The marker comment changed while you were editing. Review it and try again." = "Merkin kommentti muuttui muokkauksen aikana. Tarkista se ja yritä uudelleen.";
 "The project will be moved to the Trash." = "Projekti siirretään roskakoriin.";
 "The selected model refused this request. Revise the prompt and try again." = "Valittu malli hylkäsi tämän pyynnön. Muokkaa kehotetta ja yritä uudelleen.";
@@ -894,6 +889,7 @@
 "Theme" = "Teema";
 "This is where all your footage and assets live." = "Tässä on kaikki kuvamateriaali ja aineistot.";
 "This is your preview panel to play a selected media or the whole timeline." = "Tämä on esikatselupaneeli valitun median tai koko aikajanan toistoon.";
+"This job can't be cancelled. It will finish on its own." = "Tätä työtä ei voi peruuttaa. Se valmistuu itsestään.";
 "This model cannot cap the output at 60 FPS." = "Tämä malli ei voi rajoittaa tulosta 60 FPS:ään.";
 "This permanently removes %@." = "Tämä poistaa kohteen %@ pysyvästi.";
 "This source can’t replace the clip." = "Tämä lähde ei voi korvata leikettä.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Käsitellään %@";
 "Workspace layout" = "Työtilan asettelu";
 "X High" = "X High";
-"You were not charged for this generation" = "Tästä generoinnista ei veloitettu";
 "You're all set" = "Kaikki valmista";
 "You're ready to start creating." = "Olet valmis aloittamaan luomisen.";
 "Your Lottie animation is ready." = "Lottie-animaatio on valmis.";

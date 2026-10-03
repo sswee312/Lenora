@@ -23,7 +23,6 @@
 "%lld couldn't align" = "تعذّرت محاذاة ⁨%lld⁩";
 "%lld credits" = "⁨%lld⁩ رصيد";
 "%lld credits / month" = "⁨%lld⁩ رصيد / شهر";
-"%lld credits refunded" = "تم رد ⁨%lld⁩ رصيد";
 "%lld images are ready in Lenora Pro." = "⁨%lld⁩ من الصور جاهزة في Lenora Pro.";
 "%lld items" = "⁨%lld⁩ عنصر";
 "%lld media files are missing and will be skipped." = "هناك ⁨%lld⁩ من ملفات الوسائط مفقودة وسيتم تخطيها.";
@@ -51,7 +50,6 @@
 "Account" = "الحساب";
 "Account settings" = "إعدادات الحساب";
 "Action Safe" = "المنطقة الآمنة للحركة";
-"Activity unavailable" = "النشاط غير متاح";
 "Adapters" = "المحوّلات";
 "Add Marker (M)" = "إضافة علامة ⁨(M)⁩";
 "Add Range to Chat" = "إضافة النطاق إلى الدردشة";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "لا يمكن إلغاء قفل المزامنة على مسار متعدد الكاميرات. يظل \"⁨%@⁩\" محاذيًا من خلاله.";
 "Cancel" = "إلغاء";
 "Cancel Export" = "إلغاء التصدير";
+"Cancel Generation" = "إلغاء التوليد";
 "Cancel Key Color Sampling" = "إلغاء أخذ عينة لون المفتاح";
 "Cancel key color sampling" = "إلغاء أخذ عينة لون المفتاح";
 "Canceled" = "ملغى";
@@ -298,7 +297,6 @@
 "Downloading…" = "جارٍ التنزيل…";
 "Downloads a %@ on-device model so you can search media visually." = "ينزّل نموذجًا بحجم ⁨%@⁩ يعمل على الجهاز لتتمكن من البحث المرئي في الوسائط.";
 "Draft" = "مسودة";
-"Draft already enhanced or cache unavailable" = "المسودة محسّنة بالفعل أو ذاكرة التخزين المؤقت غير متاحة";
 "Drag to add or shape a point · double-click to remove" = "اسحب لإضافة نقطة أو تشكيلها · انقر نقرًا مزدوجًا للإزالة";
 "Drop files here or import from disk" = "أفلت الملفات هنا أو استوردها من القرص";
 "Dubbing" = "الدبلجة";
@@ -330,7 +328,6 @@
 "Enabled" = "مفعّل";
 "Enhance" = "تحسين";
 "Enhance resolution or frame rate with AI" = "تحسين الدقة أو معدل الإطارات بالذكاء الاصطناعي";
-"Enhanced with FLUX.3 at 1080p." = "تم التحسين باستخدام FLUX.3 بدقة 1080p.";
 "Enter Full Screen" = "الدخول إلى ملء الشاشة";
 "Exclusion" = "استبعاد";
 "Expand" = "توسيع";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "يمد التسميات التوضيحية عبر الفجوات القصيرة ويثبت التسمية الأخيرة.";
 "Extra Large" = "كبير جدًا";
 "Extract Audio" = "استخراج الصوت";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "تلاشي للداخل";
 "Fade Out" = "تلاشي للخارج";
 "Failed" = "فشل";
@@ -402,6 +398,7 @@
 "Generation Failed" = "فشل الإنشاء";
 "Generation Input" = "إدخال الإنشاء";
 "Generation complete" = "اكتمل الإنشاء";
+"Generation failed." = "فشل التوليد.";
 "Generation in progress" = "الإنشاء قيد التنفيذ";
 "Generation panel" = "لوحة الإنشاء";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "يتم التوليد على خادم Lenora الخلفي الخاص بك. يُخزَّن الرمز المميز في سلسلة مفاتيح macOS.";
@@ -479,6 +476,10 @@
 "Layout" = "التخطيط";
 "Left" = "يسار";
 "Length of the generated music. It's placed at the playhead, or at the marked range start." = "مدة الموسيقى المُنشأة. توضع عند رأس التشغيل أو عند بداية النطاق المحدد.";
+"Lenora Project" = "مشروع Lenora";
+"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "تعذّر على Lenora تحميل ملف مصدر هذا المقطع. قد يكون مفقودًا أو على محرك أقراص تمت إزالته أو غير قابل للقراءة.";
+"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "تعذّر على Lenora تحميل ملف المصدر هذا. قد يكون مفقودًا أو على محرك أقراص تمت إزالته أو غير قابل للقراءة.";
+"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "حمّل Lenora ملف مصدر هذا المقطع، لكنه تعذّر عليه إعداده للتشغيل. قد يكون الملف تالفًا أو بتنسيق غير مدعوم.";
 "Let Agent create captions for you. Choose a predefined task, or ask Agent in the chat." = "دع الوكيل ينشئ التسميات التوضيحية لك. اختر مهمة محددة مسبقًا أو اطلب ذلك من الوكيل في الدردشة.";
 "Let Agent generate music for you. Choose a starter, or ask Agent in the chat." = "دع الوكيل ينشئ الموسيقى لك. اختر نقطة بداية أو اطلب ذلك من الوكيل في الدردشة.";
 "Let's take a quick tour of the workspace and what you can do." = "لنأخذ جولة سريعة في مساحة العمل وما يمكنك فعله.";
@@ -584,7 +585,6 @@
 "No beats detected." = "لم يتم اكتشاف إيقاعات.";
 "No conversations yet" = "لا توجد محادثات بعد";
 "No exports yet" = "لا توجد عمليات تصدير بعد";
-"No generations yet" = "لا توجد عمليات إنشاء بعد";
 "No images" = "لا توجد صور";
 "No markers" = "لا توجد علامات";
 "No markers match this filter." = "لا توجد علامات تطابق عامل التصفية هذا.";
@@ -635,10 +635,6 @@
 "Overlay" = "تراكب";
 "Overline" = "خط علوي";
 "Padding" = "الحشو";
-"Lenora Project" = "مشروع Lenora";
-"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "تعذّر على Lenora تحميل ملف مصدر هذا المقطع. قد يكون مفقودًا أو على محرك أقراص تمت إزالته أو غير قابل للقراءة.";
-"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "تعذّر على Lenora تحميل ملف المصدر هذا. قد يكون مفقودًا أو على محرك أقراص تمت إزالته أو غير قابل للقراءة.";
-"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "حمّل Lenora ملف مصدر هذا المقطع، لكنه تعذّر عليه إعداده للتشغيل. قد يكون الملف تالفًا أو بتنسيق غير مدعوم.";
 "Paste" = "لصق";
 "Paste Clip Settings" = "لصق إعدادات المقطع";
 "Paste LENORA_TOKEN" = "الصق LENORA_TOKEN";
@@ -667,7 +663,6 @@
 "Preview" = "المعاينة";
 "Pro plan" = "خطة Pro";
 "Project" = "المشروع";
-"Project Activity" = "نشاط المشروع";
 "Project Settings" = "إعدادات المشروع";
 "Projects Couldn’t Be Deleted" = "تعذّر حذف المشاريع";
 "Prompt" = "المطالبة";
@@ -678,7 +673,6 @@
 "Range" = "النطاق";
 "Razor (C)" = "الشفرة ⁨(C)⁩";
 "Razor Tool" = "أداة الشفرة";
-"Re-render the same motion at full quality in 1080p" = "أعد تصيير الحركة نفسها بجودة كاملة بدقة 1080p";
 "Reasoning effort" = "مستوى الاستدلال";
 "Redetect Beats" = "إعادة اكتشاف الإيقاعات";
 "Redo" = "إعادة";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "حفظ النطاق كوسائط";
 "Save as Audio" = "حفظ كصوت";
 "Save as Media" = "حفظ كوسائط";
-"Save this project to view activity" = "احفظ هذا المشروع لعرض النشاط";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "يحفظ نسخة من هذا المشروع مع تضمين كل الوسائط، بحيث يمكن فتحه على أي جهاز.";
 "Scale" = "المقياس";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "النص المطلوب نطقه (⁨%lld⁩ حرفًا على الأقل)";
 "The clip you're adding has different settings than the current project." = "للمقطع الذي تضيفه إعدادات مختلفة عن المشروع الحالي.";
 "The export" = "الملف";
+"The job already finished." = "انتهت المهمة بالفعل.";
+"The job finished without a result." = "انتهت المهمة بدون نتيجة.";
 "The marker comment changed while you were editing. Review it and try again." = "تغيّر تعليق العلامة أثناء تحريرك له. راجعه وأعد المحاولة.";
 "The project will be moved to the Trash." = "سيتم نقل المشروع إلى سلة المهملات.";
 "The selected model refused this request. Revise the prompt and try again." = "رفض النموذج المحدد هذا الطلب. راجع المطالبة وأعد المحاولة.";
@@ -894,6 +889,7 @@
 "Theme" = "السمة";
 "This is where all your footage and assets live." = "هنا توجد كل لقطاتك وأصولك.";
 "This is your preview panel to play a selected media or the whole timeline." = "هذه لوحة المعاينة لتشغيل الوسائط المحددة أو المخطط الزمني كاملاً.";
+"This job can't be cancelled. It will finish on its own." = "لا يمكن إلغاء هذه المهمة. ستنتهي من تلقاء نفسها.";
 "This model cannot cap the output at 60 FPS." = "لا يمكن لهذا النموذج تحديد سقف الإخراج عند ⁨60 FPS⁩.";
 "This permanently removes %@." = "يؤدي هذا إلى إزالة ⁨%@⁩ نهائيًا.";
 "This source can’t replace the clip." = "لا يمكن لهذا المصدر استبدال المقطع.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "جارٍ العمل على ⁨%@⁩";
 "Workspace layout" = "تخطيط مساحة العمل";
 "X High" = "مرتفع جدًا";
-"You were not charged for this generation" = "لم تُحصَّل رسوم مقابل عملية الإنشاء هذه";
 "You're all set" = "أصبح كل شيء جاهزًا";
 "You're ready to start creating." = "أنت جاهز لبدء الإنشاء.";
 "Your Lottie animation is ready." = "رسم Lottie المتحرك جاهز.";

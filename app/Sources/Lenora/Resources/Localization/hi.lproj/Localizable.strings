@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld को अलाइन नहीं किया जा सका";
 "%lld credits" = "%lld क्रेडिट";
 "%lld credits / month" = "%lld क्रेडिट / माह";
-"%lld credits refunded" = "%lld क्रेडिट वापस किए गए";
 "%lld images are ready in Lenora Pro." = "%lld इमेज Lenora Pro में तैयार हैं।";
 "%lld items" = "%lld आइटम";
 "%lld media files are missing and will be skipped." = "%lld मीडिया फ़ाइलें उपलब्ध नहीं हैं और छोड़ दी जाएँगी।";
@@ -51,7 +50,6 @@
 "Account" = "खाता";
 "Account settings" = "खाता सेटिंग्स";
 "Action Safe" = "ऐक्शन सेफ़";
-"Activity unavailable" = "एक्टिविटी उपलब्ध नहीं है";
 "Adapters" = "एडैप्टर्स";
 "Add Marker (M)" = "मार्कर जोड़ें (M)";
 "Add Range to Chat" = "रेंज को चैट में जोड़ें";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "मल्टीकैम ट्रैक पर सिंक अनलॉक नहीं किया जा सकता — \"%@\" इसके ज़रिए अलाइन रहता है।";
 "Cancel" = "रद्द करें";
 "Cancel Export" = "एक्सपोर्ट रद्द करें";
+"Cancel Generation" = "जनरेशन रद्द करें";
 "Cancel Key Color Sampling" = "की कलर सैंपलिंग रद्द करें";
 "Cancel key color sampling" = "की कलर सैंपलिंग रद्द करें";
 "Canceled" = "रद्द किया गया";
@@ -298,7 +297,6 @@
 "Downloading…" = "डाउनलोड हो रहा है…";
 "Downloads a %@ on-device model so you can search media visually." = "मीडिया को विज़ुअल रूप से खोजने के लिए %@ का ऑन-डिवाइस मॉडल डाउनलोड करता है।";
 "Draft" = "ड्राफ़्ट";
-"Draft already enhanced or cache unavailable" = "ड्राफ़्ट पहले से एन्हांस है या कैश उपलब्ध नहीं है";
 "Drag to add or shape a point · double-click to remove" = "पॉइंट जोड़ने या आकार देने के लिए ड्रैग करें · हटाने के लिए डबल-क्लिक करें";
 "Drop files here or import from disk" = "फ़ाइलें यहाँ ड्रॉप करें या डिस्क से इम्पोर्ट करें";
 "Dubbing" = "डबिंग";
@@ -330,7 +328,6 @@
 "Enabled" = "चालू";
 "Enhance" = "एन्हांस";
 "Enhance resolution or frame rate with AI" = "AI से रेज़ोल्यूशन या फ़्रेम रेट बेहतर करें";
-"Enhanced with FLUX.3 at 1080p." = "1080p पर FLUX.3 से एन्हांस किया गया।";
 "Enter Full Screen" = "फ़ुल स्क्रीन में जाएँ";
 "Exclusion" = "एक्सक्लूज़न";
 "Expand" = "फैलाएँ";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "छोटे गैप पर कैप्शन बढ़ाता है और अंतिम कैप्शन होल्ड करता है।";
 "Extra Large" = "बहुत बड़ा";
 "Extract Audio" = "ऑडियो निकालें";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "फ़ेड इन";
 "Fade Out" = "फ़ेड आउट";
 "Failed" = "विफल";
@@ -402,6 +398,7 @@
 "Generation Failed" = "जेनरेशन विफल";
 "Generation Input" = "जेनरेशन इनपुट";
 "Generation complete" = "जेनरेशन पूर्ण";
+"Generation failed." = "जनरेशन विफल रहा।";
 "Generation in progress" = "जेनरेशन जारी है";
 "Generation panel" = "जेनरेशन पैनल";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "जनरेशन आपके Lenora बैकएंड पर चलता है। टोकन macOS Keychain में स्टोर होता है।";
@@ -588,7 +585,6 @@
 "No beats detected." = "कोई बीट नहीं पहचानी गई।";
 "No conversations yet" = "अभी कोई बातचीत नहीं";
 "No exports yet" = "अभी कोई एक्सपोर्ट नहीं";
-"No generations yet" = "अभी कोई जेनरेशन नहीं";
 "No images" = "कोई इमेज नहीं";
 "No markers" = "कोई मार्कर नहीं";
 "No markers match this filter." = "इस फ़िल्टर से कोई मार्कर मेल नहीं खाता।";
@@ -667,7 +663,6 @@
 "Preview" = "प्रीव्यू";
 "Pro plan" = "Pro प्लान";
 "Project" = "प्रोजेक्ट";
-"Project Activity" = "प्रोजेक्ट गतिविधि";
 "Project Settings" = "प्रोजेक्ट सेटिंग्स";
 "Projects Couldn’t Be Deleted" = "प्रोजेक्ट हटाए नहीं जा सके";
 "Prompt" = "प्रॉम्प्ट";
@@ -678,7 +673,6 @@
 "Range" = "रेंज";
 "Razor (C)" = "रेज़र (C)";
 "Razor Tool" = "रेज़र टूल";
-"Re-render the same motion at full quality in 1080p" = "उसी मोशन को 1080p में पूरी क्वालिटी पर फिर रेंडर करें";
 "Reasoning effort" = "रीज़निंग एफ़र्ट";
 "Redetect Beats" = "बीट्स दोबारा पहचानें";
 "Redo" = "रीडू";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "रेंज को मीडिया के रूप में सेव करें";
 "Save as Audio" = "ऑडियो के रूप में सेव करें";
 "Save as Media" = "मीडिया के रूप में सेव करें";
-"Save this project to view activity" = "एक्टिविटी देखने के लिए यह प्रोजेक्ट सेव करें";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "इस प्रोजेक्ट की कॉपी सभी मीडिया के साथ सेव करता है, ताकि यह किसी भी मशीन पर खुल सके।";
 "Scale" = "स्केल";
 "Scope (2.39:1)" = "स्कोप (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "बोला जाने वाला टेक्स्ट (कम से कम %lld अक्षर)";
 "The clip you're adding has different settings than the current project." = "आप जो क्लिप जोड़ रहे हैं उसकी सेटिंग्स मौजूदा प्रोजेक्ट से अलग हैं।";
 "The export" = "एक्सपोर्ट";
+"The job already finished." = "जॉब पहले ही पूरा हो चुका है।";
+"The job finished without a result." = "जॉब बिना परिणाम के समाप्त हुआ।";
 "The marker comment changed while you were editing. Review it and try again." = "एडिट करते समय मार्कर कमेंट बदल गया। जाँचें और फिर कोशिश करें।";
 "The project will be moved to the Trash." = "प्रोजेक्ट ट्रैश में ले जाया जाएगा।";
 "The selected model refused this request. Revise the prompt and try again." = "चयनित मॉडल ने यह अनुरोध अस्वीकार कर दिया। प्रॉम्प्ट संशोधित करें और फिर कोशिश करें।";
@@ -894,6 +889,7 @@
 "Theme" = "थीम";
 "This is where all your footage and assets live." = "आपका सारा फ़ुटेज और सभी एसेट यहाँ रहते हैं।";
 "This is your preview panel to play a selected media or the whole timeline." = "यह चयनित मीडिया या पूरी टाइमलाइन चलाने का प्रीव्यू पैनल है।";
+"This job can't be cancelled. It will finish on its own." = "इस जॉब को रद्द नहीं किया जा सकता। यह अपने आप पूरा हो जाएगा।";
 "This model cannot cap the output at 60 FPS." = "यह मॉडल आउटपुट को 60 FPS पर सीमित नहीं कर सकता।";
 "This permanently removes %@." = "यह %@ को स्थायी रूप से हटाता है।";
 "This source can’t replace the clip." = "यह सोर्स क्लिप को नहीं बदल सकता।";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "%@ पर काम हो रहा है";
 "Workspace layout" = "वर्कस्पेस लेआउट";
 "X High" = "X हाई";
-"You were not charged for this generation" = "इस जेनरेशन के लिए आपसे शुल्क नहीं लिया गया";
 "You're all set" = "सब तैयार है";
 "You're ready to start creating." = "आप बनाना शुरू करने के लिए तैयार हैं।";
 "Your Lottie animation is ready." = "आपका Lottie एनिमेशन तैयार है।";

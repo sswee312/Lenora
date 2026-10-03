@@ -1,6 +1,4 @@
 import Foundation
-@preconcurrency import Combine
-@preconcurrency import ConvexMobile
 
 /// Used by replace-clip callbacks so only the
 /// first successful asset of an N-image generation swaps the clip
@@ -14,11 +12,46 @@ final class FirstOnlyFlag {
     }
 }
 
+enum GenerationError: Error, LocalizedError, Equatable {
+    case modelUnavailable(String)
+    case backendUnavailable
+
+    var errorDescription: String? {
+        switch self {
+        case .modelUnavailable(let id): "\(id) is not available from the connected backend."
+        case .backendUnavailable: "No backend is connected. Open Settings → Backend."
+        }
+    }
+}
+
+enum GenerationCancelOutcome: Equatable { case cancelled, notCancellable, failed(String) }
+
 @MainActor
 final class GenerationService {
 
-    private static let uploadCacheTTL: TimeInterval = 6 * 24 * 60 * 60
-    private var resumedBackendJobIds: Set<String> = []
+    private let provider: @MainActor () -> (any GenerationProvider)?
+    private let catalog: ModelCatalog
+    private var tasks: [UUID: Task<Void, Never>] = [:]
+    private(set) var monitoredJobIds: Set<String> = []
+
+    init(provider: @escaping @MainActor () -> (any GenerationProvider)?, catalog: ModelCatalog = .shared) {
+        self.provider = provider
+        self.catalog = catalog
+    }
+
+    func stopMonitoring() {
+        tasks.values.forEach { $0.cancel() }
+        tasks.removeAll()
+        monitoredJobIds.removeAll()
+    }
+
+    private func own(_ operation: @escaping @MainActor () async -> Void) {
+        let id = UUID()
+        tasks[id] = Task { @MainActor [weak self] in
+            await operation()
+            self?.tasks[id] = nil
+        }
+    }
 
     private struct PreparedReferences {
         let uploaded: [String]
@@ -36,7 +69,7 @@ final class GenerationService {
         name: String? = nil,
         numImages: Int = 1,
         folderId: String? = nil,
-        buildParams: @escaping ([String]) -> BackendGenerationParams,
+        buildParams: @escaping ([String]) -> GenerationJobParams,
         snapshotRefs: (@Sendable (inout GenerationInput, [String]) -> Void)? = nil,
         preprocessRef: (@Sendable (Int, MediaAsset, URL) async throws -> URL?)? = nil,
         preprocessSourceVideo: (@Sendable (URL) async throws -> URL?)? = nil,
@@ -52,7 +85,7 @@ final class GenerationService {
         let resolvedFolderId = folderId.flatMap { id in
             editor.folder(id: id) != nil ? id : nil
         }
-        var placeholders: [MediaAsset] = []
+        var created: [MediaAsset] = []
         let destDir = Self.destinationDirectory(for: projectURL)
 
         for outputIndex in 0..<count {
@@ -68,20 +101,43 @@ final class GenerationService {
                 fileExtension: fileExtension,
                 editor: editor
             )
-            placeholders.append(placeholder)
+            created.append(placeholder)
         }
+        let placeholders = created
         let primaryId = placeholders[0].id
 
-        Task { @MainActor in
+        let idempotencyKey = UUID().uuidString
+        own {
+            @MainActor func fail(_ message: String) {
+                for placeholder in placeholders {
+                    self.updateGenerationMetadata(placeholder, editor: editor, status: .failed(message))
+                }
+                editor.onProjectCheckpointRequired?()
+                onFailure?()
+            }
+
+            let provider: any GenerationProvider
+            let model: BackendModel
+            do {
+                (provider, model) = try self.backend(for: genInput.model)
+            } catch {
+                Log.generation.warning("submit refused model=\(genInput.model) error=\(error.localizedDescription)")
+                fail(error.localizedDescription)
+                return
+            }
+
             do {
                 let prepared = try await self.prepareReferences(
                     references: references,
                     trimmedSourceOverride: trimmedSourceOverride,
                     preUploadedURLs: preUploadedURLs,
                     preprocessRef: preprocessRef,
-                    preprocessSourceVideo: preprocessSourceVideo
+                    preprocessSourceVideo: preprocessSourceVideo,
+                    provider: provider,
+                    model: model.id
                 )
                 defer { Self.cleanupTempFiles(prepared.tempFiles) }
+                try Task.checkCancellation()
                 let uploaded = prepared.uploaded
 
                 var finalGenInput = genInput
@@ -96,7 +152,7 @@ final class GenerationService {
                 for (outputIndex, placeholder) in placeholders.enumerated() {
                     var storedInput = finalGenInput
                     storedInput.outputIndex = outputIndex
-                    updateGenerationMetadata(placeholder, editor: editor) { input in
+                    self.updateGenerationMetadata(placeholder, editor: editor) { input in
                         input = storedInput
                     }
                 }
@@ -110,20 +166,19 @@ final class GenerationService {
                     onComplete: onComplete,
                     onFailure: onFailure,
                     submit: {
-                        try await GenerationBackend.submit(
-                            model: finalGenInput.model,
-                            params: params,
-                            projectId: editor.projectId
+                        let job = JobRequest(
+                            kind: model.kind, model: model.id,
+                            inputs: uploaded.map(JobInput.assetRef), params: params
                         )
+                        return try await provider.submit(job, idempotencyKey: idempotencyKey)
                     }
                 )
+            } catch is CancellationError {
+                return
             } catch {
                 let message = error.localizedDescription
                 Log.generation.error("upload failed model=\(genInput.model) error=\(message)")
-                for placeholder in placeholders {
-                    updateGenerationMetadata(placeholder, editor: editor, status: .failed("Upload failed: \(message)"))
-                }
-                onFailure?()
+                fail("Upload failed: \(message)")
             }
         }
 
@@ -135,7 +190,9 @@ final class GenerationService {
         trimmedSourceOverride: TrimmedSource?,
         preUploadedURLs: [String]?,
         preprocessRef: (@Sendable (Int, MediaAsset, URL) async throws -> URL?)?,
-        preprocessSourceVideo: (@Sendable (URL) async throws -> URL?)?
+        preprocessSourceVideo: (@Sendable (URL) async throws -> URL?)?,
+        provider: any GenerationProvider,
+        model: String
     ) async throws -> PreparedReferences {
         if let preUploadedURLs, !preUploadedURLs.isEmpty {
             return PreparedReferences(uploaded: preUploadedURLs, tempFiles: [])
@@ -145,14 +202,12 @@ final class GenerationService {
         do {
             var urlsToUpload = references.map(\.url)
             let refTypes = references.map(\.type)
-            var trimmedIndex: Int?
             if let trim = trimmedSourceOverride, trim.hasTrim,
                let index = urlsToUpload.firstIndex(of: trim.sourceURL) {
                 Log.generation.notice("using trimmed source: frames \(trim.trimStartFrame)+\(trim.sourceFramesConsumed) of \(urlsToUpload[index].lastPathComponent)")
                 let extracted = try await VideoTrimExtractor.extract(trim)
                 urlsToUpload[index] = extracted
                 tempFiles.append(extracted)
-                trimmedIndex = index
             }
             if let preprocessSourceVideo, let sourceURL = urlsToUpload.first,
                let processed = try await preprocessSourceVideo(sourceURL) {
@@ -174,11 +229,8 @@ final class GenerationService {
             let uploaded = try await uploadReferences(
                 at: urlsToUpload,
                 types: refTypes,
-                cacheKeys: uploadCacheKeys(
-                    references: references,
-                    trimmedIndex: trimmedIndex,
-                    hasPreprocess: preprocessRef != nil || preprocessSourceVideo != nil
-                ),
+                provider: provider,
+                model: model
             )
             return PreparedReferences(uploaded: uploaded, tempFiles: tempFiles)
         } catch {
@@ -200,18 +252,6 @@ final class GenerationService {
             var results: [(Int, URL?)] = []
             for try await result in group { results.append(result) }
             return results
-        }
-    }
-
-    private func uploadCacheKeys(
-        references: [MediaAsset],
-        trimmedIndex: Int?,
-        hasPreprocess: Bool
-    ) -> [MediaAsset?] {
-        references.enumerated().map { index, asset in
-            if hasPreprocess { return nil }
-            if index == trimmedIndex { return nil }
-            return asset
         }
     }
 
@@ -256,130 +296,63 @@ final class GenerationService {
         return FileManager.default.temporaryDirectory
     }
 
-    @discardableResult
-    private func downloadAndFinalize(asset: MediaAsset, remoteURL: URL, editor: EditorViewModel) async -> Bool {
-        if asset.generationStatus != .downloading {
-            updateGenerationMetadata(asset, editor: editor, status: .downloading)
-        }
-        do {
-            let (tempURL, _) = try await URLSession.shared.download(from: remoteURL)
-            let realExt = remoteURL.pathExtension.lowercased()
-            if !realExt.isEmpty, realExt != asset.url.pathExtension.lowercased(),
-               ClipType(fileExtension: realExt) != nil {
-                asset.url = asset.url.deletingPathExtension().appendingPathExtension(realExt)
-            }
-            asset.url = try await editor.commitStagedProjectMedia(tempURL, filename: asset.url.lastPathComponent)
-
-            asset.pendingDownloadURL = nil
-            editor.importMediaAsset(asset, skipAppend: true)
-            let finalized = await editor.finalizeImportedAsset(asset)
-            return finalized
-        } catch {
-            let message = error.localizedDescription
-            Log.generation.error("download failed url=\(remoteURL.absoluteString) error=\(message)")
-            asset.pendingDownloadURL = remoteURL
-            updateGenerationMetadata(asset, editor: editor, status: .failed(message))
-            return false
-        }
-    }
-
     func retryDownload(asset: MediaAsset, editor: EditorViewModel) {
         guard let remoteURL = asset.pendingDownloadURL else { return }
-        Task { @MainActor in
-            await downloadAndFinalize(asset: asset, remoteURL: remoteURL, editor: editor)
+        let fileExtension = asset.generationInput?.results?.first { $0.url == remoteURL }?.fileExtension
+        own {
+            await self.land(asset, from: remoteURL, fileExtension: fileExtension, editor: editor)
         }
-    }
-
-    @discardableResult
-    func enhanceDraft(asset: MediaAsset, editor: EditorViewModel) -> String? {
-        guard asset.canEnhanceDraft,
-              let originalInput = asset.generationInput,
-              let sourceJobId = originalInput.backendJobId else { return nil }
-        var enhancedInput = originalInput
-        enhancedInput.draft = false
-        enhancedInput.resolution = "1080p"
-        enhancedInput.backendJobId = nil
-        enhancedInput.resultURLs = nil
-        enhancedInput.costCredits = nil
-        enhancedInput.refundedCredits = nil
-        enhancedInput.createdAt = Date()
-        let placeholder = createPlaceholder(
-            type: .video,
-            name: "\(asset.name) 1080p",
-            duration: asset.resolvedDuration,
-            genInput: enhancedInput,
-            folderId: asset.folderId,
-            destDir: Self.destinationDirectory(for: editor.projectURL),
-            fileExtension: "mp4",
-            editor: editor
-        )
-
-        Task { @MainActor in
-            await self.runJob(
-                placeholders: [placeholder],
-                genInput: enhancedInput,
-                editor: editor,
-                onComplete: { _ in
-                    editor.mediaPanelToast = MediaPanelToast(
-                        message: L10n.string("Enhanced with FLUX.3 at 1080p."),
-                        kind: .success
-                    )
-                },
-                onFailure: {
-                    if case .failed(let message) = placeholder.generationStatus {
-                        editor.mediaPanelToast = MediaPanelToast(message: message)
-                    }
-                },
-                submit: {
-                    try await GenerationBackend.enhanceDraft(sourceJobId: sourceJobId)
-                }
-            )
-        }
-        return placeholder.id
     }
 
     func resumePendingGenerations(editor: EditorViewModel) {
-        func sorted(_ assets: [MediaAsset]) -> [MediaAsset] {
-            assets.sorted {
-                let left = $0.generationInput?.outputIndex ?? 0
-                let right = $1.generationInput?.outputIndex ?? 0
-                return left < right
-            }
-        }
-
         let pending = editor.mediaAssets.filter(\.isRecoveringGeneration)
-
-        let byBackendJob = Dictionary(grouping: pending.compactMap { asset -> (String, MediaAsset)? in
-            guard let backendJobId = asset.generationInput?.backendJobId, !backendJobId.isEmpty else { return nil }
-            return (backendJobId, asset)
+        let byJob = Dictionary(grouping: pending.compactMap { asset -> (String, MediaAsset)? in
+            guard let jobId = asset.generationInput?.jobId, !jobId.isEmpty else { return nil }
+            return (jobId, asset)
         }, by: { $0.0 })
 
-        for (backendJobId, group) in byBackendJob where !resumedBackendJobIds.contains(backendJobId) {
-            let placeholders = sorted(group.map { $0.1 })
-            resumedBackendJobIds.insert(backendJobId)
-            Task { @MainActor [weak self, weak editor] in
-                guard let self, let editor else { return }
-                await self.monitorBackendJob(
-                    backendJobId: backendJobId,
-                    placeholders: placeholders,
-                    editor: editor,
-                    onComplete: nil,
-                    onFailure: nil
-                )
-                self.resumedBackendJobIds.remove(backendJobId)
+        for (jobId, group) in byJob where !monitoredJobIds.contains(jobId) {
+            let placeholders = group.map(\.1).sorted {
+                ($0.generationInput?.outputIndex ?? 0) < ($1.generationInput?.outputIndex ?? 0)
+            }
+            if let results = placeholders.lazy.compactMap({ $0.generationInput?.results }).first(where: { !$0.isEmpty }) {
+                monitoredJobIds.insert(jobId)
+                own {
+                    await self.finalizeSuccess(
+                        results: results, placeholders: placeholders, editor: editor, onComplete: nil, onFailure: nil
+                    )
+                    self.monitoredJobIds.remove(jobId)
+                }
+            } else if provider() != nil {
+                own {
+                    await self.monitorJob(
+                        jobId: jobId, placeholders: placeholders, editor: editor, onComplete: nil, onFailure: nil
+                    )
+                }
             }
         }
     }
 
-    private func backendError(_ error: Error) -> (code: String?, message: String) {
-        struct Payload: Decodable { let code: String?; let message: String? }
-        if case let ClientError.ConvexError(data) = error,
-           let json = data.data(using: .utf8),
-           let payload = try? JSONDecoder().decode(Payload.self, from: json),
-           let message = payload.message {
-            return (payload.code, message)
+    func cancelGeneration(_ asset: MediaAsset, editor: EditorViewModel) async -> GenerationCancelOutcome {
+        guard let jobId = asset.generationInput?.jobId, let provider = provider() else {
+            return .failed(GenerationError.backendUnavailable.localizedDescription)
         }
-        return (nil, error.localizedDescription)
+        do {
+            let state = try await provider.cancel(jobId: jobId)
+            guard state.status == .cancelled else { return .failed(L10n.string("The job already finished.")) }
+            editor.removeGenerationPlaceholders(editor.mediaAssets.filter { $0.generationInput?.jobId == jobId })
+            return .cancelled
+        } catch BackendError.problem(let problem) where problem.code == "not_cancellable" {
+            return .notCancellable
+        } catch {
+            return .failed(error.localizedDescription)
+        }
+    }
+
+    private func backend(for modelId: String) throws -> (any GenerationProvider, BackendModel) {
+        guard let provider = provider() else { throw GenerationError.backendUnavailable }
+        guard let model = catalog.backendModel(id: modelId) else { throw GenerationError.modelUnavailable(modelId) }
+        return (provider, model)
     }
 
     private func updateGenerationMetadata(
@@ -398,23 +371,18 @@ final class GenerationService {
         editor.updateManifestMetadata(for: [asset])
     }
 
-    /// Uploads each reference and returns the hosted URLs.
     private func uploadReferences(
         at urls: [URL],
         types: [ClipType],
-        cacheKeys: [MediaAsset?],
+        provider: any GenerationProvider,
+        model: String
     ) async throws -> [String] {
         guard !urls.isEmpty else { return [] }
         return try await withThrowingTaskGroup(of: (Int, String).self) { group in
             for (i, url) in urls.enumerated() {
                 let type = types.indices.contains(i) ? types[i] : .image
-                let cacheKey = cacheKeys.indices.contains(i) ? cacheKeys[i] : nil
                 let requiresConversion = type == .image
                     && ImageConverter.requiresConversion(url)
-                if !requiresConversion, let cacheKey, let hit = cacheKey.freshRemoteURL {
-                    group.addTask { (i, hit) }
-                    continue
-                }
                 let contentType = requiresConversion
                     ? "image/jpeg"
                     : Self.contentType(for: url, fallback: type)
@@ -423,17 +391,13 @@ final class GenerationService {
                         ? try await ImageConverter.convertToJPEG(url)
                         : nil
                     do {
-                        let uploaded = try await GenerationBackend.uploadReference(
-                            fileURL: convertedURL ?? url,
-                            contentType: contentType,
+                        let assetRef = try await provider.uploadFile(
+                            convertedURL ?? url, contentType: contentType, model: model
                         )
                         if let convertedURL {
                             await ImageConverter.removeConvertedFile(convertedURL)
                         }
-                        if !requiresConversion, let cacheKey {
-                            await Self.recordUploadCache(asset: cacheKey, url: uploaded)
-                        }
-                        return (i, uploaded)
+                        return (i, assetRef)
                     } catch {
                         if let convertedURL {
                             await ImageConverter.removeConvertedFile(convertedURL)
@@ -448,10 +412,9 @@ final class GenerationService {
         }
     }
 
-    @MainActor
-    private static func recordUploadCache(asset: MediaAsset, url: String) {
-        asset.cachedRemoteURL = url
-        asset.cachedRemoteURLExpiresAt = Date().addingTimeInterval(uploadCacheTTL)
+    func uploadReference(fileURL: URL, contentType: String, model: String) async throws -> String {
+        guard let provider = provider() else { throw GenerationError.backendUnavailable }
+        return try await provider.uploadFile(fileURL, contentType: contentType, model: model)
     }
 
     private static func contentType(for url: URL, fallback: ClipType) -> String {
@@ -489,28 +452,25 @@ final class GenerationService {
         editor: EditorViewModel,
         onComplete: (@MainActor (MediaAsset) -> Void)?,
         onFailure: (@MainActor () -> Void)?,
-        submit: () async throws -> String
+        submit: () async throws -> SubmittedJob
     ) async {
         let runId = String(UUID().uuidString.prefix(8))
         Log.generation.notice("run \(runId) start model=\(genInput.model) placeholders=\(placeholders.count)")
         defer { Log.generation.notice("run \(runId) settled") }
 
-        let jobId: String
+        let submitted: SubmittedJob
         do {
-            jobId = try await submit()
+            submitted = try await submit()
+        } catch is CancellationError {
+            return
         } catch {
-            let (code, message) = backendError(error)
-            let expected: Set<String> = [
-                "insufficient_credits", "subscription_required", "plan_required",
-                "rate_limited", "invalid_params",
-            ]
-            if let code, expected.contains(code) {
-                Log.generation.warning("submit failed model=\(genInput.model) code=\(code) error=\(message)")
+            if case BackendError.problem(let problem) = error {
+                Log.generation.warning("submit failed model=\(genInput.model) code=\(problem.code)")
             } else {
-                Log.generation.error("submit failed model=\(genInput.model) error=\(message)")
+                Log.generation.error("submit failed model=\(genInput.model) error=\(error.localizedDescription)")
             }
             for placeholder in placeholders {
-                updateGenerationMetadata(placeholder, editor: editor, status: .failed(message))
+                updateGenerationMetadata(placeholder, editor: editor, status: .failed(error.localizedDescription))
             }
             onFailure?()
             return
@@ -518,194 +478,125 @@ final class GenerationService {
 
         for placeholder in placeholders {
             updateGenerationMetadata(placeholder, editor: editor, status: .generating) { input in
-                input.backendJobId = jobId
+                input.jobId = submitted.jobId
+                input.estimate = submitted.estimate
             }
         }
         editor.onProjectCheckpointRequired?()
 
-        await monitorBackendJob(
-            backendJobId: jobId,
+        await monitorJob(
+            jobId: submitted.jobId,
             placeholders: placeholders,
             editor: editor,
-            failIfUnavailable: true,
             onComplete: onComplete,
             onFailure: onFailure
         )
     }
 
-    private func monitorBackendJob(
-        backendJobId: String,
+    private func monitorJob(
+        jobId: String,
         placeholders: [MediaAsset],
         editor: EditorViewModel,
-        failIfUnavailable: Bool = false,
         onComplete: (@MainActor (MediaAsset) -> Void)?,
         onFailure: (@MainActor () -> Void)?
     ) async {
-        guard let publisher = GenerationBackend.subscribe(jobId: backendJobId) else {
-            if failIfUnavailable {
-                for placeholder in placeholders {
-                    updateGenerationMetadata(placeholder, editor: editor, status: .failed("Backend not configured"))
+        guard let provider = provider() else { return }
+        guard monitoredJobIds.insert(jobId).inserted else { return }
+        defer { monitoredJobIds.remove(jobId) }
+        do {
+            for try await state in provider.jobUpdates(jobId: jobId) {
+                guard placeholders.contains(where: { asset in editor.mediaAssets.contains { $0 === asset } }) else { return }
+                switch state.status {
+                case .queued, .running:
+                    continue
+                case .succeeded:
+                    await finalizeSuccess(
+                        results: state.results ?? [], placeholders: placeholders, editor: editor,
+                        onComplete: onComplete, onFailure: onFailure
+                    )
+                    return
+                case .failed:
+                    let message = state.error?.message ?? L10n.string("Generation failed.")
+                    Log.generation.error("job \(jobId) failed code=\(state.error?.code ?? "unknown")")
+                    placeholders.forEach { updateGenerationMetadata($0, editor: editor, status: .failed(message)) }
+                    editor.onProjectCheckpointRequired?()
+                    onFailure?()
+                    return
+                case .cancelled:
+                    editor.removeGenerationPlaceholders(placeholders)
+                    return
                 }
-                editor.onProjectCheckpointRequired?()
-                onFailure?()
             }
+        } catch is CancellationError {
             return
-        }
-
-        for await jobOpt in backendJobStream(from: publisher) {
-            guard let job = jobOpt else { continue }
-            if await applyBackendJobUpdate(
-                job: job,
-                backendJobId: backendJobId,
-                placeholders: placeholders,
-                editor: editor,
-                onComplete: onComplete,
-                onFailure: onFailure
-            ) {
-                return
-            }
-        }
-
-        // Stream ended without a terminal update: finish from persisted URLs, else retry on reopen.
-        let persisted = placeholders.compactMap(\.generationInput?.resultURLs).first ?? []
-        guard !persisted.isEmpty else { return }
-        await finalizeSuccess(
-            urlStrings: persisted,
-            placeholders: placeholders,
-            editor: editor,
-            onComplete: onComplete,
-            onFailure: onFailure
-        )
-    }
-
-    private func backendJobStream<Failure: Error>(
-        from publisher: AnyPublisher<BackendGenerationJob?, Failure>
-    ) -> AsyncStream<BackendGenerationJob?> {
-        AsyncStream<BackendGenerationJob?> { continuation in
-            let cancellable = publisher
-                .receive(on: DispatchQueue.main)
-                .sink(
-                    receiveCompletion: { _ in continuation.finish() },
-                    receiveValue: { value in continuation.yield(value) },
-                )
-            continuation.onTermination = { _ in cancellable.cancel() }
-        }
-    }
-
-    private func applyBackendJobUpdate(
-        job: BackendGenerationJob,
-        backendJobId: String,
-        placeholders: [MediaAsset],
-        editor: EditorViewModel,
-        onComplete: (@MainActor (MediaAsset) -> Void)?,
-        onFailure: (@MainActor () -> Void)?
-    ) async -> Bool {
-        switch job.status {
-        case .succeeded:
-            if updateBackendJobMetadata(
-                placeholders,
-                backendJobId: backendJobId,
-                costCredits: job.costCredits,
-                editor: editor
-            ) {
-                editor.onProjectCheckpointRequired?()
-            }
-            await finalizeSuccess(
-                urlStrings: job.resultUrls ?? [],
-                placeholders: placeholders,
-                editor: editor,
-                onComplete: onComplete,
-                onFailure: onFailure,
-            )
-            return true
-        case .failed:
-            let message = job.errorMessage ?? "Generation failed"
-            Log.generation.error("job \(backendJobId) failed: \(message)")
-            for placeholder in placeholders {
-                updateGenerationMetadata(placeholder, editor: editor, status: .failed(message)) { input in
-                    input.backendJobId = backendJobId
-                    if let costCredits = job.costCredits {
-                        input.costCredits = costCredits
-                    }
-                    input.refundedCredits = job.refundedCredits
-                }
-            }
+        } catch let error as BackendError where error.isTransient {
+            Log.generation.warning("job \(jobId) polling paused: \(error.localizedDescription)")
+        } catch {
+            Log.generation.error("job \(jobId) polling failed: \(error.localizedDescription)")
+            placeholders.forEach { updateGenerationMetadata($0, editor: editor, status: .failed(error.localizedDescription)) }
             editor.onProjectCheckpointRequired?()
             onFailure?()
-            return true
-        case .queued, .running:
-            if updateBackendJobMetadata(
-                placeholders,
-                backendJobId: backendJobId,
-                costCredits: job.costCredits,
-                editor: editor
-            ) {
-                editor.onProjectCheckpointRequired?()
-            }
-            return false
         }
     }
 
     @discardableResult
-    private func updateBackendJobMetadata(
-        _ placeholders: [MediaAsset],
-        backendJobId: String,
-        costCredits: Int?,
-        editor: EditorViewModel
-    ) -> Bool {
-        var changed = false
-        for placeholder in placeholders {
-            guard placeholder.generationStatus != .downloading else { continue }
-            let input = placeholder.generationInput
-            let metadataUnchanged = placeholder.generationStatus == .generating
-                && input?.backendJobId == backendJobId
-                && (costCredits == nil || input?.costCredits == costCredits)
-            guard !metadataUnchanged else { continue }
-            updateGenerationMetadata(placeholder, editor: editor, status: .generating) { input in
-                input.backendJobId = backendJobId
-                if let costCredits {
-                    input.costCredits = costCredits
-                }
-            }
-            changed = true
+    private func land(_ asset: MediaAsset, from remoteURL: URL, fileExtension: String?, editor: EditorViewModel) async -> Bool {
+        if asset.generationStatus != .downloading {
+            updateGenerationMetadata(asset, editor: editor, status: .downloading)
         }
-        return changed
+        do {
+            try Task.checkCancellation()
+            try await editor.downloadRemoteMedia(into: asset, from: remoteURL, fileExtension: fileExtension)
+            return true
+        } catch is CancellationError {
+            return false
+        } catch {
+            Log.generation.error("download failed asset=\(asset.id.prefix(8)) error=\(error.localizedDescription)")
+            asset.pendingDownloadURL = remoteURL
+            updateGenerationMetadata(asset, editor: editor, status: .failed(error.localizedDescription))
+            return false
+        }
     }
 
     private func finalizeSuccess(
-        urlStrings: [String],
+        results: [JobResult],
         placeholders: [MediaAsset],
         editor: EditorViewModel,
         onComplete: (@MainActor (MediaAsset) -> Void)?,
         onFailure: (@MainActor () -> Void)?
     ) async {
-        guard !urlStrings.isEmpty else {
-            Log.generation.error("backend job succeeded with no resultUrls")
-            for placeholder in placeholders {
-                updateGenerationMetadata(placeholder, editor: editor, status: .failed("No URL in response"))
-            }
+        let noResult = L10n.string("The job finished without a result.")
+        guard !results.isEmpty else {
+            Log.generation.error("backend job succeeded with no results")
+            placeholders.forEach { updateGenerationMetadata($0, editor: editor, status: .failed(noResult)) }
+            editor.onProjectCheckpointRequired?()
             onFailure?()
             return
         }
-        if urlStrings.count < placeholders.count {
-            Log.generation.notice("backend returned \(urlStrings.count) URL(s) for \(placeholders.count) placeholder(s); marking extras as failed")
+        if results.count < placeholders.count {
+            Log.generation.notice("backend returned \(results.count) result(s) for \(placeholders.count) placeholder(s); marking extras as failed")
         }
 
         var finalized: [MediaAsset] = []
         for (i, placeholder) in placeholders.enumerated() {
+            guard editor.mediaAssets.contains(where: { $0 === placeholder }) else { continue }
             let outputIndex = placeholder.generationInput?.outputIndex ?? i
-            guard outputIndex < urlStrings.count, let remote = URL(string: urlStrings[outputIndex]) else {
-                updateGenerationMetadata(placeholder, editor: editor, status: .failed("No URL for placeholder"))
+            guard results.indices.contains(outputIndex) else {
+                updateGenerationMetadata(placeholder, editor: editor, status: .failed(noResult))
                 continue
             }
+            let result = results[outputIndex]
             updateGenerationMetadata(placeholder, editor: editor, status: .downloading) { input in
-                input.resultURLs = urlStrings
+                input.results = results
             }
-            if await downloadAndFinalize(asset: placeholder, remoteURL: remote, editor: editor) {
+            if await land(placeholder, from: result.url, fileExtension: result.fileExtension, editor: editor) {
                 onComplete?(placeholder)
                 finalized.append(placeholder)
+            } else if Task.isCancelled {
+                return
             }
         }
+        editor.onProjectCheckpointRequired?()
 
         if let first = finalized.first {
             AppNotifications.generationComplete(
@@ -719,5 +610,4 @@ final class GenerationService {
             onFailure?()
         }
     }
-
 }

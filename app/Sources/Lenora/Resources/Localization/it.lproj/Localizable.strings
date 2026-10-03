@@ -23,7 +23,6 @@
 "%lld couldn't align" = "Impossibile allinearne %lld";
 "%lld credits" = "%lld crediti";
 "%lld credits / month" = "%lld crediti al mese";
-"%lld credits refunded" = "Rimborsati %lld crediti";
 "%lld images are ready in Lenora Pro." = "%lld immagini sono pronte in Lenora Pro.";
 "%lld items" = "%lld elementi";
 "%lld media files are missing and will be skipped." = "%lld file multimediali risultano mancanti e verranno ignorati.";
@@ -51,7 +50,6 @@
 "Account" = "Account";
 "Account settings" = "Impostazioni account";
 "Action Safe" = "Area azione";
-"Activity unavailable" = "Attività non disponibile";
 "Adapters" = "Adattatori";
 "Add Marker (M)" = "Aggiungi marcatore (M)";
 "Add Range to Chat" = "Aggiungi intervallo alla chat";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Impossibile sbloccare la sincronizzazione su una traccia multicamera: \"%@\" rimane allineata attraverso di essa.";
 "Cancel" = "Annulla";
 "Cancel Export" = "Annulla esportazione";
+"Cancel Generation" = "Annulla generazione";
 "Cancel Key Color Sampling" = "Annulla campionamento colore chiave";
 "Cancel key color sampling" = "Annulla campionamento colore chiave";
 "Canceled" = "Annullato";
@@ -298,7 +297,6 @@
 "Downloading…" = "Download…";
 "Downloads a %@ on-device model so you can search media visually." = "Scarica un modello sul dispositivo da %@ per cercare visivamente i contenuti multimediali.";
 "Draft" = "Bozza";
-"Draft already enhanced or cache unavailable" = "Bozza già migliorata o cache non disponibile";
 "Drag to add or shape a point · double-click to remove" = "Trascina per aggiungere o modellare un punto · doppio clic per rimuoverlo";
 "Drop files here or import from disk" = "Rilascia qui i file o importali dal disco";
 "Dubbing" = "Doppiaggio";
@@ -330,7 +328,6 @@
 "Enabled" = "Abilitato";
 "Enhance" = "Migliora";
 "Enhance resolution or frame rate with AI" = "Migliora la risoluzione o la frequenza fotogrammi con l'AI";
-"Enhanced with FLUX.3 at 1080p." = "Migliorato con FLUX.3 a 1080p.";
 "Enter Full Screen" = "Attiva modalità a tutto schermo";
 "Exclusion" = "Esclusione";
 "Expand" = "Espandi";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Estende i sottotitoli negli spazi brevi e mantiene l’ultimo sottotitolo.";
 "Extra Large" = "Molto grande";
 "Extract Audio" = "Estrai audio";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Dissolvenza in entrata";
 "Fade Out" = "Dissolvenza in uscita";
 "Failed" = "Non riuscito";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Generazione non riuscita";
 "Generation Input" = "Input di generazione";
 "Generation complete" = "Generazione completata";
+"Generation failed." = "Generazione non riuscita.";
 "Generation in progress" = "Generazione in corso";
 "Generation panel" = "Pannello di generazione";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "La generazione viene eseguita sul tuo backend Lenora. Il token è archiviato nel Portachiavi di macOS.";
@@ -588,7 +585,6 @@
 "No beats detected." = "Nessun battito rilevato.";
 "No conversations yet" = "Nessuna conversazione";
 "No exports yet" = "Nessuna esportazione";
-"No generations yet" = "Nessuna generazione";
 "No images" = "Nessuna immagine";
 "No markers" = "Nessun marcatore";
 "No markers match this filter." = "Nessun marcatore corrisponde a questo filtro.";
@@ -667,7 +663,6 @@
 "Preview" = "Anteprima";
 "Pro plan" = "Piano Pro";
 "Project" = "Progetto";
-"Project Activity" = "Attività del progetto";
 "Project Settings" = "Impostazioni del progetto";
 "Projects Couldn’t Be Deleted" = "Impossibile eliminare i progetti";
 "Prompt" = "Prompt";
@@ -678,7 +673,6 @@
 "Range" = "Intervallo";
 "Razor (C)" = "Lametta (C)";
 "Razor Tool" = "Strumento lametta";
-"Re-render the same motion at full quality in 1080p" = "Rigenera lo stesso movimento alla massima qualità in 1080p";
 "Reasoning effort" = "Intensità del ragionamento";
 "Redetect Beats" = "Rileva nuovamente i battiti";
 "Redo" = "Ripeti";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Salva intervallo come contenuto multimediale";
 "Save as Audio" = "Salva come audio";
 "Save as Media" = "Salva come contenuto multimediale";
-"Save this project to view activity" = "Salva questo progetto per visualizzare l’attività";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Salva una copia del progetto con tutti i contenuti multimediali inclusi, così potrà essere aperto su qualsiasi computer.";
 "Scale" = "Scala";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Testo da pronunciare (almeno %lld caratteri)";
 "The clip you're adding has different settings than the current project." = "La clip che stai aggiungendo ha impostazioni diverse dal progetto attuale.";
 "The export" = "L'esportazione";
+"The job already finished." = "Il processo è già terminato.";
+"The job finished without a result." = "Il processo è terminato senza un risultato.";
 "The marker comment changed while you were editing. Review it and try again." = "Il commento del marcatore è cambiato durante la modifica. Controllalo e riprova.";
 "The project will be moved to the Trash." = "Il progetto verrà spostato nel Cestino.";
 "The selected model refused this request. Revise the prompt and try again." = "Il modello selezionato ha rifiutato questa richiesta. Modifica il prompt e riprova.";
@@ -894,6 +889,7 @@
 "Theme" = "Tema";
 "This is where all your footage and assets live." = "Qui si trovano tutti i filmati e le risorse.";
 "This is your preview panel to play a selected media or the whole timeline." = "Questo è il pannello di anteprima per riprodurre i contenuti multimediali selezionati o l'intera timeline.";
+"This job can't be cancelled. It will finish on its own." = "Questo processo non può essere annullato. Terminerà da solo.";
 "This model cannot cap the output at 60 FPS." = "Questo modello non può limitare l'output a 60 FPS.";
 "This permanently removes %@." = "Rimuove definitivamente %@.";
 "This source can’t replace the clip." = "Questa sorgente non può sostituire la clip.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Elaborazione di %@";
 "Workspace layout" = "Layout area di lavoro";
 "X High" = "X alto";
-"You were not charged for this generation" = "Nessun addebito per questa generazione";
 "You're all set" = "Tutto pronto";
 "You're ready to start creating." = "Sei pronto per iniziare a creare.";
 "Your Lottie animation is ready." = "L'animazione Lottie è pronta.";

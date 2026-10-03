@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld gick inte att justera";
 "%lld credits" = "%lld krediter";
 "%lld credits / month" = "%lld krediter / månad";
-"%lld credits refunded" = "%lld krediter återbetalade";
 "%lld images are ready in Lenora Pro." = "%lld bilder är klara i Lenora Pro.";
 "%lld items" = "%lld objekt";
 "%lld media files are missing and will be skipped." = "%lld mediafiler saknas och hoppas över.";
@@ -51,7 +50,6 @@
 "Account" = "Konto";
 "Account settings" = "Kontoinställningar";
 "Action Safe" = "Säker åtgärdsyta";
-"Activity unavailable" = "Aktiviteten är inte tillgänglig";
 "Adapters" = "Adaptrar";
 "Add Marker (M)" = "Lägg till markör (M)";
 "Add Range to Chat" = "Lägg till område i chatten";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Det går inte att låsa upp synk på ett flerkameraspår — \"%@\" hålls justerad genom det.";
 "Cancel" = "Avbryt";
 "Cancel Export" = "Avbryt export";
+"Cancel Generation" = "Avbryt generering";
 "Cancel Key Color Sampling" = "Avbryt provtagning av nyckelfärg";
 "Cancel key color sampling" = "Avbryt provtagning av nyckelfärg";
 "Canceled" = "Avbruten";
@@ -298,7 +297,6 @@
 "Downloading…" = "Hämtar…";
 "Downloads a %@ on-device model so you can search media visually." = "Hämtar en %@-modell på enheten så att du kan söka i media visuellt.";
 "Draft" = "Utkast";
-"Draft already enhanced or cache unavailable" = "Utkastet är redan förbättrat eller cachen är inte tillgänglig";
 "Drag to add or shape a point · double-click to remove" = "Dra för att lägga till eller forma en punkt · dubbelklicka för att ta bort";
 "Drop files here or import from disk" = "Släpp filer här eller importera från disk";
 "Dubbing" = "Dubbning";
@@ -330,7 +328,6 @@
 "Enabled" = "Aktiverad";
 "Enhance" = "Förbättra";
 "Enhance resolution or frame rate with AI" = "Förbättra upplösning eller bildfrekvens med AI";
-"Enhanced with FLUX.3 at 1080p." = "Förbättrad med FLUX.3 i 1080p.";
 "Enter Full Screen" = "Gå till helskärm";
 "Exclusion" = "Uteslutning";
 "Expand" = "Expandera";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Förlänger undertexter över korta luckor och håller den sista undertexten.";
 "Extra Large" = "Extra stor";
 "Extract Audio" = "Extrahera ljud";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Tona in";
 "Fade Out" = "Tona ut";
 "Failed" = "Misslyckades";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Genereringen misslyckades";
 "Generation Input" = "Genereringsindata";
 "Generation complete" = "Genereringen är klar";
+"Generation failed." = "Genereringen misslyckades.";
 "Generation in progress" = "Generering pågår";
 "Generation panel" = "Genereringspanel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Genereringen körs på din Lenora-backend. Token lagras i macOS-nyckelringen.";
@@ -588,7 +585,6 @@
 "No beats detected." = "Inga takter identifierades.";
 "No conversations yet" = "Inga konversationer än";
 "No exports yet" = "Inga exporter än";
-"No generations yet" = "Inga genereringar än";
 "No images" = "Inga bilder";
 "No markers" = "Inga markörer";
 "No markers match this filter." = "Inga markörer matchar det här filtret.";
@@ -667,7 +663,6 @@
 "Preview" = "Förhandsvisning";
 "Pro plan" = "Pro-plan";
 "Project" = "Projekt";
-"Project Activity" = "Projektaktivitet";
 "Project Settings" = "Projektinställningar";
 "Projects Couldn’t Be Deleted" = "Projekten kunde inte raderas";
 "Prompt" = "Prompt";
@@ -678,7 +673,6 @@
 "Range" = "Område";
 "Razor (C)" = "Rakblad (C)";
 "Razor Tool" = "Rakbladsverktyg";
-"Re-render the same motion at full quality in 1080p" = "Rendera om samma rörelse i full kvalitet i 1080p";
 "Reasoning effort" = "Resonemangsinsats";
 "Redetect Beats" = "Identifiera takter igen";
 "Redo" = "Gör om";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Spara område som media";
 "Save as Audio" = "Spara som ljud";
 "Save as Media" = "Spara som media";
-"Save this project to view activity" = "Spara projektet för att visa aktivitet";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Sparar en kopia av projektet med allt media paketerat, så att det öppnas på vilken dator som helst.";
 "Scale" = "Skala";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Text att tala (minst %lld tecken)";
 "The clip you're adding has different settings than the current project." = "Klippet du lägger till har andra inställningar än det aktuella projektet.";
 "The export" = "Exporten";
+"The job already finished." = "Jobbet är redan klart.";
+"The job finished without a result." = "Jobbet avslutades utan resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markörkommentaren ändrades medan du redigerade. Granska den och försök igen.";
 "The project will be moved to the Trash." = "Projektet flyttas till Papperskorgen.";
 "The selected model refused this request. Revise the prompt and try again." = "Den valda modellen avvisade den här begäran. Ändra prompten och försök igen.";
@@ -894,6 +889,7 @@
 "Theme" = "Tema";
 "This is where all your footage and assets live." = "Här ligger allt ditt material och alla tillgångar.";
 "This is your preview panel to play a selected media or the whole timeline." = "Det här är förhandsvisningspanelen där du spelar upp valt media eller hela tidslinjen.";
+"This job can't be cancelled. It will finish on its own." = "Det här jobbet kan inte avbrytas. Det slutförs av sig självt.";
 "This model cannot cap the output at 60 FPS." = "Den här modellen kan inte begränsa utdata till 60 FPS.";
 "This permanently removes %@." = "Det här tar bort %@ permanent.";
 "This source can’t replace the clip." = "Den här källan kan inte ersätta klippet.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Arbetar med %@";
 "Workspace layout" = "Arbetsytelayout";
 "X High" = "X hög";
-"You were not charged for this generation" = "Du debiterades inte för den här genereringen";
 "You're all set" = "Allt är klart";
 "You're ready to start creating." = "Du är redo att börja skapa.";
 "Your Lottie animation is ready." = "Din Lottie-animering är klar.";

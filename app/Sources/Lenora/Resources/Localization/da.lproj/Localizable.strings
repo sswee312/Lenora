@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld kunne ikke justeres";
 "%lld credits" = "%lld kreditter";
 "%lld credits / month" = "%lld kreditter / måned";
-"%lld credits refunded" = "%lld kreditter refunderet";
 "%lld images are ready in Lenora Pro." = "%lld billeder er klar i Lenora Pro.";
 "%lld items" = "%lld elementer";
 "%lld media files are missing and will be skipped." = "%lld mediefiler mangler og springes over.";
@@ -51,7 +50,6 @@
 "Account" = "Konto";
 "Account settings" = "Kontoindstillinger";
 "Action Safe" = "Handlingssikker";
-"Activity unavailable" = "Aktivitet ikke tilgængelig";
 "Adapters" = "Adaptere";
 "Add Marker (M)" = "Tilføj markør (M)";
 "Add Range to Chat" = "Tilføj område til chat";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Kan ikke låse synkronisering op på et multicam-spor — \"%@\" forbliver justeret gennem det.";
 "Cancel" = "Annuller";
 "Cancel Export" = "Annuller eksport";
+"Cancel Generation" = "Annuller generering";
 "Cancel Key Color Sampling" = "Annuller udtagning af nøglefarve";
 "Cancel key color sampling" = "Annuller udtagning af nøglefarve";
 "Canceled" = "Annulleret";
@@ -298,7 +297,6 @@
 "Downloading…" = "Henter…";
 "Downloads a %@ on-device model so you can search media visually." = "Henter en %@-model på enheden, så du kan søge visuelt i medier.";
 "Draft" = "Kladde";
-"Draft already enhanced or cache unavailable" = "Kladde allerede forbedret, eller cache er ikke tilgængelig";
 "Drag to add or shape a point · double-click to remove" = "Træk for at tilføje eller forme et punkt · dobbeltklik for at fjerne";
 "Drop files here or import from disk" = "Slip filer her, eller importér fra disk";
 "Dubbing" = "Eftersynkronisering";
@@ -330,7 +328,6 @@
 "Enabled" = "Aktiveret";
 "Enhance" = "Forbedr";
 "Enhance resolution or frame rate with AI" = "Forbedr opløsning eller billedhastighed med AI";
-"Enhanced with FLUX.3 at 1080p." = "Forbedret med FLUX.3 ved 1080p.";
 "Enter Full Screen" = "Aktivér fuld skærm";
 "Exclusion" = "Udelukkelse";
 "Expand" = "Udvid";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Forlænger undertekster over korte mellemrum og holder den sidste undertekst.";
 "Extra Large" = "Ekstra stor";
 "Extract Audio" = "Udtræk lyd";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Indtoning";
 "Fade Out" = "Udtoning";
 "Failed" = "Mislykkedes";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Generering mislykkedes";
 "Generation Input" = "Genereringsinput";
 "Generation complete" = "Generering fuldført";
+"Generation failed." = "Generering mislykkedes.";
 "Generation in progress" = "Generering i gang";
 "Generation panel" = "Genereringspanel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generering kører på din Lenora-backend. Tokenet gemmes i macOS-nøgleringen.";
@@ -479,6 +476,10 @@
 "Layout" = "Layout";
 "Left" = "Venstre";
 "Length of the generated music. It's placed at the playhead, or at the marked range start." = "Længden af den genererede musik. Den placeres ved afspilningshovedet eller ved starten af det markerede område.";
+"Lenora Project" = "Lenora-projekt";
+"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora kunne ikke indlæse dette klips kildefil. Den kan mangle, ligge på et afmonteret drev eller være ulæselig.";
+"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora kunne ikke indlæse denne kildefil. Den kan mangle, ligge på et afmonteret drev eller være ulæselig.";
+"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora indlæste dette klips kildefil, men kunne ikke klargøre den til afspilning. Filen kan være beskadiget eller i et format, der ikke understøttes.";
 "Let Agent create captions for you. Choose a predefined task, or ask Agent in the chat." = "Lad Agent oprette undertekster til dig. Vælg en foruddefineret opgave, eller spørg Agent i chatten.";
 "Let Agent generate music for you. Choose a starter, or ask Agent in the chat." = "Lad Agent generere musik til dig. Vælg en start, eller spørg Agent i chatten.";
 "Let's take a quick tour of the workspace and what you can do." = "Her er et kort overblik over arbejdsområdet, og hvad du kan gøre.";
@@ -584,7 +585,6 @@
 "No beats detected." = "Ingen takter registreret.";
 "No conversations yet" = "Ingen samtaler endnu";
 "No exports yet" = "Ingen eksporter endnu";
-"No generations yet" = "Ingen genereringer endnu";
 "No images" = "Ingen billeder";
 "No markers" = "Ingen markører";
 "No markers match this filter." = "Ingen markører matcher dette filter.";
@@ -635,10 +635,6 @@
 "Overlay" = "Overlejring";
 "Overline" = "Overlinje";
 "Padding" = "Polstring";
-"Lenora Project" = "Lenora-projekt";
-"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora kunne ikke indlæse dette klips kildefil. Den kan mangle, ligge på et afmonteret drev eller være ulæselig.";
-"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora kunne ikke indlæse denne kildefil. Den kan mangle, ligge på et afmonteret drev eller være ulæselig.";
-"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora indlæste dette klips kildefil, men kunne ikke klargøre den til afspilning. Filen kan være beskadiget eller i et format, der ikke understøttes.";
 "Paste" = "Sæt ind";
 "Paste Clip Settings" = "Sæt klipindstillinger ind";
 "Paste LENORA_TOKEN" = "Indsæt LENORA_TOKEN";
@@ -667,7 +663,6 @@
 "Preview" = "Forhåndsvisning";
 "Pro plan" = "Pro-abonnement";
 "Project" = "Projekt";
-"Project Activity" = "Projektaktivitet";
 "Project Settings" = "Projektindstillinger";
 "Projects Couldn’t Be Deleted" = "Projekter kunne ikke slettes";
 "Prompt" = "Prompt";
@@ -678,7 +673,6 @@
 "Range" = "Område";
 "Razor (C)" = "Barberkniv (C)";
 "Razor Tool" = "Barberknivsværktøj";
-"Re-render the same motion at full quality in 1080p" = "Render den samme bevægelse i fuld kvalitet i 1080p";
 "Reasoning effort" = "Ræsonnementsindsats";
 "Redetect Beats" = "Registrer takter igen";
 "Redo" = "Gentag";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Arkiver område som medie";
 "Save as Audio" = "Arkiver som lyd";
 "Save as Media" = "Arkiver som medie";
-"Save this project to view activity" = "Arkiver dette projekt for at se aktivitet";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Arkiverer en kopi af dette projekt med alle medier samlet, så det kan åbnes på enhver Mac.";
 "Scale" = "Skalering";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Tekst der skal tales (mindst %lld tegn)";
 "The clip you're adding has different settings than the current project." = "Klippet, du tilføjer, har andre indstillinger end det aktuelle projekt.";
 "The export" = "Eksporten";
+"The job already finished." = "Jobbet er allerede afsluttet.";
+"The job finished without a result." = "Jobbet blev afsluttet uden et resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markørkommentaren blev ændret, mens du redigerede. Gennemgå den, og prøv igen.";
 "The project will be moved to the Trash." = "Projektet flyttes til papirkurven.";
 "The selected model refused this request. Revise the prompt and try again." = "Den valgte model afviste denne anmodning. Ret prompten, og prøv igen.";
@@ -894,6 +889,7 @@
 "Theme" = "Tema";
 "This is where all your footage and assets live." = "Her ligger alle dine optagelser og medier.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dette er dit forhåndsvisningspanel til at afspille et valgt medie eller hele tidslinjen.";
+"This job can't be cancelled. It will finish on its own." = "Dette job kan ikke annulleres. Det afsluttes af sig selv.";
 "This model cannot cap the output at 60 FPS." = "Denne model kan ikke begrænse outputtet til 60 FPS.";
 "This permanently removes %@." = "Dette fjerner %@ permanent.";
 "This source can’t replace the clip." = "Denne kilde kan ikke erstatte klippet.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Arbejder på %@";
 "Workspace layout" = "Layout for arbejdsområde";
 "X High" = "X høj";
-"You were not charged for this generation" = "Du blev ikke debiteret for denne generering";
 "You're all set" = "Alt er klar";
 "You're ready to start creating." = "Du er klar til at begynde at skabe.";
 "Your Lottie animation is ready." = "Din Lottie-animation er klar.";

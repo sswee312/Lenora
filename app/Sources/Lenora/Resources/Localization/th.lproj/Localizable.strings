@@ -23,7 +23,6 @@
 "%lld couldn't align" = "ไม่สามารถจัดแนวได้ %lld รายการ";
 "%lld credits" = "%lld เครดิต";
 "%lld credits / month" = "%lld เครดิต / เดือน";
-"%lld credits refunded" = "คืน %lld เครดิตแล้ว";
 "%lld images are ready in Lenora Pro." = "ภาพ %lld รายการพร้อมใน Lenora Pro แล้ว";
 "%lld items" = "%lld รายการ";
 "%lld media files are missing and will be skipped." = "ไฟล์มีเดีย %lld รายการหายไปและจะถูกข้าม";
@@ -51,7 +50,6 @@
 "Account" = "บัญชี";
 "Account settings" = "การตั้งค่าบัญชี";
 "Action Safe" = "ขอบปลอดภัยการกระทำ";
-"Activity unavailable" = "กิจกรรมไม่พร้อมใช้งาน";
 "Adapters" = "อะแดปเตอร์";
 "Add Marker (M)" = "เพิ่มมาร์กเกอร์ (M)";
 "Add Range to Chat" = "เพิ่มช่วงไปยังแชท";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "ไม่สามารถปลดล็อกซิงค์บนแทร็กมัลติแคม — \"%@\" จัดแนวผ่านแทร็กนี้";
 "Cancel" = "ยกเลิก";
 "Cancel Export" = "ยกเลิกการส่งออก";
+"Cancel Generation" = "ยกเลิกการสร้าง";
 "Cancel Key Color Sampling" = "ยกเลิกการสุ่มตัวอย่างสีคีย์";
 "Cancel key color sampling" = "ยกเลิกการสุ่มตัวอย่างสีคีย์";
 "Canceled" = "ยกเลิกแล้ว";
@@ -298,7 +297,6 @@
 "Downloading…" = "กำลังดาวน์โหลด…";
 "Downloads a %@ on-device model so you can search media visually." = "ดาวน์โหลดโมเดลบนอุปกรณ์ %@ เพื่อให้คุณค้นหามีเดียด้วยภาพได้";
 "Draft" = "ฉบับร่าง";
-"Draft already enhanced or cache unavailable" = "ฉบับร่างถูกปรับปรุงแล้ว หรือแคชไม่พร้อมใช้งาน";
 "Drag to add or shape a point · double-click to remove" = "ลากเพื่อเพิ่มหรือปรับจุด · ดับเบิลคลิกเพื่อลบ";
 "Drop files here or import from disk" = "วางไฟล์ที่นี่ หรือนำเข้าจากดิสก์";
 "Dubbing" = "การพากย์";
@@ -330,7 +328,6 @@
 "Enabled" = "เปิดใช้งาน";
 "Enhance" = "ปรับปรุง";
 "Enhance resolution or frame rate with AI" = "ปรับปรุงความละเอียดหรืออัตราเฟรมด้วย AI";
-"Enhanced with FLUX.3 at 1080p." = "ปรับปรุงด้วย FLUX.3 ที่ 1080p";
 "Enter Full Screen" = "เข้าสู่เต็มหน้าจอ";
 "Exclusion" = "ยกเว้น";
 "Expand" = "ขยาย";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "ขยายคำบรรยายข้ามช่องว่างสั้นๆ และคงคำบรรยายสุดท้ายไว้";
 "Extra Large" = "ใหญ่พิเศษ";
 "Extract Audio" = "แยกเสียง";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "จางเข้า";
 "Fade Out" = "จางออก";
 "Failed" = "ล้มเหลว";
@@ -402,6 +398,7 @@
 "Generation Failed" = "การสร้างล้มเหลว";
 "Generation Input" = "อินพุตการสร้าง";
 "Generation complete" = "การสร้างเสร็จสมบูรณ์";
+"Generation failed." = "การสร้างล้มเหลว";
 "Generation in progress" = "กำลังสร้าง";
 "Generation panel" = "แผงการสร้าง";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "การสร้างทำงานบนแบ็กเอนด์ Lenora ของคุณ โทเค็นจะเก็บไว้ในพวงกุญแจของ macOS";
@@ -588,7 +585,6 @@
 "No beats detected." = "ไม่พบจังหวะ";
 "No conversations yet" = "ยังไม่มีการสนทนา";
 "No exports yet" = "ยังไม่มีการส่งออก";
-"No generations yet" = "ยังไม่มีการสร้าง";
 "No images" = "ไม่มีภาพ";
 "No markers" = "ไม่มีมาร์กเกอร์";
 "No markers match this filter." = "ไม่มีมาร์กเกอร์ที่ตรงกับตัวกรองนี้";
@@ -667,7 +663,6 @@
 "Preview" = "ตัวอย่าง";
 "Pro plan" = "แผน Pro";
 "Project" = "โปรเจ็กต์";
-"Project Activity" = "กิจกรรมโปรเจ็กต์";
 "Project Settings" = "การตั้งค่าโปรเจ็กต์";
 "Projects Couldn’t Be Deleted" = "ไม่สามารถลบโปรเจ็กต์ได้";
 "Prompt" = "พรอมต์";
@@ -678,7 +673,6 @@
 "Range" = "ช่วง";
 "Razor (C)" = "มีดตัด (C)";
 "Razor Tool" = "เครื่องมือมีดตัด";
-"Re-render the same motion at full quality in 1080p" = "เรนเดอร์การเคลื่อนไหวเดิมที่คุณภาพเต็มใน 1080p";
 "Reasoning effort" = "ความพยายามในการให้เหตุผล";
 "Redetect Beats" = "ตรวจจับจังหวะอีกครั้ง";
 "Redo" = "ทำอีกครั้ง";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "บันทึกช่วงเป็นมีเดีย";
 "Save as Audio" = "บันทึกเป็นเสียง";
 "Save as Media" = "บันทึกเป็นมีเดีย";
-"Save this project to view activity" = "บันทึกโปรเจ็กต์นี้เพื่อดูกิจกรรม";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "บันทึกสำเนาโปรเจ็กต์นี้พร้อมมีเดียทั้งหมดไว้ภายใน เพื่อให้เปิดได้บนเครื่องใดก็ได้";
 "Scale" = "ขนาด";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "ข้อความที่จะพูด (อย่างน้อย %lld อักขระ)";
 "The clip you're adding has different settings than the current project." = "คลิปที่คุณกำลังเพิ่มมีการตั้งค่าต่างจากโปรเจ็กต์ปัจจุบัน";
 "The export" = "รายการส่งออก";
+"The job already finished." = "งานเสร็จสิ้นแล้ว";
+"The job finished without a result." = "งานสิ้นสุดโดยไม่มีผลลัพธ์";
 "The marker comment changed while you were editing. Review it and try again." = "ความคิดเห็นของมาร์กเกอร์เปลี่ยนระหว่างที่คุณแก้ไข ตรวจทานแล้วลองอีกครั้ง";
 "The project will be moved to the Trash." = "โปรเจ็กต์จะถูกย้ายไปที่ถังขยะ";
 "The selected model refused this request. Revise the prompt and try again." = "โมเดลที่เลือกปฏิเสธคำขอนี้ แก้ไขพรอมต์แล้วลองอีกครั้ง";
@@ -894,6 +889,7 @@
 "Theme" = "ธีม";
 "This is where all your footage and assets live." = "ที่นี่คือที่เก็บฟุตเทจและแอสเซ็ตทั้งหมดของคุณ";
 "This is your preview panel to play a selected media or the whole timeline." = "นี่คือแผงตัวอย่างสำหรับเล่นมีเดียที่เลือกหรือทั้งไทม์ไลน์";
+"This job can't be cancelled. It will finish on its own." = "ไม่สามารถยกเลิกงานนี้ได้ งานจะเสร็จสิ้นเอง";
 "This model cannot cap the output at 60 FPS." = "โมเดลนี้ไม่สามารถจำกัดเอาต์พุตที่ 60 FPS ได้";
 "This permanently removes %@." = "การดำเนินการนี้จะลบ %@ อย่างถาวร";
 "This source can’t replace the clip." = "ต้นทางนี้แทนที่คลิปไม่ได้";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "กำลังทำงานกับ %@";
 "Workspace layout" = "เค้าโครงพื้นที่ทำงาน";
 "X High" = "สูงมาก";
-"You were not charged for this generation" = "ไม่มีการเรียกเก็บเงินสำหรับการสร้างนี้";
 "You're all set" = "พร้อมใช้งานแล้ว";
 "You're ready to start creating." = "คุณพร้อมเริ่มสร้างสรรค์แล้ว";
 "Your Lottie animation is ready." = "แอนิเมชัน Lottie ของคุณพร้อมแล้ว";

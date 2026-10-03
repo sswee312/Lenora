@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld tidak dapat disejajarkan";
 "%lld credits" = "%lld kredit";
 "%lld credits / month" = "%lld kredit / bulan";
-"%lld credits refunded" = "%lld kredit dikembalikan";
 "%lld images are ready in Lenora Pro." = "%lld gambar siap di Lenora Pro.";
 "%lld items" = "%lld item";
 "%lld media files are missing and will be skipped." = "%lld file media hilang dan akan dilewati.";
@@ -51,7 +50,6 @@
 "Account" = "Akun";
 "Account settings" = "Pengaturan akun";
 "Action Safe" = "Zona Aman Aksi";
-"Activity unavailable" = "Aktivitas tidak tersedia";
 "Adapters" = "Adapter";
 "Add Marker (M)" = "Tambahkan Penanda (M)";
 "Add Range to Chat" = "Tambahkan Rentang ke Chat";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Tidak dapat membuka kunci sinkronisasi pada trek multicam — \"%@\" tetap sejajar melaluinya.";
 "Cancel" = "Batalkan";
 "Cancel Export" = "Batalkan Ekspor";
+"Cancel Generation" = "Batalkan Pembuatan";
 "Cancel Key Color Sampling" = "Batalkan Pengambilan Warna Kunci";
 "Cancel key color sampling" = "Batalkan pengambilan warna kunci";
 "Canceled" = "Dibatalkan";
@@ -298,7 +297,6 @@
 "Downloading…" = "Mengunduh…";
 "Downloads a %@ on-device model so you can search media visually." = "Mengunduh model %@ di perangkat agar Anda dapat mencari media secara visual.";
 "Draft" = "Draf";
-"Draft already enhanced or cache unavailable" = "Draf sudah ditingkatkan atau cache tidak tersedia";
 "Drag to add or shape a point · double-click to remove" = "Seret untuk menambah atau membentuk titik · klik dua kali untuk menghapus";
 "Drop files here or import from disk" = "Letakkan file di sini atau impor dari disk";
 "Dubbing" = "Dubbing";
@@ -330,7 +328,6 @@
 "Enabled" = "Aktif";
 "Enhance" = "Tingkatkan";
 "Enhance resolution or frame rate with AI" = "Tingkatkan resolusi atau kecepatan frame dengan AI";
-"Enhanced with FLUX.3 at 1080p." = "Ditingkatkan dengan FLUX.3 pada 1080p.";
 "Enter Full Screen" = "Masuk ke Layar Penuh";
 "Exclusion" = "Exclusion";
 "Expand" = "Perluas";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Memperpanjang teks terjemahan di celah pendek dan menahan teks terjemahan terakhir.";
 "Extra Large" = "Sangat Besar";
 "Extract Audio" = "Ekstrak Audio";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Pudar Masuk";
 "Fade Out" = "Pudar Keluar";
 "Failed" = "Gagal";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Generasi Gagal";
 "Generation Input" = "Masukan Generasi";
 "Generation complete" = "Generasi selesai";
+"Generation failed." = "Pembuatan gagal.";
 "Generation in progress" = "Generasi sedang berlangsung";
 "Generation panel" = "Panel generasi";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Pembuatan berjalan di backend Lenora Anda. Token disimpan di Rantai Kunci macOS.";
@@ -588,7 +585,6 @@
 "No beats detected." = "Tidak ada ketukan terdeteksi.";
 "No conversations yet" = "Belum ada percakapan";
 "No exports yet" = "Belum ada ekspor";
-"No generations yet" = "Belum ada generasi";
 "No images" = "Tidak ada gambar";
 "No markers" = "Tidak ada penanda";
 "No markers match this filter." = "Tidak ada penanda yang cocok dengan filter ini.";
@@ -667,7 +663,6 @@
 "Preview" = "Pratinjau";
 "Pro plan" = "Paket Pro";
 "Project" = "Proyek";
-"Project Activity" = "Aktivitas Proyek";
 "Project Settings" = "Pengaturan Proyek";
 "Projects Couldn’t Be Deleted" = "Proyek Tidak Dapat Dihapus";
 "Prompt" = "Prompt";
@@ -678,7 +673,6 @@
 "Range" = "Rentang";
 "Razor (C)" = "Pisau (C)";
 "Razor Tool" = "Alat Pisau";
-"Re-render the same motion at full quality in 1080p" = "Render ulang gerakan yang sama dengan kualitas penuh di 1080p";
 "Reasoning effort" = "Tingkat penalaran";
 "Redetect Beats" = "Deteksi Ulang Ketukan";
 "Redo" = "Ulangi";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Simpan Rentang sebagai Media";
 "Save as Audio" = "Simpan sebagai Audio";
 "Save as Media" = "Simpan sebagai Media";
-"Save this project to view activity" = "Simpan proyek ini untuk melihat aktivitas";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Menyimpan salinan proyek ini dengan semua media di dalamnya, sehingga dapat dibuka di mesin mana pun.";
 "Scale" = "Skala";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Teks untuk diucapkan (minimum %lld karakter)";
 "The clip you're adding has different settings than the current project." = "Klip yang Anda tambahkan memiliki pengaturan berbeda dari proyek saat ini.";
 "The export" = "Ekspor";
+"The job already finished." = "Tugas sudah selesai.";
+"The job finished without a result." = "Tugas selesai tanpa hasil.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentar penanda berubah saat Anda mengedit. Tinjau dan coba lagi.";
 "The project will be moved to the Trash." = "Proyek akan dipindahkan ke Tong Sampah.";
 "The selected model refused this request. Revise the prompt and try again." = "Model yang dipilih menolak permintaan ini. Revisi prompt dan coba lagi.";
@@ -894,6 +889,7 @@
 "Theme" = "Tema";
 "This is where all your footage and assets live." = "Di sinilah semua rekaman dan aset Anda.";
 "This is your preview panel to play a selected media or the whole timeline." = "Panel pratinjau untuk memutar media yang dipilih atau seluruh linimasa.";
+"This job can't be cancelled. It will finish on its own." = "Tugas ini tidak dapat dibatalkan. Tugas akan selesai dengan sendirinya.";
 "This model cannot cap the output at 60 FPS." = "Model ini tidak dapat membatasi output pada 60 FPS.";
 "This permanently removes %@." = "Ini menghapus %@ secara permanen.";
 "This source can’t replace the clip." = "Sumber ini tidak dapat mengganti klip.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Mengerjakan %@";
 "Workspace layout" = "Tata letak ruang kerja";
 "X High" = "X High";
-"You were not charged for this generation" = "Anda tidak dikenai biaya untuk generasi ini";
 "You're all set" = "Semua sudah siap";
 "You're ready to start creating." = "Anda siap mulai berkarya.";
 "Your Lottie animation is ready." = "Animasi Lottie Anda siap.";

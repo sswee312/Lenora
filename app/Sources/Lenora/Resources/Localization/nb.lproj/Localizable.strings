@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld kunne ikke justeres";
 "%lld credits" = "%lld kreditter";
 "%lld credits / month" = "%lld kreditter / måned";
-"%lld credits refunded" = "%lld kreditter refundert";
 "%lld images are ready in Lenora Pro." = "%lld bilder er klare i Lenora Pro.";
 "%lld items" = "%lld elementer";
 "%lld media files are missing and will be skipped." = "%lld mediefiler mangler og hoppes over.";
@@ -51,7 +50,6 @@
 "Account" = "Konto";
 "Account settings" = "Kontoinnstillinger";
 "Action Safe" = "Handlingssikker";
-"Activity unavailable" = "Aktivitet utilgjengelig";
 "Adapters" = "Adaptere";
 "Add Marker (M)" = "Legg til markør (M)";
 "Add Range to Chat" = "Legg område til i chat";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Kan ikke låse opp synk på et multicam-spor — \"%@\" holdes justert gjennom det.";
 "Cancel" = "Avbryt";
 "Cancel Export" = "Avbryt eksport";
+"Cancel Generation" = "Avbryt generering";
 "Cancel Key Color Sampling" = "Avbryt valg av nøkkelfarge";
 "Cancel key color sampling" = "Avbryt valg av nøkkelfarge";
 "Canceled" = "Avbrutt";
@@ -298,7 +297,6 @@
 "Downloading…" = "Laster ned…";
 "Downloads a %@ on-device model so you can search media visually." = "Laster ned en %@-modell på enheten, slik at du kan søke i media visuelt.";
 "Draft" = "Utkast";
-"Draft already enhanced or cache unavailable" = "Utkastet er allerede forbedret, eller hurtiglageret er utilgjengelig";
 "Drag to add or shape a point · double-click to remove" = "Dra for å legge til eller forme et punkt · dobbeltklikk for å fjerne";
 "Drop files here or import from disk" = "Slipp filer her, eller importer fra disk";
 "Dubbing" = "Dubbing";
@@ -330,7 +328,6 @@
 "Enabled" = "Aktivert";
 "Enhance" = "Forbedre";
 "Enhance resolution or frame rate with AI" = "Forbedre oppløsning eller bilderate med AI";
-"Enhanced with FLUX.3 at 1080p." = "Forbedret med FLUX.3 i 1080p.";
 "Enter Full Screen" = "Gå til fullskjerm";
 "Exclusion" = "Ekskludering";
 "Expand" = "Utvid";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Forlenger undertekster over korte gap og holder den siste underteksten.";
 "Extra Large" = "Ekstra stor";
 "Extract Audio" = "Pakk ut lyd";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Inntoning";
 "Fade Out" = "Uttoning";
 "Failed" = "Mislyktes";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Generering mislyktes";
 "Generation Input" = "Genereringsinndata";
 "Generation complete" = "Generering fullført";
+"Generation failed." = "Genereringen mislyktes.";
 "Generation in progress" = "Generering pågår";
 "Generation panel" = "Genereringspanel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generering kjører på Lenora-backend-en din. Token lagres i nøkkelringen i macOS.";
@@ -588,7 +585,6 @@
 "No beats detected." = "Ingen takter gjenkjent.";
 "No conversations yet" = "Ingen samtaler ennå";
 "No exports yet" = "Ingen eksporter ennå";
-"No generations yet" = "Ingen genereringer ennå";
 "No images" = "Ingen bilder";
 "No markers" = "Ingen markører";
 "No markers match this filter." = "Ingen markører matcher dette filteret.";
@@ -667,7 +663,6 @@
 "Preview" = "Forhåndsvisning";
 "Pro plan" = "Pro-abonnement";
 "Project" = "Prosjekt";
-"Project Activity" = "Prosjektaktivitet";
 "Project Settings" = "Prosjektinnstillinger";
 "Projects Couldn’t Be Deleted" = "Prosjektene kunne ikke slettes";
 "Prompt" = "Prompt";
@@ -678,7 +673,6 @@
 "Range" = "Område";
 "Razor (C)" = "Barberkniv (C)";
 "Razor Tool" = "Barberknivverktøy";
-"Re-render the same motion at full quality in 1080p" = "Render den samme bevegelsen på nytt i full kvalitet i 1080p";
 "Reasoning effort" = "Resonneringsinnsats";
 "Redetect Beats" = "Gjenkjenn takter på nytt";
 "Redo" = "Utfør på nytt";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Arkiver område som media";
 "Save as Audio" = "Arkiver som lyd";
 "Save as Media" = "Arkiver som media";
-"Save this project to view activity" = "Arkiver dette prosjektet for å se aktivitet";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Arkiverer en kopi av dette prosjektet med alle medier samlet inni, slik at det åpnes på hvilken som helst maskin.";
 "Scale" = "Skaler";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Tekst som skal sies (minst %lld tegn)";
 "The clip you're adding has different settings than the current project." = "Klippet du legger til har andre innstillinger enn det gjeldende prosjektet.";
 "The export" = "Eksporten";
+"The job already finished." = "Jobben er allerede ferdig.";
+"The job finished without a result." = "Jobben ble avsluttet uten resultat.";
 "The marker comment changed while you were editing. Review it and try again." = "Markørkommentaren ble endret mens du redigerte. Se gjennom den, og prøv på nytt.";
 "The project will be moved to the Trash." = "Prosjektet flyttes til papirkurven.";
 "The selected model refused this request. Revise the prompt and try again." = "Den valgte modellen avviste denne forespørselen. Endre prompten, og prøv på nytt.";
@@ -894,6 +889,7 @@
 "Theme" = "Tema";
 "This is where all your footage and assets live." = "Her ligger alle opptakene og ressursene dine.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dette er forhåndsvisningspanelet for å spille av valgt media eller hele tidslinjen.";
+"This job can't be cancelled. It will finish on its own." = "Denne jobben kan ikke avbrytes. Den fullføres av seg selv.";
 "This model cannot cap the output at 60 FPS." = "Denne modellen kan ikke begrense utdataene til 60 FPS.";
 "This permanently removes %@." = "Dette fjerner %@ permanent.";
 "This source can’t replace the clip." = "Denne kilden kan ikke erstatte klippet.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Arbeider med %@";
 "Workspace layout" = "Arbeidsområdeoppsett";
 "X High" = "X høy";
-"You were not charged for this generation" = "Du ble ikke belastet for denne genereringen";
 "You're all set" = "Alt er klart";
 "You're ready to start creating." = "Du er klar til å begynne å lage.";
 "Your Lottie animation is ready." = "Lottie-animasjonen din er klar.";

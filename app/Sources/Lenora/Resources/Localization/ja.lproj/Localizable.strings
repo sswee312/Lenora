@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld個を同期できませんでした";
 "%lld credits" = "%lldクレジット";
 "%lld credits / month" = "%lldクレジット / 月";
-"%lld credits refunded" = "%lldクレジットを返金しました";
 "%lld images are ready in Lenora Pro." = "%lld枚の画像をLenora Proで使用できます。";
 "%lld items" = "%lld項目";
 "%lld media files are missing and will be skipped." = "%lld個のメディアファイルが見つからないためスキップされます。";
@@ -51,7 +50,6 @@
 "Account" = "アカウント";
 "Account settings" = "アカウント設定";
 "Action Safe" = "アクションセーフ";
-"Activity unavailable" = "アクティビティを利用できません";
 "Adapters" = "アダプター";
 "Add Marker (M)" = "マーカーを追加（M）";
 "Add Range to Chat" = "範囲をチャットに追加";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "マルチカムトラックの同期は解除できません。「%@」はこのトラックを通して同期を維持します。";
 "Cancel" = "キャンセル";
 "Cancel Export" = "書き出しをキャンセル";
+"Cancel Generation" = "生成をキャンセル";
 "Cancel Key Color Sampling" = "キーカラーのサンプリングをキャンセル";
 "Cancel key color sampling" = "キーカラーのサンプリングをキャンセル";
 "Canceled" = "キャンセル済み";
@@ -298,7 +297,6 @@
 "Downloading…" = "ダウンロード中…";
 "Downloads a %@ on-device model so you can search media visually." = "メディアを画像で検索できるように、%@のオンデバイスモデルをダウンロードします。";
 "Draft" = "ドラフト";
-"Draft already enhanced or cache unavailable" = "ドラフトはすでに強化済みか、キャッシュを利用できません";
 "Drag to add or shape a point · double-click to remove" = "ドラッグでポイントを追加または調整 · ダブルクリックで削除";
 "Drop files here or import from disk" = "ここにファイルをドロップするか、ディスクから読み込んでください";
 "Dubbing" = "吹き替え";
@@ -330,7 +328,6 @@
 "Enabled" = "有効";
 "Enhance" = "補正";
 "Enhance resolution or frame rate with AI" = "AIで解像度やフレームレートを向上";
-"Enhanced with FLUX.3 at 1080p." = "FLUX.3により1080pで強化されました。";
 "Enter Full Screen" = "フルスクリーンにする";
 "Exclusion" = "除外";
 "Expand" = "展開";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "短いギャップをまたいでキャプションを延長し、最後のキャプションを保持します。";
 "Extra Large" = "特大";
 "Extract Audio" = "オーディオを抽出";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "フェードイン";
 "Fade Out" = "フェードアウト";
 "Failed" = "失敗";
@@ -402,6 +398,7 @@
 "Generation Failed" = "生成に失敗しました";
 "Generation Input" = "生成入力";
 "Generation complete" = "生成完了";
+"Generation failed." = "生成に失敗しました。";
 "Generation in progress" = "生成中";
 "Generation panel" = "生成パネル";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "生成はLenoraバックエンドで実行されます。トークンはmacOSキーチェーンに保存されます。";
@@ -588,7 +585,6 @@
 "No beats detected." = "ビートが検出されませんでした。";
 "No conversations yet" = "チャットはまだありません";
 "No exports yet" = "書き出しはまだありません";
-"No generations yet" = "生成履歴はまだありません";
 "No images" = "画像がありません";
 "No markers" = "マーカーがありません";
 "No markers match this filter." = "このフィルタに一致するマーカーはありません。";
@@ -667,7 +663,6 @@
 "Preview" = "プレビュー";
 "Pro plan" = "Proプラン";
 "Project" = "プロジェクト";
-"Project Activity" = "プロジェクトのアクティビティ";
 "Project Settings" = "プロジェクト設定";
 "Projects Couldn’t Be Deleted" = "プロジェクトを削除できませんでした";
 "Prompt" = "プロンプト";
@@ -678,7 +673,6 @@
 "Range" = "範囲";
 "Razor (C)" = "レーザー（C）";
 "Razor Tool" = "レーザーツール";
-"Re-render the same motion at full quality in 1080p" = "同じモーションを1080pのフル品質で再レンダリング";
 "Reasoning effort" = "推論の強度";
 "Redetect Beats" = "ビートを再検出";
 "Redo" = "やり直す";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "範囲をメディアとして保存";
 "Save as Audio" = "オーディオとして保存";
 "Save as Media" = "メディアとして保存";
-"Save this project to view activity" = "アクティビティを表示するには、このプロジェクトを保存してください";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "すべてのメディアを内部に含めたプロジェクトのコピーを保存し、どのマシンでも開けるようにします。";
 "Scale" = "スケール";
 "Scope (2.39:1)" = "スコープ（2.39:1）";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "読み上げるテキスト（%lld文字以上）";
 "The clip you're adding has different settings than the current project." = "追加しようとしているクリップの設定が現在のプロジェクトと異なります。";
 "The export" = "書き出し";
+"The job already finished." = "ジョブはすでに完了しています。";
+"The job finished without a result." = "ジョブは結果なしで終了しました。";
 "The marker comment changed while you were editing. Review it and try again." = "編集中にマーカーのコメントが変更されました。内容を確認してもう一度お試しください。";
 "The project will be moved to the Trash." = "プロジェクトはゴミ箱に移動されます。";
 "The selected model refused this request. Revise the prompt and try again." = "選択したモデルがこのリクエストを拒否しました。プロンプトを見直してもう一度お試しください。";
@@ -894,6 +889,7 @@
 "Theme" = "テーマ";
 "This is where all your footage and assets live." = "すべての映像素材とアセットはここに表示されます。";
 "This is your preview panel to play a selected media or the whole timeline." = "これは選択したメディアまたはタイムライン全体を再生するプレビューパネルです。";
+"This job can't be cancelled. It will finish on its own." = "このジョブはキャンセルできません。自動的に完了します。";
 "This model cannot cap the output at 60 FPS." = "このモデルでは出力を60 FPSに制限できません。";
 "This permanently removes %@." = "%@を完全に削除します。";
 "This source can’t replace the clip." = "このソースではクリップを差し替えられません。";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "%@を処理中";
 "Workspace layout" = "ワークスペースレイアウト";
 "X High" = "最高";
-"You were not charged for this generation" = "この生成では課金されていません";
 "You're all set" = "準備ができました";
 "You're ready to start creating." = "作成を始める準備ができました。";
 "Your Lottie animation is ready." = "Lottieアニメーションの準備ができました。";

@@ -27,18 +27,7 @@ final class MediaAsset: Identifiable {
     var generationStatus: GenerationStatus = .none
     var folderId: String?
     var pendingDownloadURL: URL?
-    var cachedRemoteURL: String?
-    var cachedRemoteURLExpiresAt: Date?
     private var thumbnailMaxPixelSize = 0
-
-    /// Returns the cached URL if it's set AND not expired; else nil.
-    var freshRemoteURL: String? {
-        guard let url = cachedRemoteURL,
-              let expiresAt = cachedRemoteURLExpiresAt,
-              expiresAt > Date()
-        else { return nil }
-        return url
-    }
 
     enum GenerationStatus: Equatable {
         case none
@@ -82,13 +71,6 @@ final class MediaAsset: Identifiable {
 
     var isGenerated: Bool { generationInput != nil }
 
-    var canEnhanceDraft: Bool {
-        guard generationStatus == .none, let input = generationInput else { return false }
-        return input.draft == true
-            && input.backendJobId != nil
-            && (input.resultURLs?.count ?? 0) >= 2
-    }
-
     var resolvedDuration: Double {
         if duration.isFinite, duration > 0 { return duration }
         if let generated = generationInput?.duration, generated > 0 { return Double(generated) }
@@ -96,7 +78,7 @@ final class MediaAsset: Identifiable {
     }
     var canResumeGeneration: Bool {
         guard let generationInput else { return false }
-        return generationInput.backendJobId?.isEmpty == false
+        return generationInput.jobId?.isEmpty == false
     }
     var isGenerating: Bool {
         generationStatus == .preparing || generationStatus == .generating || generationStatus == .downloading || generationStatus == .rendering
@@ -104,14 +86,10 @@ final class MediaAsset: Identifiable {
     var isRecoveringGeneration: Bool {
         guard canResumeGeneration else { return false }
         if isGenerating { return true }
-        if case .failed = generationStatus { return generationInput?.resultURLs?.isEmpty == false }
+        if case .failed = generationStatus { return generationInput?.results?.isEmpty == false }
         return false
     }
 
-    var wasGenerationRefunded: Bool {
-        guard case .failed = generationStatus else { return false }
-        return (generationInput?.refundedCredits ?? 0) > 0
-    }
     var generatingLabel: String {
         switch generationStatus {
         case .preparing: L10n.key("Preparing…")
@@ -141,8 +119,6 @@ final class MediaAsset: Identifiable {
         self.sourceFPS = entry.sourceFPS
         self.hasAudio = entry.hasAudio ?? false
         self.folderId = entry.folderId
-        self.cachedRemoteURL = entry.cachedRemoteURL
-        self.cachedRemoteURLExpiresAt = entry.cachedRemoteURLExpiresAt
         self.importInput = entry.importInput
         let restoredStatus = GenerationStatus(serialized: entry.generationStatus)
         self.generationStatus = restoredStatus == .preparing && !canResumeGeneration ? .none : restoredStatus
@@ -157,14 +133,11 @@ final class MediaAsset: Identifiable {
         } else {
             source = .external(absolutePath: url.path)
         }
-        let fresh: String? = freshRemoteURL
         return MediaManifestEntry(
             id: id, name: name, type: type, source: source, duration: duration,
             generationInput: generationInput,
             sourceWidth: sourceWidth, sourceHeight: sourceHeight, sourceFPS: sourceFPS,
             hasAudio: hasAudio, folderId: folderId,
-            cachedRemoteURL: fresh,
-            cachedRemoteURLExpiresAt: fresh == nil ? nil : cachedRemoteURLExpiresAt,
             generationStatus: generationStatus.manifestValue,
             importInput: importInput,
         )

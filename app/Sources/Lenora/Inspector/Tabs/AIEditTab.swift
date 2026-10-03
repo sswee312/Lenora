@@ -135,14 +135,6 @@ struct AIEditTab: View {
                     description: L10n.string("Use as first frame or reference")
                 )
             }
-            if asset.canEnhanceDraft {
-                actionTile(
-                    action: .enhanceDraft,
-                    icon: "arrow.up.right.video",
-                    title: L10n.string("FLUX Enhance"),
-                    description: L10n.string("Re-render the same motion at full quality in 1080p")
-                )
-            }
         }
     }
 
@@ -279,7 +271,7 @@ struct AIEditTab: View {
                     createVideoOptions
                 }
             }
-        case .enhanceDraft, .upscale, .lipSync, .reframe, .edit,
+        case .upscale, .lipSync, .reframe, .edit,
              .generateMusic, .generateSFX, .rerun:
             actionTileSurface(
                 description: description,
@@ -430,8 +422,6 @@ struct AIEditTab: View {
 
     private func present(_ action: EditAction) {
         switch action {
-        case .enhanceDraft:
-            editor.generationService.enhanceDraft(asset: asset, editor: editor)
         case .upscale:
             guard let model = UpscaleModelConfig.models(for: asset.type).first else { return }
             let trim = trimmedSourceIfEnabled()

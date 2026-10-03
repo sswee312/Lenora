@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld couldn't align";
 "%lld credits" = "%lld credits";
 "%lld credits / month" = "%lld credits / month";
-"%lld credits refunded" = "%lld credits refunded";
 "%lld images are ready in Lenora Pro." = "%lld images are ready in Lenora Pro.";
 "%lld items" = "%lld items";
 "%lld media files are missing and will be skipped." = "%lld media files are missing and will be skipped.";
@@ -51,7 +50,6 @@
 "Account" = "Account";
 "Account settings" = "Account settings";
 "Action Safe" = "Action Safe";
-"Activity unavailable" = "Activity unavailable";
 "Adapters" = "Adapters";
 "Add Marker (M)" = "Add Marker (M)";
 "Add Range to Chat" = "Add Range to Chat";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Can't unlock sync on a multicam track — \"%@\" stays aligned through it.";
 "Cancel" = "Cancel";
 "Cancel Export" = "Cancel Export";
+"Cancel Generation" = "Cancel Generation";
 "Cancel Key Color Sampling" = "Cancel Key Color Sampling";
 "Cancel key color sampling" = "Cancel key color sampling";
 "Canceled" = "Canceled";
@@ -298,7 +297,6 @@
 "Downloading…" = "Downloading…";
 "Downloads a %@ on-device model so you can search media visually." = "Downloads a %@ on-device model so you can search media visually.";
 "Draft" = "Draft";
-"Draft already enhanced or cache unavailable" = "Draft already enhanced or cache unavailable";
 "Drag to add or shape a point · double-click to remove" = "Drag to add or shape a point · double-click to remove";
 "Drop files here or import from disk" = "Drop files here or import from disk";
 "Dubbing" = "Dubbing";
@@ -330,7 +328,6 @@
 "Enabled" = "Enabled";
 "Enhance" = "Enhance";
 "Enhance resolution or frame rate with AI" = "Enhance resolution or frame rate with AI";
-"Enhanced with FLUX.3 at 1080p." = "Enhanced with FLUX.3 at 1080p.";
 "Enter Full Screen" = "Enter Full Screen";
 "Exclusion" = "Exclusion";
 "Expand" = "Expand";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Extends captions across short gaps and holds the final caption.";
 "Extra Large" = "Extra Large";
 "Extract Audio" = "Extract Audio";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Fade In";
 "Fade Out" = "Fade Out";
 "Failed" = "Failed";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Generation Failed";
 "Generation Input" = "Generation Input";
 "Generation complete" = "Generation complete";
+"Generation failed." = "Generation failed.";
 "Generation in progress" = "Generation in progress";
 "Generation panel" = "Generation panel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generation runs on your Lenora backend. The token is stored in the macOS Keychain.";
@@ -588,7 +585,6 @@
 "No beats detected." = "No beats detected.";
 "No conversations yet" = "No conversations yet";
 "No exports yet" = "No exports yet";
-"No generations yet" = "No generations yet";
 "No images" = "No images";
 "No markers" = "No markers";
 "No markers match this filter." = "No markers match this filter.";
@@ -667,7 +663,6 @@
 "Preview" = "Preview";
 "Pro plan" = "Pro plan";
 "Project" = "Project";
-"Project Activity" = "Project Activity";
 "Project Settings" = "Project Settings";
 "Projects Couldn’t Be Deleted" = "Projects Couldn’t Be Deleted";
 "Prompt" = "Prompt";
@@ -678,7 +673,6 @@
 "Range" = "Range";
 "Razor (C)" = "Razor (C)";
 "Razor Tool" = "Razor Tool";
-"Re-render the same motion at full quality in 1080p" = "Re-render the same motion at full quality in 1080p";
 "Reasoning effort" = "Reasoning effort";
 "Redetect Beats" = "Redetect Beats";
 "Redo" = "Redo";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Save Range as Media";
 "Save as Audio" = "Save as Audio";
 "Save as Media" = "Save as Media";
-"Save this project to view activity" = "Save this project to view activity";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Saves a copy of this project with all media bundled inside, so it opens on any machine.";
 "Scale" = "Scale";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Text to speak (minimum %lld characters)";
 "The clip you're adding has different settings than the current project." = "The clip you're adding has different settings than the current project.";
 "The export" = "The export";
+"The job already finished." = "The job already finished.";
+"The job finished without a result." = "The job finished without a result.";
 "The marker comment changed while you were editing. Review it and try again." = "The marker comment changed while you were editing. Review it and try again.";
 "The project will be moved to the Trash." = "The project will be moved to the Trash.";
 "The selected model refused this request. Revise the prompt and try again." = "The selected model refused this request. Revise the prompt and try again.";
@@ -894,6 +889,7 @@
 "Theme" = "Theme";
 "This is where all your footage and assets live." = "This is where all your footage and assets live.";
 "This is your preview panel to play a selected media or the whole timeline." = "This is your preview panel to play a selected media or the whole timeline.";
+"This job can't be cancelled. It will finish on its own." = "This job can't be cancelled. It will finish on its own.";
 "This model cannot cap the output at 60 FPS." = "This model cannot cap the output at 60 FPS.";
 "This permanently removes %@." = "This permanently removes %@.";
 "This source can’t replace the clip." = "This source can’t replace the clip.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Working on %@";
 "Workspace layout" = "Workspace layout";
 "X High" = "X High";
-"You were not charged for this generation" = "You were not charged for this generation";
 "You're all set" = "You're all set";
 "You're ready to start creating." = "You're ready to start creating.";
 "Your Lottie animation is ready." = "Your Lottie animation is ready.";

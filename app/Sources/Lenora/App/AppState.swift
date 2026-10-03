@@ -39,6 +39,18 @@ final class AppState {
 
     private(set) var mcpService: MCPService?
 
+    private init() {
+        NotificationCenter.default.addObserver(forName: ModelCatalog.didChange, object: nil, queue: .main) { [weak self] _ in
+            MainActor.assumeIsolated { self?.resumePendingGenerations() }
+        }
+    }
+
+    private func resumePendingGenerations() {
+        for project in openProjects {
+            project.editorViewModel.generationService.resumePendingGenerations(editor: project.editorViewModel)
+        }
+    }
+
     func startMCPService() {
         guard mcpService == nil else { return }
         guard MCPService.isEnabledPreference else {
@@ -120,6 +132,7 @@ final class AppState {
         if let url = project.fileURL { ProjectRegistry.shared.register(url) }
         try await project.saveBeforeClosing()
         let wasActive = activeProject === project
+        project.editorViewModel.generationService.stopMonitoring()
         project.close()
         if wasActive {
             activeProject = nil

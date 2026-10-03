@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld tanesi hizalanamadı";
 "%lld credits" = "%lld kredi";
 "%lld credits / month" = "%lld kredi / ay";
-"%lld credits refunded" = "%lld kredi iade edildi";
 "%lld images are ready in Lenora Pro." = "%lld görüntü Lenora Pro'da hazır.";
 "%lld items" = "%lld öğe";
 "%lld media files are missing and will be skipped." = "%lld medya dosyası eksik ve atlanacak.";
@@ -51,7 +50,6 @@
 "Account" = "Hesap";
 "Account settings" = "Hesap ayarları";
 "Action Safe" = "Güvenli Eylem";
-"Activity unavailable" = "Etkinlik kullanılamıyor";
 "Adapters" = "Bağdaştırıcılar";
 "Add Marker (M)" = "İşaretleyici Ekle (M)";
 "Add Range to Chat" = "Aralığı Sohbete Ekle";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Çok kameralı bir izde eşzamanlama kilidi açılamaz. \"%@\" bu iz üzerinden hizalı kalır.";
 "Cancel" = "İptal";
 "Cancel Export" = "Dışa Aktarmayı İptal Et";
+"Cancel Generation" = "Oluşturmayı İptal Et";
 "Cancel Key Color Sampling" = "Anahtar Renk Örneklemeyi İptal Et";
 "Cancel key color sampling" = "Anahtar renk örneklemeyi iptal et";
 "Canceled" = "İptal Edildi";
@@ -298,7 +297,6 @@
 "Downloading…" = "İndiriliyor…";
 "Downloads a %@ on-device model so you can search media visually." = "Medyayı görsel olarak arayabilmeniz için %@ boyutunda aygıt içi model indirir.";
 "Draft" = "Taslak";
-"Draft already enhanced or cache unavailable" = "Taslak zaten iyileştirildi veya önbellek kullanılamıyor";
 "Drag to add or shape a point · double-click to remove" = "Nokta eklemek veya şekillendirmek için sürükleyin · kaldırmak için çift tıklayın";
 "Drop files here or import from disk" = "Dosyaları buraya bırakın veya diskten içe aktarın";
 "Dubbing" = "Dublaj";
@@ -330,7 +328,6 @@
 "Enabled" = "Etkin";
 "Enhance" = "İyileştir";
 "Enhance resolution or frame rate with AI" = "Çözünürlüğü veya kare hızını yapay zekâyla iyileştirin";
-"Enhanced with FLUX.3 at 1080p." = "FLUX.3 ile 1080p’de iyileştirildi.";
 "Enter Full Screen" = "Tam Ekrana Geç";
 "Exclusion" = "Dışlama";
 "Expand" = "Genişlet";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Kısa boşluklarda altyazıları uzatır ve son altyazıyı tutar.";
 "Extra Large" = "Çok Büyük";
 "Extract Audio" = "Sesi Ayıkla";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Açılma";
 "Fade Out" = "Kararma";
 "Failed" = "Başarısız";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Oluşturma Başarısız Oldu";
 "Generation Input" = "Oluşturma Girişi";
 "Generation complete" = "Oluşturma tamamlandı";
+"Generation failed." = "Oluşturma başarısız oldu.";
 "Generation in progress" = "Oluşturma sürüyor";
 "Generation panel" = "Oluşturma paneli";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Oluşturma, Lenora backend'inizde çalışır. Belirteç macOS Anahtar Zinciri'nde saklanır.";
@@ -588,7 +585,6 @@
 "No beats detected." = "Vuruş algılanmadı.";
 "No conversations yet" = "Henüz sohbet yok";
 "No exports yet" = "Henüz dışa aktarma yok";
-"No generations yet" = "Henüz oluşturma yok";
 "No images" = "Görüntü yok";
 "No markers" = "İşaretleyici yok";
 "No markers match this filter." = "Bu filtreyle eşleşen işaretleyici yok.";
@@ -667,7 +663,6 @@
 "Preview" = "Önizleme";
 "Pro plan" = "Pro planı";
 "Project" = "Proje";
-"Project Activity" = "Proje Etkinliği";
 "Project Settings" = "Proje Ayarları";
 "Projects Couldn’t Be Deleted" = "Projeler Silinemedi";
 "Prompt" = "İstem";
@@ -678,7 +673,6 @@
 "Range" = "Aralık";
 "Razor (C)" = "Kesme (C)";
 "Razor Tool" = "Kesme Aracı";
-"Re-render the same motion at full quality in 1080p" = "Aynı hareketi 1080p’de tam kalitede yeniden oluştur";
 "Reasoning effort" = "Akıl yürütme düzeyi";
 "Redetect Beats" = "Vuruşları Yeniden Algıla";
 "Redo" = "Yinele";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Aralığı Medya Olarak Kaydet";
 "Save as Audio" = "Ses Olarak Kaydet";
 "Save as Media" = "Medya Olarak Kaydet";
-"Save this project to view activity" = "Etkinliği görüntülemek için bu projeyi kaydedin";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Bu projenin tüm medyayı içinde barındıran bir kopyasını kaydeder; böylece her bilgisayarda açılabilir.";
 "Scale" = "Ölçek";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Seslendirilecek metin (en az %lld karakter)";
 "The clip you're adding has different settings than the current project." = "Eklediğiniz klibin ayarları geçerli projeden farklı.";
 "The export" = "Dışa aktarma";
+"The job already finished." = "İş zaten tamamlandı.";
+"The job finished without a result." = "İş sonuç üretmeden tamamlandı.";
 "The marker comment changed while you were editing. Review it and try again." = "İşaretleyici yorumu siz düzenlerken değişti. Gözden geçirip yeniden deneyin.";
 "The project will be moved to the Trash." = "Proje Çöp Sepeti'ne taşınacak.";
 "The selected model refused this request. Revise the prompt and try again." = "Seçili model bu isteği reddetti. İstemi gözden geçirip yeniden deneyin.";
@@ -894,6 +889,7 @@
 "Theme" = "Tema";
 "This is where all your footage and assets live." = "Tüm çekimleriniz ve varlıklarınız burada bulunur.";
 "This is your preview panel to play a selected media or the whole timeline." = "Bu, seçili medyayı veya tüm zaman eksenini oynatabileceğiniz önizleme panelinizdir.";
+"This job can't be cancelled. It will finish on its own." = "Bu iş iptal edilemez. Kendiliğinden tamamlanacak.";
 "This model cannot cap the output at 60 FPS." = "Bu model çıktıyı 60 FPS ile sınırlayamaz.";
 "This permanently removes %@." = "Bu işlem %@ öğesini kalıcı olarak kaldırır.";
 "This source can’t replace the clip." = "Bu kaynak klibin yerini alamaz.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "%@ üzerinde çalışılıyor";
 "Workspace layout" = "Çalışma alanı düzeni";
 "X High" = "Çok Yüksek";
-"You were not charged for this generation" = "Bu oluşturma işlemi için ücret alınmadı";
 "You're all set" = "Her şey hazır";
 "You're ready to start creating." = "Oluşturmaya başlamaya hazırsınız.";
 "Your Lottie animation is ready." = "Lottie animasyonunuz hazır.";

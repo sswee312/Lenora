@@ -26,16 +26,6 @@ extension ToolExecutor {
         case .sequence:
             throw ToolError("Cannot generate a sequence. Sequences are timelines.")
         case .video:
-            if let mediaRef = args.string("enhanceDraftMediaRef") {
-                let draft = try asset(mediaRef, editor: editor, label: "Draft")
-                guard let placeholderId = editor.generationService.enhanceDraft(
-                    asset: draft,
-                    editor: editor
-                ) else {
-                    throw ToolError("Asset '\(mediaRef)' is not a completed enhanceable draft.")
-                }
-                return .ok("Draft enhancement started. Placeholder asset ID: \(placeholderId)")
-            }
             let modelId = try args.string("model") ?? defaultModelId(
                 VideoModelConfig.allModels.map(\.id), kind: "video")
             guard let model = VideoModelConfig.allModels.first(where: { $0.id == modelId }) else {
@@ -346,7 +336,9 @@ extension ToolExecutor {
                 preset: AVAssetExportPresetLowQuality
             )
             defer { try? FileManager.default.removeItem(at: mp4) }
-            videoURL = try await GenerationBackend.uploadReference(fileURL: mp4, contentType: "video/mp4")
+            videoURL = try await editor.generationService.uploadReference(
+                fileURL: mp4, contentType: "video/mp4", model: model.id
+            )
             spanSeconds = Double(end - start) / Double(max(1, editor.timeline.fps))
             placementStartFrame = start
         }

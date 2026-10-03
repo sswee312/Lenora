@@ -23,7 +23,6 @@
 "%lld couldn't align" = "Não foi possível alinhar %lld";
 "%lld credits" = "%lld créditos";
 "%lld credits / month" = "%lld créditos por mês";
-"%lld credits refunded" = "%lld créditos reembolsados";
 "%lld images are ready in Lenora Pro." = "%lld imagens estão prontas no Lenora Pro.";
 "%lld items" = "%lld itens";
 "%lld media files are missing and will be skipped." = "%lld arquivos de mídia estão ausentes e serão ignorados.";
@@ -51,7 +50,6 @@
 "Account" = "Conta";
 "Account settings" = "Ajustes da conta";
 "Action Safe" = "Área de ação";
-"Activity unavailable" = "Atividade indisponível";
 "Adapters" = "Adaptadores";
 "Add Marker (M)" = "Adicionar marcador (M)";
 "Add Range to Chat" = "Adicionar intervalo ao chat";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Não é possível desbloquear a sincronização em uma faixa multicâmera: \"%@\" permanece alinhado por ela.";
 "Cancel" = "Cancelar";
 "Cancel Export" = "Cancelar exportação";
+"Cancel Generation" = "Cancelar geração";
 "Cancel Key Color Sampling" = "Cancelar amostragem da cor-chave";
 "Cancel key color sampling" = "Cancelar amostragem da cor-chave";
 "Canceled" = "Cancelado";
@@ -298,7 +297,6 @@
 "Downloading…" = "Baixando…";
 "Downloads a %@ on-device model so you can search media visually." = "Baixa um modelo de %@ no dispositivo para buscar mídia visualmente.";
 "Draft" = "Rascunho";
-"Draft already enhanced or cache unavailable" = "Rascunho já aprimorado ou cache indisponível";
 "Drag to add or shape a point · double-click to remove" = "Arraste para adicionar ou ajustar um ponto · clique duas vezes para remover";
 "Drop files here or import from disk" = "Solte arquivos aqui ou importe do disco";
 "Dubbing" = "Dublagem";
@@ -330,7 +328,6 @@
 "Enabled" = "Ativado";
 "Enhance" = "Aprimorar";
 "Enhance resolution or frame rate with AI" = "Aprimorar resolução ou taxa de quadros com AI";
-"Enhanced with FLUX.3 at 1080p." = "Aprimorado com FLUX.3 em 1080p.";
 "Enter Full Screen" = "Entrar em tela cheia";
 "Exclusion" = "Exclusão";
 "Expand" = "Expandir";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Estende as legendas pelos intervalos curtos e mantém a legenda final.";
 "Extra Large" = "Extragrande";
 "Extract Audio" = "Extrair áudio";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Fade-in";
 "Fade Out" = "Fade-out";
 "Failed" = "Falhou";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Falha na geração";
 "Generation Input" = "Entrada da geração";
 "Generation complete" = "Geração concluída";
+"Generation failed." = "Falha na geração.";
 "Generation in progress" = "Geração em andamento";
 "Generation panel" = "Painel de geração";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "A geração é executada no seu backend do Lenora. O token é armazenado no Acesso às Chaves do macOS.";
@@ -588,7 +585,6 @@
 "No beats detected." = "Nenhuma batida detectada.";
 "No conversations yet" = "Nenhuma conversa ainda";
 "No exports yet" = "Nenhuma exportação ainda";
-"No generations yet" = "Nenhuma geração ainda";
 "No images" = "Nenhuma imagem";
 "No markers" = "Nenhum marcador";
 "No markers match this filter." = "Nenhum marcador corresponde a este filtro.";
@@ -667,7 +663,6 @@
 "Preview" = "Prévia";
 "Pro plan" = "Plano Pro";
 "Project" = "Projeto";
-"Project Activity" = "Atividade do projeto";
 "Project Settings" = "Ajustes do projeto";
 "Projects Couldn’t Be Deleted" = "Não foi possível excluir os projetos";
 "Prompt" = "Prompt";
@@ -678,7 +673,6 @@
 "Range" = "Intervalo";
 "Razor (C)" = "Lâmina (C)";
 "Razor Tool" = "Ferramenta Lâmina";
-"Re-render the same motion at full quality in 1080p" = "Renderizar novamente o mesmo movimento em qualidade máxima em 1080p";
 "Reasoning effort" = "Esforço de raciocínio";
 "Redetect Beats" = "Detectar batidas novamente";
 "Redo" = "Refazer";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Salvar intervalo como mídia";
 "Save as Audio" = "Salvar como áudio";
 "Save as Media" = "Salvar como mídia";
-"Save this project to view activity" = "Salve este projeto para ver a atividade";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Salva uma cópia deste projeto com toda a mídia incluída para que ele possa ser aberto em qualquer máquina.";
 "Scale" = "Escala";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Texto a ser falado (mínimo de %lld caracteres)";
 "The clip you're adding has different settings than the current project." = "O clipe que você está adicionando tem ajustes diferentes do projeto atual.";
 "The export" = "A exportação";
+"The job already finished." = "O trabalho já foi concluído.";
+"The job finished without a result." = "O trabalho terminou sem resultado.";
 "The marker comment changed while you were editing. Review it and try again." = "O comentário do marcador mudou enquanto você editava. Revise-o e tente novamente.";
 "The project will be moved to the Trash." = "O projeto será movido para o Lixo.";
 "The selected model refused this request. Revise the prompt and try again." = "O modelo selecionado recusou esta solicitação. Revise o prompt e tente novamente.";
@@ -894,6 +889,7 @@
 "Theme" = "Tema";
 "This is where all your footage and assets live." = "Aqui ficam todas as suas filmagens e recursos.";
 "This is your preview panel to play a selected media or the whole timeline." = "Este é o painel de prévia para reproduzir uma mídia selecionada ou toda a linha do tempo.";
+"This job can't be cancelled. It will finish on its own." = "Não é possível cancelar este trabalho. Ele terminará por conta própria.";
 "This model cannot cap the output at 60 FPS." = "Este modelo não pode limitar a saída a 60 FPS.";
 "This permanently removes %@." = "Isso remove %@ permanentemente.";
 "This source can’t replace the clip." = "Esta origem não pode substituir o clipe.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Processando %@";
 "Workspace layout" = "Layout do espaço de trabalho";
 "X High" = "X alto";
-"You were not charged for this generation" = "Você não foi cobrado por esta geração";
 "You're all set" = "Tudo pronto";
 "You're ready to start creating." = "Tudo pronto para começar a criar.";
 "Your Lottie animation is ready." = "Sua animação Lottie está pronta.";

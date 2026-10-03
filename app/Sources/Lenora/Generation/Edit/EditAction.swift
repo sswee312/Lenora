@@ -9,7 +9,6 @@ enum EditAction {
     case generateMusic
     case generateSFX
     case createVideo
-    case enhanceDraft
 
     static let editMaxDurationSeconds: Double = 10.0
 
@@ -26,7 +25,7 @@ enum EditAction {
         case (.reframe, .video): ["video.reframe"]
         case (.generateMusic, .video): ["audio.music"]
         case (.generateSFX, .video): ["audio.sfx"]
-        case (.createVideo, .image), (.enhanceDraft, .video): ["video.generate"]
+        case (.createVideo, .image): ["video.generate"]
         default: []
         }
     }
@@ -41,7 +40,7 @@ enum EditAction {
             .audio
         case .rerun where mediaType == .audio:
             .audio
-        case .upscale, .edit, .rerun, .lipSync, .reframe, .createVideo, .enhanceDraft:
+        case .upscale, .edit, .rerun, .lipSync, .reframe, .createVideo:
             .enhance
         }
     }
@@ -53,7 +52,7 @@ enum EditAction {
         case .image: candidates = [.upscale, .edit, .rerun, .createVideo]
         case .video:
             candidates = [
-                .upscale, .edit, .rerun, .lipSync, .reframe, .enhanceDraft,
+                .upscale, .edit, .rerun, .lipSync, .reframe,
                 .generateMusic, .generateSFX,
             ]
         case .audio, .text: candidates = [.upscale, .edit, .rerun]
@@ -67,15 +66,6 @@ enum EditAction {
     @MainActor
     func availability(for asset: MediaAsset, effectiveDurationOverride: Double? = nil) -> EditActionAvailability {
         switch self {
-        case .enhanceDraft:
-            guard asset.canEnhanceDraft else {
-                return .disabled(reason: L10n.string("Draft already enhanced or cache unavailable"))
-            }
-            guard isAvailable(for: asset.type) else {
-                return .disabled(reason: L10n.string("Video model not available"))
-            }
-            return .available
-
         case .upscale:
             guard asset.type == .video || asset.type == .image else {
                 return .disabled(reason: L10n.string("Upscale only works on video or images"))

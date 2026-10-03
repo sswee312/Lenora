@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld se nepodařilo zarovnat";
 "%lld credits" = "%lld kreditů";
 "%lld credits / month" = "%lld kreditů / měsíc";
-"%lld credits refunded" = "Vráceno %lld kreditů";
 "%lld images are ready in Lenora Pro." = "V Lenora Pro je připraveno %lld obrázků.";
 "%lld items" = "%lld položek";
 "%lld media files are missing and will be skipped." = "Chybí %lld mediálních souborů, budou přeskočeny.";
@@ -51,7 +50,6 @@
 "Account" = "Účet";
 "Account settings" = "Nastavení účtu";
 "Action Safe" = "Bezpečná zóna akce";
-"Activity unavailable" = "Aktivita není k dispozici";
 "Adapters" = "Adaptéry";
 "Add Marker (M)" = "Přidat značku (M)";
 "Add Range to Chat" = "Přidat rozsah do chatu";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Nelze odemknout synchronizaci na stopě multicam — \"%@\" zůstává zarovnaný přes ni.";
 "Cancel" = "Zrušit";
 "Cancel Export" = "Zrušit export";
+"Cancel Generation" = "Zrušit generování";
 "Cancel Key Color Sampling" = "Zrušit vzorkování klíčovací barvy";
 "Cancel key color sampling" = "Zrušit vzorkování klíčovací barvy";
 "Canceled" = "Zrušeno";
@@ -298,7 +297,6 @@
 "Downloading…" = "Stahování…";
 "Downloads a %@ on-device model so you can search media visually." = "Stáhne model %@ do zařízení, abyste mohli média hledat vizuálně.";
 "Draft" = "Koncept";
-"Draft already enhanced or cache unavailable" = "Koncept už byl vylepšen, nebo mezipaměť není k dispozici";
 "Drag to add or shape a point · double-click to remove" = "Přetažením bod přidáte nebo upravíte · dvojitým kliknutím ho odeberete";
 "Drop files here or import from disk" = "Přetáhněte soubory sem, nebo je importujte z disku";
 "Dubbing" = "Dabing";
@@ -330,7 +328,6 @@
 "Enabled" = "Zapnuto";
 "Enhance" = "Vylepšit";
 "Enhance resolution or frame rate with AI" = "Vylepšit rozlišení nebo snímkovou frekvenci pomocí AI";
-"Enhanced with FLUX.3 at 1080p." = "Vylepšeno pomocí FLUX.3 na 1080p.";
 "Enter Full Screen" = "Přejít do režimu na celou obrazovku";
 "Exclusion" = "Vyloučení";
 "Expand" = "Rozbalit";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Prodlouží titulky přes krátké mezery a podrží poslední titulek.";
 "Extra Large" = "Extra velké";
 "Extract Audio" = "Extrahovat zvuk";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Zesílení";
 "Fade Out" = "Zeslabení";
 "Failed" = "Selhalo";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Generování selhalo";
 "Generation Input" = "Vstup generování";
 "Generation complete" = "Generování dokončeno";
+"Generation failed." = "Generování se nezdařilo.";
 "Generation in progress" = "Generování probíhá";
 "Generation panel" = "Panel generování";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generování běží na vašem backendu Lenora. Token se ukládá do Klíčenky macOS.";
@@ -479,6 +476,10 @@
 "Layout" = "Rozložení";
 "Left" = "Vlevo";
 "Length of the generated music. It's placed at the playhead, or at the marked range start." = "Délka vygenerované hudby. Umístí se na přehrávací hlavu, nebo na začátek označeného rozsahu.";
+"Lenora Project" = "Projekt Lenora";
+"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora nemohl načíst zdrojový soubor tohoto klipu. Může chybět, být na vysunutém disku nebo být nečitelný.";
+"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora nemohl načíst tento zdrojový soubor. Může chybět, být na vysunutém disku nebo být nečitelný.";
+"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora načetl zdrojový soubor tohoto klipu, ale nepřipravil ho k přehrání. Soubor může být poškozený nebo v nepodporovaném formátu.";
 "Let Agent create captions for you. Choose a predefined task, or ask Agent in the chat." = "Nechte Agent vytvořit titulky. Vyberte připravenou úlohu, nebo požádejte Agent v chatu.";
 "Let Agent generate music for you. Choose a starter, or ask Agent in the chat." = "Nechte Agent vygenerovat hudbu. Vyberte začátek, nebo požádejte Agent v chatu.";
 "Let's take a quick tour of the workspace and what you can do." = "Krátký přehled pracovního prostoru a toho, co můžete dělat.";
@@ -584,7 +585,6 @@
 "No beats detected." = "Nebyly zjištěny žádné doby.";
 "No conversations yet" = "Zatím žádné konverzace";
 "No exports yet" = "Zatím žádné exporty";
-"No generations yet" = "Zatím žádná generování";
 "No images" = "Žádné obrázky";
 "No markers" = "Žádné značky";
 "No markers match this filter." = "Tomuto filtru neodpovídají žádné značky.";
@@ -635,10 +635,6 @@
 "Overlay" = "Překrytí";
 "Overline" = "Nadtržení";
 "Padding" = "Vnitřní okraj";
-"Lenora Project" = "Projekt Lenora";
-"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora nemohl načíst zdrojový soubor tohoto klipu. Může chybět, být na vysunutém disku nebo být nečitelný.";
-"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora nemohl načíst tento zdrojový soubor. Může chybět, být na vysunutém disku nebo být nečitelný.";
-"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora načetl zdrojový soubor tohoto klipu, ale nepřipravil ho k přehrání. Soubor může být poškozený nebo v nepodporovaném formátu.";
 "Paste" = "Vložit";
 "Paste Clip Settings" = "Vložit nastavení klipu";
 "Paste LENORA_TOKEN" = "Vložit LENORA_TOKEN";
@@ -667,7 +663,6 @@
 "Preview" = "Náhled";
 "Pro plan" = "Plán Pro";
 "Project" = "Projekt";
-"Project Activity" = "Aktivita projektu";
 "Project Settings" = "Nastavení projektu";
 "Projects Couldn’t Be Deleted" = "Projekty se nepodařilo smazat";
 "Prompt" = "Prompt";
@@ -678,7 +673,6 @@
 "Range" = "Rozsah";
 "Razor (C)" = "Břitva (C)";
 "Razor Tool" = "Nástroj břitva";
-"Re-render the same motion at full quality in 1080p" = "Vykreslete stejný pohyb v plné kvalitě v 1080p";
 "Reasoning effort" = "Úsilí uvažování";
 "Redetect Beats" = "Znovu detekovat doby";
 "Redo" = "Znovu";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Uložit rozsah jako média";
 "Save as Audio" = "Uložit jako audio";
 "Save as Media" = "Uložit jako média";
-"Save this project to view activity" = "Uložte tento projekt pro zobrazení aktivity";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Uloží kopii projektu se všemi médii uvnitř, aby šel otevřít na jakémkoli počítači.";
 "Scale" = "Měřítko";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Text k mluvení (minimálně %lld znaků)";
 "The clip you're adding has different settings than the current project." = "Klip, který přidáváte, má jiné nastavení než aktuální projekt.";
 "The export" = "Export";
+"The job already finished." = "Úloha už skončila.";
+"The job finished without a result." = "Úloha skončila bez výsledku.";
 "The marker comment changed while you were editing. Review it and try again." = "Komentář značky se během úprav změnil. Zkontrolujte ho a zkuste to znovu.";
 "The project will be moved to the Trash." = "Projekt bude přesunut do Koše.";
 "The selected model refused this request. Revise the prompt and try again." = "Vybraný model tento požadavek odmítl. Upravte prompt a zkuste to znovu.";
@@ -894,6 +889,7 @@
 "Theme" = "Motiv";
 "This is where all your footage and assets live." = "Tady jsou všechny záběry a materiály.";
 "This is your preview panel to play a selected media or the whole timeline." = "Náhledový panel pro přehrání vybraného média nebo celé časové osy.";
+"This job can't be cancelled. It will finish on its own." = "Tuto úlohu nelze zrušit. Dokončí se sama.";
 "This model cannot cap the output at 60 FPS." = "Tento model nemůže omezit výstup na 60 FPS.";
 "This permanently removes %@." = "Tímto se trvale odebere %@.";
 "This source can’t replace the clip." = "Tento zdroj nemůže klip nahradit.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Zpracovává se %@";
 "Workspace layout" = "Rozložení pracovního prostoru";
 "X High" = "Velmi vysoká";
-"You were not charged for this generation" = "Toto generování nebylo účtováno";
 "You're all set" = "Vše je připraveno";
 "You're ready to start creating." = "Vše je připraveno, můžete začít tvořit.";
 "Your Lottie animation is ready." = "Animace Lottie je připravena.";

@@ -25,10 +25,13 @@ extension EditorViewModel {
         into asset: MediaAsset,
         from remoteURL: URL,
         fileExtension: String?,
-        downloader: RemoteMediaDownloader = RemoteMediaDownloader(
-            maxBytes: ToolExecutor.remoteImportMaxBytes, timeout: ToolExecutor.remoteImportRequestTimeout
-        )
+        downloader: RemoteMediaDownloader? = nil
     ) async throws {
+        let downloader = downloader ?? RemoteMediaDownloader(
+            maxBytes: ToolExecutor.remoteImportMaxBytes,
+            timeout: ToolExecutor.remoteImportRequestTimeout,
+            fetch: remoteDownloadFetch
+        )
         let file = try await downloader.download(remoteURL)
         let ext = (fileExtension ?? remoteURL.pathExtension).lowercased()
         if !ext.isEmpty, ext != asset.url.pathExtension.lowercased(), ClipType(fileExtension: ext) != nil {

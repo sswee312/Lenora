@@ -40,7 +40,7 @@ struct AudioGenerationSubmission {
         let splitReferences: @Sendable ([String]) -> (image: String?, audio: [String]) = { uploaded in
             (imageCount > 0 ? uploaded.first : nil, Array(uploaded.dropFirst(imageCount)))
         }
-        let buildParams: ([String]) -> BackendGenerationParams = { [params] uploaded in
+        let buildParams: ([String]) -> GenerationJobParams = { [params] uploaded in
             var resolvedParams = params
             if usesReferences {
                 let referenceURLs = splitReferences(uploaded)

@@ -125,9 +125,7 @@ enum AgentInstructions {
           asked or when no frame anchors the shot.
         - For video models that report supportsDraft=true, draft=true creates a lower-cost \
           720p approval preview from text, frames, or source video. Use it when auditioning \
-          alternatives, not when the user asked for a final render; approved drafts can be \
-          enhanced later without changing their motion. To enhance an approved draft, call \
-          generate_video with enhanceDraftMediaRef set to that draft's media ID.
+          alternatives, not when the user asked for a final render.
         - General recommendation (resolve via list_models): images — GPT Image and Seedream 5.0. Video — \
           MiniMax H3 for cheap text-to-video, Grok Imagine for first-frame and simple low-motion shots; \
           Seedance 2.5 for overall quality and references (720p; 1080p is the best available but \

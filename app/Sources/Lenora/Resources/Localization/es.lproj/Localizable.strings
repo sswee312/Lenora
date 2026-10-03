@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld no se pudieron alinear";
 "%lld credits" = "%lld créditos";
 "%lld credits / month" = "%lld créditos al mes";
-"%lld credits refunded" = "%lld créditos reembolsados";
 "%lld images are ready in Lenora Pro." = "%lld imágenes están listas en Lenora Pro.";
 "%lld items" = "%lld elementos";
 "%lld media files are missing and will be skipped." = "Faltan %lld archivos multimedia y se omitirán.";
@@ -51,7 +50,6 @@
 "Account" = "Cuenta";
 "Account settings" = "Ajustes de la cuenta";
 "Action Safe" = "Área de acción";
-"Activity unavailable" = "La actividad no está disponible";
 "Adapters" = "Adaptadores";
 "Add Marker (M)" = "Añadir marcador (M)";
 "Add Range to Chat" = "Añadir intervalo al chat";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "No se puede desbloquear la sincronización en una pista multicámara. \"%@\" se mantiene alineado con ella.";
 "Cancel" = "Cancelar";
 "Cancel Export" = "Cancelar exportación";
+"Cancel Generation" = "Cancelar generación";
 "Cancel Key Color Sampling" = "Cancelar muestreo del color clave";
 "Cancel key color sampling" = "Cancelar muestreo del color clave";
 "Canceled" = "Cancelado";
@@ -298,7 +297,6 @@
 "Downloading…" = "Descargando…";
 "Downloads a %@ on-device model so you can search media visually." = "Descarga un modelo de %@ en el dispositivo para que puedas buscar contenido multimedia visualmente.";
 "Draft" = "Borrador";
-"Draft already enhanced or cache unavailable" = "El borrador ya está mejorado o la caché no está disponible";
 "Drag to add or shape a point · double-click to remove" = "Arrastra para añadir o dar forma a un punto · haz doble clic para eliminarlo";
 "Drop files here or import from disk" = "Suelta archivos aquí o impórtalos desde el disco";
 "Dubbing" = "Doblaje";
@@ -330,7 +328,6 @@
 "Enabled" = "Activado";
 "Enhance" = "Mejorar";
 "Enhance resolution or frame rate with AI" = "Mejorar la resolución o la frecuencia de fotogramas con IA";
-"Enhanced with FLUX.3 at 1080p." = "Mejorado con FLUX.3 a 1080p.";
 "Enter Full Screen" = "Usar pantalla completa";
 "Exclusion" = "Exclusión";
 "Expand" = "Expandir";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Extiende los subtítulos en los huecos cortos y mantiene el último subtítulo.";
 "Extra Large" = "Extragrande";
 "Extract Audio" = "Extraer audio";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Fundido de entrada";
 "Fade Out" = "Fundido de salida";
 "Failed" = "Error";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Error de generación";
 "Generation Input" = "Entrada de generación";
 "Generation complete" = "Generación completada";
+"Generation failed." = "Error en la generación.";
 "Generation in progress" = "Generación en curso";
 "Generation panel" = "Panel de generación";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "La generación se ejecuta en tu backend de Lenora. El token se guarda en el llavero de macOS.";
@@ -479,6 +476,10 @@
 "Layout" = "Disposición";
 "Left" = "Izquierda";
 "Length of the generated music. It's placed at the playhead, or at the marked range start." = "Duración de la música generada. Se coloca en el cabezal de reproducción o al inicio del intervalo marcado.";
+"Lenora Project" = "Proyecto de Lenora";
+"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora no pudo cargar el archivo de origen de este clip. Puede que falte, esté en una unidad expulsada o no se pueda leer.";
+"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora no pudo cargar este archivo de origen. Puede que falte, esté en una unidad expulsada o no se pueda leer.";
+"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora cargó el archivo de origen de este clip, pero no pudo prepararlo para reproducirlo. Puede que el archivo esté dañado o tenga un formato no compatible.";
 "Let Agent create captions for you. Choose a predefined task, or ask Agent in the chat." = "Deja que Agente cree subtítulos por ti. Elige una tarea predefinida o pídeselo a Agente en el chat.";
 "Let Agent generate music for you. Choose a starter, or ask Agent in the chat." = "Deja que Agente genere música por ti. Elige una opción inicial o pídeselo a Agente en el chat.";
 "Let's take a quick tour of the workspace and what you can do." = "Hagamos un recorrido rápido por el espacio de trabajo y sus posibilidades.";
@@ -584,7 +585,6 @@
 "No beats detected." = "No se detectaron pulsos.";
 "No conversations yet" = "Aún no hay conversaciones";
 "No exports yet" = "Aún no hay exportaciones";
-"No generations yet" = "Aún no hay generaciones";
 "No images" = "No hay imágenes";
 "No markers" = "No hay marcadores";
 "No markers match this filter." = "Ningún marcador coincide con este filtro.";
@@ -635,10 +635,6 @@
 "Overlay" = "Superponer";
 "Overline" = "Suprarrayado";
 "Padding" = "Margen interior";
-"Lenora Project" = "Proyecto de Lenora";
-"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora no pudo cargar el archivo de origen de este clip. Puede que falte, esté en una unidad expulsada o no se pueda leer.";
-"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora no pudo cargar este archivo de origen. Puede que falte, esté en una unidad expulsada o no se pueda leer.";
-"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora cargó el archivo de origen de este clip, pero no pudo prepararlo para reproducirlo. Puede que el archivo esté dañado o tenga un formato no compatible.";
 "Paste" = "Pegar";
 "Paste Clip Settings" = "Pegar ajustes del clip";
 "Paste LENORA_TOKEN" = "Pega LENORA_TOKEN";
@@ -667,7 +663,6 @@
 "Preview" = "Previsualización";
 "Pro plan" = "Plan Pro";
 "Project" = "Proyecto";
-"Project Activity" = "Actividad del proyecto";
 "Project Settings" = "Ajustes del proyecto";
 "Projects Couldn’t Be Deleted" = "No se pudieron eliminar los proyectos";
 "Prompt" = "Indicación";
@@ -678,7 +673,6 @@
 "Range" = "Intervalo";
 "Razor (C)" = "Cuchilla (C)";
 "Razor Tool" = "Herramienta Cuchilla";
-"Re-render the same motion at full quality in 1080p" = "Volver a generar el mismo movimiento a calidad completa en 1080p";
 "Reasoning effort" = "Esfuerzo de razonamiento";
 "Redetect Beats" = "Volver a detectar pulsos";
 "Redo" = "Rehacer";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Guardar intervalo como contenido multimedia";
 "Save as Audio" = "Guardar como audio";
 "Save as Media" = "Guardar como contenido multimedia";
-"Save this project to view activity" = "Guarda este proyecto para ver la actividad";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Guarda una copia de este proyecto con todos los archivos multimedia incluidos para que se pueda abrir en cualquier equipo.";
 "Scale" = "Escala";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Texto para pronunciar (%lld caracteres como mínimo)";
 "The clip you're adding has different settings than the current project." = "El clip que estás añadiendo tiene ajustes distintos a los del proyecto actual.";
 "The export" = "La exportación";
+"The job already finished." = "El trabajo ya ha terminado.";
+"The job finished without a result." = "El trabajo terminó sin resultado.";
 "The marker comment changed while you were editing. Review it and try again." = "El comentario del marcador cambió mientras lo editabas. Revísalo e inténtalo de nuevo.";
 "The project will be moved to the Trash." = "El proyecto se trasladará a la Papelera.";
 "The selected model refused this request. Revise the prompt and try again." = "El modelo seleccionado rechazó esta solicitud. Revisa la indicación e inténtalo de nuevo.";
@@ -894,6 +889,7 @@
 "Theme" = "Tema";
 "This is where all your footage and assets live." = "Aquí se encuentran todo tu material y tus recursos.";
 "This is your preview panel to play a selected media or the whole timeline." = "Este es el panel de previsualización, donde puedes reproducir el contenido seleccionado o toda la línea de tiempo.";
+"This job can't be cancelled. It will finish on its own." = "Este trabajo no se puede cancelar. Terminará por sí solo.";
 "This model cannot cap the output at 60 FPS." = "Este modelo no puede limitar la salida a 60 FPS.";
 "This permanently removes %@." = "Esto elimina %@ de forma permanente.";
 "This source can’t replace the clip." = "Este origen no puede reemplazar el clip.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Trabajando en %@";
 "Workspace layout" = "Disposición del espacio de trabajo";
 "X High" = "X alto";
-"You were not charged for this generation" = "No se te cobró por esta generación";
 "You're all set" = "Todo está listo";
 "You're ready to start creating." = "Todo listo para empezar a crear.";
 "Your Lottie animation is ready." = "Tu animación Lottie está lista.";

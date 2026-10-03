@@ -28,12 +28,10 @@ import Testing
         #expect(editor.mediaManifest.entries.map(\.name) == ["Latest"])
     }
     @Test func draftGenerationSurvivesManifestRoundTrip() throws {
-        var input = GenerationInput(
+        let input = GenerationInput(
             prompt: "Draft", model: "flux-3", duration: 8,
             aspectRatio: "16:9", resolution: "720p", draft: true
         )
-        input.backendJobId = "draft-job"
-        input.resultURLs = ["video", "cache"]
         let generated = MediaAsset(
             url: URL(fileURLWithPath: "/tmp/draft.mp4"),
             type: .video,
@@ -43,32 +41,22 @@ import Testing
         let data = try JSONEncoder().encode(generated.toManifestEntry(projectURL: nil))
         let restored = try JSONDecoder().decode(MediaManifestEntry.self, from: data)
         #expect(restored.generationInput?.draft == true)
-        #expect(MediaAsset(entry: restored, resolvedURL: generated.url).canEnhanceDraft)
     }
 
-    @Test func refundedCreditsSurviveManifestRoundTrip() throws {
-        var input = GenerationInput(
-            prompt: "Fail", model: "flux-3", duration: 5,
-            aspectRatio: "16:9", resolution: "720p"
-        )
-        input.costCredits = 12
-        input.refundedCredits = 12
-        let generated = MediaAsset(
-            url: URL(fileURLWithPath: "/tmp/failed.mp4"),
-            type: .video,
-            name: "Failed",
-            generationInput: input
-        )
-        generated.generationStatus = .failed("Provider error")
+    @Test func jobIdResultsAndEstimateSurviveManifestRoundTrip() throws {
+        var input = GenerationInput(prompt: "", model: "cloudinary/background-removal", duration: 0, aspectRatio: "")
+        input.jobId = "cloudinary:url:abc"
+        input.results = [JobResult(url: URL(string: "https://res.cloudinary.com/demo/x.png")!, contentType: "image/png", fileExtension: "png")]
+        input.estimate = BackendEstimate(amount: 0.075, unit: "cloudinary_credits")
+        let generated = MediaAsset(url: URL(fileURLWithPath: "/tmp/out.png"), type: .image, name: "Out", generationInput: input)
+        generated.generationStatus = .generating
         let data = try JSONEncoder().encode(generated.toManifestEntry(projectURL: nil))
         let asset = MediaAsset(
             entry: try JSONDecoder().decode(MediaManifestEntry.self, from: data),
             resolvedURL: generated.url
         )
-        #expect(asset.generationInput?.costCredits == 12)
-        #expect(asset.generationInput?.refundedCredits == 12)
-        #expect(asset.wasGenerationRefunded)
-        asset.generationInput?.refundedCredits = 0
-        #expect(!asset.wasGenerationRefunded)
+        #expect(asset.generationInput == input)
+        #expect(asset.canResumeGeneration)
+        #expect(asset.isRecoveringGeneration)
     }
 }

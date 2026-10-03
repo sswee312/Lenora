@@ -23,7 +23,6 @@
 "%lld couldn't align" = "Не удалось синхронизировать: %lld";
 "%lld credits" = "%lld кредитов";
 "%lld credits / month" = "%lld кредитов в месяц";
-"%lld credits refunded" = "Возвращено кредитов: %lld";
 "%lld images are ready in Lenora Pro." = "Изображения готовы в Lenora Pro: %lld.";
 "%lld items" = "Объектов: %lld";
 "%lld media files are missing and will be skipped." = "Отсутствуют медиафайлы: %lld. Они будут пропущены.";
@@ -51,7 +50,6 @@
 "Account" = "Учётная запись";
 "Account settings" = "Настройки учётной записи";
 "Action Safe" = "Безопасная зона действия";
-"Activity unavailable" = "История действий недоступна";
 "Adapters" = "Адаптеры";
 "Add Marker (M)" = "Добавить маркер (M)";
 "Add Range to Chat" = "Добавить диапазон в чат";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Нельзя отключить синхронизацию на мультикамерной дорожке: «%@» останется выровненным по ней.";
 "Cancel" = "Отмена";
 "Cancel Export" = "Отменить экспорт";
+"Cancel Generation" = "Отменить генерацию";
 "Cancel Key Color Sampling" = "Отменить выбор ключевого цвета";
 "Cancel key color sampling" = "Отменить выбор ключевого цвета";
 "Canceled" = "Отменено";
@@ -298,7 +297,6 @@
 "Downloading…" = "Загрузка…";
 "Downloads a %@ on-device model so you can search media visually." = "Загружает локальную модель размером %@ для визуального поиска по медиафайлам.";
 "Draft" = "Черновик";
-"Draft already enhanced or cache unavailable" = "Черновик уже улучшен или кэш недоступен";
 "Drag to add or shape a point · double-click to remove" = "Перетаскивайте для добавления или изменения точки · дважды нажмите для удаления";
 "Drop files here or import from disk" = "Перетащите файлы сюда или импортируйте с диска";
 "Dubbing" = "Дубляж";
@@ -330,7 +328,6 @@
 "Enabled" = "Включено";
 "Enhance" = "Улучшить";
 "Enhance resolution or frame rate with AI" = "Улучшить разрешение или частоту кадров с помощью AI";
-"Enhanced with FLUX.3 at 1080p." = "Улучшено с помощью FLUX.3 в 1080p.";
 "Enter Full Screen" = "Перейти в полноэкранный режим";
 "Exclusion" = "Исключение";
 "Expand" = "Развернуть";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Продлевает субтитры через короткие разрывы и удерживает последний субтитр.";
 "Extra Large" = "Очень большой";
 "Extract Audio" = "Извлечь аудио";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Появление";
 "Fade Out" = "Затухание";
 "Failed" = "Ошибка";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Ошибка генерации";
 "Generation Input" = "Ввод генерации";
 "Generation complete" = "Генерация завершена";
+"Generation failed." = "Не удалось выполнить генерацию.";
 "Generation in progress" = "Идёт генерация";
 "Generation panel" = "Панель генерации";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Генерация выполняется на вашем бэкенде Lenora. Токен хранится в Связке ключей macOS.";
@@ -588,7 +585,6 @@
 "No beats detected." = "Доли не обнаружены.";
 "No conversations yet" = "Пока нет бесед";
 "No exports yet" = "Пока нет экспортов";
-"No generations yet" = "Пока нет генераций";
 "No images" = "Нет изображений";
 "No markers" = "Нет маркеров";
 "No markers match this filter." = "Нет маркеров, соответствующих этому фильтру.";
@@ -667,7 +663,6 @@
 "Preview" = "Предпросмотр";
 "Pro plan" = "План Pro";
 "Project" = "Проект";
-"Project Activity" = "Активность проекта";
 "Project Settings" = "Настройки проекта";
 "Projects Couldn’t Be Deleted" = "Не удалось удалить проекты";
 "Prompt" = "Запрос";
@@ -678,7 +673,6 @@
 "Range" = "Диапазон";
 "Razor (C)" = "Лезвие (C)";
 "Razor Tool" = "Инструмент «Лезвие»";
-"Re-render the same motion at full quality in 1080p" = "Повторно отрендерить то же движение в полном качестве в 1080p";
 "Reasoning effort" = "Уровень рассуждений";
 "Redetect Beats" = "Повторно определить ритм";
 "Redo" = "Повторить";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Сохранить диапазон как медиафайл";
 "Save as Audio" = "Сохранить как аудио";
 "Save as Media" = "Сохранить как медиафайл";
-"Save this project to view activity" = "Сохраните проект, чтобы просмотреть историю действий";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Сохраняет копию проекта со всеми медиафайлами внутри, чтобы её можно было открыть на любом компьютере.";
 "Scale" = "Масштаб";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Текст для озвучивания (минимум символов: %lld)";
 "The clip you're adding has different settings than the current project." = "У добавляемого клипа настройки отличаются от текущего проекта.";
 "The export" = "задачу экспорта";
+"The job already finished." = "Задача уже завершена.";
+"The job finished without a result." = "Задача завершилась без результата.";
 "The marker comment changed while you were editing. Review it and try again." = "Комментарий маркера изменился, пока вы его редактировали. Проверьте его и повторите попытку.";
 "The project will be moved to the Trash." = "Проект будет перемещён в Корзину.";
 "The selected model refused this request. Revise the prompt and try again." = "Выбранная модель отклонила этот запрос. Измените запрос и повторите попытку.";
@@ -894,6 +889,7 @@
 "Theme" = "Тема";
 "This is where all your footage and assets live." = "Здесь хранятся все ваши материалы и ресурсы.";
 "This is your preview panel to play a selected media or the whole timeline." = "Это панель предпросмотра для воспроизведения выбранного медиафайла или всего таймлайна.";
+"This job can't be cancelled. It will finish on its own." = "Эту задачу нельзя отменить. Она завершится сама.";
 "This model cannot cap the output at 60 FPS." = "Эта модель не может ограничить результат частотой 60 FPS.";
 "This permanently removes %@." = "Это безвозвратно удалит %@.";
 "This source can’t replace the clip." = "Этот источник не может заменить клип.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Выполняется: %@";
 "Workspace layout" = "Расположение рабочей области";
 "X High" = "Сверхвысокий";
-"You were not charged for this generation" = "За эту генерацию плата не взималась";
 "You're all set" = "Всё готово";
 "You're ready to start creating." = "Всё готово — можно начинать творить.";
 "Your Lottie animation is ready." = "Ваша анимация Lottie готова.";

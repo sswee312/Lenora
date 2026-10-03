@@ -194,6 +194,18 @@ extension EditorViewModel {
         Log.project.notice("media imported asset=\(asset.id.prefix(8)) type=\(asset.type.rawValue)")
     }
 
+    func removeGenerationPlaceholders(_ placeholders: [MediaAsset]) {
+        let ids = Set(placeholders.map(\.id))
+        guard mediaAssets.contains(where: { ids.contains($0.id) }) else { return }
+        let removedClips = removeClipsReferencingAssets(ids)
+        mediaAssets.removeAll { ids.contains($0.id) }
+        mediaManifest.entries.removeAll { ids.contains($0.id) }
+        for id in ids { closePreviewTab(id: PreviewTab.mediaAssetTabId(for: id)) }
+        selectedMediaAssetIds.subtract(ids)
+        if !removedClips.isEmpty { notifyTimelineChanged() }
+        onProjectCheckpointRequired?()
+    }
+
     /// Resolve a drag pasteboard payload (one `lenora-asset://<id>` per line).
     func assetsFromDragPayload(_ payload: String) -> [MediaAsset] {
         payload.split(separator: "\n").compactMap { line in

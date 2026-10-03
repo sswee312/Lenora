@@ -88,6 +88,9 @@ struct AssetThumbnailView: View {
                 Divider()
             }
             Button(L10n.string("Rename")) { beginRename() }
+            if asset.generationStatus == .generating, asset.generationInput?.jobId != nil {
+                Button(L10n.string("Cancel Generation")) { cancelGeneration() }
+            }
             AIEditMenu(asset: asset)
             Divider()
         }
@@ -114,6 +117,18 @@ struct AssetThumbnailView: View {
                 .map(\.id)
         }
         return [asset.id]
+    }
+
+    private func cancelGeneration() {
+        Task {
+            switch await editor.generationService.cancelGeneration(asset, editor: editor) {
+            case .cancelled: break
+            case .notCancellable:
+                editor.mediaPanelToast = MediaPanelToast(message: L10n.string("This job can't be cancelled. It will finish on its own."))
+            case .failed(let message):
+                editor.mediaPanelToast = MediaPanelToast(message: message)
+            }
+        }
     }
 
     private func relinkFile() {

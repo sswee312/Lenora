@@ -23,7 +23,6 @@
 "%lld couldn't align" = "לא ניתן היה ליישר ⁨%lld⁩";
 "%lld credits" = "⁨%lld⁩ קרדיטים";
 "%lld credits / month" = "⁨%lld⁩ קרדיטים / חודש";
-"%lld credits refunded" = "הוחזרו ⁨%lld⁩ קרדיטים";
 "%lld images are ready in Lenora Pro." = "⁨%lld⁩ תמונות מוכנות ב-Lenora Pro.";
 "%lld items" = "⁨%lld⁩ פריטים";
 "%lld media files are missing and will be skipped." = "חסרים ⁨%lld⁩ קובצי מדיה והם ידולגו.";
@@ -51,7 +50,6 @@
 "Account" = "חשבון";
 "Account settings" = "הגדרות חשבון";
 "Action Safe" = "אזור פעולה בטוח";
-"Activity unavailable" = "הפעילות אינה זמינה";
 "Adapters" = "מתאמים";
 "Add Marker (M)" = "הוסף סמן ⁨(M)⁩";
 "Add Range to Chat" = "הוסף טווח לצ'אט";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "לא ניתן לבטל נעילת סנכרון ברצועת מולטיקאם — \"⁨%@⁩\" נשאר מיושר דרכה.";
 "Cancel" = "ביטול";
 "Cancel Export" = "בטל ייצוא";
+"Cancel Generation" = "בטל יצירה";
 "Cancel Key Color Sampling" = "בטל דגימת צבע מפתח";
 "Cancel key color sampling" = "בטל דגימת צבע מפתח";
 "Canceled" = "בוטל";
@@ -298,7 +297,6 @@
 "Downloading…" = "מוריד…";
 "Downloads a %@ on-device model so you can search media visually." = "מוריד מודל ⁨%@⁩ במכשיר כדי לחפש מדיה באופן חזותי.";
 "Draft" = "טיוטה";
-"Draft already enhanced or cache unavailable" = "הטיוטה כבר שופרה או שהמטמון אינו זמין";
 "Drag to add or shape a point · double-click to remove" = "גרור כדי להוסיף או לעצב נקודה · לחיצה כפולה להסרה";
 "Drop files here or import from disk" = "שחרר קבצים כאן או ייבא מהדיסק";
 "Dubbing" = "דיבוב";
@@ -330,7 +328,6 @@
 "Enabled" = "מופעל";
 "Enhance" = "שפר";
 "Enhance resolution or frame rate with AI" = "שפר רזולוציה או קצב פריימים באמצעות AI";
-"Enhanced with FLUX.3 at 1080p." = "שופר ב-FLUX.3 ב-1080p.";
 "Enter Full Screen" = "עבור למסך מלא";
 "Exclusion" = "החרגה";
 "Expand" = "הרחב";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "מרחיב כתוביות על פני רווחים קצרים ומחזיק את הכתובית האחרונה.";
 "Extra Large" = "גדול במיוחד";
 "Extract Audio" = "חלץ שמע";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "עמעום כניסה";
 "Fade Out" = "עמעום יציאה";
 "Failed" = "נכשל";
@@ -402,6 +398,7 @@
 "Generation Failed" = "ההפקה נכשלה";
 "Generation Input" = "קלט הפקה";
 "Generation complete" = "ההפקה הושלמה";
+"Generation failed." = "היצירה נכשלה.";
 "Generation in progress" = "הפקה בתהליך";
 "Generation panel" = "לוח הפקה";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "היצירה מתבצעת ב-Backend של Lenora שלך. הטוקן נשמר בצרור המפתחות של macOS.";
@@ -479,6 +476,10 @@
 "Layout" = "פריסה";
 "Left" = "שמאל";
 "Length of the generated music. It's placed at the playhead, or at the marked range start." = "אורך המוזיקה שהופקה. היא מוצבת בראש הניגון, או בתחילת הטווח המסומן.";
+"Lenora Project" = "פרויקט Lenora";
+"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora לא הצליח לטעון את קובץ המקור של הקליפ. ייתכן שהוא חסר, בכונן שנותק, או לא קריא.";
+"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora לא הצליח לטעון את קובץ המקור. ייתכן שהוא חסר, בכונן שנותק, או לא קריא.";
+"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora טען את קובץ המקור של הקליפ אך לא הצליח להכין אותו לניגון. ייתכן שהקובץ פגום או בפורמט לא נתמך.";
 "Let Agent create captions for you. Choose a predefined task, or ask Agent in the chat." = "תן ל-Agent ליצור כתוביות. בחר משימה מוגדרת, או בקש מ-Agent בצ'אט.";
 "Let Agent generate music for you. Choose a starter, or ask Agent in the chat." = "תן ל-Agent להפיק מוזיקה. בחר התחלה, או בקש מ-Agent בצ'אט.";
 "Let's take a quick tour of the workspace and what you can do." = "סיור קצר בסביבת העבודה ובמה שאפשר לעשות.";
@@ -584,7 +585,6 @@
 "No beats detected." = "לא זוהו פעימות.";
 "No conversations yet" = "אין שיחות עדיין";
 "No exports yet" = "אין ייצואים עדיין";
-"No generations yet" = "אין הפקות עדיין";
 "No images" = "אין תמונות";
 "No markers" = "אין סמנים";
 "No markers match this filter." = "אין סמנים התואמים למסנן זה.";
@@ -635,10 +635,6 @@
 "Overlay" = "שכבה";
 "Overline" = "קו עליון";
 "Padding" = "ריפוד";
-"Lenora Project" = "פרויקט Lenora";
-"Lenora couldn't load this clip's source file. It may be missing, on an ejected drive, or unreadable." = "Lenora לא הצליח לטעון את קובץ המקור של הקליפ. ייתכן שהוא חסר, בכונן שנותק, או לא קריא.";
-"Lenora couldn't load this source file. It may be missing, on an ejected drive, or unreadable." = "Lenora לא הצליח לטעון את קובץ המקור. ייתכן שהוא חסר, בכונן שנותק, או לא קריא.";
-"Lenora loaded this clip's source file but couldn't prepare it for playback. The file may be corrupt or in an unsupported format." = "Lenora טען את קובץ המקור של הקליפ אך לא הצליח להכין אותו לניגון. ייתכן שהקובץ פגום או בפורמט לא נתמך.";
 "Paste" = "הדבק";
 "Paste Clip Settings" = "הדבק הגדרות קליפ";
 "Paste LENORA_TOKEN" = "הדבק את LENORA_TOKEN";
@@ -667,7 +663,6 @@
 "Preview" = "תצוגה מקדימה";
 "Pro plan" = "תוכנית Pro";
 "Project" = "פרויקט";
-"Project Activity" = "פעילות פרויקט";
 "Project Settings" = "הגדרות פרויקט";
 "Projects Couldn’t Be Deleted" = "לא ניתן היה למחוק פרויקטים";
 "Prompt" = "הנחיה";
@@ -678,7 +673,6 @@
 "Range" = "טווח";
 "Razor (C)" = "סכין ⁨(C)⁩";
 "Razor Tool" = "כלי סכין";
-"Re-render the same motion at full quality in 1080p" = "רנדר מחדש את אותה תנועה באיכות מלאה ב-1080p";
 "Reasoning effort" = "מאמץ חשיבה";
 "Redetect Beats" = "זהה פעימות מחדש";
 "Redo" = "בצע שוב";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "שמור טווח כמדיה";
 "Save as Audio" = "שמור כשמע";
 "Save as Media" = "שמור כמדיה";
-"Save this project to view activity" = "שמור פרויקט זה כדי לראות פעילות";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "שומר עותק של הפרויקט עם כל המדיה כלולה, כך שהוא נפתח בכל מחשב.";
 "Scale" = "קנה מידה";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "טקסט להקראה (לפחות ⁨%lld⁩ תווים)";
 "The clip you're adding has different settings than the current project." = "לקליפ שאתה מוסיף יש הגדרות שונות מאלה של הפרויקט הנוכחי.";
 "The export" = "הייצוא";
+"The job already finished." = "המשימה כבר הסתיימה.";
+"The job finished without a result." = "המשימה הסתיימה ללא תוצאה.";
 "The marker comment changed while you were editing. Review it and try again." = "הערת הסמן השתנתה בזמן העריכה. סקור אותה ונסה שוב.";
 "The project will be moved to the Trash." = "הפרויקט יועבר לפח.";
 "The selected model refused this request. Revise the prompt and try again." = "המודל שנבחר דחה את הבקשה. עדכן את ההנחיה ונסה שוב.";
@@ -894,6 +889,7 @@
 "Theme" = "ערכת נושא";
 "This is where all your footage and assets live." = "כאן נמצאים כל הצילומים והנכסים.";
 "This is your preview panel to play a selected media or the whole timeline." = "זה לוח התצוגה המקדימה לניגון מדיה שנבחרה או ציר הזמן כולו.";
+"This job can't be cancelled. It will finish on its own." = "לא ניתן לבטל משימה זו. היא תסתיים מעצמה.";
 "This model cannot cap the output at 60 FPS." = "מודל זה אינו יכול להגביל את הפלט ל-⁨60 FPS⁩.";
 "This permanently removes %@." = "פעולה זו מסירה את ⁨%@⁩ לצמיתות.";
 "This source can’t replace the clip." = "מקור זה אינו יכול להחליף את הקליפ.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "עובד על ⁨%@⁩";
 "Workspace layout" = "פריסת סביבת עבודה";
 "X High" = "X גבוה";
-"You were not charged for this generation" = "לא חויבת על הפקה זו";
 "You're all set" = "הכול מוכן";
 "You're ready to start creating." = "הכול מוכן, אפשר להתחיל ליצור.";
 "Your Lottie animation is ready." = "אנימציית ה-Lottie מוכנה.";

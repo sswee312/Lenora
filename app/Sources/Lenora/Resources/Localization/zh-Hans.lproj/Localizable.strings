@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld 个无法对齐";
 "%lld credits" = "%lld 积分";
 "%lld credits / month" = "%lld 积分/月";
-"%lld credits refunded" = "已退还 %lld 积分";
 "%lld images are ready in Lenora Pro." = "%lld 张图像已在 Lenora Pro 中准备就绪。";
 "%lld items" = "%lld 个项目";
 "%lld media files are missing and will be skipped." = "%lld 个媒体文件缺失，将被跳过。";
@@ -51,7 +50,6 @@
 "Account" = "账户";
 "Account settings" = "账户设置";
 "Action Safe" = "动作安全";
-"Activity unavailable" = "活动不可用";
 "Adapters" = "适配器";
 "Add Marker (M)" = "添加标记 (M)";
 "Add Range to Chat" = "将范围添加到对话";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "无法解锁多机位轨道的同步。“%@”需要通过该轨道保持对齐。";
 "Cancel" = "取消";
 "Cancel Export" = "取消导出";
+"Cancel Generation" = "取消生成";
 "Cancel Key Color Sampling" = "取消键控颜色取样";
 "Cancel key color sampling" = "取消键控颜色取样";
 "Canceled" = "已取消";
@@ -298,7 +297,6 @@
 "Downloading…" = "正在下载…";
 "Downloads a %@ on-device model so you can search media visually." = "下载 %@ 的设备端模型，以便通过画面搜索媒体。";
 "Draft" = "草稿";
-"Draft already enhanced or cache unavailable" = "草稿已增强或缓存不可用";
 "Drag to add or shape a point · double-click to remove" = "拖移以添加或调整控制点 · 连按两次以移除";
 "Drop files here or import from disk" = "将文件拖到此处，或从磁盘导入";
 "Dubbing" = "配音";
@@ -330,7 +328,6 @@
 "Enabled" = "已启用";
 "Enhance" = "增强";
 "Enhance resolution or frame rate with AI" = "使用 AI 提升分辨率或帧率";
-"Enhanced with FLUX.3 at 1080p." = "已通过 FLUX.3 增强为 1080p。";
 "Enter Full Screen" = "进入全屏幕";
 "Exclusion" = "排除";
 "Expand" = "展开";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "将字幕延长以覆盖短间隙，并保持最后一条字幕。";
 "Extra Large" = "特大";
 "Extract Audio" = "提取音频";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "淡入";
 "Fade Out" = "淡出";
 "Failed" = "失败";
@@ -402,6 +398,7 @@
 "Generation Failed" = "生成失败";
 "Generation Input" = "生成输入";
 "Generation complete" = "生成完成";
+"Generation failed." = "生成失败。";
 "Generation in progress" = "正在生成";
 "Generation panel" = "生成面板";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "生成在你的 Lenora 后端上运行。令牌保存在 macOS 钥匙串中。";
@@ -588,7 +585,6 @@
 "No beats detected." = "未检测到节拍。";
 "No conversations yet" = "尚无对话";
 "No exports yet" = "尚无导出任务";
-"No generations yet" = "尚无生成内容";
 "No images" = "没有图像";
 "No markers" = "没有标记";
 "No markers match this filter." = "没有符合此筛选条件的标记。";
@@ -667,7 +663,6 @@
 "Preview" = "预览";
 "Pro plan" = "Pro 方案";
 "Project" = "项目";
-"Project Activity" = "项目活动";
 "Project Settings" = "项目设置";
 "Projects Couldn’t Be Deleted" = "无法删除项目";
 "Prompt" = "提示词";
@@ -678,7 +673,6 @@
 "Range" = "范围";
 "Razor (C)" = "剃刀 (C)";
 "Razor Tool" = "剃刀工具";
-"Re-render the same motion at full quality in 1080p" = "以 1080p 全质量重新渲染相同运动";
 "Reasoning effort" = "推理强度";
 "Redetect Beats" = "重新检测节拍";
 "Redo" = "重做";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "将范围保存为媒体";
 "Save as Audio" = "保存为音频";
 "Save as Media" = "保存为媒体";
-"Save this project to view activity" = "保存此项目以查看活动";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "保存此项目的副本并在其中包含所有媒体，以便在任何设备上打开。";
 "Scale" = "缩放";
 "Scope (2.39:1)" = "变形宽银幕 (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "要朗读的文本（至少 %lld 个字符）";
 "The clip you're adding has different settings than the current project." = "要添加的片段与当前项目的设置不同。";
 "The export" = "导出任务";
+"The job already finished." = "任务已完成。";
+"The job finished without a result." = "任务已结束，但没有结果。";
 "The marker comment changed while you were editing. Review it and try again." = "你编辑时标记注释已更改。请查看后重试。";
 "The project will be moved to the Trash." = "项目将被移到废纸篓。";
 "The selected model refused this request. Revise the prompt and try again." = "所选模型拒绝了此请求。请修改提示词后重试。";
@@ -894,6 +889,7 @@
 "Theme" = "主题";
 "This is where all your footage and assets live." = "你的所有素材和资源都位于此处。";
 "This is your preview panel to play a selected media or the whole timeline." = "这是预览面板，用于播放所选媒体或整个时间线。";
+"This job can't be cancelled. It will finish on its own." = "无法取消此任务。它将自行完成。";
 "This model cannot cap the output at 60 FPS." = "此模型无法将输出限制为 60 FPS。";
 "This permanently removes %@." = "这将永久移除 %@。";
 "This source can’t replace the clip." = "此源媒体无法替换该片段。";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "正在处理 %@";
 "Workspace layout" = "工作区布局";
 "X High" = "极高";
-"You were not charged for this generation" = "此次生成未向你收费";
 "You're all set" = "一切就绪";
 "You're ready to start creating." = "你已准备好开始创作。";
 "Your Lottie animation is ready." = "你的 Lottie 动画已准备就绪。";

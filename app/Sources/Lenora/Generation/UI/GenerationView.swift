@@ -204,11 +204,10 @@ struct GenerationView: View {
 
     private var bodyContent: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.sm) {
-            // Type tabs (left) · activity · close (right)
+            // Type tabs (left) · close (right)
             HStack(spacing: AppTheme.Spacing.sm) {
                 typeTabs
                 Spacer()
-                ProjectActivityButton()
                 closeButton
             }
             .padding(.horizontal, AppTheme.Spacing.md)

@@ -48,9 +48,10 @@ struct MusicGenerationSubmission {
             )
             defer { try? FileManager.default.removeItem(at: mp4) }
             onPhase(.uploading)
-            videoURL = try await GenerationBackend.uploadReference(
+            videoURL = try await service.uploadReference(
                 fileURL: mp4,
-                contentType: "video/mp4"
+                contentType: "video/mp4",
+                model: model.id
             )
         }
 

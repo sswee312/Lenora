@@ -23,7 +23,6 @@
 "%lld couldn't align" = "%lld konden niet worden uitgelijnd";
 "%lld credits" = "%lld credits";
 "%lld credits / month" = "%lld credits / maand";
-"%lld credits refunded" = "%lld credits teruggestort";
 "%lld images are ready in Lenora Pro." = "%lld afbeeldingen zijn gereed in Lenora Pro.";
 "%lld items" = "%lld items";
 "%lld media files are missing and will be skipped." = "%lld mediabestanden ontbreken en worden overgeslagen.";
@@ -51,7 +50,6 @@
 "Account" = "Account";
 "Account settings" = "Accountinstellingen";
 "Action Safe" = "Veilige actiezone";
-"Activity unavailable" = "Activiteit niet beschikbaar";
 "Adapters" = "Adapters";
 "Add Marker (M)" = "Voeg markering toe (M)";
 "Add Range to Chat" = "Voeg bereik toe aan chat";
@@ -132,6 +130,7 @@
 "Can't unlock sync on a multicam track — \"%@\" stays aligned through it." = "Synchronisatie op een multicam-Track kan niet worden ontgrendeld — \"%@\" blijft hierdoor uitgelijnd.";
 "Cancel" = "Annuleer";
 "Cancel Export" = "Annuleer exporteren";
+"Cancel Generation" = "Generatie annuleren";
 "Cancel Key Color Sampling" = "Annuleer sleutelkleurmeting";
 "Cancel key color sampling" = "Annuleer sleutelkleurmeting";
 "Canceled" = "Geannuleerd";
@@ -298,7 +297,6 @@
 "Downloading…" = "Downloaden…";
 "Downloads a %@ on-device model so you can search media visually." = "Downloadt een %@-model op het apparaat zodat u media visueel kunt zoeken.";
 "Draft" = "Concept";
-"Draft already enhanced or cache unavailable" = "Concept al verbeterd of cache niet beschikbaar";
 "Drag to add or shape a point · double-click to remove" = "Sleep om een punt toe te voegen of te vormen · dubbelklik om te verwijderen";
 "Drop files here or import from disk" = "Zet bestanden hier neer of importeer vanaf schijf";
 "Dubbing" = "Nasynchronisatie";
@@ -330,7 +328,6 @@
 "Enabled" = "Ingeschakeld";
 "Enhance" = "Verbeter";
 "Enhance resolution or frame rate with AI" = "Verbeter resolutie of beeldsnelheid met AI";
-"Enhanced with FLUX.3 at 1080p." = "Verbeterd met FLUX.3 op 1080p.";
 "Enter Full Screen" = "Schakel schermvullend in";
 "Exclusion" = "Uitsluiting";
 "Expand" = "Klap uit";
@@ -347,7 +344,6 @@
 "Extends captions across short gaps and holds the final caption." = "Verlengt ondertitels over korte gaten en houdt de laatste ondertitel vast.";
 "Extra Large" = "Extra groot";
 "Extract Audio" = "Audio extraheren";
-"FLUX Enhance" = "FLUX Enhance";
 "Fade In" = "Fade-in";
 "Fade Out" = "Fade-out";
 "Failed" = "Mislukt";
@@ -402,6 +398,7 @@
 "Generation Failed" = "Generatie mislukt";
 "Generation Input" = "Generatie-invoer";
 "Generation complete" = "Generatie voltooid";
+"Generation failed." = "Genereren mislukt.";
 "Generation in progress" = "Generatie bezig";
 "Generation panel" = "Generatiepaneel";
 "Generation runs on your Lenora backend. The token is stored in the macOS Keychain." = "Generatie draait op uw Lenora-backend. Het token wordt bewaard in de macOS-sleutelhanger.";
@@ -588,7 +585,6 @@
 "No beats detected." = "Geen beats gedetecteerd.";
 "No conversations yet" = "Nog geen gesprekken";
 "No exports yet" = "Nog geen exports";
-"No generations yet" = "Nog geen generaties";
 "No images" = "Geen afbeeldingen";
 "No markers" = "Geen markeringen";
 "No markers match this filter." = "Geen markeringen komen overeen met dit filter.";
@@ -667,7 +663,6 @@
 "Preview" = "Voorvertoning";
 "Pro plan" = "Pro-abonnement";
 "Project" = "Project";
-"Project Activity" = "Projectactiviteit";
 "Project Settings" = "Projectinstellingen";
 "Projects Couldn’t Be Deleted" = "Projecten konden niet worden verwijderd";
 "Prompt" = "Prompt";
@@ -678,7 +673,6 @@
 "Range" = "Bereik";
 "Razor (C)" = "Mes (C)";
 "Razor Tool" = "Mesgereedschap";
-"Re-render the same motion at full quality in 1080p" = "Render dezelfde beweging opnieuw in volle kwaliteit in 1080p";
 "Reasoning effort" = "Redeneerinspanning";
 "Redetect Beats" = "Detecteer beats opnieuw";
 "Redo" = "Opnieuw";
@@ -756,7 +750,6 @@
 "Save Range as Media" = "Bewaar bereik als media";
 "Save as Audio" = "Bewaar als audio";
 "Save as Media" = "Bewaar als media";
-"Save this project to view activity" = "Bewaar dit project om activiteit te bekijken";
 "Saves a copy of this project with all media bundled inside, so it opens on any machine." = "Bewaart een kopie van dit project met alle media erin, zodat het op elke Mac opent.";
 "Scale" = "Schaal";
 "Scope (2.39:1)" = "Scope (2.39:1)";
@@ -886,6 +879,8 @@
 "Text to speak (minimum %lld characters)" = "Voor te lezen tekst (minimaal %lld tekens)";
 "The clip you're adding has different settings than the current project." = "De clip die u toevoegt heeft andere instellingen dan het huidige project.";
 "The export" = "De export";
+"The job already finished." = "De taak is al voltooid.";
+"The job finished without a result." = "De taak is beëindigd zonder resultaat.";
 "The marker comment changed while you were editing. Review it and try again." = "De opmerking bij de markering is gewijzigd tijdens het bewerken. Beoordeel deze en probeer het opnieuw.";
 "The project will be moved to the Trash." = "Het project wordt naar de Prullenmand verplaatst.";
 "The selected model refused this request. Revise the prompt and try again." = "Het geselecteerde model heeft dit verzoek geweigerd. Pas de prompt aan en probeer het opnieuw.";
@@ -894,6 +889,7 @@
 "Theme" = "Thema";
 "This is where all your footage and assets live." = "Hier staan al uw beeldmateriaal en assets.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dit is uw voorvertoningspaneel om geselecteerde media of de hele Timeline af te spelen.";
+"This job can't be cancelled. It will finish on its own." = "Deze taak kan niet worden geannuleerd. Hij wordt vanzelf voltooid.";
 "This model cannot cap the output at 60 FPS." = "Dit model kan de uitvoer niet begrenzen op 60 FPS.";
 "This permanently removes %@." = "Hiermee wordt %@ definitief verwijderd.";
 "This source can’t replace the clip." = "Deze bron kan de clip niet vervangen.";
@@ -1006,7 +1002,6 @@
 "Working on %@" = "Bezig met %@";
 "Workspace layout" = "Werkruimte-indeling";
 "X High" = "X High";
-"You were not charged for this generation" = "Voor deze generatie zijn geen credits in rekening gebracht";
 "You're all set" = "Alles is gereed";
 "You're ready to start creating." = "U kunt beginnen met maken.";
 "Your Lottie animation is ready." = "Uw Lottie-animatie is gereed.";
