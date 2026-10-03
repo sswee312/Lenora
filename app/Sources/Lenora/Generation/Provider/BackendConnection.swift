@@ -21,16 +21,29 @@ final class BackendConnection {
     private(set) var urlFromEnvironment = false
     private(set) var tokenFromEnvironment = false
     @ObservationIgnored private var generation = 0
+    @ObservationIgnored private let catalog: ModelCatalog
+    @ObservationIgnored private let environment: [String: String]
+    @ObservationIgnored private let defaults: UserDefaults
+    @ObservationIgnored private let makeProvider: @MainActor (LenoraBackendConfiguration) -> any GenerationProvider
 
-    private init() {}
+    init(
+        catalog: ModelCatalog = .shared,
+        environment: [String: String] = ProcessInfo.processInfo.environment,
+        defaults: UserDefaults = .standard,
+        makeProvider: @escaping @MainActor (LenoraBackendConfiguration) -> any GenerationProvider = { LenoraBackendClient(configuration: $0) }
+    ) {
+        self.catalog = catalog
+        self.environment = environment
+        self.defaults = defaults
+        self.makeProvider = makeProvider
+    }
 
     func reload(recheckAddons: Bool = false) async {
         generation &+= 1
         let current = generation
         state = .connecting
-        let defaults = UserDefaults.standard
         let sources = LenoraBackendConfiguration.Sources(
-            environment: ProcessInfo.processInfo.environment,
+            environment: environment,
             storedURL: defaults.string(forKey: LenoraBackendConfiguration.urlDefaultsKey),
             plistURL: Bundle.main.object(forInfoDictionaryKey: "LenoraBackendURL") as? String,
             keychainToken: await Self.loadToken()
@@ -50,7 +63,7 @@ final class BackendConnection {
             Log.generation.warning("backend token could not be saved to the Keychain")
         }
         guard current == generation else { return }
-        let client = LenoraBackendClient(configuration: resolved.configuration)
+        let client = makeProvider(resolved.configuration)
         configuration = resolved.configuration
         provider = client
         do {
@@ -58,12 +71,12 @@ final class BackendConnection {
             let capabilities = try await client.capabilities()
             guard current == generation else { return }
             self.health = health
-            ModelCatalog.shared.apply(capabilities)
+            catalog.apply(capabilities)
             state = .connected
         } catch {
             guard current == generation else { return }
             health = nil
-            ModelCatalog.shared.apply(.empty)
+            catalog.apply(.empty)
             switch error as? BackendError {
             case .unauthorized: state = .unauthorized
             case .unreachable(let url): state = .unreachable(url)
@@ -74,14 +87,14 @@ final class BackendConnection {
     }
 
     func refreshCapabilities() async {
-        guard let provider, let configuration else { return }
+        guard let provider else { return }
         let current = generation
         do {
             let health = try await provider.health(recheckAddons: false)
             let capabilities = try await provider.capabilities()
-            guard self.configuration == configuration, current == generation else { return }
+            guard current == generation else { return }
             self.health = health
-            ModelCatalog.shared.apply(capabilities)
+            catalog.apply(capabilities)
         } catch {
             Log.generation.warning("capability refresh failed: \(error.localizedDescription)")
         }
@@ -91,9 +104,9 @@ final class BackendConnection {
         generation &+= 1
         let current = generation
         state = .connecting
-        if LenoraBackendConfiguration.environmentURL(ProcessInfo.processInfo.environment) == nil {
+        if LenoraBackendConfiguration.environmentURL(environment) == nil {
             let trimmed = url.trimmingCharacters(in: .whitespacesAndNewlines)
-            UserDefaults.standard.set(trimmed.isEmpty ? nil : trimmed, forKey: LenoraBackendConfiguration.urlDefaultsKey)
+            defaults.set(trimmed.isEmpty ? nil : trimmed, forKey: LenoraBackendConfiguration.urlDefaultsKey)
         }
         if let token, !(await Self.storeToken(token)) {
             guard current == generation else { return }
@@ -110,7 +123,7 @@ final class BackendConnection {
         configuration = nil
         provider = nil
         health = nil
-        ModelCatalog.shared.apply(.empty)
+        catalog.apply(.empty)
     }
 
     @concurrent private static func loadToken() async -> String? {

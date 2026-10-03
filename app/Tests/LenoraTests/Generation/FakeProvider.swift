@@ -16,12 +16,15 @@ actor FakeProvider: GenerationProvider {
     private let hangsOnUpload: Bool
     private let uploadFailure: BackendError?
     private let submitError: BackendError?
+    private let healthFailure: BackendError?
+    private var capabilitiesResult: BackendCapabilities = .empty
 
     init(
         states: [JobState] = [], failure: BackendError? = nil, hangsOnSubmit: Bool = false, hangsOnUpload: Bool = false,
-        uploadFailure: BackendError? = nil, submitError: BackendError? = nil
+        uploadFailure: BackendError? = nil, submitError: BackendError? = nil, healthFailure: BackendError? = nil
     ) {
         self.states = states
+        self.healthFailure = healthFailure
         self.submitError = submitError
         self.failure = failure
         self.hangsOnSubmit = hangsOnSubmit
@@ -29,8 +32,17 @@ actor FakeProvider: GenerationProvider {
         self.uploadFailure = uploadFailure
     }
 
-    nonisolated func health(recheckAddons: Bool) async throws -> BackendHealth { BackendHealth(status: "ok", protocolVersion: "1", backendVersion: "t", adapters: []) }
-    nonisolated func capabilities() async throws -> BackendCapabilities { .empty }
+    func health(recheckAddons: Bool) async throws -> BackendHealth {
+        if let healthFailure { throw healthFailure }
+        return BackendHealth(status: "ok", protocolVersion: "1", backendVersion: "t", adapters: [])
+    }
+
+    func capabilities() async throws -> BackendCapabilities {
+        await arrive(.capabilities)
+        return capabilitiesResult
+    }
+
+    func setCapabilities(_ capabilities: BackendCapabilities) { capabilitiesResult = capabilities }
 
     func createUpload(model: String, contentType: String, byteCount: Int64, filename: String) async throws -> UploadTicket {
         await arrive(.createUpload)
@@ -73,7 +85,7 @@ actor FakeProvider: GenerationProvider {
 
     private var pollerWaiters: [CheckedContinuation<Void, Never>] = []
 
-    enum Call: Hashable, Sendable { case createUpload, upload, deleteAsset }
+    enum Call: Hashable, Sendable { case createUpload, upload, deleteAsset, capabilities }
 
     private var heldCalls: Set<Call> = []
     private var parkedCalls: [Call: [CheckedContinuation<Void, Never>]] = [:]

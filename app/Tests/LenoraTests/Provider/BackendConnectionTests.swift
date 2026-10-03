@@ -1,0 +1,76 @@
+import Foundation
+import Testing
+@testable import Lenora
+
+@MainActor
+struct BackendConnectionTests {
+    private final class ProviderQueue {
+        var providers: [FakeProvider]
+        init(_ providers: [FakeProvider]) { self.providers = providers }
+    }
+
+    private func connection(_ providers: [FakeProvider], catalog: ModelCatalog, defaults: UserDefaults) -> BackendConnection {
+        let queue = ProviderQueue(providers)
+        return BackendConnection(catalog: catalog, environment: [:], defaults: defaults, makeProvider: { _ in queue.providers.removeFirst() })
+    }
+
+    private func withDefaults(_ body: @MainActor (UserDefaults) async throws -> Void) async throws {
+        let suite = "BackendConnectionTests.\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        try await body(defaults)
+    }
+
+    private func fullCapabilities() throws -> BackendCapabilities {
+        try BackendCoding.decoder().decode(BackendCapabilities.self, from: ProtocolFixtures.data("Capabilities.cloudinaryFull"))
+    }
+
+    @Test func refreshAppliesCapabilitiesForTheCurrentConnection() async throws {
+        try await withDefaults { defaults in
+            let catalog = ModelCatalog()
+            let provider = FakeProvider()
+            let connection = connection([provider], catalog: catalog, defaults: defaults)
+            await connection.reload()
+            await provider.setCapabilities(try fullCapabilities())
+            await connection.refreshCapabilities()
+            #expect(!catalog.backendModels.isEmpty)
+        }
+    }
+
+    @Test func refreshInFlightAcrossAFailedReloadIsDropped() async throws {
+        try await withDefaults { defaults in
+            let catalog = ModelCatalog()
+            let url = try #require(URL(string: "http://127.0.0.1:8787"))
+            let first = FakeProvider(), second = FakeProvider(healthFailure: .unreachable(url))
+            let connection = connection([first, second], catalog: catalog, defaults: defaults)
+            await connection.reload()
+            await first.setCapabilities(try fullCapabilities())
+            await first.hold(.capabilities)
+            let refresh = Task { await connection.refreshCapabilities() }
+            await first.waitForCalls(.capabilities, count: 2)
+            await connection.reload()
+            #expect(connection.state == .unreachable(url))
+            await first.release(.capabilities)
+            await refresh.value
+            #expect(catalog.backendModels.isEmpty)
+        }
+    }
+
+    @Test func refreshInFlightAcrossAConfigurationChangeIsDropped() async throws {
+        try await withDefaults { defaults in
+            let catalog = ModelCatalog()
+            let first = FakeProvider(), second = FakeProvider()
+            let connection = connection([first, second], catalog: catalog, defaults: defaults)
+            await connection.reload()
+            await first.setCapabilities(try fullCapabilities())
+            await first.hold(.capabilities)
+            let refresh = Task { await connection.refreshCapabilities() }
+            await first.waitForCalls(.capabilities, count: 2)
+            await connection.save(url: "https://other.example.com", token: nil)
+            #expect(connection.configuration?.baseURL.host() == "other.example.com")
+            await first.release(.capabilities)
+            await refresh.value
+            #expect(catalog.backendModels.isEmpty)
+        }
+    }
+}
