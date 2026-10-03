@@ -21,7 +21,7 @@ def reframe_transformation(params: VideoReframeParams) -> str:
 async def plan_reframe(api: CloudinaryAPI, job: JobRequest) -> tuple[AssetRef, Asset, str, Estimate]:
     ref = parse_ref(job.inputs[0], "video")
     transformation = reframe_transformation(VideoReframeParams.model_validate(job.params))
-    asset = await api.asset(ref)
+    asset = await api.asset(ref, duration=True)
     return ref, asset, transformation, costs.reframe(asset.duration or 0)
 
 

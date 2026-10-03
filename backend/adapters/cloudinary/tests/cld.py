@@ -48,10 +48,13 @@ def job(kind: str, model: str, params: dict | None = None, inputs: list[AssetInp
 
 
 def admin(router, *, width=1000, height=1000, bytes_=1000, duration=None, asset_id="asset-1", video=False):
+    """Admin lookup mock; like Cloudinary, a video reports its duration only when media_metadata=true is requested."""
     body = {"asset_id": asset_id, "width": width, "height": height, "bytes": bytes_}
-    if duration is not None:
-        body["duration"] = duration
-    return router.get(ADMIN_VIDEO if video else ADMIN_IMAGE).respond(200, json=body)
+
+    def lookup(request):
+        with_metadata = video and request.url.params.get("media_metadata") == "true"
+        return httpx.Response(200, json={**body, "duration": duration} if with_metadata and duration is not None else body)
+    return router.get(ADMIN_VIDEO if video else ADMIN_IMAGE).mock(side_effect=lookup)
 
 
 def gen_task(status: str, *, asset_id="gen-asset", url="https://res.cloudinary.com/demo/image/upload/v1/lenora/out.png"):

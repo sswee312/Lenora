@@ -20,7 +20,7 @@ def create_app(settings: CoreSettings, load_registry: Callable[[httpx.AsyncClien
     async def lifespan(app: FastAPI):
         async with httpx.AsyncClient(timeout=HTTP_TIMEOUT, follow_redirects=False) as http:
             app.state.registry = load_registry(http)
-            await app.state.registry.start()
+            await app.state.registry.start(settings.provider_timeout_seconds)
             yield
 
     docs = "/docs" if settings.docs_enabled else None

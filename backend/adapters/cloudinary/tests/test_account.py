@@ -2,7 +2,7 @@
 import httpx
 import pytest
 
-from cld import ADMIN_IMAGE, API, IMAGE_REF, USAGE, job, run, settings
+from cld import ADMIN_IMAGE, API, CLOUD, IMAGE_REF, USAGE, job, run, settings
 from lenora_backend.errors import ProblemError
 from lenora_adapter_cloudinary.delivery import decode_url_job
 

@@ -7,6 +7,8 @@ from urllib.parse import quote
 
 from lenora_backend.kinds import EditOp
 
+PUBLIC_ID_PATTERN = r"lenora/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+
 CONTENT_TYPES = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp", "mp4": "video/mp4",
                  "mov": "video/quicktime", "webm": "video/webm", "m3u8": "application/vnd.apple.mpegurl"}
 
@@ -22,6 +24,29 @@ def signed_url(cloud_name: str, resource_type: str, transformation: str, path: s
     to_sign = f"{transformation}/{path}" if transformation else path
     digest = base64.urlsafe_b64encode(hashlib.sha1((to_sign + secret).encode()).digest()).decode()[:8]
     return f"https://res.cloudinary.com/{cloud_name}/{resource_type}/upload/s--{digest}--/{to_sign}"
+
+
+def _job_signature(domain: str, payload: str, secret: str) -> str:
+    digest = hmac.new(secret.encode(), f"{domain}:{payload}".encode(), hashlib.sha256).digest()
+    return base64.urlsafe_b64encode(digest).decode()[:22]
+
+
+def sign_job(domain: str, raw: str, secret: str) -> str:
+    """`<domain>:<payload>.<signature>`; the domain tag keeps one kind's signature from validating as another's."""
+    payload = base64.urlsafe_b64encode(raw.encode()).decode().rstrip("=")
+    return f"{domain}:{payload}.{_job_signature(domain, payload, secret)}"
+
+
+def verify_job(domain: str, job_id: str, secret: str) -> str | None:
+    """The signed payload text, only if this backend signed it for this domain."""
+    prefix, _, rest = job_id.partition(":")
+    payload, _, signature = rest.partition(".")
+    if prefix != domain or not payload or not hmac.compare_digest(_job_signature(domain, payload, secret).encode(), signature.encode()):
+        return None
+    try:
+        return base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4)).decode()
+    except (binascii.Error, UnicodeDecodeError, ValueError):
+        return None
 
 
 def _q(text: str) -> str:
@@ -50,7 +75,7 @@ def encode_url_job(url: str) -> str:
 
 
 DELIVERY_URL = re.compile(
-    r"https://res\.cloudinary\.com/([^/]+)/(image|video)/upload/s--[A-Za-z0-9_-]{8}--/(.+)/(lenora/[0-9a-f-]{36}\.([a-z0-9]+))")
+    rf"https://res\.cloudinary\.com/([^/]+)/(image|video)/upload/s--[A-Za-z0-9_-]{{8}}--/(.+)/({PUBLIC_ID_PATTERN}\.([a-z0-9]+))")
 
 
 def verify_url_job(job_id: str, cloud_name: str, secret: str) -> tuple[str, str] | None:

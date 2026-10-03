@@ -1,11 +1,6 @@
 """video.publish: one uploaded video becomes a stream, a download, a poster and optional vertical and teaser cuts."""
-import base64
-import binascii
-import hashlib
-import hmac
 import json
 import logging
-import re
 from dataclasses import dataclass
 
 from lenora_backend.errors import ProblemError
@@ -13,9 +8,9 @@ from lenora_backend.kinds import (
     Estimate, FailedOutput, JobError, JobRequest, JobResult, JobState, VideoPublishParams,
 )
 from lenora_adapter_cloudinary import costs
-from lenora_adapter_cloudinary.api import AssetRef, CloudinaryAPI, parse_ref, problem
+from lenora_adapter_cloudinary.api import PUBLIC_ID, AssetNotFound, AssetRef, CloudinaryAPI, RequestNotSent, parse_ref, problem
 from lenora_adapter_cloudinary.costs import Budget
-from lenora_adapter_cloudinary.delivery import CONTENT_TYPES, sign_upload, signed_url
+from lenora_adapter_cloudinary.delivery import CONTENT_TYPES, sign_job, sign_upload, signed_url, verify_job
 
 log = logging.getLogger("lenora.cloudinary")
 
@@ -27,7 +22,6 @@ EAGER_TIMEOUT_SECONDS = 15 * 60
 # Admin API lookups are rate limited (500/hour on Free); poll slowly.
 RETRY_AFTER = 30
 VIDEO_EXTENSIONS = ("mp4", "mov", "webm")
-PUBLIC_ID = re.compile(r"lenora/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
 
 
 @dataclass(frozen=True)
@@ -63,25 +57,17 @@ class PublishJob:
     submitted_at: int
 
 
-def _signature(payload: str, secret: str) -> str:
-    return base64.urlsafe_b64encode(hmac.new(secret.encode(), payload.encode(), hashlib.sha256).digest()).decode()[:22]
-
-
 def encode(job: PublishJob, secret: str) -> str:
     raw = json.dumps({"p": job.public_id, "x": job.extension, "v": job.vertical, "t": job.teaser, "s": job.submitted_at},
                      separators=(",", ":"))
-    payload = base64.urlsafe_b64encode(raw.encode()).decode().rstrip("=")
-    return f"publish:{payload}.{_signature(payload, secret)}"
+    return sign_job("publish", raw, secret)
 
 
 def decode(job_id: str, secret: str) -> PublishJob | None:
-    payload, _, signature = job_id.removeprefix("publish:").partition(".")
-    if not payload or not hmac.compare_digest(_signature(payload, secret).encode(), signature.encode()):
-        return None
     try:
-        data = json.loads(base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4)))
+        data = json.loads(verify_job("publish", job_id, secret) or "")
         job = PublishJob(data["p"], data["x"], data["v"], data["t"], data["s"])
-    except (binascii.Error, ValueError, KeyError, TypeError):
+    except (ValueError, KeyError, TypeError):
         return None
     valid = (
         isinstance(job.public_id, str) and PUBLIC_ID.fullmatch(job.public_id)
@@ -112,10 +98,14 @@ async def max_bytes(api: CloudinaryAPI) -> int:
     return limit_from_usage(usage)
 
 
-async def _signed_post(api: CloudinaryAPI, path: str, params: dict[str, str]):
+async def _post(api: CloudinaryAPI, path: str, params: dict[str, str]):
     secret = api.settings.api_secret.get_secret_value()
     form = {**params, "api_key": api.settings.api_key, "signature": sign_upload(params, secret)}
-    response = await api.request("POST", f"/v1_1/{api.settings.cloud_name}/video/{path}", data=form)
+    return await api.request("POST", f"/v1_1/{api.settings.cloud_name}/video/{path}", data=form)
+
+
+async def _signed_post(api: CloudinaryAPI, path: str, params: dict[str, str]):
+    response = await _post(api, path, params)
     if response.status_code != 200:
         raise problem(response)
     return response
@@ -124,7 +114,7 @@ async def _signed_post(api: CloudinaryAPI, path: str, params: dict[str, str]):
 async def submit(api: CloudinaryAPI, budget: Budget, job: JobRequest, limit: int, now: int) -> tuple[str, Estimate]:
     ref = parse_ref(job.inputs[0], "video")
     requested = VideoPublishParams.model_validate(job.params).outputs
-    asset = await api.asset(ref)
+    asset = await api.asset(ref, duration=True)
     if asset.bytes > limit:
         raise ProblemError("input_too_large", f"Publish accepts videos up to {limit} bytes; this one is {asset.bytes}.")
     if not asset.duration or asset.duration <= 0:
@@ -138,13 +128,17 @@ async def submit(api: CloudinaryAPI, budget: Budget, job: JobRequest, limit: int
     estimate = costs.publish(asset.duration, [o.role for o in pending])
     if pending:
         budget.reserve(estimate)
+        # A read timeout or cancellation may still have reached Cloudinary: refund only a refusal or an unsent request.
         try:
-            await _signed_post(api, "explicit", {
+            response = await _post(api, "explicit", {
                 "public_id": ref.public_id, "type": "upload", "eager": "|".join(o.eager for o in pending),
                 "eager_async": "true", "timestamp": str(now)})
-        except BaseException:
+        except RequestNotSent:
             budget.refund(estimate)
             raise
+        if response.status_code != 200:
+            budget.refund(estimate)
+            raise problem(response)
     published = PublishJob(ref.public_id, asset.format, requested.vertical, requested.teaserSeconds, now)
     return encode(published, api.settings.api_secret.get_secret_value()), estimate
 
@@ -160,9 +154,7 @@ async def status(api: CloudinaryAPI, job_id: str, now: int) -> JobState:
         raise ProblemError("not_found", "Unknown job.")
     try:
         asset = await api.asset(AssetRef("video", job.public_id))
-    except ProblemError as error:
-        if error.code != "invalid_request":
-            raise
+    except AssetNotFound:
         return JobState(jobId=job_id, status="failed", error=JobError(
             code="provider_error", message="The published video no longer exists.", retryable=False))
     results = [_result(api, "download", "", f"{job.public_id}.{job.extension}", job.extension)]

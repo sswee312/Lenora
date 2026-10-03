@@ -8,7 +8,7 @@ from cld import ADMIN_IMAGE, ADMIN_VIDEO, SECRET, UUID, VIDEO_REF, admin, job, r
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import AssetInput, ImageEditParams
 from lenora_adapter_cloudinary import signed_url
-from lenora_adapter_cloudinary.delivery import edit_transformation
+from lenora_adapter_cloudinary.delivery import edit_transformation, sign_job
 
 
 def url_of(job_id: str) -> str:
@@ -103,12 +103,12 @@ PUBLIC_ID = f"lenora/{UUID}"
 
 
 def raw_id(payload) -> str:
-    return "eager:" + base64.urlsafe_b64encode(json.dumps(payload).encode()).decode().rstrip("=")
+    return sign_job("eager", json.dumps(payload), SECRET)
 
 
 def test_eager_job_succeeds_once_derived_exists():
     from lenora_adapter_cloudinary import eager
-    job_id = eager.encode(PUBLIC_ID, TRANSFORMATION, 1000)
+    job_id = eager.encode(PUBLIC_ID, TRANSFORMATION, 1000, SECRET)
     body = {"asset_id": "a", "bytes": 1, "derived": [{"transformation": TRANSFORMATION}]}
     state = run(lambda a: a.status(job_id), mock=lambda r: r.get(ADMIN_VIDEO).respond(200, json=body))
     assert state.status == "succeeded"
@@ -118,8 +118,8 @@ def test_eager_job_succeeds_once_derived_exists():
 @pytest.mark.parametrize("now, status", [(1000 + 1800, "running"), (1000 + 1801, "failed")])
 def test_eager_job_fails_after_the_deadline(now, status):
     from lenora_adapter_cloudinary import eager
-    job_id = eager.encode(PUBLIC_ID, TRANSFORMATION, 1000)
-    state = run(lambda a: a.status(job_id), mock=lambda r: r.get(ADMIN_VIDEO).respond(200, json={"derived": []}), clock=lambda: now)
+    job_id = eager.encode(PUBLIC_ID, TRANSFORMATION, 1000, SECRET)
+    state = run(lambda a: a.status(job_id), mock=lambda r: r.get(ADMIN_VIDEO).respond(200, json={"asset_id": "a", "bytes": 1, "derived": []}), clock=lambda: now)
     assert state.status == status
     if status == "failed":
         assert (state.error.code, state.error.retryable) == ("provider_error", True)
@@ -129,6 +129,7 @@ def test_eager_job_fails_after_the_deadline(now, status):
     "eager:%%",
     raw_id({"p": "other/x", "t": TRANSFORMATION, "s": 1}),
     raw_id({"p": "lenora/../..", "t": TRANSFORMATION, "s": 1}),
+    raw_id({"p": "lenora/abc", "t": TRANSFORMATION, "s": 1}),
     raw_id({"p": "lenora/a?x=1", "t": TRANSFORMATION, "s": 1}),
     raw_id({"p": "lenora/a#x", "t": TRANSFORMATION, "s": 1}),
     raw_id({"p": PUBLIC_ID, "t": "ar_2:1,c_fill,g_auto", "s": 1}),
@@ -143,6 +144,53 @@ def test_eager_rejects_foreign_ids(job_id):
     with pytest.raises(ProblemError) as info:
         run(lambda a: a.status(job_id))
     assert info.value.code == "not_found"
+
+
+def forged_eager_ids() -> list[str]:
+    from lenora_adapter_cloudinary import eager
+    good = eager.encode(PUBLIC_ID, TRANSFORMATION, 1000, SECRET)
+    payload, signature = good.removeprefix("eager:").split(".")
+    raw = base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4)).decode()
+    return [
+        f"eager:{payload}", f"eager:{payload}x.{signature}", f"eager:{payload}.{signature[:-1]}A",
+        eager.encode(PUBLIC_ID, TRANSFORMATION, 1000, "other-secret"),
+        sign_job("publish", raw, SECRET).replace("publish:", "eager:", 1),
+        "eager:" + base64.urlsafe_b64encode(raw.encode()).decode().rstrip("="),
+    ]
+
+
+@pytest.mark.parametrize("job_id", forged_eager_ids())
+def test_unsigned_or_tampered_eager_ids_are_not_found_without_a_lookup(job_id):
+    route = {}
+
+    def mock(r):
+        route["get"] = r.get(ADMIN_VIDEO).respond(200, json={"asset_id": "a", "bytes": 1, "derived": []})
+    with pytest.raises(ProblemError) as info:
+        run(lambda a: a.status(job_id), mock=mock)
+    assert info.value.code == "not_found" and not route["get"].called
+
+
+def test_verify_job_requires_its_domain_prefix():
+    from lenora_adapter_cloudinary.delivery import verify_job
+    signed = sign_job("eager", "{}", SECRET)
+    assert verify_job("eager", signed, SECRET) == "{}"
+    assert verify_job("eager", signed.removeprefix("eager:"), SECRET) is None
+
+
+def test_eager_job_for_a_deleted_video_fails_without_retry():
+    from lenora_adapter_cloudinary import eager
+    job_id = eager.encode(PUBLIC_ID, TRANSFORMATION, 1000, SECRET)
+    state = run(lambda a: a.status(job_id), mock=lambda r: r.get(ADMIN_VIDEO).respond(404), clock=lambda: 1100.0)
+    assert (state.status, state.error.code, state.error.retryable) == ("failed", "provider_error", False)
+
+
+@pytest.mark.parametrize("status", [400, 422])
+def test_eager_invalid_lookup_is_not_a_deleted_video(status):
+    from lenora_adapter_cloudinary import eager
+    job_id = eager.encode(PUBLIC_ID, TRANSFORMATION, 1000, SECRET)
+    with pytest.raises(ProblemError) as info:
+        run(lambda a: a.status(job_id), mock=lambda r: r.get(ADMIN_VIDEO).respond(status, json={"error": {"message": "bad"}}))
+    assert info.value.code == "invalid_request"
 
 
 @pytest.mark.parametrize("size, eager_used", [(104857600, True), (104857601, False)])

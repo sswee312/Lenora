@@ -72,7 +72,7 @@ paths:
         default: { $ref: "#/components/responses/Problem" }
   /v1/assets/{assetRef}:
     parameters:
-      - { name: assetRef, in: path, required: true, schema: { type: string } }
+      - { name: assetRef, in: path, required: true, schema: { type: string }, description: "Opaque reference from the upload ticket. May contain slashes, which are sent unescaped." }
       - { name: model, in: query, required: true, schema: { type: string }, description: The model whose upload created the asset. }
     delete:
       operationId: deleteAsset
@@ -208,6 +208,7 @@ components:
         fileExtension: { type: string, pattern: "^[a-z0-9]+$" }
         role: { oneOf: [{ $ref: "#/components/schemas/ResultRole" }, { type: "null" }], description: "What the result is, for kinds with several outputs." }
     ResultRole:
+      type: string
       enum: [stream, download, poster, vertical, teaser]
     FailedOutput:
       type: object
