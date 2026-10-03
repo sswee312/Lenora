@@ -1,0 +1,12 @@
+{
+  "jobId": "openai:speech:MGYxZTJkM2M0YjVhNjk3ODg3OTZhNWI0YzNkMmUxZjA.AWLXzC15-Jl1MZDvw5UX-0",
+  "status": "succeeded",
+  "results": [
+    {
+      "url": "http://127.0.0.1:8787/v1/results/0f1e2d3c4b5a69788796a5b4c3d2e1f0",
+      "contentType": "audio/mpeg",
+      "fileExtension": "mp3"
+    }
+  ],
+  "error": null
+}

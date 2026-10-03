@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl, RootModel, model_validator
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, RootModel, TypeAdapter, model_validator
 
 Kind = Literal[
     "image.removeBackground", "image.generate", "image.edit", "image.upscale",
@@ -139,12 +139,14 @@ class JobState(BaseModel):
     error: JobError | None = None
     failedOutputs: list[FailedOutput] | None = None
     analysis: dict[str, Any] | None = None
+    text: str | None = None
     retryAfter: int | None = Field(default=None, exclude=True)
 
     def model_dump(self, **kwargs):
         data = super().model_dump(**kwargs)
-        if data.get("analysis") is None:
-            data.pop("analysis", None)
+        for key in ("analysis", "text"):
+            if data.get(key) is None:
+                data.pop(key, None)
         return data
 
 
@@ -164,6 +166,8 @@ class StrictParams(BaseModel):
 # Text that ends up inside a Cloudinary transformation URL; no URL or transformation syntax allowed.
 UrlPrompt = Annotated[str, Field(pattern=r"^[A-Za-z0-9 .'-]{1,100}$")]
 ImageAspect = Literal["1:1", "16:9", "9:16", "4:3", "3:4"]
+PROMPT_MAX = 1000
+SPEECH_MAX = 4096
 
 
 class RemoveBackgroundParams(StrictParams):
@@ -196,7 +200,7 @@ class ImageCropParams(StrictParams):
 
 
 class ImageGenerateParams(StrictParams):
-    prompt: str = Field(min_length=1, max_length=1000)
+    prompt: str = Field(min_length=1, max_length=PROMPT_MAX)
     aspectRatio: ImageAspect = "1:1"
     count: int = Field(default=1, ge=1, le=4)
     seed: int | None = Field(default=None, ge=0, le=2**31 - 1)
@@ -243,7 +247,7 @@ class ImageEditParams(RootModel[EditOp]):
 
 
 class VideoGenerateParams(StrictParams):
-    prompt: str = Field(min_length=1, max_length=1000)
+    prompt: str = Field(min_length=1, max_length=PROMPT_MAX)
     duration: Literal[4, 6, 8]
     resolution: Literal["720p", "1080p"] = "720p"
     aspectRatio: Literal["16:9", "9:16"] = "16:9"
@@ -272,6 +276,31 @@ class VideoPublishParams(StrictParams):
     outputs: PublishOutputs = Field(default_factory=PublishOutputs)
 
 
+class SpeechParams(StrictParams):
+    prompt: str = Field(min_length=1, max_length=SPEECH_MAX)
+    voice: str | None = Field(default=None, min_length=1, max_length=64)
+    styleInstructions: str | None = Field(default=None, max_length=1000)
+    format: Literal["mp3", "wav"] = "mp3"
+
+
+RewriteTarget = Literal["video.generate", "image.generate", "audio.speech", "image.edit"]
+
+
+class RewritePromptParams(StrictParams):
+    text: str = Field(min_length=1, max_length=SPEECH_MAX)
+    targetKind: RewriteTarget
+    guidance: str | None = Field(default=None, max_length=500)
+
+
+# The prompt rule of each rewrite target; a rewritten prompt must pass its target's rule.
+REWRITE_TARGET_PROMPTS: dict[str, TypeAdapter[str]] = {
+    "video.generate": TypeAdapter(Annotated[str, Field(min_length=1, max_length=PROMPT_MAX)]),
+    "image.generate": TypeAdapter(Annotated[str, Field(min_length=1, max_length=PROMPT_MAX)]),
+    "audio.speech": TypeAdapter(Annotated[str, Field(min_length=1, max_length=SPEECH_MAX)]),
+    "image.edit": TypeAdapter(UrlPrompt),
+}
+
+
 # Kinds the core can validate. A kind is accepted only once its params schema lands here.
 PARAMS: dict[str, type[BaseModel]] = {
     "image.removeBackground": RemoveBackgroundParams,
@@ -284,6 +313,8 @@ PARAMS: dict[str, type[BaseModel]] = {
     "video.generate": VideoGenerateParams,
     "video.reframe": VideoReframeParams,
     "video.publish": VideoPublishParams,
+    "audio.speech": SpeechParams,
+    "text.rewritePrompt": RewritePromptParams,
 }
 # Per kind: the most inputs allowed for each role; None is the role of an unlabelled input.
 INPUT_ROLES: dict[str, dict[str | None, int]] = {
@@ -297,6 +328,8 @@ INPUT_ROLES: dict[str, dict[str | None, int]] = {
     "video.generate": {"startFrame": 1, "endFrame": 1, "reference": 2},
     "video.reframe": {None: 1},
     "video.publish": {None: 1},
+    "audio.speech": {},
+    "text.rewritePrompt": {},
 }
 REQUIRED_INPUTS: dict[str, int] = {
     "image.removeBackground": 1, "image.edit": 1, "image.upscale": 1, "video.reframe": 1, "video.publish": 1,

@@ -1,0 +1,6 @@
+{
+  "kind": "text.rewritePrompt",
+  "model": "openai/rewrite",
+  "inputs": [],
+  "params": { "text": "a cat on a roof at night", "targetKind": "image.generate" }
+}

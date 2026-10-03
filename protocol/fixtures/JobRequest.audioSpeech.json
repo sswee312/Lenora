@@ -1,0 +1,6 @@
+{
+  "kind": "audio.speech",
+  "model": "openai/voice",
+  "inputs": [],
+  "params": { "prompt": "Welcome back to the channel.", "voice": "nova", "styleInstructions": "Warm and unhurried." }
+}
