@@ -134,6 +134,37 @@ struct TransformMediaToolTests {
         #expect(!fixture.undoManager.canUndo)
     }
 
+    @Test func upscaleToolReturnsStructuredRefusalForOversizedImage() async throws {
+        let fixture = try await EditorTestFixture.withImage(
+            width: 2049, height: 2048, catalog: EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")
+        )
+        defer { fixture.cleanup() }
+        let result = await fixture.executor.execute(name: "upscale_media", args: ["mediaRef": fixture.image.id], source: "mcp")
+        #expect(result.isError)
+        guard case .text(let text) = try #require(result.content.first) else { Issue.record("expected text"); return }
+        let error = try #require((try JSONSerialization.jsonObject(with: Data(text.utf8)) as? [String: Any])?["error"] as? [String: Any])
+        #expect(error["code"] as? String == "input_too_large")
+        #expect(fixture.editor.mediaAssets.count == 1)
+        #expect(!fixture.undoManager.canUndo)
+    }
+
+    @Test func landedUpscaleIsOneNamedUndoStep() async throws {
+        let result = JobResult(url: EditorTestFixture.servedImageURL, contentType: "image/png", fileExtension: "png")
+        let fixture = try await EditorTestFixture.withImage(
+            provider: FakeProvider(states: [jobState(.succeeded, results: [result])]),
+            catalog: EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")
+        )
+        defer { fixture.cleanup() }
+        let model = try #require(UpscaleModelConfig.models(for: .image, in: fixture.editor.generationService.catalog).first { $0.id == "cloudinary/upscale" })
+        let id = try #require(EditSubmitter.submitUpscale(asset: fixture.image, model: model, editor: fixture.editor))
+        let placeholder = try #require(fixture.editor.mediaAssets.first { $0.id == id })
+        try await fixture.waitUntil { fixture.isFinalized(placeholder) }
+        #expect(fixture.undoManager.undoActionName == "Upscale")
+
+        fixture.undoManager.undo()
+        #expect(fixture.editor.mediaAssets.map(\.id) == [fixture.image.id])
+    }
+
     @Test func upscaleAcceptsTheLargestImage() async throws {
         let fixture = try await EditorTestFixture.withImage(
             width: 2048, height: 2048, catalog: EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull")

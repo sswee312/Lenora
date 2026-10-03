@@ -470,7 +470,7 @@ extension ToolExecutor {
             throw ToolError("Source FPS is not available yet. Poll get_media until the asset is ready.")
         }
 
-        let available = UpscaleModelConfig.models(for: asset.type)
+        let available = UpscaleModelConfig.models(for: asset.type, in: editor.generationService.catalog)
         let model: UpscaleModelConfig
         if let requested = args.string("model") {
             guard let match = available.first(where: { $0.id == requested }) else {
@@ -491,9 +491,11 @@ extension ToolExecutor {
         let settings = try resolvedUpscaleSettings(args["settings"], model: model, source: asset)
         let trimmed = try trimmedSource(args, editor: editor, source: asset)
         if let refusal = await EditSubmitter.upscaleRefusal(asset: asset, modelId: model.id, editor: editor) {
-            throw ToolError(refusal.toolMessage)
+            return Self.transformError(code: refusal.code, message: refusal.toolMessage, field: nil)
         }
-        guard editor.mediaAssetsById[asset.id] === asset else { throw ToolError(MediaEditRefusal.sourceMissing.toolMessage) }
+        guard editor.mediaAssetsById[asset.id] === asset else {
+            return Self.transformError(code: MediaEditRefusal.sourceMissing.code, message: MediaEditRefusal.sourceMissing.toolMessage, field: nil)
+        }
         guard let placeholderId = EditSubmitter.submitUpscale(
             asset: asset, model: model, editor: editor, settings: settings, trimmedSource: trimmed
         ) else {

@@ -49,8 +49,8 @@ struct UpscaleModelConfig: Identifiable, Sendable {
     static var allModels: [UpscaleModelConfig] { ModelCatalog.shared.upscale }
 
     @MainActor
-    static func models(for type: ClipType) -> [UpscaleModelConfig] {
-        allModels.filter { $0.supportedTypes.contains(type) }
+    static func models(for type: ClipType, in catalog: ModelCatalog = .shared) -> [UpscaleModelConfig] {
+        catalog.upscale.filter { $0.supportedTypes.contains(type) }
     }
 
     let entry: CatalogEntry
