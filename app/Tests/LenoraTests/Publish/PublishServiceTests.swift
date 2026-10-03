@@ -279,6 +279,37 @@ struct PublishServiceTests {
         #expect(await provider.submitted.isEmpty)
     }
 
+    @Test func unpublishDuringTransferSubmitsNothingAndDeletesOnce() async throws {
+        let provider = FakeProvider(states: [])
+        await provider.hold(.upload)
+        await provider.hold(.deleteAsset)
+        let service = try makeService(provider)
+        let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await provider.waitForCalls(.upload)
+        let unpublishing = Task { try await service.unpublish(record.id) }
+        await provider.release(.upload)
+        await provider.waitForCalls(.deleteAsset)
+        await provider.release(.deleteAsset)
+        #expect(try await unpublishing.value == false)
+        #expect(await provider.submitted.isEmpty)
+        #expect(await provider.deletedAssets == ["ref-cut.mp4"])
+        #expect(service.publications.first?.status == .unpublished)
+    }
+
+    @Test func failedUnpublishAfterCancellingAnUploadSettlesTheRecord() async throws {
+        let provider = FakeProvider(states: [])
+        await provider.hold(.upload)
+        await provider.setDeleteResult(.failure(.problem(BackendProblem(code: "provider_error", detail: nil, status: 502, retryable: false))))
+        let service = try makeService(provider)
+        let record = try await service.publish(exportJobId: exportID, options: PublishOptions(), confirmPublic: true)
+        await provider.waitForCalls(.upload)
+        let unpublishing = Task { try await service.unpublish(record.id) }
+        await provider.release(.upload)
+        await #expect(throws: BackendError.self) { try await unpublishing.value }
+        let settled = try #require(service.publications.first)
+        #expect(settled.status == .failed && settled.assetRef == "ref-cut.mp4")
+    }
+
     @Test func addOutputsClearsTheFinishedJobId() throws {
         let service = try makeService(FakeProvider(states: []))
         let record = PublishFixtures.readyRecord()

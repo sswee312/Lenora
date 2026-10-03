@@ -228,7 +228,7 @@ final class ToolExecutor {
         case .upscaleMedia:  return try await upscaleMedia(editor, args)
         case .transformMedia: return try await transformMedia(editor, args)
         case .importMedia:   return try await importMedia(editor, args)
-        case .listModels:    return listModels(args)
+        case .listModels:    return listModels(editor, args)
         case .organizeMedia: return try organizeMedia(editor, args)
         case .setProjectSettings: return try setProjectSettings(editor, args)
         case .createTimeline:     return try createTimeline(editor, args)

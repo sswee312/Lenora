@@ -164,3 +164,31 @@ struct PublishToolTests {
         #expect(result.code == "cancelled")
     }
 }
+
+@MainActor
+struct PublishListModelsTests {
+    private func models(_ catalog: ModelCatalog, _ args: [String: Any] = [:]) async throws -> [[String: Any]] {
+        let fixture = try await EditorTestFixture.withImage(provider: FakeProvider(states: []), catalog: catalog)
+        defer { fixture.cleanup() }
+        let result = await fixture.executor.execute(name: "list_models", args: args, source: "mcp")
+        guard case .text(let text) = try #require(result.content.first) else { throw ToolError("expected text") }
+        let body = try #require(try JSONSerialization.jsonObject(with: Data(text.utf8)) as? [String: Any])
+        return try #require(body["models"] as? [[String: Any]])
+    }
+
+    @Test func listsThePublishModelWithItsLimits() async throws {
+        let all = try await models(EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull"))
+        let publish = try #require(all.first { $0["type"] as? String == "publish" })
+        #expect(publish["id"] is String && publish["maxBytes"] is Int)
+        #expect(publish["verticalAspects"] is [String])
+        let teaser = try #require(publish["teaserSeconds"] as? [String: Int])
+        #expect(teaser["min"] != nil && teaser["max"] != nil)
+        let filtered = try await models(EditorTestFixture.connectedCatalog("Capabilities.cloudinaryFull"), ["type": "publish"])
+        #expect(filtered.count == 1)
+    }
+
+    @Test func omitsThePublishModelWithoutPublishSupport() async throws {
+        let all = try await models(EditorTestFixture.connectedCatalog())
+        #expect(!all.contains { $0["type"] as? String == "publish" })
+    }
+}

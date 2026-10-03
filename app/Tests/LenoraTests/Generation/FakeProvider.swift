@@ -40,6 +40,7 @@ actor FakeProvider: GenerationProvider {
 
     func upload(_ fileURL: URL, ticket: UploadTicket) async throws {
         uploads.append(ticket.assetRef)
+        await arrive(.upload)
         if let uploadFailure { throw uploadFailure }
         if hangsOnUpload { try await Task.sleep(for: .seconds(3600)) }
     }
@@ -72,7 +73,7 @@ actor FakeProvider: GenerationProvider {
 
     private var pollerWaiters: [CheckedContinuation<Void, Never>] = []
 
-    enum Call: Hashable, Sendable { case createUpload, deleteAsset }
+    enum Call: Hashable, Sendable { case createUpload, upload, deleteAsset }
 
     private var heldCalls: Set<Call> = []
     private var parkedCalls: [Call: [CheckedContinuation<Void, Never>]] = [:]

@@ -96,14 +96,23 @@ final class PublishService {
         guard record.status != .unpublished else { return true }
         if let assetRef = record.assetRef {
             guard let provider = provider() else { throw PublishRefusal.unavailable }
+            // The run is stopped first so a finishing transfer can't queue billed outputs for a deleted asset.
+            let run = runs.removeValue(forKey: id)
+            run?.task.cancel()
+            await run?.task.value
             do {
                 try await provider.deleteAsset(model: record.model, assetRef: assetRef)
-            } catch BackendError.problem(let problem) where problem.code == "not_found" {}
+            } catch BackendError.problem(let problem) where problem.code == "not_found" {
+            } catch {
+                if run != nil { settleInterrupted(id) }
+                throw error
+            }
             guard isOpen else { throw CancellationError() }
+        } else {
+            runs.removeValue(forKey: id)?.task.cancel()
         }
         guard let index = publications.firstIndex(where: { $0.id == id }) else { throw PublishRefusal.notFound }
         guard publications[index].status != .unpublished else { return true }
-        runs.removeValue(forKey: id)?.task.cancel()
         publications[index].markUnpublished()
         onChange()
         return false
@@ -114,15 +123,25 @@ final class PublishService {
     func restore(_ records: [Publication]) {
         stopMonitoring()
         isOpen = true
-        publications = records.map { record in
-            var restored = record
-            if record.status == .uploading {
-                restored.markFailed(message: "Upload interrupted.")
-            } else if record.status == .processing, record.jobId == nil {
-                restored.failPendingOutputs(message: "Submit interrupted.")
-            }
-            return restored
+        publications = records.map(Self.settledAfterInterruption)
+        resumeMonitoring()
+    }
+
+    private static func settledAfterInterruption(_ record: Publication) -> Publication {
+        var settled = record
+        if record.status == .uploading {
+            settled.markFailed(message: "Upload interrupted.")
+        } else if record.status == .processing, record.jobId == nil {
+            settled.failPendingOutputs(message: "Submit interrupted.")
         }
+        return settled
+    }
+
+    /// An unpublish that stopped a run but then failed leaves the record as restore would find it.
+    private func settleInterrupted(_ id: UUID) {
+        guard let index = publications.firstIndex(where: { $0.id == id }) else { return }
+        publications[index] = Self.settledAfterInterruption(publications[index])
+        onChange()
         resumeMonitoring()
     }
 
