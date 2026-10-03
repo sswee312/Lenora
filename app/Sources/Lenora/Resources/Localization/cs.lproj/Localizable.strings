@@ -114,7 +114,9 @@
 "Bold" = "Tučné";
 "Both" = "Obojí";
 "Bottom" = "Dole";
-"Browse Community Skills ↗" = "Procházet komunitní dovednosti ↗";
+"Bundled" = "Přibalené";
+"Bundled Skills Unavailable" = "Přibalené dovednosti nejsou k dispozici";
+"Bundled skills are missing from this build." = "Přibalené dovednosti v tomto sestavení chybí.";
 "Buy" = "Koupit";
 "Buy $%lld" = "Koupit $%lld";
 "Buy more" = "Koupit další";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Barevné kruhy";
 "Color for the active word." = "Barva aktivního slova.";
 "Comments" = "Komentáře";
-"Community" = "Komunita";
-"Community Skills Unavailable" = "Komunitní dovednosti nejsou k dispozici";
 "Compatibility: %@" = "Kompatibilita: %@";
 "Completed" = "Dokončeno";
 "Connect an agent" = "Připojit Agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Vytvořit vnořenou časovou osu";
 "Create Video" = "Vytvořit video";
 "Create Video only works on images" = "Vytvořit video funguje jen u obrázků";
-"Create a skill or browse the Community collection." = "Vytvořte dovednost, nebo procházejte kolekci Komunita.";
+"Create a skill or browse the Bundled collection." = "Vytvořte dovednost, nebo procházejte kolekci Přibalené.";
 "Create matching sound for the video" = "Vytvořit zvuk odpovídající videu";
 "Creating…" = "Vytváření…";
 "Credits" = "Kredity";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Model Lip Sync není k dispozici";
 "Lip Sync only works on video" = "Lip Sync funguje jen u videa";
 "Lip Sync…" = "Lip Sync…";
-"Loading community skills" = "Načítání komunitních dovedností";
-"Loading community skills…" = "Načítání komunitních dovedností…";
+"Loading bundled skills" = "Načítání přibalených dovedností";
+"Loading bundled skills…" = "Načítání přibalených dovedností…";
 "Loading media metadata…" = "Načítání metadat médií…";
 "Loading models…" = "Načítání modelů…";
 "Loading source dimensions…" = "Načítání rozměrů zdroje…";
@@ -575,7 +575,7 @@
 "New timeline" = "Nová časová osa";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Novější formát časové osy s lepší podporou DaVinci Resolve a Final Cut Pro. Podporuje základní střihy, klíčové snímky a text, ale ne barvu, efekty, měkkost okraje ani zaoblení okraje.";
 "Next" = "Další";
-"No Community Skills" = "Žádné komunitní dovednosti";
+"No Bundled Skills" = "Žádné přibalené dovednosti";
 "No Installed Skills" = "Žádné nainstalované dovednosti";
 "No Matching Skills" = "Žádné odpovídající dovednosti";
 "No Tracks" = "Žádné stopy";
@@ -620,7 +620,7 @@
 "Open Project" = "Otevřít projekt";
 "Open Settings" = "Otevřít Nastavení";
 "Open Skills Folder" = "Otevřít složku dovedností";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Otevřete Dovednosti a procházejte komunitní postupy, vytvářejte vlastní nebo je přidejte dalším Agentům.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Otevřete Dovednosti a procházejte přibalené postupy, vytvářejte vlastní nebo je přidejte dalším Agentům.";
 "Open Timeline" = "Otevřít časovou osu";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Otevřete kartu AI úprava pro zvětšení rozlišení, úpravu promptem, vytvoření videa ze snímku nebo generování hudby, SFX, čištění a dabingu z klipu.";
 "OpenAI API Key" = "API klíč OpenAI";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Model přeformátování není k dispozici";
 "Reframe only works on video" = "Přeformátování funguje jen u videa";
 "Reframe…" = "Přeformátovat…";
-"Refresh" = "Obnovit";
-"Refresh Community Skills" = "Obnovit komunitní dovednosti";
-"Refresh to check for available skills." = "Obnovte pro kontrolu dostupných dovedností.";
 "Regenerate with the same parameters" = "Generovat znovu se stejnými parametry";
 "Relink Folder…" = "Znovu propojit složku…";
 "Relinked %lld of %lld offline clips." = "Znovu propojeno %lld z %lld offline klipů.";
@@ -808,7 +805,6 @@
 "Signed out" = "Odhlášeno";
 "Silence Detection" = "Detekce ticha";
 "Size" = "Velikost";
-"Skill actions" = "Akce dovednosti";
 "Skill instructions" = "Pokyny dovednosti";
 "Skill name" = "Název dovednosti";
 "Skill unavailable." = "Dovednost není k dispozici.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "Vybrané projekty budou přesunuty do Koše.";
 "The timeline settings changed. Close this sheet and try again." = "Nastavení časové osy se změnilo. Zavřete tento list a zkuste to znovu.";
 "Theme" = "Motiv";
+"This build includes no skills." = "Toto sestavení neobsahuje žádné dovednosti.";
 "This is where all your footage and assets live." = "Tady jsou všechny záběry a materiály.";
 "This is your preview panel to play a selected media or the whole timeline." = "Náhledový panel pro přehrání vybraného média nebo celé časové osy.";
 "This job can't be cancelled. It will finish on its own." = "Tuto úlohu nelze zrušit. Dokončí se sama.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Oříznout konec k přehrávací hlavě (W)";
 "Trim Start to Playhead" = "Oříznout začátek k přehrávací hlavě";
 "Trim Start to Playhead (Q)" = "Oříznout začátek k přehrávací hlavě (Q)";
-"Try Again" = "Zkusit znovu";
 "Try again." = "Zkuste to znovu.";
 "Try another search." = "Zkuste jiné hledání.";
 "Turn off to skip audio generation." = "Vypněte, chcete-li přeskočit generování audia.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Video model není k dispozici";
 "Video to Music" = "Video na hudbu";
 "View" = "Zobrazení";
+"View Skill Sources ↗" = "Zobrazit zdroje dovedností ↗";
 "View Skills" = "Zobrazit dovednosti";
 "Vignette" = "Vinětace";
 "Visual search model download failed. Check your connection and try again." = "Stažení modelu vizuálního vyhledávání selhalo. Zkontrolujte připojení a zkuste to znovu.";

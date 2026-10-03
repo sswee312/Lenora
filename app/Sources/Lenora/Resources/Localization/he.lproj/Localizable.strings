@@ -114,7 +114,9 @@
 "Bold" = "מודגש";
 "Both" = "שניהם";
 "Bottom" = "למטה";
-"Browse Community Skills ↗" = "עיין במיומנויות הקהילה ↗";
+"Bundled" = "מובנות";
+"Bundled Skills Unavailable" = "המיומנויות המובנות אינן זמינות";
+"Bundled skills are missing from this build." = "המיומנויות המובנות חסרות בגרסה זו.";
 "Buy" = "קנה";
 "Buy $%lld" = "קנה ⁨$%lld⁩";
 "Buy more" = "קנה עוד";
@@ -197,8 +199,6 @@
 "Color Wheels" = "גלגלי צבע";
 "Color for the active word." = "צבע למילה הפעילה.";
 "Comments" = "הערות";
-"Community" = "קהילה";
-"Community Skills Unavailable" = "מיומנויות הקהילה אינן זמינות";
 "Compatibility: %@" = "תאימות: ⁨%@⁩";
 "Completed" = "הושלם";
 "Connect an agent" = "חבר Agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "צור ציר זמן מקונן";
 "Create Video" = "צור וידאו";
 "Create Video only works on images" = "«צור וידאו» פועל על תמונות בלבד";
-"Create a skill or browse the Community collection." = "צור מיומנות או עיין באוסף הקהילה.";
+"Create a skill or browse the Bundled collection." = "צור מיומנות או עיין באוסף המובנה.";
 "Create matching sound for the video" = "צור סאונד תואם לווידאו";
 "Creating…" = "יוצר…";
 "Credits" = "קרדיטים";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "מודל סנכרון שפתיים אינו זמין";
 "Lip Sync only works on video" = "סנכרון שפתיים פועל על וידאו בלבד";
 "Lip Sync…" = "סנכרון שפתיים…";
-"Loading community skills" = "טוען מיומנויות קהילה";
-"Loading community skills…" = "טוען מיומנויות קהילה…";
+"Loading bundled skills" = "טוען מיומנויות מובנות";
+"Loading bundled skills…" = "טוען מיומנויות מובנות…";
 "Loading media metadata…" = "טוען מטא-נתוני מדיה…";
 "Loading models…" = "טוען מודלים…";
 "Loading source dimensions…" = "טוען ממדי מקור…";
@@ -575,7 +575,7 @@
 "New timeline" = "ציר זמן חדש";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "פורמט ציר זמן חדש יותר, עם תמיכה טובה יותר ב-DaVinci Resolve וב-Final Cut Pro. תומך בעריכות בסיסיות, בפריימי מפתח ובטקסט, אך לא בצבע, באפקטים, בריכוך קצה או בעיגול קצה.";
 "Next" = "הבא";
-"No Community Skills" = "אין מיומנויות קהילה";
+"No Bundled Skills" = "אין מיומנויות מובנות";
 "No Installed Skills" = "אין מיומנויות מותקנות";
 "No Matching Skills" = "אין מיומנויות תואמות";
 "No Tracks" = "אין רצועות";
@@ -620,7 +620,7 @@
 "Open Project" = "פתח פרויקט";
 "Open Settings" = "פתח הגדרות";
 "Open Skills Folder" = "פתח תיקיית מיומנויות";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "פתח מיומנויות כדי לעיין במדריכי הקהילה, ליצור משלך, או להוסיף אותן ל-Agent חיצוניים.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "פתח מיומנויות כדי לעיין במדריכים המובנים, ליצור משלך, או להוסיף אותן ל-Agent אחרים.";
 "Open Timeline" = "פתח ציר זמן";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "פתח את לשונית עריכת AI כדי להגדיל רזולוציה, לערוך לפי הנחיה, ליצור וידאו מפריים, או להפיק מוזיקה, SFX, ניקוי ודיבוב מהקליפ.";
 "OpenAI API Key" = "מפתח API של OpenAI";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "מודל מסגור מחדש אינו זמין";
 "Reframe only works on video" = "מסגור מחדש פועל על וידאו בלבד";
 "Reframe…" = "מסגר מחדש…";
-"Refresh" = "רענן";
-"Refresh Community Skills" = "רענן מיומנויות קהילה";
-"Refresh to check for available skills." = "רענן כדי לבדוק מיומנויות זמינות.";
 "Regenerate with the same parameters" = "הפק מחדש באותם פרמטרים";
 "Relink Folder…" = "קשר תיקייה מחדש…";
 "Relinked %lld of %lld offline clips." = "קושרו מחדש ⁨%lld⁩ מתוך ⁨%lld⁩ קליפים לא מקוונים.";
@@ -808,7 +805,6 @@
 "Signed out" = "מנותק";
 "Silence Detection" = "זיהוי שקט";
 "Size" = "גודל";
-"Skill actions" = "פעולות מיומנות";
 "Skill instructions" = "הוראות מיומנות";
 "Skill name" = "שם מיומנות";
 "Skill unavailable." = "המיומנות אינה זמינה.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "הפרויקטים שנבחרו יועברו לפח.";
 "The timeline settings changed. Close this sheet and try again." = "הגדרות ציר הזמן השתנו. סגור גיליון זה ונסה שוב.";
 "Theme" = "ערכת נושא";
+"This build includes no skills." = "גרסה זו אינה כוללת מיומנויות.";
 "This is where all your footage and assets live." = "כאן נמצאים כל הצילומים והנכסים.";
 "This is your preview panel to play a selected media or the whole timeline." = "זה לוח התצוגה המקדימה לניגון מדיה שנבחרה או ציר הזמן כולו.";
 "This job can't be cancelled. It will finish on its own." = "לא ניתן לבטל משימה זו. היא תסתיים מעצמה.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "חתוך סוף לראש הניגון ⁨(W)⁩";
 "Trim Start to Playhead" = "חתוך התחלה לראש הניגון";
 "Trim Start to Playhead (Q)" = "חתוך התחלה לראש הניגון ⁨(Q)⁩";
-"Try Again" = "נסה שוב";
 "Try again." = "נסה שוב.";
 "Try another search." = "נסה חיפוש אחר.";
 "Turn off to skip audio generation." = "כבה כדי לדלג על הפקת שמע.";
@@ -978,6 +974,7 @@
 "Video model not available" = "מודל וידאו אינו זמין";
 "Video to Music" = "וידאו למוזיקה";
 "View" = "תצוגה";
+"View Skill Sources ↗" = "הצג מקורות מיומנויות ↗";
 "View Skills" = "הצג מיומנויות";
 "Vignette" = "ויניטה";
 "Visual search model download failed. Check your connection and try again." = "הורדת מודל החיפוש החזותי נכשלה. בדוק את החיבור ונסה שוב.";

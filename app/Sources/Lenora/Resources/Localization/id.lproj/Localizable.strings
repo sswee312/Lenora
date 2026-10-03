@@ -114,7 +114,9 @@
 "Bold" = "Tebal";
 "Both" = "Keduanya";
 "Bottom" = "Bawah";
-"Browse Community Skills ↗" = "Jelajahi Skill Komunitas ↗";
+"Bundled" = "Bawaan";
+"Bundled Skills Unavailable" = "Skill Bawaan Tidak Tersedia";
+"Bundled skills are missing from this build." = "Skill bawaan tidak ada di build ini.";
 "Buy" = "Beli";
 "Buy $%lld" = "Beli $%lld";
 "Buy more" = "Beli lagi";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Roda Warna";
 "Color for the active word." = "Warna untuk kata aktif.";
 "Comments" = "Komentar";
-"Community" = "Komunitas";
-"Community Skills Unavailable" = "Skill Komunitas Tidak Tersedia";
 "Compatibility: %@" = "Kompatibilitas: %@";
 "Completed" = "Selesai";
 "Connect an agent" = "Hubungkan Agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Buat Linimasa Tersarang";
 "Create Video" = "Buat Video";
 "Create Video only works on images" = "Buat Video hanya berfungsi pada gambar";
-"Create a skill or browse the Community collection." = "Buat skill atau jelajahi koleksi Komunitas.";
+"Create a skill or browse the Bundled collection." = "Buat skill atau jelajahi koleksi Bawaan.";
 "Create matching sound for the video" = "Buat suara yang sesuai untuk video";
 "Creating…" = "Membuat…";
 "Credits" = "Kredit";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Model Lip Sync tidak tersedia";
 "Lip Sync only works on video" = "Lip Sync hanya berfungsi pada video";
 "Lip Sync…" = "Lip Sync…";
-"Loading community skills" = "Memuat skill komunitas";
-"Loading community skills…" = "Memuat skill komunitas…";
+"Loading bundled skills" = "Memuat skill bawaan";
+"Loading bundled skills…" = "Memuat skill bawaan…";
 "Loading media metadata…" = "Memuat metadata media…";
 "Loading models…" = "Memuat model…";
 "Loading source dimensions…" = "Memuat dimensi sumber…";
@@ -575,7 +575,7 @@
 "New timeline" = "Linimasa baru";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Format linimasa yang lebih baru dengan dukungan lebih baik untuk DaVinci Resolve dan Final Cut Pro. Mendukung edit dasar, keyframe, dan teks, tetapi tidak warna, efek, kelembutan tepi, atau pembulatan tepi.";
 "Next" = "Berikutnya";
-"No Community Skills" = "Tidak Ada Skill Komunitas";
+"No Bundled Skills" = "Tidak Ada Skill Bawaan";
 "No Installed Skills" = "Tidak Ada Skill Terinstal";
 "No Matching Skills" = "Tidak Ada Skill yang Cocok";
 "No Tracks" = "Tidak Ada Trek";
@@ -620,7 +620,7 @@
 "Open Project" = "Buka Proyek";
 "Open Settings" = "Buka Pengaturan";
 "Open Skills Folder" = "Buka Folder Skill";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Buka Skill untuk menjelajahi playbook komunitas, membuat milik Anda, atau menambahkannya ke Agent lain.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Buka Skill untuk menjelajahi playbook bawaan, membuat milik Anda, atau menambahkannya ke Agent lain.";
 "Open Timeline" = "Buka Linimasa";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Buka tab Edit AI untuk upscale, edit dengan prompt, membuat video dari frame, atau menghasilkan musik, SFX, pembersihan, dan dubbing dari klip.";
 "OpenAI API Key" = "Kunci API OpenAI";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Model Bingkai ulang tidak tersedia";
 "Reframe only works on video" = "Bingkai ulang hanya berfungsi pada video";
 "Reframe…" = "Bingkai ulang…";
-"Refresh" = "Segarkan";
-"Refresh Community Skills" = "Segarkan Skill Komunitas";
-"Refresh to check for available skills." = "Segarkan untuk memeriksa skill yang tersedia.";
 "Regenerate with the same parameters" = "Hasilkan ulang dengan parameter yang sama";
 "Relink Folder…" = "Tautkan Ulang Folder…";
 "Relinked %lld of %lld offline clips." = "Menautkan ulang %lld dari %lld klip offline.";
@@ -808,7 +805,6 @@
 "Signed out" = "Sudah keluar";
 "Silence Detection" = "Deteksi Keheningan";
 "Size" = "Ukuran";
-"Skill actions" = "Tindakan skill";
 "Skill instructions" = "Instruksi skill";
 "Skill name" = "Nama skill";
 "Skill unavailable." = "Skill tidak tersedia.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "Proyek yang dipilih akan dipindahkan ke Tong Sampah.";
 "The timeline settings changed. Close this sheet and try again." = "Pengaturan linimasa berubah. Tutup lembar ini dan coba lagi.";
 "Theme" = "Tema";
+"This build includes no skills." = "Build ini tidak menyertakan skill.";
 "This is where all your footage and assets live." = "Di sinilah semua rekaman dan aset Anda.";
 "This is your preview panel to play a selected media or the whole timeline." = "Panel pratinjau untuk memutar media yang dipilih atau seluruh linimasa.";
 "This job can't be cancelled. It will finish on its own." = "Tugas ini tidak dapat dibatalkan. Tugas akan selesai dengan sendirinya.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Pangkas Akhir ke Kepala Putar (W)";
 "Trim Start to Playhead" = "Pangkas Awal ke Kepala Putar";
 "Trim Start to Playhead (Q)" = "Pangkas Awal ke Kepala Putar (Q)";
-"Try Again" = "Coba Lagi";
 "Try again." = "Coba lagi.";
 "Try another search." = "Coba pencarian lain.";
 "Turn off to skip audio generation." = "Nonaktifkan untuk melewati generasi audio.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Model Video tidak tersedia";
 "Video to Music" = "Video ke Musik";
 "View" = "Tampilkan";
+"View Skill Sources ↗" = "Lihat Sumber Skill ↗";
 "View Skills" = "Lihat Skill";
 "Vignette" = "Vignette";
 "Visual search model download failed. Check your connection and try again." = "Pengunduhan model pencarian visual gagal. Periksa koneksi Anda dan coba lagi.";

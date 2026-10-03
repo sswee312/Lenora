@@ -114,7 +114,9 @@
 "Bold" = "Lihavoitu";
 "Both" = "Molemmat";
 "Bottom" = "Alareuna";
-"Browse Community Skills ↗" = "Selaa yhteisön taitoja ↗";
+"Bundled" = "Mukana tulevat";
+"Bundled Skills Unavailable" = "Mukana tulevat taidot eivät ole käytettävissä";
+"Bundled skills are missing from this build." = "Mukana tulevat taidot puuttuvat tästä versiosta.";
 "Buy" = "Osta";
 "Buy $%lld" = "Osta $%lld";
 "Buy more" = "Osta lisää";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Väripyörät";
 "Color for the active word." = "Aktiivisen sanan väri.";
 "Comments" = "Kommentit";
-"Community" = "Yhteisö";
-"Community Skills Unavailable" = "Yhteisön taidot eivät ole käytettävissä";
 "Compatibility: %@" = "Yhteensopivuus: %@";
 "Completed" = "Valmis";
 "Connect an agent" = "Yhdistä Agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Luo sisäkkäinen aikajana";
 "Create Video" = "Luo video";
 "Create Video only works on images" = "Luo video toimii vain kuville";
-"Create a skill or browse the Community collection." = "Luo taito tai selaa yhteisön kokoelmaa.";
+"Create a skill or browse the Bundled collection." = "Luo taito tai selaa mukana tulevaa kokoelmaa.";
 "Create matching sound for the video" = "Luo videoon sopiva ääni";
 "Creating…" = "Luodaan…";
 "Credits" = "Kreditit";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Huulisynkronointimalli ei ole käytettävissä";
 "Lip Sync only works on video" = "Huulisynkronointi toimii vain videolle";
 "Lip Sync…" = "Huulisynkronointi…";
-"Loading community skills" = "Ladataan yhteisön taitoja";
-"Loading community skills…" = "Ladataan yhteisön taitoja…";
+"Loading bundled skills" = "Ladataan mukana tulevia taitoja";
+"Loading bundled skills…" = "Ladataan mukana tulevia taitoja…";
 "Loading media metadata…" = "Ladataan median metatietoja…";
 "Loading models…" = "Ladataan malleja…";
 "Loading source dimensions…" = "Ladataan lähteen mittoja…";
@@ -575,7 +575,7 @@
 "New timeline" = "Uusi aikajana";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Uudempi aikajanaformaatti, joka tukee paremmin DaVinci Resolvea ja Final Cut Prota. Tukee perusmuokkauksia, avainkuvia ja tekstiä, mutta ei väriä, tehosteita, reunojen pehmeyttä eikä reunojen pyöristystä.";
 "Next" = "Seuraava";
-"No Community Skills" = "Ei yhteisön taitoja";
+"No Bundled Skills" = "Ei mukana tulevia taitoja";
 "No Installed Skills" = "Ei asennettuja taitoja";
 "No Matching Skills" = "Ei vastaavia taitoja";
 "No Tracks" = "Ei raitoja";
@@ -620,7 +620,7 @@
 "Open Project" = "Avaa projekti";
 "Open Settings" = "Avaa asetukset";
 "Open Skills Folder" = "Avaa taitokansio";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Avaa Taidot selataksesi yhteisön työnkulkuja, luodaksesi omia tai lisätäksesi niitä muihin Agentteihin.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Avaa Taidot selataksesi mukana tulevia työnkulkuja, luodaksesi omia tai lisätäksesi niitä muihin Agentteihin.";
 "Open Timeline" = "Avaa aikajana";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Avaa AI-muokkaus-välilehti skaalataksesi ylös, muokataksesi kehotteella, luodaksesi videon ruudusta tai generoidaksesi musiikkia, SFX:ää, puhdistusta ja dubbausta leikkeestä.";
 "OpenAI API Key" = "OpenAI API -avain";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Uudelleenkehysmalli ei ole käytettävissä";
 "Reframe only works on video" = "Uudelleenkehys toimii vain videolle";
 "Reframe…" = "Uudelleenkehystä…";
-"Refresh" = "Päivitä";
-"Refresh Community Skills" = "Päivitä yhteisön taidot";
-"Refresh to check for available skills." = "Päivitä tarkistaaksesi käytettävissä olevat taidot.";
 "Regenerate with the same parameters" = "Generoi uudelleen samoilla parametreilla";
 "Relink Folder…" = "Linkitä kansio uudelleen…";
 "Relinked %lld of %lld offline clips." = "Linkitettiin uudelleen %lld / %lld offline-leikettä.";
@@ -808,7 +805,6 @@
 "Signed out" = "Kirjautunut ulos";
 "Silence Detection" = "Hiljaisuuden tunnistus";
 "Size" = "Koko";
-"Skill actions" = "Taitotoiminnot";
 "Skill instructions" = "Taidon ohjeet";
 "Skill name" = "Taidon nimi";
 "Skill unavailable." = "Taito ei ole käytettävissä.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "Valitut projektit siirretään roskakoriin.";
 "The timeline settings changed. Close this sheet and try again." = "Aikajanan asetukset muuttuivat. Sulje tämä arkki ja yritä uudelleen.";
 "Theme" = "Teema";
+"This build includes no skills." = "Tämä versio ei sisällä taitoja.";
 "This is where all your footage and assets live." = "Tässä on kaikki kuvamateriaali ja aineistot.";
 "This is your preview panel to play a selected media or the whole timeline." = "Tämä on esikatselupaneeli valitun median tai koko aikajanan toistoon.";
 "This job can't be cancelled. It will finish on its own." = "Tätä työtä ei voi peruuttaa. Se valmistuu itsestään.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Rajaa loppu toistopäähän (W)";
 "Trim Start to Playhead" = "Rajaa alku toistopäähän";
 "Trim Start to Playhead (Q)" = "Rajaa alku toistopäähän (Q)";
-"Try Again" = "Yritä uudelleen";
 "Try again." = "Yritä uudelleen.";
 "Try another search." = "Kokeile toista hakua.";
 "Turn off to skip audio generation." = "Poista käytöstä ohittaaksesi äänen generoinnin.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Videomalli ei ole käytettävissä";
 "Video to Music" = "Videosta musiikiksi";
 "View" = "Näytä";
+"View Skill Sources ↗" = "Näytä taitojen lähteet ↗";
 "View Skills" = "Näytä taidot";
 "Vignette" = "Vinjetti";
 "Visual search model download failed. Check your connection and try again." = "Visuaalisen hakumallin lataus epäonnistui. Tarkista yhteys ja yritä uudelleen.";

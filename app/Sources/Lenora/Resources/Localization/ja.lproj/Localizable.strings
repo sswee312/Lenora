@@ -114,7 +114,9 @@
 "Bold" = "太字";
 "Both" = "両方";
 "Bottom" = "下";
-"Browse Community Skills ↗" = "コミュニティスキルを見る ↗";
+"Bundled" = "同梱";
+"Bundled Skills Unavailable" = "同梱スキルを利用できません";
+"Bundled skills are missing from this build." = "このビルドには同梱スキルが含まれていません。";
 "Buy" = "購入";
 "Buy $%lld" = "$%lldで購入";
 "Buy more" = "さらに購入";
@@ -197,8 +199,6 @@
 "Color Wheels" = "カラーホイール";
 "Color for the active word." = "発話中の単語のカラーです。";
 "Comments" = "コメント";
-"Community" = "コミュニティ";
-"Community Skills Unavailable" = "コミュニティスキルを利用できません";
 "Compatibility: %@" = "互換性：%@";
 "Completed" = "完了";
 "Connect an agent" = "エージェントを接続";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "ネストされたタイムラインを作成";
 "Create Video" = "ビデオを作成";
 "Create Video only works on images" = "「ビデオを作成」は画像でのみ使用できます";
-"Create a skill or browse the Community collection." = "スキルを作成するか、コミュニティコレクションを参照してください。";
+"Create a skill or browse the Bundled collection." = "スキルを作成するか、同梱コレクションを参照してください。";
 "Create matching sound for the video" = "ビデオに合うサウンドを作成";
 "Creating…" = "作成中…";
 "Credits" = "クレジット";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "リップシンクモデルを利用できません";
 "Lip Sync only works on video" = "リップシンクはビデオでのみ使用できます";
 "Lip Sync…" = "リップシンク…";
-"Loading community skills" = "コミュニティスキルを読み込み中";
-"Loading community skills…" = "コミュニティスキルを読み込み中…";
+"Loading bundled skills" = "同梱スキルを読み込み中";
+"Loading bundled skills…" = "同梱スキルを読み込み中…";
 "Loading media metadata…" = "メディアのメタデータを読み込み中…";
 "Loading models…" = "モデルを読み込み中…";
 "Loading source dimensions…" = "ソースのサイズを読み込み中…";
@@ -575,7 +575,7 @@
 "New timeline" = "新規タイムライン";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "DaVinci ResolveとFinal Cut Proとの互換性が向上した新しいタイムライン形式です。基本的な編集、キーフレーム、テキストに対応していますが、カラー、エフェクト、エッジの柔らかさ、エッジの丸みには対応していません。";
 "Next" = "次へ";
-"No Community Skills" = "コミュニティスキルがありません";
+"No Bundled Skills" = "同梱スキルがありません";
 "No Installed Skills" = "インストール済みのスキルがありません";
 "No Matching Skills" = "一致するスキルがありません";
 "No Tracks" = "トラックがありません";
@@ -620,7 +620,7 @@
 "Open Project" = "プロジェクトを開く";
 "Open Settings" = "設定を開く";
 "Open Skills Folder" = "スキルフォルダを開く";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "スキルを開いてコミュニティのプレイブックを参照したり、独自のスキルを作成したり、ほかのエージェントに追加したりできます。";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "スキルを開いて同梱のプレイブックを参照したり、独自のスキルを作成したり、ほかのエージェントに追加したりできます。";
 "Open Timeline" = "タイムラインを開く";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "「AI編集」タブを開いて、アップスケール、プロンプト編集、フレームからのビデオ作成、またはクリップからの音楽・SFX・クリーンアップ・吹き替え生成を行えます。";
 "OpenAI API Key" = "OpenAI APIキー";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "リフレームモデルを利用できません";
 "Reframe only works on video" = "リフレームはビデオでのみ使用できます";
 "Reframe…" = "リフレーム…";
-"Refresh" = "更新";
-"Refresh Community Skills" = "コミュニティスキルを更新";
-"Refresh to check for available skills." = "更新して利用可能なスキルを確認してください。";
 "Regenerate with the same parameters" = "同じパラメータで再生成";
 "Relink Folder…" = "フォルダを再リンク…";
 "Relinked %lld of %lld offline clips." = "オフラインクリップ%lld個のうち%lld個を再リンクしました。";
@@ -808,7 +805,6 @@
 "Signed out" = "サインアウト済み";
 "Silence Detection" = "無音検出";
 "Size" = "サイズ";
-"Skill actions" = "スキル操作";
 "Skill instructions" = "スキルの手順";
 "Skill name" = "スキル名";
 "Skill unavailable." = "スキルを利用できません。";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "選択したプロジェクトはゴミ箱に移動されます。";
 "The timeline settings changed. Close this sheet and try again." = "タイムライン設定が変更されました。このシートを閉じてもう一度お試しください。";
 "Theme" = "テーマ";
+"This build includes no skills." = "このビルドにはスキルが含まれていません。";
 "This is where all your footage and assets live." = "すべての映像素材とアセットはここに表示されます。";
 "This is your preview panel to play a selected media or the whole timeline." = "これは選択したメディアまたはタイムライン全体を再生するプレビューパネルです。";
 "This job can't be cancelled. It will finish on its own." = "このジョブはキャンセルできません。自動的に完了します。";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "終了位置を再生ヘッドまでトリム（W）";
 "Trim Start to Playhead" = "開始位置を再生ヘッドまでトリム";
 "Trim Start to Playhead (Q)" = "開始位置を再生ヘッドまでトリム（Q）";
-"Try Again" = "もう一度試す";
 "Try again." = "もう一度お試しください。";
 "Try another search." = "別の条件で検索してください。";
 "Turn off to skip audio generation." = "オフにするとオーディオ生成を省略します。";
@@ -978,6 +974,7 @@
 "Video model not available" = "ビデオモデルを利用できません";
 "Video to Music" = "ビデオから音楽";
 "View" = "表示";
+"View Skill Sources ↗" = "スキルのソースを表示 ↗";
 "View Skills" = "スキルを表示";
 "Vignette" = "ビネット";
 "Visual search model download failed. Check your connection and try again." = "ビジュアル検索モデルのダウンロードに失敗しました。接続を確認してもう一度お試しください。";

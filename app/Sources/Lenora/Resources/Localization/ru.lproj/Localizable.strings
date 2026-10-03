@@ -114,7 +114,9 @@
 "Bold" = "Полужирный";
 "Both" = "Оба";
 "Bottom" = "Снизу";
-"Browse Community Skills ↗" = "Навыки сообщества ↗";
+"Bundled" = "Встроенные";
+"Bundled Skills Unavailable" = "Встроенные навыки недоступны";
+"Bundled skills are missing from this build." = "Встроенные навыки отсутствуют в этой сборке.";
 "Buy" = "Купить";
 "Buy $%lld" = "Купить за $%lld";
 "Buy more" = "Купить ещё";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Цветовые круги";
 "Color for the active word." = "Цвет активного слова.";
 "Comments" = "Комментарии";
-"Community" = "Сообщество";
-"Community Skills Unavailable" = "Навыки сообщества недоступны";
 "Compatibility: %@" = "Совместимость: %@";
 "Completed" = "Завершено";
 "Connect an agent" = "Подключить агент";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Создать вложенный таймлайн";
 "Create Video" = "Создать видео";
 "Create Video only works on images" = "Функция «Создать видео» работает только с изображениями";
-"Create a skill or browse the Community collection." = "Создайте навык или просмотрите коллекцию сообщества.";
+"Create a skill or browse the Bundled collection." = "Создайте навык или просмотрите встроенную коллекцию.";
 "Create matching sound for the video" = "Создать подходящий звук для видео";
 "Creating…" = "Создание…";
 "Credits" = "Кредиты";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Модель синхронизации губ недоступна";
 "Lip Sync only works on video" = "Синхронизация губ работает только с видео";
 "Lip Sync…" = "Синхронизировать губы…";
-"Loading community skills" = "Загрузка навыков сообщества";
-"Loading community skills…" = "Загрузка навыков сообщества…";
+"Loading bundled skills" = "Загрузка встроенных навыков";
+"Loading bundled skills…" = "Загрузка встроенных навыков…";
 "Loading media metadata…" = "Загрузка метаданных медиафайлов…";
 "Loading models…" = "Загрузка моделей…";
 "Loading source dimensions…" = "Загрузка размеров исходного файла…";
@@ -575,7 +575,7 @@
 "New timeline" = "Новый таймлайн";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Новый формат таймлайна с улучшенной поддержкой DaVinci Resolve и Final Cut Pro. Поддерживает базовый монтаж, ключевые кадры и текст, но не цвет, эффекты, мягкость и скругление краёв.";
 "Next" = "Далее";
-"No Community Skills" = "Нет навыков сообщества";
+"No Bundled Skills" = "Нет встроенных навыков";
 "No Installed Skills" = "Нет установленных навыков";
 "No Matching Skills" = "Нет подходящих навыков";
 "No Tracks" = "Нет дорожек";
@@ -620,7 +620,7 @@
 "Open Project" = "Открыть проект";
 "Open Settings" = "Открыть настройки";
 "Open Skills Folder" = "Открыть папку навыков";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Откройте раздел «Навыки», чтобы просмотреть сценарии сообщества, создать собственные или добавить их другим агентам.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Откройте раздел «Навыки», чтобы просмотреть встроенные сценарии, создать собственные или добавить их другим агентам.";
 "Open Timeline" = "Открыть таймлайн";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Откройте вкладку «AI-правка», чтобы увеличить разрешение, изменить клип по запросу, создать видео из кадра или сгенерировать музыку, звуковые эффекты, очистку голоса и дубляж.";
 "OpenAI API Key" = "API-ключ OpenAI";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Модель перекадрирования недоступна";
 "Reframe only works on video" = "Перекадрирование работает только с видео";
 "Reframe…" = "Перекадрировать…";
-"Refresh" = "Обновить";
-"Refresh Community Skills" = "Обновить навыки сообщества";
-"Refresh to check for available skills." = "Обновите, чтобы проверить доступные навыки.";
 "Regenerate with the same parameters" = "Создать заново с теми же параметрами";
 "Relink Folder…" = "Перепривязать папку…";
 "Relinked %lld of %lld offline clips." = "Перепривязано клипов: %lld из %lld недоступных.";
@@ -808,7 +805,6 @@
 "Signed out" = "Выход выполнен";
 "Silence Detection" = "Определение тишины";
 "Size" = "Размер";
-"Skill actions" = "Действия с навыком";
 "Skill instructions" = "Инструкции навыка";
 "Skill name" = "Название навыка";
 "Skill unavailable." = "Навык недоступен.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "Выбранные проекты будут перемещены в Корзину.";
 "The timeline settings changed. Close this sheet and try again." = "Настройки таймлайна изменились. Закройте это окно и повторите попытку.";
 "Theme" = "Тема";
+"This build includes no skills." = "В этой сборке нет навыков.";
 "This is where all your footage and assets live." = "Здесь хранятся все ваши материалы и ресурсы.";
 "This is your preview panel to play a selected media or the whole timeline." = "Это панель предпросмотра для воспроизведения выбранного медиафайла или всего таймлайна.";
 "This job can't be cancelled. It will finish on its own." = "Эту задачу нельзя отменить. Она завершится сама.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Обрезать конец до курсора (W)";
 "Trim Start to Playhead" = "Обрезать начало до курсора";
 "Trim Start to Playhead (Q)" = "Обрезать начало до курсора (Q)";
-"Try Again" = "Повторить попытку";
 "Try again." = "Повторите попытку.";
 "Try another search." = "Попробуйте другой запрос.";
 "Turn off to skip audio generation." = "Отключите, чтобы не создавать аудио.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Модель видео недоступна";
 "Video to Music" = "Видео в музыку";
 "View" = "Вид";
+"View Skill Sources ↗" = "Источники навыков ↗";
 "View Skills" = "Открыть навыки";
 "Vignette" = "Виньетка";
 "Visual search model download failed. Check your connection and try again." = "Не удалось загрузить модель визуального поиска. Проверьте подключение и повторите попытку.";

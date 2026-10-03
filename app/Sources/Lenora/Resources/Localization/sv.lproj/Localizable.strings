@@ -114,7 +114,9 @@
 "Bold" = "Fet";
 "Both" = "Båda";
 "Bottom" = "Nederkant";
-"Browse Community Skills ↗" = "Bläddra bland Community-färdigheter ↗";
+"Bundled" = "Medföljande";
+"Bundled Skills Unavailable" = "Medföljande färdigheter är inte tillgängliga";
+"Bundled skills are missing from this build." = "Medföljande färdigheter saknas i den här versionen.";
 "Buy" = "Köp";
 "Buy $%lld" = "Köp $%lld";
 "Buy more" = "Köp mer";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Färghjul";
 "Color for the active word." = "Färg för det aktiva ordet.";
 "Comments" = "Kommentarer";
-"Community" = "Community";
-"Community Skills Unavailable" = "Community-färdigheter är inte tillgängliga";
 "Compatibility: %@" = "Kompatibilitet: %@";
 "Completed" = "Slutförd";
 "Connect an agent" = "Anslut en Agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Skapa inbäddad tidslinje";
 "Create Video" = "Skapa video";
 "Create Video only works on images" = "Skapa video fungerar bara på bilder";
-"Create a skill or browse the Community collection." = "Skapa en färdighet eller bläddra i Community-samlingen.";
+"Create a skill or browse the Bundled collection." = "Skapa en färdighet eller bläddra i den medföljande samlingen.";
 "Create matching sound for the video" = "Skapa passande ljud till videon";
 "Creating…" = "Skapar…";
 "Credits" = "Krediter";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Läppsynkmodellen är inte tillgänglig";
 "Lip Sync only works on video" = "Läppsynk fungerar bara på video";
 "Lip Sync…" = "Läppsynk…";
-"Loading community skills" = "Läser in Community-färdigheter";
-"Loading community skills…" = "Läser in Community-färdigheter…";
+"Loading bundled skills" = "Läser in medföljande färdigheter";
+"Loading bundled skills…" = "Läser in medföljande färdigheter…";
 "Loading media metadata…" = "Läser in metadata för media…";
 "Loading models…" = "Läser in modeller…";
 "Loading source dimensions…" = "Läser in källans mått…";
@@ -575,7 +575,7 @@
 "New timeline" = "Ny tidslinje";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Nyare tidslinjeformat med bättre stöd för DaVinci Resolve och Final Cut Pro. Stödjer grundläggande redigering, nyckelbilder och text, men inte färg, effekter, kantmjukhet eller kantavrundning.";
 "Next" = "Nästa";
-"No Community Skills" = "Inga Community-färdigheter";
+"No Bundled Skills" = "Inga medföljande färdigheter";
 "No Installed Skills" = "Inga installerade färdigheter";
 "No Matching Skills" = "Inga matchande färdigheter";
 "No Tracks" = "Inga spår";
@@ -620,7 +620,7 @@
 "Open Project" = "Öppna projekt";
 "Open Settings" = "Öppna Inställningar";
 "Open Skills Folder" = "Öppna färdighetsmappen";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Öppna Färdigheter för att bläddra bland communityns arbetsflöden, skapa egna eller lägga till dem i andra Agent.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Öppna Färdigheter för att bläddra bland medföljande arbetsflöden, skapa egna eller lägga till dem i andra Agent.";
 "Open Timeline" = "Öppna tidslinje";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Öppna fliken AI-redigering för att uppskala, redigera med prompt, skapa video från en bildruta eller generera musik, SFX, rensning och dubbning från klippet.";
 "OpenAI API Key" = "OpenAI API-nyckel";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Omramningsmodellen är inte tillgänglig";
 "Reframe only works on video" = "Omrama fungerar bara på video";
 "Reframe…" = "Omrama…";
-"Refresh" = "Uppdatera";
-"Refresh Community Skills" = "Uppdatera Community-färdigheter";
-"Refresh to check for available skills." = "Uppdatera för att se tillgängliga färdigheter.";
 "Regenerate with the same parameters" = "Generera om med samma parametrar";
 "Relink Folder…" = "Länka om mapp…";
 "Relinked %lld of %lld offline clips." = "Länkade om %lld av %lld offlineklipp.";
@@ -808,7 +805,6 @@
 "Signed out" = "Utloggad";
 "Silence Detection" = "Tystnadsidentifiering";
 "Size" = "Storlek";
-"Skill actions" = "Färdighetsåtgärder";
 "Skill instructions" = "Färdighetsinstruktioner";
 "Skill name" = "Färdighetsnamn";
 "Skill unavailable." = "Färdigheten är inte tillgänglig.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "De markerade projekten flyttas till Papperskorgen.";
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeinställningarna ändrades. Stäng det här bladet och försök igen.";
 "Theme" = "Tema";
+"This build includes no skills." = "Den här versionen innehåller inga färdigheter.";
 "This is where all your footage and assets live." = "Här ligger allt ditt material och alla tillgångar.";
 "This is your preview panel to play a selected media or the whole timeline." = "Det här är förhandsvisningspanelen där du spelar upp valt media eller hela tidslinjen.";
 "This job can't be cancelled. It will finish on its own." = "Det här jobbet kan inte avbrytas. Det slutförs av sig självt.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Trimma slutet till uppspelningshuvudet (W)";
 "Trim Start to Playhead" = "Trimma början till uppspelningshuvudet";
 "Trim Start to Playhead (Q)" = "Trimma början till uppspelningshuvudet (Q)";
-"Try Again" = "Försök igen";
 "Try again." = "Försök igen.";
 "Try another search." = "Försök med en annan sökning.";
 "Turn off to skip audio generation." = "Stäng av för att hoppa över ljudgenerering.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Videomodellen är inte tillgänglig";
 "Video to Music" = "Video till musik";
 "View" = "Visa";
+"View Skill Sources ↗" = "Visa källor för färdigheter ↗";
 "View Skills" = "Visa färdigheter";
 "Vignette" = "Vinjettering";
 "Visual search model download failed. Check your connection and try again." = "Hämtningen av den visuella sökmodellen misslyckades. Kontrollera anslutningen och försök igen.";

@@ -114,7 +114,9 @@
 "Bold" = "粗體";
 "Both" = "兩者";
 "Bottom" = "下";
-"Browse Community Skills ↗" = "瀏覽社群技能 ↗";
+"Bundled" = "內建";
+"Bundled Skills Unavailable" = "內建技能不可用";
+"Bundled skills are missing from this build." = "此版本缺少內建技能。";
 "Buy" = "購買";
 "Buy $%lld" = "購買 $%lld";
 "Buy more" = "購買更多";
@@ -197,8 +199,6 @@
 "Color Wheels" = "色輪";
 "Color for the active word." = "目前字詞的顏色。";
 "Comments" = "註解";
-"Community" = "社群";
-"Community Skills Unavailable" = "社群技能不可用";
 "Compatibility: %@" = "相容性：%@";
 "Completed" = "已完成";
 "Connect an agent" = "連接 Agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "建立巢狀時間軸";
 "Create Video" = "建立影片";
 "Create Video only works on images" = "建立影片僅適用於影像";
-"Create a skill or browse the Community collection." = "建立技能或瀏覽社群合集。";
+"Create a skill or browse the Bundled collection." = "建立技能或瀏覽內建合集。";
 "Create matching sound for the video" = "為影片建立匹配的聲音";
 "Creating…" = "正在建立…";
 "Credits" = "積分";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "口型同步模型不可用";
 "Lip Sync only works on video" = "口型同步僅適用於影片";
 "Lip Sync…" = "口型同步…";
-"Loading community skills" = "正在載入社群技能";
-"Loading community skills…" = "正在載入社群技能…";
+"Loading bundled skills" = "正在載入內建技能";
+"Loading bundled skills…" = "正在載入內建技能…";
 "Loading media metadata…" = "正在載入媒體中繼資料…";
 "Loading models…" = "正在載入模型…";
 "Loading source dimensions…" = "正在載入源尺寸…";
@@ -575,7 +575,7 @@
 "New timeline" = "新增時間軸";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "較新的時間軸格式，對 DaVinci Resolve 和 Final Cut Pro 支援更好。支援基本編輯、關鍵影格和文字，但不支援顏色、效果、邊緣柔化或邊緣圓角。";
 "Next" = "下一步";
-"No Community Skills" = "沒有社群技能";
+"No Bundled Skills" = "沒有內建技能";
 "No Installed Skills" = "沒有已安裝的技能";
 "No Matching Skills" = "沒有匹配的技能";
 "No Tracks" = "沒有軌道";
@@ -620,7 +620,7 @@
 "Open Project" = "打開專案";
 "Open Settings" = "打開設定";
 "Open Skills Folder" = "打開技能資料夾";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "打開“技能”以瀏覽社群操作手冊、建立自己的技能，或將其加入其他 Agent。";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "打開“技能”以瀏覽內建操作手冊、建立自己的技能，或將其加入其他 Agent。";
 "Open Timeline" = "打開時間軸";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "打開「AI 編輯」標籤頁即可放大解析度、用提示詞編輯、從影格建立影片，或從片段產生音樂、音效、清理人聲和配音。";
 "OpenAI API Key" = "OpenAI API key";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "重構畫面模型不可用";
 "Reframe only works on video" = "重構畫面僅適用於影片";
 "Reframe…" = "重構畫面…";
-"Refresh" = "重新整理";
-"Refresh Community Skills" = "重新整理社群技能";
-"Refresh to check for available skills." = "重新整理以檢查可用技能。";
 "Regenerate with the same parameters" = "使用相同參數重新產生";
 "Relink Folder…" = "重新連結資料夾…";
 "Relinked %lld of %lld offline clips." = "已重新連結 %lld/%lld 個離線片段。";
@@ -808,7 +805,6 @@
 "Signed out" = "已登出";
 "Silence Detection" = "靜音偵測";
 "Size" = "大小";
-"Skill actions" = "技能操作";
 "Skill instructions" = "技能說明";
 "Skill name" = "技能名稱";
 "Skill unavailable." = "技能不可用。";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "所選專案將被移到垃圾桶。";
 "The timeline settings changed. Close this sheet and try again." = "時間軸設定已更改。請關閉此表單後重試。";
 "Theme" = "主題";
+"This build includes no skills." = "此版本不包含任何技能。";
 "This is where all your footage and assets live." = "你的所有素材和資源都位於此處。";
 "This is your preview panel to play a selected media or the whole timeline." = "這是預覽面板，用於播放所選媒體或整個時間軸。";
 "This job can't be cancelled. It will finish on its own." = "無法取消此工作。它會自行完成。";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "將結尾修剪到播放磁頭 (W)";
 "Trim Start to Playhead" = "將開頭修剪到播放磁頭";
 "Trim Start to Playhead (Q)" = "將開頭修剪到播放磁頭 (Q)";
-"Try Again" = "再試一次";
 "Try again." = "請重試。";
 "Try another search." = "請嘗試其他搜尋。";
 "Turn off to skip audio generation." = "關閉以跳過音訊產生。";
@@ -978,6 +974,7 @@
 "Video model not available" = "影片模型不可用";
 "Video to Music" = "影片產生音樂";
 "View" = "顯示";
+"View Skill Sources ↗" = "檢視技能來源 ↗";
 "View Skills" = "檢視技能";
 "Vignette" = "暈影";
 "Visual search model download failed. Check your connection and try again." = "視覺搜尋模型下載失敗。請檢查網路連線，然後重試。";

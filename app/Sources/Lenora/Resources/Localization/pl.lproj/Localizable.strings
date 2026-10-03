@@ -114,7 +114,9 @@
 "Bold" = "Pogrubienie";
 "Both" = "Oba";
 "Bottom" = "Dół";
-"Browse Community Skills ↗" = "Przeglądaj umiejętności społeczności ↗";
+"Bundled" = "Dołączone";
+"Bundled Skills Unavailable" = "Dołączone umiejętności niedostępne";
+"Bundled skills are missing from this build." = "W tej wersji brakuje dołączonych umiejętności.";
 "Buy" = "Kup";
 "Buy $%lld" = "Kup $%lld";
 "Buy more" = "Kup więcej";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Koła kolorów";
 "Color for the active word." = "Kolor aktywnego słowa.";
 "Comments" = "Komentarze";
-"Community" = "Społeczność";
-"Community Skills Unavailable" = "Umiejętności społeczności niedostępne";
 "Compatibility: %@" = "Zgodność: %@";
 "Completed" = "Ukończono";
 "Connect an agent" = "Połącz agenta";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Utwórz zagnieżdżoną oś czasu";
 "Create Video" = "Utwórz wideo";
 "Create Video only works on images" = "Tworzenie wideo działa tylko na obrazach";
-"Create a skill or browse the Community collection." = "Utwórz umiejętność albo przeglądaj zbiór społeczności.";
+"Create a skill or browse the Bundled collection." = "Utwórz umiejętność albo przeglądaj dołączony zbiór.";
 "Create matching sound for the video" = "Utwórz dźwięk dopasowany do wideo";
 "Creating…" = "Tworzenie…";
 "Credits" = "Kredyty";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Model synchronizacji ust jest niedostępny";
 "Lip Sync only works on video" = "Synchronizacja ust działa tylko na wideo";
 "Lip Sync…" = "Synchronizacja ust…";
-"Loading community skills" = "Wczytywanie umiejętności społeczności";
-"Loading community skills…" = "Wczytywanie umiejętności społeczności…";
+"Loading bundled skills" = "Wczytywanie dołączonych umiejętności";
+"Loading bundled skills…" = "Wczytywanie dołączonych umiejętności…";
 "Loading media metadata…" = "Wczytywanie metadanych multimediów…";
 "Loading models…" = "Wczytywanie modeli…";
 "Loading source dimensions…" = "Wczytywanie wymiarów źródła…";
@@ -575,7 +575,7 @@
 "New timeline" = "Nowa oś czasu";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Nowszy format osi czasu z lepszą obsługą DaVinci Resolve i Final Cut Pro. Obsługuje podstawowy montaż, klatki kluczowe i tekst, ale nie kolor, efekty, miękkość krawędzi ani zaokrąglenie krawędzi.";
 "Next" = "Dalej";
-"No Community Skills" = "Brak umiejętności społeczności";
+"No Bundled Skills" = "Brak dołączonych umiejętności";
 "No Installed Skills" = "Brak zainstalowanych umiejętności";
 "No Matching Skills" = "Brak pasujących umiejętności";
 "No Tracks" = "Brak ścieżek";
@@ -620,7 +620,7 @@
 "Open Project" = "Otwórz projekt";
 "Open Settings" = "Otwórz ustawienia";
 "Open Skills Folder" = "Otwórz folder umiejętności";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Otwórz Umiejętności, aby przeglądać playbooki społeczności, tworzyć własne albo dodawać je do innych agentów.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Otwórz Umiejętności, aby przeglądać dołączone playbooki, tworzyć własne albo dodawać je do innych agentów.";
 "Open Timeline" = "Otwórz oś czasu";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Otwórz kartę Edycja AI, aby zwiększyć rozdzielczość, edytować promptem, utworzyć wideo z klatki albo wygenerować muzykę, SFX, czyszczenie i dubbing z klipu.";
 "OpenAI API Key" = "Klucz API OpenAI";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Model przekadrowania jest niedostępny";
 "Reframe only works on video" = "Przekadrowanie działa tylko na wideo";
 "Reframe…" = "Przekadruj…";
-"Refresh" = "Odśwież";
-"Refresh Community Skills" = "Odśwież umiejętności społeczności";
-"Refresh to check for available skills." = "Odśwież, aby sprawdzić dostępne umiejętności.";
 "Regenerate with the same parameters" = "Wygeneruj ponownie z tymi samymi parametrami";
 "Relink Folder…" = "Powiąż folder ponownie…";
 "Relinked %lld of %lld offline clips." = "Ponownie powiązano %lld z %lld klipów offline.";
@@ -808,7 +805,6 @@
 "Signed out" = "Wylogowano";
 "Silence Detection" = "Wykrywanie ciszy";
 "Size" = "Rozmiar";
-"Skill actions" = "Działania umiejętności";
 "Skill instructions" = "Instrukcje umiejętności";
 "Skill name" = "Nazwa umiejętności";
 "Skill unavailable." = "Umiejętność niedostępna.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "Zaznaczone projekty zostaną przeniesione do Kosza.";
 "The timeline settings changed. Close this sheet and try again." = "Ustawienia osi czasu uległy zmianie. Zamknij ten arkusz i spróbuj ponownie.";
 "Theme" = "Motyw";
+"This build includes no skills." = "Ta wersja nie zawiera umiejętności.";
 "This is where all your footage and assets live." = "Tu znajdują się wszystkie materiały i zasoby.";
 "This is your preview panel to play a selected media or the whole timeline." = "To panel podglądu do odtwarzania zaznaczonych multimediów albo całej osi czasu.";
 "This job can't be cancelled. It will finish on its own." = "Tego zadania nie można anulować. Zakończy się samo.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Przytnij koniec do głowicy (W)";
 "Trim Start to Playhead" = "Przytnij początek do głowicy";
 "Trim Start to Playhead (Q)" = "Przytnij początek do głowicy (Q)";
-"Try Again" = "Spróbuj ponownie";
 "Try again." = "Spróbuj ponownie.";
 "Try another search." = "Spróbuj innego wyszukiwania.";
 "Turn off to skip audio generation." = "Wyłącz, aby pominąć generowanie dźwięku.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Model wideo jest niedostępny";
 "Video to Music" = "Wideo na muzykę";
 "View" = "Widok";
+"View Skill Sources ↗" = "Pokaż źródła umiejętności ↗";
 "View Skills" = "Pokaż umiejętności";
 "Vignette" = "Winieta";
 "Visual search model download failed. Check your connection and try again." = "Pobieranie modelu wyszukiwania wizualnego nie powiodło się. Sprawdź połączenie i spróbuj ponownie.";

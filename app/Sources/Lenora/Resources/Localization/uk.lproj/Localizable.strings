@@ -114,7 +114,9 @@
 "Bold" = "Жирний";
 "Both" = "Обидва";
 "Bottom" = "Знизу";
-"Browse Community Skills ↗" = "Переглянути навички спільноти ↗";
+"Bundled" = "Вбудовані";
+"Bundled Skills Unavailable" = "Вбудовані навички недоступні";
+"Bundled skills are missing from this build." = "Вбудовані навички відсутні в цій збірці.";
 "Buy" = "Купити";
 "Buy $%lld" = "Купити $%lld";
 "Buy more" = "Купити ще";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Колірні кола";
 "Color for the active word." = "Колір активного слова.";
 "Comments" = "Коментарі";
-"Community" = "Спільнота";
-"Community Skills Unavailable" = "Навички спільноти недоступні";
 "Compatibility: %@" = "Сумісність: %@";
 "Completed" = "Завершено";
 "Connect an agent" = "Підключити Agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Створити вкладений таймлайн";
 "Create Video" = "Створити відео";
 "Create Video only works on images" = "«Створити відео» працює лише із зображеннями";
-"Create a skill or browse the Community collection." = "Створіть навичку або перегляньте колекцію спільноти.";
+"Create a skill or browse the Bundled collection." = "Створіть навичку або перегляньте вбудовану колекцію.";
 "Create matching sound for the video" = "Створити відповідний звук для відео";
 "Creating…" = "Створення…";
 "Credits" = "Кредити";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Модель ліпсинку недоступна";
 "Lip Sync only works on video" = "Ліпсинк працює лише з відео";
 "Lip Sync…" = "Ліпсинк…";
-"Loading community skills" = "Завантаження навичок спільноти";
-"Loading community skills…" = "Завантаження навичок спільноти…";
+"Loading bundled skills" = "Завантаження вбудованих навичок";
+"Loading bundled skills…" = "Завантаження вбудованих навичок…";
 "Loading media metadata…" = "Завантаження метаданих медіа…";
 "Loading models…" = "Завантаження моделей…";
 "Loading source dimensions…" = "Завантаження розмірів джерела…";
@@ -575,7 +575,7 @@
 "New timeline" = "Новий таймлайн";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Новіший формат таймлайну з кращою підтримкою DaVinci Resolve і Final Cut Pro. Підтримує базовий монтаж, ключові кадри й текст, але не колір, ефекти, м'якість країв чи заокруглення країв.";
 "Next" = "Далі";
-"No Community Skills" = "Немає навичок спільноти";
+"No Bundled Skills" = "Немає вбудованих навичок";
 "No Installed Skills" = "Немає встановлених навичок";
 "No Matching Skills" = "Немає відповідних навичок";
 "No Tracks" = "Немає доріжок";
@@ -620,7 +620,7 @@
 "Open Project" = "Відкрити проєкт";
 "Open Settings" = "Відкрити параметри";
 "Open Skills Folder" = "Відкрити папку навичок";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Відкрийте «Навички», щоб переглянути сценарії спільноти, створити власні або додати їх до інших Agent.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Відкрийте «Навички», щоб переглянути вбудовані сценарії, створити власні або додати їх до інших Agent.";
 "Open Timeline" = "Відкрити таймлайн";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Відкрийте вкладку AI-монтаж, щоб збільшити роздільність, редагувати за промптом, створити відео з кадру або згенерувати музику, SFX, очищення й дубляж із кліпу.";
 "OpenAI API Key" = "API-ключ OpenAI";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Модель перекадрування недоступна";
 "Reframe only works on video" = "Перекадрування працює лише з відео";
 "Reframe…" = "Перекадрувати…";
-"Refresh" = "Оновити";
-"Refresh Community Skills" = "Оновити навички спільноти";
-"Refresh to check for available skills." = "Оновіть, щоб перевірити доступні навички.";
 "Regenerate with the same parameters" = "Згенерувати знову з тими самими параметрами";
 "Relink Folder…" = "Перезв'язати папку…";
 "Relinked %lld of %lld offline clips." = "Перезв'язано %lld з %lld офлайн-кліпів.";
@@ -808,7 +805,6 @@
 "Signed out" = "Ви вийшли";
 "Silence Detection" = "Визначення тиші";
 "Size" = "Розмір";
-"Skill actions" = "Дії з навичкою";
 "Skill instructions" = "Інструкції навички";
 "Skill name" = "Назва навички";
 "Skill unavailable." = "Навичка недоступна.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "Вибрані проєкти буде переміщено в Кошик.";
 "The timeline settings changed. Close this sheet and try again." = "Параметри таймлайну змінилися. Закрийте це вікно й повторіть спробу.";
 "Theme" = "Тема";
+"This build includes no skills." = "У цій збірці немає навичок.";
 "This is where all your footage and assets live." = "Тут зберігаються всі матеріали та ресурси.";
 "This is your preview panel to play a selected media or the whole timeline." = "Панель перегляду: відтворюйте вибрані медіа або весь таймлайн.";
 "This job can't be cancelled. It will finish on its own." = "Це завдання не можна скасувати. Воно завершиться саме.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Підрізати кінець до курсора відтворення (W)";
 "Trim Start to Playhead" = "Підрізати початок до курсора відтворення";
 "Trim Start to Playhead (Q)" = "Підрізати початок до курсора відтворення (Q)";
-"Try Again" = "Спробувати знову";
 "Try again." = "Повторіть спробу.";
 "Try another search." = "Спробуйте інший пошук.";
 "Turn off to skip audio generation." = "Вимкніть, щоб пропустити генерацію аудіо.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Модель відео недоступна";
 "Video to Music" = "Відео в музику";
 "View" = "Перегляд";
+"View Skill Sources ↗" = "Переглянути джерела навичок ↗";
 "View Skills" = "Переглянути навички";
 "Vignette" = "Віньєтка";
 "Visual search model download failed. Check your connection and try again." = "Не вдалося завантажити модель візуального пошуку. Перевірте з'єднання й повторіть спробу.";

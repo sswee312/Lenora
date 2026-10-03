@@ -1,13 +1,13 @@
 import SwiftUI
 
-enum SkillCommunityState: Equatable {
+enum SkillCatalogState: Equatable {
     case upToDate
     case update
     case modified
 
     var label: String {
         switch self {
-        case .upToDate: L10n.key("Community")
+        case .upToDate: L10n.key("Bundled")
         case .update: L10n.key("Update available")
         case .modified: L10n.key("Modified")
         }
@@ -26,7 +26,7 @@ enum SkillCommunityState: Equatable {
         _ skill: Skill,
         store: SkillStore,
         catalog: SkillCatalog
-    ) -> SkillCommunityState? {
+    ) -> SkillCatalogState? {
         guard let installedSHA = store.installed[skill.id] else { return nil }
         if store.localSha(skill) != installedSHA { return .modified }
         if let entry = catalog.entry(id: skill.id), entry.sha != installedSHA { return .update }
@@ -162,8 +162,8 @@ struct SkillEmptyState: View {
     let systemName: String
     let title: String
     let message: String
-    let actionTitle: String
-    let action: () -> Void
+    var actionTitle: String?
+    var action: (() -> Void)?
 
     var body: some View {
         VStack(spacing: AppTheme.Spacing.smMd) {
@@ -179,8 +179,10 @@ struct SkillEmptyState: View {
                 .foregroundStyle(AppTheme.Text.tertiaryColor)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
-            Button(actionTitle, action: action)
-                .buttonStyle(.capsule(.secondary, fill: AnyShapeStyle(AppTheme.Background.raisedColor)))
+            if let actionTitle, let action {
+                Button(actionTitle, action: action)
+                    .buttonStyle(.capsule(.secondary, fill: AnyShapeStyle(AppTheme.Background.raisedColor)))
+            }
         }
         .frame(maxWidth: .infinity)
         .padding(AppTheme.Spacing.xlXxl)

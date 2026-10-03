@@ -114,7 +114,9 @@
 "Bold" = "Kalın";
 "Both" = "Her İkisi";
 "Bottom" = "Alt";
-"Browse Community Skills ↗" = "Topluluk Becerilerine Göz At ↗";
+"Bundled" = "Dahili";
+"Bundled Skills Unavailable" = "Dahili Beceriler Kullanılamıyor";
+"Bundled skills are missing from this build." = "Dahili beceriler bu derlemede eksik.";
 "Buy" = "Satın Al";
 "Buy $%lld" = "$%lld Satın Al";
 "Buy more" = "Daha Fazla Satın Al";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Renk Tekerlekleri";
 "Color for the active word." = "Etkin sözcüğün rengi.";
 "Comments" = "Yorumlar";
-"Community" = "Topluluk";
-"Community Skills Unavailable" = "Topluluk Becerileri Kullanılamıyor";
 "Compatibility: %@" = "Uyumluluk: %@";
 "Completed" = "Tamamlandı";
 "Connect an agent" = "Bir aracı bağla";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "İç İçe Zaman Ekseni Oluştur";
 "Create Video" = "Video Oluştur";
 "Create Video only works on images" = "Video Oluştur yalnızca görüntülerde çalışır";
-"Create a skill or browse the Community collection." = "Bir beceri oluşturun veya Topluluk koleksiyonuna göz atın.";
+"Create a skill or browse the Bundled collection." = "Bir beceri oluşturun veya Dahili koleksiyona göz atın.";
 "Create matching sound for the video" = "Videoya uygun ses oluştur";
 "Creating…" = "Oluşturuluyor…";
 "Credits" = "Krediler";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Dudak Eşzamanlama modeli kullanılamıyor";
 "Lip Sync only works on video" = "Dudak Eşzamanlama yalnızca videoda çalışır";
 "Lip Sync…" = "Dudak Eşzamanlama…";
-"Loading community skills" = "Topluluk becerileri yükleniyor";
-"Loading community skills…" = "Topluluk becerileri yükleniyor…";
+"Loading bundled skills" = "Dahili beceriler yükleniyor";
+"Loading bundled skills…" = "Dahili beceriler yükleniyor…";
 "Loading media metadata…" = "Medya üst verileri yükleniyor…";
 "Loading models…" = "Modeller yükleniyor…";
 "Loading source dimensions…" = "Kaynak boyutları yükleniyor…";
@@ -575,7 +575,7 @@
 "New timeline" = "Yeni zaman ekseni";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "DaVinci Resolve ve Final Cut Pro için daha iyi destek sunan yeni zaman ekseni biçimi. Temel düzenlemeleri, anahtar kareleri ve metni destekler; renk, efekt, kenar yumuşaklığı veya kenar yuvarlaklığını desteklemez.";
 "Next" = "Sonraki";
-"No Community Skills" = "Topluluk Becerisi Yok";
+"No Bundled Skills" = "Dahili Beceri Yok";
 "No Installed Skills" = "Yüklü Beceri Yok";
 "No Matching Skills" = "Eşleşen Beceri Yok";
 "No Tracks" = "İz Yok";
@@ -620,7 +620,7 @@
 "Open Project" = "Projeyi Aç";
 "Open Settings" = "Ayarları Aç";
 "Open Skills Folder" = "Beceriler Klasörünü Aç";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Topluluk çalışma kitaplarına göz atmak, kendi becerilerinizi oluşturmak veya başka aracılara eklemek için Beceriler'i açın.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Dahili çalışma kitaplarına göz atmak, kendi becerilerinizi oluşturmak veya başka aracılara eklemek için Beceriler'i açın.";
 "Open Timeline" = "Zaman Eksenini Aç";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Çözünürlük yükseltmek, istemle düzenlemek, bir kareden video oluşturmak ya da klipten müzik, ses efektleri, ses temizleme ve dublaj üretmek için Yapay Zekâ Düzenleme sekmesini açın.";
 "OpenAI API Key" = "OpenAI API Anahtarı";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Yeniden Kadrajlama modeli kullanılamıyor";
 "Reframe only works on video" = "Yeniden Kadrajlama yalnızca videoda çalışır";
 "Reframe…" = "Yeniden Kadrajla…";
-"Refresh" = "Yenile";
-"Refresh Community Skills" = "Topluluk Becerilerini Yenile";
-"Refresh to check for available skills." = "Kullanılabilir becerileri denetlemek için yenileyin.";
 "Regenerate with the same parameters" = "Aynı parametrelerle yeniden oluştur";
 "Relink Folder…" = "Klasörü Yeniden Bağla…";
 "Relinked %lld of %lld offline clips." = "%lld / %lld çevrimdışı klip yeniden bağlandı.";
@@ -808,7 +805,6 @@
 "Signed out" = "Oturum kapalı";
 "Silence Detection" = "Sessizlik Algılama";
 "Size" = "Boyut";
-"Skill actions" = "Beceri eylemleri";
 "Skill instructions" = "Beceri yönergeleri";
 "Skill name" = "Beceri adı";
 "Skill unavailable." = "Beceri kullanılamıyor.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "Seçili projeler Çöp Sepeti'ne taşınacak.";
 "The timeline settings changed. Close this sheet and try again." = "Zaman ekseni ayarları değişti. Bu sayfayı kapatıp yeniden deneyin.";
 "Theme" = "Tema";
+"This build includes no skills." = "Bu derleme hiç beceri içermiyor.";
 "This is where all your footage and assets live." = "Tüm çekimleriniz ve varlıklarınız burada bulunur.";
 "This is your preview panel to play a selected media or the whole timeline." = "Bu, seçili medyayı veya tüm zaman eksenini oynatabileceğiniz önizleme panelinizdir.";
 "This job can't be cancelled. It will finish on its own." = "Bu iş iptal edilemez. Kendiliğinden tamamlanacak.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Sonu Oynatma Kafasına Kırp (W)";
 "Trim Start to Playhead" = "Başlangıcı Oynatma Kafasına Kırp";
 "Trim Start to Playhead (Q)" = "Başlangıcı Oynatma Kafasına Kırp (Q)";
-"Try Again" = "Yeniden Dene";
 "Try again." = "Yeniden deneyin.";
 "Try another search." = "Başka bir arama deneyin.";
 "Turn off to skip audio generation." = "Ses oluşturmayı atlamak için kapatın.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Video modeli kullanılamıyor";
 "Video to Music" = "Videodan Müziğe";
 "View" = "Görüntü";
+"View Skill Sources ↗" = "Beceri Kaynaklarını Görüntüle ↗";
 "View Skills" = "Becerileri Görüntüle";
 "Vignette" = "Vinyet";
 "Visual search model download failed. Check your connection and try again." = "Görsel arama modeli indirilemedi. Bağlantınızı denetleyip yeniden deneyin.";

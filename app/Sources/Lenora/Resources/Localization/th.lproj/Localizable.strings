@@ -114,7 +114,9 @@
 "Bold" = "ตัวหนา";
 "Both" = "ทั้งสอง";
 "Bottom" = "ล่าง";
-"Browse Community Skills ↗" = "เรียกดูสกิลชุมชน ↗";
+"Bundled" = "ที่มาพร้อมแอป";
+"Bundled Skills Unavailable" = "สกิลที่มาพร้อมแอปไม่พร้อมใช้งาน";
+"Bundled skills are missing from this build." = "ไม่พบสกิลที่มาพร้อมแอปในบิลด์นี้";
 "Buy" = "ซื้อ";
 "Buy $%lld" = "ซื้อ $%lld";
 "Buy more" = "ซื้อเพิ่ม";
@@ -197,8 +199,6 @@
 "Color Wheels" = "วงล้อสี";
 "Color for the active word." = "สีของคำที่กำลังเล่น";
 "Comments" = "ความคิดเห็น";
-"Community" = "ชุมชน";
-"Community Skills Unavailable" = "สกิลชุมชนไม่พร้อมใช้งาน";
 "Compatibility: %@" = "ความเข้ากันได้: %@";
 "Completed" = "เสร็จสมบูรณ์";
 "Connect an agent" = "เชื่อมต่อ Agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "สร้างไทม์ไลน์ซ้อน";
 "Create Video" = "สร้างวิดีโอ";
 "Create Video only works on images" = "สร้างวิดีโอใช้ได้กับภาพเท่านั้น";
-"Create a skill or browse the Community collection." = "สร้างสกิล หรือเรียกดูคอลเลกชันชุมชน";
+"Create a skill or browse the Bundled collection." = "สร้างสกิล หรือเรียกดูคอลเลกชันที่มาพร้อมแอป";
 "Create matching sound for the video" = "สร้างเสียงที่เข้ากับวิดีโอ";
 "Creating…" = "กำลังสร้าง…";
 "Credits" = "เครดิต";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "โมเดลซิงค์ริมฝีปากไม่พร้อมใช้งาน";
 "Lip Sync only works on video" = "ซิงค์ริมฝีปากใช้ได้กับวิดีโอเท่านั้น";
 "Lip Sync…" = "ซิงค์ริมฝีปาก…";
-"Loading community skills" = "กำลังโหลดสกิลชุมชน";
-"Loading community skills…" = "กำลังโหลดสกิลชุมชน…";
+"Loading bundled skills" = "กำลังโหลดสกิลที่มาพร้อมแอป";
+"Loading bundled skills…" = "กำลังโหลดสกิลที่มาพร้อมแอป…";
 "Loading media metadata…" = "กำลังโหลดข้อมูลเมตาของมีเดีย…";
 "Loading models…" = "กำลังโหลดโมเดล…";
 "Loading source dimensions…" = "กำลังโหลดขนาดต้นทาง…";
@@ -575,7 +575,7 @@
 "New timeline" = "ไทม์ไลน์ใหม่";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "รูปแบบไทม์ไลน์ใหม่ที่รองรับ DaVinci Resolve และ Final Cut Pro ได้ดีกว่า รองรับการตัดต่อพื้นฐาน คีย์เฟรม และข้อความ แต่ไม่รองรับสี เอฟเฟกต์ ความนุ่มขอบ หรือความโค้งขอบ";
 "Next" = "ถัดไป";
-"No Community Skills" = "ไม่มีสกิลชุมชน";
+"No Bundled Skills" = "ไม่มีสกิลที่มาพร้อมแอป";
 "No Installed Skills" = "ไม่มีสกิลที่ติดตั้ง";
 "No Matching Skills" = "ไม่มีสกิลที่ตรงกัน";
 "No Tracks" = "ไม่มีแทร็ก";
@@ -620,7 +620,7 @@
 "Open Project" = "เปิดโปรเจ็กต์";
 "Open Settings" = "เปิดการตั้งค่า";
 "Open Skills Folder" = "เปิดโฟลเดอร์สกิล";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "เปิดสกิลเพื่อเรียกดูเพลย์บุ๊กชุมชน สร้างของคุณเอง หรือเพิ่มไปยัง Agent อื่น";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "เปิดสกิลเพื่อเรียกดูเพลย์บุ๊กที่มาพร้อมแอป สร้างของคุณเอง หรือเพิ่มไปยัง Agent อื่น";
 "Open Timeline" = "เปิดไทม์ไลน์";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "เปิดแท็บแก้ไขด้วย AI เพื่อเพิ่มความละเอียด แก้ไขด้วยพรอมต์ สร้างวิดีโอจากเฟรม หรือสร้างเพลง SFX ทำความสะอาด และการพากย์จากคลิป";
 "OpenAI API Key" = "คีย์ API ของ OpenAI";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "โมเดลปรับเฟรมไม่พร้อมใช้งาน";
 "Reframe only works on video" = "ปรับเฟรมใช้ได้กับวิดีโอเท่านั้น";
 "Reframe…" = "ปรับเฟรม…";
-"Refresh" = "รีเฟรช";
-"Refresh Community Skills" = "รีเฟรชสกิลชุมชน";
-"Refresh to check for available skills." = "รีเฟรชเพื่อตรวจหาสกิลที่มี";
 "Regenerate with the same parameters" = "สร้างอีกครั้งด้วยพารามิเตอร์เดิม";
 "Relink Folder…" = "เชื่อมโยงโฟลเดอร์ใหม่…";
 "Relinked %lld of %lld offline clips." = "เชื่อมโยงใหม่แล้ว %lld จาก %lld คลิปออฟไลน์";
@@ -808,7 +805,6 @@
 "Signed out" = "ออกจากระบบแล้ว";
 "Silence Detection" = "การตรวจจับช่วงเงียบ";
 "Size" = "ขนาด";
-"Skill actions" = "การทำงานสกิล";
 "Skill instructions" = "คำแนะนำสกิล";
 "Skill name" = "ชื่อสกิล";
 "Skill unavailable." = "สกิลไม่พร้อมใช้งาน";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "โปรเจ็กต์ที่เลือกจะถูกย้ายไปที่ถังขยะ";
 "The timeline settings changed. Close this sheet and try again." = "การตั้งค่าไทม์ไลน์เปลี่ยนไป ปิดชีตนี้แล้วลองอีกครั้ง";
 "Theme" = "ธีม";
+"This build includes no skills." = "บิลด์นี้ไม่มีสกิล";
 "This is where all your footage and assets live." = "ที่นี่คือที่เก็บฟุตเทจและแอสเซ็ตทั้งหมดของคุณ";
 "This is your preview panel to play a selected media or the whole timeline." = "นี่คือแผงตัวอย่างสำหรับเล่นมีเดียที่เลือกหรือทั้งไทม์ไลน์";
 "This job can't be cancelled. It will finish on its own." = "ไม่สามารถยกเลิกงานนี้ได้ งานจะเสร็จสิ้นเอง";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "ตัดแต่งปลายถึงหัวเล่น (W)";
 "Trim Start to Playhead" = "ตัดแต่งต้นถึงหัวเล่น";
 "Trim Start to Playhead (Q)" = "ตัดแต่งต้นถึงหัวเล่น (Q)";
-"Try Again" = "ลองอีกครั้ง";
 "Try again." = "ลองอีกครั้ง";
 "Try another search." = "ลองค้นหาอื่น";
 "Turn off to skip audio generation." = "ปิดเพื่อข้ามการสร้างเสียง";
@@ -978,6 +974,7 @@
 "Video model not available" = "โมเดลวิดีโอไม่พร้อมใช้งาน";
 "Video to Music" = "วิดีโอเป็นเพลง";
 "View" = "มุมมอง";
+"View Skill Sources ↗" = "ดูแหล่งที่มาของสกิล ↗";
 "View Skills" = "ดูสกิล";
 "Vignette" = "ขอบมืด";
 "Visual search model download failed. Check your connection and try again." = "ดาวน์โหลดโมเดลค้นหาด้วยภาพไม่สำเร็จ ตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง";

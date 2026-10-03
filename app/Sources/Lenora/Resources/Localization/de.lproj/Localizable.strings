@@ -114,7 +114,9 @@
 "Bold" = "Fett";
 "Both" = "Beide";
 "Bottom" = "Unten";
-"Browse Community Skills ↗" = "Community-Skills durchsuchen ↗";
+"Bundled" = "Mitgeliefert";
+"Bundled Skills Unavailable" = "Mitgelieferte Skills nicht verfügbar";
+"Bundled skills are missing from this build." = "Mitgelieferte Skills fehlen in diesem Build.";
 "Buy" = "Kaufen";
 "Buy $%lld" = "$%lld kaufen";
 "Buy more" = "Mehr kaufen";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Farbräder";
 "Color for the active word." = "Farbe für das aktive Wort.";
 "Comments" = "Kommentare";
-"Community" = "Community";
-"Community Skills Unavailable" = "Community-Skills nicht verfügbar";
 "Compatibility: %@" = "Kompatibilität: %@";
 "Completed" = "Abgeschlossen";
 "Connect an agent" = "Agent verbinden";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Verschachtelte Timeline erstellen";
 "Create Video" = "Video erstellen";
 "Create Video only works on images" = "Video erstellen funktioniert nur mit Bildern";
-"Create a skill or browse the Community collection." = "Erstellen Sie einen Skill oder durchsuchen Sie die Community-Sammlung.";
+"Create a skill or browse the Bundled collection." = "Erstellen Sie einen Skill oder durchsuchen Sie die mitgelieferte Sammlung.";
 "Create matching sound for the video" = "Passenden Sound zum Video erstellen";
 "Creating…" = "Wird erstellt…";
 "Credits" = "Credits";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Lip-Sync-Modell nicht verfügbar";
 "Lip Sync only works on video" = "Lip Sync funktioniert nur mit Video";
 "Lip Sync…" = "Lip Sync…";
-"Loading community skills" = "Community-Skills werden geladen";
-"Loading community skills…" = "Community-Skills werden geladen…";
+"Loading bundled skills" = "Mitgelieferte Skills werden geladen";
+"Loading bundled skills…" = "Mitgelieferte Skills werden geladen…";
 "Loading media metadata…" = "Medienmetadaten werden geladen…";
 "Loading models…" = "Modelle werden geladen…";
 "Loading source dimensions…" = "Quellabmessungen werden geladen…";
@@ -575,7 +575,7 @@
 "New timeline" = "Neue Timeline";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Neueres Timeline-Format mit besserer Unterstützung für DaVinci Resolve und Final Cut Pro. Unterstützt grundlegende Schnitte, Schlüsselbilder und Text, aber nicht Farbe, Effekte, Kantenweichheit oder Kantenrundung.";
 "Next" = "Weiter";
-"No Community Skills" = "Keine Community-Skills";
+"No Bundled Skills" = "Keine mitgelieferten Skills";
 "No Installed Skills" = "Keine installierten Skills";
 "No Matching Skills" = "Keine passenden Skills";
 "No Tracks" = "Keine Spuren";
@@ -620,7 +620,7 @@
 "Open Project" = "Projekt öffnen";
 "Open Settings" = "Einstellungen öffnen";
 "Open Skills Folder" = "Skills-Ordner öffnen";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Öffnen Sie Skills, um Community-Playbooks zu durchsuchen, eigene zu erstellen oder sie anderen Agents hinzuzufügen.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Öffnen Sie Skills, um mitgelieferte Playbooks zu durchsuchen, eigene zu erstellen oder sie anderen Agents hinzuzufügen.";
 "Open Timeline" = "Timeline öffnen";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Öffnen Sie den Tab KI-Bearbeitung, um hochzuskalieren, per Prompt zu bearbeiten, Video aus einem Bild zu erstellen oder Musik, SFX, Bereinigung und Synchronisation aus dem Clip zu generieren.";
 "OpenAI API Key" = "OpenAI-API-Schlüssel";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Reframe-Modell nicht verfügbar";
 "Reframe only works on video" = "Neu formatieren funktioniert nur mit Video";
 "Reframe…" = "Neu formatieren…";
-"Refresh" = "Aktualisieren";
-"Refresh Community Skills" = "Community-Skills aktualisieren";
-"Refresh to check for available skills." = "Aktualisieren, um verfügbare Skills zu prüfen.";
 "Regenerate with the same parameters" = "Mit denselben Parametern erneut generieren";
 "Relink Folder…" = "Ordner neu verknüpfen…";
 "Relinked %lld of %lld offline clips." = "%lld von %lld Offline-Clips neu verknüpft.";
@@ -808,7 +805,6 @@
 "Signed out" = "Abgemeldet";
 "Silence Detection" = "Stilleerkennung";
 "Size" = "Größe";
-"Skill actions" = "Skill-Aktionen";
 "Skill instructions" = "Skill-Anweisungen";
 "Skill name" = "Skill-Name";
 "Skill unavailable." = "Skill nicht verfügbar.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "Die ausgewählten Projekte werden in den Papierkorb gelegt.";
 "The timeline settings changed. Close this sheet and try again." = "Die Timeline-Einstellungen haben sich geändert. Schließen Sie dieses Blatt und versuchen Sie es erneut.";
 "Theme" = "Thema";
+"This build includes no skills." = "Dieser Build enthält keine Skills.";
 "This is where all your footage and assets live." = "Hier liegen Ihr gesamtes Material und Ihre Medien.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dies ist Ihre Vorschau, um ein ausgewähltes Medium oder die gesamte Timeline wiederzugeben.";
 "This job can't be cancelled. It will finish on its own." = "Dieser Auftrag kann nicht abgebrochen werden. Er wird von selbst abgeschlossen.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Ende bis zum Abspielkopf trimmen (W)";
 "Trim Start to Playhead" = "Anfang bis zum Abspielkopf trimmen";
 "Trim Start to Playhead (Q)" = "Anfang bis zum Abspielkopf trimmen (Q)";
-"Try Again" = "Erneut versuchen";
 "Try again." = "Versuchen Sie es erneut.";
 "Try another search." = "Versuchen Sie eine andere Suche.";
 "Turn off to skip audio generation." = "Deaktivieren, um die Audiogenerierung zu überspringen.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Videomodell nicht verfügbar";
 "Video to Music" = "Video zu Musik";
 "View" = "Darstellung";
+"View Skill Sources ↗" = "Skill-Quellen anzeigen ↗";
 "View Skills" = "Skills anzeigen";
 "Vignette" = "Vignette";
 "Visual search model download failed. Check your connection and try again." = "Download des Modells für die visuelle Suche fehlgeschlagen. Prüfen Sie die Verbindung und versuchen Sie es erneut.";

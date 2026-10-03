@@ -114,7 +114,9 @@
 "Bold" = "Vet";
 "Both" = "Beide";
 "Bottom" = "Onder";
-"Browse Community Skills ↗" = "Bekijk Community-skills ↗";
+"Bundled" = "Meegeleverd";
+"Bundled Skills Unavailable" = "Meegeleverde skills niet beschikbaar";
+"Bundled skills are missing from this build." = "Meegeleverde skills ontbreken in deze build.";
 "Buy" = "Koop";
 "Buy $%lld" = "Koop $%lld";
 "Buy more" = "Koop meer";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Kleurenwielen";
 "Color for the active word." = "Kleur van het actieve woord.";
 "Comments" = "Opmerkingen";
-"Community" = "Community";
-"Community Skills Unavailable" = "Community-skills niet beschikbaar";
 "Compatibility: %@" = "Compatibiliteit: %@";
 "Completed" = "Voltooid";
 "Connect an agent" = "Verbind een Agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Maak geneste Timeline";
 "Create Video" = "Maak video";
 "Create Video only works on images" = "Video maken werkt alleen met afbeeldingen";
-"Create a skill or browse the Community collection." = "Maak een skill of bekijk de Community-collectie.";
+"Create a skill or browse the Bundled collection." = "Maak een skill of bekijk de meegeleverde collectie.";
 "Create matching sound for the video" = "Maak passende audio bij de video";
 "Creating…" = "Maken…";
 "Credits" = "Credits";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Lip Sync-model niet beschikbaar";
 "Lip Sync only works on video" = "Lip Sync werkt alleen met video";
 "Lip Sync…" = "Lip Sync…";
-"Loading community skills" = "Community-skills laden";
-"Loading community skills…" = "Community-skills laden…";
+"Loading bundled skills" = "Meegeleverde skills laden";
+"Loading bundled skills…" = "Meegeleverde skills laden…";
 "Loading media metadata…" = "Mediametadata laden…";
 "Loading models…" = "Modellen laden…";
 "Loading source dimensions…" = "Bronafmetingen laden…";
@@ -575,7 +575,7 @@
 "New timeline" = "Nieuwe Timeline";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Nieuwer Timeline-formaat met betere ondersteuning voor DaVinci Resolve en Final Cut Pro. Ondersteunt basisbewerkingen, keyframes en tekst, maar geen kleur, effecten, randzachtheid of hoekafronding.";
 "Next" = "Volgende";
-"No Community Skills" = "Geen Community-skills";
+"No Bundled Skills" = "Geen meegeleverde skills";
 "No Installed Skills" = "Geen geïnstalleerde skills";
 "No Matching Skills" = "Geen overeenkomende skills";
 "No Tracks" = "Geen Tracks";
@@ -620,7 +620,7 @@
 "Open Project" = "Open project";
 "Open Settings" = "Open Instellingen";
 "Open Skills Folder" = "Open map Skills";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Open Skills om community-playbooks te bekijken, er zelf een te maken of ze aan andere agents toe te voegen.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Open Skills om meegeleverde playbooks te bekijken, er zelf een te maken of ze aan andere agents toe te voegen.";
 "Open Timeline" = "Open Timeline";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Open het tabblad AI-bewerking om op te schalen, met een prompt te bewerken, video van een frame te maken, of muziek, SFX, opschoning en nasynchronisatie vanuit de clip te genereren.";
 "OpenAI API Key" = "OpenAI API-sleutel";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Kader herbepalen-model niet beschikbaar";
 "Reframe only works on video" = "Kader herbepalen werkt alleen met video";
 "Reframe…" = "Herbepaal kader…";
-"Refresh" = "Vernieuw";
-"Refresh Community Skills" = "Vernieuw Community-skills";
-"Refresh to check for available skills." = "Vernieuw om beschikbare skills te controleren.";
 "Regenerate with the same parameters" = "Genereer opnieuw met dezelfde parameters";
 "Relink Folder…" = "Koppel map opnieuw…";
 "Relinked %lld of %lld offline clips." = "%lld van %lld offline clips opnieuw gekoppeld.";
@@ -808,7 +805,6 @@
 "Signed out" = "Uitgelogd";
 "Silence Detection" = "Stiltedetectie";
 "Size" = "Grootte";
-"Skill actions" = "Skill-acties";
 "Skill instructions" = "Skill-instructies";
 "Skill name" = "Skillnaam";
 "Skill unavailable." = "Skill niet beschikbaar.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "De geselecteerde projecten worden naar de Prullenmand verplaatst.";
 "The timeline settings changed. Close this sheet and try again." = "De Timeline-instellingen zijn gewijzigd. Sluit dit venster en probeer het opnieuw.";
 "Theme" = "Thema";
+"This build includes no skills." = "Deze build bevat geen skills.";
 "This is where all your footage and assets live." = "Hier staan al uw beeldmateriaal en assets.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dit is uw voorvertoningspaneel om geselecteerde media of de hele Timeline af te spelen.";
 "This job can't be cancelled. It will finish on its own." = "Deze taak kan niet worden geannuleerd. Hij wordt vanzelf voltooid.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Trim einde tot afspeelkop (W)";
 "Trim Start to Playhead" = "Trim begin tot afspeelkop";
 "Trim Start to Playhead (Q)" = "Trim begin tot afspeelkop (Q)";
-"Try Again" = "Probeer opnieuw";
 "Try again." = "Probeer het opnieuw.";
 "Try another search." = "Probeer een andere zoekopdracht.";
 "Turn off to skip audio generation." = "Schakel uit om audiogeneratie over te slaan.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Videomodel niet beschikbaar";
 "Video to Music" = "Video naar muziek";
 "View" = "Weergave";
+"View Skill Sources ↗" = "Bekijk bronnen van skills ↗";
 "View Skills" = "Toon Skills";
 "Vignette" = "Vignet";
 "Visual search model download failed. Check your connection and try again." = "Download van het visuele zoekmodel mislukt. Controleer uw verbinding en probeer het opnieuw.";

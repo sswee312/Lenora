@@ -114,7 +114,8 @@
 "Bold" = "Bold";
 "Both" = "Both";
 "Bottom" = "Bottom";
-"Browse Community Skills ↗" = "Browse Community Skills ↗";
+"Bundled" = "Bundled";
+"Bundled Skills Unavailable" = "Bundled Skills Unavailable";
 "Bundled skills are missing from this build." = "Bundled skills are missing from this build.";
 "Buy" = "Buy";
 "Buy $%lld" = "Buy $%lld";
@@ -198,8 +199,6 @@
 "Color Wheels" = "Color Wheels";
 "Color for the active word." = "Color for the active word.";
 "Comments" = "Comments";
-"Community" = "Community";
-"Community Skills Unavailable" = "Community Skills Unavailable";
 "Compatibility: %@" = "Compatibility: %@";
 "Completed" = "Completed";
 "Connect an agent" = "Connect an agent";
@@ -232,7 +231,7 @@
 "Create Nested Timeline" = "Create Nested Timeline";
 "Create Video" = "Create Video";
 "Create Video only works on images" = "Create Video only works on images";
-"Create a skill or browse the Community collection." = "Create a skill or browse the Community collection.";
+"Create a skill or browse the Bundled collection." = "Create a skill or browse the Bundled collection.";
 "Create matching sound for the video" = "Create matching sound for the video";
 "Creating…" = "Creating…";
 "Credits" = "Credits";
@@ -498,8 +497,8 @@
 "Lip Sync model not available" = "Lip Sync model not available";
 "Lip Sync only works on video" = "Lip Sync only works on video";
 "Lip Sync…" = "Lip Sync…";
-"Loading community skills" = "Loading community skills";
-"Loading community skills…" = "Loading community skills…";
+"Loading bundled skills" = "Loading bundled skills";
+"Loading bundled skills…" = "Loading bundled skills…";
 "Loading media metadata…" = "Loading media metadata…";
 "Loading models…" = "Loading models…";
 "Loading source dimensions…" = "Loading source dimensions…";
@@ -576,7 +575,7 @@
 "New timeline" = "New timeline";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding.";
 "Next" = "Next";
-"No Community Skills" = "No Community Skills";
+"No Bundled Skills" = "No Bundled Skills";
 "No Installed Skills" = "No Installed Skills";
 "No Matching Skills" = "No Matching Skills";
 "No Tracks" = "No Tracks";
@@ -621,7 +620,7 @@
 "Open Project" = "Open Project";
 "Open Settings" = "Open Settings";
 "Open Skills Folder" = "Open Skills Folder";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Open Skills to browse community playbooks, create your own, or add them to other agents.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Open Skills to browse bundled playbooks, create your own, or add them to other agents.";
 "Open Timeline" = "Open Timeline";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip.";
 "OpenAI API Key" = "OpenAI API Key";
@@ -685,9 +684,6 @@
 "Reframe model not available" = "Reframe model not available";
 "Reframe only works on video" = "Reframe only works on video";
 "Reframe…" = "Reframe…";
-"Refresh" = "Refresh";
-"Refresh Community Skills" = "Refresh Community Skills";
-"Refresh to check for available skills." = "Refresh to check for available skills.";
 "Regenerate with the same parameters" = "Regenerate with the same parameters";
 "Relink Folder…" = "Relink Folder…";
 "Relinked %lld of %lld offline clips." = "Relinked %lld of %lld offline clips.";
@@ -809,7 +805,6 @@
 "Signed out" = "Signed out";
 "Silence Detection" = "Silence Detection";
 "Size" = "Size";
-"Skill actions" = "Skill actions";
 "Skill instructions" = "Skill instructions";
 "Skill name" = "Skill name";
 "Skill unavailable." = "Skill unavailable.";
@@ -888,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "The selected projects will be moved to the Trash.";
 "The timeline settings changed. Close this sheet and try again." = "The timeline settings changed. Close this sheet and try again.";
 "Theme" = "Theme";
+"This build includes no skills." = "This build includes no skills.";
 "This is where all your footage and assets live." = "This is where all your footage and assets live.";
 "This is your preview panel to play a selected media or the whole timeline." = "This is your preview panel to play a selected media or the whole timeline.";
 "This job can't be cancelled. It will finish on its own." = "This job can't be cancelled. It will finish on its own.";
@@ -928,7 +924,6 @@
 "Trim End to Playhead (W)" = "Trim End to Playhead (W)";
 "Trim Start to Playhead" = "Trim Start to Playhead";
 "Trim Start to Playhead (Q)" = "Trim Start to Playhead (Q)";
-"Try Again" = "Try Again";
 "Try again." = "Try again.";
 "Try another search." = "Try another search.";
 "Turn off to skip audio generation." = "Turn off to skip audio generation.";
@@ -979,6 +974,7 @@
 "Video model not available" = "Video model not available";
 "Video to Music" = "Video to Music";
 "View" = "View";
+"View Skill Sources ↗" = "View Skill Sources ↗";
 "View Skills" = "View Skills";
 "Vignette" = "Vignette";
 "Visual search model download failed. Check your connection and try again." = "Visual search model download failed. Check your connection and try again.";

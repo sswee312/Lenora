@@ -114,7 +114,9 @@
 "Bold" = "볼드체";
 "Both" = "둘 다";
 "Bottom" = "아래";
-"Browse Community Skills ↗" = "커뮤니티 스킬 둘러보기 ↗";
+"Bundled" = "번들";
+"Bundled Skills Unavailable" = "번들 스킬을 사용할 수 없음";
+"Bundled skills are missing from this build." = "이 빌드에 번들 스킬이 없습니다.";
 "Buy" = "구매";
 "Buy $%lld" = "$%lld 구매";
 "Buy more" = "더 구매";
@@ -197,8 +199,6 @@
 "Color Wheels" = "컬러 휠";
 "Color for the active word." = "활성 단어의 색상입니다.";
 "Comments" = "코멘트";
-"Community" = "커뮤니티";
-"Community Skills Unavailable" = "커뮤니티 스킬을 사용할 수 없음";
 "Compatibility: %@" = "호환성: %@";
 "Completed" = "완료됨";
 "Connect an agent" = "에이전트 연결";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "중첩 타임라인 생성";
 "Create Video" = "비디오 생성";
 "Create Video only works on images" = "비디오 생성은 이미지에서만 사용할 수 있습니다";
-"Create a skill or browse the Community collection." = "스킬을 생성하거나 커뮤니티 모음을 둘러보세요.";
+"Create a skill or browse the Bundled collection." = "스킬을 생성하거나 번들 모음을 둘러보세요.";
 "Create matching sound for the video" = "비디오에 맞는 사운드 생성";
 "Creating…" = "생성하는 중…";
 "Credits" = "크레딧";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "립싱크 모델을 사용할 수 없습니다";
 "Lip Sync only works on video" = "립싱크는 비디오에서만 사용할 수 있습니다";
 "Lip Sync…" = "립싱크…";
-"Loading community skills" = "커뮤니티 스킬을 불러오는 중";
-"Loading community skills…" = "커뮤니티 스킬을 불러오는 중…";
+"Loading bundled skills" = "번들 스킬을 불러오는 중";
+"Loading bundled skills…" = "번들 스킬을 불러오는 중…";
 "Loading media metadata…" = "미디어 메타데이터를 불러오는 중…";
 "Loading models…" = "모델을 불러오는 중…";
 "Loading source dimensions…" = "소스 크기를 불러오는 중…";
@@ -575,7 +575,7 @@
 "New timeline" = "새 타임라인";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "DaVinci Resolve와 Final Cut Pro를 더 잘 지원하는 최신 타임라인 포맷입니다. 기본 편집, 키프레임 및 텍스트를 지원하지만 색상, 효과, 가장자리 부드러움 또는 가장자리 둥글기는 지원하지 않습니다.";
 "Next" = "다음";
-"No Community Skills" = "커뮤니티 스킬 없음";
+"No Bundled Skills" = "번들 스킬 없음";
 "No Installed Skills" = "설치된 스킬 없음";
 "No Matching Skills" = "일치하는 스킬 없음";
 "No Tracks" = "트랙 없음";
@@ -620,7 +620,7 @@
 "Open Project" = "프로젝트 열기";
 "Open Settings" = "설정 열기";
 "Open Skills Folder" = "스킬 폴더 열기";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "스킬을 열어 커뮤니티 플레이북을 둘러보고 직접 만들거나 다른 에이전트에 추가하세요.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "스킬을 열어 번들 플레이북을 둘러보고 직접 만들거나 다른 에이전트에 추가하세요.";
 "Open Timeline" = "타임라인 열기";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "AI 편집 탭을 열어 업스케일, 프롬프트 편집, 프레임에서 비디오 만들기, 또는 클립에서 음악·SFX·클린업·더빙을 생성하세요.";
 "OpenAI API Key" = "OpenAI API 키";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "리프레임 모델을 사용할 수 없습니다";
 "Reframe only works on video" = "리프레임은 비디오에서만 사용할 수 있습니다";
 "Reframe…" = "리프레임…";
-"Refresh" = "새로 고침";
-"Refresh Community Skills" = "커뮤니티 스킬 새로 고침";
-"Refresh to check for available skills." = "사용 가능한 스킬이 있는지 확인하려면 새로 고치세요.";
 "Regenerate with the same parameters" = "동일한 매개변수로 다시 생성";
 "Relink Folder…" = "폴더 다시 연결…";
 "Relinked %lld of %lld offline clips." = "오프라인 클립 %lld개를 다시 연결했습니다(전체 %lld개).";
@@ -808,7 +805,6 @@
 "Signed out" = "로그아웃됨";
 "Silence Detection" = "무음 감지";
 "Size" = "크기";
-"Skill actions" = "스킬 동작";
 "Skill instructions" = "스킬 지침";
 "Skill name" = "스킬 이름";
 "Skill unavailable." = "스킬을 사용할 수 없습니다.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "선택한 프로젝트가 휴지통으로 이동됩니다.";
 "The timeline settings changed. Close this sheet and try again." = "타임라인 설정이 변경되었습니다. 이 시트를 닫고 다시 시도하세요.";
 "Theme" = "테마";
+"This build includes no skills." = "이 빌드에는 스킬이 포함되어 있지 않습니다.";
 "This is where all your footage and assets live." = "모든 푸티지와 에셋이 보관되는 곳입니다.";
 "This is your preview panel to play a selected media or the whole timeline." = "선택한 미디어 또는 전체 타임라인을 재생하는 미리보기 패널입니다.";
 "This job can't be cancelled. It will finish on its own." = "이 작업은 취소할 수 없습니다. 자동으로 완료됩니다.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "끝을 재생 헤드까지 트리밍(W)";
 "Trim Start to Playhead" = "시작을 재생 헤드까지 트리밍";
 "Trim Start to Playhead (Q)" = "시작을 재생 헤드까지 트리밍(Q)";
-"Try Again" = "다시 시도";
 "Try again." = "다시 시도하세요.";
 "Try another search." = "다른 검색어를 사용해 보세요.";
 "Turn off to skip audio generation." = "오디오 생성을 건너뛰려면 끄세요.";
@@ -978,6 +974,7 @@
 "Video model not available" = "비디오 모델을 사용할 수 없습니다";
 "Video to Music" = "비디오로 음악 생성";
 "View" = "보기";
+"View Skill Sources ↗" = "스킬 소스 보기 ↗";
 "View Skills" = "스킬 보기";
 "Vignette" = "비네트";
 "Visual search model download failed. Check your connection and try again." = "시각 검색 모델을 다운로드하지 못했습니다. 연결을 확인하고 다시 시도하세요.";

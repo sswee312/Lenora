@@ -114,7 +114,9 @@
 "Bold" = "Đậm";
 "Both" = "Cả hai";
 "Bottom" = "Dưới";
-"Browse Community Skills ↗" = "Duyệt kỹ năng cộng đồng ↗";
+"Bundled" = "Đi kèm";
+"Bundled Skills Unavailable" = "Kỹ năng đi kèm không khả dụng";
+"Bundled skills are missing from this build." = "Bản dựng này thiếu các kỹ năng đi kèm.";
 "Buy" = "Mua";
 "Buy $%lld" = "Mua $%lld";
 "Buy more" = "Mua thêm";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Bánh xe màu";
 "Color for the active word." = "Màu của từ đang hoạt động.";
 "Comments" = "Bình luận";
-"Community" = "Cộng đồng";
-"Community Skills Unavailable" = "Kỹ năng cộng đồng không khả dụng";
 "Compatibility: %@" = "Tương thích: %@";
 "Completed" = "Hoàn tất";
 "Connect an agent" = "Kết nối agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Tạo timeline lồng nhau";
 "Create Video" = "Tạo video";
 "Create Video only works on images" = "Tạo video chỉ hoạt động với hình ảnh";
-"Create a skill or browse the Community collection." = "Tạo kỹ năng hoặc duyệt bộ sưu tập Cộng đồng.";
+"Create a skill or browse the Bundled collection." = "Tạo kỹ năng hoặc duyệt bộ sưu tập Đi kèm.";
 "Create matching sound for the video" = "Tạo âm thanh phù hợp với video";
 "Creating…" = "Đang tạo…";
 "Credits" = "Tín dụng";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Mô hình đồng bộ môi không khả dụng";
 "Lip Sync only works on video" = "Đồng bộ môi chỉ hoạt động với video";
 "Lip Sync…" = "Đồng bộ môi…";
-"Loading community skills" = "Đang tải kỹ năng cộng đồng";
-"Loading community skills…" = "Đang tải kỹ năng cộng đồng…";
+"Loading bundled skills" = "Đang tải kỹ năng đi kèm";
+"Loading bundled skills…" = "Đang tải kỹ năng đi kèm…";
 "Loading media metadata…" = "Đang tải siêu dữ liệu phương tiện…";
 "Loading models…" = "Đang tải mô hình…";
 "Loading source dimensions…" = "Đang tải kích thước nguồn…";
@@ -575,7 +575,7 @@
 "New timeline" = "Timeline mới";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Định dạng timeline mới hơn, hỗ trợ DaVinci Resolve và Final Cut Pro tốt hơn. Hỗ trợ chỉnh sửa cơ bản, khung hình chính và văn bản, nhưng không hỗ trợ màu, hiệu ứng, độ mềm cạnh hoặc độ bo cạnh.";
 "Next" = "Tiếp theo";
-"No Community Skills" = "Không có kỹ năng cộng đồng";
+"No Bundled Skills" = "Không có kỹ năng đi kèm";
 "No Installed Skills" = "Không có kỹ năng đã cài đặt";
 "No Matching Skills" = "Không có kỹ năng phù hợp";
 "No Tracks" = "Không có track";
@@ -620,7 +620,7 @@
 "Open Project" = "Mở dự án";
 "Open Settings" = "Mở Cài đặt";
 "Open Skills Folder" = "Mở thư mục Kỹ năng";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Mở Kỹ năng để duyệt cẩm nang cộng đồng, tự tạo kỹ năng hoặc thêm kỹ năng vào agent khác.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Mở Kỹ năng để duyệt cẩm nang đi kèm, tự tạo kỹ năng hoặc thêm kỹ năng vào agent khác.";
 "Open Timeline" = "Mở timeline";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Mở tab Chỉnh sửa bằng AI để nâng độ phân giải, chỉnh sửa bằng prompt, tạo video từ một khung hình, hoặc tạo nhạc, SFX, làm sạch âm thanh và lồng tiếng từ clip.";
 "OpenAI API Key" = "Khóa API OpenAI";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Mô hình định khung lại không khả dụng";
 "Reframe only works on video" = "Định khung lại chỉ hoạt động với video";
 "Reframe…" = "Định khung lại…";
-"Refresh" = "Làm mới";
-"Refresh Community Skills" = "Làm mới kỹ năng cộng đồng";
-"Refresh to check for available skills." = "Làm mới để kiểm tra kỹ năng khả dụng.";
 "Regenerate with the same parameters" = "Tạo lại với cùng tham số";
 "Relink Folder…" = "Liên kết lại thư mục…";
 "Relinked %lld of %lld offline clips." = "Đã liên kết lại %lld trên %lld clip ngoại tuyến.";
@@ -808,7 +805,6 @@
 "Signed out" = "Đã đăng xuất";
 "Silence Detection" = "Phát hiện khoảng lặng";
 "Size" = "Kích thước";
-"Skill actions" = "Thao tác kỹ năng";
 "Skill instructions" = "Hướng dẫn kỹ năng";
 "Skill name" = "Tên kỹ năng";
 "Skill unavailable." = "Kỹ năng không khả dụng.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "Các dự án đã chọn sẽ được chuyển vào Thùng rác.";
 "The timeline settings changed. Close this sheet and try again." = "Cài đặt timeline đã thay đổi. Đóng bảng này và thử lại.";
 "Theme" = "Chủ đề";
+"This build includes no skills." = "Bản dựng này không có kỹ năng nào.";
 "This is where all your footage and assets live." = "Đây là nơi chứa toàn bộ cảnh quay và tài nguyên của bạn.";
 "This is your preview panel to play a selected media or the whole timeline." = "Đây là bảng xem trước để phát phương tiện đã chọn hoặc toàn bộ timeline.";
 "This job can't be cancelled. It will finish on its own." = "Không thể hủy tác vụ này. Tác vụ sẽ tự hoàn tất.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Cắt phần cuối đến đầu phát (W)";
 "Trim Start to Playhead" = "Cắt phần đầu đến đầu phát";
 "Trim Start to Playhead (Q)" = "Cắt phần đầu đến đầu phát (Q)";
-"Try Again" = "Thử lại";
 "Try again." = "Thử lại.";
 "Try another search." = "Thử tìm kiếm khác.";
 "Turn off to skip audio generation." = "Tắt để bỏ qua việc tạo âm thanh.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Mô hình video không khả dụng";
 "Video to Music" = "Video thành nhạc";
 "View" = "Xem";
+"View Skill Sources ↗" = "Xem nguồn kỹ năng ↗";
 "View Skills" = "Xem kỹ năng";
 "Vignette" = "Tối góc";
 "Visual search model download failed. Check your connection and try again." = "Không thể tải mô hình tìm kiếm trực quan. Kiểm tra kết nối rồi thử lại.";

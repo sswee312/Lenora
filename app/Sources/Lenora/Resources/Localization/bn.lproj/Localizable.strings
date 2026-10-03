@@ -114,7 +114,9 @@
 "Bold" = "বোল্ড";
 "Both" = "দুটিই";
 "Bottom" = "নিচে";
-"Browse Community Skills ↗" = "কমিউনিটি স্কিল দেখুন ↗";
+"Bundled" = "বান্ডেল করা";
+"Bundled Skills Unavailable" = "বান্ডেল করা স্কিল পাওয়া যাচ্ছে না";
+"Bundled skills are missing from this build." = "এই বিল্ডে বান্ডেল করা স্কিল নেই।";
 "Buy" = "কিনুন";
 "Buy $%lld" = "$%lld দিয়ে কিনুন";
 "Buy more" = "আরও কিনুন";
@@ -197,8 +199,6 @@
 "Color Wheels" = "কালার হুইল";
 "Color for the active word." = "অ্যাকটিভ শব্দের রং।";
 "Comments" = "কমেন্ট";
-"Community" = "কমিউনিটি";
-"Community Skills Unavailable" = "কমিউনিটি স্কিল পাওয়া যাচ্ছে না";
 "Compatibility: %@" = "কম্প্যাটিবিলিটি: %@";
 "Completed" = "সম্পন্ন";
 "Connect an agent" = "একটি এজেন্ট কানেক্ট করুন";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "নেস্টেড টাইমলাইন তৈরি করুন";
 "Create Video" = "ভিডিও তৈরি করুন";
 "Create Video only works on images" = "ভিডিও তৈরি শুধু ইমেজের ক্ষেত্রে কাজ করে";
-"Create a skill or browse the Community collection." = "একটি স্কিল তৈরি করুন অথবা কমিউনিটি কালেকশন দেখুন।";
+"Create a skill or browse the Bundled collection." = "একটি স্কিল তৈরি করুন অথবা বান্ডেল করা কালেকশন দেখুন।";
 "Create matching sound for the video" = "ভিডিওর সঙ্গে মানানসই সাউন্ড তৈরি করুন";
 "Creating…" = "তৈরি করা হচ্ছে…";
 "Credits" = "ক্রেডিট";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "লিপ সিঙ্ক মডেল পাওয়া যাচ্ছে না";
 "Lip Sync only works on video" = "লিপ সিঙ্ক শুধু ভিডিওতে কাজ করে";
 "Lip Sync…" = "লিপ সিঙ্ক…";
-"Loading community skills" = "কমিউনিটি স্কিল লোড হচ্ছে";
-"Loading community skills…" = "কমিউনিটি স্কিল লোড হচ্ছে…";
+"Loading bundled skills" = "বান্ডেল করা স্কিল লোড হচ্ছে";
+"Loading bundled skills…" = "বান্ডেল করা স্কিল লোড হচ্ছে…";
 "Loading media metadata…" = "মিডিয়া মেটাডেটা লোড হচ্ছে…";
 "Loading models…" = "মডেল লোড হচ্ছে…";
 "Loading source dimensions…" = "সোর্স ডাইমেনশন লোড হচ্ছে…";
@@ -575,7 +575,7 @@
 "New timeline" = "নতুন টাইমলাইন";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "DaVinci Resolve ও Final Cut Pro-তে উন্নত সাপোর্টের জন্য নতুন টাইমলাইন ফরম্যাট। বেসিক এডিট, কিফ্রেম ও টেক্সট সাপোর্ট করে; তবে কালার, ইফেক্ট, এজ সফটনেস বা এজ রাউন্ডিং সাপোর্ট করে না।";
 "Next" = "পরবর্তী";
-"No Community Skills" = "কোনো কমিউনিটি স্কিল নেই";
+"No Bundled Skills" = "কোনো বান্ডেল করা স্কিল নেই";
 "No Installed Skills" = "কোনো ইনস্টল করা স্কিল নেই";
 "No Matching Skills" = "মিলে যাওয়া কোনো স্কিল নেই";
 "No Tracks" = "কোনো ট্র্যাক নেই";
@@ -620,7 +620,7 @@
 "Open Project" = "প্রজেক্ট খুলুন";
 "Open Settings" = "সেটিংস খুলুন";
 "Open Skills Folder" = "স্কিল ফোল্ডার খুলুন";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "কমিউনিটি প্লেবুক দেখতে, নিজের স্কিল তৈরি করতে বা অন্য এজেন্টে যোগ করতে স্কিল খুলুন।";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "বান্ডেল করা প্লেবুক দেখতে, নিজের স্কিল তৈরি করতে বা অন্য এজেন্টে যোগ করতে স্কিল খুলুন।";
 "Open Timeline" = "টাইমলাইন খুলুন";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "AI Edit ট্যাব খুলে আপস্কেল করুন, প্রম্পট দিয়ে এডিট করুন, একটি ফ্রেম থেকে ভিডিও তৈরি করুন, অথবা ক্লিপ থেকে মিউজিক, SFX, ক্লিনআপ ও ডাবিং জেনারেট করুন।";
 "OpenAI API Key" = "OpenAI API কী";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "রিফ্রেম মডেল পাওয়া যাচ্ছে না";
 "Reframe only works on video" = "রিফ্রেম শুধু ভিডিওতে কাজ করে";
 "Reframe…" = "রিফ্রেম…";
-"Refresh" = "রিফ্রেশ";
-"Refresh Community Skills" = "কমিউনিটি স্কিল রিফ্রেশ করুন";
-"Refresh to check for available skills." = "পাওয়া যাচ্ছে এমন স্কিল দেখতে রিফ্রেশ করুন।";
 "Regenerate with the same parameters" = "একই প্যারামিটার দিয়ে আবার জেনারেট করুন";
 "Relink Folder…" = "ফোল্ডার রিলিঙ্ক করুন…";
 "Relinked %lld of %lld offline clips." = "%lld / %lldটি অফলাইন ক্লিপ রিলিঙ্ক হয়েছে।";
@@ -808,7 +805,6 @@
 "Signed out" = "সাইন আউট করা";
 "Silence Detection" = "নীরবতা শনাক্তকরণ";
 "Size" = "সাইজ";
-"Skill actions" = "স্কিল অ্যাকশন";
 "Skill instructions" = "স্কিল নির্দেশনা";
 "Skill name" = "স্কিলের নাম";
 "Skill unavailable." = "স্কিল পাওয়া যাচ্ছে না।";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "সিলেক্ট করা প্রজেক্টগুলো ট্র্যাশে সরানো হবে।";
 "The timeline settings changed. Close this sheet and try again." = "টাইমলাইন সেটিংস বদলেছে। এই শিট বন্ধ করে আবার চেষ্টা করুন।";
 "Theme" = "থিম";
+"This build includes no skills." = "এই বিল্ডে কোনো স্কিল অন্তর্ভুক্ত নেই।";
 "This is where all your footage and assets live." = "আপনার সব ফুটেজ ও অ্যাসেট এখানে থাকে।";
 "This is your preview panel to play a selected media or the whole timeline." = "এটি সিলেক্ট করা মিডিয়া বা পুরো টাইমলাইন প্লে করার প্রিভিউ প্যানেল।";
 "This job can't be cancelled. It will finish on its own." = "এই কাজটি বাতিল করা যাবে না। এটি নিজে থেকেই শেষ হবে।";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "শেষ অংশ প্লেহেড পর্যন্ত ট্রিম করুন (W)";
 "Trim Start to Playhead" = "শুরুর অংশ প্লেহেড পর্যন্ত ট্রিম করুন";
 "Trim Start to Playhead (Q)" = "শুরুর অংশ প্লেহেড পর্যন্ত ট্রিম করুন (Q)";
-"Try Again" = "আবার চেষ্টা করুন";
 "Try again." = "আবার চেষ্টা করুন।";
 "Try another search." = "অন্য কিছু সার্চ করুন।";
 "Turn off to skip audio generation." = "অডিও জেনারেশন এড়াতে বন্ধ করুন।";
@@ -978,6 +974,7 @@
 "Video model not available" = "ভিডিও মডেল পাওয়া যাচ্ছে না";
 "Video to Music" = "ভিডিও থেকে মিউজিক";
 "View" = "ভিউ";
+"View Skill Sources ↗" = "স্কিলের উৎস দেখুন ↗";
 "View Skills" = "স্কিল দেখুন";
 "Vignette" = "ভিনিয়েট";
 "Visual search model download failed. Check your connection and try again." = "ভিজ্যুয়াল সার্চ মডেল ডাউনলোড হয়নি। কানেকশন দেখে আবার চেষ্টা করুন।";

@@ -114,7 +114,9 @@
 "Bold" = "Fet";
 "Both" = "Begge";
 "Bottom" = "Bunn";
-"Browse Community Skills ↗" = "Bla gjennom fellesskapsferdigheter ↗";
+"Bundled" = "Medfølgende";
+"Bundled Skills Unavailable" = "Medfølgende ferdigheter utilgjengelige";
+"Bundled skills are missing from this build." = "Medfølgende ferdigheter mangler i denne versjonen.";
 "Buy" = "Kjøp";
 "Buy $%lld" = "Kjøp $%lld";
 "Buy more" = "Kjøp mer";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Fargehjul";
 "Color for the active word." = "Farge for det aktive ordet.";
 "Comments" = "Kommentarer";
-"Community" = "Fellesskap";
-"Community Skills Unavailable" = "Fellesskapsferdigheter utilgjengelige";
 "Compatibility: %@" = "Kompatibilitet: %@";
 "Completed" = "Fullført";
 "Connect an agent" = "Koble til en Agent";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Opprett nestet tidslinje";
 "Create Video" = "Opprett video";
 "Create Video only works on images" = "Opprett video fungerer bare på bilder";
-"Create a skill or browse the Community collection." = "Opprett en ferdighet, eller bla gjennom fellesskapssamlingen.";
+"Create a skill or browse the Bundled collection." = "Opprett en ferdighet, eller bla gjennom den medfølgende samlingen.";
 "Create matching sound for the video" = "Lag tilpasset lyd til videoen";
 "Creating…" = "Oppretter…";
 "Credits" = "Kreditter";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Leppesynk-modell ikke tilgjengelig";
 "Lip Sync only works on video" = "Leppesynk fungerer bare på video";
 "Lip Sync…" = "Leppesynk…";
-"Loading community skills" = "Laster fellesskapsferdigheter";
-"Loading community skills…" = "Laster fellesskapsferdigheter…";
+"Loading bundled skills" = "Laster medfølgende ferdigheter";
+"Loading bundled skills…" = "Laster medfølgende ferdigheter…";
 "Loading media metadata…" = "Laster metadata for media…";
 "Loading models…" = "Laster modeller…";
 "Loading source dimensions…" = "Laster kildedimensjoner…";
@@ -575,7 +575,7 @@
 "New timeline" = "Ny tidslinje";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Nyere tidslinjeformat med bedre støtte for DaVinci Resolve og Final Cut Pro. Støtter grunnleggende redigering, nøkkelbilder og tekst, men ikke farge, effekter, kantmykhet eller kantavrunding.";
 "Next" = "Neste";
-"No Community Skills" = "Ingen fellesskapsferdigheter";
+"No Bundled Skills" = "Ingen medfølgende ferdigheter";
 "No Installed Skills" = "Ingen installerte ferdigheter";
 "No Matching Skills" = "Ingen treffende ferdigheter";
 "No Tracks" = "Ingen spor";
@@ -620,7 +620,7 @@
 "Open Project" = "Åpne prosjekt";
 "Open Settings" = "Åpne innstillinger";
 "Open Skills Folder" = "Åpne ferdighetsmappe";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Åpne Ferdigheter for å bla gjennom fellesskapsoppskrifter, lage egne eller legge dem til i andre agenter.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Åpne Ferdigheter for å bla gjennom medfølgende oppskrifter, lage egne eller legge dem til i andre agenter.";
 "Open Timeline" = "Åpne tidslinje";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Åpne fanen AI-redigering for å oppskalere, prompt-redigere, lage video fra et bilde, eller generere musikk, SFX, rensing og dubbing fra klippet.";
 "OpenAI API Key" = "OpenAI API-nøkkel";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Omram-modell ikke tilgjengelig";
 "Reframe only works on video" = "Omram fungerer bare på video";
 "Reframe…" = "Omram…";
-"Refresh" = "Oppdater";
-"Refresh Community Skills" = "Oppdater fellesskapsferdigheter";
-"Refresh to check for available skills." = "Oppdater for å se tilgjengelige ferdigheter.";
 "Regenerate with the same parameters" = "Generer på nytt med de samme parameterne";
 "Relink Folder…" = "Koble mappe på nytt…";
 "Relinked %lld of %lld offline clips." = "Koblet %lld av %lld frakoblede klipp på nytt.";
@@ -808,7 +805,6 @@
 "Signed out" = "Logget ut";
 "Silence Detection" = "Stillhetsgjenkjenning";
 "Size" = "Størrelse";
-"Skill actions" = "Ferdighetshandlinger";
 "Skill instructions" = "Ferdighetsinstruksjoner";
 "Skill name" = "Ferdighetsnavn";
 "Skill unavailable." = "Ferdigheten er utilgjengelig.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "De valgte prosjektene flyttes til papirkurven.";
 "The timeline settings changed. Close this sheet and try again." = "Tidslinjeinnstillingene ble endret. Lukk dette arket, og prøv på nytt.";
 "Theme" = "Tema";
+"This build includes no skills." = "Denne versjonen inneholder ingen ferdigheter.";
 "This is where all your footage and assets live." = "Her ligger alle opptakene og ressursene dine.";
 "This is your preview panel to play a selected media or the whole timeline." = "Dette er forhåndsvisningspanelet for å spille av valgt media eller hele tidslinjen.";
 "This job can't be cancelled. It will finish on its own." = "Denne jobben kan ikke avbrytes. Den fullføres av seg selv.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Trim slutt til avspillingshode (W)";
 "Trim Start to Playhead" = "Trim start til avspillingshode";
 "Trim Start to Playhead (Q)" = "Trim start til avspillingshode (Q)";
-"Try Again" = "Prøv på nytt";
 "Try again." = "Prøv på nytt.";
 "Try another search." = "Prøv et annet søk.";
 "Turn off to skip audio generation." = "Slå av for å hoppe over lydgenerering.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Videomodell ikke tilgjengelig";
 "Video to Music" = "Video til musikk";
 "View" = "Vis";
+"View Skill Sources ↗" = "Se kilder for ferdigheter ↗";
 "View Skills" = "Vis ferdigheter";
 "Vignette" = "Vignett";
 "Visual search model download failed. Check your connection and try again." = "Nedlasting av modell for visuelt søk mislyktes. Kontroller tilkoblingen, og prøv på nytt.";

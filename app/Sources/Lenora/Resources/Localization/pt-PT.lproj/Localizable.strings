@@ -114,7 +114,9 @@
 "Bold" = "Negrito";
 "Both" = "Ambos";
 "Bottom" = "Inferior";
-"Browse Community Skills ↗" = "Explorar skills da comunidade ↗";
+"Bundled" = "Incluídas";
+"Bundled Skills Unavailable" = "Skills incluídas indisponíveis";
+"Bundled skills are missing from this build." = "Faltam as skills incluídas nesta versão.";
 "Buy" = "Comprar";
 "Buy $%lld" = "Comprar $%lld";
 "Buy more" = "Comprar mais";
@@ -197,8 +199,6 @@
 "Color Wheels" = "Rodas de cor";
 "Color for the active word." = "Cor da palavra ativa.";
 "Comments" = "Comentários";
-"Community" = "Comunidade";
-"Community Skills Unavailable" = "Skills da comunidade indisponíveis";
 "Compatibility: %@" = "Compatibilidade: %@";
 "Completed" = "Concluído";
 "Connect an agent" = "Ligar um agente";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "Criar timeline aninhada";
 "Create Video" = "Criar vídeo";
 "Create Video only works on images" = "Criar vídeo só funciona com imagens";
-"Create a skill or browse the Community collection." = "Cria uma skill ou explora a coleção da Comunidade.";
+"Create a skill or browse the Bundled collection." = "Cria uma skill ou explora a coleção incluída.";
 "Create matching sound for the video" = "Criar som correspondente ao vídeo";
 "Creating…" = "A criar…";
 "Credits" = "Créditos";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "Modelo de sincronização labial indisponível";
 "Lip Sync only works on video" = "A sincronização labial só funciona com vídeo";
 "Lip Sync…" = "Sincronização labial…";
-"Loading community skills" = "A carregar skills da comunidade";
-"Loading community skills…" = "A carregar skills da comunidade…";
+"Loading bundled skills" = "A carregar skills incluídas";
+"Loading bundled skills…" = "A carregar skills incluídas…";
 "Loading media metadata…" = "A carregar metadados da média…";
 "Loading models…" = "A carregar modelos…";
 "Loading source dimensions…" = "A carregar dimensões da origem…";
@@ -575,7 +575,7 @@
 "New timeline" = "Nova timeline";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "Formato de timeline mais recente, com melhor suporte para DaVinci Resolve e Final Cut Pro. Suporta edições básicas, keyframes e texto, mas não cor, efeitos, suavidade das extremidades nem arredondamento das extremidades.";
 "Next" = "Seguinte";
-"No Community Skills" = "Sem skills da comunidade";
+"No Bundled Skills" = "Sem skills incluídas";
 "No Installed Skills" = "Sem skills instaladas";
 "No Matching Skills" = "Nenhuma skill correspondente";
 "No Tracks" = "Sem faixas";
@@ -620,7 +620,7 @@
 "Open Project" = "Abrir projeto";
 "Open Settings" = "Abrir Definições";
 "Open Skills Folder" = "Abrir pasta de skills";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "Abre Skills para explorar playbooks da comunidade, criar os teus ou adicioná-los a outros agentes.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "Abre Skills para explorar playbooks incluídos, criar os teus ou adicioná-los a outros agentes.";
 "Open Timeline" = "Abrir timeline";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "Abre o separador Edição com AI para aumentar a resolução, editar com prompt, criar vídeo a partir de um fotograma, ou gerar música, SFX, limpeza e dobragem a partir do clip.";
 "OpenAI API Key" = "Chave de API da OpenAI";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "Modelo de reenquadramento indisponível";
 "Reframe only works on video" = "Reenquadrar só funciona com vídeo";
 "Reframe…" = "Reenquadrar…";
-"Refresh" = "Atualizar";
-"Refresh Community Skills" = "Atualizar skills da comunidade";
-"Refresh to check for available skills." = "Atualiza para verificar skills disponíveis.";
 "Regenerate with the same parameters" = "Voltar a gerar com os mesmos parâmetros";
 "Relink Folder…" = "Religar pasta…";
 "Relinked %lld of %lld offline clips." = "Religados %lld de %lld clips offline.";
@@ -808,7 +805,6 @@
 "Signed out" = "Sessão terminada";
 "Silence Detection" = "Deteção de silêncio";
 "Size" = "Tamanho";
-"Skill actions" = "Ações da skill";
 "Skill instructions" = "Instruções da skill";
 "Skill name" = "Nome da skill";
 "Skill unavailable." = "Skill indisponível.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "Os projetos selecionados serão movidos para o Lixo.";
 "The timeline settings changed. Close this sheet and try again." = "As definições da timeline mudaram. Fecha esta folha e tenta novamente.";
 "Theme" = "Tema";
+"This build includes no skills." = "Esta versão não inclui skills.";
 "This is where all your footage and assets live." = "É aqui que estão o teu material e os teus recursos.";
 "This is your preview panel to play a selected media or the whole timeline." = "Este é o painel de pré-visualização para reproduzir uma média selecionada ou a timeline completa.";
 "This job can't be cancelled. It will finish on its own." = "Não é possível cancelar este trabalho. Terminará por si só.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "Cortar o fim até ao cursor de reprodução (W)";
 "Trim Start to Playhead" = "Cortar o início até ao cursor de reprodução";
 "Trim Start to Playhead (Q)" = "Cortar o início até ao cursor de reprodução (Q)";
-"Try Again" = "Tentar novamente";
 "Try again." = "Tenta novamente.";
 "Try another search." = "Tenta outra pesquisa.";
 "Turn off to skip audio generation." = "Desativa para não gerar áudio.";
@@ -978,6 +974,7 @@
 "Video model not available" = "Modelo de vídeo indisponível";
 "Video to Music" = "Vídeo para música";
 "View" = "Visualização";
+"View Skill Sources ↗" = "Ver fontes das skills ↗";
 "View Skills" = "Ver skills";
 "Vignette" = "Vinheta";
 "Visual search model download failed. Check your connection and try again." = "Falha ao transferir o modelo de pesquisa visual. Verifica a ligação e tenta novamente.";

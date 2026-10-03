@@ -11,12 +11,12 @@ struct SkillsPane: View {
 
     private enum SkillCollection: String {
         case installed = "Installed"
-        case community = "Community"
+        case bundled = "Bundled"
 
         var title: String {
             switch self {
             case .installed: L10n.key("Installed")
-            case .community: L10n.key("Community")
+            case .bundled: L10n.key("Bundled")
             }
         }
     }
@@ -27,7 +27,7 @@ struct SkillsPane: View {
             .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
     }
 
-    private var communityEntries: [SkillCatalogEntry] {
+    private var bundledEntries: [SkillCatalogEntry] {
         catalog.entries
             .filter { matches($0.name, $0.description) }
             .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
@@ -61,8 +61,8 @@ struct SkillsPane: View {
                 .font(.system(size: AppTheme.FontSize.sm))
                 .foregroundStyle(AppTheme.Text.tertiaryColor)
 
-            if let url = URL(string: "https://github.com/vermatushar/lenora-skills") {
-                Link(L10n.string("Browse Community Skills ↗"), destination: url)
+            if let url = URL(string: "https://github.com/vermatushar/lenora/tree/main/skills") {
+                Link(L10n.string("View Skill Sources ↗"), destination: url)
                     .font(.system(size: AppTheme.FontSize.sm))
                     .foregroundStyle(AppTheme.Accent.link)
                     .pointerStyle(.link)
@@ -80,10 +80,10 @@ struct SkillsPane: View {
                     action: { collection = .installed }
                 )
                 SkillCollectionButton(
-                    title: L10n.string(key: SkillCollection.community.title),
+                    title: L10n.string(key: SkillCollection.bundled.title),
                     count: catalog.entries.count,
-                    isSelected: collection == .community,
-                    action: { collection = .community }
+                    isSelected: collection == .bundled,
+                    action: { collection = .bundled }
                 )
             }
 
@@ -104,25 +104,17 @@ struct SkillsPane: View {
             .accessibilityLabel(L10n.string("New skill"))
             .help(L10n.string("New skill"))
 
-            Menu {
-                Button(L10n.string("Open Skills Folder"), systemImage: "folder") { store.openFolder() }
-                Divider()
-                Button(L10n.string("Refresh Community Skills"), systemImage: "arrow.clockwise") {
-                    Task { await store.syncSkills() }
-                }
-            } label: {
-                Image(systemName: "ellipsis")
+            Button(action: store.openFolder) {
+                Image(systemName: "folder")
                     .font(.system(size: AppTheme.FontSize.md, weight: AppTheme.FontWeight.medium))
                     .foregroundStyle(AppTheme.Text.secondaryColor)
                     .frame(width: AppTheme.IconSize.md, height: AppTheme.IconSize.md)
                     .padding(AppTheme.Spacing.xs)
                     .hoverHighlight(cornerRadius: AppTheme.Radius.sm)
             }
-            .menuStyle(.borderlessButton)
-            .menuIndicator(.hidden)
-            .fixedSize()
-            .accessibilityLabel(L10n.string("Skill actions"))
-            .help(L10n.string("Skill actions"))
+            .buttonStyle(.plain)
+            .accessibilityLabel(L10n.string("Open Skills Folder"))
+            .help(L10n.string("Open Skills Folder"))
         }
     }
 
@@ -162,8 +154,8 @@ struct SkillsPane: View {
             switch collection {
             case .installed:
                 installedList
-            case .community:
-                communityList
+            case .bundled:
+                bundledList
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -175,7 +167,7 @@ struct SkillsPane: View {
                 SkillEmptyState(
                     systemName: "book.closed",
                     title: L10n.string("No Installed Skills"),
-                    message: L10n.string("Create a skill or browse the Community collection."),
+                    message: L10n.string("Create a skill or browse the Bundled collection."),
                     actionTitle: L10n.string("New Skill"),
                     action: createSkill
                 )
@@ -183,7 +175,7 @@ struct SkillsPane: View {
                 noMatchesState
             } else {
                 ForEach(installedSkills) { skill in
-                    let state = SkillCommunityState.resolve(skill, store: store, catalog: catalog)
+                    let state = SkillCatalogState.resolve(skill, store: store, catalog: catalog)
                     SkillRow(
                         name: skill.name,
                         description: skill.description,
@@ -201,42 +193,38 @@ struct SkillsPane: View {
         }
     }
 
-    private var communityList: some View {
+    private var bundledList: some View {
         Group {
             if catalog.isLoading, catalog.entries.isEmpty {
                 HStack(spacing: AppTheme.Spacing.smMd) {
                     ProgressView().controlSize(.small)
-                    Text(L10n.string("Loading community skills…"))
+                    Text(L10n.string("Loading bundled skills…"))
                         .font(.system(size: AppTheme.FontSize.sm))
                         .foregroundStyle(AppTheme.Text.tertiaryColor)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(AppTheme.Spacing.xlXxl)
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel(L10n.string("Loading community skills"))
-            } else if communityEntries.isEmpty {
+                .accessibilityLabel(L10n.string("Loading bundled skills"))
+            } else if bundledEntries.isEmpty {
                 if query.isEmpty, let error = catalog.lastError {
                     SkillEmptyState(
                         systemName: "exclamationmark.triangle",
-                        title: L10n.string("Community Skills Unavailable"),
-                        message: error,
-                        actionTitle: L10n.string("Try Again"),
-                        action: { Task { await store.syncSkills() } }
+                        title: L10n.string("Bundled Skills Unavailable"),
+                        message: error
                     )
                 } else if query.isEmpty {
                     SkillEmptyState(
                         systemName: "books.vertical",
-                        title: L10n.string("No Community Skills"),
-                        message: L10n.string("Refresh to check for available skills."),
-                        actionTitle: L10n.string("Refresh"),
-                        action: { Task { await store.syncSkills() } }
+                        title: L10n.string("No Bundled Skills"),
+                        message: L10n.string("This build includes no skills.")
                     )
                 } else {
                     noMatchesState
                 }
             } else {
-                ForEach(communityEntries) { entry in
-                    communityRow(entry)
+                ForEach(bundledEntries) { entry in
+                    bundledRow(entry)
                 }
             }
         }
@@ -252,9 +240,9 @@ struct SkillsPane: View {
         )
     }
 
-    private func communityRow(_ entry: SkillCatalogEntry) -> some View {
+    private func bundledRow(_ entry: SkillCatalogEntry) -> some View {
         let skill = store.skills.first { $0.id == entry.id }
-        let state = skill.flatMap { SkillCommunityState.resolve($0, store: store, catalog: catalog) }
+        let state = skill.flatMap { SkillCatalogState.resolve($0, store: store, catalog: catalog) }
         return SkillRow(
             name: entry.name,
             description: entry.description,

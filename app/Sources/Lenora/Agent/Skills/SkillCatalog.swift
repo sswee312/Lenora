@@ -19,6 +19,7 @@ final class SkillCatalog {
     private(set) var entries: [SkillCatalogEntry] = []
     private(set) var isLoading = false
     private(set) var lastError: String?
+    private var refreshTask: Task<Bool, Never>?
 
     private init() {}
 
@@ -28,7 +29,15 @@ final class SkillCatalog {
 
     @discardableResult
     func refresh() async -> Bool {
-        guard !isLoading else { return false }
+        if let refreshTask { return await refreshTask.value }
+        let task = Task { await load() }
+        refreshTask = task
+        let loaded = await task.value
+        refreshTask = nil
+        return loaded
+    }
+
+    private func load() async -> Bool {
         guard let url = BundledResource.url("Skills/catalog.json") else {
             lastError = L10n.string("Bundled skills are missing from this build.")
             Log.agent.error("bundled skills catalog missing")

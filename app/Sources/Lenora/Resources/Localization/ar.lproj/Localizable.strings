@@ -114,7 +114,9 @@
 "Bold" = "عريض";
 "Both" = "كلاهما";
 "Bottom" = "أسفل";
-"Browse Community Skills ↗" = "استعراض مهارات المجتمع ↗";
+"Bundled" = "مضمّن";
+"Bundled Skills Unavailable" = "المهارات المضمّنة غير متاحة";
+"Bundled skills are missing from this build." = "المهارات المضمّنة مفقودة من هذا الإصدار.";
 "Buy" = "شراء";
 "Buy $%lld" = "شراء مقابل ⁨$%lld⁩";
 "Buy more" = "شراء المزيد";
@@ -197,8 +199,6 @@
 "Color Wheels" = "عجلات الألوان";
 "Color for the active word." = "لون الكلمة النشطة.";
 "Comments" = "التعليقات";
-"Community" = "المجتمع";
-"Community Skills Unavailable" = "مهارات المجتمع غير متاحة";
 "Compatibility: %@" = "التوافق: ⁨%@⁩";
 "Completed" = "مكتمل";
 "Connect an agent" = "ربط وكيل";
@@ -231,7 +231,7 @@
 "Create Nested Timeline" = "إنشاء مخطط زمني متداخل";
 "Create Video" = "إنشاء فيديو";
 "Create Video only works on images" = "يعمل إنشاء الفيديو مع الصور فقط";
-"Create a skill or browse the Community collection." = "أنشئ مهارة أو استعرض مجموعة المجتمع.";
+"Create a skill or browse the Bundled collection." = "أنشئ مهارة أو استعرض المجموعة المضمّنة.";
 "Create matching sound for the video" = "إنشاء صوت ملائم للفيديو";
 "Creating…" = "جارٍ الإنشاء…";
 "Credits" = "الرصيد";
@@ -497,8 +497,8 @@
 "Lip Sync model not available" = "نموذج مزامنة الشفاه غير متاح";
 "Lip Sync only works on video" = "تعمل مزامنة الشفاه مع الفيديو فقط";
 "Lip Sync…" = "مزامنة الشفاه…";
-"Loading community skills" = "جارٍ تحميل مهارات المجتمع";
-"Loading community skills…" = "جارٍ تحميل مهارات المجتمع…";
+"Loading bundled skills" = "جارٍ تحميل المهارات المضمّنة";
+"Loading bundled skills…" = "جارٍ تحميل المهارات المضمّنة…";
 "Loading media metadata…" = "جارٍ تحميل بيانات الوسائط الوصفية…";
 "Loading models…" = "جارٍ تحميل النماذج…";
 "Loading source dimensions…" = "جارٍ تحميل أبعاد المصدر…";
@@ -575,7 +575,7 @@
 "New timeline" = "مخطط زمني جديد";
 "Newer timeline format with better support for DaVinci Resolve and Final Cut Pro. Supports basic edits, keyframes, and text, but not color, effects, edge softness, or edge rounding." = "تنسيق أحدث للمخطط الزمني مع دعم أفضل لـ DaVinci Resolve وFinal Cut Pro. يدعم عمليات التحرير الأساسية والإطارات الرئيسية والنص، لكنه لا يدعم اللون أو التأثيرات أو نعومة الحواف أو استدارتها.";
 "Next" = "التالي";
-"No Community Skills" = "لا توجد مهارات من المجتمع";
+"No Bundled Skills" = "لا توجد مهارات مضمّنة";
 "No Installed Skills" = "لا توجد مهارات مثبّتة";
 "No Matching Skills" = "لا توجد مهارات مطابقة";
 "No Tracks" = "لا توجد مسارات";
@@ -620,7 +620,7 @@
 "Open Project" = "فتح مشروع";
 "Open Settings" = "فتح الإعدادات";
 "Open Skills Folder" = "فتح مجلد المهارات";
-"Open Skills to browse community playbooks, create your own, or add them to other agents." = "افتح «المهارات» لاستعراض أدلة عمل المجتمع أو إنشاء مهاراتك أو إضافتها إلى وكلاء آخرين.";
+"Open Skills to browse bundled playbooks, create your own, or add them to other agents." = "افتح «المهارات» لاستعراض أدلة العمل المضمّنة أو إنشاء مهاراتك أو إضافتها إلى وكلاء آخرين.";
 "Open Timeline" = "فتح المخطط الزمني";
 "Open the AI Edit tab to upscale, prompt-edit, create video from a frame, or generate music, SFX, cleanup, and dubbing from the clip." = "افتح علامة التبويب «تحرير بالذكاء الاصطناعي» لرفع الدقة، أو التحرير عبر مطالبة، أو إنشاء فيديو من إطار، أو توليد موسيقى ومؤثرات صوتية وتنظيف الصوت والدبلجة من المقطع.";
 "OpenAI API Key" = "مفتاح واجهة API من OpenAI";
@@ -684,9 +684,6 @@
 "Reframe model not available" = "نموذج إعادة التأطير غير متاح";
 "Reframe only works on video" = "تعمل إعادة التأطير مع الفيديو فقط";
 "Reframe…" = "إعادة تأطير…";
-"Refresh" = "تحديث";
-"Refresh Community Skills" = "تحديث مهارات المجتمع";
-"Refresh to check for available skills." = "حدّث للتحقق من المهارات المتاحة.";
 "Regenerate with the same parameters" = "إعادة الإنشاء بالمعلمات نفسها";
 "Relink Folder…" = "إعادة ربط المجلد…";
 "Relinked %lld of %lld offline clips." = "تمت إعادة ربط ⁨%lld⁩ من أصل ⁨%lld⁩ من المقاطع غير المتصلة.";
@@ -808,7 +805,6 @@
 "Signed out" = "تم تسجيل الخروج";
 "Silence Detection" = "اكتشاف الصمت";
 "Size" = "الحجم";
-"Skill actions" = "إجراءات المهارة";
 "Skill instructions" = "تعليمات المهارة";
 "Skill name" = "اسم المهارة";
 "Skill unavailable." = "المهارة غير متاحة.";
@@ -887,6 +883,7 @@
 "The selected projects will be moved to the Trash." = "سيتم نقل المشاريع المحددة إلى سلة المهملات.";
 "The timeline settings changed. Close this sheet and try again." = "تغيرت إعدادات المخطط الزمني. أغلق هذه اللوحة وأعد المحاولة.";
 "Theme" = "السمة";
+"This build includes no skills." = "لا يتضمن هذا الإصدار أي مهارات.";
 "This is where all your footage and assets live." = "هنا توجد كل لقطاتك وأصولك.";
 "This is your preview panel to play a selected media or the whole timeline." = "هذه لوحة المعاينة لتشغيل الوسائط المحددة أو المخطط الزمني كاملاً.";
 "This job can't be cancelled. It will finish on its own." = "لا يمكن إلغاء هذه المهمة. ستنتهي من تلقاء نفسها.";
@@ -927,7 +924,6 @@
 "Trim End to Playhead (W)" = "تشذيب النهاية حتى رأس التشغيل ⁨(W)⁩";
 "Trim Start to Playhead" = "تشذيب البداية حتى رأس التشغيل";
 "Trim Start to Playhead (Q)" = "تشذيب البداية حتى رأس التشغيل ⁨(Q)⁩";
-"Try Again" = "إعادة المحاولة";
 "Try again." = "أعد المحاولة.";
 "Try another search." = "جرّب بحثًا آخر.";
 "Turn off to skip audio generation." = "أوقفه لتخطي إنشاء الصوت.";
@@ -978,6 +974,7 @@
 "Video model not available" = "نموذج الفيديو غير متاح";
 "Video to Music" = "تحويل الفيديو إلى موسيقى";
 "View" = "عرض";
+"View Skill Sources ↗" = "عرض مصادر المهارات ↗";
 "View Skills" = "عرض المهارات";
 "Vignette" = "تغميق الحواف";
 "Visual search model download failed. Check your connection and try again." = "فشل تنزيل نموذج البحث المرئي. تحقق من اتصالك وأعد المحاولة.";

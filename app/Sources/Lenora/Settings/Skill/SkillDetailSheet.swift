@@ -151,7 +151,7 @@ struct SkillDetailSheet: View {
     }
 
     private func header(_ skill: Skill?) -> some View {
-        let state = skill.flatMap { SkillCommunityState.resolve($0, store: store, catalog: catalog) }
+        let state = skill.flatMap { SkillCatalogState.resolve($0, store: store, catalog: catalog) }
         let dirty = editing && draft != originalDraft
 
         return VStack(alignment: .leading, spacing: AppTheme.Spacing.md) {
@@ -179,7 +179,7 @@ struct SkillDetailSheet: View {
     @ViewBuilder
     private func headerControls(
         skill: Skill?,
-        state: SkillCommunityState?,
+        state: SkillCatalogState?,
         dirty: Bool
     ) -> some View {
         if let skill {
@@ -192,7 +192,7 @@ struct SkillDetailSheet: View {
     @ViewBuilder
     private func existingHeaderControls(
         skill: Skill,
-        state: SkillCommunityState?,
+        state: SkillCatalogState?,
         dirty: Bool
     ) -> some View {
         if state == .update, !editing {
