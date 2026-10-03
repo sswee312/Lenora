@@ -25,6 +25,9 @@ async def _sweep(store: ResultStore) -> None:
         await store.sweep()
     except OSError as error:
         log.warning("result sweep failed: %s", type(error).__name__)
+    except Exception:
+        # The hourly sweeper must outlive any single failure.
+        log.exception("result sweep failed unexpectedly")
 
 
 async def _sweep_hourly(store: ResultStore) -> None:

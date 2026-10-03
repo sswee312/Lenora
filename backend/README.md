@@ -32,6 +32,8 @@ An adapter with missing settings is disabled. `GET /v1/health` (with the token) 
 
 `docker build -t lenora-backend backend` and run it with `LENORA_TOKEN` and the adapter keys in the platform's environment. Idempotency keys live in memory, so run a single instance. Mount a volume at `/data` to keep chain jobs and learned add-on state across restarts.
 
+Result URLs (`/v1/results/{id}`) are built from the request's scheme and `Host` header. Behind a TLS-terminating proxy, set `LENORA_FORWARDED_ALLOW_IPS` to the proxy's address so uvicorn trusts `X-Forwarded-Proto` and `X-Forwarded-For`. uvicorn ignores `X-Forwarded-Host`, so the proxy must pass the client's original `Host` header through unchanged.
+
 ## Write an adapter
 
 Copy `adapters/_template` and follow its README. `lenora_backend.testing.conformance.AdapterConformance` checks your adapter against the protocol rules.

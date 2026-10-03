@@ -33,16 +33,24 @@ def _not_found() -> ProblemError:
 
 
 class ResultStore:
-    """`<id>.data` plus a `<id>.json` sidecar, each installed by atomic rename; the sidecar is written last."""
+    """`<id>.data` plus a `<id>.json` sidecar, each hard-linked into place from a fsynced temp file, so an install never
+    replaces an existing file. The sidecar is written last and deleted last."""
 
     def __init__(self, root: Path, clock: Callable[[], float] = time.time):
         self.root = root
         self.clock = clock
 
-    async def put_bytes(self, data: bytes, content_type: str, file_extension: str) -> str:
+    @staticmethod
+    def new_id() -> str:
+        return secrets.token_hex(16)
+
+    async def put_bytes(self, data: bytes, content_type: str, file_extension: str, result_id: str | None = None) -> str:
+        """With `result_id`, install under that ID; an ID already in use raises FileExistsError."""
         if len(data) > MAX_BYTES:
             raise ProblemError("provider_error", "The provider returned a result larger than 25 MB.", retryable=False)
-        return await asyncio.to_thread(self._put, data, content_type, file_extension)
+        if result_id is not None and not _ID.fullmatch(result_id):
+            raise ValueError("malformed result id")
+        return await asyncio.to_thread(self._put, data, content_type, file_extension, result_id or self.new_id())
 
     async def put_text(self, text: str) -> str:
         return await self.put_bytes(text.encode(), TEXT_TYPE, "txt")
@@ -61,8 +69,14 @@ class ResultStore:
     async def sweep(self) -> int:
         return await asyncio.to_thread(self._sweep)
 
+    async def delete(self, result_id: str) -> None:
+        if _ID.fullmatch(result_id):
+            await asyncio.to_thread(self._delete, result_id)
+
     @staticmethod
     def result(result_id: str, content_type: str, file_extension: str) -> JobResult:
+        if not _ID.fullmatch(result_id):
+            raise ValueError("malformed result id")
         return JobResult(url=f"https://{MARKER_HOST}/{result_id}", contentType=content_type, fileExtension=file_extension)
 
     @staticmethod
@@ -71,12 +85,18 @@ class ResultStore:
             return result
         return JobResult.model_validate({**result.model_dump(), "url": f"{base_url}v1/results/{result.url.path.lstrip('/')}"})
 
-    def _put(self, data: bytes, content_type: str, file_extension: str) -> str:
+    def _put(self, data: bytes, content_type: str, file_extension: str, result_id: str) -> str:
         self.root.mkdir(parents=True, exist_ok=True)
-        result_id = secrets.token_hex(16)
-        self._install(self.root / f"{result_id}.data", data)
+        data_path, meta_path = self.root / f"{result_id}.data", self.root / f"{result_id}.json"
+        if meta_path.exists():
+            raise FileExistsError(meta_path.name)
+        self._install(data_path, data)
         meta = {"contentType": content_type, "fileExtension": file_extension, "createdAt": self.clock()}
-        self._install(self.root / f"{result_id}.json", json.dumps(meta).encode())
+        try:
+            self._install(meta_path, json.dumps(meta).encode())
+        except BaseException:
+            data_path.unlink(missing_ok=True)
+            raise
         return result_id
 
     def _install(self, target: Path, data: bytes) -> None:
@@ -86,10 +106,21 @@ class ResultStore:
                 file.write(data)
                 file.flush()
                 os.fsync(file.fileno())
-            os.replace(temp, target)
-        except BaseException:
+            os.link(temp, target)  # FileExistsError instead of replacing an existing file
+        finally:
             temp.unlink(missing_ok=True)
-            raise
+        self._sync_root()
+
+    def _sync_root(self) -> None:
+        fd = os.open(self.root, os.O_RDONLY)
+        try:
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+
+    def _delete(self, result_id: str) -> None:
+        (self.root / f"{result_id}.data").unlink(missing_ok=True)
+        (self.root / f"{result_id}.json").unlink(missing_ok=True)
 
     def _open(self, result_id: str) -> StoredResult:
         if not _ID.fullmatch(result_id):

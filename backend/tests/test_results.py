@@ -1,11 +1,14 @@
 import asyncio
 import json
+import logging
 import os
+import stat
 import time
 
 import pytest
 
 from fakes import AUTH, FakeAdapter
+from lenora_backend import app as app_module
 from lenora_backend.errors import ProblemError
 from lenora_backend.kinds import JobState
 from lenora_backend.results import MARKER_HOST, MAX_BYTES, STRAY_SECONDS, TTL_SECONDS, ResultStore
@@ -132,3 +135,73 @@ def test_other_result_urls_pass_through(make_client, tmp_path):
     adapter.finish("job1")
     body = make_client(adapter, data_dir=tmp_path).get("/v1/jobs/fake:job1", headers=AUTH).json()
     assert body["results"][0]["url"] == "https://cdn.example/out.png"
+
+
+def test_a_named_result_is_stored_under_its_id(tmp_path):
+    results = ResultStore(tmp_path / "results")
+    result_id = ResultStore.new_id()
+    assert asyncio.run(results.put_bytes(b"ID3", "audio/mpeg", "mp3", result_id=result_id)) == result_id
+    assert asyncio.run(results.open(result_id)).path.read_bytes() == b"ID3"
+
+
+@pytest.mark.parametrize("result_id", ["", "../x", "A" * 32, "a" * 31])
+def test_a_malformed_result_id_is_a_programming_error(tmp_path, result_id):
+    with pytest.raises(ValueError):
+        asyncio.run(ResultStore(tmp_path / "results").put_bytes(b"ID3", "audio/mpeg", "mp3", result_id=result_id))
+    with pytest.raises(ValueError):
+        ResultStore.result(result_id, "audio/mpeg", "mp3")
+
+
+def test_an_existing_result_is_never_replaced(tmp_path):
+    results = ResultStore(tmp_path / "results")
+    result_id = asyncio.run(results.put_bytes(b"first", "audio/mpeg", "mp3"))
+    with pytest.raises(FileExistsError):
+        asyncio.run(results.put_bytes(b"second", "audio/wav", "wav", result_id=result_id))
+    stored = asyncio.run(results.open(result_id))
+    assert (stored.path.read_bytes(), stored.content_type) == (b"first", "audio/mpeg")
+    assert not list((tmp_path / "results").glob(".*.tmp"))
+
+
+def test_a_failed_sidecar_write_removes_the_data_file(tmp_path, monkeypatch):
+    link = os.link
+
+    def broken(src, dst):
+        if str(dst).endswith(".json"):
+            raise OSError("disk full")
+        link(src, dst)
+    monkeypatch.setattr(os, "link", broken)
+    with pytest.raises(OSError):
+        put(tmp_path)
+    assert list((tmp_path / "results").iterdir()) == []
+
+
+def test_installs_fsync_the_results_directory(tmp_path, monkeypatch):
+    synced = []
+    fsync = os.fsync
+
+    def spy(fd):
+        synced.append(stat.S_ISDIR(os.fstat(fd).st_mode))
+        fsync(fd)
+    monkeypatch.setattr(os, "fsync", spy)
+    put(tmp_path)
+    assert synced == [False, True, False, True]
+
+
+def test_delete_removes_the_result_and_ignores_unknown_ids(tmp_path):
+    results = ResultStore(tmp_path / "results")
+    result_id = asyncio.run(results.put_bytes(b"ID3", "audio/mpeg", "mp3"))
+    for target in (result_id, result_id, "0" * 32, "../results"):
+        asyncio.run(results.delete(target))
+    assert list((tmp_path / "results").iterdir()) == []
+
+
+@pytest.mark.parametrize("failure", [OSError("disk"), RuntimeError("bug")], ids=["os-error", "other"])
+def test_a_failing_sweep_is_logged_and_survived(tmp_path, caplog, failure):
+    store = ResultStore(tmp_path / "results")
+
+    async def broken():
+        raise failure
+    store.sweep = broken
+    caplog.set_level(logging.WARNING)
+    asyncio.run(app_module._sweep(store))
+    assert "result sweep failed" in caplog.text
